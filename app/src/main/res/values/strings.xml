@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Qr Code Scanner</string>
+
+    <string name="error_dialog_title">Error</string>
+    <string name="error_dialog_default_message">Something went wrong</string>
+    <string name="error_dialog_positive_button_text">OK</string>
+
+    <string name="activity_scan_history">Scan History</string>
+
+    <string name="activity_request_permissions_title">Request permissions</string>
+    <string name="activity_request_permissions_message">The app needs camera permission to scan QR codes</string>
+    <string name="activity_request_permissions_button_text">Grant permissions</string>
+
+    <string name="activity_qr_code_title">QR Code</string>
+    <string name="activity_qr_code_menu_item_delete">Delete</string>
+    <string name="activity_qr_code_copy">Copy</string>
+    <string name="activity_qr_code_copied">Copied to clipboard</string>
+    <string name="activity_qr_code_format_aztec">Aztec</string>
+    <string name="activity_qr_code_format_codabar">CODABAR</string>
+    <string name="activity_qr_code_format_code_39">Code 39</string>
+    <string name="activity_qr_code_format_code_93">Code 93</string>
+    <string name="activity_qr_code_format_code_128">Code 128</string>
+    <string name="activity_qr_code_format_data_matrix">Data Matrix</string>
+    <string name="activity_qr_code_format_ean_8">EAN-8</string>
+    <string name="activity_qr_code_format_ean_13">EAN-13</string>
+    <string name="activity_qr_code_format_itf">ITF</string>
+    <string name="activity_qr_code_format_maxi_code">MaxiCode</string>
+    <string name="activity_qr_code_format_pdf_417">PDF417</string>
+    <string name="activity_qr_code_format_qr_code">QR Code</string>
+    <string name="activity_qr_code_format_rss_14">RSS 14</string>
+    <string name="activity_qr_code_format_rss_expanded">RSS EXPANDED</string>
+    <string name="activity_qr_code_format_upc_a">UPC-A</string>
+    <string name="activity_qr_code_format_upc_e">UPC-E</string>
+    <string name="activity_qr_code_format_upc_ean">UPC/EAN</string>
+</resources>

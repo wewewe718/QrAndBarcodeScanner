@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/default_margin"
+    >
+    <TextView
+        android:id="@+id/text_view_qr_code_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="https://google.com"
+        style="@style/TextViewStyle"
+        />
+</FrameLayout>
