@@ -35,11 +35,8 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="SecondaryTextViewStyle" parent="TextViewStyle">
+    <style name="SecondaryTextViewStyle">
         <item name="android:textColor">@color/gray</item>
-    </style>
-
-    <style name="QrCodeDateTextViewStyle" parent="SecondaryTextViewStyle">
         <item name="android:textSize">@dimen/small_text_size</item>
     </style>
 

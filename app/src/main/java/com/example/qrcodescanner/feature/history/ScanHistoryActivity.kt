@@ -46,6 +46,7 @@ class ScanHistoryActivity : AppCompatActivity() {
 
     private fun subscribeToViewModel() {
         subscribeToQrCodeClicks()
+        subscribeToScanHistoryDataChanged()
         subscribeToScanButtonClicks()
         subscribeToScanHistory()
         subscribeToError()
@@ -56,6 +57,14 @@ class ScanHistoryActivity : AppCompatActivity() {
     private fun subscribeToQrCodeClicks() {
         scanHistoryAdapter.qrCodeClicked
             .subscribe(viewModel::onQrCodeClicked)
+            .addTo(disposable)
+    }
+
+    private fun subscribeToScanHistoryDataChanged() {
+        scanHistoryAdapter.dataChanged
+            .subscribe {
+                recycler_view_scan_history.layoutManager?.scrollToPosition(0)
+            }
             .addTo(disposable)
     }
 

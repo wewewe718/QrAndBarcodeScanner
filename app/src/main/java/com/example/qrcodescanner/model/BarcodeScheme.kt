@@ -9,9 +9,8 @@ enum class BarcodeSchema {
     GIROCODE,
     GOOGLE_PLAY,
     ICALL,
-    KDDI_AU,
     MMS,
-    ME_CARD,
+    MECARD,
     SMS,
     TELEPHONE,
     URL,
@@ -24,14 +23,13 @@ enum class BarcodeSchema {
         fun from(text: String): BarcodeSchema {
             return when {
                 isScheme(text, Bookmark()) -> BOOKMARK
-                isScheme(text, EMail()) -> EMAIL
+                isScheme(text, EMail()) || text.startsWith("MATMSG", true) -> EMAIL
                 isScheme(text, GeoInfo()) -> GEO_INFO
                 isScheme(text, Girocode()) -> GIROCODE
                 isScheme(text, GooglePlay()) -> GOOGLE_PLAY
-                text.startsWith("BEGIN:VCALENDAR") -> ICALL
-                isScheme(text, KddiAu()) -> KDDI_AU
+                text.startsWith("BEGIN:VCALENDAR") || text.startsWith("BEGIN:VEVENT") -> ICALL
                 isScheme(text, MMS()) -> MMS
-                isScheme(text, MeCard()) -> ME_CARD
+                isScheme(text, MeCard()) -> MECARD
                 isScheme(text, SMS()) -> SMS
                 isScheme(text, Telephone()) -> TELEPHONE
                 isScheme(text, Url()) -> URL

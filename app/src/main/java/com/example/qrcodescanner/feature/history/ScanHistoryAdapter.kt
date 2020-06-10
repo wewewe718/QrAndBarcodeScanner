@@ -3,16 +3,24 @@ package com.example.qrcodescanner.feature.history
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qrcodescanner.R
+import com.example.qrcodescanner.common.toImageId
+import com.example.qrcodescanner.common.toStringId
 import com.example.qrcodescanner.model.QrCode
 import io.reactivex.subjects.PublishSubject
+import kotlinx.android.synthetic.main.activity_qr_code.*
 import kotlinx.android.synthetic.main.item_qr_code.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ScanHistoryAdapter : PagedListAdapter<QrCode, ScanHistoryAdapter.ViewHolder>(DiffUtilCallback) {
+    private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
     val qrCodeClicked = PublishSubject.create<QrCode>()
+    val dataChanged = PublishSubject.create<Unit>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,15 +32,22 @@ class ScanHistoryAdapter : PagedListAdapter<QrCode, ScanHistoryAdapter.ViewHolde
         getItem(position)?.apply(holder::show)
     }
 
+    override fun onCurrentListChanged(currentList: PagedList<QrCode>?) {
+        super.onCurrentListChanged(currentList)
+        dataChanged.onNext(Unit)
+    }
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun show(qrCode: QrCode) {
-            itemView.setOnClickListener {
-                qrCodeClicked.onNext(qrCode)
-            }
-
             itemView.apply {
+                text_view_qr_code_date.text = dateFormatter.format(qrCode.date)
+                text_view_qr_code_format.setText(qrCode.format.toStringId())
                 text_view_qr_code_text.text = qrCode.text
+                image_view_qr_code_schema.setBackgroundResource(qrCode.scheme.toImageId())
+                setOnClickListener {
+                    qrCodeClicked.onNext(qrCode)
+                }
             }
         }
     }

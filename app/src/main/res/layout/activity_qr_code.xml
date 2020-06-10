@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_margin"
                 tools:text="01.09.1993 12:00"
-                style="@style/QrCodeDateTextViewStyle"
+                style="@style/SecondaryTextViewStyle"
                 />
             <TextView
                 android:id="@+id/text_view_qr_code_format"
