@@ -17,4 +17,7 @@ interface QrCodeDb {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun save(qrCode: QrCode): Completable
+
+    @Delete
+    fun delete(qrCode: QrCode): Completable
 }

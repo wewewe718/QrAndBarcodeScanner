@@ -7,19 +7,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import com.example.qrcodescanner.R
+import com.example.qrcodescanner.common.showError
 import com.example.qrcodescanner.common.toStringId
 import com.example.qrcodescanner.model.QrCode
-import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
-import com.google.zxing.Result
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_qr_code.*
-import net.glxn.qrgen.android.QRCode
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -35,6 +34,7 @@ class QrCodeActivity : AppCompatActivity() {
         }
     }
 
+    private val disposable = CompositeDisposable()
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
 
     private val qrCode by lazy {
@@ -45,6 +45,10 @@ class QrCodeActivity : AppCompatActivity() {
         getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     }
 
+    private val viewModel by lazy {
+        ViewModelProviders.of(this).get(QrCodeViewModel::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qr_code)
@@ -52,6 +56,16 @@ class QrCodeActivity : AppCompatActivity() {
         handleToolbarMenuClicked()
         handleCopyClicked()
         showQrCode()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        subscribeToViewModel()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        unsubscribeFromViewModel()
     }
 
     private fun handleToolbarBackPressed() {
@@ -64,7 +78,7 @@ class QrCodeActivity : AppCompatActivity() {
         toolbar.inflateMenu(R.menu.menu_qr_code)
         toolbar.setOnMenuItemClickListener { item ->
             if (item.itemId == R.id.item_delete) {
-
+                viewModel.onDeleteClicked(qrCode)
             }
             return@setOnMenuItemClickListener true
         }
@@ -74,6 +88,43 @@ class QrCodeActivity : AppCompatActivity() {
         button_copy.setOnClickListener {
             copyQrCodeToClipboard()
         }
+    }
+
+    private fun subscribeToViewModel() {
+        subscribeToLoading()
+        subscribeToError()
+        subscribeToQrCodeDeleted()
+    }
+
+    private fun subscribeToLoading() {
+        viewModel.isLoading
+            .distinctUntilChanged()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::showLoading)
+            .addTo(disposable)
+    }
+
+    private fun subscribeToError() {
+        viewModel.error
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::showError)
+            .addTo(disposable)
+    }
+
+    private fun subscribeToQrCodeDeleted() {
+        viewModel.qrCodeDeleted
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { finish() }
+            .addTo(disposable)
+    }
+
+    private fun unsubscribeFromViewModel() {
+        disposable.clear()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        progress_bar_loading.isVisible = isLoading
+        group_main_content.isVisible = isLoading.not()
     }
 
     private fun showQrCode() {
