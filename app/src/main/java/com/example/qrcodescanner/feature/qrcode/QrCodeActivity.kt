@@ -96,6 +96,7 @@ class QrCodeActivity : AppCompatActivity() {
         button_search.setOnClickListener { searchOnInternet() }
         button_open_link.setOnClickListener { openLink() }
         button_call_phone.setOnClickListener { callPhone() }
+        button_show_location.setOnClickListener { showLocation() }
     }
 
 
@@ -173,8 +174,21 @@ class QrCodeActivity : AppCompatActivity() {
     private fun showOrHideButtons() {
         button_open_link.isVisible = qrCode.scheme == BarcodeSchema.URL
         button_call_phone.isVisible = qrCode.scheme == BarcodeSchema.TELEPHONE
+        button_show_location.isVisible = qrCode.scheme == BarcodeSchema.GEO_INFO
     }
 
+
+    private fun openLink() {
+        startActivityWithQrCodeUri(Intent.ACTION_VIEW)
+    }
+
+    private fun callPhone() {
+        startActivityWithQrCodeUri(Intent.ACTION_DIAL)
+    }
+
+    private fun showLocation() {
+        startActivityWithQrCodeUri(Intent.ACTION_VIEW)
+    }
 
     private fun copyToClipboard() {
         val clipData = ClipData.newPlainText("", qrCode.text)
@@ -186,14 +200,6 @@ class QrCodeActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_WEB_SEARCH)
         intent.putExtra(SearchManager.QUERY, qrCode.text)
         startActivityIfExists(intent)
-    }
-
-    private fun openLink() {
-        startActivityWithQrCodeUri(Intent.ACTION_VIEW)
-    }
-
-    private fun callPhone() {
-        startActivityWithQrCodeUri(Intent.ACTION_DIAL)
     }
 
     private fun startActivityWithQrCodeUri(action: String) {
