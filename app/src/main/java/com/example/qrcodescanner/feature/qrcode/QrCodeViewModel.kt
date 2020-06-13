@@ -26,6 +26,7 @@ class QrCodeViewModel(app: Application) : AndroidViewModel(app) {
                     qrCodeDeleted.onNext(Unit)
                 },
                 { error ->
+                    isLoading.onNext(false)
                     this.error.onNext(error)
                 }
             )

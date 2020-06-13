@@ -1,5 +1,6 @@
 package com.example.qrcodescanner.feature.qrcode
 
+import android.app.SearchManager
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -55,6 +56,7 @@ class QrCodeActivity : AppCompatActivity() {
         handleToolbarBackPressed()
         handleToolbarMenuClicked()
         handleCopyClicked()
+        handleSearchClicked()
         showQrCode()
     }
 
@@ -86,7 +88,13 @@ class QrCodeActivity : AppCompatActivity() {
 
     private fun handleCopyClicked() {
         button_copy.setOnClickListener {
-            copyQrCodeToClipboard()
+            copyToClipboard()
+        }
+    }
+
+    private fun handleSearchClicked() {
+        button_search.setOnClickListener {
+            searchOnInternet()
         }
     }
 
@@ -151,16 +159,26 @@ class QrCodeActivity : AppCompatActivity() {
     }
 
     private fun showQrCodeFormat() {
-        text_view_qr_code_format.setText(qrCode.format.toStringId())
+        val format = qrCode.format.toStringId()
+        toolbar.setTitle(format)
+        text_view_qr_code_format.setText(format)
     }
 
     private fun showQrCodeText() {
         text_view_qr_code_text.text = qrCode.text
     }
 
-    private fun copyQrCodeToClipboard() {
+    private fun copyToClipboard() {
         val clipData = ClipData.newPlainText("", qrCode.text)
         clipboardManager.setPrimaryClip(clipData)
         Toast.makeText(this, R.string.activity_qr_code_copied, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun searchOnInternet() {
+        val intent = Intent(Intent.ACTION_WEB_SEARCH)
+        intent.putExtra(SearchManager.QUERY, qrCode.text)
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        }
     }
 }

@@ -11,9 +11,10 @@
     <string name="activity_request_permissions_message">The app needs camera permission to scan QR codes</string>
     <string name="activity_request_permissions_button_text">Grant permissions</string>
 
-    <string name="activity_qr_code_title">QR Code</string>
     <string name="activity_qr_code_menu_item_delete">Delete</string>
-    <string name="activity_qr_code_copy">Copy</string>
+    <string name="activity_qr_code_copy">Copy to clipboard</string>
+    <string name="activity_qr_code_search">Search on the Internet</string>
+    <string name="activity_qr_code_open_link">Open link</string>
     <string name="activity_qr_code_copied">Copied to clipboard</string>
     <string name="activity_qr_code_format_aztec">Aztec</string>
     <string name="activity_qr_code_format_codabar">CODABAR</string>
