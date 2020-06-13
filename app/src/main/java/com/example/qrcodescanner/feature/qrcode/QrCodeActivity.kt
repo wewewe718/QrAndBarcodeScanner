@@ -5,6 +5,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.qrcodescanner.R
 import com.example.qrcodescanner.common.showError
 import com.example.qrcodescanner.common.toStringId
+import com.example.qrcodescanner.model.BarcodeSchema
 import com.example.qrcodescanner.model.QrCode
 import com.google.zxing.MultiFormatWriter
 import com.journeyapps.barcodescanner.BarcodeEncoder
@@ -57,7 +59,9 @@ class QrCodeActivity : AppCompatActivity() {
         handleToolbarMenuClicked()
         handleCopyClicked()
         handleSearchClicked()
+        handleOpenLinkClicked()
         showQrCode()
+        showOrHideButtons()
     }
 
     override fun onResume() {
@@ -95,6 +99,12 @@ class QrCodeActivity : AppCompatActivity() {
     private fun handleSearchClicked() {
         button_search.setOnClickListener {
             searchOnInternet()
+        }
+    }
+
+    private fun handleOpenLinkClicked() {
+        button_open_link.setOnClickListener {
+            openLink()
         }
     }
 
@@ -168,6 +178,10 @@ class QrCodeActivity : AppCompatActivity() {
         text_view_qr_code_text.text = qrCode.text
     }
 
+    private fun showOrHideButtons() {
+        button_open_link.isVisible = qrCode.scheme == BarcodeSchema.URL
+    }
+
     private fun copyToClipboard() {
         val clipData = ClipData.newPlainText("", qrCode.text)
         clipboardManager.setPrimaryClip(clipData)
@@ -177,6 +191,16 @@ class QrCodeActivity : AppCompatActivity() {
     private fun searchOnInternet() {
         val intent = Intent(Intent.ACTION_WEB_SEARCH)
         intent.putExtra(SearchManager.QUERY, qrCode.text)
+        startActivityIfExists(intent)
+    }
+
+    private fun openLink() {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(qrCode.text)
+        startActivityIfExists(intent)
+    }
+
+    private fun startActivityIfExists(intent: Intent) {
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
         }
