@@ -66,24 +66,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin_very_small"
+                android:layout_marginBottom="@dimen/default_margin"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 tools:text="Hello World!"
                 style="@style/TextViewStyle"
-                />
-            <com.example.qrcodescanner.common.IconButton
-                android:id="@+id/button_copy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin"
-                app:icon="@drawable/ic_copy"
-                app:text="@string/activity_qr_code_copy"
-                />
-            <com.example.qrcodescanner.common.IconButton
-                android:id="@+id/button_search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_search"
-                app:text="@string/activity_qr_code_search"
                 />
             <com.example.qrcodescanner.common.IconButton
                 android:id="@+id/button_open_link"
@@ -93,6 +79,29 @@
                 app:text="@string/activity_qr_code_open_link"
                 android:visibility="gone"
                 tools:visibility="visible"
+                />
+            <com.example.qrcodescanner.common.IconButton
+                android:id="@+id/button_call_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_phone"
+                app:text="@string/activity_qr_code_call_phone"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.qrcodescanner.common.IconButton
+                android:id="@+id/button_copy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_copy"
+                app:text="@string/activity_qr_code_copy"
+                />
+            <com.example.qrcodescanner.common.IconButton
+                android:id="@+id/button_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_search"
+                app:text="@string/activity_qr_code_search"
                 />
         </LinearLayout>
     </ScrollView>

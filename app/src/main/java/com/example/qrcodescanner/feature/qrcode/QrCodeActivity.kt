@@ -37,6 +37,7 @@ class QrCodeActivity : AppCompatActivity() {
         }
     }
 
+
     private val disposable = CompositeDisposable()
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
 
@@ -52,14 +53,13 @@ class QrCodeActivity : AppCompatActivity() {
         ViewModelProviders.of(this).get(QrCodeViewModel::class.java)
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qr_code)
         handleToolbarBackPressed()
         handleToolbarMenuClicked()
-        handleCopyClicked()
-        handleSearchClicked()
-        handleOpenLinkClicked()
+        handleButtonsClicked()
         showQrCode()
         showOrHideButtons()
     }
@@ -73,6 +73,7 @@ class QrCodeActivity : AppCompatActivity() {
         super.onPause()
         unsubscribeFromViewModel()
     }
+
 
     private fun handleToolbarBackPressed() {
         toolbar.setNavigationOnClickListener {
@@ -90,23 +91,13 @@ class QrCodeActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleCopyClicked() {
-        button_copy.setOnClickListener {
-            copyToClipboard()
-        }
+    private fun handleButtonsClicked() {
+        button_copy.setOnClickListener { copyToClipboard() }
+        button_search.setOnClickListener { searchOnInternet() }
+        button_open_link.setOnClickListener { openLink() }
+        button_call_phone.setOnClickListener { callPhone() }
     }
 
-    private fun handleSearchClicked() {
-        button_search.setOnClickListener {
-            searchOnInternet()
-        }
-    }
-
-    private fun handleOpenLinkClicked() {
-        button_open_link.setOnClickListener {
-            openLink()
-        }
-    }
 
     private fun subscribeToViewModel() {
         subscribeToLoading()
@@ -139,6 +130,7 @@ class QrCodeActivity : AppCompatActivity() {
     private fun unsubscribeFromViewModel() {
         disposable.clear()
     }
+
 
     private fun showLoading(isLoading: Boolean) {
         progress_bar_loading.isVisible = isLoading
@@ -180,7 +172,9 @@ class QrCodeActivity : AppCompatActivity() {
 
     private fun showOrHideButtons() {
         button_open_link.isVisible = qrCode.scheme == BarcodeSchema.URL
+        button_call_phone.isVisible = qrCode.scheme == BarcodeSchema.TELEPHONE
     }
+
 
     private fun copyToClipboard() {
         val clipData = ClipData.newPlainText("", qrCode.text)
@@ -195,8 +189,15 @@ class QrCodeActivity : AppCompatActivity() {
     }
 
     private fun openLink() {
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(qrCode.text)
+        startActivityWithQrCodeUri(Intent.ACTION_VIEW)
+    }
+
+    private fun callPhone() {
+        startActivityWithQrCodeUri(Intent.ACTION_DIAL)
+    }
+
+    private fun startActivityWithQrCodeUri(action: String) {
+        val intent = Intent(action, Uri.parse(qrCode.text))
         startActivityIfExists(intent)
     }
 

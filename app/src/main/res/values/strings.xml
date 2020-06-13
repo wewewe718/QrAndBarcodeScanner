@@ -15,6 +15,7 @@
     <string name="activity_qr_code_copy">Copy to clipboard</string>
     <string name="activity_qr_code_search">Search on the Internet</string>
     <string name="activity_qr_code_open_link">Open link</string>
+    <string name="activity_qr_code_call_phone">Call</string>
     <string name="activity_qr_code_copied">Copied to clipboard</string>
     <string name="activity_qr_code_format_aztec">Aztec</string>
     <string name="activity_qr_code_format_codabar">CODABAR</string>
