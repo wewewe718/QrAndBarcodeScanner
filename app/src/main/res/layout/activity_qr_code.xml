@@ -41,13 +41,16 @@
                 android:id="@+id/image_view_qr_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin_large"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:layout_marginHorizontal="@dimen/margin_horizontal_qr_code"
                 android:scaleType="fitXY"
                 />
             <TextView
                 android:id="@+id/text_view_qr_code_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginStart="@dimen/default_margin"
                 tools:text="01.09.1993 12:00"
                 style="@style/SecondaryTextViewStyle"
@@ -113,6 +116,24 @@
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_youtube"
                 app:text="@string/activity_qr_code_open_in_youtube"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.qrcodescanner.common.IconButton
+                android:id="@+id/button_copy_network_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_copy"
+                app:text="@string/activity_qr_code_copy_network_name"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.qrcodescanner.common.IconButton
+                android:id="@+id/button_copy_network_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_copy"
+                app:text="@string/activity_qr_code_copy_network_password"
                 android:visibility="gone"
                 tools:visibility="visible"
                 />

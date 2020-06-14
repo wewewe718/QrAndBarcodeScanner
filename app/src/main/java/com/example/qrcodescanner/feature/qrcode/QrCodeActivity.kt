@@ -16,12 +16,14 @@ import com.example.qrcodescanner.common.showError
 import com.example.qrcodescanner.common.toStringId
 import com.example.qrcodescanner.model.BarcodeSchema
 import com.example.qrcodescanner.model.QrCode
+import com.google.zxing.EncodeHintType
 import com.google.zxing.MultiFormatWriter
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_qr_code.*
+import net.glxn.qrgen.core.scheme.Wifi
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -92,13 +94,15 @@ class QrCodeActivity : AppCompatActivity() {
     }
 
     private fun handleButtonsClicked() {
-        button_copy.setOnClickListener { copyToClipboard() }
+        button_copy.setOnClickListener { copyQrCodeTextToClipboard() }
         button_search.setOnClickListener { searchOnInternet() }
         button_open_link.setOnClickListener { startActivityWithActionView() }
         button_call_phone.setOnClickListener { startActivityWithQrCodeUri(Intent.ACTION_DIAL) }
         button_show_location.setOnClickListener { startActivityWithActionView() }
         button_open_in_google_play.setOnClickListener { startActivityWithActionView() }
         button_open_in_youtube.setOnClickListener { startActivityWithActionView() }
+        button_copy_network_name.setOnClickListener { copyNetworkNameToClipboard() }
+        button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
     }
 
 
@@ -149,12 +153,12 @@ class QrCodeActivity : AppCompatActivity() {
 
     private fun showQrCodeImage() {
         try {
-            val writer = MultiFormatWriter()
-            val bitMatrix = writer.encode(qrCode.text, qrCode.format, 2000, 2000)
-            val barcodeEncoder = BarcodeEncoder()
-            val bitmap = barcodeEncoder.createBitmap(bitMatrix)
+            val bitmap = BarcodeEncoder().encodeBitmap(qrCode.text, qrCode.format, 2000, 2000, mapOf(
+                EncodeHintType.MARGIN to 0
+            ))
             image_view_qr_code.setImageBitmap(bitmap)
         } catch (ex: Exception) {
+            image_view_qr_code.isVisible = false
             ex.printStackTrace()
         }
     }
@@ -179,13 +183,35 @@ class QrCodeActivity : AppCompatActivity() {
         button_show_location.isVisible = qrCode.scheme == BarcodeSchema.GEO_INFO
         button_open_in_google_play.isVisible = qrCode.scheme == BarcodeSchema.GOOGLE_PLAY
         button_open_in_youtube.isVisible = qrCode.scheme == BarcodeSchema.YOUTUBE
+        button_copy_network_name.isVisible = qrCode.scheme == BarcodeSchema.WIFI
+        button_copy_network_password.isVisible = qrCode.scheme == BarcodeSchema.WIFI && isNetworkPasswordPresent()
+    }
+
+    private fun isNetworkPasswordPresent(): Boolean {
+        return Wifi.parse(qrCode.text).psk != null
     }
 
 
-    private fun copyToClipboard() {
-        val clipData = ClipData.newPlainText("", qrCode.text)
+    private fun copyQrCodeTextToClipboard() {
+        copyToClipboard(qrCode.text)
+        showToast(R.string.activity_qr_code_copied)
+    }
+
+    private fun copyNetworkNameToClipboard() {
+        val name = Wifi.parse(qrCode.text).ssid
+        copyToClipboard(name)
+        showToast(R.string.activity_qr_code_copied)
+    }
+
+    private fun copyNetworkPasswordToClipboard() {
+        val password = Wifi.parse(qrCode.text).psk
+        copyToClipboard(password)
+        showToast(R.string.activity_qr_code_copied)
+    }
+
+    private fun copyToClipboard(text: String) {
+        val clipData = ClipData.newPlainText("", text)
         clipboardManager.setPrimaryClip(clipData)
-        Toast.makeText(this, R.string.activity_qr_code_copied, Toast.LENGTH_SHORT).show()
     }
 
     private fun searchOnInternet() {
@@ -206,6 +232,16 @@ class QrCodeActivity : AppCompatActivity() {
     private fun startActivityIfExists(intent: Intent) {
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
+        } else {
+            showToast(R.string.activity_qr_code_no_app)
         }
+    }
+
+    private fun showToast(stringId: Int) {
+        showToast(getString(stringId))
+    }
+
+    private fun showToast(text: String) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 }

@@ -14,11 +14,14 @@
     <string name="activity_qr_code_menu_item_delete">Delete</string>
     <string name="activity_qr_code_copy">Copy to clipboard</string>
     <string name="activity_qr_code_search">Search on the Internet</string>
+    <string name="activity_qr_code_no_app">No app found for this action</string>
     <string name="activity_qr_code_open_link">Open link</string>
     <string name="activity_qr_code_call_phone">Call</string>
     <string name="activity_qr_code_show_location">Show the location</string>
     <string name="activity_qr_code_open_in_google_play">Open in Google Play</string>
     <string name="activity_qr_code_open_in_youtube">Open in Youtube</string>
+    <string name="activity_qr_code_copy_network_name">Copy the network name</string>
+    <string name="activity_qr_code_copy_network_password">Copy the network password</string>
     <string name="activity_qr_code_copied">Copied to clipboard</string>
     <string name="activity_qr_code_format_aztec">Aztec</string>
     <string name="activity_qr_code_format_codabar">CODABAR</string>
