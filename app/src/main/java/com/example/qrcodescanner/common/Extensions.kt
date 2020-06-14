@@ -46,7 +46,7 @@ fun BarcodeSchema.toImageId(): Int {
         BarcodeSchema.EMAIL -> R.drawable.ic_email
         BarcodeSchema.GEO_INFO -> R.drawable.ic_location
         BarcodeSchema.GIROCODE -> R.drawable.ic_payment
-        BarcodeSchema.GOOGLE_PLAY -> R.drawable.ic_link
+        BarcodeSchema.GOOGLE_PLAY -> R.drawable.ic_app
         BarcodeSchema.ICALL -> R.drawable.ic_calendar
         BarcodeSchema.MMS -> R.drawable.ic_mms
         BarcodeSchema.MECARD -> R.drawable.ic_profile
@@ -58,8 +58,4 @@ fun BarcodeSchema.toImageId(): Int {
         BarcodeSchema.YOUTUBE -> R.drawable.ic_youtube
         else -> R.drawable.ic_qr_code_other
     }
-}
-
-fun SimpleDateFormat.format(date: Long): String {
-    return format(Date(date))
 }

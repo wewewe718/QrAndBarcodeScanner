@@ -94,9 +94,11 @@ class QrCodeActivity : AppCompatActivity() {
     private fun handleButtonsClicked() {
         button_copy.setOnClickListener { copyToClipboard() }
         button_search.setOnClickListener { searchOnInternet() }
-        button_open_link.setOnClickListener { openLink() }
-        button_call_phone.setOnClickListener { callPhone() }
-        button_show_location.setOnClickListener { showLocation() }
+        button_open_link.setOnClickListener { startActivityWithActionView() }
+        button_call_phone.setOnClickListener { startActivityWithQrCodeUri(Intent.ACTION_DIAL) }
+        button_show_location.setOnClickListener { startActivityWithActionView() }
+        button_open_in_google_play.setOnClickListener { startActivityWithActionView() }
+        button_open_in_youtube.setOnClickListener { startActivityWithActionView() }
     }
 
 
@@ -175,20 +177,10 @@ class QrCodeActivity : AppCompatActivity() {
         button_open_link.isVisible = qrCode.scheme == BarcodeSchema.URL
         button_call_phone.isVisible = qrCode.scheme == BarcodeSchema.TELEPHONE
         button_show_location.isVisible = qrCode.scheme == BarcodeSchema.GEO_INFO
+        button_open_in_google_play.isVisible = qrCode.scheme == BarcodeSchema.GOOGLE_PLAY
+        button_open_in_youtube.isVisible = qrCode.scheme == BarcodeSchema.YOUTUBE
     }
 
-
-    private fun openLink() {
-        startActivityWithQrCodeUri(Intent.ACTION_VIEW)
-    }
-
-    private fun callPhone() {
-        startActivityWithQrCodeUri(Intent.ACTION_DIAL)
-    }
-
-    private fun showLocation() {
-        startActivityWithQrCodeUri(Intent.ACTION_VIEW)
-    }
 
     private fun copyToClipboard() {
         val clipData = ClipData.newPlainText("", qrCode.text)
@@ -200,6 +192,10 @@ class QrCodeActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_WEB_SEARCH)
         intent.putExtra(SearchManager.QUERY, qrCode.text)
         startActivityIfExists(intent)
+    }
+
+    private fun startActivityWithActionView() {
+        startActivityWithQrCodeUri(Intent.ACTION_VIEW)
     }
 
     private fun startActivityWithQrCodeUri(action: String) {
