@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="@dimen/default_margin"
+    android:paddingHorizontal="@dimen/default_margin"
+    android:paddingVertical="@dimen/default_margin"
     android:background="@drawable/background_icon_button"
     >
     <ImageView

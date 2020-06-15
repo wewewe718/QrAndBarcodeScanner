@@ -12,7 +12,6 @@ import com.example.qrcodescanner.common.toImageId
 import com.example.qrcodescanner.common.toStringId
 import com.example.qrcodescanner.model.QrCode
 import io.reactivex.subjects.PublishSubject
-import kotlinx.android.synthetic.main.activity_qr_code.*
 import kotlinx.android.synthetic.main.item_qr_code.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -44,7 +43,7 @@ class ScanHistoryAdapter : PagedListAdapter<QrCode, ScanHistoryAdapter.ViewHolde
                 text_view_qr_code_date.text = dateFormatter.format(qrCode.date)
                 text_view_qr_code_format.setText(qrCode.format.toStringId())
                 text_view_qr_code_text.text = qrCode.text
-                image_view_qr_code_schema.setBackgroundResource(qrCode.scheme.toImageId())
+                image_view_qr_code_schema.setBackgroundResource(qrCode.schema.toImageId())
                 setOnClickListener {
                     qrCodeClicked.onNext(qrCode)
                 }

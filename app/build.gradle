@@ -46,22 +46,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
-    // QR Code Scanner
-    implementation 'com.budiyev.android:code-scanner:2.1.0'
-
-    // QR Code Generator
-    implementation 'com.google.zxing:core:3.4.0'
-    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
-    implementation 'com.github.kenglxn.QRGen:android:2.6.0'
-
-    // Rx
-    implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
-    final rxBindingVersion = '2.2.0'
-    implementation "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rxBindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxBindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxBindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxBindingVersion"
-
     // View Model
     final lifecycleVersion = '2.2.0'
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
@@ -77,4 +61,21 @@ dependencies {
     final pagingVersion = "1.0.1"
     implementation "android.arch.paging:runtime:$pagingVersion"
     implementation "android.arch.paging:rxjava2:$pagingVersion"
+
+    // QR Code Scanner
+    implementation 'com.budiyev.android:code-scanner:2.1.0'
+
+    // QR Code Image Generator
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+
+    // QR Code Generator
+    implementation 'com.github.kenglxn.QRGen:android:2.6.0'
+
+    // Rx
+    final rxBindingVersion = '2.2.0'
+    implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
+    implementation "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rxBindingVersion"
+    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxBindingVersion"
+    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxBindingVersion"
+    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxBindingVersion"
 }

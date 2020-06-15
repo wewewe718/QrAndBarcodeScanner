@@ -22,6 +22,7 @@
     <string name="activity_qr_code_open_in_youtube">Open in Youtube</string>
     <string name="activity_qr_code_copy_network_name">Copy the network name</string>
     <string name="activity_qr_code_copy_network_password">Copy the network password</string>
+    <string name="activity_qr_code_send_sms">Send SMS</string>
     <string name="activity_qr_code_copied">Copied to clipboard</string>
     <string name="activity_qr_code_format_aztec">Aztec</string>
     <string name="activity_qr_code_format_codabar">CODABAR</string>

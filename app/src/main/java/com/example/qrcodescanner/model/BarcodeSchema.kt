@@ -1,5 +1,7 @@
 package com.example.qrcodescanner.model
 
+import net.glxn.qrgen.core.scheme.Schema
+
 enum class BarcodeSchema {
     BOOKMARK,
     EMAIL,
@@ -35,7 +37,7 @@ object BarcodeSchemaParser {
         BarcodeSchema.ICALL to listOf("BEGIN:VCALENDAR", "BEGIN:VEVENT"),
         BarcodeSchema.MMS to listOf("mms:"),
         BarcodeSchema.MECARD to listOf("MECARD:"),
-        BarcodeSchema.SMS to listOf("sms:"),
+        BarcodeSchema.SMS to listOf("smsto:"),
         BarcodeSchema.TELEPHONE to listOf("tel:"),
         BarcodeSchema.VCARD to listOf("BEGIN:VCARD"),
         BarcodeSchema.WIFI to listOf("WIFI:"),
@@ -52,5 +54,14 @@ object BarcodeSchemaParser {
             }
         }
         return BarcodeSchema.OTHER
+    }
+
+    fun parseAsSms(text: String): Pair<String?, String?>? {
+        return try {
+            val parts = text.split(":")
+            Pair(parts[1], parts[2])
+        } catch (_: Exception) {
+            null
+        }
     }
 }

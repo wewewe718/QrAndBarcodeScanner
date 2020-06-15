@@ -15,7 +15,7 @@ data class QrCode(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val text: String,
     val format: BarcodeFormat,
-    val scheme: BarcodeSchema,
+    val schema: BarcodeSchema,
     val date: Long
 ) : Parcelable {
 
@@ -32,7 +32,7 @@ data class QrCode(
     constructor(scanResult: Result) : this(
         text = scanResult.text,
         format = scanResult.barcodeFormat,
-        scheme = BarcodeSchema.from(scanResult.text),
+        schema = BarcodeSchema.from(scanResult.text),
         date = scanResult.timestamp
     )
 
@@ -40,7 +40,7 @@ data class QrCode(
         id = parcel.readLong(),
         text = parcel.readString().orEmpty(),
         format = BarcodeFormat.values()[parcel.readInt()],
-        scheme = BarcodeSchema.values()[parcel.readInt()],
+        schema = BarcodeSchema.values()[parcel.readInt()],
         date = parcel.readLong()
     )
 
@@ -49,7 +49,7 @@ data class QrCode(
             writeLong(id)
             writeString(text)
             writeInt(format.ordinal)
-            writeInt(scheme.ordinal)
+            writeInt(schema.ordinal)
             writeLong(date)
         }
     }

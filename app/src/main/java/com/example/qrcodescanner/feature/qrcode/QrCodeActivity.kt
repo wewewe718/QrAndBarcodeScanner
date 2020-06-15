@@ -15,14 +15,15 @@ import com.example.qrcodescanner.R
 import com.example.qrcodescanner.common.showError
 import com.example.qrcodescanner.common.toStringId
 import com.example.qrcodescanner.model.BarcodeSchema
+import com.example.qrcodescanner.model.BarcodeSchemaParser
 import com.example.qrcodescanner.model.QrCode
 import com.google.zxing.EncodeHintType
-import com.google.zxing.MultiFormatWriter
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_qr_code.*
+import net.glxn.qrgen.core.scheme.SMS
 import net.glxn.qrgen.core.scheme.Wifi
 import java.text.SimpleDateFormat
 import java.util.*
@@ -103,6 +104,7 @@ class QrCodeActivity : AppCompatActivity() {
         button_open_in_youtube.setOnClickListener { startActivityWithActionView() }
         button_copy_network_name.setOnClickListener { copyNetworkNameToClipboard() }
         button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
+        button_send_sms.setOnClickListener { sendSms() }
     }
 
 
@@ -178,13 +180,14 @@ class QrCodeActivity : AppCompatActivity() {
     }
 
     private fun showOrHideButtons() {
-        button_open_link.isVisible = qrCode.scheme == BarcodeSchema.URL
-        button_call_phone.isVisible = qrCode.scheme == BarcodeSchema.TELEPHONE
-        button_show_location.isVisible = qrCode.scheme == BarcodeSchema.GEO_INFO
-        button_open_in_google_play.isVisible = qrCode.scheme == BarcodeSchema.GOOGLE_PLAY
-        button_open_in_youtube.isVisible = qrCode.scheme == BarcodeSchema.YOUTUBE
-        button_copy_network_name.isVisible = qrCode.scheme == BarcodeSchema.WIFI
-        button_copy_network_password.isVisible = qrCode.scheme == BarcodeSchema.WIFI && isNetworkPasswordPresent()
+        button_open_link.isVisible = qrCode.schema == BarcodeSchema.URL
+        button_call_phone.isVisible = qrCode.schema == BarcodeSchema.TELEPHONE
+        button_show_location.isVisible = qrCode.schema == BarcodeSchema.GEO_INFO
+        button_open_in_google_play.isVisible = qrCode.schema == BarcodeSchema.GOOGLE_PLAY
+        button_open_in_youtube.isVisible = qrCode.schema == BarcodeSchema.YOUTUBE
+        button_copy_network_name.isVisible = qrCode.schema == BarcodeSchema.WIFI
+        button_copy_network_password.isVisible = qrCode.schema == BarcodeSchema.WIFI && isNetworkPasswordPresent()
+        button_send_sms.isVisible = qrCode.schema == BarcodeSchema.SMS
     }
 
     private fun isNetworkPasswordPresent(): Boolean {
@@ -215,8 +218,19 @@ class QrCodeActivity : AppCompatActivity() {
     }
 
     private fun searchOnInternet() {
-        val intent = Intent(Intent.ACTION_WEB_SEARCH)
-        intent.putExtra(SearchManager.QUERY, qrCode.text)
+        val intent = Intent(Intent.ACTION_WEB_SEARCH).apply {
+            putExtra(SearchManager.QUERY, qrCode.text)
+        }
+        startActivityIfExists(intent)
+    }
+
+    private fun sendSms() {
+        val sms = BarcodeSchemaParser.parseAsSms(qrCode.text)
+        val phone = sms?.first ?: return
+        val body = sms.second
+        val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("sms:$phone")).apply {
+            putExtra("sms_body", body)
+        }
         startActivityIfExists(intent)
     }
 
