@@ -8,7 +8,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.example.qrcodescanner"
+        applicationId "com.example.barcodescanner"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
@@ -62,13 +62,13 @@ dependencies {
     implementation "android.arch.paging:runtime:$pagingVersion"
     implementation "android.arch.paging:rxjava2:$pagingVersion"
 
-    // QR Code Scanner
+    // Barcode Scanner
     implementation 'com.budiyev.android:code-scanner:2.1.0'
 
-    // QR Code Image Generator
+    // Barcode Image Generator
     implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
 
-    // QR Code Generator
+    // Barcode Text Generator
     implementation 'com.github.kenglxn.QRGen:android:2.6.0'
 
     // Rx

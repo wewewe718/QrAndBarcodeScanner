@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.qrcodescanner">
+    package="com.example.barcodescanner"
+    >
 
     <uses-permission android:name="android.permission.CAMERA"/>
 
@@ -12,24 +13,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".App"
+        android:name="com.example.barcodescanner.App"
         >
 
-        <activity android:name=".feature.history.ScanHistoryActivity">
+        <activity android:name="com.example.barcodescanner.feature.history.BarcodeHistoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".feature.permission.RequestPermissionsActivity"/>
+        <activity android:name="com.example.barcodescanner.feature.permission.RequestPermissionsActivity"/>
 
         <activity
-            android:name=".feature.scan.ScanQrCodeActivity"
+            android:name="com.example.barcodescanner.feature.scan.ScanBarcodeActivity"
             android:theme="@style/ScanQrCodeActivityTheme"
             />
 
-        <activity android:name=".feature.qrcode.QrCodeActivity"/>
+        <activity android:name="com.example.barcodescanner.feature.barcode.BarcodeActivity"/>
 
     </application>
 
