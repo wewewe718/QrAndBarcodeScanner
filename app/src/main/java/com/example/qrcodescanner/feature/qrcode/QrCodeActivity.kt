@@ -12,18 +12,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import com.example.qrcodescanner.R
-import com.example.qrcodescanner.common.showError
-import com.example.qrcodescanner.common.toStringId
+import com.example.qrcodescanner.barcodeImageGenerator
+import com.example.qrcodescanner.barcodeSchemaParser
+import com.example.qrcodescanner.feature.common.showError
+import com.example.qrcodescanner.feature.common.toStringId
 import com.example.qrcodescanner.model.BarcodeSchema
-import com.example.qrcodescanner.model.BarcodeSchemaParser
 import com.example.qrcodescanner.model.QrCode
-import com.google.zxing.EncodeHintType
-import com.journeyapps.barcodescanner.BarcodeEncoder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_qr_code.*
-import net.glxn.qrgen.core.scheme.SMS
 import net.glxn.qrgen.core.scheme.Wifi
 import java.text.SimpleDateFormat
 import java.util.*
@@ -95,6 +93,7 @@ class QrCodeActivity : AppCompatActivity() {
     }
 
     private fun handleButtonsClicked() {
+        button_share.setOnClickListener { shareQrCodeText() }
         button_copy.setOnClickListener { copyQrCodeTextToClipboard() }
         button_search.setOnClickListener { searchOnInternet() }
         button_open_link.setOnClickListener { startActivityWithActionView() }
@@ -105,6 +104,8 @@ class QrCodeActivity : AppCompatActivity() {
         button_copy_network_name.setOnClickListener { copyNetworkNameToClipboard() }
         button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
         button_send_sms.setOnClickListener { sendSms() }
+        button_send_mms.setOnClickListener { sendMms() }
+        button_send_email.setOnClickListener { sendEmail() }
     }
 
 
@@ -155,9 +156,7 @@ class QrCodeActivity : AppCompatActivity() {
 
     private fun showQrCodeImage() {
         try {
-            val bitmap = BarcodeEncoder().encodeBitmap(qrCode.text, qrCode.format, 2000, 2000, mapOf(
-                EncodeHintType.MARGIN to 0
-            ))
+            val bitmap = barcodeImageGenerator.generateImage(qrCode)
             image_view_qr_code.setImageBitmap(bitmap)
         } catch (ex: Exception) {
             image_view_qr_code.isVisible = false
@@ -188,12 +187,22 @@ class QrCodeActivity : AppCompatActivity() {
         button_copy_network_name.isVisible = qrCode.schema == BarcodeSchema.WIFI
         button_copy_network_password.isVisible = qrCode.schema == BarcodeSchema.WIFI && isNetworkPasswordPresent()
         button_send_sms.isVisible = qrCode.schema == BarcodeSchema.SMS
+        button_send_mms.isVisible = qrCode.schema == BarcodeSchema.MMS
+        button_send_email.isVisible = qrCode.schema == BarcodeSchema.EMAIL
     }
 
     private fun isNetworkPasswordPresent(): Boolean {
         return Wifi.parse(qrCode.text).psk != null
     }
 
+
+    private fun shareQrCodeText() {
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, qrCode.text)
+        }
+        startActivityIfExists(intent)
+    }
 
     private fun copyQrCodeTextToClipboard() {
         copyToClipboard(qrCode.text)
@@ -225,11 +234,24 @@ class QrCodeActivity : AppCompatActivity() {
     }
 
     private fun sendSms() {
-        val sms = BarcodeSchemaParser.parseAsSms(qrCode.text)
-        val phone = sms?.first ?: return
-        val body = sms.second
-        val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("sms:$phone")).apply {
-            putExtra("sms_body", body)
+        sendMms()
+    }
+
+    private fun sendMms() {
+        val sms = barcodeSchemaParser.parseAsSms(qrCode.text) ?: return
+        val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("sms:${sms.phone}")).apply {
+            putExtra("sms_body", sms.content)
+        }
+        startActivityIfExists(intent)
+    }
+
+    private fun sendEmail() {
+        val email = barcodeSchemaParser.parseAsEmail(qrCode.text) ?: return
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_EMAIL, email.address)
+            putExtra(Intent.EXTRA_SUBJECT, email.subject)
+            putExtra(Intent.EXTRA_TEXT, email.body)
         }
         startActivityIfExists(intent)
     }

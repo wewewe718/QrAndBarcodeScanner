@@ -2,10 +2,12 @@ package com.example.qrcodescanner.feature.scan
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.example.qrcodescanner.common.db
+import com.example.qrcodescanner.barcodeSchemaParser
+import com.example.qrcodescanner.db
 import com.example.qrcodescanner.model.QrCode
-import io.reactivex.disposables.CompositeDisposable
 import com.google.zxing.Result
+import com.google.zxing.ResultMetadataType
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
@@ -18,8 +20,16 @@ class ScanQrCodeViewModel(app: Application) : AndroidViewModel(app) {
     val qrCodeSaved = PublishSubject.create<QrCode>()
 
     fun onScanResult(result: Result) {
+        val qrCode = QrCode(
+            text = result.text,
+            format = result.barcodeFormat,
+            schema = barcodeSchemaParser.parseSchema(result.text),
+            date = result.timestamp,
+            errorCorrectionLevel = result.resultMetadata[ResultMetadataType.ERROR_CORRECTION_LEVEL] as? String
+        )
+
         isLoading.onNext(true)
-        val qrCode = QrCode(result)
+
         db.save(qrCode)
             .subscribeOn(Schedulers.io())
             .subscribe(

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.qrcodescanner.R
-import com.example.qrcodescanner.common.showError
+import com.example.qrcodescanner.feature.common.showError
 import com.example.qrcodescanner.feature.permission.RequestPermissionsActivity
 import com.example.qrcodescanner.feature.qrcode.QrCodeActivity
 import com.jakewharton.rxbinding2.view.clicks

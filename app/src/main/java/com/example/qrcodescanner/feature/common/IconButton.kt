@@ -1,6 +1,5 @@
-package com.example.qrcodescanner.common
+package com.example.qrcodescanner.feature.common
 
-import com.example.qrcodescanner.R
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
@@ -8,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
+import com.example.qrcodescanner.R
 import kotlinx.android.synthetic.main.layout_icon_button.view.*
 
 

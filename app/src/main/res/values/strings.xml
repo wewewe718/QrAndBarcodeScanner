@@ -12,6 +12,7 @@
     <string name="activity_request_permissions_button_text">Grant permissions</string>
 
     <string name="activity_qr_code_menu_item_delete">Delete</string>
+    <string name="activity_qr_code_share">Share</string>
     <string name="activity_qr_code_copy">Copy to clipboard</string>
     <string name="activity_qr_code_search">Search on the Internet</string>
     <string name="activity_qr_code_no_app">No app found for this action</string>
@@ -23,6 +24,8 @@
     <string name="activity_qr_code_copy_network_name">Copy the network name</string>
     <string name="activity_qr_code_copy_network_password">Copy the network password</string>
     <string name="activity_qr_code_send_sms">Send SMS</string>
+    <string name="activity_qr_code_send_mms">Send MMS</string>
+    <string name="activity_qr_code_send_email">Send Email</string>
     <string name="activity_qr_code_copied">Copied to clipboard</string>
     <string name="activity_qr_code_format_aztec">Aztec</string>
     <string name="activity_qr_code_format_codabar">CODABAR</string>

@@ -4,10 +4,9 @@ import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
+import com.example.qrcodescanner.usecase.QrCodeDbTypeConverter
 import com.google.zxing.BarcodeFormat
-import com.google.zxing.Result
 
 @Entity(tableName = "codes")
 @TypeConverters(QrCodeDbTypeConverter::class)
@@ -16,7 +15,8 @@ data class QrCode(
     val text: String,
     val format: BarcodeFormat,
     val schema: BarcodeSchema,
-    val date: Long
+    val date: Long,
+    val errorCorrectionLevel: String?
 ) : Parcelable {
 
     companion object CREATOR : Parcelable.Creator<QrCode> {
@@ -29,19 +29,13 @@ data class QrCode(
         }
     }
 
-    constructor(scanResult: Result) : this(
-        text = scanResult.text,
-        format = scanResult.barcodeFormat,
-        schema = BarcodeSchema.from(scanResult.text),
-        date = scanResult.timestamp
-    )
-
     constructor(parcel: Parcel) : this(
         id = parcel.readLong(),
         text = parcel.readString().orEmpty(),
         format = BarcodeFormat.values()[parcel.readInt()],
         schema = BarcodeSchema.values()[parcel.readInt()],
-        date = parcel.readLong()
+        date = parcel.readLong(),
+        errorCorrectionLevel = parcel.readString()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -51,33 +45,11 @@ data class QrCode(
             writeInt(format.ordinal)
             writeInt(schema.ordinal)
             writeLong(date)
+            writeString(errorCorrectionLevel)
         }
     }
 
     override fun describeContents(): Int {
         return 0
-    }
-}
-
-class QrCodeDbTypeConverter {
-
-    @TypeConverter
-    fun fromBarcodeFormat(barcodeFormat: BarcodeFormat): Int {
-        return barcodeFormat.ordinal
-    }
-
-    @TypeConverter
-    fun toBarcodeFormat(value: Int): BarcodeFormat {
-        return BarcodeFormat.values()[value]
-    }
-
-    @TypeConverter
-    fun fromBarcodeSchema(barcodeSchema: BarcodeSchema): Int {
-        return barcodeSchema.ordinal
-    }
-
-    @TypeConverter
-    fun toBarcodeSchema(value: Int): BarcodeSchema {
-        return BarcodeSchema.values()[value]
     }
 }

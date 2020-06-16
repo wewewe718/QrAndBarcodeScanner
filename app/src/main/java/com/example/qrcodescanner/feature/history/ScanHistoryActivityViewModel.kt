@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.paging.PagedList
 import androidx.paging.RxPagedListBuilder
-import com.example.qrcodescanner.common.db
+import com.example.qrcodescanner.db
 import com.example.qrcodescanner.model.QrCode
 import io.reactivex.BackpressureStrategy
 import io.reactivex.disposables.CompositeDisposable

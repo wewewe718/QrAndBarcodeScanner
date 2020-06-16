@@ -1,22 +1,15 @@
-package com.example.qrcodescanner.common
+package com.example.qrcodescanner.feature.common
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.AndroidViewModel
-import com.example.qrcodescanner.App
 import com.example.qrcodescanner.R
 import com.example.qrcodescanner.feature.error.ErrorDialogFragment
 import com.example.qrcodescanner.model.BarcodeSchema
 import com.google.zxing.BarcodeFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 fun AppCompatActivity.showError(error: Throwable) {
     val errorDialog = ErrorDialogFragment.newInstance(error.message)
     errorDialog.show(supportFragmentManager, "")
 }
-
-val AndroidViewModel.db
-    get() = getApplication<App>().db
 
 fun BarcodeFormat.toStringId(): Int {
     return when (this) {

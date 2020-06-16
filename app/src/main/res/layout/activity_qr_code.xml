@@ -74,7 +74,7 @@
                 tools:text="Hello World!"
                 style="@style/TextViewStyle"
                 />
-            <com.example.qrcodescanner.common.IconButton
+            <com.example.qrcodescanner.feature.common.IconButton
                 android:id="@+id/button_open_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.qrcodescanner.common.IconButton
+            <com.example.qrcodescanner.feature.common.IconButton
                 android:id="@+id/button_call_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.qrcodescanner.common.IconButton
+            <com.example.qrcodescanner.feature.common.IconButton
                 android:id="@+id/button_show_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.qrcodescanner.common.IconButton
+            <com.example.qrcodescanner.feature.common.IconButton
                 android:id="@+id/button_open_in_google_play"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.qrcodescanner.common.IconButton
+            <com.example.qrcodescanner.feature.common.IconButton
                 android:id="@+id/button_open_in_youtube"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.qrcodescanner.common.IconButton
+            <com.example.qrcodescanner.feature.common.IconButton
                 android:id="@+id/button_copy_network_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.qrcodescanner.common.IconButton
+            <com.example.qrcodescanner.feature.common.IconButton
                 android:id="@+id/button_copy_network_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.qrcodescanner.common.IconButton
+            <com.example.qrcodescanner.feature.common.IconButton
                 android:id="@+id/button_send_sms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -146,14 +146,39 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.qrcodescanner.common.IconButton
+            <com.example.qrcodescanner.feature.common.IconButton
+                android:id="@+id/button_send_mms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_mms"
+                app:text="@string/activity_qr_code_send_mms"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.qrcodescanner.feature.common.IconButton
+                android:id="@+id/button_send_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_email"
+                app:text="@string/activity_qr_code_send_email"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.qrcodescanner.feature.common.IconButton
+                android:id="@+id/button_share"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_share"
+                app:text="@string/activity_qr_code_share"
+                />
+            <com.example.qrcodescanner.feature.common.IconButton
                 android:id="@+id/button_copy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_copy"
                 app:text="@string/activity_qr_code_copy"
                 />
-            <com.example.qrcodescanner.common.IconButton
+            <com.example.qrcodescanner.feature.common.IconButton
                 android:id="@+id/button_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -2,7 +2,7 @@ package com.example.qrcodescanner.feature.qrcode
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.example.qrcodescanner.common.db
+import com.example.qrcodescanner.db
 import com.example.qrcodescanner.model.QrCode
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo

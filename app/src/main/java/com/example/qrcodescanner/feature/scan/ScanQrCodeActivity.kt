@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import com.budiyev.android.codescanner.*
 import com.example.qrcodescanner.R
-import com.example.qrcodescanner.common.showError
+import com.example.qrcodescanner.feature.common.showError
 import com.example.qrcodescanner.feature.qrcode.QrCodeActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

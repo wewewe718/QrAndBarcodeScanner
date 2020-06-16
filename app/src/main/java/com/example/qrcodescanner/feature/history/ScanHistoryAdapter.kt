@@ -8,8 +8,8 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qrcodescanner.R
-import com.example.qrcodescanner.common.toImageId
-import com.example.qrcodescanner.common.toStringId
+import com.example.qrcodescanner.feature.common.toImageId
+import com.example.qrcodescanner.feature.common.toStringId
 import com.example.qrcodescanner.model.QrCode
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.item_qr_code.view.*
