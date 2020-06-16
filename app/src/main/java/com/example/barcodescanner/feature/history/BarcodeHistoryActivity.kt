@@ -38,45 +38,45 @@ class BarcodeHistoryActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        recycler_view_scan_history.apply {
+        recycler_view_history.apply {
             layoutManager = LinearLayoutManager(this@BarcodeHistoryActivity)
             adapter = scanHistoryAdapter
         }
     }
 
     private fun subscribeToViewModel() {
-        subscribeToQrCodeClicks()
-        subscribeToScanHistoryDataChanged()
+        subscribeToBarcodeClicks()
+        subscribeToHistoryDataChanged()
         subscribeToScanButtonClicks()
-        subscribeToScanHistory()
+        subscribeToHistory()
         subscribeToError()
-        subscribeToNavigateToQrCodeScreen()
+        subscribeToNavigateToBarcodeScreen()
         subscribeToNavigateToRequestPermissionsScreenEvent()
     }
 
-    private fun subscribeToQrCodeClicks() {
-        scanHistoryAdapter.qrCodeClicked
-            .subscribe(viewModel::onQrCodeClicked)
+    private fun subscribeToBarcodeClicks() {
+        scanHistoryAdapter.barcodeClicked
+            .subscribe(viewModel::onBarcodeClicked)
             .addTo(disposable)
     }
 
-    private fun subscribeToScanHistoryDataChanged() {
+    private fun subscribeToHistoryDataChanged() {
         scanHistoryAdapter.dataChanged
             .subscribe {
-                recycler_view_scan_history.layoutManager?.scrollToPosition(0)
+                recycler_view_history.layoutManager?.scrollToPosition(0)
             }
             .addTo(disposable)
     }
 
     private fun subscribeToScanButtonClicks() {
-        fab_scan_qr_code.clicks()
+        fab_scan_barcode.clicks()
             .subscribe {
-                viewModel.onScanQrCodeClicked()
+                viewModel.onScanBarcodeClicked()
             }
             .addTo(disposable)
     }
 
-    private fun subscribeToScanHistory() {
+    private fun subscribeToHistory() {
         viewModel.scanHistory
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(scanHistoryAdapter::submitList)
@@ -90,11 +90,11 @@ class BarcodeHistoryActivity : AppCompatActivity() {
             .addTo(disposable)
     }
 
-    private fun subscribeToNavigateToQrCodeScreen() {
-        viewModel.navigateToQrCodeScreenEvent
+    private fun subscribeToNavigateToBarcodeScreen() {
+        viewModel.navigateToBarcodeScreenEvent
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { qrCode ->
-                BarcodeActivity.start(this, qrCode)
+            .subscribe { barcode ->
+                BarcodeActivity.start(this, barcode)
             }
             .addTo(disposable)
     }

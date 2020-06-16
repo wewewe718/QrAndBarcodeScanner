@@ -64,7 +64,7 @@ class ScanBarcodeActivity : AppCompatActivity() {
     private fun subscribeToViewModel() {
         subscribeToLoading()
         subscribeToError()
-        subscribeToQrCodeSaved()
+        subscribeToBarcodeSaved()
     }
 
     private fun subscribeToLoading() {
@@ -83,11 +83,11 @@ class ScanBarcodeActivity : AppCompatActivity() {
             .addTo(disposable)
     }
 
-    private fun subscribeToQrCodeSaved() {
-        viewModel.qrCodeSaved
+    private fun subscribeToBarcodeSaved() {
+        viewModel.barcodeSaved
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { qrCode ->
-                BarcodeActivity.start(this, qrCode)
+            .subscribe { barcode ->
+                BarcodeActivity.start(this, barcode)
                 finish()
             }
             .addTo(disposable)

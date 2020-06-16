@@ -21,18 +21,18 @@ class BarcodeHistoryActivityViewModel(app: Application) : AndroidViewModel(app) 
     private val disposable = CompositeDisposable()
     val scanHistory = BehaviorSubject.create<PagedList<Barcode>>()
     val error = PublishSubject.create<Throwable>()
-    val navigateToQrCodeScreenEvent = PublishSubject.create<Barcode>()
+    val navigateToBarcodeScreenEvent = PublishSubject.create<Barcode>()
     val navigateToRequestPermissionsScreenEvent = PublishSubject.create<Unit>()
 
     init {
         loadScanHistory()
     }
 
-    fun onQrCodeClicked(barcode: Barcode) {
-        navigateToQrCodeScreenEvent.onNext(barcode)
+    fun onBarcodeClicked(barcode: Barcode) {
+        navigateToBarcodeScreenEvent.onNext(barcode)
     }
 
-    fun onScanQrCodeClicked() {
+    fun onScanBarcodeClicked() {
         navigateToRequestPermissionsScreenEvent.onNext(Unit)
     }
 

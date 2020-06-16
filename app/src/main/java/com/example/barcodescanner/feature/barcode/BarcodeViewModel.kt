@@ -13,7 +13,7 @@ import io.reactivex.subjects.PublishSubject
 class BarcodeViewModel(app: Application) : AndroidViewModel(app) {
     private val disposable = CompositeDisposable()
     val isLoading = BehaviorSubject.create<Boolean>()
-    val qrCodeDeleted = PublishSubject.create<Unit>()
+    val barcodeDeleted = PublishSubject.create<Unit>()
     val error = PublishSubject.create<Throwable>()
 
     fun onDeleteClicked(barcode: Barcode) {
@@ -23,7 +23,7 @@ class BarcodeViewModel(app: Application) : AndroidViewModel(app) {
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
-                    qrCodeDeleted.onNext(Unit)
+                    barcodeDeleted.onNext(Unit)
                 },
                 { error ->
                     isLoading.onNext(false)

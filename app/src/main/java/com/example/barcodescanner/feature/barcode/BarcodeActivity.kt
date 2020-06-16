@@ -31,7 +31,7 @@ import java.util.*
 class BarcodeActivity : AppCompatActivity() {
 
     companion object {
-        private const val BARCODE_KEY = "QR_CODE_KEY"
+        private const val BARCODE_KEY = "BARCODE_KEY"
 
         fun start(context: Context, barcode: Barcode) {
             val intent = Intent(context, BarcodeActivity::class.java)
@@ -63,7 +63,7 @@ class BarcodeActivity : AppCompatActivity() {
         handleToolbarBackPressed()
         handleToolbarMenuClicked()
         handleButtonsClicked()
-        showQrCode()
+        showBarcode()
         showOrHideButtons()
     }
 
@@ -95,11 +95,11 @@ class BarcodeActivity : AppCompatActivity() {
     }
 
     private fun handleButtonsClicked() {
-        button_share.setOnClickListener { shareQrCodeText() }
-        button_copy.setOnClickListener { copyQrCodeTextToClipboard() }
+        button_share.setOnClickListener { shareBarcodeText() }
+        button_copy.setOnClickListener { copyBarcodeTextToClipboard() }
         button_search.setOnClickListener { searchOnInternet() }
         button_open_link.setOnClickListener { startActivityWithActionView() }
-        button_call_phone.setOnClickListener { startActivityWithQrCodeUri(Intent.ACTION_DIAL) }
+        button_call_phone.setOnClickListener { startActivityWithBarcodeUri(Intent.ACTION_DIAL) }
         button_show_location.setOnClickListener { startActivityWithActionView() }
         button_open_in_google_play.setOnClickListener { startActivityWithActionView() }
         button_open_in_youtube.setOnClickListener { startActivityWithActionView() }
@@ -114,7 +114,7 @@ class BarcodeActivity : AppCompatActivity() {
     private fun subscribeToViewModel() {
         subscribeToLoading()
         subscribeToError()
-        subscribeToQrCodeDeleted()
+        subscribeToBarcodeDeleted()
     }
 
     private fun subscribeToLoading() {
@@ -132,8 +132,8 @@ class BarcodeActivity : AppCompatActivity() {
             .addTo(disposable)
     }
 
-    private fun subscribeToQrCodeDeleted() {
-        viewModel.qrCodeDeleted
+    private fun subscribeToBarcodeDeleted() {
+        viewModel.barcodeDeleted
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { finish() }
             .addTo(disposable)
@@ -149,14 +149,14 @@ class BarcodeActivity : AppCompatActivity() {
         group_main_content.isVisible = isLoading.not()
     }
 
-    private fun showQrCode() {
-        showQrCodeImage()
-        showQrCodeDate()
-        showQrCodeFormat()
-        showQrCodeText()
+    private fun showBarcode() {
+        showBarcodeImage()
+        showBarcodeDate()
+        showBarcodeFormat()
+        showBarcodeText()
     }
 
-    private fun showQrCodeImage() {
+    private fun showBarcodeImage() {
         try {
             val bitmap = barcodeImageGenerator.generateImage(barcode)
             image_view_barcode.setImageBitmap(bitmap)
@@ -166,17 +166,17 @@ class BarcodeActivity : AppCompatActivity() {
         }
     }
 
-    private fun showQrCodeDate() {
+    private fun showBarcodeDate() {
         text_view_date.text = dateFormatter.format(barcode.date)
     }
 
-    private fun showQrCodeFormat() {
+    private fun showBarcodeFormat() {
         val format = barcode.format.toStringId()
         toolbar.setTitle(format)
         text_view_format.setText(format)
     }
 
-    private fun showQrCodeText() {
+    private fun showBarcodeText() {
         text_view_barcode_text.text = barcode.text
     }
 
@@ -198,7 +198,7 @@ class BarcodeActivity : AppCompatActivity() {
     }
 
 
-    private fun shareQrCodeText() {
+    private fun shareBarcodeText() {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
             putExtra(Intent.EXTRA_TEXT, barcode.text)
@@ -206,7 +206,7 @@ class BarcodeActivity : AppCompatActivity() {
         startActivityIfExists(intent)
     }
 
-    private fun copyQrCodeTextToClipboard() {
+    private fun copyBarcodeTextToClipboard() {
         copyToClipboard(barcode.text)
         showToast(R.string.activity_barcode_copied)
     }
@@ -259,10 +259,10 @@ class BarcodeActivity : AppCompatActivity() {
     }
 
     private fun startActivityWithActionView() {
-        startActivityWithQrCodeUri(Intent.ACTION_VIEW)
+        startActivityWithBarcodeUri(Intent.ACTION_VIEW)
     }
 
-    private fun startActivityWithQrCodeUri(action: String) {
+    private fun startActivityWithBarcodeUri(action: String) {
         val intent = Intent(action, Uri.parse(barcode.text))
         startActivityIfExists(intent)
     }

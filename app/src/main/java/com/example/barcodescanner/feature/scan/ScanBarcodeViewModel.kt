@@ -17,10 +17,10 @@ class ScanBarcodeViewModel(app: Application) : AndroidViewModel(app) {
     private val disposable = CompositeDisposable()
     val isLoading = BehaviorSubject.create<Boolean>()
     val error = PublishSubject.create<Throwable>()
-    val qrCodeSaved = PublishSubject.create<Barcode>()
+    val barcodeSaved = PublishSubject.create<Barcode>()
 
     fun onScanResult(result: Result) {
-        val qrCode = Barcode(
+        val barcode = Barcode(
             text = result.text,
             format = result.barcodeFormat,
             schema = barcodeSchemaParser.parseSchema(result.text),
@@ -30,11 +30,11 @@ class ScanBarcodeViewModel(app: Application) : AndroidViewModel(app) {
 
         isLoading.onNext(true)
 
-        db.save(qrCode)
+        db.save(barcode)
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
-                    qrCodeSaved.onNext(qrCode)
+                    barcodeSaved.onNext(barcode)
                 },
                 { e ->
                     isLoading.onNext(false)

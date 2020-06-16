@@ -18,7 +18,7 @@ import java.util.*
 
 class BarcodeHistoryAdapter : PagedListAdapter<Barcode, BarcodeHistoryAdapter.ViewHolder>(DiffUtilCallback) {
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
-    val qrCodeClicked = PublishSubject.create<Barcode>()
+    val barcodeClicked = PublishSubject.create<Barcode>()
     val dataChanged = PublishSubject.create<Unit>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,7 +45,7 @@ class BarcodeHistoryAdapter : PagedListAdapter<Barcode, BarcodeHistoryAdapter.Vi
                 text_view_text.text = barcode.text
                 image_view_schema.setBackgroundResource(barcode.schema.toImageId())
                 setOnClickListener {
-                    qrCodeClicked.onNext(barcode)
+                    barcodeClicked.onNext(barcode)
                 }
             }
         }

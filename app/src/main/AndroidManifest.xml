@@ -27,7 +27,7 @@
 
         <activity
             android:name="com.example.barcodescanner.feature.scan.ScanBarcodeActivity"
-            android:theme="@style/ScanQrCodeActivityTheme"
+            android:theme="@style/ScanBarcodeActivityTheme"
             />
 
         <activity android:name="com.example.barcodescanner.feature.barcode.BarcodeActivity"/>
