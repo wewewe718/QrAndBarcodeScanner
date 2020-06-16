@@ -13,6 +13,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
+import com.example.barcodescanner.di.barcodeImageSaver
 import com.example.barcodescanner.di.barcodeSchemaParser
 import com.example.barcodescanner.feature.common.showError
 import com.example.barcodescanner.feature.common.toStringId
@@ -22,11 +23,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_barcode.*
-import kotlinx.android.synthetic.main.activity_barcode.text_view_date
-import kotlinx.android.synthetic.main.activity_barcode.text_view_format
 import net.glxn.qrgen.core.scheme.Wifi
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class BarcodeActivity : AppCompatActivity() {
 
@@ -95,7 +95,8 @@ class BarcodeActivity : AppCompatActivity() {
     }
 
     private fun handleButtonsClicked() {
-        button_share.setOnClickListener { shareBarcodeText() }
+        button_share_as_text.setOnClickListener { shareBarcodeAsText() }
+        button_share_as_image.setOnClickListener { shareBarcodeAsImage() }
         button_copy.setOnClickListener { copyBarcodeTextToClipboard() }
         button_search.setOnClickListener { searchOnInternet() }
         button_open_link.setOnClickListener { startActivityWithActionView() }
@@ -158,7 +159,7 @@ class BarcodeActivity : AppCompatActivity() {
 
     private fun showBarcodeImage() {
         try {
-            val bitmap = barcodeImageGenerator.generateImage(barcode)
+            val bitmap = barcodeImageGenerator.generateImage(barcode, 2000, 2000)
             image_view_barcode.setImageBitmap(bitmap)
         } catch (ex: Exception) {
             image_view_barcode.isVisible = false
@@ -187,22 +188,35 @@ class BarcodeActivity : AppCompatActivity() {
         button_open_in_google_play.isVisible = barcode.schema == BarcodeSchema.GOOGLE_PLAY
         button_open_in_youtube.isVisible = barcode.schema == BarcodeSchema.YOUTUBE
         button_copy_network_name.isVisible = barcode.schema == BarcodeSchema.WIFI
-        button_copy_network_password.isVisible = barcode.schema == BarcodeSchema.WIFI && isNetworkPasswordPresent()
+        button_copy_network_password.isVisible = barcode.schema == BarcodeSchema.WIFI
         button_send_sms.isVisible = barcode.schema == BarcodeSchema.SMS
         button_send_mms.isVisible = barcode.schema == BarcodeSchema.MMS
         button_send_email.isVisible = barcode.schema == BarcodeSchema.EMAIL
     }
 
-    private fun isNetworkPasswordPresent(): Boolean {
-        return Wifi.parse(barcode.text).psk != null
-    }
 
-
-    private fun shareBarcodeText() {
+    private fun shareBarcodeAsText() {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
             putExtra(Intent.EXTRA_TEXT, barcode.text)
         }
+        startActivityIfExists(intent)
+    }
+
+    private fun shareBarcodeAsImage() {
+        val imageUri = try {
+            barcodeImageSaver.saveImageToCache(this, barcode)
+        } catch (ex: Exception) {
+            showError(ex)
+            return
+        }
+
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "image/png"
+            putExtra(Intent.EXTRA_STREAM, imageUri)
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+
         startActivityIfExists(intent)
     }
 

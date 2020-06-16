@@ -3,7 +3,7 @@ package com.example.barcodescanner.feature.scan
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.example.barcodescanner.di.barcodeSchemaParser
-import com.example.barcodescanner.di.db
+import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.model.Barcode
 import com.google.zxing.Result
 import com.google.zxing.ResultMetadataType
@@ -30,7 +30,7 @@ class ScanBarcodeViewModel(app: Application) : AndroidViewModel(app) {
 
         isLoading.onNext(true)
 
-        db.save(barcode)
+        barcodeDatabase.save(barcode)
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {

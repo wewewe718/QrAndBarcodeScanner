@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.paging.PagedList
 import androidx.paging.RxPagedListBuilder
-import com.example.barcodescanner.di.db
+import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.model.Barcode
 import io.reactivex.BackpressureStrategy
 import io.reactivex.disposables.CompositeDisposable
@@ -42,7 +42,7 @@ class BarcodeHistoryActivityViewModel(app: Application) : AndroidViewModel(app) 
             .setPageSize(PAGE_SIZE)
             .build()
 
-        RxPagedListBuilder<Int, Barcode>(db.getAll(), config)
+        RxPagedListBuilder<Int, Barcode>(barcodeDatabase.getAll(), config)
             .buildFlowable(BackpressureStrategy.LATEST)
             .subscribe(
                 { scanHistory ->

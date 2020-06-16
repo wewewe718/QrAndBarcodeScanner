@@ -12,7 +12,8 @@
     <string name="activity_request_permissions_button_text">Grant permissions</string>
 
     <string name="activity_barcode_menu_item_delete">Delete</string>
-    <string name="activity_barcode_share">Share</string>
+    <string name="activity_barcode_share_as_text">Share as text</string>
+    <string name="activity_barcode_share_as_image">Share as image</string>
     <string name="activity_barcode_copy">Copy to clipboard</string>
     <string name="activity_barcode_search">Search on the Internet</string>
     <string name="activity_barcode_no_app">No app found for this action</string>

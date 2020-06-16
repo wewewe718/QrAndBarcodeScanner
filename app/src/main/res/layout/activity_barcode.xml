@@ -165,11 +165,18 @@
                 tools:visibility="visible"
                 />
             <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_share"
+                android:id="@+id/button_share_as_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_share"
-                app:text="@string/activity_barcode_share"
+                app:text="@string/activity_barcode_share_as_text"
+                />
+            <com.example.barcodescanner.feature.common.IconButton
+                android:id="@+id/button_share_as_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_share"
+                app:text="@string/activity_barcode_share_as_image"
                 />
             <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_copy"

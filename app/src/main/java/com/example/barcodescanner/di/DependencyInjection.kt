@@ -14,9 +14,15 @@ val AppCompatActivity.barcodeSchemaParser
 val AppCompatActivity.barcodeImageGenerator
     get() = app.barcodeImageGenerator
 
+val AppCompatActivity.barcodeImageSaver
+    get() = app.barcodeImageSaver
 
-val AndroidViewModel.db
-    get() = getApplication<App>().db
+
+val AndroidViewModel.barcodeDatabase
+    get() = getApplication<App>().barcodeDatabase
 
 val AndroidViewModel.barcodeSchemaParser
     get() = getApplication<App>().barcodeSchemaParser
+
+val AndroidViewModel.barcodeImageSaver
+    get() = getApplication<App>().barcodeImageSaver

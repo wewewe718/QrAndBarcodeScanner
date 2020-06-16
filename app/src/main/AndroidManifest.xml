@@ -23,14 +23,30 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.barcodescanner.feature.permission.RequestPermissionsActivity"/>
+        <activity
+            android:name="com.example.barcodescanner.feature.permission.RequestPermissionsActivity"
+            />
 
         <activity
             android:name="com.example.barcodescanner.feature.scan.ScanBarcodeActivity"
             android:theme="@style/ScanBarcodeActivityTheme"
             />
 
-        <activity android:name="com.example.barcodescanner.feature.barcode.BarcodeActivity"/>
+        <activity
+            android:name="com.example.barcodescanner.feature.barcode.BarcodeActivity"
+            />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.barcodescanner.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"
+                />
+        </provider>
 
     </application>
 

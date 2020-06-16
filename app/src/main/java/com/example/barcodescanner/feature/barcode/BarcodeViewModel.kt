@@ -1,8 +1,10 @@
 package com.example.barcodescanner.feature.barcode
 
 import android.app.Application
+import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
-import com.example.barcodescanner.di.db
+import com.example.barcodescanner.di.barcodeDatabase
+import com.example.barcodescanner.di.barcodeImageSaver
 import com.example.barcodescanner.model.Barcode
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -19,7 +21,7 @@ class BarcodeViewModel(app: Application) : AndroidViewModel(app) {
     fun onDeleteClicked(barcode: Barcode) {
         isLoading.onNext(true)
 
-        db.delete(barcode)
+        barcodeDatabase.delete(barcode)
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
