@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -101,13 +102,16 @@ class BarcodeActivity : AppCompatActivity() {
         button_search.setOnClickListener { searchOnInternet() }
         button_open_link.setOnClickListener { startActivityWithActionView() }
         button_call_phone.setOnClickListener { startActivityWithBarcodeUri(Intent.ACTION_DIAL) }
+        button_add_phone_to_contacts.setOnClickListener { addPhoneToContacts() }
         button_show_location.setOnClickListener { startActivityWithActionView() }
         button_open_in_google_play.setOnClickListener { startActivityWithActionView() }
         button_open_in_youtube.setOnClickListener { startActivityWithActionView() }
         button_copy_network_name.setOnClickListener { copyNetworkNameToClipboard() }
         button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
         button_send_sms.setOnClickListener { sendSms() }
-        button_send_mms.setOnClickListener { sendMms() }
+        button_add_sms_phone_to_contacts.setOnClickListener { addSmsPhoneToContacts() }
+        button_send_mms.setOnClickListener { sendSms() }
+        button_add_mms_phone_to_contacts.setOnClickListener { addSmsPhoneToContacts() }
         button_send_email.setOnClickListener { sendEmail() }
     }
 
@@ -183,14 +187,17 @@ class BarcodeActivity : AppCompatActivity() {
 
     private fun showOrHideButtons() {
         button_open_link.isVisible = barcode.schema == BarcodeSchema.URL
-        button_call_phone.isVisible = barcode.schema == BarcodeSchema.TELEPHONE
+        button_call_phone.isVisible = barcode.schema == BarcodeSchema.PHONE
+        button_add_phone_to_contacts.isVisible = barcode.schema == BarcodeSchema.PHONE
         button_show_location.isVisible = barcode.schema == BarcodeSchema.GEO_INFO
         button_open_in_google_play.isVisible = barcode.schema == BarcodeSchema.GOOGLE_PLAY
         button_open_in_youtube.isVisible = barcode.schema == BarcodeSchema.YOUTUBE
         button_copy_network_name.isVisible = barcode.schema == BarcodeSchema.WIFI
         button_copy_network_password.isVisible = barcode.schema == BarcodeSchema.WIFI
         button_send_sms.isVisible = barcode.schema == BarcodeSchema.SMS
+        button_add_sms_phone_to_contacts.isVisible = barcode.schema == BarcodeSchema.SMS
         button_send_mms.isVisible = barcode.schema == BarcodeSchema.MMS
+        button_add_mms_phone_to_contacts.isVisible = barcode.schema == BarcodeSchema.MMS
         button_send_email.isVisible = barcode.schema == BarcodeSchema.EMAIL
     }
 
@@ -250,13 +257,27 @@ class BarcodeActivity : AppCompatActivity() {
     }
 
     private fun sendSms() {
-        sendMms()
-    }
-
-    private fun sendMms() {
         val sms = barcodeSchemaParser.parseAsSms(barcode.text) ?: return
         val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("sms:${sms.phone}")).apply {
             putExtra("sms_body", sms.content)
+        }
+        startActivityIfExists(intent)
+    }
+
+    private fun addSmsPhoneToContacts() {
+        val phone = barcodeSchemaParser.parseAsSms(barcode.text)?.phone ?: return
+        addPhoneToContacts(phone)
+    }
+
+    private fun addPhoneToContacts() {
+        val phone = barcodeSchemaParser.parseAsPhone(barcode.text) ?: return
+        addPhoneToContacts(phone)
+    }
+
+    private fun addPhoneToContacts(phone: String) {
+        val intent = Intent(ContactsContract.Intents.Insert.ACTION).apply {
+            type = ContactsContract.Contacts.CONTENT_TYPE
+            putExtra(ContactsContract.Intents.Insert.PHONE, phone)
         }
         startActivityIfExists(intent)
     }
@@ -290,10 +311,6 @@ class BarcodeActivity : AppCompatActivity() {
     }
 
     private fun showToast(stringId: Int) {
-        showToast(getString(stringId))
-    }
-
-    private fun showToast(text: String) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, stringId, Toast.LENGTH_SHORT).show()
     }
 }

@@ -16,7 +16,7 @@ class BarcodeSchemaParser {
         BarcodeSchema.MMS to listOf("mmsto:"),
         BarcodeSchema.MECARD to listOf("MECARD:"),
         BarcodeSchema.SMS to listOf("smsto:"),
-        BarcodeSchema.TELEPHONE to listOf("tel:"),
+        BarcodeSchema.PHONE to listOf("tel:"),
         BarcodeSchema.VCARD to listOf("BEGIN:VCARD"),
         BarcodeSchema.WIFI to listOf("WIFI:"),
         BarcodeSchema.YOUTUBE to listOf("vnd.youtube://", "http://www.youtube.com/watch?v=", "https://www.youtube.com/watch?v="),
@@ -32,6 +32,10 @@ class BarcodeSchemaParser {
             }
         }
         return BarcodeSchema.OTHER
+    }
+
+    fun parseAsPhone(text: String): String? {
+        return text.split(":").getOrNull(1)
     }
 
     fun parseAsSms(text: String): Sms? {

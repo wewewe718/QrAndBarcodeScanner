@@ -10,7 +10,7 @@ enum class BarcodeSchema {
     MMS,
     MECARD,
     SMS,
-    TELEPHONE,
+    PHONE,
     VCARD,
     WIFI,
     YOUTUBE,

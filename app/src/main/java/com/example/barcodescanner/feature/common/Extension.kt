@@ -39,7 +39,7 @@ fun BarcodeSchema.toImageId(): Int {
         BarcodeSchema.MMS -> R.drawable.ic_mms
         BarcodeSchema.MECARD -> R.drawable.ic_profile
         BarcodeSchema.SMS -> R.drawable.ic_sms
-        BarcodeSchema.TELEPHONE -> R.drawable.ic_phone
+        BarcodeSchema.PHONE -> R.drawable.ic_phone
         BarcodeSchema.URL -> R.drawable.ic_link
         BarcodeSchema.VCARD -> R.drawable.ic_profile
         BarcodeSchema.WIFI -> R.drawable.ic_wifi
