@@ -5,6 +5,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -12,19 +13,18 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
+import androidx.print.PrintHelper
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
 import com.example.barcodescanner.di.barcodeImageSaver
-import com.example.barcodescanner.di.barcodeSchemaParser
 import com.example.barcodescanner.feature.common.showError
 import com.example.barcodescanner.feature.common.toStringId
 import com.example.barcodescanner.model.Barcode
-import com.example.barcodescanner.model.BarcodeSchema
+import com.example.barcodescanner.model.ParsedBarcode
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_barcode.*
-import net.glxn.qrgen.core.scheme.Wifi
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -46,7 +46,8 @@ class BarcodeActivity : AppCompatActivity() {
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
 
     private val barcode by lazy {
-        intent?.getParcelableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
+        val barcode = intent?.getParcelableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
+        return@lazy ParsedBarcode(barcode)
     }
 
     private val clipboardManager by lazy {
@@ -89,30 +90,30 @@ class BarcodeActivity : AppCompatActivity() {
         toolbar.inflateMenu(R.menu.menu_barcode)
         toolbar.setOnMenuItemClickListener { item ->
             if (item.itemId == R.id.item_delete) {
-                viewModel.onDeleteClicked(barcode)
+                //viewModel.onDeleteClicked(barcode)
             }
             return@setOnMenuItemClickListener true
         }
     }
 
     private fun handleButtonsClicked() {
+        button_add_to_contacts.setOnClickListener { addToContacts() }
+        button_call_phone.setOnClickListener { callPhone() }
+        button_send_sms_or_mms.setOnClickListener { sendSmsOrMms() }
+        button_send_email.setOnClickListener { sendEmail() }
+        button_show_location.setOnClickListener { showLocation() }
+        button_copy_network_name.setOnClickListener { copyNetworkNameToClipboard() }
+        button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
+        button_open_in_google_play.setOnClickListener { openInGooglePlay() }
+        button_open_in_youtube.setOnClickListener { openInYoutube() }
+        button_open_link.setOnClickListener { openLink() }
+
+        // General
         button_share_as_text.setOnClickListener { shareBarcodeAsText() }
         button_share_as_image.setOnClickListener { shareBarcodeAsImage() }
         button_copy.setOnClickListener { copyBarcodeTextToClipboard() }
-        button_search.setOnClickListener { searchOnInternet() }
-        button_open_link.setOnClickListener { startActivityWithActionView() }
-        button_call_phone.setOnClickListener { startActivityWithBarcodeUri(Intent.ACTION_DIAL) }
-        button_add_phone_to_contacts.setOnClickListener { addPhoneToContacts() }
-        button_show_location.setOnClickListener { startActivityWithActionView() }
-        button_open_in_google_play.setOnClickListener { startActivityWithActionView() }
-        button_open_in_youtube.setOnClickListener { startActivityWithActionView() }
-        button_copy_network_name.setOnClickListener { copyNetworkNameToClipboard() }
-        button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
-        button_send_sms.setOnClickListener { sendSms() }
-        button_add_sms_phone_to_contacts.setOnClickListener { addSmsPhoneToContacts() }
-        button_send_mms.setOnClickListener { sendSms() }
-        button_add_mms_phone_to_contacts.setOnClickListener { addSmsPhoneToContacts() }
-        button_send_email.setOnClickListener { sendEmail() }
+        button_search.setOnClickListener { searchBarcodeTextOnInternet() }
+        button_print.setOnClickListener { printBarcode() }
     }
 
 
@@ -163,7 +164,7 @@ class BarcodeActivity : AppCompatActivity() {
 
     private fun showBarcodeImage() {
         try {
-            val bitmap = barcodeImageGenerator.generateImage(barcode, 2000, 2000)
+            val bitmap = barcodeImageGenerator.generateImage(barcode, 2000, 2000, 2)
             image_view_barcode.setImageBitmap(bitmap)
         } catch (ex: Exception) {
             image_view_barcode.isVisible = false
@@ -186,21 +187,92 @@ class BarcodeActivity : AppCompatActivity() {
     }
 
     private fun showOrHideButtons() {
-        button_open_link.isVisible = barcode.schema == BarcodeSchema.URL
-        button_call_phone.isVisible = barcode.schema == BarcodeSchema.PHONE
-        button_add_phone_to_contacts.isVisible = barcode.schema == BarcodeSchema.PHONE
-        button_show_location.isVisible = barcode.schema == BarcodeSchema.GEO_INFO
-        button_open_in_google_play.isVisible = barcode.schema == BarcodeSchema.GOOGLE_PLAY
-        button_open_in_youtube.isVisible = barcode.schema == BarcodeSchema.YOUTUBE
-        button_copy_network_name.isVisible = barcode.schema == BarcodeSchema.WIFI
-        button_copy_network_password.isVisible = barcode.schema == BarcodeSchema.WIFI
-        button_send_sms.isVisible = barcode.schema == BarcodeSchema.SMS
-        button_add_sms_phone_to_contacts.isVisible = barcode.schema == BarcodeSchema.SMS
-        button_send_mms.isVisible = barcode.schema == BarcodeSchema.MMS
-        button_add_mms_phone_to_contacts.isVisible = barcode.schema == BarcodeSchema.MMS
-        button_send_email.isVisible = barcode.schema == BarcodeSchema.EMAIL
+        button_add_to_contacts.isVisible = barcode.email.isNullOrEmpty().not() || barcode.phone.isNullOrEmpty().not()
+        button_call_phone.isVisible = barcode.phone.isNullOrEmpty().not()
+        button_send_sms_or_mms.isVisible = barcode.phone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
+        button_send_email.isVisible = barcode.email.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
+        button_show_location.isVisible = barcode.geoUri.isNullOrEmpty().not()
+        button_copy_network_name.isVisible = barcode.networkName.isNullOrEmpty().not()
+        button_copy_network_password.isVisible = barcode.networkPassword.isNullOrEmpty().not()
+        button_open_in_google_play.isVisible = barcode.googlePlayUrl.isNullOrEmpty().not()
+        button_open_in_youtube.isVisible = barcode.youtubeUrl.isNullOrEmpty().not()
+        button_open_link.isVisible = barcode.url.isNullOrEmpty().not()
     }
 
+
+    private fun addToContacts() {
+        val intent = Intent(ContactsContract.Intents.Insert.ACTION).apply {
+            type = ContactsContract.Contacts.CONTENT_TYPE
+
+            putExtra(ContactsContract.Intents.Insert.NAME, barcode.name.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.COMPANY, barcode.organization.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.JOB_TITLE, barcode.jobTitle.orEmpty())
+
+            putExtra(ContactsContract.Intents.Insert.PHONE, barcode.phone.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, barcode.phoneType.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.SECONDARY_PHONE, barcode.secondaryPhone.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.SECONDARY_PHONE_TYPE, barcode.secondaryPhoneType.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.TERTIARY_PHONE, barcode.tertiaryPhone.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.TERTIARY_PHONE_TYPE, barcode.tertiaryPhoneType.orEmpty())
+
+            putExtra(ContactsContract.Intents.Insert.EMAIL, barcode.email.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.EMAIL_TYPE, barcode.emailType.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.SECONDARY_EMAIL, barcode.secondaryEmail.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.SECONDARY_EMAIL_TYPE, barcode.secondaryEmailType.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.TERTIARY_EMAIL, barcode.tertiaryEmail.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.TERTIARY_EMAIL_TYPE, barcode.tertiaryEmailType.orEmpty())
+        }
+        startActivityIfExists(intent)
+    }
+
+    private fun callPhone() {
+        val phoneUri = "tel:${barcode.phone.orEmpty()}"
+        startActivityIfExists(Intent.ACTION_DIAL, phoneUri)
+    }
+
+    private fun sendSmsOrMms() {
+        val smsUri = Uri.parse("sms:${barcode.phone.orEmpty()}")
+        val intent = Intent(Intent.ACTION_SENDTO, smsUri).apply {
+            putExtra("sms_body", barcode.smsBody.orEmpty())
+        }
+        startActivityIfExists(intent)
+    }
+
+    private fun sendEmail() {
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_EMAIL, barcode.email.orEmpty())
+            putExtra(Intent.EXTRA_SUBJECT, barcode.emailSubject.orEmpty())
+            putExtra(Intent.EXTRA_TEXT, barcode.emailBody.orEmpty())
+        }
+        startActivityIfExists(intent)
+    }
+
+    private fun showLocation() {
+        startActivityIfExists(Intent.ACTION_VIEW, barcode.geoUri.orEmpty())
+    }
+
+    private fun copyNetworkNameToClipboard() {
+        copyToClipboard(barcode.networkName.orEmpty())
+        showToast(R.string.activity_barcode_copied)
+    }
+
+    private fun copyNetworkPasswordToClipboard() {
+        copyToClipboard(barcode.networkPassword.orEmpty())
+        showToast(R.string.activity_barcode_copied)
+    }
+
+    private fun openInGooglePlay() {
+        startActivityIfExists(Intent.ACTION_VIEW, barcode.googlePlayUrl.orEmpty())
+    }
+
+    private fun openInYoutube() {
+        startActivityIfExists(Intent.ACTION_VIEW, barcode.youtubeUrl.orEmpty())
+    }
+
+    private fun openLink() {
+        startActivityIfExists(Intent.ACTION_VIEW, barcode.url.orEmpty())
+    }
 
     private fun shareBarcodeAsText() {
         val intent = Intent(Intent.ACTION_SEND).apply {
@@ -232,73 +304,24 @@ class BarcodeActivity : AppCompatActivity() {
         showToast(R.string.activity_barcode_copied)
     }
 
-    private fun copyNetworkNameToClipboard() {
-        val name = Wifi.parse(barcode.text).ssid
-        copyToClipboard(name)
-        showToast(R.string.activity_barcode_copied)
-    }
-
-    private fun copyNetworkPasswordToClipboard() {
-        val password = Wifi.parse(barcode.text).psk
-        copyToClipboard(password)
-        showToast(R.string.activity_barcode_copied)
-    }
-
-    private fun copyToClipboard(text: String) {
-        val clipData = ClipData.newPlainText("", text)
-        clipboardManager.setPrimaryClip(clipData)
-    }
-
-    private fun searchOnInternet() {
+    private fun searchBarcodeTextOnInternet() {
         val intent = Intent(Intent.ACTION_WEB_SEARCH).apply {
             putExtra(SearchManager.QUERY, barcode.text)
         }
         startActivityIfExists(intent)
     }
 
-    private fun sendSms() {
-        val sms = barcodeSchemaParser.parseAsSms(barcode.text) ?: return
-        val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("sms:${sms.phone}")).apply {
-            putExtra("sms_body", sms.content)
+    private fun printBarcode() {
+        val barcodeImage = (image_view_barcode.drawable as? BitmapDrawable)?.bitmap ?: return
+        PrintHelper(this).apply {
+            scaleMode = PrintHelper.SCALE_MODE_FIT
+            printBitmap("${barcode.format}_${barcode.schema}_${barcode.date}", barcodeImage)
         }
-        startActivityIfExists(intent)
     }
 
-    private fun addSmsPhoneToContacts() {
-        val phone = barcodeSchemaParser.parseAsSms(barcode.text)?.phone ?: return
-        addPhoneToContacts(phone)
-    }
 
-    private fun addPhoneToContacts() {
-        val phone = barcodeSchemaParser.parseAsPhone(barcode.text) ?: return
-        addPhoneToContacts(phone)
-    }
-
-    private fun addPhoneToContacts(phone: String) {
-        val intent = Intent(ContactsContract.Intents.Insert.ACTION).apply {
-            type = ContactsContract.Contacts.CONTENT_TYPE
-            putExtra(ContactsContract.Intents.Insert.PHONE, phone)
-        }
-        startActivityIfExists(intent)
-    }
-
-    private fun sendEmail() {
-        val email = barcodeSchemaParser.parseAsEmail(barcode.text) ?: return
-        val intent = Intent(Intent.ACTION_SEND).apply {
-            type = "text/plain"
-            putExtra(Intent.EXTRA_EMAIL, email.address)
-            putExtra(Intent.EXTRA_SUBJECT, email.subject)
-            putExtra(Intent.EXTRA_TEXT, email.body)
-        }
-        startActivityIfExists(intent)
-    }
-
-    private fun startActivityWithActionView() {
-        startActivityWithBarcodeUri(Intent.ACTION_VIEW)
-    }
-
-    private fun startActivityWithBarcodeUri(action: String) {
-        val intent = Intent(action, Uri.parse(barcode.text))
+    private fun startActivityIfExists(action: String, uri: String) {
+        val intent = Intent(action, Uri.parse(uri))
         startActivityIfExists(intent)
     }
 
@@ -308,6 +331,11 @@ class BarcodeActivity : AppCompatActivity() {
         } else {
             showToast(R.string.activity_barcode_no_app)
         }
+    }
+
+    private fun copyToClipboard(text: String) {
+        val clipData = ClipData.newPlainText("", text)
+        clipboardManager.setPrimaryClip(clipData)
     }
 
     private fun showToast(stringId: Int) {

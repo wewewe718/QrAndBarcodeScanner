@@ -16,6 +16,8 @@
     <string name="activity_barcode_share_as_image">Share as image</string>
     <string name="activity_barcode_copy">Copy to clipboard</string>
     <string name="activity_barcode_search">Search on the Internet</string>
+    <string name="activity_barcode_save_as_png">Save as .png</string>
+    <string name="activity_barcode_print">Print</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
     <string name="activity_barcode_open_link">Open link</string>
     <string name="activity_barcode_call_phone">Call</string>
@@ -25,8 +27,7 @@
     <string name="activity_barcode_open_in_youtube">Open in Youtube</string>
     <string name="activity_barcode_copy_network_name">Copy the network name</string>
     <string name="activity_barcode_copy_network_password">Copy the network password</string>
-    <string name="activity_barcode_send_sms">Send SMS</string>
-    <string name="activity_barcode_send_mms">Send MMS</string>
+    <string name="activity_barcode_send_sms">Send SMS/MMS</string>
     <string name="activity_barcode_send_email">Send Email</string>
     <string name="activity_barcode_copied">Copied to clipboard</string>
     <string name="activity_barcode_format_aztec">Aztec</string>

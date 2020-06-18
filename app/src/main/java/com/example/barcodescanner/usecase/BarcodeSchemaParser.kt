@@ -3,6 +3,9 @@ package com.example.barcodescanner.usecase
 import com.example.barcodescanner.model.BarcodeSchema
 import com.example.barcodescanner.model.Email
 import com.example.barcodescanner.model.Sms
+import com.example.barcodescanner.model.Wifi
+import ezvcard.Ezvcard
+import ezvcard.VCard
 
 class BarcodeSchemaParser {
 
@@ -38,16 +41,28 @@ class BarcodeSchemaParser {
         return text.split(":").getOrNull(1)
     }
 
-    fun parseAsSms(text: String): Sms? {
-        return try {
-            val parts = text.split(":")
-            Sms(
-                phone = parts.getOrNull(1).orEmpty(),
-                content = parts.getOrNull(2).orEmpty()
-            )
+    fun parseAsWifi(text: String): Wifi? {
+        val parts = text.split(";")
+        val authType = parts.getOrNull(0).orEmpty().replace("WIFI:T:", "")
+        val name = parts.getOrNull(1).orEmpty().replace("S:", "")
+        val password = parts.getOrNull(2).orEmpty().replace("P:", "")
+        return Wifi(authType, name, password)
+    }
+
+    fun parseAsVCard(text: String): VCard? {
+        return try{
+            Ezvcard.parse(text).first()
         } catch (_: Exception) {
             null
         }
+    }
+
+    fun parseAsSms(text: String): Sms? {
+        val parts = text.split(":")
+        return Sms(
+            phone = parts.getOrNull(1).orEmpty(),
+            content = parts.getOrNull(2).orEmpty()
+        )
     }
 
     fun parseAsEmail(text: String): Email? {
@@ -58,14 +73,10 @@ class BarcodeSchemaParser {
     }
 
     private fun parseAsMatmsgEmail(text: String): Email? {
-        return try {
-            val parts = text.split(";")
-            val address = parts[0].replace("MATMSG:TO:", "")
-            val subject = parts[1].replace("SUB:", "")
-            val body = parts[2].replace("BODY:", "")
-            Email(address, subject, body)
-        } catch (ex: Exception) {
-            null
-        }
+        val parts = text.split(";")
+        val address = parts.getOrNull(0).orEmpty().replace("MATMSG:TO:", "")
+        val subject = parts.getOrNull(1).orEmpty().replace("SUB:", "")
+        val body = parts.getOrNull(2).orEmpty().replace("BODY:", "")
+        return Email(address, subject, body)
     }
 }

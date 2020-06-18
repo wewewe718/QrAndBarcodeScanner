@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingHorizontal="@dimen/default_margin"
-    android:paddingVertical="@dimen/default_margin"
+    android:paddingVertical="@dimen/default_margin_medium"
     android:background="@drawable/background_icon_button"
     >
     <ImageView

@@ -1,13 +1,13 @@
 package com.example.barcodescanner
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import androidx.room.Room
-import com.example.barcodescanner.usecase.BarcodeImageGenerator
-import com.example.barcodescanner.usecase.BarcodeSchemaParser
 import com.example.barcodescanner.usecase.BarcodeDatabaseFactory
+import com.example.barcodescanner.usecase.BarcodeImageGenerator
 import com.example.barcodescanner.usecase.BarcodeImageSaver
+import com.example.barcodescanner.usecase.BarcodeSchemaParser
 
-class App : Application() {
+class App : MultiDexApplication() {
     val barcodeDatabase by lazy {
         Room
             .databaseBuilder(this, BarcodeDatabaseFactory::class.java, "db")

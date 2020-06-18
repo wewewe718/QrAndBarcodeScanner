@@ -43,8 +43,7 @@
                 android:id="@+id/image_view_barcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_large"
-                android:layout_marginBottom="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginHorizontal="@dimen/margin_horizontal_barcode"
                 android:scaleType="fitXY"
                 />
@@ -77,18 +76,16 @@
                 style="@style/TextViewStyle"
                 />
 
-            <!--Url -->
+            <!--Specific buttons-->
             <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_open_link"
+                android:id="@+id/button_add_to_contacts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_link"
-                app:text="@string/activity_barcode_open_link"
+                app:icon="@drawable/ic_contact_add"
+                app:text="@string/activity_barcode_add_to_contacts"
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-
-            <!--Phone-->
             <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_call_phone"
                 android:layout_width="match_parent"
@@ -99,16 +96,23 @@
                 tools:visibility="visible"
                 />
             <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_add_phone_to_contacts"
+                android:id="@+id/button_send_sms_or_mms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_profile"
-                app:text="@string/activity_barcode_add_to_contacts"
+                app:icon="@drawable/ic_sms"
+                app:text="@string/activity_barcode_send_sms"
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-
-            <!--Location-->
+            <com.example.barcodescanner.feature.common.IconButton
+                android:id="@+id/button_send_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_email"
+                app:text="@string/activity_barcode_send_email"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
             <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_show_location"
                 android:layout_width="match_parent"
@@ -118,30 +122,6 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-
-            <!--App-->
-            <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_open_in_google_play"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_app"
-                app:text="@string/activity_barcode_open_in_google_play"
-                android:visibility="gone"
-                tools:visibility="visible"
-                />
-
-            <!--Youtube-->
-            <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_open_in_youtube"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_youtube"
-                app:text="@string/activity_barcode_open_in_youtube"
-                android:visibility="gone"
-                tools:visibility="visible"
-                />
-
-            <!--Wifi-->
             <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_copy_network_name"
                 android:layout_width="match_parent"
@@ -160,54 +140,30 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-
-            <!--Sms-->
             <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_send_sms"
+                android:id="@+id/button_open_in_google_play"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_sms"
-                app:text="@string/activity_barcode_send_sms"
+                app:icon="@drawable/ic_app"
+                app:text="@string/activity_barcode_open_in_google_play"
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
             <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_add_sms_phone_to_contacts"
+                android:id="@+id/button_open_in_youtube"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_profile"
-                app:text="@string/activity_barcode_add_to_contacts"
-                android:visibility="gone"
-                tools:visibility="visible"
-                />
-
-            <!--Mms-->
-            <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_send_mms"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_mms"
-                app:text="@string/activity_barcode_send_mms"
+                app:icon="@drawable/ic_youtube"
+                app:text="@string/activity_barcode_open_in_youtube"
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
             <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_add_mms_phone_to_contacts"
+                android:id="@+id/button_open_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_profile"
-                app:text="@string/activity_barcode_add_to_contacts"
-                android:visibility="gone"
-                tools:visibility="visible"
-                />
-
-            <!--Email-->
-            <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_send_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_email"
-                app:text="@string/activity_barcode_send_email"
+                app:icon="@drawable/ic_link"
+                app:text="@string/activity_barcode_open_link"
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
@@ -240,6 +196,20 @@
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_search"
                 app:text="@string/activity_barcode_search"
+                />
+            <com.example.barcodescanner.feature.common.IconButton
+                android:id="@+id/button_save_as_png"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_image"
+                app:text="@string/activity_barcode_save_as_png"
+                />
+            <com.example.barcodescanner.feature.common.IconButton
+                android:id="@+id/button_print"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_print"
+                app:text="@string/activity_barcode_print"
                 />
         </LinearLayout>
     </ScrollView>

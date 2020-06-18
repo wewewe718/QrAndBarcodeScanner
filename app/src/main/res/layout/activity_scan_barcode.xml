@@ -19,7 +19,7 @@
         app:frameCornersRadius="0dp"
         app:frameAspectRatioWidth="1"
         app:frameAspectRatioHeight="1"
-        app:frameSize="0.75"
+        app:frameSize="0.6"
         app:frameThickness="2dp"
         app:maskColor="@color/transparentWhite"
         />

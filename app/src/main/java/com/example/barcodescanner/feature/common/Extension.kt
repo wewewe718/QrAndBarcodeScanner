@@ -37,11 +37,11 @@ fun BarcodeSchema.toImageId(): Int {
         BarcodeSchema.GOOGLE_PLAY -> R.drawable.ic_app
         BarcodeSchema.ICALL -> R.drawable.ic_calendar
         BarcodeSchema.MMS -> R.drawable.ic_mms
-        BarcodeSchema.MECARD -> R.drawable.ic_profile
+        BarcodeSchema.MECARD -> R.drawable.ic_contact
         BarcodeSchema.SMS -> R.drawable.ic_sms
         BarcodeSchema.PHONE -> R.drawable.ic_phone
         BarcodeSchema.URL -> R.drawable.ic_link
-        BarcodeSchema.VCARD -> R.drawable.ic_profile
+        BarcodeSchema.VCARD -> R.drawable.ic_contact
         BarcodeSchema.WIFI -> R.drawable.ic_wifi
         BarcodeSchema.YOUTUBE -> R.drawable.ic_youtube
         else -> R.drawable.ic_barcode_other
