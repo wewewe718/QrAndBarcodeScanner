@@ -1,9 +1,6 @@
 package com.example.barcodescanner.usecase
 
 import com.example.barcodescanner.model.BarcodeSchema
-import com.example.barcodescanner.model.Email
-import com.example.barcodescanner.model.Sms
-import com.example.barcodescanner.model.Wifi
 import ezvcard.Ezvcard
 import ezvcard.VCard
 
@@ -35,48 +32,5 @@ class BarcodeSchemaParser {
             }
         }
         return BarcodeSchema.OTHER
-    }
-
-    fun parseAsPhone(text: String): String? {
-        return text.split(":").getOrNull(1)
-    }
-
-    fun parseAsWifi(text: String): Wifi? {
-        val parts = text.split(";")
-        val authType = parts.getOrNull(0).orEmpty().replace("WIFI:T:", "")
-        val name = parts.getOrNull(1).orEmpty().replace("S:", "")
-        val password = parts.getOrNull(2).orEmpty().replace("P:", "")
-        return Wifi(authType, name, password)
-    }
-
-    fun parseAsVCard(text: String): VCard? {
-        return try{
-            Ezvcard.parse(text).first()
-        } catch (_: Exception) {
-            null
-        }
-    }
-
-    fun parseAsSms(text: String): Sms? {
-        val parts = text.split(":")
-        return Sms(
-            phone = parts.getOrNull(1).orEmpty(),
-            content = parts.getOrNull(2).orEmpty()
-        )
-    }
-
-    fun parseAsEmail(text: String): Email? {
-        return when {
-            text.startsWith("MATMSG:") -> parseAsMatmsgEmail(text)
-            else -> null
-        }
-    }
-
-    private fun parseAsMatmsgEmail(text: String): Email? {
-        val parts = text.split(";")
-        val address = parts.getOrNull(0).orEmpty().replace("MATMSG:TO:", "")
-        val subject = parts.getOrNull(1).orEmpty().replace("SUB:", "")
-        val body = parts.getOrNull(2).orEmpty().replace("BODY:", "")
-        return Email(address, subject, body)
     }
 }

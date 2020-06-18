@@ -20,6 +20,7 @@ import com.example.barcodescanner.di.barcodeImageSaver
 import com.example.barcodescanner.feature.common.showError
 import com.example.barcodescanner.feature.common.toStringId
 import com.example.barcodescanner.model.Barcode
+import com.example.barcodescanner.model.BarcodeSchema
 import com.example.barcodescanner.model.ParsedBarcode
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -90,7 +91,7 @@ class BarcodeActivity : AppCompatActivity() {
         toolbar.inflateMenu(R.menu.menu_barcode)
         toolbar.setOnMenuItemClickListener { item ->
             if (item.itemId == R.id.item_delete) {
-                //viewModel.onDeleteClicked(barcode)
+                viewModel.onDeleteClicked(barcode)
             }
             return@setOnMenuItemClickListener true
         }
@@ -106,6 +107,7 @@ class BarcodeActivity : AppCompatActivity() {
         button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
         button_open_in_google_play.setOnClickListener { openInGooglePlay() }
         button_open_in_youtube.setOnClickListener { openInYoutube() }
+        button_save_bookmark.setOnClickListener { saveBookmark() }
         button_open_link.setOnClickListener { openLink() }
 
         // General
@@ -197,6 +199,7 @@ class BarcodeActivity : AppCompatActivity() {
         button_open_in_google_play.isVisible = barcode.googlePlayUrl.isNullOrEmpty().not()
         button_open_in_youtube.isVisible = barcode.youtubeUrl.isNullOrEmpty().not()
         button_open_link.isVisible = barcode.url.isNullOrEmpty().not()
+        button_save_bookmark.isVisible = barcode.schema == BarcodeSchema.BOOKMARK
     }
 
 
@@ -272,6 +275,14 @@ class BarcodeActivity : AppCompatActivity() {
 
     private fun openLink() {
         startActivityIfExists(Intent.ACTION_VIEW, barcode.url.orEmpty())
+    }
+
+    private fun saveBookmark() {
+        val intent = Intent(Intent.ACTION_INSERT, Uri.parse("content://browser/bookmarks")).apply {
+            putExtra("title", title)
+            putExtra("url", barcode.url)
+        }
+        startActivityIfExists(intent)
     }
 
     private fun shareBarcodeAsText() {

@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.barcodeImageSaver
 import com.example.barcodescanner.model.Barcode
+import com.example.barcodescanner.model.ParsedBarcode
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
@@ -18,10 +19,10 @@ class BarcodeViewModel(app: Application) : AndroidViewModel(app) {
     val barcodeDeleted = PublishSubject.create<Unit>()
     val error = PublishSubject.create<Throwable>()
 
-    fun onDeleteClicked(barcode: Barcode) {
+    fun onDeleteClicked(barcode: ParsedBarcode) {
         isLoading.onNext(true)
 
-        barcodeDatabase.delete(barcode)
+        barcodeDatabase.delete(barcode.id)
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {

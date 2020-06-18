@@ -46,6 +46,6 @@ interface BarcodeDatabase {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun save(barcode: Barcode): Completable
 
-    @Delete
-    fun delete(barcode: Barcode): Completable
+    @Query("DELETE FROM codes WHERE id = :id")
+    fun delete(id: Long): Completable
 }

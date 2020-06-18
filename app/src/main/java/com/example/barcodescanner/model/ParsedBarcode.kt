@@ -1,7 +1,7 @@
 package com.example.barcodescanner.model
 
 import ezvcard.Ezvcard
-import net.glxn.qrgen.core.scheme.MeCard
+import net.glxn.qrgen.core.scheme.*
 
 class ParsedBarcode(barcode: Barcode) {
     val id: Long = barcode.id
@@ -47,6 +47,7 @@ class ParsedBarcode(barcode: Barcode) {
 
     init {
         when (schema) {
+            BarcodeSchema.BOOKMARK -> parseBookmark()
             BarcodeSchema.EMAIL -> parseEmail()
             BarcodeSchema.GEO_INFO -> parseGeoInfo()
             BarcodeSchema.GOOGLE_PLAY -> parseGooglePlay()
@@ -58,6 +59,16 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.WIFI -> parseWifi()
             BarcodeSchema.YOUTUBE -> parseYoutube()
             BarcodeSchema.URL -> parseUrl()
+        }
+    }
+
+    private fun parseBookmark() {
+        val parts = text.removePrefix("MEBKM:").split(";")
+        parts.forEach { part ->
+            if (part.startsWith("URL:")) {
+                url = part.removePrefix("URL:")
+                return
+            }
         }
     }
 
@@ -83,7 +94,7 @@ class ParsedBarcode(barcode: Barcode) {
     }
 
     private fun parsePhone() {
-        phone = text.replace("tel:", "")
+        phone = text.removePrefix("tel:")
     }
 
     private fun parseMeCard() {
@@ -131,10 +142,11 @@ class ParsedBarcode(barcode: Barcode) {
     }
 
     private fun parseWifi() {
-        val parts = text.split(";")
-        networkAuthType = parts.getOrNull(0).orEmpty().replace("WIFI:T:", "")
-        networkName = parts.getOrNull(1).orEmpty().replace("S:", "")
-        networkPassword = parts.getOrNull(2).orEmpty().replace("P:", "")
+        Wifi.parse(text).apply {
+            networkAuthType = authentication
+            networkName = ssid
+            networkPassword = psk
+        }
     }
 
     private fun parseYoutube() {
