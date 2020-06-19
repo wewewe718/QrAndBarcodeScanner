@@ -39,14 +39,6 @@
             >
 
             <!--General barcode info-->
-            <com.example.barcodescanner.feature.barcode.SquareImageView
-                android:id="@+id/image_view_barcode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_barcode"
-                android:scaleType="fitXY"
-                />
             <TextView
                 android:id="@+id/text_view_date"
                 android:layout_width="wrap_content"
@@ -54,15 +46,6 @@
                 android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginStart="@dimen/default_margin"
                 tools:text="01.09.1993 12:00"
-                style="@style/SecondaryTextViewStyle"
-                />
-            <TextView
-                android:id="@+id/text_view_format"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_very_small"
-                android:layout_marginStart="@dimen/default_margin"
-                tools:text="Data matrix"
                 style="@style/SecondaryTextViewStyle"
                 />
             <TextView

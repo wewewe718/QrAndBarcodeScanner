@@ -18,6 +18,7 @@ import androidx.print.PrintHelper
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
 import com.example.barcodescanner.di.barcodeImageSaver
+import com.example.barcodescanner.feature.barcode.image.BarcodeImageActivity
 import com.example.barcodescanner.feature.common.showError
 import com.example.barcodescanner.feature.common.toStringId
 import com.example.barcodescanner.model.Barcode
@@ -47,9 +48,12 @@ class BarcodeActivity : AppCompatActivity() {
     private val disposable = CompositeDisposable()
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
 
+    private val originalBarcode by lazy {
+        intent?.getParcelableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
+    }
+
     private val barcode by lazy {
-        val barcode = intent?.getParcelableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
-        return@lazy ParsedBarcode(barcode)
+        ParsedBarcode(originalBarcode)
     }
 
     private val clipboardManager by lazy {
@@ -92,13 +96,8 @@ class BarcodeActivity : AppCompatActivity() {
         toolbar.inflateMenu(R.menu.menu_barcode)
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.item_show_barcode_image -> showBarcodeImage()
                 R.id.item_delete -> viewModel.onDeleteClicked(barcode)
-                R.id.item_share_as_text -> shareBarcodeAsText()
-                R.id.item_copy -> copyBarcodeTextToClipboard()
-                R.id.item_search -> searchBarcodeTextOnInternet()
-                R.id.item_share_as_image -> shareBarcodeAsImage()
-                R.id.item_save_to_gallery -> saveBarcodeImage()
-                R.id.item_print -> printBarcode()
             }
             return@setOnMenuItemClickListener true
         }
@@ -118,7 +117,7 @@ class BarcodeActivity : AppCompatActivity() {
         button_save_bookmark.setOnClickListener { saveBookmark() }
         button_open_link.setOnClickListener { openLink() }
 
-        // General
+        button_show_barcode_image.setOnClickListener { showBarcodeImage() }
         button_share_as_text.setOnClickListener { shareBarcodeAsText() }
         button_copy.setOnClickListener { copyBarcodeTextToClipboard() }
         button_search.setOnClickListener { searchBarcodeTextOnInternet() }
@@ -168,20 +167,9 @@ class BarcodeActivity : AppCompatActivity() {
     }
 
     private fun showBarcode() {
-        showBarcodeImage()
         showBarcodeDate()
         showBarcodeFormat()
         showBarcodeText()
-    }
-
-    private fun showBarcodeImage() {
-        try {
-            val bitmap = barcodeImageGenerator.generateImage(barcode, 2000, 2000, 2)
-            image_view_barcode.setImageBitmap(bitmap)
-        } catch (ex: Exception) {
-            image_view_barcode.isVisible = false
-            ex.printStackTrace()
-        }
     }
 
     private fun showBarcodeDate() {
@@ -191,7 +179,6 @@ class BarcodeActivity : AppCompatActivity() {
     private fun showBarcodeFormat() {
         val format = barcode.format.toStringId()
         toolbar.setTitle(format)
-        text_view_format.setText(format)
     }
 
     private fun showBarcodeText() {
@@ -307,6 +294,10 @@ class BarcodeActivity : AppCompatActivity() {
         startActivityIfExists(intent)
     }
 
+    private fun showBarcodeImage() {
+        BarcodeImageActivity.start(this, originalBarcode)
+    }
+
     private fun shareBarcodeAsText() {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
@@ -352,11 +343,11 @@ class BarcodeActivity : AppCompatActivity() {
     }
 
     private fun printBarcode() {
-        val barcodeImage = (image_view_barcode.drawable as? BitmapDrawable)?.bitmap ?: return
-        PrintHelper(this).apply {
-            scaleMode = PrintHelper.SCALE_MODE_FIT
-            printBitmap("${barcode.format}_${barcode.schema}_${barcode.date}", barcodeImage)
-        }
+//        val barcodeImage = (image_view_barcode.drawable as? BitmapDrawable)?.bitmap ?: return
+//        PrintHelper(this).apply {
+//            scaleMode = PrintHelper.SCALE_MODE_FIT
+//            printBitmap("${barcode.format}_${barcode.schema}_${barcode.date}", barcodeImage)
+//        }
     }
 
 

@@ -35,6 +35,9 @@
         <activity
             android:name="com.example.barcodescanner.feature.barcode.BarcodeActivity"
             />
+        <activity
+            android:name="com.example.barcodescanner.feature.barcode.image.BarcodeImageActivity"
+            />
 
         <provider
             android:name="androidx.core.content.FileProvider"

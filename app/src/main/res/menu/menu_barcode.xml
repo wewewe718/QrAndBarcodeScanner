@@ -15,40 +15,4 @@
         android:icon="@drawable/ic_delete"
         app:showAsAction="always"
         />
-    <item
-        android:id="@+id/item_share_as_text"
-        android:title="@string/activity_barcode_share_as_text"
-        android:icon="@drawable/ic_share"
-        app:showAsAction="never"
-        />
-    <item
-        android:id="@+id/item_copy"
-        android:title="@string/activity_barcode_copy"
-        android:icon="@drawable/ic_copy"
-        app:showAsAction="never"
-        />
-    <item
-        android:id="@+id/item_search"
-        android:title="@string/activity_barcode_search"
-        android:icon="@drawable/ic_search"
-        app:showAsAction="never"
-        />
-    <item
-        android:id="@+id/item_share_as_image"
-        android:title="@string/activity_barcode_share_as_image"
-        android:icon="@drawable/ic_share"
-        app:showAsAction="never"
-        />
-    <item
-        android:id="@+id/item_save_to_gallery"
-        android:title="@string/activity_barcode_save_to_gallery"
-        android:icon="@drawable/ic_image"
-        app:showAsAction="never"
-        />
-    <item
-        android:id="@+id/item_print"
-        android:title="@string/activity_barcode_print"
-        android:icon="@drawable/ic_print"
-        app:showAsAction="never"
-        />
 </menu>
