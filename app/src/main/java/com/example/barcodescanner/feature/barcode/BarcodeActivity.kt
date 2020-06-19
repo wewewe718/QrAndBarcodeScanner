@@ -118,6 +118,7 @@ class BarcodeActivity : AppCompatActivity() {
         button_share_as_image.setOnClickListener { shareBarcodeAsImage() }
         button_copy.setOnClickListener { copyBarcodeTextToClipboard() }
         button_search.setOnClickListener { searchBarcodeTextOnInternet() }
+        button_save_as_png.setOnClickListener { saveBarcodeImage() }
         button_print.setOnClickListener { printBarcode() }
     }
 
@@ -208,8 +209,6 @@ class BarcodeActivity : AppCompatActivity() {
 
 
     private fun addToCalendar() {
-        Log.d("VEvent", barcode.eventStartDate.toString())
-        Log.d("VEvent", barcode.eventEndDate.toString())
         val intent = Intent(Intent.ACTION_INSERT).apply {
             data = CalendarContract.Events.CONTENT_URI
             putExtra(CalendarContract.Events.TITLE, barcode.eventUid)
@@ -337,6 +336,13 @@ class BarcodeActivity : AppCompatActivity() {
             putExtra(SearchManager.QUERY, barcode.text)
         }
         startActivityIfExists(intent)
+    }
+
+    private fun saveBarcodeImage() {
+        val imagePath = barcodeImageSaver.saveImageToPublicDirectory(this, barcode)
+        if (imagePath != null) {
+            showToast(R.string.activity_barcode_barcode_image_saved)
+        }
     }
 
     private fun printBarcode() {
