@@ -10,7 +10,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.provider.ContactsContract
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -92,8 +91,14 @@ class BarcodeActivity : AppCompatActivity() {
     private fun handleToolbarMenuClicked() {
         toolbar.inflateMenu(R.menu.menu_barcode)
         toolbar.setOnMenuItemClickListener { item ->
-            if (item.itemId == R.id.item_delete) {
-                viewModel.onDeleteClicked(barcode)
+            when (item.itemId) {
+                R.id.item_delete -> viewModel.onDeleteClicked(barcode)
+                R.id.item_share_as_text -> shareBarcodeAsText()
+                R.id.item_copy -> copyBarcodeTextToClipboard()
+                R.id.item_search -> searchBarcodeTextOnInternet()
+                R.id.item_share_as_image -> shareBarcodeAsImage()
+                R.id.item_save_to_gallery -> saveBarcodeImage()
+                R.id.item_print -> printBarcode()
             }
             return@setOnMenuItemClickListener true
         }
@@ -115,11 +120,12 @@ class BarcodeActivity : AppCompatActivity() {
 
         // General
         button_share_as_text.setOnClickListener { shareBarcodeAsText() }
-        button_share_as_image.setOnClickListener { shareBarcodeAsImage() }
         button_copy.setOnClickListener { copyBarcodeTextToClipboard() }
         button_search.setOnClickListener { searchBarcodeTextOnInternet() }
-        button_save_as_png.setOnClickListener { saveBarcodeImage() }
+        button_share_as_image.setOnClickListener { shareBarcodeAsImage() }
+        button_save_to_gallery.setOnClickListener { saveBarcodeImage() }
         button_print.setOnClickListener { printBarcode() }
+        button_delete.setOnClickListener { viewModel.onDeleteClicked(barcode) }
     }
 
 
@@ -309,6 +315,18 @@ class BarcodeActivity : AppCompatActivity() {
         startActivityIfExists(intent)
     }
 
+    private fun copyBarcodeTextToClipboard() {
+        copyToClipboard(barcode.text)
+        showToast(R.string.activity_barcode_copied)
+    }
+
+    private fun searchBarcodeTextOnInternet() {
+        val intent = Intent(Intent.ACTION_WEB_SEARCH).apply {
+            putExtra(SearchManager.QUERY, barcode.text)
+        }
+        startActivityIfExists(intent)
+    }
+
     private fun shareBarcodeAsImage() {
         val imageUri = try {
             barcodeImageSaver.saveImageToCache(this, barcode)
@@ -323,18 +341,6 @@ class BarcodeActivity : AppCompatActivity() {
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
 
-        startActivityIfExists(intent)
-    }
-
-    private fun copyBarcodeTextToClipboard() {
-        copyToClipboard(barcode.text)
-        showToast(R.string.activity_barcode_copied)
-    }
-
-    private fun searchBarcodeTextOnInternet() {
-        val intent = Intent(Intent.ACTION_WEB_SEARCH).apply {
-            putExtra(SearchManager.QUERY, barcode.text)
-        }
         startActivityIfExists(intent)
     }
 

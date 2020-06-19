@@ -11,23 +11,23 @@ import io.reactivex.Completable
 class BarcodeDatabaseTypeConverter {
 
     @TypeConverter
-    fun fromBarcodeFormat(barcodeFormat: BarcodeFormat): Int {
-        return barcodeFormat.ordinal
+    fun fromBarcodeFormat(barcodeFormat: BarcodeFormat): String {
+        return barcodeFormat.name
     }
 
     @TypeConverter
-    fun toBarcodeFormat(value: Int): BarcodeFormat {
-        return BarcodeFormat.values()[value]
+    fun toBarcodeFormat(value: String): BarcodeFormat {
+        return BarcodeFormat.valueOf(value)
     }
 
     @TypeConverter
-    fun fromBarcodeSchema(barcodeSchema: BarcodeSchema): Int {
-        return barcodeSchema.ordinal
+    fun fromBarcodeSchema(barcodeSchema: BarcodeSchema): String {
+        return barcodeSchema.name
     }
 
     @TypeConverter
-    fun toBarcodeSchema(value: Int): BarcodeSchema {
-        return BarcodeSchema.values()[value]
+    fun toBarcodeSchema(value: String): BarcodeSchema {
+        return BarcodeSchema.valueOf(value)
     }
 }
 

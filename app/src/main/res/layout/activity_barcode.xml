@@ -186,20 +186,20 @@
                 tools:visibility="visible"
                 />
 
-            <!--Common-->
+            <!--General-->
+            <com.example.barcodescanner.feature.common.IconButton
+                android:id="@+id/button_show_barcode_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_barcode_other"
+                app:text="@string/activity_barcode_show_barcode_image"
+                />
             <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_share_as_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_share"
                 app:text="@string/activity_barcode_share_as_text"
-                />
-            <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_share_as_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_share"
-                app:text="@string/activity_barcode_share_as_image"
                 />
             <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_copy"
@@ -216,11 +216,18 @@
                 app:text="@string/activity_barcode_search"
                 />
             <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_save_as_png"
+                android:id="@+id/button_share_as_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_share"
+                app:text="@string/activity_barcode_share_as_image"
+                />
+            <com.example.barcodescanner.feature.common.IconButton
+                android:id="@+id/button_save_to_gallery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_image"
-                app:text="@string/activity_barcode_save_as_png"
+                app:text="@string/activity_barcode_save_to_gallery"
                 />
             <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_print"
@@ -228,6 +235,13 @@
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_print"
                 app:text="@string/activity_barcode_print"
+                />
+            <com.example.barcodescanner.feature.common.IconButton
+                android:id="@+id/button_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_delete"
+                app:text="@string/activity_barcode_delete"
                 />
         </LinearLayout>
     </ScrollView>
