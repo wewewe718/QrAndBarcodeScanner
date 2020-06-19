@@ -8,7 +8,9 @@ import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.provider.ContactsContract
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -98,6 +100,7 @@ class BarcodeActivity : AppCompatActivity() {
     }
 
     private fun handleButtonsClicked() {
+        button_add_to_calendar.setOnClickListener { addToCalendar() }
         button_add_to_contacts.setOnClickListener { addToContacts() }
         button_call_phone.setOnClickListener { callPhone() }
         button_send_sms_or_mms.setOnClickListener { sendSmsOrMms() }
@@ -189,6 +192,7 @@ class BarcodeActivity : AppCompatActivity() {
     }
 
     private fun showOrHideButtons() {
+        button_add_to_calendar.isVisible = barcode.schema == BarcodeSchema.CALENDAR
         button_add_to_contacts.isVisible = barcode.email.isNullOrEmpty().not() || barcode.phone.isNullOrEmpty().not()
         button_call_phone.isVisible = barcode.phone.isNullOrEmpty().not()
         button_send_sms_or_mms.isVisible = barcode.phone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
@@ -202,6 +206,19 @@ class BarcodeActivity : AppCompatActivity() {
         button_save_bookmark.isVisible = barcode.schema == BarcodeSchema.BOOKMARK
     }
 
+
+    private fun addToCalendar() {
+        Log.d("VEvent", barcode.eventStartDate.toString())
+        Log.d("VEvent", barcode.eventEndDate.toString())
+        val intent = Intent(Intent.ACTION_INSERT).apply {
+            data = CalendarContract.Events.CONTENT_URI
+            putExtra(CalendarContract.Events.TITLE, barcode.eventUid)
+            putExtra(CalendarContract.Events.DESCRIPTION, barcode.eventSummary)
+            putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, barcode.eventStartDate)
+            putExtra(CalendarContract.EXTRA_EVENT_END_TIME, barcode.eventEndDate)
+        }
+        startActivityIfExists(intent)
+    }
 
     private fun addToContacts() {
         val intent = Intent(ContactsContract.Intents.Insert.ACTION).apply {

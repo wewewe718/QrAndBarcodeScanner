@@ -6,7 +6,7 @@ enum class BarcodeSchema {
     GEO_INFO,
     GIROCODE,
     GOOGLE_PLAY,
-    ICALL,
+    CALENDAR,
     MMS,
     MECARD,
     SMS,

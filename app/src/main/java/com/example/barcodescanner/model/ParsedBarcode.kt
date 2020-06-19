@@ -2,6 +2,8 @@ package com.example.barcodescanner.model
 
 import ezvcard.Ezvcard
 import net.glxn.qrgen.core.scheme.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ParsedBarcode(barcode: Barcode) {
     val id: Long = barcode.id
@@ -44,6 +46,19 @@ class ParsedBarcode(barcode: Barcode) {
     var youtubeUrl: String? = null
     var geoUri: String? = null
 
+    var eventUid: String? = null
+    var eventStamp: String? = null
+    var eventOrganizer: String? = null
+    var eventStartDate: Long? = null
+    var eventEndDate: Long? = null
+    var eventSummary: String? = null
+
+    private val calendarDateParser by lazy {
+        SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'", Locale.US).apply {
+            timeZone = TimeZone.getTimeZone("UTC")
+        }
+    }
+
 
     init {
         when (schema) {
@@ -51,6 +66,7 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.EMAIL -> parseEmail()
             BarcodeSchema.GEO_INFO -> parseGeoInfo()
             BarcodeSchema.GOOGLE_PLAY -> parseGooglePlay()
+            BarcodeSchema.CALENDAR -> parseCalendar()
             BarcodeSchema.MMS,
             BarcodeSchema.SMS -> parseSms()
             BarcodeSchema.MECARD -> parseMeCard()
@@ -85,6 +101,31 @@ class ParsedBarcode(barcode: Barcode) {
 
     private fun parseGooglePlay() {
         googlePlayUrl = text
+    }
+
+    private fun parseCalendar() {
+        val vEvent = when {
+            text.startsWith("BEGIN:VCALENDAR") -> ICal.parse(text).subSchema as? IEvent?
+            text.startsWith("BEGIN:VEVENT") -> IEvent.parse(SchemeUtil.getParameters(text), text)
+            else -> null
+        }
+
+        vEvent?.apply {
+            eventUid = uid
+            eventStamp = stamp
+            eventOrganizer = organizer
+            eventSummary = summary
+        }
+
+        try {
+            eventStartDate = calendarDateParser.parse(vEvent?.start).time
+        } catch (_: Exception) {
+        }
+
+        try {
+            eventEndDate = calendarDateParser.parse(vEvent?.end).time
+        } catch (_: Exception) {
+        }
     }
 
     private fun parseSms() {

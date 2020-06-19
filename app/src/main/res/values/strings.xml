@@ -22,7 +22,8 @@
     <string name="activity_barcode_open_link">Open link</string>
     <string name="activity_barcode_save_bookmark">Save to bookmarks</string>
     <string name="activity_barcode_call_phone">Call</string>
-    <string name="activity_barcode_add_to_contacts">Add to contacts</string>
+    <string name="activity_barcode_add_to_contacts">Add to Contacts</string>
+    <string name="activity_barcode_add_to_calendar">Add to Calendar</string>
     <string name="activity_barcode_show_location">Show the location</string>
     <string name="activity_barcode_open_in_google_play">Open in Google Play</string>
     <string name="activity_barcode_open_in_youtube">Open in Youtube</string>

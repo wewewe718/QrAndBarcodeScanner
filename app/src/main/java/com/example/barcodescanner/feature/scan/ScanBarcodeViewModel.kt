@@ -25,7 +25,7 @@ class ScanBarcodeViewModel(app: Application) : AndroidViewModel(app) {
             format = result.barcodeFormat,
             schema = barcodeSchemaParser.parseSchema(result.text),
             date = result.timestamp,
-            errorCorrectionLevel = result.resultMetadata[ResultMetadataType.ERROR_CORRECTION_LEVEL] as? String
+            errorCorrectionLevel = result.resultMetadata?.get(ResultMetadataType.ERROR_CORRECTION_LEVEL) as? String
         )
 
         isLoading.onNext(true)

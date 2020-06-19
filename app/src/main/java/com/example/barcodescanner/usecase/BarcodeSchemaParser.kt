@@ -1,8 +1,6 @@
 package com.example.barcodescanner.usecase
 
 import com.example.barcodescanner.model.BarcodeSchema
-import ezvcard.Ezvcard
-import ezvcard.VCard
 
 class BarcodeSchemaParser {
 
@@ -12,7 +10,7 @@ class BarcodeSchemaParser {
         BarcodeSchema.GEO_INFO to listOf("geo:", "http://maps.google.com/", "https://maps.google.com/"),
         BarcodeSchema.GIROCODE to listOf("BCD"),
         BarcodeSchema.GOOGLE_PLAY to listOf("market://details?id=", "{{{market://details?id=", "http://play.google.com/", "https://play.google.com/"),
-        BarcodeSchema.ICALL to listOf("BEGIN:VCALENDAR", "BEGIN:VEVENT"),
+        BarcodeSchema.CALENDAR to listOf("BEGIN:VCALENDAR", "BEGIN:VEVENT"),
         BarcodeSchema.MMS to listOf("mmsto:"),
         BarcodeSchema.MECARD to listOf("MECARD:"),
         BarcodeSchema.SMS to listOf("smsto:"),

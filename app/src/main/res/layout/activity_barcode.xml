@@ -78,6 +78,15 @@
 
             <!--Specific buttons-->
             <com.example.barcodescanner.feature.common.IconButton
+                android:id="@+id/button_add_to_calendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_calendar"
+                app:text="@string/activity_barcode_add_to_calendar"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_add_to_contacts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -35,7 +35,7 @@ fun BarcodeSchema.toImageId(): Int {
         BarcodeSchema.GEO_INFO -> R.drawable.ic_location
         BarcodeSchema.GIROCODE -> R.drawable.ic_payment
         BarcodeSchema.GOOGLE_PLAY -> R.drawable.ic_app
-        BarcodeSchema.ICALL -> R.drawable.ic_calendar
+        BarcodeSchema.CALENDAR -> R.drawable.ic_calendar
         BarcodeSchema.MMS -> R.drawable.ic_mms
         BarcodeSchema.MECARD -> R.drawable.ic_contact
         BarcodeSchema.SMS -> R.drawable.ic_sms
