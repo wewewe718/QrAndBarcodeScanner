@@ -2,7 +2,9 @@ package com.example.barcodescanner.feature.scan
 
 import android.content.Context
 import android.content.Intent
+import android.hardware.Camera
 import android.os.Bundle
+import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
@@ -25,6 +27,8 @@ class ScanBarcodeActivity : AppCompatActivity() {
     }
 
     private lateinit var codeScanner: CodeScanner
+    private var maxZoom: Int = 0
+    private val zoomStep = 5
     private val disposable = CompositeDisposable()
     private val viewModel by lazy {
         ViewModelProviders.of(this).get(ScanBarcodeViewModel::class.java)
@@ -34,6 +38,9 @@ class ScanBarcodeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan_barcode)
         initScanner()
+        handleZoomChanged()
+        handleDecreaseZoomClicked()
+        handleIncreaseZoomClicked()
     }
 
     override fun onResume() {
@@ -58,6 +65,55 @@ class ScanBarcodeActivity : AppCompatActivity() {
             isFlashEnabled = false
             decodeCallback = DecodeCallback(viewModel::onScanResult)
             errorCallback = ErrorCallback(viewModel::onScanError)
+        }
+
+        findCamera(CodeScanner.CAMERA_BACK)?.parameters?.apply {
+            this@ScanBarcodeActivity.maxZoom = maxZoom
+            seek_bar_zoom.max = maxZoom
+            seek_bar_zoom.progress = zoom
+        }
+    }
+
+    private fun handleZoomChanged() {
+        seek_bar_zoom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onStartTrackingTouch(seekBar: SeekBar?) { }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) { }
+
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    codeScanner.zoom = progress
+                }
+            }
+        })
+    }
+
+    private fun handleDecreaseZoomClicked() {
+        button_decrease_zoom.setOnClickListener {
+            decreaseZoom()
+        }
+    }
+
+    private fun handleIncreaseZoomClicked() {
+        button_increase_zoom.setOnClickListener {
+            increaseZoom()
+        }
+    }
+
+    private fun decreaseZoom() {
+        codeScanner.apply {
+            if (zoom > zoomStep) {
+                zoom -= zoomStep
+                seek_bar_zoom.progress = zoom
+            }
+        }
+    }
+
+    private fun increaseZoom() {
+        codeScanner.apply {
+            if (zoom < maxZoom - zoomStep) {
+                zoom += zoomStep
+                seek_bar_zoom.progress = zoom
+            }
         }
     }
 
@@ -95,5 +151,28 @@ class ScanBarcodeActivity : AppCompatActivity() {
 
     private fun unsubscribeFromViewModel() {
         disposable.clear()
+    }
+
+    private fun findCamera(facing: Int): Camera? {
+        val cameraId = findCameraId(facing) ?: return null
+        return Camera.open(cameraId)
+    }
+
+    private fun findCameraId(facing: Int): Int? {
+        val cameraFacing = if (facing == CodeScanner.CAMERA_BACK) {
+            Camera.CameraInfo.CAMERA_FACING_BACK
+        } else {
+            Camera.CameraInfo.CAMERA_FACING_FRONT
+        }
+
+        for (cameraId in 0..Camera.getNumberOfCameras()) {
+            val cameraInfo = Camera.CameraInfo()
+            Camera.getCameraInfo(cameraId, cameraInfo)
+            if (cameraInfo.facing == cameraFacing) {
+                return cameraId
+            }
+        }
+
+        return null
     }
 }

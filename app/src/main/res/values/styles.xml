@@ -12,7 +12,7 @@
     <style name="ScanBarcodeActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/white</item>
     </style>
 
     <style name="ToolbarStyle">
