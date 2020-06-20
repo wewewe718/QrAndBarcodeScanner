@@ -56,7 +56,7 @@
                 android:layout_marginBottom="@dimen/default_margin"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 tools:text="Hello World!"
-                style="@style/TextViewStyle"
+                style="@style/LargeTextViewStyle"
                 />
 
             <!--Specific buttons-->
