@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ParsedBarcode(barcode: Barcode) {
-    val id: Long = barcode.id
+    val id = barcode.id
     val text = barcode.text
     val format = barcode.format
     val schema = barcode.schema

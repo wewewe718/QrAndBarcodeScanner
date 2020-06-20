@@ -2,10 +2,7 @@ package com.example.barcodescanner
 
 import androidx.multidex.MultiDexApplication
 import androidx.room.Room
-import com.example.barcodescanner.usecase.BarcodeDatabaseFactory
-import com.example.barcodescanner.usecase.BarcodeImageGenerator
-import com.example.barcodescanner.usecase.BarcodeImageSaver
-import com.example.barcodescanner.usecase.BarcodeSchemaParser
+import com.example.barcodescanner.usecase.*
 
 class App : MultiDexApplication() {
     val barcodeDatabase by lazy {
@@ -14,7 +11,7 @@ class App : MultiDexApplication() {
             .build()
             .getBarcodeDatabase()
     }
-
+    val scannerCameraHelper by lazy { ScannerCameraHelper() }
     val barcodeSchemaParser by lazy { BarcodeSchemaParser() }
     val barcodeImageGenerator by lazy { BarcodeImageGenerator() }
     val barcodeImageSaver by lazy { BarcodeImageSaver(barcodeImageGenerator) }

@@ -2,19 +2,24 @@ package com.example.barcodescanner.feature.scan
 
 import android.content.Context
 import android.content.Intent
-import android.hardware.Camera
 import android.os.Bundle
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProviders
 import com.budiyev.android.codescanner.*
 import com.example.barcodescanner.R
-import com.example.barcodescanner.feature.common.showError
+import com.example.barcodescanner.di.barcodeDatabase
+import com.example.barcodescanner.di.barcodeSchemaParser
+import com.example.barcodescanner.di.scannerCameraHelper
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
+import com.example.barcodescanner.feature.common.showError
+import com.example.barcodescanner.model.Barcode
+import com.google.zxing.Result
+import com.google.zxing.ResultMetadataType
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_scan_barcode.*
 
 class ScanBarcodeActivity : AppCompatActivity() {
@@ -26,18 +31,17 @@ class ScanBarcodeActivity : AppCompatActivity() {
         }
     }
 
+    private val cameraFacing = CodeScanner.CAMERA_BACK
     private lateinit var codeScanner: CodeScanner
     private var maxZoom: Int = 0
     private val zoomStep = 5
     private val disposable = CompositeDisposable()
-    private val viewModel by lazy {
-        ViewModelProviders.of(this).get(ScanBarcodeViewModel::class.java)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan_barcode)
         initScanner()
+        initZoomSeekBar()
         handleZoomChanged()
         handleDecreaseZoomClicked()
         handleIncreaseZoomClicked()
@@ -46,28 +50,33 @@ class ScanBarcodeActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         codeScanner.startPreview()
-        subscribeToViewModel()
     }
 
     override fun onPause() {
         codeScanner.releaseResources()
-        unsubscribeFromViewModel()
         super.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
     }
 
     private fun initScanner() {
         codeScanner = CodeScanner(this, scanner_view).apply {
-            camera = CodeScanner.CAMERA_BACK
+            camera = cameraFacing
             formats = CodeScanner.ALL_FORMATS
             autoFocusMode = AutoFocusMode.SAFE
             scanMode = ScanMode.SINGLE
             isAutoFocusEnabled = true
             isFlashEnabled = false
-            decodeCallback = DecodeCallback(viewModel::onScanResult)
-            errorCallback = ErrorCallback(viewModel::onScanError)
+            decodeCallback = DecodeCallback(::saveScannedBarcode)
+            errorCallback = ErrorCallback(::showError)
         }
+    }
 
-        findCamera(CodeScanner.CAMERA_BACK)?.parameters?.apply {
+    private fun initZoomSeekBar() {
+        scannerCameraHelper.getCameraParameters(cameraFacing)?.apply {
             this@ScanBarcodeActivity.maxZoom = maxZoom
             seek_bar_zoom.max = maxZoom
             seek_bar_zoom.progress = zoom
@@ -117,62 +126,41 @@ class ScanBarcodeActivity : AppCompatActivity() {
         }
     }
 
-    private fun subscribeToViewModel() {
-        subscribeToLoading()
-        subscribeToError()
-        subscribeToBarcodeSaved()
-    }
-
-    private fun subscribeToLoading() {
-        viewModel.isLoading
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { isLoading ->
-                layout_loading.isVisible = isLoading
-            }
-            .addTo(disposable)
-    }
-
-    private fun subscribeToError() {
-        viewModel.error
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(::showError)
-            .addTo(disposable)
-    }
-
-    private fun subscribeToBarcodeSaved() {
-        viewModel.barcodeSaved
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { barcode ->
-                BarcodeActivity.start(this, barcode)
-                finish()
-            }
-            .addTo(disposable)
-    }
-
-    private fun unsubscribeFromViewModel() {
-        disposable.clear()
-    }
-
-    private fun findCamera(facing: Int): Camera? {
-        val cameraId = findCameraId(facing) ?: return null
-        return Camera.open(cameraId)
-    }
-
-    private fun findCameraId(facing: Int): Int? {
-        val cameraFacing = if (facing == CodeScanner.CAMERA_BACK) {
-            Camera.CameraInfo.CAMERA_FACING_BACK
-        } else {
-            Camera.CameraInfo.CAMERA_FACING_FRONT
+    private fun saveScannedBarcode(result: Result) {
+        runOnUiThread {
+            showLoading(true)
         }
 
-        for (cameraId in 0..Camera.getNumberOfCameras()) {
-            val cameraInfo = Camera.CameraInfo()
-            Camera.getCameraInfo(cameraId, cameraInfo)
-            if (cameraInfo.facing == cameraFacing) {
-                return cameraId
-            }
-        }
+        val barcode = Barcode(
+            text = result.text,
+            format = result.barcodeFormat,
+            schema = barcodeSchemaParser.parseSchema(result.text),
+            date = result.timestamp,
+            errorCorrectionLevel = result.resultMetadata?.get(ResultMetadataType.ERROR_CORRECTION_LEVEL) as? String
+        )
 
-        return null
+        barcodeDatabase.save(barcode)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { id ->
+                    val newBarcode = barcode.copy(id = id)
+                    navigateToBarcodeScreen(newBarcode)
+                },
+                { error ->
+                    showLoading(false)
+                    showError(error)
+                }
+            )
+            .addTo(disposable)
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        layout_loading.isVisible = isLoading
+    }
+
+    private fun navigateToBarcodeScreen(barcode: Barcode) {
+        BarcodeActivity.start(this, barcode)
+        finish()
     }
 }

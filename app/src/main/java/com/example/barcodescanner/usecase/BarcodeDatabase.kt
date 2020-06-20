@@ -6,6 +6,7 @@ import com.example.barcodescanner.model.BarcodeSchema
 import com.example.barcodescanner.model.Barcode
 import com.google.zxing.BarcodeFormat
 import io.reactivex.Completable
+import io.reactivex.Single
 
 
 class BarcodeDatabaseTypeConverter {
@@ -44,7 +45,7 @@ interface BarcodeDatabase {
     fun getAll(): DataSource.Factory<Int, Barcode>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(barcode: Barcode): Completable
+    fun save(barcode: Barcode): Single<Long>
 
     @Query("DELETE FROM codes WHERE id = :id")
     fun delete(id: Long): Completable

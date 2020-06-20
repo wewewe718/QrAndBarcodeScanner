@@ -343,11 +343,11 @@ class BarcodeActivity : AppCompatActivity() {
     }
 
     private fun printBarcode() {
-//        val barcodeImage = (image_view_barcode.drawable as? BitmapDrawable)?.bitmap ?: return
-//        PrintHelper(this).apply {
-//            scaleMode = PrintHelper.SCALE_MODE_FIT
-//            printBitmap("${barcode.format}_${barcode.schema}_${barcode.date}", barcodeImage)
-//        }
+        val barcodeImage = barcodeImageGenerator.generateImage(barcode, 1000, 1000, 3)
+        PrintHelper(this).apply {
+            scaleMode = PrintHelper.SCALE_MODE_FIT
+            printBitmap("${barcode.format}_${barcode.schema}_${barcode.date}", barcodeImage)
+        }
     }
 
 
