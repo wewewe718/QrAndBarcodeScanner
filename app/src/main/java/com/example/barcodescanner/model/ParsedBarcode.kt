@@ -6,6 +6,16 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ParsedBarcode(barcode: Barcode) {
+    private val calendarDateParser by lazy {
+        SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'", Locale.US).apply {
+            timeZone = TimeZone.getTimeZone("UTC")
+        }
+    }
+
+    private val receiptDateParser by lazy {
+        SimpleDateFormat("yyyyMMdd'T'HHmm", Locale.US)
+    }
+
     val id = barcode.id
     val text = barcode.text
     val format = barcode.format
@@ -41,6 +51,7 @@ class ParsedBarcode(barcode: Barcode) {
     var networkName: String? = null
     var networkPassword: String? = null
 
+    var bookmarkTitle: String? = null
     var url: String? = null
     var googlePlayUrl: String? = null
     var youtubeUrl: String? = null
@@ -53,11 +64,13 @@ class ParsedBarcode(barcode: Barcode) {
     var eventEndDate: Long? = null
     var eventSummary: String? = null
 
-    private val calendarDateParser by lazy {
-        SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'", Locale.US).apply {
-            timeZone = TimeZone.getTimeZone("UTC")
-        }
-    }
+    var receiptType: Int? = null
+    var receiptTime: Long? = null
+    var receiptTimeOriginal: String? = null
+    var receiptFiscalDriveNumber: String? = null
+    var receiptFiscalDocumentNumber: String? = null
+    var receiptFiscalSign: String? = null
+    var receiptSum: String? = null
 
 
     init {
@@ -75,15 +88,18 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.WIFI -> parseWifi()
             BarcodeSchema.YOUTUBE -> parseYoutube()
             BarcodeSchema.URL -> parseUrl()
+            BarcodeSchema.RECEIPT -> parseReceipt()
         }
     }
 
     private fun parseBookmark() {
         val parts = text.removePrefix("MEBKM:").split(";")
         parts.forEach { part ->
+            if (part.startsWith("TITLE:")) {
+                bookmarkTitle = part.removePrefix("TITLE:")
+            }
             if (part.startsWith("URL:")) {
                 url = part.removePrefix("URL:")
-                return
             }
         }
     }
@@ -196,5 +212,43 @@ class ParsedBarcode(barcode: Barcode) {
 
     private fun parseUrl() {
         url = text
+    }
+
+    private fun parseReceipt() {
+        text.split("&").forEach { part ->
+            if (part.startsWith("n=")) {
+                receiptType = part.removePrefix("n=").toIntOrNull()
+                return@forEach
+            }
+
+            if (part.startsWith("t=")) {
+                receiptTimeOriginal = part.removePrefix("t=")
+                try {
+                    receiptTime = receiptDateParser.parse(receiptTimeOriginal)?.time
+                } catch (_: Exception) {
+                }
+                return@forEach
+            }
+
+            if (part.startsWith("fn=")) {
+                receiptFiscalDriveNumber = part.removePrefix("fn=")
+                return@forEach
+            }
+
+            if (part.startsWith("i=")) {
+                receiptFiscalDocumentNumber = part.removePrefix("i=")
+                return@forEach
+            }
+
+            if (part.startsWith("fp=")) {
+                receiptFiscalSign = part.removePrefix("fp=")
+                return@forEach
+            }
+
+            if (part.startsWith("s=")) {
+                receiptSum = part.removePrefix("s=")
+                return@forEach
+            }
+        }
     }
 }

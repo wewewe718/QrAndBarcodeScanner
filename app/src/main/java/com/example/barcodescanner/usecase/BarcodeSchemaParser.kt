@@ -18,7 +18,8 @@ class BarcodeSchemaParser {
         BarcodeSchema.VCARD to listOf("BEGIN:VCARD"),
         BarcodeSchema.WIFI to listOf("WIFI:"),
         BarcodeSchema.YOUTUBE to listOf("vnd.youtube://", "http://www.youtube.com/watch?v=", "https://www.youtube.com/watch?v="),
-        BarcodeSchema.URL to listOf("http://", "https://")
+        BarcodeSchema.URL to listOf("http://", "https://"),
+        BarcodeSchema.RECEIPT to listOf("t=", "s=", "fn=", "i=", "fp=", "n=")
     )
 
     fun parseSchema(text: String): BarcodeSchema {

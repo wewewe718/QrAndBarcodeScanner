@@ -6,6 +6,14 @@ import com.example.barcodescanner.feature.error.ErrorDialogFragment
 import com.example.barcodescanner.model.BarcodeSchema
 import com.google.zxing.BarcodeFormat
 
+fun Int?.orZero(): Int {
+    return this ?: 0
+}
+
+fun Long?.orZero(): Long {
+    return this ?: 0
+}
+
 fun BarcodeFormat.toStringId(): Int {
     return when (this) {
         BarcodeFormat.AZTEC -> R.string.activity_barcode_format_aztec
@@ -44,11 +52,12 @@ fun BarcodeSchema.toImageId(): Int {
         BarcodeSchema.VCARD -> R.drawable.ic_contact
         BarcodeSchema.WIFI -> R.drawable.ic_wifi
         BarcodeSchema.YOUTUBE -> R.drawable.ic_youtube
+        BarcodeSchema.RECEIPT -> R.drawable.ic_receipt
         else -> R.drawable.ic_barcode_other
     }
 }
 
 fun AppCompatActivity.showError(error: Throwable) {
-    val errorDialog = ErrorDialogFragment.newInstance(error.message)
+    val errorDialog = ErrorDialogFragment.newInstance(this, error)
     errorDialog.show(supportFragmentManager, "")
 }

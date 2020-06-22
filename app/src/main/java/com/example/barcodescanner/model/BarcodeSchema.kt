@@ -15,6 +15,7 @@ enum class BarcodeSchema {
     WIFI,
     YOUTUBE,
     URL,
+    RECEIPT,
     OTHER;
 }
 

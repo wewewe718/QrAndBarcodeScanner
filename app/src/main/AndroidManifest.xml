@@ -5,6 +5,7 @@
     >
 
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -36,6 +37,12 @@
             />
         <activity
             android:name="com.example.barcodescanner.feature.barcode.image.BarcodeImageActivity"
+            />
+        <activity
+            android:name=".feature.barcode.receipt.CheckReceiptActivity"
+            />
+        <activity
+            android:name=".feature.barcode.receipt.ReceiptActivity"
             />
 
         <provider

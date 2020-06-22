@@ -3,6 +3,7 @@
 
     <string name="error_dialog_title">Error</string>
     <string name="error_dialog_default_message">Something went wrong</string>
+    <string name="error_dialog_no_internet_message">No internet. Check your internet connection.</string>
     <string name="error_dialog_positive_button_text">OK</string>
 
     <string name="activity_barcode_history_title">History</string>
@@ -28,6 +29,23 @@
     <string name="activity_barcode_format_upc_a">UPC-A</string>
     <string name="activity_barcode_format_upc_e">UPC-E</string>
     <string name="activity_barcode_format_upc_ean">UPC/EAN</string>
+    <string name="activity_barcode_bookmark_format">Title: %s\nURL: %s</string>
+    <string name="activity_barcode_calendar_format">Title: %s\nOrganizer: %s\nDescription: %s\nBegin time: %s\nEnd time: %s</string>
+    <string name="activity_barcode_email_format">To: %s\nSubject: %s\nBody: %s</string>
+    <string name="activity_barcode_sms_format">%s\n%s</string>
+    <string name="activity_barcode_contact_name">Name: %s\n</string>
+    <string name="activity_barcode_contact_address">Address: %s\n</string>
+    <string name="activity_barcode_contact_organization">Organization: %s\n</string>
+    <string name="activity_barcode_contact_job_position">Job position: %s\n</string>
+    <string name="activity_barcode_contact_phone">Phone: %s\n</string>
+    <string name="activity_barcode_contact_secondary_phone">Secondary phone: %s\n</string>
+    <string name="activity_barcode_contact_tertiary_phone">Tertiary phone: %s\n</string>
+    <string name="activity_barcode_contact_email">Email: %s\n</string>
+    <string name="activity_barcode_contact_secondary_email">Secondary email: %s\n</string>
+    <string name="activity_barcode_contact_tertiary_email">Tertiary email: %s\n</string>
+    <string name="activity_barcode_contact_url">URL: %s\n</string>
+    <string name="activity_barcode_contact_geo">Geo: %s\n</string>
+    <string name="activity_barcode_wifi_format">Auth: %s\nName: %s\nPassword: %s</string>
     <string name="activity_barcode_add_to_calendar">Add to Calendar</string>
     <string name="activity_barcode_add_to_contacts">Add to Contacts</string>
     <string name="activity_barcode_call_phone">Call</string>
@@ -40,10 +58,11 @@
     <string name="activity_barcode_open_in_youtube">Open in Youtube</string>
     <string name="activity_barcode_save_bookmark">Save to bookmarks</string>
     <string name="activity_barcode_open_link">Open the link</string>
-    <string name="activity_barcode_show_barcode_image">Show the barcode image</string>
     <string name="activity_barcode_share_as_text">Share as text</string>
+    <string name="activity_barcode_check_receipt">Check the receipt</string>
     <string name="activity_barcode_copy">Copy to clipboard</string>
     <string name="activity_barcode_search">Search on the Internet</string>
+    <string name="activity_barcode_show_barcode_image">Show the barcode image</string>
     <string name="activity_barcode_share_as_image">Share as image</string>
     <string name="activity_barcode_save_to_gallery">Save to Gallery</string>
     <string name="activity_barcode_print">Print</string>
@@ -51,4 +70,20 @@
     <string name="activity_barcode_copied">Copied to clipboard</string>
     <string name="activity_barcode_barcode_image_saved">Saved to Gallery</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
+
+    <!--Russian receipt QR code strings. Not translatable-->
+    <string name="activity_barcode_receipt_type_income" translatable="false">Приход</string>
+    <string name="activity_barcode_receipt_type_return_income" translatable="false">Возврат прихода</string>
+    <string name="activity_barcode_receipt_type_expense" translatable="false">Расход</string>
+    <string name="activity_barcode_receipt_type_return_expense" translatable="false">Возврат расхода</string>
+    <string name="activity_barcode_receipt_format" translatable="false">%s\n%s\nФН: %s\nФД: %s\nФПД: %s\nИтог: %s</string>
+
+    <string name="activity_check_receipt_title">Receipt</string>
+    <string name="activity_check_receipt_valid_receipt">The receipt is found</string>
+    <string name="activity_check_receipt_invalid_receipt">The receipt is not found!</string>
+    <string name="activity_check_receipt_show_receipt">Show the receipt</string>
+    <string name="activity_check_receipt_save_receipt">Save as .pdf</string>
+
+    <string name="activity_receipt_title">Receipt</string>
+
 </resources>

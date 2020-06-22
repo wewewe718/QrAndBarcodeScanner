@@ -23,6 +23,9 @@ val AppCompatActivity.barcodeImageGenerator
 val AppCompatActivity.barcodeImageSaver
     get() = app.barcodeImageSaver
 
+val AppCompatActivity.checkReceiptApi
+    get() = app.checkReceiptApi
+
 
 val AndroidViewModel.barcodeDatabase
     get() = getApplication<App>().barcodeDatabase

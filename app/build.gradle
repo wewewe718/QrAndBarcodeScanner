@@ -16,6 +16,8 @@ android {
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", 'CHECK_RECEIPT_API_URL', '"https://proverkacheka.nalog.ru:9999/v1/ofds/*/inns/*"'
+        buildConfigField "String", 'OFD_URL', '"https://check.ofd.ru/Document/FetchCachedReceiptFromFns"'
     }
 
     buildTypes {
@@ -74,7 +76,7 @@ dependencies {
     // VCard Parser
     implementation 'com.googlecode.ez-vcard:ez-vcard:0.10.6'
 
-    // Barcode Text Generator
+    // Other Barcode Schemas Parser
     implementation 'com.github.kenglxn.QRGen:android:2.6.0'
 
     // Rx
@@ -84,4 +86,7 @@ dependencies {
     implementation "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxBindingVersion"
     implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxBindingVersion"
     implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxBindingVersion"
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:4.7.2"
 }
