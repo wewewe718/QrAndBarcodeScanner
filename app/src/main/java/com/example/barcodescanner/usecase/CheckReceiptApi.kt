@@ -1,6 +1,11 @@
 package com.example.barcodescanner.usecase
 
+import android.app.DownloadManager
+import android.content.Context
+import android.net.Uri
+import android.os.Environment
 import com.example.barcodescanner.BuildConfig
+import com.example.barcodescanner.R
 import io.reactivex.Single
 import io.reactivex.SingleEmitter
 import okhttp3.*
@@ -26,6 +31,27 @@ class CheckReceiptApi {
         return Single.create { emitter ->
             makeRequest(type, time, fiscalDriveNumber, fiscalDocumentNumber, fiscalSign, sum, emitter)
         }
+    }
+
+    fun downloadReceipt(context: Context, fiscalDriveNumber: String, fiscalDocumentNumber: String, fiscalSign: String) {
+        val url = "${BuildConfig.OFD_URL}?FnNumber=$fiscalDriveNumber&DocNumber=$fiscalDocumentNumber&DocFiscalSign=$fiscalSign&format=pdf"
+        val uri = Uri.parse(url)
+        val fileName = "${context.getString(R.string.activity_check_receipt_download_file_name)}.pdf"
+
+        val request = DownloadManager.Request(uri).apply {
+            setTitle(context.getString(R.string.activity_check_receipt_download_title))
+            setDescription(context.getString(R.string.activity_check_receipt_download_description))
+            setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            setVisibleInDownloadsUi(true)
+            setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName)
+        }
+
+        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        downloadManager.enqueue(request)
+    }
+
+    fun getReceiptUrl(fiscalDriveNumber: String, fiscalDocumentNumber: String, fiscalSign: String): String {
+        return "${BuildConfig.OFD_URL}?FnNumber=$fiscalDriveNumber&DocNumber=$fiscalDocumentNumber&DocFiscalSign=$fiscalSign&format=html"
     }
 
     private fun makeRequest(

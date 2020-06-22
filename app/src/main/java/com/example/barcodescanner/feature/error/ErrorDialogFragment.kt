@@ -11,13 +11,13 @@ import java.net.UnknownHostException
 class ErrorDialogFragment : DialogFragment() {
 
     interface Listener {
-        fun onPositiveButtonClicked()
+        fun onErrorDialogPositiveButtonClicked()
     }
 
     companion object {
         private const val ERROR_MESSAGE_KEY = "ERROR_MESSAGE_KEY"
 
-        fun newInstance(context: Context, error: Throwable): ErrorDialogFragment {
+        fun newInstance(context: Context, error: Throwable?): ErrorDialogFragment {
             return ErrorDialogFragment().apply {
                 arguments = Bundle().apply {
                     putString(ERROR_MESSAGE_KEY, getErrorMessage(context, error))
@@ -25,10 +25,10 @@ class ErrorDialogFragment : DialogFragment() {
             }
         }
 
-        private fun getErrorMessage(context: Context, error: Throwable): String {
+        private fun getErrorMessage(context: Context, error: Throwable?): String {
             return when (error) {
                 is UnknownHostException -> context.getString(R.string.error_dialog_no_internet_message)
-                else -> error.message ?: context.getString(R.string.error_dialog_default_message)
+                else -> error?.message ?: context.getString(R.string.error_dialog_default_message)
             }
         }
     }
@@ -45,7 +45,8 @@ class ErrorDialogFragment : DialogFragment() {
         return AlertDialog.Builder(requireContext())
             .setTitle(R.string.error_dialog_title)
             .setMessage(message)
-            .setPositiveButton(R.string.error_dialog_positive_button_text) { _, _ -> listener?.onPositiveButtonClicked() }
+            .setCancelable(false)
+            .setPositiveButton(R.string.error_dialog_positive_button_text) { _, _ -> listener?.onErrorDialogPositiveButtonClicked() }
             .create()
     }
 }

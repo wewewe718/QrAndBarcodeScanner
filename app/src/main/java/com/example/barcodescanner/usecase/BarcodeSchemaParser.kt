@@ -1,6 +1,8 @@
 package com.example.barcodescanner.usecase
 
+import com.example.barcodescanner.feature.common.containsAll
 import com.example.barcodescanner.model.BarcodeSchema
+import com.google.zxing.BarcodeFormat
 
 class BarcodeSchemaParser {
 
@@ -23,13 +25,24 @@ class BarcodeSchemaParser {
     )
 
     fun parseSchema(text: String): BarcodeSchema {
-        BarcodeSchema.values().forEach { schema ->
-            prefixes[schema]?.forEach { prefix ->
-                if (text.startsWith(prefix, true)) {
-                    return schema
+        BarcodeSchema.values()
+            .filter { schema ->
+                schema != BarcodeSchema.RECEIPT
+            }
+            .forEach { schema ->
+                prefixes[schema]?.forEach { prefix ->
+                    if (text.startsWith(prefix, true)) {
+                        return schema
+                    }
                 }
             }
+
+        prefixes[BarcodeSchema.RECEIPT]?.also { receiptPrefixes ->
+            if (text.containsAll(receiptPrefixes)) {
+                return BarcodeSchema.RECEIPT
+            }
         }
+
         return BarcodeSchema.OTHER
     }
 }

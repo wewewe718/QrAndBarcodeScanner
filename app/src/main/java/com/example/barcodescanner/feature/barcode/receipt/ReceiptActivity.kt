@@ -3,15 +3,20 @@ package com.example.barcodescanner.feature.barcode.receipt
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
+import com.example.barcodescanner.di.checkReceiptApi
+import com.example.barcodescanner.feature.common.showError
+import com.example.barcodescanner.feature.error.ErrorDialogFragment
 import kotlinx.android.synthetic.main.activity_receipt.*
 
-class ReceiptActivity : AppCompatActivity() {
+class ReceiptActivity : AppCompatActivity(), ErrorDialogFragment.Listener {
 
     companion object {
         private const val FISCAL_DRIVE_NUMBER_KEY = "FISCAL_DRIVE_NUMBER_KEY"
@@ -44,6 +49,10 @@ class ReceiptActivity : AppCompatActivity() {
         showReceipt()
     }
 
+    override fun onErrorDialogPositiveButtonClicked() {
+        finish()
+    }
+
     private fun handleToolbarBackClicked() {
         toolbar.setNavigationOnClickListener {
             finish()
@@ -51,11 +60,17 @@ class ReceiptActivity : AppCompatActivity() {
     }
 
     private fun showReceipt() {
-        val url = "${BuildConfig.OFD_URL}?FnNumber=$fiscalDriveNumber&DocNumber=$fiscalDocumentNumber&DocFiscalSign=$fiscalSign&format=html"
+        val url = checkReceiptApi.getReceiptUrl(fiscalDriveNumber, fiscalDocumentNumber, fiscalSign)
         web_view.webViewClient = object : WebViewClient() {
+
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 progress_bar_loading.isVisible = false
+            }
+
+            override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?) {
+                super.onReceivedError(view, request, error)
+                showError(Exception())
             }
         }
         web_view.loadUrl(url)

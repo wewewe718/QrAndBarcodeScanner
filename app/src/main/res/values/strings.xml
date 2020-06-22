@@ -82,7 +82,11 @@
     <string name="activity_check_receipt_valid_receipt">The receipt is found</string>
     <string name="activity_check_receipt_invalid_receipt">The receipt is not found!</string>
     <string name="activity_check_receipt_show_receipt">Show the receipt</string>
-    <string name="activity_check_receipt_save_receipt">Save as .pdf</string>
+    <string name="activity_check_receipt_download_receipt">Save as .pdf</string>
+    <string name="activity_check_receipt_download_started">Download started</string>
+    <string name="activity_check_receipt_download_title">Receipt</string>
+    <string name="activity_check_receipt_download_description">Downloading</string>
+    <string name="activity_check_receipt_download_file_name">Receipt</string>
 
     <string name="activity_receipt_title">Receipt</string>
 

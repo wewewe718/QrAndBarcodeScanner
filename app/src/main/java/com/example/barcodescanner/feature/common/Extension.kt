@@ -57,7 +57,16 @@ fun BarcodeSchema.toImageId(): Int {
     }
 }
 
-fun AppCompatActivity.showError(error: Throwable) {
+fun AppCompatActivity.showError(error: Throwable?) {
     val errorDialog = ErrorDialogFragment.newInstance(this, error)
     errorDialog.show(supportFragmentManager, "")
+}
+
+fun String.containsAll(others: List<String>, ignoreCase: Boolean = false): Boolean {
+    others.forEach { other ->
+        if (contains(other, ignoreCase).not()) {
+            return false
+        }
+    }
+    return true
 }

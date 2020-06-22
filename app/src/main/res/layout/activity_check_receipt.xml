@@ -67,14 +67,14 @@
         android:layout_marginTop="@dimen/default_margin_very_large"
         android:layout_marginEnd="@dimen/default_margin"
         app:layout_constraintTop_toBottomOf="@id/text_view_receipt_is_valid"
-        app:layout_constraintBottom_toTopOf="@id/button_save_receipt"
+        app:layout_constraintBottom_toTopOf="@id/button_download_receipt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:icon="@drawable/ic_receipt"
         app:text="@string/activity_check_receipt_show_receipt"
         />
     <com.example.barcodescanner.feature.common.IconButton
-        android:id="@+id/button_save_receipt"
+        android:id="@+id/button_download_receipt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/button_show_receipt"
@@ -82,13 +82,13 @@
         app:layout_constraintStart_toStartOf="@id/button_show_receipt"
         app:layout_constraintEnd_toEndOf="@id/button_show_receipt"
         app:icon="@drawable/ic_download"
-        app:text="@string/activity_check_receipt_save_receipt"
+        app:text="@string/activity_check_receipt_download_receipt"
         />
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group_receipt_is_valid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="image_view_receipt_is_valid,text_view_receipt_is_valid, button_show_receipt, button_save_receipt"
+        app:constraint_referenced_ids="image_view_receipt_is_valid,text_view_receipt_is_valid, button_show_receipt, button_download_receipt"
         android:visibility="gone"
         />
 

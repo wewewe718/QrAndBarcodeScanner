@@ -3,6 +3,7 @@ package com.example.barcodescanner.feature.barcode.receipt
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
@@ -60,10 +61,11 @@ class CheckReceiptActivity : AppCompatActivity(), ErrorDialogFragment.Listener {
         setContentView(R.layout.activity_check_receipt)
         handleToolbarBackClicked()
         handleShowReceiptClicked()
+        handleDownloadReceiptClicked()
         checkReceipt()
     }
 
-    override fun onPositiveButtonClicked() {
+    override fun onErrorDialogPositiveButtonClicked() {
         finish()
     }
 
@@ -75,7 +77,13 @@ class CheckReceiptActivity : AppCompatActivity(), ErrorDialogFragment.Listener {
 
     private fun handleShowReceiptClicked() {
         button_show_receipt.setOnClickListener {
-            ReceiptActivity.start(this, fiscalDriveNumber, fiscalDocumentNumber, fiscalSign)
+            navigateToReceiptScreen()
+        }
+    }
+
+    private fun handleDownloadReceiptClicked() {
+        button_download_receipt.setOnClickListener {
+            downloadReceipt()
         }
     }
 
@@ -102,5 +110,18 @@ class CheckReceiptActivity : AppCompatActivity(), ErrorDialogFragment.Listener {
     private fun showReceiptIsInvalid() {
         progress_bar_loading.isVisible = false
         group_receipt_is_invalid.isVisible = true
+    }
+
+    private fun navigateToReceiptScreen() {
+        ReceiptActivity.start(this, fiscalDriveNumber, fiscalDocumentNumber, fiscalSign)
+    }
+
+    private fun downloadReceipt() {
+        checkReceiptApi.downloadReceipt(this, fiscalDriveNumber, fiscalDocumentNumber, fiscalSign)
+        showToast(R.string.activity_check_receipt_download_started)
+    }
+
+    private fun showToast(stringId: Int) {
+        Toast.makeText(this, stringId, Toast.LENGTH_LONG).show()
     }
 }
