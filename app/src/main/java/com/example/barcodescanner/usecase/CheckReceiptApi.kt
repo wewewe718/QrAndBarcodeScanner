@@ -11,7 +11,7 @@ import io.reactivex.SingleEmitter
 import okhttp3.*
 import java.io.IOException
 
-class CheckReceiptApi {
+class CheckReceiptApi(context: Context) {
 
     enum class Status {
         VALID,
@@ -19,6 +19,8 @@ class CheckReceiptApi {
     }
 
     private val client by lazy { OkHttpClient() }
+    private val downloadManager by lazy { context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager }
+    private val resources by lazy { context.resources }
 
     fun checkReceipt(
         type: Int,
@@ -33,20 +35,18 @@ class CheckReceiptApi {
         }
     }
 
-    fun downloadReceipt(context: Context, fiscalDriveNumber: String, fiscalDocumentNumber: String, fiscalSign: String) {
+    fun downloadReceipt(fiscalDriveNumber: String, fiscalDocumentNumber: String, fiscalSign: String) {
         val url = "${BuildConfig.OFD_URL}?FnNumber=$fiscalDriveNumber&DocNumber=$fiscalDocumentNumber&DocFiscalSign=$fiscalSign&format=pdf"
         val uri = Uri.parse(url)
-        val fileName = "${context.getString(R.string.activity_check_receipt_download_file_name)}.pdf"
+        val fileName = "${resources.getString(R.string.activity_check_receipt_download_file_name)}.pdf"
 
         val request = DownloadManager.Request(uri).apply {
-            setTitle(context.getString(R.string.activity_check_receipt_download_title))
-            setDescription(context.getString(R.string.activity_check_receipt_download_description))
+            setTitle(resources.getString(R.string.activity_check_receipt_download_title))
+            setDescription(resources.getString(R.string.activity_check_receipt_download_description))
             setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             setVisibleInDownloadsUi(true)
             setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName)
         }
-
-        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         downloadManager.enqueue(request)
     }
 

@@ -6,9 +6,12 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.net.wifi.WifiManager
+import android.net.wifi.WifiNetworkSuggestion
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.provider.ContactsContract
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -17,6 +20,7 @@ import androidx.print.PrintHelper
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
 import com.example.barcodescanner.di.barcodeImageSaver
+import com.example.barcodescanner.di.wifiConnector
 import com.example.barcodescanner.feature.barcode.image.BarcodeImageActivity
 import com.example.barcodescanner.feature.barcode.receipt.CheckReceiptActivity
 import com.example.barcodescanner.feature.common.orZero
@@ -111,6 +115,7 @@ class BarcodeActivity : AppCompatActivity() {
         button_send_sms_or_mms.setOnClickListener { sendSmsOrMms() }
         button_send_email.setOnClickListener { sendEmail() }
         button_show_location.setOnClickListener { showLocation() }
+        button_connect_to_wifi.setOnClickListener { connectToWifi() }
         button_copy_network_name.setOnClickListener { copyNetworkNameToClipboard() }
         button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
         button_open_in_google_play.setOnClickListener { openInGooglePlay() }
@@ -320,6 +325,7 @@ class BarcodeActivity : AppCompatActivity() {
         button_send_sms_or_mms.isVisible = barcode.phone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
         button_send_email.isVisible = barcode.email.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
         button_show_location.isVisible = barcode.geoUri.isNullOrEmpty().not()
+        button_connect_to_wifi.isVisible = barcode.schema == BarcodeSchema.WIFI
         button_copy_network_name.isVisible = barcode.networkName.isNullOrEmpty().not()
         button_copy_network_password.isVisible = barcode.networkPassword.isNullOrEmpty().not()
         button_open_in_google_play.isVisible = barcode.googlePlayUrl.isNullOrEmpty().not()
@@ -391,6 +397,16 @@ class BarcodeActivity : AppCompatActivity() {
 
     private fun showLocation() {
         startActivityIfExists(Intent.ACTION_VIEW, barcode.geoUri.orEmpty())
+    }
+
+    private fun connectToWifi() {
+        try {
+            barcode.apply {
+                wifiConnector.connect(networkAuthType.orEmpty(), networkName.orEmpty(), networkPassword.orEmpty())
+            }
+        } catch (ex: Exception) {
+            showError(ex)
+        }
     }
 
     private fun copyNetworkNameToClipboard() {

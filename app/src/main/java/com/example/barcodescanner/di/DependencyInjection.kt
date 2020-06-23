@@ -26,6 +26,9 @@ val AppCompatActivity.barcodeImageSaver
 val AppCompatActivity.checkReceiptApi
     get() = app.checkReceiptApi
 
+val AppCompatActivity.wifiConnector
+    get() = app.wifiConnector
+
 
 val AndroidViewModel.barcodeDatabase
     get() = getApplication<App>().barcodeDatabase

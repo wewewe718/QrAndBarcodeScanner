@@ -52,6 +52,7 @@
     <string name="activity_barcode_send_sms">Send SMS/MMS</string>
     <string name="activity_barcode_send_email">Send Email</string>
     <string name="activity_barcode_show_location">Show the location</string>
+    <string name="activity_barcode_connect_to_wifi">Connect</string>
     <string name="activity_barcode_copy_network_name">Copy the network name</string>
     <string name="activity_barcode_copy_network_password">Copy the network password</string>
     <string name="activity_barcode_open_in_google_play">Open in Google Play</string>

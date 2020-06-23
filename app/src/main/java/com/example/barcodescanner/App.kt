@@ -15,5 +15,6 @@ class App : MultiDexApplication() {
     val barcodeSchemaParser by lazy { BarcodeSchemaParser() }
     val barcodeImageGenerator by lazy { BarcodeImageGenerator() }
     val barcodeImageSaver by lazy { BarcodeImageSaver(barcodeImageGenerator) }
-    val checkReceiptApi by lazy { CheckReceiptApi() }
+    val wifiConnector by lazy { WifiConnector(this) }
+    val checkReceiptApi by lazy { CheckReceiptApi(this) }
 }
