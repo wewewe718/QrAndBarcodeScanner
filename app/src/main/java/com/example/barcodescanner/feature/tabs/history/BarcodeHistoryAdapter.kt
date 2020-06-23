@@ -1,4 +1,4 @@
-package com.example.barcodescanner.feature.history
+package com.example.barcodescanner.feature.tabs.history
 
 import android.view.LayoutInflater
 import android.view.View

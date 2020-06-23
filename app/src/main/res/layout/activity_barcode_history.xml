@@ -19,7 +19,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             style="@style/ToolbarStyle"
-            app:title="@string/activity_barcode_history_title"
+            app:title="@string/fragment_barcode_history_title"
             />
     </com.google.android.material.appbar.AppBarLayout>
 

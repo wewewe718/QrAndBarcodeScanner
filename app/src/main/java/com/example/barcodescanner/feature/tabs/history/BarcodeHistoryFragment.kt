@@ -1,29 +1,33 @@
-package com.example.barcodescanner.feature.history
+package com.example.barcodescanner.feature.tabs.history
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barcodescanner.R
-import com.example.barcodescanner.feature.common.showError
-import com.example.barcodescanner.feature.permission.RequestPermissionsActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
-import com.jakewharton.rxbinding2.view.clicks
+import com.example.barcodescanner.feature.common.showError
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
-import kotlinx.android.synthetic.main.activity_barcode_history.*
+import kotlinx.android.synthetic.main.fragment_barcode_history.*
 
-class BarcodeHistoryActivity : AppCompatActivity() {
+class BarcodeHistoryFragment : Fragment() {
     private val disposable = CompositeDisposable()
     private val scanHistoryAdapter = BarcodeHistoryAdapter()
     private val viewModel by lazy {
-        ViewModelProviders.of(this).get(BarcodeHistoryActivityViewModel::class.java)
+        ViewModelProviders.of(this).get(BarcodeHistoryViewModel::class.java)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_barcode_history)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_barcode_history, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
     }
 
@@ -39,7 +43,7 @@ class BarcodeHistoryActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         recycler_view_history.apply {
-            layoutManager = LinearLayoutManager(this@BarcodeHistoryActivity)
+            layoutManager = LinearLayoutManager(requireContext())
             adapter = scanHistoryAdapter
         }
     }
@@ -47,11 +51,9 @@ class BarcodeHistoryActivity : AppCompatActivity() {
     private fun subscribeToViewModel() {
         subscribeToBarcodeClicks()
         subscribeToHistoryDataChanged()
-        subscribeToScanButtonClicks()
         subscribeToHistory()
         subscribeToError()
         subscribeToNavigateToBarcodeScreen()
-        subscribeToNavigateToRequestPermissionsScreenEvent()
     }
 
     private fun subscribeToBarcodeClicks() {
@@ -64,14 +66,6 @@ class BarcodeHistoryActivity : AppCompatActivity() {
         scanHistoryAdapter.dataChanged
             .subscribe {
                 recycler_view_history.layoutManager?.scrollToPosition(0)
-            }
-            .addTo(disposable)
-    }
-
-    private fun subscribeToScanButtonClicks() {
-        fab_scan_barcode.clicks()
-            .subscribe {
-                viewModel.onScanBarcodeClicked()
             }
             .addTo(disposable)
     }
@@ -94,16 +88,7 @@ class BarcodeHistoryActivity : AppCompatActivity() {
         viewModel.navigateToBarcodeScreenEvent
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { barcode ->
-                BarcodeActivity.start(this, barcode)
-            }
-            .addTo(disposable)
-    }
-
-    private fun subscribeToNavigateToRequestPermissionsScreenEvent() {
-        viewModel.navigateToRequestPermissionsScreenEvent
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                RequestPermissionsActivity.start(this)
+                BarcodeActivity.start(requireActivity(), barcode)
             }
             .addTo(disposable)
     }

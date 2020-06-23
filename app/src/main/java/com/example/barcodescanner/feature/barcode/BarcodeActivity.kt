@@ -6,14 +6,10 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.net.wifi.WifiManager
-import android.net.wifi.WifiNetworkSuggestion
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.provider.ContactsContract
-import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import androidx.print.PrintHelper
@@ -21,6 +17,7 @@ import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
 import com.example.barcodescanner.di.barcodeImageSaver
 import com.example.barcodescanner.di.wifiConnector
+import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.image.BarcodeImageActivity
 import com.example.barcodescanner.feature.barcode.receipt.CheckReceiptActivity
 import com.example.barcodescanner.feature.common.orZero
@@ -37,7 +34,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class BarcodeActivity : AppCompatActivity() {
+class BarcodeActivity : BaseActivity() {
 
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"

@@ -1,12 +1,20 @@
 <resources>
     <string name="app_name">Barcode Scanner</string>
 
+    <!--Error dialog-->
     <string name="error_dialog_title">Error</string>
     <string name="error_dialog_default_message">Something went wrong</string>
     <string name="error_dialog_no_internet_message">No internet. Check your internet connection.</string>
     <string name="error_dialog_positive_button_text">OK</string>
 
-    <string name="activity_barcode_history_title">History</string>
+    <!--Bottom tabs activity-->
+    <string name="activity_bottom_tabs_scan_tab">Scan</string>
+    <string name="activity_bottom_tabs_create_tab">Create</string>
+    <string name="activity_bottom_tabs_history_tab">History</string>
+    <string name="activity_bottom_tabs_settings_tab">Settings</string>
+
+    <!--Barcode history fragment-->
+    <string name="fragment_barcode_history_title">History</string>
 
     <string name="activity_request_permissions_title">Request permissions</string>
     <string name="activity_request_permissions_message">The app needs camera permission to scan barcodes</string>

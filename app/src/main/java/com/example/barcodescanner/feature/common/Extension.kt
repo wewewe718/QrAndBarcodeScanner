@@ -1,6 +1,7 @@
 package com.example.barcodescanner.feature.common
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.barcodescanner.R
 import com.example.barcodescanner.feature.error.ErrorDialogFragment
 import com.example.barcodescanner.model.BarcodeSchema
@@ -60,6 +61,11 @@ fun BarcodeSchema.toImageId(): Int {
 fun AppCompatActivity.showError(error: Throwable?) {
     val errorDialog = ErrorDialogFragment.newInstance(this, error)
     errorDialog.show(supportFragmentManager, "")
+}
+
+fun Fragment.showError(error: Throwable?) {
+    val errorDialog = ErrorDialogFragment.newInstance(requireContext(), error)
+    errorDialog.show(childFragmentManager, "")
 }
 
 fun String.containsAll(others: List<String>, ignoreCase: Boolean = false): Boolean {

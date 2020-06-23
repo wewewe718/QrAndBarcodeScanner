@@ -1,4 +1,4 @@
-package com.example.barcodescanner.feature.history
+package com.example.barcodescanner.feature.tabs.history
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -12,7 +12,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 
-class BarcodeHistoryActivityViewModel(app: Application) : AndroidViewModel(app) {
+class BarcodeHistoryViewModel(app: Application) : AndroidViewModel(app) {
 
     companion object {
         private const val PAGE_SIZE = 20

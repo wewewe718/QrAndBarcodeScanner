@@ -7,13 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
+import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.common.toStringId
 import com.example.barcodescanner.model.Barcode
 import kotlinx.android.synthetic.main.activity_barcode_image.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class BarcodeImageActivity : AppCompatActivity() {
+class BarcodeImageActivity : BaseActivity() {
 
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.checkReceiptApi
+import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.common.orZero
 import com.example.barcodescanner.feature.common.showError
 import com.example.barcodescanner.feature.error.ErrorDialogFragment
@@ -17,7 +18,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_check_receipt.*
 
-class CheckReceiptActivity : AppCompatActivity(), ErrorDialogFragment.Listener {
+class CheckReceiptActivity : BaseActivity(), ErrorDialogFragment.Listener {
 
     companion object {
         private const val TYPE_KEY = "TYPE_KEY"

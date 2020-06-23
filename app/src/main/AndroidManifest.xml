@@ -18,7 +18,7 @@
         android:name="com.example.barcodescanner.App"
         >
 
-        <activity android:name="com.example.barcodescanner.feature.history.BarcodeHistoryActivity">
+        <activity android:name=".feature.tabs.BottomTabsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

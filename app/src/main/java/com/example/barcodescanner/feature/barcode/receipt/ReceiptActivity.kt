@@ -9,14 +9,14 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.checkReceiptApi
+import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.common.showError
 import com.example.barcodescanner.feature.error.ErrorDialogFragment
 import kotlinx.android.synthetic.main.activity_receipt.*
 
-class ReceiptActivity : AppCompatActivity(), ErrorDialogFragment.Listener {
+class ReceiptActivity : BaseActivity(), ErrorDialogFragment.Listener {
 
     companion object {
         private const val FISCAL_DRIVE_NUMBER_KEY = "FISCAL_DRIVE_NUMBER_KEY"
