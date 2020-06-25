@@ -3,7 +3,6 @@ package com.example.barcodescanner.feature.common
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.R
-import com.example.barcodescanner.feature.error.ErrorDialogFragment
 import com.example.barcodescanner.model.BarcodeSchema
 import com.google.zxing.BarcodeFormat
 

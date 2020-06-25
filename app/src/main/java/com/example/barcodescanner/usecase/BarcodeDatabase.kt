@@ -49,4 +49,7 @@ interface BarcodeDatabase {
 
     @Query("DELETE FROM codes WHERE id = :id")
     fun delete(id: Long): Completable
+
+    @Query("DELETE FROM codes")
+    fun deleteAll(): Completable
 }

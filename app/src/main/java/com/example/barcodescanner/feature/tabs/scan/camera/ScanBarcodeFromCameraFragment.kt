@@ -1,12 +1,17 @@
-package com.example.barcodescanner.feature.scan
+package com.example.barcodescanner.feature.tabs.scan.camera
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.SeekBar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.budiyev.android.codescanner.*
+import androidx.fragment.app.Fragment
+import com.budiyev.android.codescanner.AutoFocusMode
+import com.budiyev.android.codescanner.CodeScanner
+import com.budiyev.android.codescanner.DecodeCallback
+import com.budiyev.android.codescanner.ErrorCallback
+import com.budiyev.android.codescanner.ScanMode
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.barcodeSchemaParser
@@ -22,24 +27,19 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_scan_barcode.*
 
-class ScanBarcodeActivity : AppCompatActivity() {
-
-    companion object {
-        fun start(context: Context) {
-            val intent = Intent(context, ScanBarcodeActivity::class.java)
-            context.startActivity(intent)
-        }
-    }
-
+class ScanBarcodeFromCameraFragment : Fragment() {
     private val cameraFacing = CodeScanner.CAMERA_BACK
     private lateinit var codeScanner: CodeScanner
     private var maxZoom: Int = 0
     private val zoomStep = 5
     private val disposable = CompositeDisposable()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scan_barcode)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_scan_barcode_from_camera, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initScanner()
         initZoomSeekBar()
         handleZoomChanged()
@@ -57,13 +57,13 @@ class ScanBarcodeActivity : AppCompatActivity() {
         super.onPause()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         disposable.clear()
     }
 
     private fun initScanner() {
-        codeScanner = CodeScanner(this, scanner_view).apply {
+        codeScanner = CodeScanner(requireActivity(), scanner_view).apply {
             camera = cameraFacing
             formats = CodeScanner.ALL_FORMATS
             autoFocusMode = AutoFocusMode.SAFE
@@ -77,7 +77,7 @@ class ScanBarcodeActivity : AppCompatActivity() {
 
     private fun initZoomSeekBar() {
         scannerCameraHelper.getCameraParameters(cameraFacing)?.apply {
-            this@ScanBarcodeActivity.maxZoom = maxZoom
+            this@ScanBarcodeFromCameraFragment.maxZoom = maxZoom
             seek_bar_zoom.max = maxZoom
             seek_bar_zoom.progress = zoom
         }
@@ -127,7 +127,7 @@ class ScanBarcodeActivity : AppCompatActivity() {
     }
 
     private fun saveScannedBarcode(result: Result) {
-        runOnUiThread {
+        requireActivity().runOnUiThread {
             showLoading(true)
         }
 
@@ -144,6 +144,7 @@ class ScanBarcodeActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { id ->
+                    showLoading(false)
                     val newBarcode = barcode.copy(id = id)
                     navigateToBarcodeScreen(newBarcode)
                 },
@@ -160,7 +161,6 @@ class ScanBarcodeActivity : AppCompatActivity() {
     }
 
     private fun navigateToBarcodeScreen(barcode: Barcode) {
-        BarcodeActivity.start(this, barcode)
-        finish()
+        BarcodeActivity.start(requireActivity(), barcode)
     }
 }

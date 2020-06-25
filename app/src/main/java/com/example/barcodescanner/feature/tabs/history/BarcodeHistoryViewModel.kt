@@ -9,6 +9,7 @@ import com.example.barcodescanner.model.Barcode
 import io.reactivex.BackpressureStrategy
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 
@@ -20,23 +21,28 @@ class BarcodeHistoryViewModel(app: Application) : AndroidViewModel(app) {
 
     private val disposable = CompositeDisposable()
     val scanHistory = BehaviorSubject.create<PagedList<Barcode>>()
+    val isLoading = BehaviorSubject.create<Boolean>()
     val error = PublishSubject.create<Throwable>()
     val navigateToBarcodeScreenEvent = PublishSubject.create<Barcode>()
-    val navigateToRequestPermissionsScreenEvent = PublishSubject.create<Unit>()
+    val showDeleteHistoryConfirmationEvent = PublishSubject.create<Unit>()
 
     init {
-        loadScanHistory()
+        loadHistory()
     }
 
     fun onBarcodeClicked(barcode: Barcode) {
         navigateToBarcodeScreenEvent.onNext(barcode)
     }
 
-    fun onScanBarcodeClicked() {
-        navigateToRequestPermissionsScreenEvent.onNext(Unit)
+    fun onDeleteHistoryClicked() {
+        showDeleteHistoryConfirmationEvent.onNext(Unit)
     }
 
-    private fun loadScanHistory() {
+    fun onDeleteHistoryConfirmed() {
+        deleteHistory()
+    }
+
+    private fun loadHistory() {
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
             .setPageSize(PAGE_SIZE)
@@ -49,6 +55,21 @@ class BarcodeHistoryViewModel(app: Application) : AndroidViewModel(app) {
                     this.scanHistory.onNext(scanHistory)
                 },
                 { error ->
+                    this.error.onNext(error)
+                }
+            )
+            .addTo(disposable)
+    }
+
+    private fun deleteHistory() {
+        barcodeDatabase.deleteAll()
+            .subscribeOn(Schedulers.io())
+            .subscribe(
+                {
+                    isLoading.onNext(false)
+                },
+                { error ->
+                    isLoading.onNext(false)
                     this.error.onNext(error)
                 }
             )

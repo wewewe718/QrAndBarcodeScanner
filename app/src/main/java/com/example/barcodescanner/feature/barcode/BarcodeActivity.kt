@@ -275,23 +275,12 @@ class BarcodeActivity : BaseActivity() {
             .toString()
     }
 
-    private fun StringBuilder.appendIfNotEmpty(text: String?, stringId: Int): StringBuilder {
-        if (text.isNullOrEmpty().not()) {
-            append(getString(stringId, text))
-        }
-        return this
-    }
-
-    private fun Char.isLineSeparator(): Boolean {
-        return this == '\r' || this == '\n'
-    }
-
     private fun showWifi() {
         text_view_barcode_text.text = getString(
             R.string.activity_barcode_wifi_format,
-            barcode.networkAuthType,
-            barcode.networkName,
-            barcode.networkPassword
+            barcode.networkAuthType.orEmpty(),
+            barcode.networkName.orEmpty(),
+            barcode.networkPassword.orEmpty()
         )
     }
 
@@ -308,10 +297,10 @@ class BarcodeActivity : BaseActivity() {
             R.string.activity_barcode_receipt_format,
             dateFormatter.format(Date(barcode.receiptTime.orZero())),
             getString(receiptType),
-            barcode.receiptFiscalDriveNumber,
-            barcode.receiptFiscalDocumentNumber,
-            barcode.receiptFiscalSign,
-            barcode.receiptSum
+            barcode.receiptFiscalDriveNumber.orEmpty(),
+            barcode.receiptFiscalDocumentNumber.orEmpty(),
+            barcode.receiptFiscalSign.orEmpty(),
+            barcode.receiptSum.orEmpty()
         )
     }
 
@@ -525,5 +514,17 @@ class BarcodeActivity : BaseActivity() {
 
     private fun showToast(stringId: Int) {
         Toast.makeText(this, stringId, Toast.LENGTH_SHORT).show()
+    }
+
+
+    private fun StringBuilder.appendIfNotEmpty(text: String?, stringId: Int): StringBuilder {
+        if (text.isNullOrEmpty().not()) {
+            append(getString(stringId, text))
+        }
+        return this
+    }
+
+    private fun Char.isLineSeparator(): Boolean {
+        return this == '\r' || this == '\n'
     }
 }

@@ -11,5 +11,7 @@
     <dimen name="margin_horizontal_barcode">74dp</dimen>
     <dimen name="small_text_size">13sp</dimen>
     <dimen name="receipt_image_view_size">70dp</dimen>
-    <dimen name="bottom_navigation_item_image_size">28dp</dimen>
+    <dimen name="bottom_navigation_item_image_size">26dp</dimen>
+    <dimen name="bottom_navigation_item_text_size">13sp</dimen>
+    <dimen name="tab_layout_indicator_height">4dp</dimen>
 </resources>

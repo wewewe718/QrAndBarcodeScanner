@@ -13,13 +13,32 @@
     <string name="activity_bottom_tabs_history_tab">History</string>
     <string name="activity_bottom_tabs_settings_tab">Settings</string>
 
+    <!--Scan barcode fragment-->
+    <string name="fragment_scan_barcode_title">Scan</string>
+    <string-array name="fragment_scan_barcode_tab_titles">
+        <item>Camera</item>
+        <item>File</item>
+    </string-array>
+
+    <!--Create barcode fragment-->
+    <string name="fragment_create_barcode_title">Create</string>
+
     <!--Barcode history fragment-->
     <string name="fragment_barcode_history_title">History</string>
+    <string name="fragment_barcode_history_menu_title_delete_all">Clear history</string>
+    <string name="fragment_barcode_history_delete_all_dialog_title">Delete</string>
+    <string name="fragment_barcode_history_delete_all_dialog_message">Are you sure want to clear history?</string>
+    <string name="fragment_barcode_history_delete_all_dialog_positive_button">Yes</string>
+    <string name="fragment_barcode_history_delete_all_dialog_negative_button">No</string>
+
+    <!--Settings fragment-->
+    <string name="fragment_settings_title">Settings</string>
 
     <string name="activity_request_permissions_title">Request permissions</string>
     <string name="activity_request_permissions_message">The app needs camera permission to scan barcodes</string>
     <string name="activity_request_permissions_button_text">Grant permissions</string>
 
+    <!--Barcode activity-->
     <string name="activity_barcode_format_aztec">Aztec</string>
     <string name="activity_barcode_format_codabar">CODABAR</string>
     <string name="activity_barcode_format_code_39">Code 39</string>
@@ -79,7 +98,6 @@
     <string name="activity_barcode_copied">Copied to clipboard</string>
     <string name="activity_barcode_barcode_image_saved">Saved to Gallery</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
-
     <!--Russian receipt QR code strings. Not translatable-->
     <string name="activity_barcode_receipt_type_income" translatable="false">Приход</string>
     <string name="activity_barcode_receipt_type_return_income" translatable="false">Возврат прихода</string>
@@ -87,6 +105,7 @@
     <string name="activity_barcode_receipt_type_return_expense" translatable="false">Возврат расхода</string>
     <string name="activity_barcode_receipt_format" translatable="false">%s\n%s\nФН: %s\nФД: %s\nФПД: %s\nИтог: %s</string>
 
+    <!--Check receipt activity-->
     <string name="activity_check_receipt_title">Receipt</string>
     <string name="activity_check_receipt_valid_receipt">The receipt is found</string>
     <string name="activity_check_receipt_invalid_receipt">The receipt is not found!</string>
@@ -97,6 +116,8 @@
     <string name="activity_check_receipt_download_description">Downloading</string>
     <string name="activity_check_receipt_download_file_name">Receipt</string>
 
+    <!--Receipt activity-->
     <string name="activity_receipt_title">Receipt</string>
+    <string name="activity_receipt_menu_item_download_title">Download as .pdf</string>
 
 </resources>

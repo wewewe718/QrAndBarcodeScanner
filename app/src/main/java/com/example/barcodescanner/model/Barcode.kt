@@ -16,7 +16,7 @@ data class Barcode(
     val format: BarcodeFormat,
     val schema: BarcodeSchema,
     val date: Long,
-    val errorCorrectionLevel: String?
+    val errorCorrectionLevel: String? = null
 ) : Parcelable {
 
     companion object CREATOR : Parcelable.Creator<Barcode> {
@@ -28,6 +28,15 @@ data class Barcode(
             return arrayOfNulls(size)
         }
     }
+
+    constructor(text: String, schema: BarcodeSchema) : this(text, BarcodeFormat.QR_CODE, schema)
+
+    constructor(text: String, format: BarcodeFormat, schema: BarcodeSchema) : this(
+        text = text,
+        format = format,
+        schema = schema,
+        date = System.currentTimeMillis()
+    )
 
     constructor(parcel: Parcel) : this(
         id = parcel.readLong(),

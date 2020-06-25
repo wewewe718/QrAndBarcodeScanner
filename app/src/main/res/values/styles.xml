@@ -3,9 +3,13 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/blue</item>
+        <item name="colorAccent">@color/black</item>
         <item name="android:colorBackground">@color/white</item>
         <item name="android:textColorSecondary">@color/black</item>
+    </style>
+
+    <style name="SeekBarTheme">
+        <item name="colorAccent">@color/white</item>
     </style>
 
     <style name="ScanBarcodeActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -20,7 +24,9 @@
         <item name="android:background">@color/white</item>
     </style>
 
-    <style name="BottomNavigationActiveItemTextAppearance" parent="TextAppearance.AppCompat">
+    <style name="BottomNavigationItemTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/bottom_navigation_item_text_size</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="ButtonStyle">

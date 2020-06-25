@@ -4,14 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.checkReceiptApi
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.common.orZero
 import com.example.barcodescanner.feature.common.showError
-import com.example.barcodescanner.feature.error.ErrorDialogFragment
+import com.example.barcodescanner.feature.common.ErrorDialogFragment
 import com.example.barcodescanner.usecase.CheckReceiptApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

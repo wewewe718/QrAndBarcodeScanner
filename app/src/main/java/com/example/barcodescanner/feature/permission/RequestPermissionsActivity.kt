@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.barcodescanner.R
-import com.example.barcodescanner.feature.scan.ScanBarcodeActivity
 import kotlinx.android.synthetic.main.activity_request_permissions.*
 
 class RequestPermissionsActivity : AppCompatActivity() {
@@ -81,7 +80,6 @@ class RequestPermissionsActivity : AppCompatActivity() {
     }
 
     private fun navigateToNextScreen() {
-        ScanBarcodeActivity.start(this)
         finish()
     }
 }

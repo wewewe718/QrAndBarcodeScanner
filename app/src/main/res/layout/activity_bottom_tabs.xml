@@ -26,6 +26,8 @@
         app:labelVisibilityMode="labeled"
         app:itemIconTint="@drawable/color_bottom_navigation_item"
         app:itemTextColor="@drawable/color_bottom_navigation_item"
-        app:itemTextAppearanceActive="@style/BottomNavigationActiveItemTextAppearance"
+        app:itemIconSize="@dimen/bottom_navigation_item_image_size"
+        app:itemTextAppearanceActive="@style/BottomNavigationItemTextAppearance"
+        app:itemTextAppearanceInactive="@style/BottomNavigationItemTextAppearance"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
