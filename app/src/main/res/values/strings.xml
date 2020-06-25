@@ -95,6 +95,7 @@
     <string name="activity_barcode_save_to_gallery">Save to Gallery</string>
     <string name="activity_barcode_print">Print</string>
     <string name="activity_barcode_delete">Delete</string>
+    <string name="activity_barcode_connecting_to_wifi">Connecting</string>
     <string name="activity_barcode_copied">Copied to clipboard</string>
     <string name="activity_barcode_barcode_image_saved">Saved to Gallery</string>
     <string name="activity_barcode_no_app">No app found for this action</string>

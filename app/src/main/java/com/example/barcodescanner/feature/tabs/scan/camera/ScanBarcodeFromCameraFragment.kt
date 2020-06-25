@@ -1,10 +1,14 @@
 package com.example.barcodescanner.feature.tabs.scan.camera
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.budiyev.android.codescanner.AutoFocusMode
@@ -28,11 +32,16 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_scan_barcode.*
 
 class ScanBarcodeFromCameraFragment : Fragment() {
+    companion object {
+        private const val PERMISSION_REQUEST_CODE = 101
+    }
+
+    private val permissions = arrayOf(Manifest.permission.CAMERA)
+    private val disposable = CompositeDisposable()
     private val cameraFacing = CodeScanner.CAMERA_BACK
-    private lateinit var codeScanner: CodeScanner
     private var maxZoom: Int = 0
     private val zoomStep = 5
-    private val disposable = CompositeDisposable()
+    private lateinit var codeScanner: CodeScanner
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_scan_barcode_from_camera, container, false)
@@ -45,11 +54,20 @@ class ScanBarcodeFromCameraFragment : Fragment() {
         handleZoomChanged()
         handleDecreaseZoomClicked()
         handleIncreaseZoomClicked()
+        requestPermissions()
     }
 
     override fun onResume() {
         super.onResume()
-        codeScanner.startPreview()
+        if (areAllPermissionsGranted()) {
+            codeScanner.startPreview()
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == PERMISSION_REQUEST_CODE && areAllPermissionsGranted(grantResults)) {
+            codeScanner.startPreview()
+        }
     }
 
     override fun onPause() {
@@ -158,6 +176,29 @@ class ScanBarcodeFromCameraFragment : Fragment() {
 
     private fun showLoading(isLoading: Boolean) {
         layout_loading.isVisible = isLoading
+    }
+
+    private fun requestPermissions() {
+        ActivityCompat.requestPermissions(requireActivity(), permissions, PERMISSION_REQUEST_CODE)
+    }
+
+    private fun areAllPermissionsGranted(): Boolean {
+        permissions.forEach { permission ->
+            val checkResult = ContextCompat.checkSelfPermission(requireActivity(), permission)
+            if (checkResult != PackageManager.PERMISSION_GRANTED) {
+                return false
+            }
+        }
+        return true
+    }
+
+    private fun areAllPermissionsGranted(grantResults: IntArray): Boolean {
+        grantResults.forEach { result ->
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                return false
+            }
+        }
+        return true
     }
 
     private fun navigateToBarcodeScreen(barcode: Barcode) {

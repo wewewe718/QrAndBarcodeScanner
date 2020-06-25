@@ -214,6 +214,7 @@
                 android:id="@+id/button_show_barcode_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 app:icon="@drawable/ic_barcode_other"
                 app:text="@string/activity_barcode_show_barcode_image"
                 />

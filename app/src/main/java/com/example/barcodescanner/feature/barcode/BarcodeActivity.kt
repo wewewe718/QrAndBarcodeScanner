@@ -386,13 +386,21 @@ class BarcodeActivity : BaseActivity() {
     }
 
     private fun connectToWifi() {
-        try {
-            barcode.apply {
-                wifiConnector.connect(networkAuthType.orEmpty(), networkName.orEmpty(), networkPassword.orEmpty())
-            }
-        } catch (ex: Exception) {
-            showError(ex)
-        }
+        button_connect_to_wifi.isEnabled = false
+
+        wifiConnector.connect(barcode.networkAuthType.orEmpty(), barcode.networkName.orEmpty(), barcode.networkPassword.orEmpty())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    button_connect_to_wifi.isEnabled = true
+                    showToast(R.string.activity_barcode_connecting_to_wifi)
+                },
+                { error ->
+                    button_connect_to_wifi.isEnabled = true
+                    showError(error)
+                }
+            )
+            .addTo(disposable)
     }
 
     private fun copyNetworkNameToClipboard() {

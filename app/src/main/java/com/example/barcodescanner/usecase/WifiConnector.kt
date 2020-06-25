@@ -3,13 +3,34 @@ package com.example.barcodescanner.usecase
 import android.content.Context
 import android.net.wifi.WifiConfiguration
 import android.net.wifi.WifiManager
+import io.reactivex.Completable
+import io.reactivex.CompletableEmitter
+import io.reactivex.schedulers.Schedulers
+import java.lang.Exception
 
 class WifiConnector(context: Context) {
     private val wifiManager by lazy {
         context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
     }
 
-    fun connect(authType: String, name: String, password: String) {
+    fun connect(authType: String, name: String, password: String): Completable {
+        return Completable
+            .create { emitter ->
+                connect(authType, name, password, emitter)
+            }
+            .subscribeOn(Schedulers.newThread())
+    }
+
+    private fun connect(authType: String, name: String, password: String, emitter: CompletableEmitter) {
+        try {
+            tryToConnect(authType, name, password)
+            emitter.onComplete()
+        } catch (ex: Exception) {
+            emitter.onError(ex)
+        }
+    }
+
+    private fun tryToConnect(authType: String, name: String, password: String) {
         enableWifiIfNeeded()
 
         when (authType) {
@@ -45,7 +66,7 @@ class WifiConnector(context: Context) {
     private fun connectToWpaNetwork(name: String, password: String) {
         val wifiConfiguration = WifiConfiguration().apply {
             SSID = "\"" + name + "\""
-            preSharedKey = "\""+ password +"\""
+            preSharedKey = "\"" + password + "\""
             allowedProtocols.set(WifiConfiguration.Protocol.RSN)
             allowedProtocols.set(WifiConfiguration.Protocol.WPA)
             allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK)

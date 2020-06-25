@@ -29,7 +29,8 @@ class IconButton : FrameLayout {
 
     private fun inflateView(context: Context): View {
         val inflater = LayoutInflater.from(context)
-        return inflater.inflate(R.layout.layout_icon_button, this, true)
+        view = inflater.inflate(R.layout.layout_icon_button, this, true)
+        return view
     }
 
     private fun applyAttributes(context: Context, view: View, attrs: AttributeSet) {
@@ -48,7 +49,9 @@ class IconButton : FrameLayout {
         view.text_view.text = attributes.getString(R.styleable.IconButton_text).orEmpty()
     }
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        return super.onTouchEvent(event)
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+        view.image_view.isEnabled = enabled
+        view.text_view.isEnabled = enabled
     }
 }
