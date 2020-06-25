@@ -21,6 +21,9 @@ val AppCompatActivity.checkReceiptApi
 val AppCompatActivity.wifiConnector
     get() = app.wifiConnector
 
+val AppCompatActivity.barcodeDatabase
+    get() = app.barcodeDatabase
+
 
 val Fragment.parentActivity
     get() = requireActivity() as AppCompatActivity

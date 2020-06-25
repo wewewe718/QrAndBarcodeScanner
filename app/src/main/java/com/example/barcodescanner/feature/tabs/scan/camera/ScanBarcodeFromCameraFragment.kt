@@ -23,6 +23,7 @@ import com.example.barcodescanner.di.scannerCameraHelper
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.feature.common.showError
 import com.example.barcodescanner.model.Barcode
+import com.example.barcodescanner.usecase.PermissionsHelper
 import com.google.zxing.Result
 import com.google.zxing.ResultMetadataType
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -179,26 +180,15 @@ class ScanBarcodeFromCameraFragment : Fragment() {
     }
 
     private fun requestPermissions() {
-        ActivityCompat.requestPermissions(requireActivity(), permissions, PERMISSION_REQUEST_CODE)
+        PermissionsHelper.requestPermissions(requireActivity(), permissions, PERMISSION_REQUEST_CODE)
     }
 
     private fun areAllPermissionsGranted(): Boolean {
-        permissions.forEach { permission ->
-            val checkResult = ContextCompat.checkSelfPermission(requireActivity(), permission)
-            if (checkResult != PackageManager.PERMISSION_GRANTED) {
-                return false
-            }
-        }
-        return true
+       return PermissionsHelper.areAllPermissionsGranted(requireActivity(), permissions)
     }
 
     private fun areAllPermissionsGranted(grantResults: IntArray): Boolean {
-        grantResults.forEach { result ->
-            if (result != PackageManager.PERMISSION_GRANTED) {
-                return false
-            }
-        }
-        return true
+        return PermissionsHelper.areAllPermissionsGranted(grantResults)
     }
 
     private fun navigateToBarcodeScreen(barcode: Barcode) {
