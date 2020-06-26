@@ -1,5 +1,6 @@
 package com.example.barcodescanner.model
 
+import com.example.barcodescanner.model.schema.BarcodeSchema
 import ezvcard.Ezvcard
 import net.glxn.qrgen.core.scheme.*
 import java.text.SimpleDateFormat

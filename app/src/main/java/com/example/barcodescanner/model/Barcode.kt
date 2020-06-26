@@ -5,6 +5,7 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.example.barcodescanner.usecase.BarcodeDatabaseTypeConverter
 import com.google.zxing.BarcodeFormat
 

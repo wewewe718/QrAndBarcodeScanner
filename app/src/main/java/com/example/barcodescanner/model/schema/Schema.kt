@@ -1,4 +1,4 @@
-package com.example.barcodescanner.model
+package com.example.barcodescanner.model.schema
 
 enum class BarcodeSchema {
     BOOKMARK,
@@ -19,3 +19,8 @@ enum class BarcodeSchema {
     OTHER;
 }
 
+interface Schema {
+    val schema: BarcodeSchema
+    fun toFormattedText(): String
+    fun toBarcodeText(): String
+}

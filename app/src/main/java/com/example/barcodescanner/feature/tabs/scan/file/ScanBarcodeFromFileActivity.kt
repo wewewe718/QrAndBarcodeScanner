@@ -22,6 +22,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_scan_barcode_from_file.*
 import com.google.zxing.*
+import java.util.concurrent.TimeUnit
 
 class ScanBarcodeFromFileActivity : BaseActivity() {
 
@@ -81,6 +82,8 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     private fun handleImageCropAreaChanged() {
         crop_image_view.touches()
             .filter { it.action == ACTION_UP }
+            .debounce(400, TimeUnit.MILLISECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe { scanCroppedImage() }
             .addTo(disposable)
     }

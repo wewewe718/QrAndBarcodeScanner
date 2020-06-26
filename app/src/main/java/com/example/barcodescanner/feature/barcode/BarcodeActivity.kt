@@ -25,8 +25,8 @@ import com.example.barcodescanner.common.orZero
 import com.example.barcodescanner.common.showError
 import com.example.barcodescanner.common.toStringId
 import com.example.barcodescanner.model.Barcode
-import com.example.barcodescanner.model.BarcodeSchema
 import com.example.barcodescanner.model.ParsedBarcode
+import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.example.barcodescanner.usecase.PermissionsHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

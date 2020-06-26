@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.R
 import com.example.barcodescanner.feature.common.ErrorDialogFragment
-import com.example.barcodescanner.model.BarcodeSchema
+import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.google.zxing.BarcodeFormat
+import java.text.DateFormat
+import java.util.*
 
 fun Int?.orZero(): Int {
     return this ?: 0
@@ -15,32 +17,16 @@ fun Long?.orZero(): Long {
     return this ?: 0
 }
 
-fun String?.containsAll(others: List<String>, ignoreCase: Boolean = false): Boolean {
-    if (this == null) {
-        return false
-    }
-
-    others.forEach { other ->
-        if (contains(other, ignoreCase).not()) {
-            return false
-        }
-    }
-
-    return true
+fun Boolean?.orFalse(): Boolean {
+    return this ?: false
 }
 
-fun String?.startsWithAny(prefixes: List<String>, ignoreCase: Boolean = false): Boolean {
-    if (this == null) {
-        return false
+fun DateFormat.parseOrNull(date: String?): Date? {
+    return try {
+        parse(date.orEmpty())
+    } catch (ex: Exception) {
+        null
     }
-
-    prefixes.forEach { prefix ->
-        if (startsWith(prefix, ignoreCase)) {
-            return true
-        }
-    }
-
-    return false
 }
 
 fun BarcodeFormat.toStringId(): Int {
