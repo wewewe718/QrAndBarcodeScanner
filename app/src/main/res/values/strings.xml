@@ -26,6 +26,7 @@
 
     <!--Scan barcode from file activity-->
     <string name="activity_scan_barcode_from_file_title">Crop an image</string>
+    <string name="activity_scan_barcode_from_file_scan">Scan</string>
 
     <!--Create barcode fragment-->
     <string name="fragment_create_barcode_title">Create</string>

@@ -9,6 +9,12 @@ import com.example.barcodescanner.App
 val AppCompatActivity.app
     get() = application as App
 
+val AppCompatActivity.barcodeSchemaParser
+    get() = app.barcodeSchemaParser
+
+val AppCompatActivity.barcodeImageScanner
+    get() = app.barcodeImageScanner
+
 val AppCompatActivity.barcodeImageGenerator
     get() = app.barcodeImageGenerator
 
