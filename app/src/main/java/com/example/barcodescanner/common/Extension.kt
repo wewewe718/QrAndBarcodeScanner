@@ -1,8 +1,9 @@
-package com.example.barcodescanner.feature.common
+package com.example.barcodescanner.common
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.R
+import com.example.barcodescanner.feature.common.ErrorDialogFragment
 import com.example.barcodescanner.model.BarcodeSchema
 import com.google.zxing.BarcodeFormat
 
@@ -12,6 +13,34 @@ fun Int?.orZero(): Int {
 
 fun Long?.orZero(): Long {
     return this ?: 0
+}
+
+fun String?.containsAll(others: List<String>, ignoreCase: Boolean = false): Boolean {
+    if (this == null) {
+        return false
+    }
+
+    others.forEach { other ->
+        if (contains(other, ignoreCase).not()) {
+            return false
+        }
+    }
+
+    return true
+}
+
+fun String?.startsWithAny(prefixes: List<String>, ignoreCase: Boolean = false): Boolean {
+    if (this == null) {
+        return false
+    }
+
+    prefixes.forEach { prefix ->
+        if (startsWith(prefix, ignoreCase)) {
+            return true
+        }
+    }
+
+    return false
 }
 
 fun BarcodeFormat.toStringId(): Int {
@@ -58,20 +87,19 @@ fun BarcodeSchema.toImageId(): Int {
 }
 
 fun AppCompatActivity.showError(error: Throwable?) {
-    val errorDialog = ErrorDialogFragment.newInstance(this, error)
+    val errorDialog =
+        ErrorDialogFragment.newInstance(
+            this,
+            error
+        )
     errorDialog.show(supportFragmentManager, "")
 }
 
 fun Fragment.showError(error: Throwable?) {
-    val errorDialog = ErrorDialogFragment.newInstance(requireContext(), error)
+    val errorDialog =
+        ErrorDialogFragment.newInstance(
+            requireContext(),
+            error
+        )
     errorDialog.show(childFragmentManager, "")
-}
-
-fun String.containsAll(others: List<String>, ignoreCase: Boolean = false): Boolean {
-    others.forEach { other ->
-        if (contains(other, ignoreCase).not()) {
-            return false
-        }
-    }
-    return true
 }

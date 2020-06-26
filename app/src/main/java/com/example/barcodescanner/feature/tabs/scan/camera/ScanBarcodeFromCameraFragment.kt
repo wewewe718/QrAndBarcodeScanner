@@ -1,14 +1,11 @@
 package com.example.barcodescanner.feature.tabs.scan.camera
 
 import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.budiyev.android.codescanner.AutoFocusMode
@@ -21,7 +18,7 @@ import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.barcodeSchemaParser
 import com.example.barcodescanner.di.scannerCameraHelper
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
-import com.example.barcodescanner.feature.common.showError
+import com.example.barcodescanner.common.showError
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.usecase.PermissionsHelper
 import com.google.zxing.Result

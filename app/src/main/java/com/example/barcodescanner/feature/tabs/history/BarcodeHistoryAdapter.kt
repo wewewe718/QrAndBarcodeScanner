@@ -8,8 +8,8 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.barcodescanner.R
-import com.example.barcodescanner.feature.common.toImageId
-import com.example.barcodescanner.feature.common.toStringId
+import com.example.barcodescanner.common.toImageId
+import com.example.barcodescanner.common.toStringId
 import com.example.barcodescanner.model.Barcode
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.item_barcode.view.*

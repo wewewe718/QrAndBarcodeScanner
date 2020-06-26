@@ -19,7 +19,10 @@
         android:name="com.example.barcodescanner.App"
         >
 
-        <activity android:name=".feature.tabs.BottomTabsActivity">
+        <activity
+            android:name=".feature.tabs.BottomTabsActivity"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -27,20 +30,25 @@
         </activity>
 
         <activity
-            android:name="com.example.barcodescanner.feature.permission.RequestPermissionsActivity"
+            android:name=".feature.tabs.scan.file.ScanBarcodeFromFileActivity"
+            android:screenOrientation="portrait"
             />
 
         <activity
             android:name="com.example.barcodescanner.feature.barcode.BarcodeActivity"
+            android:screenOrientation="portrait"
             />
         <activity
             android:name="com.example.barcodescanner.feature.barcode.image.BarcodeImageActivity"
+            android:screenOrientation="portrait"
             />
         <activity
             android:name=".feature.barcode.receipt.CheckReceiptActivity"
+            android:screenOrientation="portrait"
             />
         <activity
             android:name=".feature.barcode.receipt.ReceiptActivity"
+            android:screenOrientation="portrait"
             />
 
         <provider

@@ -3,12 +3,11 @@ package com.example.barcodescanner.feature.barcode.image
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
 import com.example.barcodescanner.feature.BaseActivity
-import com.example.barcodescanner.feature.common.toStringId
+import com.example.barcodescanner.common.toStringId
 import com.example.barcodescanner.model.Barcode
 import kotlinx.android.synthetic.main.activity_barcode_image.*
 import java.text.SimpleDateFormat

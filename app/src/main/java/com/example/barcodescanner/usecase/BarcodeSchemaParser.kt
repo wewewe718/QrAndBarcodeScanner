@@ -1,6 +1,6 @@
 package com.example.barcodescanner.usecase
 
-import com.example.barcodescanner.feature.common.containsAll
+import com.example.barcodescanner.common.containsAll
 import com.example.barcodescanner.model.BarcodeSchema
 
 class BarcodeSchemaParser {

@@ -8,4 +8,6 @@
     <color name="gray">#7D7D7D</color>
     <color name="gray_transparent">#2C7D7D7D</color>
     <color name="gray_transparent2">#CCCCCC</color>
+    <color name="yellow1">#FDD70A</color>
+    <color name="yellow2">#FCE14E</color>
 </resources>

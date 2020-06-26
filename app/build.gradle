@@ -89,4 +89,7 @@ dependencies {
 
     // OkHttp
     implementation "com.squareup.okhttp3:okhttp:4.7.2"
+
+    // Image crop library
+    implementation 'com.isseiaoki:simplecropview:1.1.8'
 }

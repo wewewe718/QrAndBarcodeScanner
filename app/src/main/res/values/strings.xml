@@ -20,6 +20,13 @@
         <item>File</item>
     </string-array>
 
+    <!--Scan barcode from file fragment-->
+    <string name="fragment_scan_barcode_from_file_choose_file_hint">Choose a file to scan</string>
+    <string name="fragment_scan_barcode_from_file_choose_file">Choose</string>
+
+    <!--Scan barcode from file activity-->
+    <string name="activity_scan_barcode_from_file_title">Crop an image</string>
+
     <!--Create barcode fragment-->
     <string name="fragment_create_barcode_title">Create</string>
 
@@ -33,10 +40,6 @@
 
     <!--Settings fragment-->
     <string name="fragment_settings_title">Settings</string>
-
-    <string name="activity_request_permissions_title">Request permissions</string>
-    <string name="activity_request_permissions_message">The app needs camera permission to scan barcodes</string>
-    <string name="activity_request_permissions_button_text">Grant permissions</string>
 
     <!--Barcode activity-->
     <string name="activity_barcode_format_aztec">Aztec</string>

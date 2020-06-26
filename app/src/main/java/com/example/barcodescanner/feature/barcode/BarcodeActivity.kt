@@ -12,7 +12,6 @@ import android.provider.CalendarContract
 import android.provider.ContactsContract
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProviders
 import androidx.print.PrintHelper
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
@@ -22,9 +21,9 @@ import com.example.barcodescanner.di.wifiConnector
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.image.BarcodeImageActivity
 import com.example.barcodescanner.feature.barcode.receipt.CheckReceiptActivity
-import com.example.barcodescanner.feature.common.orZero
-import com.example.barcodescanner.feature.common.showError
-import com.example.barcodescanner.feature.common.toStringId
+import com.example.barcodescanner.common.orZero
+import com.example.barcodescanner.common.showError
+import com.example.barcodescanner.common.toStringId
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.BarcodeSchema
 import com.example.barcodescanner.model.ParsedBarcode

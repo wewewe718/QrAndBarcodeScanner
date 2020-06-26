@@ -8,8 +8,8 @@ import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.checkReceiptApi
 import com.example.barcodescanner.feature.BaseActivity
-import com.example.barcodescanner.feature.common.orZero
-import com.example.barcodescanner.feature.common.showError
+import com.example.barcodescanner.common.orZero
+import com.example.barcodescanner.common.showError
 import com.example.barcodescanner.feature.common.ErrorDialogFragment
 import com.example.barcodescanner.usecase.CheckReceiptApi
 import io.reactivex.android.schedulers.AndroidSchedulers
