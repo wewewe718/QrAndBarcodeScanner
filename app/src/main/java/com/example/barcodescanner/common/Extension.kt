@@ -55,7 +55,7 @@ fun BarcodeSchema.toImageId(): Int {
     return when (this) {
         BarcodeSchema.BOOKMARK -> R.drawable.ic_bookmark
         BarcodeSchema.EMAIL -> R.drawable.ic_email
-        BarcodeSchema.GEO_INFO -> R.drawable.ic_location
+        BarcodeSchema.GEO -> R.drawable.ic_location
         BarcodeSchema.GIROCODE -> R.drawable.ic_payment
         BarcodeSchema.GOOGLE_PLAY -> R.drawable.ic_app
         BarcodeSchema.CALENDAR -> R.drawable.ic_calendar

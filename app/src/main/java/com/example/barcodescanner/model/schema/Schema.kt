@@ -2,8 +2,9 @@ package com.example.barcodescanner.model.schema
 
 enum class BarcodeSchema {
     BOOKMARK,
+    CRYPTOCURRENCY,
     EMAIL,
-    GEO_INFO,
+    GEO,
     GIROCODE,
     GOOGLE_PLAY,
     CALENDAR,

@@ -8,7 +8,7 @@ class BarcodeSchemaParser {
     private val prefixes = mapOf(
         BarcodeSchema.BOOKMARK to listOf("MEBKM:"),
         BarcodeSchema.EMAIL to listOf("mailto", "MATMSG"),
-        BarcodeSchema.GEO_INFO to listOf("geo:", "http://maps.google.com/", "https://maps.google.com/"),
+        BarcodeSchema.GEO to listOf("geo:", "http://maps.google.com/", "https://maps.google.com/"),
         BarcodeSchema.GIROCODE to listOf("BCD"),
         BarcodeSchema.GOOGLE_PLAY to listOf("market://details?id=", "{{{market://details?id=", "http://play.google.com/", "https://play.google.com/"),
         BarcodeSchema.CALENDAR to listOf("BEGIN:VCALENDAR", "BEGIN:VEVENT"),

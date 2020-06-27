@@ -78,7 +78,7 @@ class ParsedBarcode(barcode: Barcode) {
         when (schema) {
             BarcodeSchema.BOOKMARK -> parseBookmark()
             BarcodeSchema.EMAIL -> parseEmail()
-            BarcodeSchema.GEO_INFO -> parseGeoInfo()
+            BarcodeSchema.GEO -> parseGeoInfo()
             BarcodeSchema.GOOGLE_PLAY -> parseGooglePlay()
             BarcodeSchema.CALENDAR -> parseCalendar()
             BarcodeSchema.MMS,

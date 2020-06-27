@@ -17,6 +17,15 @@ fun String.startsWithAnyIgnoreCase(prefixes: List<String>): Boolean {
     return false
 }
 
+fun String.equalsAnyIgnoreCase(others: List<String>): Boolean {
+    others.forEach { other ->
+        if (equals(other, true)) {
+            return true
+        }
+    }
+    return false
+}
+
 fun String.containsAll(others: List<String>): Boolean {
     others.forEach { other ->
         if (contains(other).not()) {
