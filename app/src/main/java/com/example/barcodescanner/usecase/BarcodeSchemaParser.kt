@@ -9,7 +9,6 @@ class BarcodeSchemaParser {
         BarcodeSchema.BOOKMARK to listOf("MEBKM:"),
         BarcodeSchema.EMAIL to listOf("mailto", "MATMSG"),
         BarcodeSchema.GEO to listOf("geo:", "http://maps.google.com/", "https://maps.google.com/"),
-        BarcodeSchema.GIROCODE to listOf("BCD"),
         BarcodeSchema.GOOGLE_PLAY to listOf("market://details?id=", "{{{market://details?id=", "http://play.google.com/", "https://play.google.com/"),
         BarcodeSchema.CALENDAR to listOf("BEGIN:VCALENDAR", "BEGIN:VEVENT"),
         BarcodeSchema.MMS to listOf("mmsto:"),

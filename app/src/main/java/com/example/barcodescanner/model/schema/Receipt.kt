@@ -1,15 +1,15 @@
 package com.example.barcodescanner.model.schema
 
-import com.example.barcodescanner.common.orZero
-import com.example.barcodescanner.common.parseOrNull
 import com.example.barcodescanner.extension.containsAll
+import com.example.barcodescanner.extension.formatOrNull
+import com.example.barcodescanner.extension.orZero
+import com.example.barcodescanner.extension.parseOrNull
 import java.text.SimpleDateFormat
 import java.util.*
 
 class Receipt(
     val type: Int? = null,
-    val time: Long? = null,
-    val timeOriginal: String? = null,
+    val time: String? = null,
     val fiscalDriveNumber: String? = null,
     val fiscalDocumentNumber: String? = null,
     val fiscalSign: String? = null,
@@ -26,7 +26,7 @@ class Receipt(
         private const val SEPARATOR = "&"
         private val PREFIXES = listOf(TYPE_PREFIX, TIME_PREFIX, FISCAL_DRIVE_NUMBER_PREFIX, FISCAL_DOCUMENT_NUMBER_PREFIX, FISCAL_SIGN_PREFIX, SUM_PREFIX)
         private val DATE_PARSER by lazy { SimpleDateFormat("yyyyMMdd'T'HHmm", Locale.US) }
-        private val DATE_FORMATTER = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
+        private val DATE_FORMATTER by lazy { SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH) }
 
         fun parse(text: String): Receipt? {
             if (text.containsAll(PREFIXES).not()) {
@@ -34,8 +34,7 @@ class Receipt(
             }
 
             var type: Int? = null
-            var time: Long? = null
-            var timeOriginal: String? = null
+            var time: String? = null
             var fiscalDriveNumber: String? = null
             var fiscalDocumentNumber: String? = null
             var fiscalSign: String? = null
@@ -48,8 +47,7 @@ class Receipt(
                 }
 
                 if (part.startsWith(TIME_PREFIX)) {
-                    timeOriginal = part.removePrefix(TIME_PREFIX)
-                    time = DATE_PARSER.parseOrNull(timeOriginal)?.time
+                    time = part.removePrefix(TIME_PREFIX)
                     return@forEach
                 }
 
@@ -74,7 +72,7 @@ class Receipt(
                 }
             }
 
-            return Receipt(type, time, timeOriginal, fiscalDriveNumber, fiscalDocumentNumber, fiscalSign, sum)
+            return Receipt(type, time, fiscalDriveNumber, fiscalDocumentNumber, fiscalSign, sum)
         }
     }
 
@@ -89,9 +87,12 @@ class Receipt(
             else -> "Приход"
         }
 
+        val parsedTime = DATE_PARSER.parseOrNull(time)?.time
+        val formattedTime = DATE_FORMATTER.formatOrNull(parsedTime)
+
         return String.format(
             "%s\\n%s\\nФН: %s\\nФД: %s\\nФПД: %s\\nИтог: %s",
-            DATE_FORMATTER.format(Date(time.orZero())),
+            formattedTime,
             type,
             fiscalDriveNumber.orEmpty(),
             fiscalDocumentNumber.orEmpty(),
@@ -102,7 +103,7 @@ class Receipt(
 
     override fun toBarcodeText(): String {
         return "$TYPE_PREFIX${type.orZero()}$SEPARATOR" +
-                "$TIME_PREFIX${timeOriginal.orEmpty()}$SEPARATOR" +
+                "$TIME_PREFIX${time.orEmpty()}$SEPARATOR" +
                 "$FISCAL_DRIVE_NUMBER_PREFIX${fiscalDriveNumber.orEmpty()}$SEPARATOR" +
                 "$FISCAL_DOCUMENT_NUMBER_PREFIX${fiscalDocumentNumber.orEmpty()}$SEPARATOR" +
                 "$FISCAL_SIGN_PREFIX${fiscalSign.orEmpty()}$SEPARATOR" +
