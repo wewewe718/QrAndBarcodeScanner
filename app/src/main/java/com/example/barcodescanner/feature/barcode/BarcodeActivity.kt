@@ -21,9 +21,6 @@ import com.example.barcodescanner.di.wifiConnector
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.image.BarcodeImageActivity
 import com.example.barcodescanner.feature.barcode.receipt.CheckReceiptActivity
-import com.example.barcodescanner.common.orZero
-import com.example.barcodescanner.common.showError
-import com.example.barcodescanner.common.toStringId
 import com.example.barcodescanner.extension.orZero
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.toStringId
@@ -36,6 +33,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_barcode.*
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -58,7 +56,7 @@ class BarcodeActivity : BaseActivity() {
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
 
     private val originalBarcode by lazy {
-        intent?.getParcelableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
+        intent?.getSerializableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
     }
 
     private val barcode by lazy {
@@ -73,6 +71,7 @@ class BarcodeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_barcode)
+        initScrollView()
         handleToolbarBackPressed()
         handleToolbarMenuClicked()
         handleButtonsClicked()
@@ -86,6 +85,10 @@ class BarcodeActivity : BaseActivity() {
         }
     }
 
+
+    private fun initScrollView() {
+        OverScrollDecoratorHelper.setUpOverScroll(scroll_view)
+    }
 
     private fun handleToolbarBackPressed() {
         toolbar.setNavigationOnClickListener {
@@ -146,7 +149,8 @@ class BarcodeActivity : BaseActivity() {
         val intent = Intent(ContactsContract.Intents.Insert.ACTION).apply {
             type = ContactsContract.Contacts.CONTENT_TYPE
 
-            putExtra(ContactsContract.Intents.Insert.NAME, barcode.name.orEmpty())
+            val fullName = "${barcode.firstName.orEmpty()} ${barcode.lastName.orEmpty()}"
+            putExtra(ContactsContract.Intents.Insert.NAME, fullName)
             putExtra(ContactsContract.Intents.Insert.COMPANY, barcode.organization.orEmpty())
             putExtra(ContactsContract.Intents.Insert.JOB_TITLE, barcode.jobTitle.orEmpty())
 
@@ -247,7 +251,7 @@ class BarcodeActivity : BaseActivity() {
         CheckReceiptActivity.start(
             this,
             barcode.receiptType.orZero(),
-            barcode.receiptTimeOriginal.orEmpty(),
+            barcode.receiptTime.orEmpty(),
             barcode.receiptFiscalDriveNumber.orEmpty(),
             barcode.receiptFiscalDocumentNumber.orEmpty(),
             barcode.receiptFiscalSign.orEmpty(),
@@ -353,122 +357,7 @@ class BarcodeActivity : BaseActivity() {
     }
 
     private fun showBarcodeText() {
-        when (barcode.schema) {
-            BarcodeSchema.BOOKMARK -> showBookmark()
-            BarcodeSchema.CALENDAR -> showCalendar()
-            BarcodeSchema.EMAIL -> showEmail()
-            BarcodeSchema.PHONE -> showPhone()
-            BarcodeSchema.SMS, BarcodeSchema.MMS -> showSmsOrMms()
-            BarcodeSchema.VCARD -> showVCard()
-            BarcodeSchema.MECARD -> showMeCard()
-            BarcodeSchema.WIFI -> showWifi()
-            BarcodeSchema.RECEIPT -> showReceipt()
-            else -> text_view_barcode_text.text = barcode.text
-        }
-    }
-
-    private fun showBookmark() {
-        text_view_barcode_text.text = getString(
-            R.string.activity_barcode_bookmark_format,
-            barcode.bookmarkTitle.orEmpty(),
-            barcode.url.orEmpty()
-        )
-    }
-
-    private fun showCalendar() {
-        text_view_barcode_text.text = getString(
-            R.string.activity_barcode_calendar_format,
-            barcode.eventUid.orEmpty(),
-            barcode.eventOrganizer.orEmpty(),
-            barcode.eventSummary.orEmpty(),
-            dateFormatter.format(Date(barcode.eventStartDate.orZero())),
-            dateFormatter.format(Date(barcode.eventEndDate.orZero()))
-        )
-    }
-
-    private fun showEmail() {
-        text_view_barcode_text.text = getString(
-            R.string.activity_barcode_email_format,
-            barcode.email.orEmpty(),
-            barcode.emailSubject.orEmpty(),
-            barcode.emailBody.orEmpty()
-        )
-    }
-
-    private fun showPhone() {
-        text_view_barcode_text.text = barcode.phone
-    }
-
-    private fun showSmsOrMms() {
-        text_view_barcode_text.text = getString(
-            R.string.activity_barcode_sms_format,
-            barcode.phone,
-            barcode.smsBody
-        )
-    }
-
-    private fun showVCard() {
-        text_view_barcode_text.text = StringBuilder()
-            .appendIfNotEmpty(barcode.name, R.string.activity_barcode_contact_name)
-            .appendIfNotEmpty(barcode.organization, R.string.activity_barcode_contact_organization)
-            .appendIfNotEmpty(barcode.jobTitle, R.string.activity_barcode_contact_job_position)
-            .appendIfNotEmpty(barcode.phone, R.string.activity_barcode_contact_phone)
-            .appendIfNotEmpty(barcode.secondaryPhone, R.string.activity_barcode_contact_secondary_phone)
-            .appendIfNotEmpty(barcode.tertiaryPhone, R.string.activity_barcode_contact_tertiary_phone)
-            .appendIfNotEmpty(barcode.email, R.string.activity_barcode_contact_email)
-            .appendIfNotEmpty(barcode.secondaryEmail, R.string.activity_barcode_contact_secondary_email)
-            .appendIfNotEmpty(barcode.tertiaryEmail, R.string.activity_barcode_contact_tertiary_email)
-            .appendIfNotEmpty(barcode.url, R.string.activity_barcode_contact_url)
-            .appendIfNotEmpty(barcode.geoUri, R.string.activity_barcode_contact_geo)
-            .apply {
-                if (isNotEmpty() && last().isLineSeparator()) {
-                    setLength(length - 1)
-                }
-            }
-            .toString()
-    }
-
-    private fun showMeCard() {
-        text_view_barcode_text.text = StringBuilder()
-            .appendIfNotEmpty(barcode.name, R.string.activity_barcode_contact_name)
-            .appendIfNotEmpty(barcode.phone, R.string.activity_barcode_contact_phone)
-            .appendIfNotEmpty(barcode.address, R.string.activity_barcode_contact_address)
-            .appendIfNotEmpty(barcode.email, R.string.activity_barcode_contact_email)
-            .apply {
-                if (isNotEmpty() && last().isLineSeparator()) {
-                    setLength(length - 1)
-                }
-            }
-            .toString()
-    }
-
-    private fun showWifi() {
-        text_view_barcode_text.text = getString(
-            R.string.activity_barcode_wifi_format,
-            barcode.networkAuthType.orEmpty(),
-            barcode.networkName.orEmpty(),
-            barcode.networkPassword.orEmpty()
-        )
-    }
-
-    private fun showReceipt() {
-        val receiptType = when (barcode.receiptType) {
-            1 -> R.string.activity_barcode_receipt_type_income
-            2 -> R.string.activity_barcode_receipt_type_return_income
-            3 -> R.string.activity_barcode_receipt_type_expense
-            4 -> R.string.activity_barcode_receipt_type_return_expense
-            else -> R.string.activity_barcode_receipt_type_income
-        }
-
-        text_view_barcode_text.text = getString(
-            R.string.activity_barcode_receipt_format,
-            dateFormatter.format(Date(barcode.receiptTime.orZero())),
-            getString(receiptType),
-            barcode.receiptFiscalDriveNumber.orEmpty(),
-            barcode.receiptFiscalDocumentNumber.orEmpty(),
-            barcode.receiptFiscalSign.orEmpty(),
-            barcode.receiptSum.orEmpty()
-        )
+        text_view_barcode_text.text = barcode.formattedText
     }
 
     private fun showOrHideButtons() {
@@ -518,17 +407,5 @@ class BarcodeActivity : BaseActivity() {
 
     private fun showToast(stringId: Int) {
         Toast.makeText(this, stringId, Toast.LENGTH_SHORT).show()
-    }
-
-
-    private fun StringBuilder.appendIfNotEmpty(text: String?, stringId: Int): StringBuilder {
-        if (text.isNullOrEmpty().not()) {
-            append(getString(stringId, text))
-        }
-        return this
-    }
-
-    private fun Char.isLineSeparator(): Boolean {
-        return this == '\r' || this == '\n'
     }
 }

@@ -15,7 +15,20 @@ abstract class BaseActivity : AppCompatActivity() {
         setWhiteStatusBar()
     }
 
-    private fun setWhiteStatusBar() {
+    fun setBlackStatusBar() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return
+        }
+
+        window.apply {
+            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            decorView.systemUiVisibility = 0
+            statusBarColor = ContextCompat.getColor(context, R.color.black)
+        }
+    }
+
+    fun setWhiteStatusBar() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return
         }

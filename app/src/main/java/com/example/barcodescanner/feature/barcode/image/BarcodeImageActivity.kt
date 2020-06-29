@@ -6,10 +6,11 @@ import android.os.Bundle
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
+import com.example.barcodescanner.extension.toStringId
 import com.example.barcodescanner.feature.BaseActivity
-import com.example.barcodescanner.common.toStringId
 import com.example.barcodescanner.model.Barcode
 import kotlinx.android.synthetic.main.activity_barcode_image.*
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -27,14 +28,19 @@ class BarcodeImageActivity : BaseActivity() {
 
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
     private val barcode by lazy {
-        intent?.getParcelableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
+        intent?.getSerializableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_barcode_image)
+        initScrollView()
         handleToolbarBackPressed()
         showBarcode()
+    }
+
+    private fun initScrollView() {
+        OverScrollDecoratorHelper.setUpOverScroll(scroll_view)
     }
 
     private fun handleToolbarBackPressed() {

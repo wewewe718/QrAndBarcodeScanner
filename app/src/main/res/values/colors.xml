@@ -6,8 +6,14 @@
     <color name="black_transparent">#8C000000</color>
     <color name="black_transparent2">#5E000000</color>
     <color name="gray">#7D7D7D</color>
+    <color name="gray2">#646464</color>
+    <color name="gray3">#F2F2F2</color>
+    <color name="gray4">#F8F8F8</color>
     <color name="gray_transparent">#2C7D7D7D</color>
     <color name="gray_transparent2">#CCCCCC</color>
     <color name="yellow1">#FDD70A</color>
     <color name="yellow2">#FCE14E</color>
+    <color name="white2">#FAFAFA</color>
+    <color name="blue">#00B1FF</color>
+    <color name="blue2">#9EDBF7</color>
 </resources>

@@ -8,8 +8,8 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.barcodescanner.R
-import com.example.barcodescanner.common.toImageId
-import com.example.barcodescanner.common.toStringId
+import com.example.barcodescanner.extension.toImageId
+import com.example.barcodescanner.extension.toStringId
 import com.example.barcodescanner.model.Barcode
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.item_barcode.view.*
@@ -42,7 +42,7 @@ class BarcodeHistoryAdapter : PagedListAdapter<Barcode, BarcodeHistoryAdapter.Vi
             itemView.apply {
                 text_view_date.text = dateFormatter.format(barcode.date)
                 text_view_format.setText(barcode.format.toStringId())
-                text_view_text.text = barcode.text
+                text_view_text.text = barcode.formattedText
                 image_view_schema.setBackgroundResource(barcode.schema.toImageId())
                 setOnClickListener {
                     barcodeClicked.onNext(barcode)

@@ -13,7 +13,7 @@ class App : MultiDexApplication() {
     }
     val scannerCameraHelper by lazy { ScannerCameraHelper() }
     val barcodeImageScanner by lazy { BarcodeImageScanner() }
-    val barcodeSchemaParser by lazy { BarcodeSchemaParser() }
+    val barcodeScanResultParser by lazy { BarcodeScanResultParser() }
     val barcodeImageGenerator by lazy { BarcodeImageGenerator() }
     val barcodeImageSaver by lazy { BarcodeImageSaver(barcodeImageGenerator) }
     val wifiConnector by lazy { WifiConnector(this) }

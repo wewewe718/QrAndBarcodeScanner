@@ -1,4 +1,4 @@
-package com.example.barcodescanner.feature.tabs.scan.camera
+package com.example.barcodescanner.feature.tabs.scan
 
 import android.Manifest
 import android.os.Bundle
@@ -15,19 +15,20 @@ import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
-import com.example.barcodescanner.di.barcodeSchemaParser
+import com.example.barcodescanner.di.barcodeScanResultParser
 import com.example.barcodescanner.di.scannerCameraHelper
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
-import com.example.barcodescanner.common.showError
+import com.example.barcodescanner.extension.showError
+import com.example.barcodescanner.feature.BaseActivity
+import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.usecase.PermissionsHelper
 import com.google.zxing.Result
-import com.google.zxing.ResultMetadataType
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_scan_barcode.*
+import kotlinx.android.synthetic.main.fragment_scan_barcode_from_camera.*
 
 class ScanBarcodeFromCameraFragment : Fragment() {
     companion object {
@@ -41,6 +42,11 @@ class ScanBarcodeFromCameraFragment : Fragment() {
     private val zoomStep = 5
     private lateinit var codeScanner: CodeScanner
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity() as? BaseActivity)?.setBlackStatusBar()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_scan_barcode_from_camera, container, false)
     }
@@ -50,6 +56,7 @@ class ScanBarcodeFromCameraFragment : Fragment() {
         initScanner()
         initZoomSeekBar()
         handleZoomChanged()
+        handleScanFromFileClicked()
         handleDecreaseZoomClicked()
         handleIncreaseZoomClicked()
         requestPermissions()
@@ -97,6 +104,14 @@ class ScanBarcodeFromCameraFragment : Fragment() {
             seek_bar_zoom.max = maxZoom
             seek_bar_zoom.progress = zoom
         }
+    }
+
+    private fun handleScanFromFileClicked() {
+        val clickListener = View.OnClickListener {
+            navigateToScanFromFileScreen()
+        }
+        image_view_scan_from_file.setOnClickListener(clickListener)
+        text_view_scan_from_file.setOnClickListener(clickListener)
     }
 
     private fun handleZoomChanged() {
@@ -147,14 +162,7 @@ class ScanBarcodeFromCameraFragment : Fragment() {
             showLoading(true)
         }
 
-        val barcode = Barcode(
-            text = result.text,
-            format = result.barcodeFormat,
-            schema = barcodeSchemaParser.parseSchema(result.text),
-            date = result.timestamp,
-            errorCorrectionLevel = result.resultMetadata?.get(ResultMetadataType.ERROR_CORRECTION_LEVEL) as? String
-        )
-
+        val barcode = barcodeScanResultParser.parseResult(result)
         barcodeDatabase.save(barcode)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -177,7 +185,9 @@ class ScanBarcodeFromCameraFragment : Fragment() {
     }
 
     private fun requestPermissions() {
-        PermissionsHelper.requestPermissions(requireActivity(), permissions, PERMISSION_REQUEST_CODE)
+        PermissionsHelper.requestPermissions(requireActivity(), permissions,
+            PERMISSION_REQUEST_CODE
+        )
     }
 
     private fun areAllPermissionsGranted(): Boolean {
@@ -186,6 +196,10 @@ class ScanBarcodeFromCameraFragment : Fragment() {
 
     private fun areAllPermissionsGranted(grantResults: IntArray): Boolean {
         return PermissionsHelper.areAllPermissionsGranted(grantResults)
+    }
+
+    private fun navigateToScanFromFileScreen() {
+        ScanBarcodeFromFileActivity.start(requireActivity())
     }
 
     private fun navigateToBarcodeScreen(barcode: Barcode) {

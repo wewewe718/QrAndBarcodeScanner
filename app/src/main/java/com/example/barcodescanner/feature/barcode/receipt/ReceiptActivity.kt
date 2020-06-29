@@ -12,7 +12,7 @@ import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.checkReceiptApi
 import com.example.barcodescanner.feature.BaseActivity
-import com.example.barcodescanner.common.showError
+import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.common.ErrorDialogFragment
 import kotlinx.android.synthetic.main.activity_receipt.*
 

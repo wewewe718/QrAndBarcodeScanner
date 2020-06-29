@@ -1,30 +1,19 @@
 package com.example.barcodescanner.model
 
-import com.example.barcodescanner.model.schema.BarcodeSchema
-import ezvcard.Ezvcard
-import net.glxn.qrgen.core.scheme.*
-import java.text.SimpleDateFormat
-import java.util.*
+import com.example.barcodescanner.model.schema.*
+import com.example.barcodescanner.model.schema.Calendar
 
 class ParsedBarcode(barcode: Barcode) {
-    private val calendarDateParser by lazy {
-        SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'", Locale.US).apply {
-            timeZone = TimeZone.getTimeZone("UTC")
-        }
-    }
-
-    private val receiptDateParser by lazy {
-        SimpleDateFormat("yyyyMMdd'T'HHmm", Locale.US)
-    }
-
     val id = barcode.id
     val text = barcode.text
+    val formattedText = barcode.formattedText
     val format = barcode.format
     val schema = barcode.schema
     val date = barcode.date
     val errorCorrectionLevel = barcode.errorCorrectionLevel
 
-    var name: String? = null
+    var firstName: String? = null
+    var lastName: String? = null
     var organization: String? = null
     var jobTitle: String? = null
     var address: String? = null
@@ -66,8 +55,7 @@ class ParsedBarcode(barcode: Barcode) {
     var eventSummary: String? = null
 
     var receiptType: Int? = null
-    var receiptTime: Long? = null
-    var receiptTimeOriginal: String? = null
+    var receiptTime: String? = null
     var receiptFiscalDriveNumber: String? = null
     var receiptFiscalDocumentNumber: String? = null
     var receiptFiscalSign: String? = null
@@ -94,22 +82,16 @@ class ParsedBarcode(barcode: Barcode) {
     }
 
     private fun parseBookmark() {
-        val parts = text.removePrefix("MEBKM:").split(";")
-        parts.forEach { part ->
-            if (part.startsWith("TITLE:")) {
-                bookmarkTitle = part.removePrefix("TITLE:")
-            }
-            if (part.startsWith("URL:")) {
-                url = part.removePrefix("URL:")
-            }
-        }
+        val bookmark = Bookmark.parse(text) ?: return
+        bookmarkTitle = bookmark.title
+        url = bookmark.url
     }
 
     private fun parseEmail() {
-        val parts = text.split(";")
-        email = parts.getOrNull(0).orEmpty().replace("MATMSG:TO:", "")
-        emailSubject = parts.getOrNull(1).orEmpty().replace("SUB:", "")
-        emailBody = parts.getOrNull(2).orEmpty().replace("BODY:", "")
+        val email = Email.parse(text) ?: return
+        this.email = email.email
+        emailSubject = email.subject
+        emailBody = email.body
     }
 
     private fun parseGeoInfo() {
@@ -121,90 +103,64 @@ class ParsedBarcode(barcode: Barcode) {
     }
 
     private fun parseCalendar() {
-        val vEvent = when {
-            text.startsWith("BEGIN:VCALENDAR") -> ICal.parse(text).subSchema as? IEvent?
-            text.startsWith("BEGIN:VEVENT") -> IEvent.parse(SchemeUtil.getParameters(text), text)
-            else -> null
-        }
-
-        vEvent?.apply {
-            eventUid = uid
-            eventStamp = stamp
-            eventOrganizer = organizer
-            eventSummary = summary
-        }
-
-        try {
-            eventStartDate = calendarDateParser.parse(vEvent?.start).time
-        } catch (_: Exception) {
-        }
-
-        try {
-            eventEndDate = calendarDateParser.parse(vEvent?.end).time
-        } catch (_: Exception) {
-        }
+        val calendar = Calendar.parse(text) ?: return
+        eventUid = calendar.uid
+        eventStamp = calendar.stamp
+        eventOrganizer = calendar.organizer
+        eventSummary = calendar.summary
+        eventStartDate = calendar.startDate
+        eventEndDate = calendar.endDate
     }
 
     private fun parseSms() {
-        val parts = text.split(":")
-        phone = parts.getOrNull(1)
-        smsBody = parts.getOrNull(2)
+        val sms = Sms.parse(text) ?: return
+        phone = sms.phone
+        smsBody = sms.message
     }
 
     private fun parsePhone() {
-        phone = text.removePrefix("tel:")
+        phone = Phone.parse(text)?.phone
     }
 
     private fun parseMeCard() {
-        val meCard = MeCard.parse(text)
-        name = meCard.name
-        address = meCard.name
-        phone = meCard.telephone
+        val meCard = MeCard.parse(text) ?: return
+        firstName = meCard.firstName
+        lastName = meCard.lastName
+        address = meCard.address
+        phone = meCard.phone
         email = meCard.email
     }
 
     private fun parseVCard() {
-        val vCard = Ezvcard.parse(text).first()
+        val vCard = VCard.parse(text) ?: return
+        
+        firstName = vCard.firstName
+        lastName = vCard.lastName
+        organization = vCard.organization
+        jobTitle = vCard.title
+        url = vCard.url
+        geoUri = vCard.geoUri
+        
+        phone = vCard.phone
+        phoneType = vCard.phoneType
+        secondaryPhone = vCard.secondaryPhone
+        secondaryPhoneType = vCard.secondaryPhoneType
+        tertiaryPhone = vCard.tertiaryPhone
+        tertiaryPhoneType = vCard.tertiaryPhoneType
 
-        name = vCard.structuredName?.let { "${it.family} ${it.given}" }
-        organization = vCard.organizations?.firstOrNull()?.values?.firstOrNull()
-        jobTitle = vCard.titles?.firstOrNull()?.value
-        url = vCard.urls?.firstOrNull()?.value
-        geoUri = vCard.addresses?.firstOrNull()?.geo?.toString()
-
-        vCard.emails?.getOrNull(0)?.apply {
-            email = value
-            emailType = types.getOrNull(0)?.value
-        }
-        vCard.emails?.getOrNull(1)?.apply {
-            secondaryEmail = value
-            secondaryEmailType = types.getOrNull(0)?.value
-        }
-        vCard.emails?.getOrNull(2)?.apply {
-            tertiaryEmail = value
-            tertiaryEmailType = types.getOrNull(0)?.value
-        }
-
-        vCard.telephoneNumbers?.getOrNull(0)?.apply {
-            phone = text
-            phoneType = types?.firstOrNull()?.value
-        }
-        vCard.telephoneNumbers?.getOrNull(1)?.apply {
-            secondaryPhone = text
-            secondaryPhoneType = types?.firstOrNull()?.value
-        }
-        vCard.telephoneNumbers?.getOrNull(2)?.apply {
-            tertiaryPhone = text
-            tertiaryPhoneType = types?.firstOrNull()?.value
-        }
+        email = vCard.email
+        emailType = vCard.emailType
+        secondaryEmail = vCard.secondaryEmail
+        secondaryEmailType = vCard.secondaryEmailType
+        tertiaryEmail = vCard.tertiaryEmail
+        tertiaryEmailType = vCard.tertiaryEmailType
     }
 
     private fun parseWifi() {
-        Wifi.parse(text).apply {
-            networkAuthType = authentication
-            networkName = ssid
-            networkPassword = psk
-        }
+        val wifi = Wifi.parse(text) ?: return
+        networkAuthType = wifi.auth
+        networkName = wifi.name
+        networkPassword = wifi.password
     }
 
     private fun parseYoutube() {
@@ -216,40 +172,11 @@ class ParsedBarcode(barcode: Barcode) {
     }
 
     private fun parseReceipt() {
-        text.split("&").forEach { part ->
-            if (part.startsWith("n=")) {
-                receiptType = part.removePrefix("n=").toIntOrNull()
-                return@forEach
-            }
-
-            if (part.startsWith("t=")) {
-                receiptTimeOriginal = part.removePrefix("t=")
-                try {
-                    receiptTime = receiptDateParser.parse(receiptTimeOriginal)?.time
-                } catch (_: Exception) {
-                }
-                return@forEach
-            }
-
-            if (part.startsWith("fn=")) {
-                receiptFiscalDriveNumber = part.removePrefix("fn=")
-                return@forEach
-            }
-
-            if (part.startsWith("i=")) {
-                receiptFiscalDocumentNumber = part.removePrefix("i=")
-                return@forEach
-            }
-
-            if (part.startsWith("fp=")) {
-                receiptFiscalSign = part.removePrefix("fp=")
-                return@forEach
-            }
-
-            if (part.startsWith("s=")) {
-                receiptSum = part.removePrefix("s=")
-                return@forEach
-            }
-        }
+        val receipt = Receipt.parse(text) ?: return
+        receiptType = receipt.type
+        receiptTime = receipt.time
+        receiptFiscalDriveNumber = receipt.fiscalDriveNumber
+        receiptFiscalDocumentNumber = receipt.fiscalDocumentNumber
+        receiptFiscalSign = receipt.fiscalSign
     }
 }

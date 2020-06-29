@@ -10,11 +10,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barcodescanner.R
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
-import com.example.barcodescanner.common.showError
+import com.example.barcodescanner.extension.showError
+import com.example.barcodescanner.feature.BaseActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.fragment_barcode_history.*
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 
 class BarcodeHistoryFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Listener {
     private val disposable = CompositeDisposable()
@@ -23,13 +25,18 @@ class BarcodeHistoryFragment : Fragment(), DeleteHistoryConfirmationDialogFragme
         ViewModelProviders.of(this).get(BarcodeHistoryViewModel::class.java)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity() as? BaseActivity)?.setWhiteStatusBar()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_barcode_history, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbarMenu()
+        //initToolbarMenu()
         initRecyclerView()
     }
 
@@ -62,6 +69,7 @@ class BarcodeHistoryFragment : Fragment(), DeleteHistoryConfirmationDialogFragme
             layoutManager = LinearLayoutManager(requireContext())
             adapter = scanHistoryAdapter
         }
+        OverScrollDecoratorHelper.setUpOverScroll(recycler_view_history, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
     }
 
     private fun subscribeToViewModel() {

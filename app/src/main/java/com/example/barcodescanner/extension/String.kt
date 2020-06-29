@@ -35,7 +35,7 @@ fun String.containsAll(others: List<String>): Boolean {
     return true
 }
 
-fun List<String?>.joinNotNullToStringWithLineSeparator(): String {
-    return filterNotNull().joinToString("\n")
+fun List<String?>.joinNotNullOrBlankToStringWithLineSeparator(): String {
+    return filter { it.isNullOrBlank().not() }.joinToString("\n")
 }
 

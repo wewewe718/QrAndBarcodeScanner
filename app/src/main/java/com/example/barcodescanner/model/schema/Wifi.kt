@@ -1,7 +1,7 @@
 package com.example.barcodescanner.model.schema
 
-import com.example.barcodescanner.common.orFalse
-import com.example.barcodescanner.extension.joinNotNullToStringWithLineSeparator
+import com.example.barcodescanner.extension.joinNotNullOrBlankToStringWithLineSeparator
+import com.example.barcodescanner.extension.orFalse
 import com.example.barcodescanner.extension.removePrefixIgnoreCase
 import com.example.barcodescanner.extension.startsWithIgnoreCase
 
@@ -61,7 +61,7 @@ class Wifi(
     override val schema = BarcodeSchema.WIFI
 
     override fun toFormattedText(): String {
-        return listOf(name, auth, password).joinNotNullToStringWithLineSeparator()
+        return listOf(name, auth, password).joinNotNullOrBlankToStringWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {

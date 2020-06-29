@@ -3,7 +3,7 @@ package com.example.barcodescanner.usecase
 import androidx.paging.DataSource
 import androidx.room.*
 import com.example.barcodescanner.model.Barcode
-import com.example.barcodescanner.model.BarcodeSchema
+import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.google.zxing.BarcodeFormat
 import io.reactivex.Completable
 import io.reactivex.Single

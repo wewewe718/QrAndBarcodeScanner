@@ -8,12 +8,12 @@ data class Calendar(
     val uid: String? = null,
     val stamp: String? = null,
     val organizer: String? = null,
-    val startDate: String? = null,
-    val endDate: String? = null,
+    val startDate: Long? = null,
+    val endDate: Long? = null,
     val summary: String? = null
 ) : Schema {
 
-    private companion object {
+    companion object {
         private const val SCHEMA_PREFIX = "BEGIN:VEVENT"
         private const val SCHEMA_SUFFIX = "END:VEVENT"
         private const val PARAMETERS_SEPARATOR = "\r?\n"
@@ -42,8 +42,8 @@ data class Calendar(
             var uid: String? = null
             var stamp: String? = null
             var organizer: String? = null
-            var startDate: String? = null
-            var endDate: String? = null
+            var startDate: Long? = null
+            var endDate: Long? = null
             var summary: String? = null
 
             text.removePrefixIgnoreCase(SCHEMA_PREFIX).split(PARAMETERS_SEPARATOR).forEach { part ->
@@ -63,12 +63,14 @@ data class Calendar(
                 }
 
                 if (part.startsWithIgnoreCase(START_PREFIX)) {
-                    startDate = part.removePrefix(START_PREFIX)
+                    val startDateOriginal = part.removePrefix(START_PREFIX)
+                    startDate = DATE_PARSER.parseOrNull(startDateOriginal)?.time
                     return@forEach
                 }
 
                 if (part.startsWithIgnoreCase(END_PREFIX)) {
-                    endDate = part.removePrefix(START_PREFIX)
+                    val endDateOriginal = part.removePrefix(START_PREFIX)
+                    endDate = DATE_PARSER.parseOrNull(endDateOriginal)?.time
                     return@forEach
                 }
 
@@ -85,23 +87,20 @@ data class Calendar(
     override val schema = BarcodeSchema.CALENDAR
 
     override fun toFormattedText(): String {
-        val parsedStartDate = DATE_PARSER.parseOrNull(startDate)?.time
-        val formattedStartDate = DATE_FORMATTER.formatOrNull(parsedStartDate)
-
-        val parsedEndDate = DATE_PARSER.parseOrNull(startDate)?.time
-        val formattedEndDate = DATE_FORMATTER.formatOrNull(parsedEndDate)
-
         return listOf(
             uid,
             stamp,
-            formattedStartDate,
-            formattedEndDate,
+            DATE_FORMATTER.formatOrNull(startDate),
+            DATE_FORMATTER.formatOrNull(endDate),
             organizer,
             summary
-        ).joinNotNullToStringWithLineSeparator()
+        ).joinNotNullOrBlankToStringWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {
+        val startDate = DATE_PARSER.formatOrNull(startDate)
+        val endDate = DATE_PARSER.formatOrNull(endDate)
+
         return "$SCHEMA_PREFIX$PARAMETERS_SEPARATOR" +
                 "$UID_PREFIX${uid.orEmpty()}$PARAMETERS_SEPARATOR" +
                 "$STAMP_PREFIX${stamp.orEmpty()}$PARAMETERS_SEPARATOR" +

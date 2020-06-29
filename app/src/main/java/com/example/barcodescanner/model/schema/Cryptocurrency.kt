@@ -1,7 +1,7 @@
 package com.example.barcodescanner.model.schema
 
 import com.example.barcodescanner.extension.equalsAnyIgnoreCase
-import com.example.barcodescanner.extension.joinNotNullToStringWithLineSeparator
+import com.example.barcodescanner.extension.joinNotNullOrBlankToStringWithLineSeparator
 import com.example.barcodescanner.extension.removePrefixIgnoreCase
 import com.example.barcodescanner.extension.startsWithIgnoreCase
 
@@ -66,7 +66,7 @@ class Cryptocurrency(
     override val schema = BarcodeSchema.CRYPTOCURRENCY
 
     override fun toFormattedText(): String {
-        return listOf(cryptocurrency, address, label, amount, message).joinNotNullToStringWithLineSeparator()
+        return listOf(cryptocurrency, address, label, amount, message).joinNotNullOrBlankToStringWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {

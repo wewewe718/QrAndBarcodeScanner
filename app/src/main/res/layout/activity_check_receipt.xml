@@ -8,28 +8,22 @@
     >
 
     <!--Toolbar-->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:title="@string/activity_check_receipt_title"
+        app:navigationIcon="@drawable/ic_arrow_back"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        >
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            app:title="@string/activity_check_receipt_title"
-            app:navigationIcon="@drawable/ic_arrow_back"
-            style="@style/ToolbarStyle"
-            />
-    </com.google.android.material.appbar.AppBarLayout>
+        style="@style/ToolbarStyle"
+        />
 
     <!--Loading-->
     <ProgressBar
         android:id="@+id/progress_bar_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/app_bar_layout"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +35,7 @@
         android:id="@+id/image_view_receipt_is_valid"
         android:layout_width="@dimen/receipt_image_view_size"
         android:layout_height="@dimen/receipt_image_view_size"
-        app:layout_constraintTop_toBottomOf="@id/app_bar_layout"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toTopOf="@id/text_view_receipt_is_valid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +91,7 @@
         android:id="@+id/image_view_receipt_is_invalid"
         android:layout_width="@dimen/receipt_image_view_size"
         android:layout_height="@dimen/receipt_image_view_size"
-        app:layout_constraintTop_toBottomOf="@id/app_bar_layout"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toTopOf="@id/text_view_receipt_is_invalid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -9,8 +9,8 @@ import com.example.barcodescanner.App
 val AppCompatActivity.app
     get() = application as App
 
-val AppCompatActivity.barcodeSchemaParser
-    get() = app.barcodeSchemaParser
+val AppCompatActivity.barcodeScanResultParser
+    get() = app.barcodeScanResultParser
 
 val AppCompatActivity.barcodeImageScanner
     get() = app.barcodeImageScanner
@@ -37,8 +37,8 @@ val Fragment.parentActivity
 val Fragment.scannerCameraHelper
     get() = parentActivity.app.scannerCameraHelper
 
-val Fragment.barcodeSchemaParser
-    get() = parentActivity.app.barcodeSchemaParser
+val Fragment.barcodeScanResultParser
+    get() = parentActivity.app.barcodeScanResultParser
 
 val Fragment.barcodeDatabase
     get() = parentActivity.app.barcodeDatabase

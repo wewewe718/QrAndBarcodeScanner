@@ -7,28 +7,22 @@
     android:layout_height="match_parent"
     >
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:title="@string/activity_scan_barcode_from_file_title"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        >
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            app:title="@string/activity_scan_barcode_from_file_title"
-            app:navigationIcon="@drawable/ic_arrow_back"
-            style="@style/ToolbarStyle"
-            />
-    </com.google.android.material.appbar.AppBarLayout>
-
+        app:navigationIcon="@drawable/ic_arrow_back"
+        style="@style/ToolbarStyle"
+        />
+    
     <com.example.barcodescanner.feature.tabs.scan.file.MyCropImageView
         android:id="@+id/crop_image_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="@dimen/default_margin"
-        app:layout_constraintTop_toBottomOf="@id/app_bar_layout"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toTopOf="@id/button_scan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +43,7 @@
 
     <Button
         android:id="@+id/button_scan"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +52,7 @@
         android:text="@string/activity_scan_barcode_from_file_scan"
         android:enabled="false"
         android:visibility="invisible"
+        android:paddingHorizontal="@dimen/default_margin_very_large"
         style="@style/ButtonStyle"
         />
     <ProgressBar

@@ -1,6 +1,6 @@
 package com.example.barcodescanner.model.schema
 
-import com.example.barcodescanner.extension.joinNotNullToStringWithLineSeparator
+import com.example.barcodescanner.extension.joinNotNullOrBlankToStringWithLineSeparator
 import com.example.barcodescanner.extension.removePrefixIgnoreCase
 import com.example.barcodescanner.extension.startsWithIgnoreCase
 
@@ -45,7 +45,7 @@ data class Bookmark(
     override val schema = BarcodeSchema.BOOKMARK
 
     override fun toFormattedText(): String {
-        return listOf(title, url).joinNotNullToStringWithLineSeparator()
+        return listOf(title, url).joinNotNullOrBlankToStringWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {

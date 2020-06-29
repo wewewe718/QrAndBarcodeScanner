@@ -9,10 +9,9 @@ import android.view.MotionEvent.ACTION_UP
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
-import com.example.barcodescanner.common.showError
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.barcodeImageScanner
-import com.example.barcodescanner.di.barcodeSchemaParser
+import com.example.barcodescanner.di.barcodeScanResultParser
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.model.Barcode
@@ -23,6 +22,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_scan_barcode_from_file.*
 import com.google.zxing.*
 import java.util.concurrent.TimeUnit
+import com.example.barcodescanner.extension.showError
 
 class ScanBarcodeFromFileActivity : BaseActivity() {
 
@@ -136,15 +136,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     }
 
     private fun saveScanResult() {
-        val barcode = lastScanResult?.let { result ->
-            Barcode(
-                text = result.text,
-                format = result.barcodeFormat,
-                schema = barcodeSchemaParser.parseSchema(result.text),
-                date = result.timestamp,
-                errorCorrectionLevel = result.resultMetadata?.get(ResultMetadataType.ERROR_CORRECTION_LEVEL) as? String
-            )
-        } ?: return
+        val barcode = lastScanResult?.let(barcodeScanResultParser::parseResult) ?: return
 
         showLoading(true)
 

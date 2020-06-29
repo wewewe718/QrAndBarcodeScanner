@@ -21,7 +21,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/white"
+        android:background="@color/white2"
         app:menu="@menu/menu_bottom_navigation"
         app:labelVisibilityMode="labeled"
         app:itemIconTint="@color/color_bottom_navigation_item"
@@ -29,5 +29,6 @@
         app:itemIconSize="@dimen/bottom_navigation_item_image_size"
         app:itemTextAppearanceActive="@style/BottomNavigationItemTextAppearance"
         app:itemTextAppearanceInactive="@style/BottomNavigationItemTextAppearance"
+        app:elevation="0dp"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

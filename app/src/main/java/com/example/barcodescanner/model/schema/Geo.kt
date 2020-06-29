@@ -3,7 +3,7 @@ package com.example.barcodescanner.model.schema
 import com.example.barcodescanner.extension.removePrefixIgnoreCase
 import com.example.barcodescanner.extension.startsWithIgnoreCase
 
-data class Geo(val uri: String) : Schema {
+class Geo : Schema {
 
     companion object {
         private const val PREFIX = "geo:"
@@ -17,7 +17,19 @@ data class Geo(val uri: String) : Schema {
         }
     }
 
-    constructor(latitude: Double, longitude: Double) : this("$PREFIX$latitude$SEPARATOR$longitude")
+    private val uri: String
+
+    private constructor(uri: String) {
+        this.uri = uri
+    }
+
+    constructor(latitude: Double, longitude: Double, altitude: Double? = null) {
+        uri = if (altitude == null) {
+            "$PREFIX$latitude$SEPARATOR$longitude"
+        } else {
+            "$PREFIX$latitude$SEPARATOR$longitude$SEPARATOR$altitude"
+        }
+    }
 
     override val schema = BarcodeSchema.GEO
 

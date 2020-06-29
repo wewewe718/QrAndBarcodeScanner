@@ -1,7 +1,7 @@
 package com.example.barcodescanner.model.schema
 
 import android.net.MailTo
-import com.example.barcodescanner.extension.joinNotNullToStringWithLineSeparator
+import com.example.barcodescanner.extension.joinNotNullOrBlankToStringWithLineSeparator
 import com.example.barcodescanner.extension.removePrefixIgnoreCase
 import com.example.barcodescanner.extension.startsWithIgnoreCase
 
@@ -66,7 +66,7 @@ data class Email(
     override val schema = BarcodeSchema.EMAIL
 
     override fun toFormattedText(): String {
-        return listOf(email, subject, body).joinNotNullToStringWithLineSeparator()
+        return listOf(email, subject, body).joinNotNullOrBlankToStringWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {

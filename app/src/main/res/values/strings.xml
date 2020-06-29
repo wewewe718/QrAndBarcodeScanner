@@ -13,16 +13,8 @@
     <string name="activity_bottom_tabs_history_tab">History</string>
     <string name="activity_bottom_tabs_settings_tab">Settings</string>
 
-    <!--Scan barcode fragment-->
-    <string name="fragment_scan_barcode_title">Scan</string>
-    <string-array name="fragment_scan_barcode_tab_titles">
-        <item>Camera</item>
-        <item>File</item>
-    </string-array>
-
-    <!--Scan barcode from file fragment-->
-    <string name="fragment_scan_barcode_from_file_choose_file_hint">Choose a file to scan</string>
-    <string name="fragment_scan_barcode_from_file_choose_file">Choose</string>
+    <!--Scan barcode from camera fragment-->
+    <string name="fragment_scan_barcode_from_camera_scan_from_file">From file</string>
 
     <!--Scan barcode from file activity-->
     <string name="activity_scan_barcode_from_file_title">Crop an image</string>

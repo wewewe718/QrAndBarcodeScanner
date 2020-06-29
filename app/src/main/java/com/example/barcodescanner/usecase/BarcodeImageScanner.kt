@@ -1,7 +1,7 @@
 package com.example.barcodescanner.usecase
 
 import android.graphics.Bitmap
-import com.example.barcodescanner.common.orZero
+import com.example.barcodescanner.extension.orZero
 import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import io.reactivex.Single

@@ -102,7 +102,7 @@ data class MeCard(
             birthday,
             note,
             address
-        ).joinNotNullToStringWithLineSeparator()
+        ).joinNotNullOrBlankToStringWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {
