@@ -53,6 +53,8 @@ dependencies {
     // Smooth scrolling
     implementation 'me.everything:overscroll-decor-android:1.1.0'
 
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     // View Model
     final lifecycleVersion = '2.2.0'
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"

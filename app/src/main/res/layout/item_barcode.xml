@@ -43,21 +43,21 @@
     <View
         android:id="@+id/delimiter"
         android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_height="0.2dp"
         android:layout_marginTop="@dimen/default_margin"
         android:layout_marginHorizontal="@dimen/default_margin"
         app:layout_constraintTop_toBottomOf="@id/text_view_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/gray_transparent2"
+        android:background="@color/gray5"
         />
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_view_schema"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/delimiter"
-        android:layout_marginEnd="@dimen/default_margin"
         app:layout_constraintEnd_toEndOf="parent"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

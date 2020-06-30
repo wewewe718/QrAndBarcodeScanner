@@ -2,11 +2,17 @@ package com.example.barcodescanner.feature.common
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.ShapeDrawable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import kotlinx.android.synthetic.main.layout_icon_button.view.*
 
@@ -15,12 +21,10 @@ class IconButton : FrameLayout {
     private lateinit var view: View
 
     constructor(context: Context) : this(context, null)
+
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
+
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         val view = inflateView(context)
         if (attrs != null) {
             applyAttributes(context, view, attrs)
@@ -36,7 +40,9 @@ class IconButton : FrameLayout {
     private fun applyAttributes(context: Context, view: View, attrs: AttributeSet) {
         context.obtainStyledAttributes(attrs, R.styleable.IconButton).apply {
             showIcon(view, this)
+            showIconBackgroundColor(view, this)
             showText(view, this)
+            showDelimiter(view, this)
             recycle()
         }
     }
@@ -45,8 +51,17 @@ class IconButton : FrameLayout {
         view.image_view.setImageDrawable(attributes.getDrawable(R.styleable.IconButton_icon))
     }
 
+    private fun showIconBackgroundColor(view: View, attributes: TypedArray) {
+        val color = attributes.getColor(R.styleable.IconButton_iconBackground, view.context.resources.getColor(R.color.green))
+        (view.layout_image.background.mutate() as GradientDrawable).setColor(color)
+    }
+
     private fun showText(view: View, attributes: TypedArray) {
         view.text_view.text = attributes.getString(R.styleable.IconButton_text).orEmpty()
+    }
+
+    private fun showDelimiter(view: View, attributes: TypedArray) {
+        view.delimiter.isVisible = attributes.getBoolean(R.styleable.IconButton_isDelimiterVisible, true)
     }
 
     override fun setEnabled(enabled: Boolean) {
@@ -54,4 +69,5 @@ class IconButton : FrameLayout {
         view.image_view.isEnabled = enabled
         view.text_view.isEnabled = enabled
     }
+
 }

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_margin_big">20dp</dimen>
     <dimen name="default_margin_medium">14dp</dimen>
     <dimen name="default_margin_small">8dp</dimen>
     <dimen name="default_margin_very_small">4dp</dimen>
     <dimen name="default_margin_large">32dp</dimen>
     <dimen name="default_margin_very_large">40dp</dimen>
     <dimen name="default_text_size">16sp</dimen>
-    <dimen name="large_text_size">17sp</dimen>
+    <dimen name="large_text_size">18sp</dimen>
     <dimen name="margin_horizontal_barcode">74dp</dimen>
     <dimen name="small_text_size">13sp</dimen>
     <dimen name="receipt_image_view_size">70dp</dimen>
@@ -16,4 +17,7 @@
     <dimen name="tab_layout_indicator_height">4dp</dimen>
     <dimen name="fragment_barcode_history_recycler_view_top_margin">50dp</dimen>
     <dimen name="button_corner_radius">50dp</dimen>
+    <dimen name="icon_button_icon_size">19dp</dimen>
+    <dimen name="icon_button_icon_padding">10dp</dimen>
+    <dimen name="icon_button_vertical_padding">12dp</dimen>
 </resources>
