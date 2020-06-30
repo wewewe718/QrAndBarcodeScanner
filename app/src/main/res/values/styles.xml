@@ -45,13 +45,20 @@
     </style>
 
     <style name="LargeTextViewStyle">
-        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textSize">@dimen/default_text_size_large</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="SecondaryTextViewStyle">
         <item name="android:textColor">@color/gray</item>
-        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:textSize">@dimen/default_text_size_very_small</item>
+    </style>
+
+    <style name="CreateBarcodeFragmentTextViewStyle">
+        <item name="android:textColor">@color/gray6</item>
+        <item name="android:textSize">@dimen/default_text_size_small</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
 </resources>

@@ -171,6 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_link"
+                app:iconBackground="@color/orange"
                 app:text="@string/activity_barcode_open_link"
                 android:visibility="gone"
                 tools:visibility="visible"
@@ -216,7 +217,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                app:icon="@drawable/ic_barcode_other"
+                app:icon="@drawable/ic_qr_code"
                 app:iconBackground="@color/blue"
                 app:text="@string/activity_barcode_show_barcode_image"
                 />

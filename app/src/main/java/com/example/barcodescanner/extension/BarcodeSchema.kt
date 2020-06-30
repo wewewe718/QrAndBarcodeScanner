@@ -19,6 +19,6 @@ fun BarcodeSchema.toImageId(): Int {
         BarcodeSchema.WIFI -> R.drawable.ic_wifi
         BarcodeSchema.YOUTUBE -> R.drawable.ic_youtube
         BarcodeSchema.RECEIPT -> R.drawable.ic_receipt
-        else -> R.drawable.ic_barcode_other
+        else -> R.drawable.ic_qr_code
     }
 }

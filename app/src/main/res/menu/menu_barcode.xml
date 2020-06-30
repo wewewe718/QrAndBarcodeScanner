@@ -6,7 +6,7 @@
     <item
         android:id="@+id/item_show_barcode_image"
         android:title="@string/activity_barcode_show_barcode_image"
-        android:icon="@drawable/ic_barcode_other"
+        android:icon="@drawable/ic_qr_code"
         app:showAsAction="always"
         />
     <item

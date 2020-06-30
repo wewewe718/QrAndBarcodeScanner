@@ -22,6 +22,24 @@
 
     <!--Create barcode fragment-->
     <string name="fragment_create_barcode_title">Create</string>
+    <string name="fragment_create_barcode_qr_code">QR code</string>
+    <string name="fragment_create_barcode_qr_code_clipboard">Content from clipboard</string>
+    <string name="fragment_create_barcode_qr_code_text">Text</string>
+    <string name="fragment_create_barcode_qr_code_url">URL</string>
+    <string name="fragment_create_barcode_qr_code_wifi">Wi-Fi</string>
+    <string name="fragment_create_barcode_qr_code_location">Location</string>
+    <string name="fragment_create_barcode_qr_code_contact_vcard">Contact (VCard)</string>
+    <string name="fragment_create_barcode_qr_code_contact_mecard">Contact (MeCard)</string>
+    <string name="fragment_create_barcode_qr_code_event">Event</string>
+    <string name="fragment_create_barcode_qr_code_phone">Phone</string>
+    <string name="fragment_create_barcode_qr_code_email">Email</string>
+    <string name="fragment_create_barcode_qr_code_sms">SMS</string>
+    <string name="fragment_create_barcode_qr_code_mms">MMS</string>
+    <string name="fragment_create_barcode_qr_code_cryptocurrency">Bitcoin</string>
+    <string name="fragment_create_barcode_qr_code_bookmark">Bookmark</string>
+    <string name="fragment_create_barcode_qr_code_app">App</string>
+    <string name="fragment_create_barcode_2d">2D barcodes</string>
+    <string name="fragment_create_barcode_1d">1D barcodes</string>
 
     <!--Barcode history fragment-->
     <string name="fragment_barcode_history_title">History</string>
@@ -35,65 +53,32 @@
     <string name="fragment_settings_title">Settings</string>
 
     <!--Barcode activity-->
-    <string name="activity_barcode_format_aztec">Aztec</string>
-    <string name="activity_barcode_format_codabar">CODABAR</string>
-    <string name="activity_barcode_format_code_39">Code 39</string>
-    <string name="activity_barcode_format_code_93">Code 93</string>
-    <string name="activity_barcode_format_code_128">Code 128</string>
-    <string name="activity_barcode_format_data_matrix">Data Matrix</string>
-    <string name="activity_barcode_format_ean_8">EAN-8</string>
-    <string name="activity_barcode_format_ean_13">EAN-13</string>
-    <string name="activity_barcode_format_itf">ITF</string>
-    <string name="activity_barcode_format_maxi_code">MaxiCode</string>
-    <string name="activity_barcode_format_pdf_417">PDF417</string>
-    <string name="activity_barcode_format_qr_code">QR Code</string>
-    <string name="activity_barcode_format_rss_14">RSS 14</string>
-    <string name="activity_barcode_format_rss_expanded">RSS EXPANDED</string>
-    <string name="activity_barcode_format_upc_a">UPC-A</string>
-    <string name="activity_barcode_format_upc_e">UPC-E</string>
-    <string name="activity_barcode_format_upc_ean">UPC/EAN</string>
-    <string name="activity_barcode_bookmark_format">Title: %s\nURL: %s</string>
-    <string name="activity_barcode_calendar_format">Title: %s\nOrganizer: %s\nDescription: %s\nBegin time: %s\nEnd time: %s</string>
-    <string name="activity_barcode_email_format">To: %s\nSubject: %s\nBody: %s</string>
-    <string name="activity_barcode_sms_format">%s\n%s</string>
-    <string name="activity_barcode_contact_name">Name: %s\n</string>
-    <string name="activity_barcode_contact_address">Address: %s\n</string>
-    <string name="activity_barcode_contact_organization">Organization: %s\n</string>
-    <string name="activity_barcode_contact_job_position">Job position: %s\n</string>
-    <string name="activity_barcode_contact_phone">Phone: %s\n</string>
-    <string name="activity_barcode_contact_secondary_phone">Secondary phone: %s\n</string>
-    <string name="activity_barcode_contact_tertiary_phone">Tertiary phone: %s\n</string>
-    <string name="activity_barcode_contact_email">Email: %s\n</string>
-    <string name="activity_barcode_contact_secondary_email">Secondary email: %s\n</string>
-    <string name="activity_barcode_contact_tertiary_email">Tertiary email: %s\n</string>
-    <string name="activity_barcode_contact_url">URL: %s\n</string>
-    <string name="activity_barcode_contact_geo">Geo: %s\n</string>
-    <string name="activity_barcode_wifi_format">Auth: %s\nName: %s\nPassword: %s</string>
-    <string name="activity_barcode_add_to_calendar">Add to Calendar</string>
-    <string name="activity_barcode_add_to_contacts">Add to Contacts</string>
+
+    <string name="activity_barcode_add_to_calendar">Add to calendar</string>
+    <string name="activity_barcode_add_to_contacts">Add contact</string>
     <string name="activity_barcode_call_phone">Call</string>
     <string name="activity_barcode_send_sms">Send SMS/MMS</string>
     <string name="activity_barcode_send_email">Send Email</string>
-    <string name="activity_barcode_show_location">Show the location</string>
-    <string name="activity_barcode_connect_to_wifi">Connect</string>
-    <string name="activity_barcode_copy_network_name">Copy the network name</string>
-    <string name="activity_barcode_copy_network_password">Copy the network password</string>
+    <string name="activity_barcode_show_location">Show location</string>
+    <string name="activity_barcode_connect_to_wifi">Connect to Wi-Fi</string>
+    <string name="activity_barcode_copy_network_name">Copy network name</string>
+    <string name="activity_barcode_copy_network_password">Copy network password</string>
     <string name="activity_barcode_open_in_google_play">Open in Google Play</string>
     <string name="activity_barcode_open_in_youtube">Open in Youtube</string>
     <string name="activity_barcode_save_bookmark">Save to bookmarks</string>
-    <string name="activity_barcode_open_link">Open the link</string>
+    <string name="activity_barcode_open_link">Open link</string>
     <string name="activity_barcode_share_as_text">Share as text</string>
-    <string name="activity_barcode_check_receipt">Check the receipt</string>
+    <string name="activity_barcode_check_receipt">Check receipt</string>
     <string name="activity_barcode_copy">Copy to clipboard</string>
-    <string name="activity_barcode_search">Search on the Internet</string>
-    <string name="activity_barcode_show_barcode_image">Show the barcode image</string>
+    <string name="activity_barcode_search">Search on the web</string>
+    <string name="activity_barcode_show_barcode_image">View code</string>
     <string name="activity_barcode_share_as_image">Share as image</string>
-    <string name="activity_barcode_save_to_gallery">Save to Gallery</string>
+    <string name="activity_barcode_save_to_gallery">Save as image</string>
     <string name="activity_barcode_print">Print</string>
     <string name="activity_barcode_delete">Delete</string>
     <string name="activity_barcode_connecting_to_wifi">Connecting</string>
     <string name="activity_barcode_copied">Copied to clipboard</string>
-    <string name="activity_barcode_barcode_image_saved">Saved to Gallery</string>
+    <string name="activity_barcode_barcode_image_saved">Saved</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
     <!--Russian receipt QR code strings. Not translatable-->
     <string name="activity_barcode_receipt_type_income" translatable="false">Приход</string>
@@ -116,5 +101,24 @@
     <!--Receipt activity-->
     <string name="activity_receipt_title">Receipt</string>
     <string name="activity_receipt_menu_item_download_title">Download as .pdf</string>
+
+    <!--Barcode formats-->
+    <string name="barcode_format_aztec">Aztec</string>
+    <string name="barcode_format_codabar">Codabar</string>
+    <string name="barcode_format_code_39">Code 39</string>
+    <string name="barcode_format_code_93">Code 93</string>
+    <string name="barcode_format_code_128">Code 128</string>
+    <string name="barcode_format_data_matrix">Data Matrix</string>
+    <string name="barcode_format_ean_8">EAN-8</string>
+    <string name="barcode_format_ean_13">EAN-13</string>
+    <string name="barcode_format_itf_14">ITF-14</string>
+    <string name="barcode_format_maxi_code">MaxiCode</string>
+    <string name="barcode_format_pdf_417">PDF417</string>
+    <string name="barcode_format_qr_code">QR Code</string>
+    <string name="barcode_format_rss_14">RSS 14</string>
+    <string name="barcode_format_rss_expanded">RSS EXPANDED</string>
+    <string name="barcode_format_upc_a">UPC-A</string>
+    <string name="barcode_format_upc_e">UPC-E</string>
+    <string name="barcode_format_upc_ean">UPC/EAN</string>
 
 </resources>

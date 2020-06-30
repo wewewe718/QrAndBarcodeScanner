@@ -12,6 +12,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import kotlinx.android.synthetic.main.layout_icon_button.view.*
@@ -61,7 +62,7 @@ class IconButton : FrameLayout {
     }
 
     private fun showDelimiter(view: View, attributes: TypedArray) {
-        view.delimiter.isVisible = attributes.getBoolean(R.styleable.IconButton_isDelimiterVisible, true)
+        view.delimiter.isInvisible = attributes.getBoolean(R.styleable.IconButton_isDelimiterVisible, true).not()
     }
 
     override fun setEnabled(enabled: Boolean) {
