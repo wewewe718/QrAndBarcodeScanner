@@ -5,6 +5,7 @@
     <dimen name="default_margin_medium">14dp</dimen>
     <dimen name="default_margin_small">8dp</dimen>
     <dimen name="default_margin_very_small">4dp</dimen>
+    <dimen name="default_margin_extra_small">2dp</dimen>
     <dimen name="default_margin_large">32dp</dimen>
     <dimen name="default_margin_very_large">40dp</dimen>
 

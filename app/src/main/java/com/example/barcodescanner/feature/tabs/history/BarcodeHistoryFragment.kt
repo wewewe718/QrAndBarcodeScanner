@@ -18,7 +18,7 @@ import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.fragment_barcode_history.*
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 
-class BarcodeHistoryFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Listener {
+class BarcodeHistoryFragment : Fragment() {
     private val disposable = CompositeDisposable()
     private val scanHistoryAdapter = BarcodeHistoryAdapter()
     private val viewModel by lazy {
@@ -36,7 +36,6 @@ class BarcodeHistoryFragment : Fragment(), DeleteHistoryConfirmationDialogFragme
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //initToolbarMenu()
         initRecyclerView()
     }
 
@@ -50,33 +49,18 @@ class BarcodeHistoryFragment : Fragment(), DeleteHistoryConfirmationDialogFragme
         unsubscribeFromViewModel()
     }
 
-    override fun onDeleteHistoryPositiveButtonClicked() {
-        viewModel.onDeleteHistoryConfirmed()
-    }
-
-    private fun initToolbarMenu() {
-        toolbar.inflateMenu(R.menu.menu_barcode_history)
-        toolbar.setOnMenuItemClickListener { item ->
-            if (item.itemId == R.id.item_delete_all) {
-                viewModel.onDeleteHistoryClicked()
-            }
-            return@setOnMenuItemClickListener true
-        }
-    }
-
     private fun initRecyclerView() {
         recycler_view_history.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = scanHistoryAdapter
         }
-        OverScrollDecoratorHelper.setUpOverScroll(recycler_view_history, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
+        OverScrollDecoratorHelper.setUpOverScroll(recycler_view_history, OverScrollDecoratorHelper.ORIENTATION_VERTICAL)
     }
 
     private fun subscribeToViewModel() {
         subscribeToBarcodeClicks()
         subscribeToHistoryDataChanged()
         subscribeToHistory()
-        subscribeToDeleteHistoryDialog()
         subscribeToLoading()
         subscribeToError()
         subscribeToNavigateToBarcodeScreen()
@@ -100,13 +84,6 @@ class BarcodeHistoryFragment : Fragment(), DeleteHistoryConfirmationDialogFragme
         viewModel.scanHistory
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(scanHistoryAdapter::submitList)
-            .addTo(disposable)
-    }
-
-    private fun subscribeToDeleteHistoryDialog() {
-        viewModel.showDeleteHistoryConfirmationEvent
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { showDeleteHistoryConfirmationDialog() }
             .addTo(disposable)
     }
 
@@ -135,11 +112,6 @@ class BarcodeHistoryFragment : Fragment(), DeleteHistoryConfirmationDialogFragme
 
     private fun unsubscribeFromViewModel() {
         disposable.clear()
-    }
-
-    private fun showDeleteHistoryConfirmationDialog() {
-        val dialog = DeleteHistoryConfirmationDialogFragment()
-        dialog.show(childFragmentManager, "")
     }
 
     private fun showLoading(isLoading: Boolean) {

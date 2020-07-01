@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/color_icon_button_icon_and_text"
         tools:text="Copy"
-        style="@style/TextViewStyle"
+        style="@style/BlackTextViewStyle"
         />
     <View
         android:id="@+id/delimiter"

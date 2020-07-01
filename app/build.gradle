@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.barcodescanner"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -52,6 +52,9 @@ dependencies {
 
     // Smooth scrolling
     implementation 'me.everything:overscroll-decor-android:1.1.0'
+
+    // Switch button ios style
+    implementation 'com.github.zcweng:switch-button:0.0.3@aar'
 
     // View Model
     final lifecycleVersion = '2.2.0'

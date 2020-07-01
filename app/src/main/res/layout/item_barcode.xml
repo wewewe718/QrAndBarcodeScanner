@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toStartOf="@id/image_view_schema"
         android:maxLines="1"
         tools:text="Hello World!"
-        style="@style/TextViewStyle"
+        style="@style/BlackTextViewStyle"
         />
     <View
         android:id="@+id/delimiter"

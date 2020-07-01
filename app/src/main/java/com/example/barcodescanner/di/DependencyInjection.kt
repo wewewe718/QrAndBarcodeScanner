@@ -30,6 +30,9 @@ val AppCompatActivity.wifiConnector
 val AppCompatActivity.barcodeDatabase
     get() = app.barcodeDatabase
 
+val AppCompatActivity.settings
+    get() = app.settings
+
 
 val Fragment.parentActivity
     get() = requireActivity() as AppCompatActivity
@@ -42,6 +45,9 @@ val Fragment.barcodeScanResultParser
 
 val Fragment.barcodeDatabase
     get() = parentActivity.app.barcodeDatabase
+
+val Fragment.settings
+    get() = parentActivity.app.settings
 
 
 val AndroidViewModel.barcodeDatabase

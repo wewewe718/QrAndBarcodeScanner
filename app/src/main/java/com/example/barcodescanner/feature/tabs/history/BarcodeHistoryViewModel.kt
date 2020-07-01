@@ -24,7 +24,6 @@ class BarcodeHistoryViewModel(app: Application) : AndroidViewModel(app) {
     val isLoading = BehaviorSubject.create<Boolean>()
     val error = PublishSubject.create<Throwable>()
     val navigateToBarcodeScreenEvent = PublishSubject.create<Barcode>()
-    val showDeleteHistoryConfirmationEvent = PublishSubject.create<Unit>()
 
     init {
         loadHistory()
@@ -32,14 +31,6 @@ class BarcodeHistoryViewModel(app: Application) : AndroidViewModel(app) {
 
     fun onBarcodeClicked(barcode: Barcode) {
         navigateToBarcodeScreenEvent.onNext(barcode)
-    }
-
-    fun onDeleteHistoryClicked() {
-        showDeleteHistoryConfirmationEvent.onNext(Unit)
-    }
-
-    fun onDeleteHistoryConfirmed() {
-        deleteHistory()
     }
 
     private fun loadHistory() {
@@ -55,21 +46,6 @@ class BarcodeHistoryViewModel(app: Application) : AndroidViewModel(app) {
                     this.scanHistory.onNext(scanHistory)
                 },
                 { error ->
-                    this.error.onNext(error)
-                }
-            )
-            .addTo(disposable)
-    }
-
-    private fun deleteHistory() {
-        barcodeDatabase.deleteAll()
-            .subscribeOn(Schedulers.io())
-            .subscribe(
-                {
-                    isLoading.onNext(false)
-                },
-                { error ->
-                    isLoading.onNext(false)
                     this.error.onNext(error)
                 }
             )

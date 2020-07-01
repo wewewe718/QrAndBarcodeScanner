@@ -70,5 +70,4 @@ class IconButton : FrameLayout {
         view.image_view.isEnabled = enabled
         view.text_view.isEnabled = enabled
     }
-
 }

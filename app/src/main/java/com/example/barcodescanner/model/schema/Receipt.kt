@@ -91,7 +91,7 @@ class Receipt(
         val formattedTime = DATE_FORMATTER.formatOrNull(parsedTime)
 
         return String.format(
-            "%s\\n%s\\nФН: %s\\nФД: %s\\nФПД: %s\\nИтог: %s",
+            "%s\n%s\nФН: %s\nФД: %s\nФПД: %s\nИтог: %s",
             formattedTime,
             type,
             fiscalDriveNumber.orEmpty(),

@@ -19,6 +19,18 @@
         android:name="com.example.barcodescanner.App"
         >
 
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.barcodescanner.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"
+                />
+        </provider>
+
         <activity
             android:name=".feature.tabs.BottomTabsActivity"
             android:screenOrientation="portrait"
@@ -51,17 +63,14 @@
             android:screenOrientation="portrait"
             />
 
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.barcodescanner.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true"
-            >
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"
-                />
-        </provider>
+        <activity
+            android:name=".feature.tabs.settings.camera.ChooseCameraActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".feature.tabs.settings.formats.SupportedFormatsActivity"
+            android:screenOrientation="portrait"
+            />
 
     </application>
 

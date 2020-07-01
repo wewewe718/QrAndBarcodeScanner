@@ -1,13 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <!--Scanner-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin_small"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:text="@string/fragment_settings_scanner_settings"
+                style="@style/CreateBarcodeFragmentTextViewStyle"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_open_links_automatically"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_open_links_automatically"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_copy_to_clipboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_copy_to_clipboard"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_flashlight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_flashlight"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_autofocus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_autofocus"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_vibrate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_vibrate"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_continuous_scanning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_continuous_scanning"
+                app:hint="@string/fragment_settings_continuous_scanning_hint"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_confirm_scans_manually"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_confirm_scans_manually"
+                app:hint="@string/fragment_settings_confirm_scans_manually_hint"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_choose_camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_camera"
+                app:isSwitchVisible="false"
+                app:isArrowVisible="true"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_select_supported_formats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_supported_formats"
+                app:isDelimiterVisible="false"
+                app:isSwitchVisible="false"
+                app:isArrowVisible="true"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_margin_small"
+                android:background="@color/gray3"
+                />
+
+            <!--History-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:text="@string/fragment_settings_history_settings"
+                style="@style/CreateBarcodeFragmentTextViewStyle"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_save_scanned_barcodes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_save_scanned_barcodes_to_history"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_save_created_barcodes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_save_created_barcodes_to_history"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_clear_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_clear_history"
+                app:isDelimiterVisible="false"
+                app:isSwitchVisible="false"
+                app:isArrowVisible="false"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_margin_small"
+                android:background="@color/gray3"
+                />
+
+            <!--About-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:text="@string/fragment_settings_about"
+                style="@style/CreateBarcodeFragmentTextViewStyle"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_rate_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_rate"
+                app:isSwitchVisible="false"
+                app:isArrowVisible="true"
+                />
+            <com.example.barcodescanner.feature.tabs.settings.SettingsButton
+                android:id="@+id/button_app_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_app_version"
+                app:isDelimiterVisible="false"
+                app:isSwitchVisible="false"
+                app:isArrowVisible="false"
+                />
+        </LinearLayout>
+    </ScrollView>
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:title="@string/fragment_settings_title"
         style="@style/ToolbarStyle"
         />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

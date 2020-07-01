@@ -1,7 +1,6 @@
-package com.example.barcodescanner.feature.tabs.history
+package com.example.barcodescanner.feature.tabs.settings.history
 
 import android.app.Dialog
-import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
@@ -16,7 +15,7 @@ class DeleteHistoryConfirmationDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val listener = parentFragment as? Listener
         return AlertDialog.Builder(requireContext())
-            .setTitle(R.string.error_dialog_title)
+            .setTitle(R.string.fragment_settings_clear_history_title)
             .setMessage(R.string.fragment_barcode_history_delete_all_dialog_message)
             .setCancelable(false)
             .setPositiveButton(R.string.fragment_barcode_history_delete_all_dialog_positive_button) { _, _ -> listener?.onDeleteHistoryPositiveButtonClicked() }

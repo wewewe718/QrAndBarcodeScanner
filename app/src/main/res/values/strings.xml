@@ -51,9 +51,36 @@
 
     <!--Settings fragment-->
     <string name="fragment_settings_title">Settings</string>
+    <string name="fragment_settings_clear_history_title">Warning</string>
+    <string name="fragment_settings_scanner_settings">Scanner</string>
+    <string name="fragment_settings_open_links_automatically">Open links automatically</string>
+    <string name="fragment_settings_copy_to_clipboard">Copy to clipboard</string>
+    <string name="fragment_settings_flashlight">Flashlight</string>
+    <string name="fragment_settings_autofocus">Autofocus</string>
+    <string name="fragment_settings_vibrate">Vibrate</string>
+    <string name="fragment_settings_continuous_scanning">Continuous scanning</string>
+    <string name="fragment_settings_continuous_scanning_hint">Save scans to history only</string>
+    <string name="fragment_settings_confirm_scans_manually">Confirm scans manually</string>
+    <string name="fragment_settings_confirm_scans_manually_hint">Avoid accidental scans</string>
+    <string name="fragment_settings_camera">Camera</string>
+    <string name="fragment_settings_supported_formats">Supported formats</string>
+    <string name="fragment_settings_history_settings">History</string>
+    <string name="fragment_settings_save_scanned_barcodes_to_history">Save scanned barcodes to history</string>
+    <string name="fragment_settings_save_created_barcodes_to_history">Save created barcodes to history</string>
+    <string name="fragment_settings_clear_history">Clear history</string>
+    <string name="fragment_settings_about">About</string>
+    <string name="fragment_settings_rate">Rate this app</string>
+    <string name="fragment_settings_app_version">App version</string>
+
+    <!--Choose camera activity-->
+    <string name="activity_choose_camera_title">Camera</string>
+    <string name="activity_choose_camera_front">Front</string>
+    <string name="activity_choose_camera_back">Back</string>
+
+    <!--Select supported formats activity-->
+    <string name="activity_supported_formats_title">Supported formats</string>
 
     <!--Barcode activity-->
-
     <string name="activity_barcode_add_to_calendar">Add to calendar</string>
     <string name="activity_barcode_add_to_contacts">Add contact</string>
     <string name="activity_barcode_call_phone">Call</string>
