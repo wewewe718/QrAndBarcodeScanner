@@ -6,7 +6,7 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.Result
 import com.google.zxing.ResultMetadataType
 
-class BarcodeScanResultParser {
+object BarcodeScanResultParser {
 
     fun parseResult(result: Result): Barcode {
         val schema = getSchema(result)

@@ -10,14 +10,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.provider.ContactsContract
+import android.provider.Settings
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.print.PrintHelper
 import com.example.barcodescanner.R
-import com.example.barcodescanner.di.barcodeDatabase
-import com.example.barcodescanner.di.barcodeImageGenerator
-import com.example.barcodescanner.di.barcodeImageSaver
-import com.example.barcodescanner.di.wifiConnector
+import com.example.barcodescanner.di.*
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.image.BarcodeImageActivity
 import com.example.barcodescanner.feature.barcode.receipt.CheckReceiptActivity
@@ -71,6 +69,7 @@ class BarcodeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_barcode)
+        applySettings()
         initScrollView()
         handleToolbarBackPressed()
         handleToolbarMenuClicked()
@@ -85,6 +84,24 @@ class BarcodeActivity : BaseActivity() {
         }
     }
 
+
+    private fun applySettings() {
+        if (settings.copyToClipboard) {
+            copyToClipboard(barcode.text)
+        }
+
+        if (settings.openLinksAutomatically.not()) {
+            return
+        }
+
+        when (barcode.schema) {
+            BarcodeSchema.GOOGLE_PLAY -> openInGooglePlay()
+            BarcodeSchema.YOUTUBE -> openInYoutube()
+            BarcodeSchema.GOOGLE_MAPS -> showLocation()
+            BarcodeSchema.URL -> openLink()
+            else -> return
+        }
+    }
 
     private fun initScrollView() {
         OverScrollDecoratorHelper.setUpOverScroll(scroll_view)
@@ -115,6 +132,7 @@ class BarcodeActivity : BaseActivity() {
         button_send_email.setOnClickListener { sendEmail() }
         button_show_location.setOnClickListener { showLocation() }
         button_connect_to_wifi.setOnClickListener { connectToWifi() }
+        button_open_wifi_settings.setOnClickListener { openWifiSettings() }
         button_copy_network_name.setOnClickListener { copyNetworkNameToClipboard() }
         button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
         button_open_in_google_play.setOnClickListener { openInGooglePlay() }
@@ -215,6 +233,11 @@ class BarcodeActivity : BaseActivity() {
                 }
             )
             .addTo(disposable)
+    }
+
+    private fun openWifiSettings() {
+        val intent = Intent(Settings.ACTION_WIFI_SETTINGS)
+        startActivityIfExists(intent)
     }
 
     private fun copyNetworkNameToClipboard() {
@@ -368,6 +391,7 @@ class BarcodeActivity : BaseActivity() {
         button_send_email.isVisible = barcode.email.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
         button_show_location.isVisible = barcode.geoUri.isNullOrEmpty().not()
         button_connect_to_wifi.isVisible = barcode.schema == BarcodeSchema.WIFI
+        button_open_wifi_settings.isVisible = barcode.schema == BarcodeSchema.WIFI
         button_copy_network_name.isVisible = barcode.networkName.isNullOrEmpty().not()
         button_copy_network_password.isVisible = barcode.networkPassword.isNullOrEmpty().not()
         button_open_in_google_play.isVisible = barcode.googlePlayUrl.isNullOrEmpty().not()

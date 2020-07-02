@@ -1,5 +1,6 @@
 package com.example.barcodescanner.usecase
 
+import android.content.Context
 import androidx.paging.DataSource
 import androidx.room.*
 import com.example.barcodescanner.model.Barcode
@@ -41,6 +42,16 @@ abstract class BarcodeDatabaseFactory : RoomDatabase() {
 
 @Dao
 interface BarcodeDatabase {
+
+    companion object {
+        fun newInstance(context: Context): BarcodeDatabase {
+            return Room
+                .databaseBuilder(context, BarcodeDatabaseFactory::class.java, "db")
+                .build()
+                .getBarcodeDatabase()
+        }
+    }
+
     @Query("SELECT * FROM codes ORDER BY date DESC")
     fun getAll(): DataSource.Factory<Int, Barcode>
 

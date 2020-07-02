@@ -5,6 +5,7 @@ enum class BarcodeSchema {
     CRYPTOCURRENCY,
     EMAIL,
     GEO,
+    GOOGLE_MAPS,
     GOOGLE_PLAY,
     CALENDAR,
     MMS,

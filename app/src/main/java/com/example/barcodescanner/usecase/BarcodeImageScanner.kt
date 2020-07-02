@@ -8,7 +8,7 @@ import io.reactivex.Single
 import io.reactivex.SingleEmitter
 import io.reactivex.schedulers.Schedulers
 
-class BarcodeImageScanner {
+object BarcodeImageScanner {
     private var bitmapBuffer: IntArray? = null
 
     fun parse(image: Bitmap): Single<Result> {

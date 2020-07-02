@@ -4,11 +4,11 @@ import android.hardware.Camera
 import com.budiyev.android.codescanner.CodeScanner
 
 
-class ScannerCameraHelper {
+object ScannerCameraHelper {
 
-    fun getCameraParameters(facing: Int): Camera.Parameters? {
+    fun getCameraParameters(isBackCamera: Boolean): Camera.Parameters? {
         return try {
-            val cameraFacing = getCameraFacing(facing)
+            val cameraFacing = getCameraFacing(isBackCamera)
             val cameraId = getCameraId(cameraFacing) ?: return null
             Camera.open(cameraId)?.parameters
         } catch (_: Exception) {
@@ -16,8 +16,8 @@ class ScannerCameraHelper {
         }
     }
 
-    private fun getCameraFacing(facing: Int): Int {
-        return if (facing == CodeScanner.CAMERA_BACK) {
+    private fun getCameraFacing(isBackCamera: Boolean): Int {
+        return if (isBackCamera) {
             Camera.CameraInfo.CAMERA_FACING_BACK
         } else {
             Camera.CameraInfo.CAMERA_FACING_FRONT

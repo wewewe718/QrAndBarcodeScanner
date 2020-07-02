@@ -45,6 +45,10 @@ class FormatsAdapter(
             itemView.check_box.setOnCheckedChangeListener { _, isChecked ->
                listener.onFormatChecked(format, isChecked)
             }
+
+            itemView.setOnClickListener {
+                itemView.check_box.toggle()
+            }
         }
     }
 }

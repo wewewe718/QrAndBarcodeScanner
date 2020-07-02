@@ -15,6 +15,7 @@
 
     <!--Scan barcode from camera fragment-->
     <string name="fragment_scan_barcode_from_camera_scan_from_file">From file</string>
+    <string name="fragment_scan_barcode_from_camera_barcode_saved">Saved</string>
 
     <!--Scan barcode from file activity-->
     <string name="activity_scan_barcode_from_file_title">Crop an image</string>
@@ -55,8 +56,8 @@
     <string name="fragment_settings_scanner_settings">Scanner</string>
     <string name="fragment_settings_open_links_automatically">Open links automatically</string>
     <string name="fragment_settings_copy_to_clipboard">Copy to clipboard</string>
-    <string name="fragment_settings_flashlight">Flashlight</string>
-    <string name="fragment_settings_autofocus">Autofocus</string>
+    <string name="fragment_settings_flash">Flash</string>
+    <string name="fragment_settings_auto_focus">Auto focus</string>
     <string name="fragment_settings_vibrate">Vibrate</string>
     <string name="fragment_settings_continuous_scanning">Continuous scanning</string>
     <string name="fragment_settings_continuous_scanning_hint">Save scans to history only</string>
@@ -88,6 +89,7 @@
     <string name="activity_barcode_send_email">Send Email</string>
     <string name="activity_barcode_show_location">Show location</string>
     <string name="activity_barcode_connect_to_wifi">Connect to Wi-Fi</string>
+    <string name="activity_barcode_open_wifi_settings">Open Wi-Fi settings</string>
     <string name="activity_barcode_copy_network_name">Copy network name</string>
     <string name="activity_barcode_copy_network_password">Copy network password</string>
     <string name="activity_barcode_open_in_google_play">Open in Google Play</string>
@@ -107,12 +109,6 @@
     <string name="activity_barcode_copied">Copied to clipboard</string>
     <string name="activity_barcode_barcode_image_saved">Saved</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
-    <!--Russian receipt QR code strings. Not translatable-->
-    <string name="activity_barcode_receipt_type_income" translatable="false">Приход</string>
-    <string name="activity_barcode_receipt_type_return_income" translatable="false">Возврат прихода</string>
-    <string name="activity_barcode_receipt_type_expense" translatable="false">Расход</string>
-    <string name="activity_barcode_receipt_type_return_expense" translatable="false">Возврат расхода</string>
-    <string name="activity_barcode_receipt_format" translatable="false">%s\n%s\nФН: %s\nФД: %s\nФПД: %s\nИтог: %s</string>
 
     <!--Check receipt activity-->
     <string name="activity_check_receipt_title">Receipt</string>

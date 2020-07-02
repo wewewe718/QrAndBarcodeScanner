@@ -7,7 +7,7 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
 import com.journeyapps.barcodescanner.BarcodeEncoder
 
-class BarcodeImageGenerator {
+object BarcodeImageGenerator {
     private val encoder = BarcodeEncoder()
 
     fun generateImage(barcode: Barcode, width: Int, height: Int, margin: Int = 0): Bitmap {

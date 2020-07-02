@@ -15,7 +15,7 @@ data class GoogleMaps(val url: String) : Schema {
         }
     }
 
-    override val schema = BarcodeSchema.GEO
+    override val schema = BarcodeSchema.GOOGLE_MAPS
     override fun toFormattedText(): String = url
     override fun toBarcodeText(): String = url
 }

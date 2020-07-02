@@ -12,6 +12,7 @@ import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.barcodeImageScanner
 import com.example.barcodescanner.di.barcodeScanResultParser
+import com.example.barcodescanner.di.settings
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.model.Barcode
@@ -137,6 +138,10 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
 
     private fun saveScanResult() {
         val barcode = lastScanResult?.let(barcodeScanResultParser::parseResult) ?: return
+        if (settings.saveScannedBarcodesToHistory.not()) {
+            navigateToBarcodeScreen(barcode)
+            return
+        }
 
         showLoading(true)
 
