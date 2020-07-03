@@ -20,7 +20,7 @@
         android:background="@drawable/background_circle"
         >
         <ImageView
-            android:id="@+id/image_view"
+            android:id="@+id/image_view_schema"
             android:layout_width="@dimen/icon_button_icon_size"
             android:layout_height="@dimen/icon_button_icon_size"
             android:layout_gravity="center_vertical"

@@ -24,3 +24,22 @@ fun BarcodeFormat.toStringId(): Int {
         BarcodeFormat.UPC_EAN_EXTENSION -> R.string.barcode_format_upc_ean
     }
 }
+
+fun BarcodeFormat.toImageId(): Int {
+    return when (this) {
+        BarcodeFormat.QR_CODE -> R.drawable.ic_qr_code
+        BarcodeFormat.DATA_MATRIX -> R.drawable.ic_data_matrix
+        BarcodeFormat.AZTEC -> R.drawable.ic_aztec
+        BarcodeFormat.PDF_417 -> R.drawable.ic_pdf417
+        BarcodeFormat.MAXICODE -> R.drawable.ic_maxi_code
+        else -> R.drawable.ic_barcode
+    }
+}
+
+fun BarcodeFormat.toColorId(): Int {
+    return when (this) {
+        BarcodeFormat.QR_CODE -> R.color.blue3
+        BarcodeFormat.DATA_MATRIX, BarcodeFormat.AZTEC, BarcodeFormat.PDF_417, BarcodeFormat.MAXICODE -> R.color.orange
+        else -> R.color.green
+    }
+}

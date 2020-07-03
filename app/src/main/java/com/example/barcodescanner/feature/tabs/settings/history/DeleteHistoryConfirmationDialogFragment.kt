@@ -18,7 +18,9 @@ class DeleteHistoryConfirmationDialogFragment : DialogFragment() {
             .setTitle(R.string.fragment_settings_clear_history_title)
             .setMessage(R.string.fragment_barcode_history_delete_all_dialog_message)
             .setCancelable(false)
-            .setPositiveButton(R.string.fragment_barcode_history_delete_all_dialog_positive_button) { _, _ -> listener?.onDeleteHistoryPositiveButtonClicked() }
+            .setPositiveButton(R.string.fragment_barcode_history_delete_all_dialog_positive_button) { _, _ ->
+                listener?.onDeleteHistoryPositiveButtonClicked()
+            }
             .setNegativeButton(R.string.fragment_barcode_history_delete_all_dialog_negative_button, null)
             .create()
     }

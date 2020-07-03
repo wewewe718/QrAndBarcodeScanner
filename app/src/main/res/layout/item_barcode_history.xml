@@ -35,7 +35,7 @@
         android:layout_marginEnd="@dimen/default_margin"
         app:layout_constraintTop_toBottomOf="@id/text_view_format"
         app:layout_constraintStart_toStartOf="@id/text_view_date"
-        app:layout_constraintEnd_toStartOf="@id/image_view_schema"
+        app:layout_constraintEnd_toStartOf="@id/layout_image"
         android:maxLines="1"
         tools:text="Hello World!"
         style="@style/BlackTextViewStyle"
@@ -51,13 +51,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/gray5"
         />
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/image_view_schema"
+    <FrameLayout
+        android:id="@+id/layout_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/default_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/delimiter"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:layout_marginEnd="@dimen/default_margin"
+        android:padding="@dimen/icon_button_icon_padding"
+        android:background="@drawable/background_circle"
+        >
+        <ImageView
+            android:id="@+id/image_view_schema"
+            android:layout_width="@dimen/icon_button_icon_size"
+            android:layout_height="@dimen/icon_button_icon_size"
+            android:layout_gravity="center_vertical"
+            android:tint="@color/white"
+            tools:src="@drawable/ic_copy"
+            />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

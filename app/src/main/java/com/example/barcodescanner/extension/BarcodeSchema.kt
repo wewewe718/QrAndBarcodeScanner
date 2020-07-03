@@ -3,7 +3,7 @@ package com.example.barcodescanner.extension
 import com.example.barcodescanner.R
 import com.example.barcodescanner.model.schema.BarcodeSchema
 
-fun BarcodeSchema.toImageId(): Int {
+fun BarcodeSchema.toImageId(): Int? {
     return when (this) {
         BarcodeSchema.BOOKMARK -> R.drawable.ic_bookmark
         BarcodeSchema.EMAIL -> R.drawable.ic_email
@@ -19,6 +19,6 @@ fun BarcodeSchema.toImageId(): Int {
         BarcodeSchema.WIFI -> R.drawable.ic_wifi
         BarcodeSchema.YOUTUBE -> R.drawable.ic_youtube
         BarcodeSchema.RECEIPT -> R.drawable.ic_receipt
-        else -> R.drawable.ic_qr_code
+        else -> null
     }
 }

@@ -14,6 +14,7 @@ import com.example.barcodescanner.di.*
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
+import com.example.barcodescanner.feature.tabs.scan.confirm.ConfirmBarcodeDialogFragment
 import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.usecase.PermissionsHelper
@@ -26,7 +27,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_scan_barcode_from_camera.*
 import java.util.concurrent.TimeUnit
 
-class ScanBarcodeFromCameraFragment : Fragment() {
+class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.Listener {
 
     companion object {
         private const val PERMISSION_REQUEST_CODE = 101
@@ -74,6 +75,14 @@ class ScanBarcodeFromCameraFragment : Fragment() {
         }
     }
 
+    override fun onBarcodeConfirmed(barcode: Barcode) {
+        handleConfirmedBarcode(barcode)
+    }
+
+    override fun onBarcodeDeclined() {
+        restartPreview()
+    }
+
     override fun onPause() {
         codeScanner.releaseResources()
         super.onPause()
@@ -97,7 +106,7 @@ class ScanBarcodeFromCameraFragment : Fragment() {
             isAutoFocusEnabled = settings.autoFocus
             isFlashEnabled = settings.flash
             isTouchFocusEnabled = true
-            decodeCallback = DecodeCallback(::saveScannedBarcode)
+            decodeCallback = DecodeCallback(::handleScannedBarcode)
             errorCallback = ErrorCallback(::showError)
         }
     }
@@ -161,24 +170,44 @@ class ScanBarcodeFromCameraFragment : Fragment() {
         }
     }
 
-    private fun saveScannedBarcode(result: Result) {
+    private fun handleScannedBarcode(result: Result) {
+        vibrateIfNeeded()
+
+        val barcode = barcodeScanResultParser.parseResult(result)
+
+        when {
+            settings.confirmScansManually -> showScanConfirmationDialog(barcode)
+            settings.saveScannedBarcodesToHistory || settings.continuousScanning -> saveScannedBarcode(barcode)
+            else -> navigateToBarcodeScreen(barcode)
+        }
+    }
+
+    private fun handleConfirmedBarcode(barcode: Barcode) {
+        when {
+            settings.saveScannedBarcodesToHistory || settings.continuousScanning -> saveScannedBarcode(barcode)
+            else -> navigateToBarcodeScreen(barcode)
+        }
+    }
+
+    private fun vibrateIfNeeded() {
         if (settings.vibrate) {
             vibratorHelper.vibrateOnce(requireContext(), vibrationPattern)
         }
+    }
 
-        val barcode = barcodeScanResultParser.parseResult(result)
-        if (settings.saveScannedBarcodesToHistory.not()) {
-            navigateToBarcodeScreen(barcode)
-            return
-        }
+    private fun showScanConfirmationDialog(barcode: Barcode) {
+        val dialog = ConfirmBarcodeDialogFragment.newInstance(barcode)
+        dialog.show(childFragmentManager, "")
+    }
 
+    private fun saveScannedBarcode(barcode: Barcode) {
         barcodeDatabase.save(barcode)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { id ->
                     when (settings.continuousScanning) {
-                        true -> restartPreview()
+                        true -> restartPreviewWithDelay()
                         else -> navigateToBarcodeScreen(barcode.copy(id = id))
                     }
                 },
@@ -187,15 +216,19 @@ class ScanBarcodeFromCameraFragment : Fragment() {
             .addTo(disposable)
     }
 
-    private fun restartPreview() {
+    private fun restartPreviewWithDelay() {
         Completable
             .timer(CONTINUOUS_SCANNING_PREVIEW_DELAY, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 showToast(R.string.fragment_scan_barcode_from_camera_barcode_saved)
-                codeScanner.startPreview()
+                restartPreview()
             }
             .addTo(disposable)
+    }
+
+    private fun restartPreview() {
+        codeScanner.startPreview()
     }
 
     private fun showToast(stringId: Int) {

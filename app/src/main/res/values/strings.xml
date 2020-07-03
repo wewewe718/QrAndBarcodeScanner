@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Barcode Scanner</string>
+    <string name="app_name">QR &amp; Barcode Reader</string>
 
     <!--Error dialog-->
     <string name="error_dialog_title">Error</string>
@@ -16,6 +16,9 @@
     <!--Scan barcode from camera fragment-->
     <string name="fragment_scan_barcode_from_camera_scan_from_file">From file</string>
     <string name="fragment_scan_barcode_from_camera_barcode_saved">Saved</string>
+    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_title">Confirm</string>
+    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_positive_button">OK</string>
+    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_negative_button">Cancel</string>
 
     <!--Scan barcode from file activity-->
     <string name="activity_scan_barcode_from_file_title">Crop an image</string>
@@ -47,8 +50,8 @@
     <string name="fragment_barcode_history_menu_title_delete_all">Clear history</string>
     <string name="fragment_barcode_history_delete_all_dialog_title">Delete</string>
     <string name="fragment_barcode_history_delete_all_dialog_message">Are you sure want to clear history?</string>
-    <string name="fragment_barcode_history_delete_all_dialog_positive_button">Yes</string>
-    <string name="fragment_barcode_history_delete_all_dialog_negative_button">No</string>
+    <string name="fragment_barcode_history_delete_all_dialog_positive_button">Clear</string>
+    <string name="fragment_barcode_history_delete_all_dialog_negative_button">Cancel</string>
 
     <!--Settings fragment-->
     <string name="fragment_settings_title">Settings</string>

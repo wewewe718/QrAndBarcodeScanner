@@ -2,18 +2,12 @@ package com.example.barcodescanner.feature.common
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.ShapeDrawable
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
-import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import kotlinx.android.synthetic.main.layout_icon_button.view.*
 
@@ -49,7 +43,7 @@ class IconButton : FrameLayout {
     }
 
     private fun showIcon(view: View, attributes: TypedArray) {
-        view.image_view.setImageDrawable(attributes.getDrawable(R.styleable.IconButton_icon))
+        view.image_view_schema.setImageDrawable(attributes.getDrawable(R.styleable.IconButton_icon))
     }
 
     private fun showIconBackgroundColor(view: View, attributes: TypedArray) {
@@ -67,7 +61,7 @@ class IconButton : FrameLayout {
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
-        view.image_view.isEnabled = enabled
+        view.image_view_schema.isEnabled = enabled
         view.text_view.isEnabled = enabled
     }
 }

@@ -197,7 +197,7 @@
                 android:id="@+id/button_maxi_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_maxicode"
+                app:icon="@drawable/ic_maxi_code"
                 app:iconBackground="@color/orange"
                 app:text="@string/barcode_format_maxi_code"
                 app:isDelimiterVisible="false"
