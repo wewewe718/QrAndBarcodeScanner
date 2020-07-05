@@ -1,7 +1,7 @@
 package com.example.barcodescanner.model
 
 import com.example.barcodescanner.model.schema.*
-import com.example.barcodescanner.model.schema.Calendar
+import com.example.barcodescanner.model.schema.VEvent
 
 class ParsedBarcode(barcode: Barcode) {
     val id = barcode.id
@@ -69,7 +69,7 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.GEO,
             BarcodeSchema.GOOGLE_MAPS -> parseGeoInfo()
             BarcodeSchema.GOOGLE_PLAY -> parseGooglePlay()
-            BarcodeSchema.CALENDAR -> parseCalendar()
+            BarcodeSchema.VEVENT -> parseCalendar()
             BarcodeSchema.MMS,
             BarcodeSchema.SMS -> parseSms()
             BarcodeSchema.MECARD -> parseMeCard()
@@ -104,7 +104,7 @@ class ParsedBarcode(barcode: Barcode) {
     }
 
     private fun parseCalendar() {
-        val calendar = Calendar.parse(text) ?: return
+        val calendar = VEvent.parse(text) ?: return
         eventUid = calendar.uid
         eventStamp = calendar.stamp
         eventOrganizer = calendar.organizer

@@ -13,8 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:navigationIcon="@drawable/ic_arrow_back"
-        style="@style/ToolbarStyle"
+        style="@style/ToolbarWithBackButtonStyle"
         />
     
     <com.example.barcodescanner.feature.tabs.scan.file.MyCropImageView

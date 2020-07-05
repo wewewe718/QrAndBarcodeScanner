@@ -18,7 +18,10 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_tabs)
         bottom_navigation_view.setOnNavigationItemSelectedListener(this)
-        showInitialFragment()
+
+        if (savedInstanceState == null) {
+            showInitialFragment()
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

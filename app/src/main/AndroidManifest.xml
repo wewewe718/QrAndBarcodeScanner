@@ -48,6 +48,11 @@
             />
 
         <activity
+            android:name=".feature.tabs.create.CreateBarcodeActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity
             android:name="com.example.barcodescanner.feature.barcode.BarcodeActivity"
             android:screenOrientation="portrait"
             />

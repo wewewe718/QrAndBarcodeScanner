@@ -24,6 +24,13 @@
         <item name="android:background">@color/white</item>
     </style>
 
+    <style name="ToolbarWithBackButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">@color/white</item>
+        <item name="navigationIcon">@drawable/ic_arrow_back</item>
+    </style>
+
     <style name="BottomNavigationItemTextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textSize">@dimen/bottom_navigation_item_text_size</item>
         <item name="android:textStyle">bold</item>

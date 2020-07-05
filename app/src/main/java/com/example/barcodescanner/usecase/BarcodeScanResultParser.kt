@@ -40,7 +40,7 @@ object BarcodeScanResultParser {
             ?: Email.parse(text)
             ?: Cryptocurrency.parse(text)
             ?: Receipt.parse(text)
-            ?: Calendar.parse(text)
+            ?: VEvent.parse(text)
             ?: MeCard.parse(text)
             ?: VCard.parse(text)
             ?: Other(text)

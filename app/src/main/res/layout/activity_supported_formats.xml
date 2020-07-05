@@ -19,8 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:navigationIcon="@drawable/ic_arrow_back"
         app:title="@string/activity_supported_formats_title"
-        style="@style/ToolbarStyle"
+        style="@style/ToolbarWithBackButtonStyle"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

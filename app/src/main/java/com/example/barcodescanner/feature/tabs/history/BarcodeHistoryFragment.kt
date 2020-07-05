@@ -61,7 +61,6 @@ class BarcodeHistoryFragment : Fragment() {
         subscribeToBarcodeClicks()
         subscribeToHistoryDataChanged()
         subscribeToHistory()
-        subscribeToLoading()
         subscribeToError()
         subscribeToNavigateToBarcodeScreen()
     }
@@ -87,13 +86,6 @@ class BarcodeHistoryFragment : Fragment() {
             .addTo(disposable)
     }
 
-    private fun subscribeToLoading() {
-        viewModel.isLoading
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(::showLoading)
-            .addTo(disposable)
-    }
-
     private fun subscribeToError() {
         viewModel.error
             .observeOn(AndroidSchedulers.mainThread())
@@ -112,10 +104,5 @@ class BarcodeHistoryFragment : Fragment() {
 
     private fun unsubscribeFromViewModel() {
         disposable.clear()
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        progress_bar_loading.isVisible = isLoading
-        recycler_view_history.isVisible = isLoading.not()
     }
 }

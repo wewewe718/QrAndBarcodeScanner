@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">QR &amp; Barcode Reader</string>
+    <string name="app_name">QR &amp; Barcode Scanner</string>
 
     <!--Error dialog-->
     <string name="error_dialog_title">Error</string>
@@ -29,21 +29,11 @@
     <string name="fragment_create_barcode_qr_code">QR code</string>
     <string name="fragment_create_barcode_qr_code_clipboard">Content from clipboard</string>
     <string name="fragment_create_barcode_qr_code_text">Text</string>
-    <string name="fragment_create_barcode_qr_code_url">URL</string>
-    <string name="fragment_create_barcode_qr_code_wifi">Wi-Fi</string>
-    <string name="fragment_create_barcode_qr_code_location">Location</string>
-    <string name="fragment_create_barcode_qr_code_contact_vcard">Contact (VCard)</string>
-    <string name="fragment_create_barcode_qr_code_contact_mecard">Contact (MeCard)</string>
-    <string name="fragment_create_barcode_qr_code_event">Event</string>
-    <string name="fragment_create_barcode_qr_code_phone">Phone</string>
-    <string name="fragment_create_barcode_qr_code_email">Email</string>
-    <string name="fragment_create_barcode_qr_code_sms">SMS</string>
-    <string name="fragment_create_barcode_qr_code_mms">MMS</string>
-    <string name="fragment_create_barcode_qr_code_cryptocurrency">Bitcoin</string>
-    <string name="fragment_create_barcode_qr_code_bookmark">Bookmark</string>
-    <string name="fragment_create_barcode_qr_code_app">App</string>
     <string name="fragment_create_barcode_2d">2D barcodes</string>
     <string name="fragment_create_barcode_1d">1D barcodes</string>
+
+    <!--Create barcode activity-->
+    <string name="activity_create_barcode_menu_item_title">Create</string>
 
     <!--Barcode history fragment-->
     <string name="fragment_barcode_history_title">History</string>
@@ -146,5 +136,24 @@
     <string name="barcode_format_upc_a">UPC-A</string>
     <string name="barcode_format_upc_e">UPC-E</string>
     <string name="barcode_format_upc_ean">UPC/EAN</string>
+
+    <!--Barcode schemas-->
+    <string name="barcode_schema_bookmark">Bookmark</string>
+    <string name="barcode_schema_cryptocurrency">Bitcoin</string>
+    <string name="barcode_schema_email">Email</string>
+    <string name="barcode_schema_geo">Location</string>
+    <string name="barcode_schema_google_maps">Address</string>
+    <string name="barcode_schema_google_play">App</string>
+    <string name="barcode_schema_mms">MMS</string>
+    <string name="barcode_schema_me_card">Contact (MeCard)</string>
+    <string name="barcode_schema_phone">Phone</string>
+    <string name="barcode_schema_receipt">Receipt</string>
+    <string name="barcode_schema_sms">SMS</string>
+    <string name="barcode_schema_url">URL</string>
+    <string name="barcode_schema_v_event">Event</string>
+    <string name="barcode_schema_v_card">Contact (VCard)</string>
+    <string name="barcode_schema_wifi">Wi-Fi</string>
+    <string name="barcode_schema_youtube">Youtube URL</string>
+    <string name="barcode_schema_other">Text</string>
 
 </resources>

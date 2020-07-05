@@ -384,7 +384,7 @@ class BarcodeActivity : BaseActivity() {
     }
 
     private fun showOrHideButtons() {
-        button_add_to_calendar.isVisible = barcode.schema == BarcodeSchema.CALENDAR
+        button_add_to_calendar.isVisible = barcode.schema == BarcodeSchema.VEVENT
         button_add_to_contacts.isVisible = barcode.email.isNullOrEmpty().not() || barcode.phone.isNullOrEmpty().not()
         button_call_phone.isVisible = barcode.phone.isNullOrEmpty().not()
         button_send_sms_or_mms.isVisible = barcode.phone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()

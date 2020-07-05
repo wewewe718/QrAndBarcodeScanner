@@ -6,59 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
-    <TextView
-        android:id="@+id/text_view_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginStart="@dimen/default_margin"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="01.09.1993 12:00"
-        style="@style/SecondaryTextViewStyle"
-        />
-    <TextView
-        android:id="@+id/text_view_format"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_very_small"
-        app:layout_constraintTop_toBottomOf="@id/text_view_date"
-        app:layout_constraintStart_toStartOf="@id/text_view_date"
-        tools:text="Data matrix"
-        style="@style/SecondaryTextViewStyle"
-        />
-    <TextView
-        android:id="@+id/text_view_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_very_small"
-        android:layout_marginEnd="@dimen/default_margin"
-        app:layout_constraintTop_toBottomOf="@id/text_view_format"
-        app:layout_constraintStart_toStartOf="@id/text_view_date"
-        app:layout_constraintEnd_toStartOf="@id/layout_image"
-        android:maxLines="1"
-        tools:text="Hello World!"
-        style="@style/BlackTextViewStyle"
-        />
-    <View
-        android:id="@+id/delimiter"
-        android:layout_width="0dp"
-        android:layout_height="0.2dp"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginHorizontal="@dimen/default_margin"
-        app:layout_constraintTop_toBottomOf="@id/text_view_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/gray5"
-        />
     <FrameLayout
         android:id="@+id/layout_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/delimiter"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/default_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/default_margin"
         android:padding="@dimen/icon_button_icon_padding"
         android:background="@drawable/background_circle"
         >
@@ -71,4 +26,50 @@
             tools:src="@drawable/ic_copy"
             />
     </FrameLayout>
+    <TextView
+        android:id="@+id/text_view_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/layout_image"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin"
+        tools:text="01.09.1993 12:00"
+        style="@style/SecondaryTextViewStyle"
+        />
+    <TextView
+        android:id="@+id/text_view_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_very_small"
+        android:layout_marginEnd="@dimen/default_margin"
+        app:layout_constraintTop_toBottomOf="@id/text_view_date"
+        app:layout_constraintStart_toStartOf="@id/text_view_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:maxLines="1"
+        tools:text="Hello World!"
+        android:includeFontPadding="false"
+        style="@style/BlackTextViewStyle"
+        />
+    <TextView
+        android:id="@+id/text_view_format"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_very_small"
+        app:layout_constraintTop_toBottomOf="@id/text_view_text"
+        app:layout_constraintStart_toStartOf="@id/text_view_text"
+        tools:text="Data matrix"
+        style="@style/SecondaryTextViewStyle"
+        />
+    <View
+        android:id="@+id/delimiter"
+        android:layout_width="0dp"
+        android:layout_height="0.2dp"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        app:layout_constraintTop_toBottomOf="@id/text_view_format"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/gray5"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

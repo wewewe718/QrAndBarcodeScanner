@@ -4,6 +4,7 @@ import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -30,7 +31,9 @@ class BarcodeHistoryAdapter : PagedListAdapter<Barcode, BarcodeHistoryAdapter.Vi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        getItem(position)?.apply(holder::show)
+        getItem(position)?.also { barcode ->
+            holder.show(barcode, position == itemCount.dec())
+        }
     }
 
     override fun onCurrentListChanged(currentList: PagedList<Barcode>?) {
@@ -40,12 +43,13 @@ class BarcodeHistoryAdapter : PagedListAdapter<Barcode, BarcodeHistoryAdapter.Vi
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun show(barcode: Barcode) {
+        fun show(barcode: Barcode, isLastItem: Boolean) {
             showDate(barcode)
             showFormat(barcode)
             showText(barcode)
             showImage(barcode)
             showImageBackgroundColor(barcode)
+            showOrHideDelimiter(isLastItem)
             setClickListener(barcode)
         }
 
@@ -72,6 +76,10 @@ class BarcodeHistoryAdapter : PagedListAdapter<Barcode, BarcodeHistoryAdapter.Vi
             val colorId = barcode.format.toColorId()
             val color = itemView.context.resources.getColor(colorId)
             (itemView.layout_image.background.mutate() as GradientDrawable).setColor(color)
+        }
+
+        private fun showOrHideDelimiter(isLastItem: Boolean) {
+            itemView.delimiter.isInvisible = isLastItem
         }
 
         private fun setClickListener(barcode: Barcode) {

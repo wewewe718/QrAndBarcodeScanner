@@ -21,7 +21,6 @@ class BarcodeHistoryViewModel(app: Application) : AndroidViewModel(app) {
 
     private val disposable = CompositeDisposable()
     val scanHistory = BehaviorSubject.create<PagedList<Barcode>>()
-    val isLoading = BehaviorSubject.create<Boolean>()
     val error = PublishSubject.create<Throwable>()
     val navigateToBarcodeScreenEvent = PublishSubject.create<Barcode>()
 

@@ -10,9 +10,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:navigationIcon="@drawable/ic_arrow_back"
         app:title="@string/activity_choose_camera_title"
-        style="@style/ToolbarStyle"
+        style="@style/ToolbarWithBackButtonStyle"
         />
     <com.example.barcodescanner.feature.tabs.settings.camera.SettingsRadioButton
         android:id="@+id/button_back_camera"

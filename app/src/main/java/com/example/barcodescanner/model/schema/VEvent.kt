@@ -4,7 +4,7 @@ import com.example.barcodescanner.extension.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-data class Calendar(
+data class VEvent(
     val uid: String? = null,
     val stamp: String? = null,
     val organizer: String? = null,
@@ -34,7 +34,7 @@ data class Calendar(
             SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
         }
 
-        fun parse(text: String): Calendar? {
+        fun parse(text: String): VEvent? {
             if (text.startsWithIgnoreCase(SCHEMA_PREFIX).not()) {
                 return null
             }
@@ -80,11 +80,11 @@ data class Calendar(
                 }
             }
 
-            return Calendar(uid, stamp, organizer, startDate, endDate, summary)
+            return VEvent(uid, stamp, organizer, startDate, endDate, summary)
         }
     }
 
-    override val schema = BarcodeSchema.CALENDAR
+    override val schema = BarcodeSchema.VEVENT
 
     override fun toFormattedText(): String {
         return listOf(

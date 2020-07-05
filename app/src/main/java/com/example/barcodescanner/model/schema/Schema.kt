@@ -7,16 +7,16 @@ enum class BarcodeSchema {
     GEO,
     GOOGLE_MAPS,
     GOOGLE_PLAY,
-    CALENDAR,
     MMS,
     MECARD,
-    SMS,
     PHONE,
+    RECEIPT,
+    SMS,
+    URL,
+    VEVENT,
     VCARD,
     WIFI,
     YOUTUBE,
-    URL,
-    RECEIPT,
     OTHER;
 }
 
