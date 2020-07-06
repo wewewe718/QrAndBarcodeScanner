@@ -30,7 +30,7 @@
                 android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_create_barcode_qr_code"
-                style="@style/CreateBarcodeFragmentTextViewStyle"
+                style="@style/CreateBarcodeFragmentHintTextViewStyle"
                 />
             <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_clipboard"
@@ -167,7 +167,7 @@
                 android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_create_barcode_2d"
-                style="@style/CreateBarcodeFragmentTextViewStyle"
+                style="@style/CreateBarcodeFragmentHintTextViewStyle"
                 />
             <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_data_matrix"
@@ -216,7 +216,7 @@
                 android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_create_barcode_1d"
-                style="@style/CreateBarcodeFragmentTextViewStyle"
+                style="@style/CreateBarcodeFragmentHintTextViewStyle"
                 />
             <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_codabar"

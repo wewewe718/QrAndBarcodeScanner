@@ -50,6 +50,7 @@
         <activity
             android:name=".feature.tabs.create.CreateBarcodeActivity"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible"
             />
 
         <activity

@@ -1,7 +1,5 @@
 package com.example.barcodescanner.di
 
-import android.content.Context
-import android.os.Vibrator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
@@ -9,15 +7,11 @@ import com.example.barcodescanner.App
 import com.example.barcodescanner.usecase.*
 
 
-val Context.vibrator
-    get() = getSystemService(Context.VIBRATOR_SERVICE) as? Vibrator
-
-
-val AppCompatActivity.app
-    get() = application as App
+val AppCompatActivity.barcodeSchemaParser
+    get() = BarcodeSchemaParser
 
 val AppCompatActivity.barcodeScanResultParser
-    get() = BarcodeScanResultParser
+    get() = BarcodeScanResultParser(barcodeSchemaParser)
 
 val AppCompatActivity.barcodeImageScanner
     get() = BarcodeImageScanner
@@ -26,39 +20,36 @@ val AppCompatActivity.barcodeImageGenerator
     get() = BarcodeImageGenerator
 
 val AppCompatActivity.barcodeImageSaver
-    get() = app.barcodeImageSaver
+    get() = BarcodeImageSaver
 
 val AppCompatActivity.checkReceiptApi
-    get() = app.checkReceiptApi
+    get() = CheckReceiptApi
 
 val AppCompatActivity.wifiConnector
-    get() = app.wifiConnector
+    get() = WifiConnector
 
 val AppCompatActivity.barcodeDatabase
-    get() = app.barcodeDatabase
+    get() = BarcodeDatabase.getInstance(this)
 
 val AppCompatActivity.settings
-    get() = app.settings
+    get() = Settings.getInstance(this)
 
-
-val Fragment.parentActivity
-    get() = requireActivity() as AppCompatActivity
 
 val Fragment.scannerCameraHelper
     get() = ScannerCameraHelper
 
+val Fragment.barcodeSchemaParser
+    get() = BarcodeSchemaParser
+
 val Fragment.barcodeScanResultParser
-    get() = BarcodeScanResultParser
+    get() = BarcodeScanResultParser(barcodeSchemaParser)
 
 val Fragment.barcodeDatabase
-    get() = parentActivity.app.barcodeDatabase
+    get() = BarcodeDatabase.getInstance(requireContext())
 
 val Fragment.settings
-    get() = parentActivity.app.settings
-
-val Fragment.vibratorHelper
-    get() = VibratorHelper
+    get() = Settings.getInstance(requireContext())
 
 
 val AndroidViewModel.barcodeDatabase
-    get() = getApplication<App>().barcodeDatabase
+    get() = BarcodeDatabase.getInstance(getApplication())

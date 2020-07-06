@@ -44,11 +44,15 @@ abstract class BarcodeDatabaseFactory : RoomDatabase() {
 interface BarcodeDatabase {
 
     companion object {
-        fun newInstance(context: Context): BarcodeDatabase {
-            return Room
+        private var INSTANCE: BarcodeDatabase? = null
+
+        fun getInstance(context: Context): BarcodeDatabase {
+            return INSTANCE ?: Room
                 .databaseBuilder(context, BarcodeDatabaseFactory::class.java, "db")
                 .build()
-                .getBarcodeDatabase()
+                .getBarcodeDatabase().apply {
+                    INSTANCE = this
+                }
         }
     }
 

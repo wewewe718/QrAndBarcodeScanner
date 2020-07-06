@@ -7,6 +7,11 @@ class Settings(context: Context) {
 
     companion object {
         private const val SHARED_PREFERENCES_NAME = "SHARED_PREFERENCES_NAME"
+        private var INSTANCE: Settings? = null
+
+        fun getInstance(context: Context): Settings {
+            return INSTANCE ?: Settings(context).apply { INSTANCE = this }
+        }
     }
 
     private enum class Key {

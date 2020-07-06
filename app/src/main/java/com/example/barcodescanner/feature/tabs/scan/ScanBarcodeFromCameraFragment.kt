@@ -10,8 +10,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.budiyev.android.codescanner.*
 import com.example.barcodescanner.R
-import com.example.barcodescanner.di.*
+import com.example.barcodescanner.di.barcodeDatabase
+import com.example.barcodescanner.di.barcodeScanResultParser
+import com.example.barcodescanner.di.scannerCameraHelper
+import com.example.barcodescanner.di.settings
 import com.example.barcodescanner.extension.showError
+import com.example.barcodescanner.extension.vibrateOnce
+import com.example.barcodescanner.extension.vibrator
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.feature.tabs.scan.confirm.ConfirmBarcodeDialogFragment
@@ -191,7 +196,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     private fun vibrateIfNeeded() {
         if (settings.vibrate) {
-            vibratorHelper.vibrateOnce(requireContext(), vibrationPattern)
+            requireContext().vibrator?.vibrateOnce(vibrationPattern)
         }
     }
 

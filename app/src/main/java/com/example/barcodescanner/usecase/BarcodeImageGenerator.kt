@@ -19,10 +19,15 @@ object BarcodeImageGenerator {
     }
 
     private fun generateImage(text: String, format: BarcodeFormat, errorCorrectionLevel: String?, width: Int, height: Int, margin: Int = 0): Bitmap {
-        return encoder.encodeBitmap(text, format, width, height, mapOf(
-            EncodeHintType.ERROR_CORRECTION to errorCorrectionLevel,
+        val params = mapOf(
             EncodeHintType.CHARACTER_SET to "utf-8",
             EncodeHintType.MARGIN to margin
-        ))
+        )
+
+        if (errorCorrectionLevel != null) {
+            params.plus(EncodeHintType.ERROR_CORRECTION to errorCorrectionLevel)
+        }
+
+        return encoder.encodeBitmap(text, format, width, height, params)
     }
 }

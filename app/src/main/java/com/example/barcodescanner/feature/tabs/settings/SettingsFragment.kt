@@ -11,6 +11,7 @@ import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.tabs.settings.camera.ChooseCameraActivity
@@ -21,7 +22,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_settings.*
-import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 
 
 class SettingsFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Listener {
@@ -55,7 +55,7 @@ class SettingsFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Lis
     }
 
     private fun initScrollView() {
-        OverScrollDecoratorHelper.setUpOverScroll(scroll_view)
+        scroll_view.makeSmoothScrollable()
     }
 
     private fun handleButtonCheckedChanged() {

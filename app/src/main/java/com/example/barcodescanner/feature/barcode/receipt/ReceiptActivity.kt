@@ -73,7 +73,6 @@ class ReceiptActivity : BaseActivity(), ErrorDialogFragment.Listener {
     private fun showReceipt() {
         val url = checkReceiptApi.getReceiptUrl(fiscalDriveNumber, fiscalDocumentNumber, fiscalSign)
         web_view.webViewClient = object : WebViewClient() {
-
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 progress_bar_loading.isVisible = false
@@ -88,7 +87,7 @@ class ReceiptActivity : BaseActivity(), ErrorDialogFragment.Listener {
     }
 
     private fun downloadReceipt() {
-        checkReceiptApi.downloadReceipt(fiscalDriveNumber, fiscalDocumentNumber, fiscalSign)
+        checkReceiptApi.downloadReceipt(this, fiscalDriveNumber, fiscalDocumentNumber, fiscalSign)
         showToast(R.string.activity_check_receipt_download_started)
     }
 

@@ -6,10 +6,10 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.feature.BaseActivity
 import com.google.zxing.BarcodeFormat
 import kotlinx.android.synthetic.main.activity_supported_formats.*
-import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 
 class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
 
@@ -39,8 +39,8 @@ class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
         recycler_view_formats.apply {
             layoutManager = LinearLayoutManager(this@SupportedFormatsActivity)
             adapter = formatsAdapter
+            makeSmoothScrollable()
         }
-        OverScrollDecoratorHelper.setUpOverScroll(recycler_view_formats, OverScrollDecoratorHelper.ORIENTATION_VERTICAL)
     }
 
     private fun handleToolbarBackClicked() {

@@ -23,6 +23,18 @@
             android:orientation="vertical"
             >
 
+            <!--Barcode image-->
+            <com.example.barcodescanner.feature.barcode.SquareImageView
+                android:id="@+id/image_view_barcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin_small"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:scaleType="fitXY"
+                android:visibility="gone"
+                />
+
             <!--General barcode info-->
             <TextView
                 android:id="@+id/text_view_date"

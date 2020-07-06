@@ -11,9 +11,9 @@ import java.io.File
 import java.io.FileOutputStream
 
 
-class BarcodeImageSaver(private val barcodeImageGenerator: BarcodeImageGenerator) {
+object BarcodeImageSaver {
 
-    fun saveImageToCache(context: Context, barcode: ParsedBarcode): Uri? {
+    fun saveImageToCache(context: Context, image: Bitmap, barcode: ParsedBarcode): Uri? {
         // Create folder for image
         val imagesFolder = File(context.cacheDir, "images")
         imagesFolder.mkdirs()
@@ -21,9 +21,6 @@ class BarcodeImageSaver(private val barcodeImageGenerator: BarcodeImageGenerator
         // Create image file
         val imageFileName = "${barcode.format}_${barcode.schema}_${barcode.date}.png"
         val imageFile = File(imagesFolder, imageFileName)
-
-        // Generate image
-        val image = barcodeImageGenerator.generateImage(barcode, 200, 200, 1)
 
         // Save image to file
         FileOutputStream(imageFile).apply {
@@ -36,9 +33,9 @@ class BarcodeImageSaver(private val barcodeImageGenerator: BarcodeImageGenerator
         return FileProvider.getUriForFile(context, "com.example.barcodescanner.fileprovider", imageFile)
     }
 
-    fun saveImageToPublicDirectory(context: Context, barcode: ParsedBarcode) {
+    fun saveImageToPublicDirectory(context: Context, image: Bitmap, barcode: ParsedBarcode) {
         val contentResolver = context.contentResolver
-        val image = barcodeImageGenerator.generateImage(barcode, 300, 300, 2)
+
         val imageTitle = "${barcode.format}_${barcode.schema}_${barcode.date}"
 
         val values = ContentValues().apply {

@@ -6,11 +6,11 @@ import android.os.Bundle
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
+import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.toStringId
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.model.Barcode
 import kotlinx.android.synthetic.main.activity_barcode_image.*
-import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -40,7 +40,7 @@ class BarcodeImageActivity : BaseActivity() {
     }
 
     private fun initScrollView() {
-        OverScrollDecoratorHelper.setUpOverScroll(scroll_view)
+        scroll_view.makeSmoothScrollable()
     }
 
     private fun handleToolbarBackPressed() {

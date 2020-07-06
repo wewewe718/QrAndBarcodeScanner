@@ -16,12 +16,10 @@ import androidx.core.view.isVisible
 import androidx.print.PrintHelper
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.*
+import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.image.BarcodeImageActivity
 import com.example.barcodescanner.feature.barcode.receipt.CheckReceiptActivity
-import com.example.barcodescanner.extension.orZero
-import com.example.barcodescanner.extension.showError
-import com.example.barcodescanner.extension.toStringId
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
@@ -31,7 +29,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_barcode.*
-import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -41,10 +38,13 @@ class BarcodeActivity : BaseActivity() {
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
         private const val BARCODE_KEY = "BARCODE_KEY"
+        private const val IS_BARCODE_IMAGE_VISIBLE = "IS_BARCODE_IMAGE_VISIBLE"
 
-        fun start(context: Context, barcode: Barcode) {
-            val intent = Intent(context, BarcodeActivity::class.java)
-            intent.putExtra(BARCODE_KEY, barcode)
+        fun start(context: Context, barcode: Barcode, isBarcodeImageVisible: Boolean = false) {
+            val intent = Intent(context, BarcodeActivity::class.java).apply {
+                putExtra(BARCODE_KEY, barcode)
+                putExtra(IS_BARCODE_IMAGE_VISIBLE, isBarcodeImageVisible)
+            }
             context.startActivity(intent)
         }
     }
@@ -55,6 +55,10 @@ class BarcodeActivity : BaseActivity() {
 
     private val originalBarcode by lazy {
         intent?.getSerializableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
+    }
+
+    private val isBarcodeImageVisible by lazy {
+        intent?.getBooleanExtra(IS_BARCODE_IMAGE_VISIBLE, false).orFalse()
     }
 
     private val barcode by lazy {
@@ -104,7 +108,7 @@ class BarcodeActivity : BaseActivity() {
     }
 
     private fun initScrollView() {
-        OverScrollDecoratorHelper.setUpOverScroll(scroll_view)
+        scroll_view.makeSmoothScrollable()
     }
 
     private fun handleToolbarBackPressed() {
@@ -117,7 +121,7 @@ class BarcodeActivity : BaseActivity() {
         toolbar.inflateMenu(R.menu.menu_barcode)
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.item_show_barcode_image -> showBarcodeImage()
+                R.id.item_show_barcode_image -> navigateToBarcodeImageActivity()
                 R.id.item_delete -> deleteBarcode()
             }
             return@setOnMenuItemClickListener true
@@ -144,7 +148,7 @@ class BarcodeActivity : BaseActivity() {
         button_share_as_text.setOnClickListener { shareBarcodeAsText() }
         button_copy.setOnClickListener { copyBarcodeTextToClipboard() }
         button_search.setOnClickListener { searchBarcodeTextOnInternet() }
-        button_show_barcode_image.setOnClickListener { showBarcodeImage() }
+        button_show_barcode_image.setOnClickListener { navigateToBarcodeImageActivity() }
         button_share_as_image.setOnClickListener { shareBarcodeAsImage() }
         button_save_to_gallery.setOnClickListener { PermissionsHelper.requestPermissions(this, permissions, REQUEST_PERMISSIONS_CODE) }
         button_print.setOnClickListener { printBarcode() }
@@ -220,7 +224,7 @@ class BarcodeActivity : BaseActivity() {
         showConnectToWifiButtonEnabled(false)
 
         wifiConnector
-            .connect(barcode.networkAuthType.orEmpty(), barcode.networkName.orEmpty(), barcode.networkPassword.orEmpty())
+            .connect(this, barcode.networkAuthType.orEmpty(), barcode.networkName.orEmpty(), barcode.networkPassword.orEmpty())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
@@ -302,13 +306,14 @@ class BarcodeActivity : BaseActivity() {
         startActivityIfExists(intent)
     }
 
-    private fun showBarcodeImage() {
+    private fun navigateToBarcodeImageActivity() {
         BarcodeImageActivity.start(this, originalBarcode)
     }
 
     private fun shareBarcodeAsImage() {
         val imageUri = try {
-            barcodeImageSaver.saveImageToCache(this, barcode)
+            val image = barcodeImageGenerator.generateImage(barcode, 200, 200, 1)
+            barcodeImageSaver.saveImageToCache(this, image, barcode)
         } catch (ex: Exception) {
             showError(ex)
             return
@@ -325,7 +330,8 @@ class BarcodeActivity : BaseActivity() {
 
     private fun saveBarcodeImage() {
         try {
-            barcodeImageSaver.saveImageToPublicDirectory(this, barcode)
+            val image = barcodeImageGenerator.generateImage(barcode, 300, 300, 2)
+            barcodeImageSaver.saveImageToPublicDirectory(this, image, barcode)
         } catch (ex: Exception) {
             showError(ex)
             return
@@ -365,9 +371,27 @@ class BarcodeActivity : BaseActivity() {
 
 
     private fun showBarcode() {
+        showBarcodeImageIfNeeded()
         showBarcodeDate()
         showBarcodeFormat()
         showBarcodeText()
+    }
+
+    private fun showBarcodeImageIfNeeded() {
+        if (isBarcodeImageVisible) {
+            showBarcodeImage()
+        }
+    }
+
+    private fun showBarcodeImage() {
+        try {
+            val bitmap = barcodeImageGenerator.generateImage(barcode, 2000, 2000, 0)
+            image_view_barcode.isVisible = true
+            image_view_barcode.setImageBitmap(bitmap)
+        } catch (ex: Exception) {
+            image_view_barcode.isVisible = false
+            ex.printStackTrace()
+        }
     }
 
     private fun showBarcodeDate() {

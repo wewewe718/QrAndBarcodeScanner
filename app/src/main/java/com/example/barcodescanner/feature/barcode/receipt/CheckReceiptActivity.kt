@@ -117,7 +117,7 @@ class CheckReceiptActivity : BaseActivity(), ErrorDialogFragment.Listener {
     }
 
     private fun downloadReceipt() {
-        checkReceiptApi.downloadReceipt(fiscalDriveNumber, fiscalDocumentNumber, fiscalSign)
+        checkReceiptApi.downloadReceipt(this, fiscalDriveNumber, fiscalDocumentNumber, fiscalSign)
         showToast(R.string.activity_check_receipt_download_started)
     }
 

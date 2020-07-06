@@ -6,12 +6,13 @@ import android.net.Uri
 import android.os.Environment
 import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
+import com.example.barcodescanner.extension.downloadManager
 import io.reactivex.Single
 import io.reactivex.SingleEmitter
 import okhttp3.*
 import java.io.IOException
 
-class CheckReceiptApi(context: Context) {
+object CheckReceiptApi {
 
     enum class Status {
         VALID,
@@ -19,8 +20,6 @@ class CheckReceiptApi(context: Context) {
     }
 
     private val client by lazy { OkHttpClient() }
-    private val downloadManager by lazy { context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager }
-    private val resources by lazy { context.resources }
 
     fun checkReceipt(
         type: Int,
@@ -35,7 +34,9 @@ class CheckReceiptApi(context: Context) {
         }
     }
 
-    fun downloadReceipt(fiscalDriveNumber: String, fiscalDocumentNumber: String, fiscalSign: String) {
+    fun downloadReceipt(context: Context, fiscalDriveNumber: String, fiscalDocumentNumber: String, fiscalSign: String) {
+        val resources = context.resources
+
         val url = "${BuildConfig.OFD_URL}?FnNumber=$fiscalDriveNumber&DocNumber=$fiscalDocumentNumber&DocFiscalSign=$fiscalSign&format=pdf"
         val uri = Uri.parse(url)
         val fileName = "${resources.getString(R.string.activity_check_receipt_download_file_name)}.pdf"
@@ -47,7 +48,7 @@ class CheckReceiptApi(context: Context) {
             setVisibleInDownloadsUi(true)
             setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName)
         }
-        downloadManager.enqueue(request)
+        context.downloadManager?.enqueue(request)
     }
 
     fun getReceiptUrl(fiscalDriveNumber: String, fiscalDocumentNumber: String, fiscalSign: String): String {
