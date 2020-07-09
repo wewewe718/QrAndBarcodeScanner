@@ -73,6 +73,6 @@ data class Email(
         return MATMSG_SCHEMA_PREFIX +
                 "$MATMSG_EMAIL_PREFIX${email.orEmpty()}$MATMSG_SEPARATOR" +
                 "$MATMSG_SUBJECT_PREFIX${subject.orEmpty()}$MATMSG_SEPARATOR" +
-                "$MATMSG_BODY_PREFIX${body.orEmpty()}$MATMSG_SEPARATOR"
+                "$MATMSG_BODY_PREFIX${body.orEmpty()}$MATMSG_SEPARATOR$MATMSG_SEPARATOR"
     }
 }

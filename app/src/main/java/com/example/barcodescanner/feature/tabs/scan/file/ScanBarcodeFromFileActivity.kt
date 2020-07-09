@@ -13,17 +13,17 @@ import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.barcodeImageScanner
 import com.example.barcodescanner.di.barcodeScanResultParser
 import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.model.Barcode
+import com.google.zxing.Result
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_scan_barcode_from_file.*
-import com.google.zxing.*
 import java.util.concurrent.TimeUnit
-import com.example.barcodescanner.extension.showError
 
 class ScanBarcodeFromFileActivity : BaseActivity() {
 

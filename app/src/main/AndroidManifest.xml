@@ -52,6 +52,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible"
             />
+        <activity
+            android:name=".feature.tabs.create.qr.ChooseLocationOnMapActivity"
+            android:screenOrientation="portrait"
+            />
 
         <activity
             android:name="com.example.barcodescanner.feature.barcode.BarcodeActivity"

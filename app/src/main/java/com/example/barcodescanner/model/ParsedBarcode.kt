@@ -159,7 +159,7 @@ class ParsedBarcode(barcode: Barcode) {
 
     private fun parseWifi() {
         val wifi = Wifi.parse(text) ?: return
-        networkAuthType = wifi.auth
+        networkAuthType = wifi.encryption
         networkName = wifi.name
         networkPassword = wifi.password
     }

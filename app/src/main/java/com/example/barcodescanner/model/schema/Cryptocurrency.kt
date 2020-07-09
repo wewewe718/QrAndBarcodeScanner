@@ -8,8 +8,8 @@ import com.example.barcodescanner.extension.startsWithIgnoreCase
 class Cryptocurrency(
     val cryptocurrency: String? = null,
     val address: String? = null,
-    val label: String? = null,
     val amount: String? = null,
+    val label: String? = null,
     val message: String? = null
 ) : Schema {
 
@@ -72,8 +72,8 @@ class Cryptocurrency(
     override fun toBarcodeText(): String {
         return "${cryptocurrency.orEmpty()}$PREFIX_END_SYMBOL" +
                 "${address.orEmpty()}$ADDRESS_SEPARATOR" +
-                "${label.orEmpty()}$PARAMETERS_SEPARATOR" +
-                "${amount.orEmpty()}$PARAMETERS_SEPARATOR" +
-                message.orEmpty()
+                "$AMOUNT_PREFIX${amount.orEmpty()}$PARAMETERS_SEPARATOR" +
+                "$LABEL_PREFIX${label.orEmpty()}$PARAMETERS_SEPARATOR" +
+                "$MESSAGE_PREFIX${message.orEmpty()}"
     }
 }

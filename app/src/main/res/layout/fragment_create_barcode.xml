@@ -132,7 +132,7 @@
                 android:id="@+id/button_cryptocurrency"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_money"
+                app:icon="@drawable/ic_bitcoin"
                 app:iconBackground="@color/green"
                 app:text="@string/barcode_schema_cryptocurrency"
                 />

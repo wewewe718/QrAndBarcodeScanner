@@ -10,44 +10,51 @@ import com.example.barcodescanner.extension.isNotBlank
 import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.textString
 import com.example.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
-import com.example.barcodescanner.feature.tabs.create.CreateBarcodeActivity
 import com.example.barcodescanner.model.schema.Schema
-import com.example.barcodescanner.model.schema.Url
-import kotlinx.android.synthetic.main.fragment_create_qr_code_url.*
+import com.example.barcodescanner.model.schema.Sms
+import kotlinx.android.synthetic.main.fragment_create_qr_code_sms.*
 
-class CreateQrCodeUrlFragment : BaseCreateBarcodeFragment() {
+class CreateQrCodeSmsFragment : BaseCreateBarcodeFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_create_qr_code_url, container, false)
+        return inflater.inflate(R.layout.fragment_create_qr_code_sms, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initScrollView()
-        showUrlPrefix()
+        initTitleEditText()
         handleTextChanged()
     }
 
+    override fun showPhone(phone: String) {
+        edit_text_phone.apply {
+            setText(phone)
+            setSelection(phone.length)
+        }
+    }
+
     override fun getBarcodeSchema(): Schema {
-        return Url(edit_text.textString)
+       return Sms(
+           phone = edit_text_phone.textString,
+           message = edit_text_message.textString
+       )
     }
 
     private fun initScrollView() {
         scroll_view.makeSmoothScrollable()
     }
 
-    private fun showUrlPrefix() {
-        val prefix = "https://"
-        edit_text.apply {
-            setText(prefix)
-            setSelection(prefix.length)
-            requestFocus()
-        }
+    private fun initTitleEditText() {
+        edit_text_phone.requestFocus()
     }
 
     private fun handleTextChanged() {
-        edit_text.addTextChangedListener {
-            parentActivity.isCreateBarcodeButtonEnabled = edit_text.isNotBlank()
-        }
+        edit_text_phone.addTextChangedListener { toggleCreateBarcodeButton() }
+        edit_text_message.addTextChangedListener { toggleCreateBarcodeButton() }
+    }
+
+    private fun toggleCreateBarcodeButton() {
+        parentActivity.isCreateBarcodeButtonEnabled = edit_text_phone.isNotBlank() || edit_text_message.isNotBlank()
     }
 }

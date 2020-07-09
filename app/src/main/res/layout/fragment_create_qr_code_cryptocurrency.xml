@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_small"
+            android:layout_marginHorizontal="@dimen/default_margin_big"
+            android:text="@string/fragment_create_qr_code_cryptocurrency_type_hint"
+            android:textColor="@color/gray10"
+            android:textSize="@dimen/default_text_size_extra_small"
+            />
+
+        <Spinner
+            android:id="@+id/spinner_cryptocurrency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_small"
+            android:layout_marginHorizontal="@dimen/default_margin_medium"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_medium"
+            android:layout_marginHorizontal="@dimen/default_margin"
+            >
+            <EditText
+                android:id="@+id/edit_text_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|top"
+                android:lines="1"
+                android:maxLines="1"
+                android:hint="@string/fragment_create_qr_code_cryptocurrency_address_hint"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:backgroundTint="@color/blue"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_medium"
+            android:layout_marginHorizontal="@dimen/default_margin"
+            >
+            <EditText
+                android:id="@+id/edit_text_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|top"
+                android:lines="1"
+                android:maxLines="1"
+                android:hint="@string/fragment_create_qr_code_cryptocurrency_amount_hint"
+                android:inputType="numberDecimal"
+                android:imeOptions="actionNext"
+                android:backgroundTint="@color/blue"
+                android:digits="01234567890."
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_medium"
+            android:layout_marginHorizontal="@dimen/default_margin"
+            >
+            <EditText
+                android:id="@+id/edit_text_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|top"
+                android:lines="1"
+                android:maxLines="1"
+                android:hint="@string/fragment_create_qr_code_cryptocurrency_label_hint"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:backgroundTint="@color/blue"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_medium"
+            android:layout_marginHorizontal="@dimen/default_margin"
+            >
+            <EditText
+                android:id="@+id/edit_text_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|top"
+                android:lines="1"
+                android:maxLines="1"
+                android:hint="@string/fragment_create_qr_code_cryptocurrency_message_hint"
+                android:inputType="text"
+                android:imeOptions="actionDone"
+                android:backgroundTint="@color/blue"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -23,8 +23,8 @@ class Geo : Schema {
         this.uri = uri
     }
 
-    constructor(latitude: Double, longitude: Double, altitude: Double? = null) {
-        uri = if (altitude == null) {
+    constructor(latitude: String, longitude: String, altitude: String? = null) {
+        uri = if (altitude.isNullOrEmpty()) {
             "$PREFIX$latitude$SEPARATOR$longitude"
         } else {
             "$PREFIX$latitude$SEPARATOR$longitude$SEPARATOR$altitude"

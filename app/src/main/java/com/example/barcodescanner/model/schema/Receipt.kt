@@ -66,8 +66,8 @@ class Receipt(
                     return@forEach
                 }
 
-                if (part.startsWith(SEPARATOR)) {
-                    sum = part.removePrefix("s=")
+                if (part.startsWith(SUM_PREFIX)) {
+                    sum = part.removePrefix(SUM_PREFIX)
                     return@forEach
                 }
             }

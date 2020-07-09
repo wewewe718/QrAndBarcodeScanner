@@ -13,6 +13,7 @@
     <dimen name="default_text_size_large">18sp</dimen>
     <dimen name="default_text_size_small">15sp</dimen>
     <dimen name="default_text_size_very_small">13sp</dimen>
+    <dimen name="default_text_size_extra_small">12sp</dimen>
 
     <dimen name="icon_button_icon_size">19dp</dimen>
     <dimen name="icon_button_icon_padding">10dp</dimen>

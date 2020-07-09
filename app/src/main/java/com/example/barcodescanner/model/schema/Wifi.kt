@@ -6,7 +6,7 @@ import com.example.barcodescanner.extension.removePrefixIgnoreCase
 import com.example.barcodescanner.extension.startsWithIgnoreCase
 
 class Wifi(
-    val auth: String? = null,
+    val encryption: String? = null,
     val name: String? = null,
     val password: String? = null,
     val isHidden: Boolean? = null
@@ -14,7 +14,7 @@ class Wifi(
 
     companion object {
         private const val SCHEMA_PREFIX = "WIFI:"
-        private const val AUTHENTICATION_PREFIX = "T:"
+        private const val ENCRYPTION_PREFIX = "T:"
         private const val NAME_PREFIX = "S:"
         private const val PASSWORD_PREFIX = "P:"
         private const val IS_HIDDEN_PREFIX = "H:"
@@ -25,7 +25,7 @@ class Wifi(
                 return null
             }
 
-            var auth: String? = null
+            var encryption: String? = null
             var name: String? = null
             var password: String? = null
             var isHidden: Boolean? = null
@@ -33,8 +33,8 @@ class Wifi(
             text.removePrefixIgnoreCase(SCHEMA_PREFIX)
                 .split(SEPARATOR)
                 .forEach { part ->
-                    if (part.startsWithIgnoreCase(AUTHENTICATION_PREFIX)) {
-                        auth = part.removePrefixIgnoreCase(AUTHENTICATION_PREFIX)
+                    if (part.startsWithIgnoreCase(ENCRYPTION_PREFIX)) {
+                        encryption = part.removePrefixIgnoreCase(ENCRYPTION_PREFIX)
                         return@forEach
                     }
 
@@ -54,19 +54,19 @@ class Wifi(
                     }
                 }
 
-            return Wifi(auth, name, password, isHidden)
+            return Wifi(encryption, name, password, isHidden)
         }
     }
 
     override val schema = BarcodeSchema.WIFI
 
     override fun toFormattedText(): String {
-        return listOf(name, auth, password).joinNotNullOrBlankToStringWithLineSeparator()
+        return listOf(name, encryption, password).joinNotNullOrBlankToStringWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {
         return SCHEMA_PREFIX +
-                "$AUTHENTICATION_PREFIX${auth.orEmpty()}$SEPARATOR" +
+                "$ENCRYPTION_PREFIX${encryption.orEmpty()}$SEPARATOR" +
                 "$NAME_PREFIX${name.orEmpty()}$SEPARATOR" +
                 "$PASSWORD_PREFIX${password.orEmpty()}$SEPARATOR" +
                 "$IS_HIDDEN_PREFIX${isHidden.orFalse()}$SEPARATOR"

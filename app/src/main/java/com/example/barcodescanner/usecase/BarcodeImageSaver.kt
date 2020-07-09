@@ -45,8 +45,8 @@ object BarcodeImageSaver {
             put(Images.Media.DATE_ADDED, System.currentTimeMillis() / 1000)
         }
 
-        val uri = contentResolver.insert(Images.Media.EXTERNAL_CONTENT_URI, values)
-        contentResolver.openOutputStream(uri!!)?.apply {
+        val uri = contentResolver.insert(Images.Media.EXTERNAL_CONTENT_URI, values) ?: return
+        contentResolver.openOutputStream(uri)?.apply {
             image.compress(Bitmap.CompressFormat.PNG, 100, this)
             flush()
             close()

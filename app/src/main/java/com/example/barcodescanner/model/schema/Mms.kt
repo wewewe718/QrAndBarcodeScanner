@@ -36,7 +36,7 @@ class Mms(
 
     override fun toBarcodeText(): String {
         return PREFIX +
-                "$SEPARATOR${phone.orEmpty()}" +
+                phone.orEmpty() +
                 "$SEPARATOR${subject.orEmpty()}" +
                 "$SEPARATOR${message.orEmpty()}"
     }

@@ -34,13 +34,57 @@
 
     <!--Create barcode activity-->
     <string name="activity_create_barcode_menu_item_title">Create</string>
+    <string name="activity_create_barcode_contacts_menu_item_title">Contacts</string>
 
     <!--Base create barcode fragment -->
     <string name="fragment_create_barcode_alternative">Alternatively:</string>
 
     <!--Create QR code URL fragment-->
-    <string name="fragment_create_qr_code_url_hint">URL</string>
     <string name="fragment_create_qr_code_url_alternative">- Open your browser app\n- Load a website\n- Click \"Share\" from the menu\n- Select this app</string>
+
+    <!--Create QR code bookmark fragment-->
+    <string name="fragment_create_qr_code_bookmark_title_hint">Title</string>
+
+    <!--Create QR code Wi-fi fragment-->
+    <string name="fragment_create_qr_code_wifi_encryption_hint">Encryption</string>
+    <string-array name="fragment_create_qr_code_wifi_encryption_types">
+        <item>WPA/WPA2</item>
+        <item>WEP</item>
+        <item>None</item>
+    </string-array>
+    <string name="fragment_create_qr_code_wifi_network_name_hint">Network name</string>
+    <string name="fragment_create_qr_code_wifi_password_hint">Password</string>
+    <string name="fragment_create_qr_code_wifi_is_hidden_hint">Hidden</string>
+
+    <!--Create QR code email fragment-->
+    <string name="fragment_create_qr_code_email_subject_hint">Subject</string>
+    <string name="fragment_create_qr_code_email_message_hint">Message</string>
+
+    <!--Create QR code SMS fragment-->
+    <string name="fragment_create_qr_code_sms_message_hint">Message</string>
+
+    <!--Create QR code MMS fragment-->
+    <string name="fragment_create_qr_code_mms_subject_hint">Subject</string>
+    <string name="fragment_create_qr_code_mms_message_hint">Message</string>
+
+    <!--Create QR code cryptocurrency fragment-->
+    <string name="fragment_create_qr_code_cryptocurrency_type_hint">Cryptocurrency</string>
+    <string-array name="fragment_create_qr_code_cryptocurrencies">
+        <item>Bitcoin</item>
+        <item>Bitcoin Cash</item>
+        <item>Ethereum</item>
+        <item>Litecoin</item>
+        <item>Dash</item>
+    </string-array>
+    <string name="fragment_create_qr_code_cryptocurrency_address_hint">Receiver address</string>
+    <string name="fragment_create_qr_code_cryptocurrency_amount_hint">Amount</string>
+    <string name="fragment_create_qr_code_cryptocurrency_label_hint">Label</string>
+    <string name="fragment_create_qr_code_cryptocurrency_message_hint">Message</string>
+
+    <!--Create QR code location fragment-->
+    <string name="fragment_create_qr_code_location_latitude_hint">Latitude</string>
+    <string name="fragment_create_qr_code_location_longitude_hint">Longitude</string>
+    <string name="fragment_create_qr_code_location_altitude_hint">Altitude (optional)</string>
 
     <!--Barcode history fragment-->
     <string name="fragment_barcode_history_title">History</string>
@@ -107,7 +151,7 @@
     <string name="activity_barcode_delete">Delete</string>
     <string name="activity_barcode_connecting_to_wifi">Connecting</string>
     <string name="activity_barcode_copied">Copied to clipboard</string>
-    <string name="activity_barcode_barcode_image_saved">Saved</string>
+    <string name="activity_barcode_barcode_image_saved">Saved to Gallery</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
 
     <!--Check receipt activity-->

@@ -19,6 +19,7 @@ data class Sms(
             }
 
             val parts = text.removePrefixIgnoreCase(PREFIX).split(SEPARATOR)
+
             return Sms(
                 phone = parts.getOrNull(0),
                 message = parts.getOrNull(1)
@@ -34,7 +35,7 @@ data class Sms(
 
     override fun toBarcodeText(): String {
         return PREFIX +
-                "$SEPARATOR${phone.orEmpty()}" +
+                phone.orEmpty() +
                 "$SEPARATOR${message.orEmpty()}"
     }
 }

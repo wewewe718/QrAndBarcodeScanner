@@ -20,24 +20,11 @@
             android:gravity="start|top"
             android:lines="1"
             android:maxLines="1"
-            android:hint="@string/barcode_schema_url"
-            android:inputType="textUri"
+            android:hint="@string/barcode_schema_phone"
             android:imeOptions="actionDone"
             android:backgroundTint="@color/blue"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_big"
-            android:text="@string/fragment_create_barcode_alternative"
-            style="@style/CreateBarcodeFragmentHintTextViewStyle"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:text="@string/fragment_create_qr_code_url_alternative"
-            style="@style/CreateBarcodeFragmentAlternativeTextViewStyle"
+            android:inputType="phone"
+            android:digits="+0123456789"
             />
     </LinearLayout>
 </ScrollView>
