@@ -36,6 +36,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_small"
             >
             <EditText
                 android:id="@+id/edit_text_longitude"

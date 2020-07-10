@@ -16,6 +16,12 @@ import kotlinx.android.synthetic.main.fragment_create_qr_code_location.*
 
 class CreateQrCodeLocationFragment : BaseCreateBarcodeFragment() {
 
+    override val latitude: Double?
+        get() = edit_text_latitude.textString.toDoubleOrNull()
+
+    override val longitude: Double?
+        get() = edit_text_longitude.textString.toDoubleOrNull()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_create_qr_code_location, container, false)
     }
@@ -33,6 +39,15 @@ class CreateQrCodeLocationFragment : BaseCreateBarcodeFragment() {
            longitude = edit_text_longitude.textString,
            altitude = edit_text_altitude.textString
        )
+    }
+
+    override fun showLocation(latitude: Double?, longitude: Double?) {
+        latitude?.apply {
+            edit_text_latitude.setText(latitude.toString())
+        }
+        longitude?.apply {
+            edit_text_longitude.setText(longitude.toString())
+        }
     }
 
     private fun initScrollView() {

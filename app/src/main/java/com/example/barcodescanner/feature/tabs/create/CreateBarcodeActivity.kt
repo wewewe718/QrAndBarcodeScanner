@@ -86,6 +86,7 @@ class CreateBarcodeActivity : BaseActivity() {
 
         when (requestCode) {
             CHOOSE_PHONE_REQUEST_CODE -> showChosenPhone(data)
+            CHOOSE_LOCATION_REQUEST_CODE -> showChosenLocation(data)
         }
     }
 
@@ -166,8 +167,16 @@ class CreateBarcodeActivity : BaseActivity() {
     }
 
     private fun chooseLocationOnMap() {
-        val intent = Intent(this, ChooseLocationOnMapActivity::class.java)
-        startActivityForResult(intent, CHOOSE_LOCATION_REQUEST_CODE)
+        val fragment = getCurrentFragment()
+        val latitude = fragment.latitude
+        val longitude = fragment.longitude
+        ChooseLocationOnMapActivity.start(this, CHOOSE_LOCATION_REQUEST_CODE, latitude, longitude)
+    }
+
+    private fun showChosenLocation(data: Intent?) {
+        val latitude = data?.getDoubleExtra(ChooseLocationOnMapActivity.LATITUDE_KEY, 0.0)
+        val longitude = data?.getDoubleExtra(ChooseLocationOnMapActivity.LONGITUDE_KEY, 0.0)
+        getCurrentFragment().showLocation(latitude, longitude)
     }
 
     private fun startActivityForResultIfExists(intent: Intent, requestCode: Int) {
