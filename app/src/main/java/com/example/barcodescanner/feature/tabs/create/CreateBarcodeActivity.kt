@@ -16,6 +16,8 @@ import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.feature.tabs.create.qr.*
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
+import com.example.barcodescanner.model.schema.GooglePlay
+import com.example.barcodescanner.model.schema.Schema
 import com.google.zxing.BarcodeFormat
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -23,7 +25,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_create_barcode.*
 
-class CreateBarcodeActivity : BaseActivity() {
+class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
 
     companion object {
         private const val BARCODE_FORMAT_KEY = "BARCODE_FORMAT_KEY"
@@ -90,6 +92,10 @@ class CreateBarcodeActivity : BaseActivity() {
         }
     }
 
+    override fun onAppClicked(packageName: String) {
+        createBarcode(GooglePlay.fromPackage(packageName))
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         disposable.clear()
@@ -119,6 +125,7 @@ class CreateBarcodeActivity : BaseActivity() {
 
     private fun showToolbarMenu() {
         val menuId = when (barcodeSchema) {
+            BarcodeSchema.GOOGLE_PLAY -> return
             BarcodeSchema.PHONE, BarcodeSchema.SMS, BarcodeSchema.MMS -> R.menu.menu_create_qr_code_contacts
             BarcodeSchema.GEO -> R.menu.menu_create_qr_code_map
             else -> R.menu.menu_create_barcode
@@ -138,6 +145,7 @@ class CreateBarcodeActivity : BaseActivity() {
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.MMS -> CreateQrCodeMmsFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.CRYPTOCURRENCY -> CreateQrCodeCryptocurrencyFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.GEO -> CreateQrCodeLocationFragment()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.GOOGLE_PLAY -> CreateQrCodeAppFragment()
             else -> return
         }
 
@@ -189,7 +197,10 @@ class CreateBarcodeActivity : BaseActivity() {
 
     private fun createBarcode() {
         val schema = getCurrentFragment().getBarcodeSchema()
+        createBarcode(schema)
+    }
 
+    private fun createBarcode(schema: Schema) {
         val barcode = Barcode(
             text = schema.toBarcodeText(),
             formattedText = schema.toFormattedText(),

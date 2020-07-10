@@ -13,6 +13,10 @@ class GooglePlay(val url: String) : Schema {
             }
             return GooglePlay(text)
         }
+
+        fun fromPackage(packageName: String): GooglePlay {
+            return GooglePlay(PREFIXES[0] + packageName)
+        }
     }
 
     override val schema = BarcodeSchema.GOOGLE_PLAY
