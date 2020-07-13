@@ -146,6 +146,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.CRYPTOCURRENCY -> CreateQrCodeCryptocurrencyFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.GEO -> CreateQrCodeLocationFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.GOOGLE_PLAY -> CreateQrCodeAppFragment()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VEVENT -> CreateQrCodeEventFragment()
             else -> return
         }
 

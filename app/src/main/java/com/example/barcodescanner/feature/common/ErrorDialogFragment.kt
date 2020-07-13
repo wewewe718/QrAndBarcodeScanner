@@ -18,9 +18,16 @@ class ErrorDialogFragment : DialogFragment() {
         private const val ERROR_MESSAGE_KEY = "ERROR_MESSAGE_KEY"
 
         fun newInstance(context: Context, error: Throwable?): ErrorDialogFragment {
-            return ErrorDialogFragment().apply {
+            return ErrorDialogFragment()
+                .apply {
                 arguments = Bundle().apply {
-                    putString(ERROR_MESSAGE_KEY, getErrorMessage(context, error))
+                    putString(
+                        ERROR_MESSAGE_KEY,
+                        getErrorMessage(
+                            context,
+                            error
+                        )
+                    )
                 }
             }
         }

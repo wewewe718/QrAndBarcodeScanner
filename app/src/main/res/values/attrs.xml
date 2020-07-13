@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="text" format="string" />
+    <attr name="hint" format="string" />
     <attr name="isDelimiterVisible" format="boolean" />
 
     <declare-styleable name="IconButton">
@@ -12,7 +13,7 @@
 
     <declare-styleable name="SettingsButton">
         <attr name="text" />
-        <attr name="hint" format="string" />
+        <attr name="hint" />
         <attr name="isDelimiterVisible" />
         <attr name="isSwitchVisible" format="boolean" />
         <attr name="isArrowVisible" format="boolean" />
@@ -21,6 +22,10 @@
     <declare-styleable name="SettingsRadioButton">
         <attr name="text" />
         <attr name="isDelimiterVisible" />
+    </declare-styleable>
+
+    <declare-styleable name="DateTimePickerButton">
+        <attr name="hint" />
     </declare-styleable>
 
 </resources>

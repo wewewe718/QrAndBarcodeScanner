@@ -86,6 +86,12 @@
     <string name="fragment_create_qr_code_location_longitude_hint">Longitude</string>
     <string name="fragment_create_qr_code_location_altitude_hint">Altitude (optional)</string>
 
+    <!--Create QR code event-->
+    <string name="fragment_create_qr_code_event_title_hint">Title</string>
+    <string name="fragment_create_qr_code_event_summary_hint">Summary</string>
+    <string name="fragment_create_qr_code_event_start_date_hint">Start date</string>
+    <string name="fragment_create_qr_code_event_end_date_hint">End date</string>
+
     <!--Barcode history fragment-->
     <string name="fragment_barcode_history_title">History</string>
     <string name="fragment_barcode_history_menu_title_delete_all">Clear history</string>

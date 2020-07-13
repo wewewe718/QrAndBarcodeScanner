@@ -16,7 +16,8 @@ data class VEvent(
     companion object {
         private const val SCHEMA_PREFIX = "BEGIN:VEVENT"
         private const val SCHEMA_SUFFIX = "END:VEVENT"
-        private const val PARAMETERS_SEPARATOR = "\r?\n"
+        private const val PARAMETERS_SEPARATOR_1 = "\n"
+        private const val PARAMETERS_SEPARATOR_2 = "\r"
         private const val UID_PREFIX = "UID:"
         private const val STAMP_PREFIX = "DTSTAMP:"
         private const val ORGANIZER_PREFIX = "ORGANIZER:"
@@ -46,7 +47,7 @@ data class VEvent(
             var endDate: Long? = null
             var summary: String? = null
 
-            text.removePrefixIgnoreCase(SCHEMA_PREFIX).split(PARAMETERS_SEPARATOR).forEach { part ->
+            text.removePrefixIgnoreCase(SCHEMA_PREFIX).split(PARAMETERS_SEPARATOR_1, PARAMETERS_SEPARATOR_2).forEach { part ->
                 if (part.startsWithIgnoreCase(UID_PREFIX)) {
                     uid = part.removePrefixIgnoreCase(UID_PREFIX)
                     return@forEach
@@ -69,7 +70,7 @@ data class VEvent(
                 }
 
                 if (part.startsWithIgnoreCase(END_PREFIX)) {
-                    val endDateOriginal = part.removePrefix(START_PREFIX)
+                    val endDateOriginal = part.removePrefix(END_PREFIX)
                     endDate = DATE_PARSER.parseOrNull(endDateOriginal)?.time
                     return@forEach
                 }
@@ -90,10 +91,10 @@ data class VEvent(
         return listOf(
             uid,
             stamp,
+            summary,
             DATE_FORMATTER.formatOrNull(startDate),
             DATE_FORMATTER.formatOrNull(endDate),
-            organizer,
-            summary
+            organizer
         ).joinNotNullOrBlankToStringWithLineSeparator()
     }
 
@@ -101,13 +102,13 @@ data class VEvent(
         val startDate = DATE_PARSER.formatOrNull(startDate)
         val endDate = DATE_PARSER.formatOrNull(endDate)
 
-        return "$SCHEMA_PREFIX$PARAMETERS_SEPARATOR" +
-                "$UID_PREFIX${uid.orEmpty()}$PARAMETERS_SEPARATOR" +
-                "$STAMP_PREFIX${stamp.orEmpty()}$PARAMETERS_SEPARATOR" +
-                "$ORGANIZER_PREFIX${organizer.orEmpty()}$PARAMETERS_SEPARATOR" +
-                "$START_PREFIX${startDate.orEmpty()}$PARAMETERS_SEPARATOR" +
-                "$END_PREFIX${endDate.orEmpty()}$PARAMETERS_SEPARATOR" +
-                "$SUMMARY_PREFIX${summary.orEmpty()}$PARAMETERS_SEPARATOR" +
-                "$SCHEMA_SUFFIX$PARAMETERS_SEPARATOR"
+        return "$SCHEMA_PREFIX$PARAMETERS_SEPARATOR_1" +
+                "$UID_PREFIX${uid.orEmpty()}$PARAMETERS_SEPARATOR_1" +
+                "$STAMP_PREFIX${stamp.orEmpty()}$PARAMETERS_SEPARATOR_1" +
+                "$ORGANIZER_PREFIX${organizer.orEmpty()}$PARAMETERS_SEPARATOR_1" +
+                "$START_PREFIX${startDate.orEmpty()}$PARAMETERS_SEPARATOR_1" +
+                "$END_PREFIX${endDate.orEmpty()}$PARAMETERS_SEPARATOR_1" +
+                "$SUMMARY_PREFIX${summary.orEmpty()}$PARAMETERS_SEPARATOR_1" +
+                "$SCHEMA_SUFFIX$PARAMETERS_SEPARATOR_1"
     }
 }

@@ -97,4 +97,7 @@ dependencies {
 
     // Google Maps
     implementation "com.google.android.gms:play-services-maps:17.0.0"
+
+    // Date time picker
+    implementation 'com.github.florent37:singledateandtimepicker:2.2.6'
 }

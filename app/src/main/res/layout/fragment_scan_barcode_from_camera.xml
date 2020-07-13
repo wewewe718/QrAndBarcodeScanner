@@ -64,7 +64,7 @@
     <SeekBar
         android:id="@+id/seek_bar_zoom"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/zoom_seek_bar_height"
         android:layout_marginHorizontal="@dimen/default_margin"
         app:layout_constraintTop_toTopOf="@id/button_decrease_zoom"
         app:layout_constraintBottom_toBottomOf="@id/button_decrease_zoom"

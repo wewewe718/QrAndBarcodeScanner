@@ -1,4 +1,4 @@
-package com.example.barcodescanner.feature.tabs.settings
+package com.example.barcodescanner.feature.common
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -12,8 +12,25 @@ import com.example.barcodescanner.R
 import kotlinx.android.synthetic.main.layout_settings_button.view.*
 
 class SettingsButton : FrameLayout {
-    private lateinit var view: View
+    private val view: View
 
+    constructor(context: Context) : this(context, null)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        view = LayoutInflater
+            .from(context)
+            .inflate(R.layout.layout_settings_button, this, true)
+
+        context.obtainStyledAttributes(attrs, R.styleable.SettingsButton).apply {
+            showText(this)
+            showHint(this)
+            showSwitch(this)
+            showArrow(this)
+            showDelimiter(this)
+            recycle()
+        }
+    }
+    
     var hint: String
         get() = view.text_view_hint.text.toString()
         set(value) {
@@ -27,17 +44,6 @@ class SettingsButton : FrameLayout {
         get() = view.switch_button.isChecked
         set(value) { view.switch_button.isChecked = value }
 
-    constructor(context: Context) : this(context, null)
-
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
-
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        val view = inflateView(context)
-        if (attrs != null) {
-            applyAttributes(context, view, attrs)
-        }
-    }
-
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
         text_view_text.isEnabled = enabled
@@ -49,40 +55,23 @@ class SettingsButton : FrameLayout {
         }
     }
 
-    private fun inflateView(context: Context): View {
-        val inflater = LayoutInflater.from(context)
-        view = inflater.inflate(R.layout.layout_settings_button, this, true)
-        return view
-    }
-
-    private fun applyAttributes(context: Context, view: View, attrs: AttributeSet) {
-        context.obtainStyledAttributes(attrs, R.styleable.SettingsButton).apply {
-            showText(view, this)
-            showHint(view, this)
-            showSwitch(view, this)
-            showArrow(view, this)
-            showDelimiter(view, this)
-            recycle()
-        }
-    }
-
-    private fun showText(view: View, attributes: TypedArray) {
+    private fun showText(attributes: TypedArray) {
         view.text_view_text.text = attributes.getString(R.styleable.SettingsButton_text).orEmpty()
     }
 
-    private fun showHint(view: View, attributes: TypedArray) {
+    private fun showHint(attributes: TypedArray) {
         hint = attributes.getString(R.styleable.SettingsButton_hint).orEmpty()
     }
 
-    private fun showSwitch(view: View, attributes: TypedArray) {
+    private fun showSwitch(attributes: TypedArray) {
         view.switch_button.isVisible = attributes.getBoolean(R.styleable.SettingsButton_isSwitchVisible, true)
     }
 
-    private fun showArrow(view: View, attributes: TypedArray) {
+    private fun showArrow(attributes: TypedArray) {
         view.image_view_arrow.isVisible = attributes.getBoolean(R.styleable.SettingsButton_isArrowVisible, false)
     }
 
-    private fun showDelimiter(view: View, attributes: TypedArray) {
+    private fun showDelimiter(attributes: TypedArray) {
         view.delimiter.isInvisible = attributes.getBoolean(R.styleable.SettingsButton_isDelimiterVisible, true).not()
     }
 }
