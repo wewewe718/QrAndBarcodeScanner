@@ -14,7 +14,7 @@
     <string name="activity_bottom_tabs_settings_tab">Settings</string>
 
     <!--Scan barcode from camera fragment-->
-    <string name="fragment_scan_barcode_from_camera_scan_from_file">From file</string>
+    <string name="fragment_scan_barcode_from_camera_scan_from_file">Scan image</string>
     <string name="fragment_scan_barcode_from_camera_barcode_saved">Saved</string>
     <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_title">Confirm</string>
     <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_positive_button">OK</string>
@@ -92,6 +92,22 @@
     <string name="fragment_create_qr_code_event_start_date_hint">Start date</string>
     <string name="fragment_create_qr_code_event_end_date_hint">End date</string>
 
+    <!--Create QR code contact-->
+    <string name="fragment_create_qr_code_contact_first_name_hint">First Name</string>
+    <string name="fragment_create_qr_code_contact_last_name_hint">Last Name</string>
+    <string name="fragment_create_qr_code_contact_organization_hint">Organization</string>
+    <string name="fragment_create_qr_code_contact_job_hint">Job</string>
+    <string name="fragment_create_qr_code_contact_email_hint">Email</string>
+    <string name="fragment_create_qr_code_contact_phone_hint">Phone</string>
+    <string name="fragment_create_qr_code_contact_fax_hint">Fax</string>
+    <string name="fragment_create_qr_code_contact_country_hint">Country</string>
+    <string name="fragment_create_qr_code_contact_region_hint">Region/State</string>
+    <string name="fragment_create_qr_code_contact_postcode_hint">Postcode</string>
+    <string name="fragment_create_qr_code_contact_city_hint">City</string>
+    <string name="fragment_create_qr_code_contact_street_hint">Street</string>
+    <string name="fragment_create_qr_code_contact_website_hint">Website</string>
+    <string name="fragment_create_qr_code_contact_alternative">- Open your contacts app\n- Open an existing contact or create a new one\n- Click \"Share\" from the menu\n- Select this app</string>
+
     <!--Barcode history fragment-->
     <string name="fragment_barcode_history_title">History</string>
     <string name="fragment_barcode_history_menu_title_delete_all">Clear history</string>
@@ -133,7 +149,7 @@
 
     <!--Barcode activity-->
     <string name="activity_barcode_add_to_calendar">Add to calendar</string>
-    <string name="activity_barcode_add_to_contacts">Add contact</string>
+    <string name="activity_barcode_add_to_contacts">Add to contacts</string>
     <string name="activity_barcode_call_phone">Call</string>
     <string name="activity_barcode_send_sms">Send SMS/MMS</string>
     <string name="activity_barcode_send_email">Send Email</string>

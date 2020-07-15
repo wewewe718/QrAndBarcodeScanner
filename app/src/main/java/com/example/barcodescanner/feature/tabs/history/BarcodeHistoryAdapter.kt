@@ -4,6 +4,7 @@ import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isInvisible
 import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
@@ -67,9 +68,8 @@ class BarcodeHistoryAdapter : PagedListAdapter<Barcode, BarcodeHistoryAdapter.Vi
 
         private fun showImage(barcode: Barcode) {
             val imageId = barcode.schema.toImageId() ?: barcode.format.toImageId()
-            itemView.apply {
-                image_view_schema.setImageDrawable(context.resources.getDrawable(imageId))
-            }
+            val image = AppCompatResources.getDrawable(itemView.context, imageId)
+            itemView.image_view_schema.setImageDrawable(image)
         }
 
         private fun showImageBackgroundColor(barcode: Barcode) {

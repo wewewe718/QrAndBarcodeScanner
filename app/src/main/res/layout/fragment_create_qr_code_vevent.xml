@@ -34,6 +34,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_small"
             android:layout_marginHorizontal="@dimen/default_margin"
             >
             <EditText
@@ -44,7 +45,7 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:hint="@string/fragment_create_qr_code_event_summary_hint"
-                android:imeOptions="actionNext"
+                android:imeOptions="actionDone"
                 android:backgroundTint="@color/blue"
                 android:inputType="text"
                 />

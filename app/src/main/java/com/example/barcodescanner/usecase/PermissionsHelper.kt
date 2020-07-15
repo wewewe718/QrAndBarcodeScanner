@@ -9,10 +9,7 @@ import androidx.core.content.ContextCompat
 object PermissionsHelper {
 
     fun requestPermissions(activity: Activity, permissions: Array<out String>, requestCode: Int) {
-        val notGrantedPermissions = permissions.filterNot { isPermissionGranted(activity, it) }
-        if (notGrantedPermissions.isNotEmpty()) {
-            ActivityCompat.requestPermissions(activity, notGrantedPermissions.toTypedArray(), requestCode)
-        }
+        ActivityCompat.requestPermissions(activity, permissions, requestCode)
     }
 
     fun areAllPermissionsGranted(context: Context, permissions: Array<out String>): Boolean {

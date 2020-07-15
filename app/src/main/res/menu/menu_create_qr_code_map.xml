@@ -14,5 +14,6 @@
         android:title="@string/activity_create_barcode_menu_item_title"
         android:icon="@drawable/ic_confirm_disabled"
         app:showAsAction="always"
+        android:enabled="false"
         />
 </menu>

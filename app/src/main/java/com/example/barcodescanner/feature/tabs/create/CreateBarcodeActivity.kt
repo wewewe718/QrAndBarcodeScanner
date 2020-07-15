@@ -1,5 +1,6 @@
 package com.example.barcodescanner.feature.tabs.create
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -8,6 +9,7 @@ import android.provider.ContactsContract
 import android.widget.Toast
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
+import com.example.barcodescanner.di.contactHelper
 import com.example.barcodescanner.di.settings
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.toStringId
@@ -18,6 +20,7 @@ import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.example.barcodescanner.model.schema.GooglePlay
 import com.example.barcodescanner.model.schema.Schema
+import com.example.barcodescanner.usecase.PermissionsHelper
 import com.google.zxing.BarcodeFormat
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -25,13 +28,18 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_create_barcode.*
 
+
 class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
 
     companion object {
         private const val BARCODE_FORMAT_KEY = "BARCODE_FORMAT_KEY"
         private const val BARCODE_SCHEMA_KEY = "BARCODE_SCHEMA_KEY"
         private const val CHOOSE_PHONE_REQUEST_CODE = 1
-        private const val CHOOSE_LOCATION_REQUEST_CODE = 2
+        private const val CHOOSE_CONTACT_REQUEST_CODE = 2
+        private const val CHOOSE_LOCATION_REQUEST_CODE = 3
+
+        private const val CONTACTS_PERMISSION_REQUEST_CODE = 101
+        private val CONTACTS_PERMISSIONS = arrayOf(Manifest.permission.READ_CONTACTS)
 
         fun start(context: Context, barcodeFormat: BarcodeFormat, barcodeSchema: BarcodeSchema? = null) {
             val intent = Intent(context, CreateBarcodeActivity::class.java).apply {
@@ -88,7 +96,18 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
 
         when (requestCode) {
             CHOOSE_PHONE_REQUEST_CODE -> showChosenPhone(data)
+            CHOOSE_CONTACT_REQUEST_CODE -> showChosenContact(data)
             CHOOSE_LOCATION_REQUEST_CODE -> showChosenLocation(data)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == CONTACTS_PERMISSION_REQUEST_CODE && PermissionsHelper.areAllPermissionsGranted(grantResults)) {
+            chooseContact()
         }
     }
 
@@ -110,7 +129,8 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     private fun handleToolbarMenuItemClicked() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.item_contacts -> choosePhone()
+                R.id.item_phone -> choosePhone()
+                R.id.item_contacts -> requestContactsPermissions()
                 R.id.item_map -> chooseLocationOnMap()
                 R.id.item_create_barcode -> createBarcode()
             }
@@ -126,7 +146,8 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     private fun showToolbarMenu() {
         val menuId = when (barcodeSchema) {
             BarcodeSchema.GOOGLE_PLAY -> return
-            BarcodeSchema.PHONE, BarcodeSchema.SMS, BarcodeSchema.MMS -> R.menu.menu_create_qr_code_contacts
+            BarcodeSchema.PHONE, BarcodeSchema.SMS, BarcodeSchema.MMS -> R.menu.menu_create_qr_code_phone
+            BarcodeSchema.VCARD, BarcodeSchema.MECARD -> R.menu.menu_create_qr_code_contacts
             BarcodeSchema.GEO -> R.menu.menu_create_qr_code_map
             else -> R.menu.menu_create_barcode
         }
@@ -147,6 +168,8 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.GEO -> CreateQrCodeLocationFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.GOOGLE_PLAY -> CreateQrCodeAppFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VEVENT -> CreateQrCodeEventFragment()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VCARD -> CreateQrCodeVCardFragment()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.MECARD -> CreateQrCodeMeCardFragment()
             else -> return
         }
 
@@ -163,16 +186,22 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     }
 
     private fun showChosenPhone(data: Intent?) {
-        val contactUri = data?.data ?: return
-        val projection = arrayOf(ContactsContract.CommonDataKinds.Phone.NUMBER)
-        val phone = contentResolver.query(contactUri, projection, null, null, null).use { cursor ->
-            if (cursor == null || cursor.moveToFirst().not()) {
-                return
-            }
-            val phoneIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-            cursor.getString(phoneIndex)
-        }
+        val phone = contactHelper.getPhone(this, data) ?: return
         getCurrentFragment().showPhone(phone)
+    }
+
+    private fun requestContactsPermissions() {
+        PermissionsHelper.requestPermissions(this, CONTACTS_PERMISSIONS, CONTACTS_PERMISSION_REQUEST_CODE)
+    }
+
+    private fun chooseContact() {
+        val intent = Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI)
+        startActivityForResultIfExists(intent, CHOOSE_CONTACT_REQUEST_CODE)
+    }
+
+    private fun showChosenContact(data: Intent?) {
+        val contact = contactHelper.getContact(this, data) ?: return
+        getCurrentFragment().showContact(contact)
     }
 
     private fun chooseLocationOnMap() {

@@ -34,6 +34,9 @@ val AppCompatActivity.barcodeDatabase
 val AppCompatActivity.settings
     get() = Settings.getInstance(this)
 
+val AppCompatActivity.contactHelper
+    get() = ContactHelper
+
 
 val Fragment.scannerCameraHelper
     get() = ScannerCameraHelper

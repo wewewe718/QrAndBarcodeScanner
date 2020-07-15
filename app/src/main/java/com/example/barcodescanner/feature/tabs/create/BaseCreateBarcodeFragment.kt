@@ -1,6 +1,7 @@
 package com.example.barcodescanner.feature.tabs.create
 
 import androidx.fragment.app.Fragment
+import com.example.barcodescanner.model.Contact
 import com.example.barcodescanner.model.schema.Other
 import com.example.barcodescanner.model.schema.Schema
 
@@ -12,5 +13,6 @@ abstract class BaseCreateBarcodeFragment : Fragment() {
 
     open fun getBarcodeSchema(): Schema = Other("")
     open fun showPhone(phone: String) {}
+    open fun showContact(contact: Contact) {}
     open fun showLocation(latitude: Double?, longitude: Double?) {}
 }

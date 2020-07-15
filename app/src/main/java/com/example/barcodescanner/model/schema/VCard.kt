@@ -2,6 +2,7 @@ package com.example.barcodescanner.model.schema
 
 import com.example.barcodescanner.extension.joinNotNullOrBlankToStringWithLineSeparator
 import com.example.barcodescanner.extension.startsWithIgnoreCase
+import com.example.barcodescanner.extension.valueOrNull
 import ezvcard.Ezvcard
 import ezvcard.VCardVersion
 import ezvcard.parameter.EmailType
@@ -146,32 +147,15 @@ data class VCard(
         }
         vCard.addTitle(Title(title))
 
-        vCard.addEmail(Email(email).apply {
-            types.add(EmailType.find(emailType))
-        })
-        vCard.addEmail(Email(secondaryEmail).apply {
-            types.add(EmailType.find(secondaryEmailType))
-        })
-        vCard.addEmail(Email(tertiaryEmail).apply {
-            types.add(EmailType.find(tertiaryEmailType))
-        })
+        vCard.addEmail(Email(email))
+        vCard.addEmail(Email(secondaryEmail))
+        vCard.addEmail(Email(tertiaryEmail))
 
-        vCard.addTelephoneNumber(Telephone(phone).apply {
-            types.add(TelephoneType.find(phoneType))
-        })
-        vCard.addTelephoneNumber(Telephone(secondaryPhone).apply {
-            types.add(TelephoneType.find(secondaryPhoneType))
-        })
-        vCard.addTelephoneNumber(Telephone(tertiaryPhoneType).apply {
-            types.add(TelephoneType.find(tertiaryPhoneType))
-        })
+        vCard.addTelephoneNumber(Telephone(phone))
+        vCard.addTelephoneNumber(Telephone(secondaryPhone))
+        vCard.addTelephoneNumber(Telephone(tertiaryPhoneType))
 
         vCard.addUrl(Url(url))
-
-        val address = Address().apply {
-            geo = GeoUri.parse(geoUri)
-        }
-        vCard.addAddress(address)
 
         return Ezvcard.write(vCard).version(VCardVersion.V4_0).go()
     }
