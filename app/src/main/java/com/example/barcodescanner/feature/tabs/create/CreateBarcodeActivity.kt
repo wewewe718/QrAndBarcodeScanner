@@ -15,6 +15,7 @@ import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.toStringId
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
+import com.example.barcodescanner.feature.tabs.create.barcode.*
 import com.example.barcodescanner.feature.tabs.create.qr.*
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
@@ -34,6 +35,8 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     companion object {
         private const val BARCODE_FORMAT_KEY = "BARCODE_FORMAT_KEY"
         private const val BARCODE_SCHEMA_KEY = "BARCODE_SCHEMA_KEY"
+        private const val DEFAULT_TEXT_KEY = "DEFAULT_TEXT_KEY"
+
         private const val CHOOSE_PHONE_REQUEST_CODE = 1
         private const val CHOOSE_CONTACT_REQUEST_CODE = 2
         private const val CHOOSE_LOCATION_REQUEST_CODE = 3
@@ -41,10 +44,11 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
         private const val CONTACTS_PERMISSION_REQUEST_CODE = 101
         private val CONTACTS_PERMISSIONS = arrayOf(Manifest.permission.READ_CONTACTS)
 
-        fun start(context: Context, barcodeFormat: BarcodeFormat, barcodeSchema: BarcodeSchema? = null) {
+        fun start(context: Context, barcodeFormat: BarcodeFormat, barcodeSchema: BarcodeSchema? = null, defaultText: String? = null) {
             val intent = Intent(context, CreateBarcodeActivity::class.java).apply {
                 putExtra(BARCODE_FORMAT_KEY, barcodeFormat.ordinal)
                 putExtra(BARCODE_SCHEMA_KEY, barcodeSchema?.ordinal ?: -1)
+                putExtra(DEFAULT_TEXT_KEY, defaultText)
             }
             context.startActivity(intent)
         }
@@ -59,6 +63,10 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
 
     private val barcodeSchema by lazy {
         BarcodeSchema.values().getOrNull(intent?.getIntExtra(BARCODE_SCHEMA_KEY, -1) ?: -1)
+    }
+
+    private val defaultText by lazy {
+        intent?.getStringExtra(DEFAULT_TEXT_KEY).orEmpty()
     }
 
     var isCreateBarcodeButtonEnabled: Boolean
@@ -156,7 +164,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
 
     private fun showFragment() {
         val fragment = when {
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.OTHER -> CreateQrCodeTextFragment()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.OTHER -> CreateQrCodeTextFragment.newInstance(defaultText)
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.URL -> CreateQrCodeUrlFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.BOOKMARK -> CreateQrCodeBookmarkFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.PHONE -> CreateQrCodePhoneFragment()
@@ -170,6 +178,18 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VEVENT -> CreateQrCodeEventFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VCARD -> CreateQrCodeVCardFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.MECARD -> CreateQrCodeMeCardFragment()
+            barcodeFormat == BarcodeFormat.DATA_MATRIX -> CreateDataMatrixFragment()
+            barcodeFormat == BarcodeFormat.AZTEC -> CreateAztecFragment()
+            barcodeFormat == BarcodeFormat.PDF_417 -> CreatePdf417Fragment()
+            barcodeFormat == BarcodeFormat.CODABAR -> CreateCodabarFragment()
+            barcodeFormat == BarcodeFormat.CODE_39 -> CreateCode39Fragment()
+            barcodeFormat == BarcodeFormat.CODE_93 -> CreateCode93Fragment()
+            barcodeFormat == BarcodeFormat.CODE_128 -> CreateCode128Fragment()
+            barcodeFormat == BarcodeFormat.EAN_8 -> CreateEan8Fragment()
+            barcodeFormat == BarcodeFormat.EAN_13 -> CreateEan13Fragment()
+            barcodeFormat == BarcodeFormat.ITF -> CreateItf14Fragment()
+            barcodeFormat == BarcodeFormat.UPC_A -> CreateUpcAFragment()
+            barcodeFormat == BarcodeFormat.UPC_E -> CreateUpcEFragment()
             else -> return
         }
 
@@ -235,7 +255,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             text = schema.toBarcodeText(),
             formattedText = schema.toFormattedText(),
             format = barcodeFormat,
-            schema = barcodeSchema ?: BarcodeSchema.OTHER,
+            schema = schema.schema,
             date = System.currentTimeMillis(),
             isGenerated = true
         )

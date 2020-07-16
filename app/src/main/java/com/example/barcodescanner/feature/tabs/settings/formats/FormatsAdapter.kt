@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.item_barcode_format.view.*
 
 class FormatsAdapter(
     private val listener: Listener,
-    private val formats: Array<BarcodeFormat>,
+    private val formats: List<BarcodeFormat>,
     private val formatSelection: List<Boolean>
 ) : RecyclerView.Adapter<FormatsAdapter.ViewHolder>() {
 

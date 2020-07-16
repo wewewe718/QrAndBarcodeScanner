@@ -193,22 +193,13 @@
                 app:iconBackground="@color/orange"
                 app:text="@string/barcode_format_pdf_417"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_maxi_code"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_maxi_code"
-                app:iconBackground="@color/orange"
-                app:text="@string/barcode_format_maxi_code"
-                app:isDelimiterVisible="false"
-                />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/default_margin_small"
                 android:background="@color/gray3"
                 />
 
-            <!--2D codes-->
+            <!--1D codes-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -243,6 +234,14 @@
                 app:text="@string/barcode_format_code_93"
                 />
             <com.example.barcodescanner.feature.common.IconButton
+                android:id="@+id/button_code_128"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_barcode"
+                app:iconBackground="@color/blue3"
+                app:text="@string/barcode_format_code_128"
+                />
+            <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_ean_8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -267,22 +266,6 @@
                 app:text="@string/barcode_format_itf_14"
                 />
             <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_rss_14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_barcode"
-                app:iconBackground="@color/blue3"
-                app:text="@string/barcode_format_rss_14"
-                />
-            <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_rss_expanded"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_barcode"
-                app:iconBackground="@color/blue3"
-                app:text="@string/barcode_format_rss_expanded"
-                />
-            <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_upc_a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -296,16 +279,8 @@
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_barcode"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_format_upc_e"
-                />
-            <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_upc_ean"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_barcode"
-                app:iconBackground="@color/blue3"
-                app:text="@string/barcode_format_upc_ean"
                 app:isDelimiterVisible="false"
+                app:text="@string/barcode_format_upc_e"
                 />
         </LinearLayout>
     </ScrollView>

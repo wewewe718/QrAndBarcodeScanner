@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.R
+import com.example.barcodescanner.extension.clipboardManager
 import com.example.barcodescanner.extension.makeSmoothScrollable
+import com.example.barcodescanner.extension.orZero
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.google.zxing.BarcodeFormat
@@ -35,6 +37,8 @@ class CreateBarcodeFragment : Fragment() {
     }
 
     private fun handleButtonsClicked() {
+        // QR code
+        button_clipboard.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.OTHER, getClipboardContent())  }
         button_text.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.OTHER) }
         button_url.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.URL) }
         button_wifi.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.WIFI) }
@@ -49,5 +53,27 @@ class CreateBarcodeFragment : Fragment() {
         button_cryptocurrency.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.CRYPTOCURRENCY) }
         button_bookmark.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.BOOKMARK) }
         button_app.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.GOOGLE_PLAY) }
+
+        // Barcode
+        button_data_matrix.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.DATA_MATRIX) }
+        button_aztec.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.AZTEC) }
+        button_pdf_417.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.PDF_417) }
+        button_codabar.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.CODABAR) }
+        button_code_39.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.CODE_39) }
+        button_code_93.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.CODE_93) }
+        button_code_128.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.CODE_128) }
+        button_ean_8.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.EAN_8) }
+        button_ean_13.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.EAN_13) }
+        button_itf_14.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.ITF) }
+        button_upc_a.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.UPC_A) }
+        button_upc_e.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.UPC_E) }
+    }
+
+    private fun getClipboardContent(): String {
+        val clip = requireActivity().clipboardManager?.primaryClip ?: return ""
+        return when (clip.itemCount.orZero()) {
+            0 -> ""
+            else -> clip.getItemAt(0).text.toString()
+        }
     }
 }

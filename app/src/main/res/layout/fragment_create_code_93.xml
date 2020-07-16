@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/default_margin_small"
+    android:paddingHorizontal="@dimen/default_margin"
+    android:paddingBottom="@dimen/default_margin"
+    >
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <EditText
+            android:id="@+id/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:hint="@string/fragment_create_code_93_hint"
+            android:inputType="textCapCharacters"
+            android:lines="1"
+            android:maxLines="1"
+            android:backgroundTint="@color/blue"
+            android:textAllCaps="true"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+</FrameLayout>

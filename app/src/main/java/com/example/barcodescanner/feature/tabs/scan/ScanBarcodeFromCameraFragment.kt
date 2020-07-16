@@ -23,6 +23,7 @@ import com.example.barcodescanner.feature.tabs.scan.confirm.ConfirmBarcodeDialog
 import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.usecase.PermissionsHelper
+import com.example.barcodescanner.usecase.SupportedBarcodeFormats
 import com.google.zxing.Result
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -105,7 +106,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
             } else {
                 CodeScanner.CAMERA_FRONT
             }
-            formats = CodeScanner.ALL_FORMATS.filter(settings::isFormatSelected)
+            formats = SupportedBarcodeFormats.FORMATS.filter(settings::isFormatSelected)
             autoFocusMode = AutoFocusMode.SAFE
             scanMode = ScanMode.SINGLE
             isAutoFocusEnabled = settings.autoFocus

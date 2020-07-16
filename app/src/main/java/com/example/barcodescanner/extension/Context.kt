@@ -1,6 +1,7 @@
 package com.example.barcodescanner.extension
 
 import android.app.DownloadManager
+import android.content.ClipboardManager
 import android.content.Context
 import android.net.wifi.WifiManager
 import android.os.Vibrator
@@ -13,3 +14,6 @@ val Context.wifiManager: WifiManager?
 
 val Context.downloadManager: DownloadManager?
     get() = getSystemService(Context.DOWNLOAD_SERVICE) as? DownloadManager
+
+val Context.clipboardManager: ClipboardManager?
+    get() = getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager

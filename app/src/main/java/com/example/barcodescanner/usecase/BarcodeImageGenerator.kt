@@ -5,6 +5,7 @@ import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
+import com.google.zxing.maxicode.MaxiCodeReader
 import com.journeyapps.barcodescanner.BarcodeEncoder
 
 object BarcodeImageGenerator {

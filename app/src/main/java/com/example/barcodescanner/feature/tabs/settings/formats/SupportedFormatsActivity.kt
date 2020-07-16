@@ -8,6 +8,7 @@ import com.example.barcodescanner.R
 import com.example.barcodescanner.di.settings
 import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.feature.BaseActivity
+import com.example.barcodescanner.usecase.SupportedBarcodeFormats
 import com.google.zxing.BarcodeFormat
 import kotlinx.android.synthetic.main.activity_supported_formats.*
 
@@ -20,7 +21,7 @@ class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
         }
     }
 
-    private val formats by lazy { BarcodeFormat.values() }
+    private val formats by lazy { SupportedBarcodeFormats.FORMATS }
     private val formatSelection by lazy { formats.map(settings::isFormatSelected) }
     private val formatsAdapter by lazy { FormatsAdapter(this, formats, formatSelection) }
 

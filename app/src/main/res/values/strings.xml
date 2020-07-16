@@ -108,6 +108,19 @@
     <string name="fragment_create_qr_code_contact_website_hint">Website</string>
     <string name="fragment_create_qr_code_contact_alternative">- Open your contacts app\n- Open an existing contact or create a new one\n- Click \"Share\" from the menu\n- Select this app</string>
 
+    <!--Create barcode-->
+    <string name="fragment_create_data_matrix_hint">Text without special characters</string>
+    <string name="fragment_create_aztec_hint">Text without special characters</string>
+    <string name="fragment_create_codabar_hint">Digits</string>
+    <string name="fragment_create_code_39_hint">Text in upper case without special characters</string>
+    <string name="fragment_create_code_93_hint">Text in upper case without special characters</string>
+    <string name="fragment_create_code_128_hint">Text without special characters</string>
+    <string name="fragment_create_ean_8_hint">7 digits</string>
+    <string name="fragment_create_ean_13_hint">12 digits</string>
+    <string name="fragment_create_itf_14_hint">Even number of digits</string>
+    <string name="fragment_create_upc_a_hint">11 digits</string>
+    <string name="fragment_create_upc_e_hint">7 digits</string>
+
     <!--Barcode history fragment-->
     <string name="fragment_barcode_history_title">History</string>
     <string name="fragment_barcode_history_menu_title_delete_all">Clear history</string>
@@ -201,14 +214,10 @@
     <string name="barcode_format_ean_8">EAN-8</string>
     <string name="barcode_format_ean_13">EAN-13</string>
     <string name="barcode_format_itf_14">ITF-14</string>
-    <string name="barcode_format_maxi_code">MaxiCode</string>
     <string name="barcode_format_pdf_417">PDF417</string>
     <string name="barcode_format_qr_code">QR Code</string>
-    <string name="barcode_format_rss_14">RSS 14</string>
-    <string name="barcode_format_rss_expanded">RSS EXPANDED</string>
     <string name="barcode_format_upc_a">UPC-A</string>
     <string name="barcode_format_upc_e">UPC-E</string>
-    <string name="barcode_format_upc_ean">UPC/EAN</string>
 
     <!--Barcode schemas-->
     <string name="barcode_schema_bookmark">Bookmark</string>

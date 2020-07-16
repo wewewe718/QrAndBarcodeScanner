@@ -14,14 +14,11 @@ fun BarcodeFormat.toStringId(): Int {
         BarcodeFormat.EAN_8 -> R.string.barcode_format_ean_8
         BarcodeFormat.EAN_13 -> R.string.barcode_format_ean_13
         BarcodeFormat.ITF -> R.string.barcode_format_itf_14
-        BarcodeFormat.MAXICODE -> R.string.barcode_format_maxi_code
         BarcodeFormat.PDF_417 -> R.string.barcode_format_pdf_417
         BarcodeFormat.QR_CODE -> R.string.barcode_format_qr_code
-        BarcodeFormat.RSS_14 -> R.string.barcode_format_rss_14
-        BarcodeFormat.RSS_EXPANDED -> R.string.barcode_format_rss_expanded
         BarcodeFormat.UPC_A -> R.string.barcode_format_upc_a
         BarcodeFormat.UPC_E -> R.string.barcode_format_upc_e
-        BarcodeFormat.UPC_EAN_EXTENSION -> R.string.barcode_format_upc_ean
+        else -> R.string.barcode_format_qr_code
     }
 }
 
@@ -31,7 +28,6 @@ fun BarcodeFormat.toImageId(): Int {
         BarcodeFormat.DATA_MATRIX -> R.drawable.ic_data_matrix
         BarcodeFormat.AZTEC -> R.drawable.ic_aztec
         BarcodeFormat.PDF_417 -> R.drawable.ic_pdf417
-        BarcodeFormat.MAXICODE -> R.drawable.ic_maxi_code
         else -> R.drawable.ic_barcode
     }
 }
