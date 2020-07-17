@@ -68,7 +68,7 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.EMAIL -> parseEmail()
             BarcodeSchema.GEO,
             BarcodeSchema.GOOGLE_MAPS -> parseGeoInfo()
-            BarcodeSchema.GOOGLE_PLAY -> parseGooglePlay()
+            BarcodeSchema.APP -> parseGooglePlay()
             BarcodeSchema.VEVENT -> parseCalendar()
             BarcodeSchema.MMS,
             BarcodeSchema.SMS -> parseSms()
@@ -80,6 +80,10 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.URL -> parseUrl()
             BarcodeSchema.RECEIPT -> parseReceipt()
         }
+    }
+
+    fun isInDb(): Boolean {
+        return id != 0L
     }
 
     private fun parseBookmark() {

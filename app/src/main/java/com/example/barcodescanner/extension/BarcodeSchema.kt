@@ -8,7 +8,7 @@ fun BarcodeSchema.toImageId(): Int? {
         BarcodeSchema.BOOKMARK -> R.drawable.ic_bookmark
         BarcodeSchema.EMAIL -> R.drawable.ic_email
         BarcodeSchema.GEO -> R.drawable.ic_location
-        BarcodeSchema.GOOGLE_PLAY -> R.drawable.ic_app
+        BarcodeSchema.APP -> R.drawable.ic_app
         BarcodeSchema.MMS -> R.drawable.ic_mms
         BarcodeSchema.MECARD -> R.drawable.ic_contact
         BarcodeSchema.PHONE -> R.drawable.ic_phone
@@ -29,7 +29,7 @@ fun BarcodeSchema.toStringId(): Int? {
         BarcodeSchema.CRYPTOCURRENCY -> R.string.barcode_schema_cryptocurrency
         BarcodeSchema.EMAIL -> R.string.barcode_schema_email
         BarcodeSchema.GEO -> R.string.barcode_schema_geo
-        BarcodeSchema.GOOGLE_PLAY -> R.string.barcode_schema_google_play
+        BarcodeSchema.APP -> R.string.barcode_schema_google_play
         BarcodeSchema.MMS -> R.string.barcode_schema_mms
         BarcodeSchema.MECARD -> R.string.barcode_schema_me_card
         BarcodeSchema.PHONE -> R.string.barcode_schema_phone

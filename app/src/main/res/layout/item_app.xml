@@ -8,7 +8,7 @@
     android:orientation="horizontal"
     android:paddingHorizontal="@dimen/default_margin"
     android:paddingTop="@dimen/icon_button_vertical_padding"
-    android:background="@drawable/background_icon_button"
+    android:background="@drawable/background_clickable"
     >
     <ImageView
         android:id="@+id/image_view"

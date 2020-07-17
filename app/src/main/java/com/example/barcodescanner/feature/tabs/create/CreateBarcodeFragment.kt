@@ -10,6 +10,8 @@ import com.example.barcodescanner.extension.clipboardManager
 import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.orZero
 import com.example.barcodescanner.feature.BaseActivity
+import com.example.barcodescanner.feature.tabs.create.barcode.CreateBarcodeAllActivity
+import com.example.barcodescanner.feature.tabs.create.qr.CreateQrCodeAllActivity
 import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.google.zxing.BarcodeFormat
 import kotlinx.android.synthetic.main.fragment_create_barcode.*
@@ -44,29 +46,10 @@ class CreateBarcodeFragment : Fragment() {
         button_wifi.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.WIFI) }
         button_location.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.GEO) }
         button_contact_vcard.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.VCARD) }
-        button_contact_mecard.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.MECARD) }
-        button_event.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.VEVENT) }
-        button_phone.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.PHONE) }
-        button_email.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.EMAIL) }
-        button_sms.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.SMS) }
-        button_mms.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.MMS) }
-        button_cryptocurrency.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.CRYPTOCURRENCY) }
-        button_bookmark.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.BOOKMARK) }
-        button_app.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.GOOGLE_PLAY) }
+        button_show_all_qr_code.setOnClickListener { CreateQrCodeAllActivity.start(requireActivity()) }
 
         // Barcode
-        button_data_matrix.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.DATA_MATRIX) }
-        button_aztec.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.AZTEC) }
-        button_pdf_417.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.PDF_417) }
-        button_codabar.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.CODABAR) }
-        button_code_39.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.CODE_39) }
-        button_code_93.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.CODE_93) }
-        button_code_128.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.CODE_128) }
-        button_ean_8.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.EAN_8) }
-        button_ean_13.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.EAN_13) }
-        button_itf_14.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.ITF) }
-        button_upc_a.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.UPC_A) }
-        button_upc_e.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.UPC_E) }
+        button_create_barcode.setOnClickListener { CreateBarcodeAllActivity.start(requireActivity()) }
     }
 
     private fun getClipboardContent(): String {

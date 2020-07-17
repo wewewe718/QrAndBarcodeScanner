@@ -6,7 +6,7 @@ enum class BarcodeSchema {
     EMAIL,
     GEO,
     GOOGLE_MAPS,
-    GOOGLE_PLAY,
+    APP,
     MMS,
     MECARD,
     PHONE,

@@ -20,10 +20,13 @@ import kotlinx.android.synthetic.main.item_barcode_history.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class BarcodeHistoryAdapter : PagedListAdapter<Barcode, BarcodeHistoryAdapter.ViewHolder>(DiffUtilCallback) {
+class BarcodeHistoryAdapter(private val listener: Listener) : PagedListAdapter<Barcode, BarcodeHistoryAdapter.ViewHolder>(DiffUtilCallback) {
+
+    interface Listener {
+        fun onBarcodeClicked(barcode: Barcode)
+    }
+
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
-    val barcodeClicked = PublishSubject.create<Barcode>()
-    val dataChanged = PublishSubject.create<Unit>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -35,11 +38,6 @@ class BarcodeHistoryAdapter : PagedListAdapter<Barcode, BarcodeHistoryAdapter.Vi
         getItem(position)?.also { barcode ->
             holder.show(barcode, position == itemCount.dec())
         }
-    }
-
-    override fun onCurrentListChanged(currentList: PagedList<Barcode>?) {
-        super.onCurrentListChanged(currentList)
-        dataChanged.onNext(Unit)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -84,7 +82,7 @@ class BarcodeHistoryAdapter : PagedListAdapter<Barcode, BarcodeHistoryAdapter.Vi
 
         private fun setClickListener(barcode: Barcode) {
             itemView.setOnClickListener {
-                barcodeClicked.onNext(barcode)
+                listener.onBarcodeClicked(barcode)
             }
         }
     }

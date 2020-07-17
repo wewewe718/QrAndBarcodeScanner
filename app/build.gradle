@@ -14,7 +14,8 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
-        vectorDrawables.useSupportLibrary = true
+        vectorDrawables.useSupportLibrary  true
+        resConfigs "en", "ru"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", 'CHECK_RECEIPT_API_URL', '"https://proverkacheka.nalog.ru:9999/v1/ofds/*/inns/*"'
         buildConfigField "String", 'OFD_URL', '"https://check.ofd.ru/Document/FetchCachedReceiptFromFns"'
@@ -56,11 +57,6 @@ dependencies {
     // Switch button ios style
     implementation 'com.github.zcweng:switch-button:0.0.3@aar'
 
-    // View Model
-    final lifecycleVersion = '2.2.0'
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion"
-
     // Room
     final roomVersion = "2.2.5"
     kapt "androidx.room:room-compiler:$roomVersion"
@@ -100,4 +96,7 @@ dependencies {
 
     // Date time picker
     implementation 'com.github.florent37:singledateandtimepicker:2.2.6'
+
+    // Leak Canary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 }

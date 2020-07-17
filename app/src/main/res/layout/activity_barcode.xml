@@ -29,8 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
-                android:layout_marginBottom="@dimen/default_margin_small"
-                android:layout_marginHorizontal="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin_very_big"
+                android:layout_marginHorizontal="@dimen/default_margin_large"
                 android:scaleType="fitXY"
                 android:visibility="gone"
                 />
@@ -53,6 +53,8 @@
                 android:layout_marginBottom="@dimen/default_margin_medium"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:lineSpacingMultiplier="1.2"
+                android:autoLink="all"
+                android:textColorLink="@color/blue"
                 tools:text="Hello World!"
                 style="@style/LargeTextViewStyle"
                 />
@@ -235,15 +237,6 @@
                 app:text="@string/activity_barcode_search"
                 />
             <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_show_barcode_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:enabled="false"
-                app:icon="@drawable/ic_qr_code"
-                app:iconBackground="@color/blue"
-                app:text="@string/activity_barcode_show_barcode_image"
-                />
-            <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_share_as_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -266,15 +259,6 @@
                 app:icon="@drawable/ic_print"
                 app:iconBackground="@color/blue"
                 app:text="@string/activity_barcode_print"
-                />
-            <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_delete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_delete"
-                app:text="@string/activity_barcode_delete"
-                app:iconBackground="@color/red"
-                app:isDelimiterVisible="false"
                 />
         </LinearLayout>
     </ScrollView>

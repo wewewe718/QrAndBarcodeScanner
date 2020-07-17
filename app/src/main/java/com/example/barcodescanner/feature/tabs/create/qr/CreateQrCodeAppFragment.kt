@@ -1,7 +1,6 @@
 package com.example.barcodescanner.feature.tabs.create.qr
 
 import android.content.Intent
-import android.content.pm.ResolveInfo
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barcodescanner.R
 import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
-import com.example.barcodescanner.model.schema.GooglePlay
+import com.example.barcodescanner.model.schema.App
 import com.example.barcodescanner.model.schema.Schema
 import kotlinx.android.synthetic.main.fragment_create_qr_code_app.*
 
@@ -28,7 +27,7 @@ class CreateQrCodeAppFragment : BaseCreateBarcodeFragment() {
     }
 
     override fun getBarcodeSchema(): Schema {
-        return GooglePlay.fromPackage("")
+        return App.fromPackage("")
     }
 
     private fun initRecyclerView() {

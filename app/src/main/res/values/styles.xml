@@ -43,7 +43,7 @@
 
     <style name="IconButtonStyle">
         <item name="android:textColor">@color/black</item>
-        <item name="android:background">@drawable/background_icon_button</item>
+        <item name="android:background">@drawable/background_clickable</item>
     </style>
 
     <style name="BlackTextViewStyle">

@@ -36,6 +36,6 @@ class Geo : Schema {
     override fun toBarcodeText(): String = uri
 
     override fun toFormattedText(): String {
-        return uri.removePrefixIgnoreCase(PREFIX).replace(SEPARATOR, "$SEPARATOR ")
+        return uri.removePrefixIgnoreCase(PREFIX).replace(SEPARATOR, "\n")
     }
 }

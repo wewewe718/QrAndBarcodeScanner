@@ -37,6 +37,9 @@ val AppCompatActivity.settings
 val AppCompatActivity.contactHelper
     get() = ContactHelper
 
+val AppCompatActivity.permissionsHelper
+    get() = PermissionsHelper
+
 
 val Fragment.scannerCameraHelper
     get() = ScannerCameraHelper
@@ -52,6 +55,9 @@ val Fragment.barcodeDatabase
 
 val Fragment.settings
     get() = Settings.getInstance(requireContext())
+
+val Fragment.permissionsHelper
+    get() = PermissionsHelper
 
 
 val AndroidViewModel.barcodeDatabase

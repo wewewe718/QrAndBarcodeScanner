@@ -2,13 +2,24 @@
 <resources>
     <attr name="text" format="string" />
     <attr name="hint" format="string" />
+    <attr name="isArrowVisible" format="boolean" />
     <attr name="isDelimiterVisible" format="boolean" />
+    <attr name="icon" format="reference" />
+    <attr name="iconBackground" format="color" />
 
     <declare-styleable name="IconButton">
-        <attr name="icon" format="reference" />
-        <attr name="iconBackground" format="color" />
+        <attr name="icon" />
+        <attr name="iconBackground" />
         <attr name="text" />
         <attr name="isDelimiterVisible" />
+    </declare-styleable>
+
+    <declare-styleable name="IconButtonWithDelimiter">
+        <attr name="icon" />
+        <attr name="iconBackground" />
+        <attr name="text" />
+        <attr name="isDelimiterVisible" />
+        <attr name="isArrowVisible" />
     </declare-styleable>
 
     <declare-styleable name="SettingsButton">
@@ -16,7 +27,7 @@
         <attr name="hint" />
         <attr name="isDelimiterVisible" />
         <attr name="isSwitchVisible" format="boolean" />
-        <attr name="isArrowVisible" format="boolean" />
+        <attr name="isArrowVisible" />
     </declare-styleable>
 
     <declare-styleable name="SettingsRadioButton">

@@ -23,7 +23,6 @@ import com.example.barcodescanner.feature.barcode.receipt.CheckReceiptActivity
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
-import com.example.barcodescanner.usecase.PermissionsHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -38,12 +37,12 @@ class BarcodeActivity : BaseActivity() {
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
         private const val BARCODE_KEY = "BARCODE_KEY"
-        private const val IS_BARCODE_IMAGE_VISIBLE = "IS_BARCODE_IMAGE_VISIBLE"
+        private const val IS_CREATED = "IS_CREATED"
 
-        fun start(context: Context, barcode: Barcode, isBarcodeImageVisible: Boolean = false) {
+        fun start(context: Context, barcode: Barcode, isCreated: Boolean = false) {
             val intent = Intent(context, BarcodeActivity::class.java).apply {
                 putExtra(BARCODE_KEY, barcode)
-                putExtra(IS_BARCODE_IMAGE_VISIBLE, isBarcodeImageVisible)
+                putExtra(IS_CREATED, isCreated)
             }
             context.startActivity(intent)
         }
@@ -57,8 +56,8 @@ class BarcodeActivity : BaseActivity() {
         intent?.getSerializableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
     }
 
-    private val isBarcodeImageVisible by lazy {
-        intent?.getBooleanExtra(IS_BARCODE_IMAGE_VISIBLE, false).orFalse()
+    private val isCreated by lazy {
+        intent?.getBooleanExtra(IS_CREATED, false).orFalse()
     }
 
     private val barcode by lazy {
@@ -83,7 +82,7 @@ class BarcodeActivity : BaseActivity() {
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        if (requestCode == REQUEST_PERMISSIONS_CODE && PermissionsHelper.areAllPermissionsGranted(grantResults)) {
+        if (requestCode == REQUEST_PERMISSIONS_CODE && permissionsHelper.areAllPermissionsGranted(grantResults)) {
             saveBarcodeImage()
         }
     }
@@ -99,7 +98,7 @@ class BarcodeActivity : BaseActivity() {
         }
 
         when (barcode.schema) {
-            BarcodeSchema.GOOGLE_PLAY -> openInGooglePlay()
+            BarcodeSchema.APP -> openInGooglePlay()
             BarcodeSchema.YOUTUBE -> openInYoutube()
             BarcodeSchema.GOOGLE_MAPS -> showLocation()
             BarcodeSchema.URL -> openLink()
@@ -118,7 +117,6 @@ class BarcodeActivity : BaseActivity() {
     }
 
     private fun handleToolbarMenuClicked() {
-        toolbar.inflateMenu(R.menu.menu_barcode)
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.item_show_barcode_image -> navigateToBarcodeImageActivity()
@@ -148,11 +146,9 @@ class BarcodeActivity : BaseActivity() {
         button_share_as_text.setOnClickListener { shareBarcodeAsText() }
         button_copy.setOnClickListener { copyBarcodeTextToClipboard() }
         button_search.setOnClickListener { searchBarcodeTextOnInternet() }
-        button_show_barcode_image.setOnClickListener { navigateToBarcodeImageActivity() }
         button_share_as_image.setOnClickListener { shareBarcodeAsImage() }
-        button_save_to_gallery.setOnClickListener { PermissionsHelper.requestPermissions(this, permissions, REQUEST_PERMISSIONS_CODE) }
+        button_save_to_gallery.setOnClickListener { permissionsHelper.requestPermissions(this, permissions, REQUEST_PERMISSIONS_CODE) }
         button_print.setOnClickListener { printBarcode() }
-        button_delete.setOnClickListener { deleteBarcode() }
     }
 
 
@@ -371,14 +367,27 @@ class BarcodeActivity : BaseActivity() {
 
 
     private fun showBarcode() {
+        showBarcodeMenuIfNeeded()
         showBarcodeImageIfNeeded()
         showBarcodeDate()
         showBarcodeFormat()
         showBarcodeText()
     }
 
+    private fun showBarcodeMenuIfNeeded() {
+        if (isCreated) {
+            return
+        }
+
+        if (barcode.isInDb()) {
+            toolbar.inflateMenu(R.menu.menu_barcode)
+        } else {
+            toolbar.inflateMenu(R.menu.menu_barcode_without_delete)
+        }
+    }
+
     private fun showBarcodeImageIfNeeded() {
-        if (isBarcodeImageVisible) {
+        if (isCreated) {
             showBarcodeImage()
         }
     }
@@ -404,13 +413,23 @@ class BarcodeActivity : BaseActivity() {
     }
 
     private fun showBarcodeText() {
-        text_view_barcode_text.text = barcode.formattedText
+        text_view_barcode_text.text = if (isCreated) {
+            barcode.text
+        } else {
+            barcode.formattedText
+        }
     }
 
     private fun showOrHideButtons() {
+        button_search.isVisible = isCreated.not()
+
+        if (isCreated) {
+            return
+        }
+
         button_add_to_calendar.isVisible = barcode.schema == BarcodeSchema.VEVENT
         button_add_to_contacts.isVisible = barcode.email.isNullOrEmpty().not() || barcode.phone.isNullOrEmpty().not()
-        button_call_phone.isVisible = barcode.phone.isNullOrEmpty().not()
+        button_call_phone.isVisible = barcode.phone.isNullOrEmpty().not() && isCreated.not()
         button_send_sms_or_mms.isVisible = barcode.phone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
         button_send_email.isVisible = barcode.email.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
         button_show_location.isVisible = barcode.geoUri.isNullOrEmpty().not()

@@ -1,15 +1,25 @@
 package com.example.barcodescanner.usecase
 
-import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 object PermissionsHelper {
 
-    fun requestPermissions(activity: Activity, permissions: Array<out String>, requestCode: Int) {
-        ActivityCompat.requestPermissions(activity, permissions, requestCode)
+    fun requestPermissions(activity: AppCompatActivity, permissions: Array<out String>, requestCode: Int) {
+        if (areAllPermissionsGranted(activity, permissions)) {
+            activity.onRequestPermissionsResult(
+                requestCode,
+                permissions,
+                IntArray(permissions.size) { PackageManager.PERMISSION_GRANTED }
+            )
+            return
+        }
+
+        val notGrantedPermissions = permissions.filterNot { isPermissionGranted(activity, it) }
+        ActivityCompat.requestPermissions(activity, notGrantedPermissions.toTypedArray(), requestCode)
     }
 
     fun areAllPermissionsGranted(context: Context, permissions: Array<out String>): Boolean {

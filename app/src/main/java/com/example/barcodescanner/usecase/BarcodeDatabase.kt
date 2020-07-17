@@ -60,7 +60,7 @@ interface BarcodeDatabase {
     fun getAll(): DataSource.Factory<Int, Barcode>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(barcode: Barcode): Single<Long>
+    fun save(barcode: Barcode): Completable
 
     @Query("DELETE FROM codes WHERE id = :id")
     fun delete(id: Long): Completable

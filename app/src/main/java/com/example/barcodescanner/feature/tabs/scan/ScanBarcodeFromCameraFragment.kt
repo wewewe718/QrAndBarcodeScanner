@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.budiyev.android.codescanner.*
 import com.example.barcodescanner.R
-import com.example.barcodescanner.di.barcodeDatabase
-import com.example.barcodescanner.di.barcodeScanResultParser
-import com.example.barcodescanner.di.scannerCameraHelper
-import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.di.*
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.vibrateOnce
 import com.example.barcodescanner.extension.vibrator
@@ -22,7 +20,6 @@ import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.feature.tabs.scan.confirm.ConfirmBarcodeDialogFragment
 import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity
 import com.example.barcodescanner.model.Barcode
-import com.example.barcodescanner.usecase.PermissionsHelper
 import com.example.barcodescanner.usecase.SupportedBarcodeFormats
 import com.google.zxing.Result
 import io.reactivex.Completable
@@ -211,10 +208,10 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { id ->
+                {
                     when (settings.continuousScanning) {
                         true -> restartPreviewWithDelay()
-                        else -> navigateToBarcodeScreen(barcode.copy(id = id))
+                        else -> navigateToBarcodeScreen(barcode)
                     }
                 },
                 ::showError
@@ -245,15 +242,15 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun requestPermissions() {
-        PermissionsHelper.requestPermissions(requireActivity(), permissions, PERMISSION_REQUEST_CODE)
+        permissionsHelper.requestPermissions(requireActivity() as AppCompatActivity, permissions, PERMISSION_REQUEST_CODE)
     }
 
     private fun areAllPermissionsGranted(): Boolean {
-       return PermissionsHelper.areAllPermissionsGranted(requireActivity(), permissions)
+       return permissionsHelper.areAllPermissionsGranted(requireActivity(), permissions)
     }
 
     private fun areAllPermissionsGranted(grantResults: IntArray): Boolean {
-        return PermissionsHelper.areAllPermissionsGranted(grantResults)
+        return permissionsHelper.areAllPermissionsGranted(grantResults)
     }
 
     private fun navigateToScanFromFileScreen() {

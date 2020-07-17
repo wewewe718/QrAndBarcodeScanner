@@ -10,7 +10,7 @@ object BarcodeSchemaParser {
             return Other(text)
         }
 
-        return GooglePlay.parse(text)
+        return App.parse(text)
             ?: Youtube.parse(text)
             ?: GoogleMaps.parse(text)
             ?: Url.parse(text)

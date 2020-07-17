@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_icon_button"
+    android:background="@drawable/background_clickable"
     >
     <TextView
         android:id="@+id/text_view_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginHorizontal="@dimen/default_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/switch_button"
@@ -25,6 +25,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin_extra_small"
+        android:layout_marginEnd="@dimen/default_margin"
         app:layout_constraintTop_toBottomOf="@id/text_view_text"
         app:layout_constraintStart_toStartOf="@id/text_view_text"
         app:layout_constraintEnd_toStartOf="@id/switch_button"
@@ -44,8 +45,8 @@
         />
     <com.suke.widget.SwitchButton
         android:id="@+id/switch_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/switch_width"
+        android:layout_height="@dimen/switch_height"
         android:layout_marginEnd="@dimen/icon_button_vertical_padding"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/delimiter"
@@ -57,8 +58,6 @@
         app:sb_button_color="@color/white"
         app:sb_effect_duration="150"
         app:sb_background="@color/gray7"
-        android:scaleX="0.75"
-        android:scaleY="0.75"
         />
     <ImageView
         android:id="@+id/image_view_arrow"

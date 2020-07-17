@@ -6,9 +6,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.barcodescanner.R
+import com.example.barcodescanner.di.permissionsHelper
 import com.example.barcodescanner.extension.orZero
 import com.example.barcodescanner.feature.BaseActivity
-import com.example.barcodescanner.usecase.PermissionsHelper
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -120,7 +120,7 @@ class ChooseLocationOnMapActivity : BaseActivity(), OnMapReadyCallback, GoogleMa
         map.setOnMapClickListener(this)
         showStartMarker()
 
-        PermissionsHelper.requestPermissions(this, LOCATION_PERMISSIONS, PERMISSION_REQUEST_CODE)
+        permissionsHelper.requestPermissions(this, LOCATION_PERMISSIONS, PERMISSION_REQUEST_CODE)
     }
 
     override fun onMapClick(position: LatLng?) {
@@ -133,7 +133,7 @@ class ChooseLocationOnMapActivity : BaseActivity(), OnMapReadyCallback, GoogleMa
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        if (requestCode == PERMISSION_REQUEST_CODE && PermissionsHelper.areAllPermissionsGranted(grantResults)) {
+        if (requestCode == PERMISSION_REQUEST_CODE && permissionsHelper.areAllPermissionsGranted(grantResults)) {
             map.isMyLocationEnabled = true
             map.uiSettings?.isMyLocationButtonEnabled = true
         }

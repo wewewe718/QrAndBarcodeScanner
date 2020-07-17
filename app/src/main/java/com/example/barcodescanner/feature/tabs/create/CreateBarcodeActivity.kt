@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.contactHelper
+import com.example.barcodescanner.di.permissionsHelper
 import com.example.barcodescanner.di.settings
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.toStringId
@@ -19,9 +20,8 @@ import com.example.barcodescanner.feature.tabs.create.barcode.*
 import com.example.barcodescanner.feature.tabs.create.qr.*
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
-import com.example.barcodescanner.model.schema.GooglePlay
+import com.example.barcodescanner.model.schema.App
 import com.example.barcodescanner.model.schema.Schema
-import com.example.barcodescanner.usecase.PermissionsHelper
 import com.google.zxing.BarcodeFormat
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -114,13 +114,13 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        if (requestCode == CONTACTS_PERMISSION_REQUEST_CODE && PermissionsHelper.areAllPermissionsGranted(grantResults)) {
+        if (requestCode == CONTACTS_PERMISSION_REQUEST_CODE && permissionsHelper.areAllPermissionsGranted(grantResults)) {
             chooseContact()
         }
     }
 
     override fun onAppClicked(packageName: String) {
-        createBarcode(GooglePlay.fromPackage(packageName))
+        createBarcode(App.fromPackage(packageName))
     }
 
     override fun onDestroy() {
@@ -153,7 +153,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
 
     private fun showToolbarMenu() {
         val menuId = when (barcodeSchema) {
-            BarcodeSchema.GOOGLE_PLAY -> return
+            BarcodeSchema.APP -> return
             BarcodeSchema.PHONE, BarcodeSchema.SMS, BarcodeSchema.MMS -> R.menu.menu_create_qr_code_phone
             BarcodeSchema.VCARD, BarcodeSchema.MECARD -> R.menu.menu_create_qr_code_contacts
             BarcodeSchema.GEO -> R.menu.menu_create_qr_code_map
@@ -174,7 +174,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.MMS -> CreateQrCodeMmsFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.CRYPTOCURRENCY -> CreateQrCodeCryptocurrencyFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.GEO -> CreateQrCodeLocationFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.GOOGLE_PLAY -> CreateQrCodeAppFragment()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.APP -> CreateQrCodeAppFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VEVENT -> CreateQrCodeEventFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VCARD -> CreateQrCodeVCardFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.MECARD -> CreateQrCodeMeCardFragment()
@@ -211,7 +211,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     }
 
     private fun requestContactsPermissions() {
-        PermissionsHelper.requestPermissions(this, CONTACTS_PERMISSIONS, CONTACTS_PERMISSION_REQUEST_CODE)
+        permissionsHelper.requestPermissions(this, CONTACTS_PERMISSIONS, CONTACTS_PERMISSION_REQUEST_CODE)
     }
 
     private fun chooseContact() {
@@ -269,9 +269,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { id ->
-                    navigateToBarcodeScreen(barcode.copy(id = id))
-                },
+                { navigateToBarcodeScreen(barcode) },
                 ::showError
             )
             .addTo(disposable)

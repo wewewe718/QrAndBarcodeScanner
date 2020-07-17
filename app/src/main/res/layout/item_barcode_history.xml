@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/background_clickable"
     >
     <FrameLayout
         android:id="@+id/layout_image"
@@ -32,7 +33,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/layout_image"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin_medium"
         android:layout_marginStart="@dimen/default_margin"
         tools:text="01.09.1993 12:00"
         style="@style/SecondaryTextViewStyle"
@@ -65,7 +66,7 @@
         android:id="@+id/delimiter"
         android:layout_width="0dp"
         android:layout_height="0.2dp"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin_medium"
         android:layout_marginHorizontal="@dimen/default_margin"
         app:layout_constraintTop_toBottomOf="@id/text_view_format"
         app:layout_constraintStart_toStartOf="parent"
