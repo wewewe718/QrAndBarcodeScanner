@@ -25,7 +25,7 @@ object ScannerCameraHelper {
     }
 
     private fun getCameraId(cameraFacing: Int): Int? {
-        for (cameraId in 0..Camera.getNumberOfCameras()) {
+        for (cameraId in 0 until Camera.getNumberOfCameras()) {
             val cameraInfo = Camera.CameraInfo()
             Camera.getCameraInfo(cameraId, cameraInfo)
             if (cameraInfo.facing == cameraFacing) {

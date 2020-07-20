@@ -7,6 +7,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.barcodescanner.R
+import com.google.zxing.ResultMetadataType
 
 abstract class BaseActivity : AppCompatActivity() {
 

@@ -2,6 +2,7 @@ package com.example.barcodescanner.model
 
 import com.example.barcodescanner.model.schema.*
 import com.example.barcodescanner.model.schema.VEvent
+import com.google.zxing.BarcodeFormat
 
 class ParsedBarcode(barcode: Barcode) {
     val id = barcode.id
@@ -11,6 +12,7 @@ class ParsedBarcode(barcode: Barcode) {
     val schema = barcode.schema
     val date = barcode.date
     val errorCorrectionLevel = barcode.errorCorrectionLevel
+    val country = barcode.country
 
     var firstName: String? = null
     var lastName: String? = null
@@ -61,6 +63,14 @@ class ParsedBarcode(barcode: Barcode) {
     var receiptFiscalSign: String? = null
     var receiptSum: String? = null
 
+    val isInDb: Boolean
+        get() = id != 0L
+
+    val isProductBarcode: Boolean
+        get() = when (format) {
+            BarcodeFormat.EAN_8, BarcodeFormat.EAN_13, BarcodeFormat.UPC_A, BarcodeFormat.UPC_E -> true
+            else -> false
+        }
 
     init {
         when (schema) {
@@ -80,10 +90,6 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.URL -> parseUrl()
             BarcodeSchema.RECEIPT -> parseReceipt()
         }
-    }
-
-    fun isInDb(): Boolean {
-        return id != 0L
     }
 
     private fun parseBookmark() {

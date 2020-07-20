@@ -29,11 +29,11 @@
 
     <!--Create barcode fragment-->
     <string name="fragment_create_barcode_title">Create</string>
-    <string name="fragment_create_barcode_qr_code">QR code</string>
+    <string name="fragment_create_barcode_qr_code">QR codes</string>
     <string name="fragment_create_barcode_qr_code_clipboard">Content from clipboard</string>
     <string name="fragment_create_barcode_qr_code_text">Text</string>
     <string name="fragment_create_barcode_qr_code_show_all">More QR codes</string>
-    <string name="fragment_create_barcode">Barcode</string>
+    <string name="fragment_create_barcode">Barcodes</string>
     <string name="fragment_create_barcode_show_all">Barcodes and other 2D codes</string>
 
     <!--Create QR code list activity-->
@@ -173,6 +173,9 @@
     <string name="activity_supported_formats_title">Supported formats</string>
 
     <!--Barcode activity-->
+    <string name="activity_barcode_search_on_rate_and_goods">Search on Rate&amp;Goods</string>
+    <string name="activity_barcode_search_on_amazon">Search on Amazon</string>
+    <string name="activity_barcode_search_on_ebay">Search on eBay</string>
     <string name="activity_barcode_add_to_calendar">Add to calendar</string>
     <string name="activity_barcode_add_to_contacts">Add to contacts</string>
     <string name="activity_barcode_call_phone">Call</string>
@@ -225,7 +228,7 @@
     <string name="barcode_format_data_matrix">Data Matrix</string>
     <string name="barcode_format_ean_8">EAN-8</string>
     <string name="barcode_format_ean_13">EAN-13</string>
-    <string name="barcode_format_itf_14">ITF-14</string>
+    <string name="barcode_format_itf_14">ITF</string>
     <string name="barcode_format_pdf_417">PDF417</string>
     <string name="barcode_format_qr_code">QR Code</string>
     <string name="barcode_format_upc_a">UPC-A</string>

@@ -48,7 +48,7 @@ interface BarcodeDatabase {
 
         fun getInstance(context: Context): BarcodeDatabase {
             return INSTANCE ?: Room
-                .databaseBuilder(context, BarcodeDatabaseFactory::class.java, "db")
+                .databaseBuilder(context.applicationContext, BarcodeDatabaseFactory::class.java, "db")
                 .build()
                 .getBarcodeDatabase().apply {
                     INSTANCE = this

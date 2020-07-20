@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_create"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/fragment_create_barcode_qr_code_text"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_link"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_url"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_wifi"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_wifi"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_location"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_geo"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_contact"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_v_card"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_contact"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_me_card"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -75,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_calendar"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_v_event"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_phone"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_phone"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -91,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_email"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_email"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -99,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_sms"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_sms"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -107,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_mms"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_mms"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -115,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_bitcoin"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_cryptocurrency"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -123,7 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_bookmark"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_bookmark"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_app"
-                app:iconBackground="@color/green"
+                app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_google_play"
                 app:isDelimiterVisible="false"
                 />
@@ -144,7 +144,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        style="@style/ToolbarStyle"
+        style="@style/ToolbarWithBackButtonStyle"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

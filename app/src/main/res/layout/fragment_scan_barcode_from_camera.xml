@@ -25,7 +25,6 @@
         app:frameAspectRatioHeight="1"
         app:frameSize="0.6"
         app:frameThickness="2dp"
-        app:maskColor="@color/black_transparent2"
         />
 
     <ImageView

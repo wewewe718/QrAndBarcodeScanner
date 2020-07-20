@@ -127,6 +127,11 @@ class BarcodeActivity : BaseActivity() {
     }
 
     private fun handleButtonsClicked() {
+        button_search_on_rate_and_goods.setOnClickListener { searchBarcodeTextOnRateAndGoods() }
+        button_search_on_amazon.setOnClickListener { searchBarcodeTextOnAmazon() }
+        button_search_on_ebay.setOnClickListener { searchBarcodeTextOnEbay() }
+        button_search_on_web.setOnClickListener { searchBarcodeTextOnInternet() }
+
         button_add_to_calendar.setOnClickListener { addToCalendar() }
         button_add_to_contacts.setOnClickListener { addToContacts() }
         button_call_phone.setOnClickListener { callPhone() }
@@ -295,6 +300,21 @@ class BarcodeActivity : BaseActivity() {
         showToast(R.string.activity_barcode_copied)
     }
 
+    private fun searchBarcodeTextOnRateAndGoods() {
+        val url = "https://ratengoods.com/product/${barcode.text}/"
+        startActivityIfExists(Intent.ACTION_VIEW, url)
+    }
+
+    private fun searchBarcodeTextOnAmazon() {
+        val url = "https://www.amazon.com/s?k=${barcode.text}"
+        startActivityIfExists(Intent.ACTION_VIEW, url)
+    }
+
+    private fun searchBarcodeTextOnEbay() {
+        val url = "https://www.ebay.com/sch/i.html/?_nkw=${barcode.text}"
+        startActivityIfExists(Intent.ACTION_VIEW, url)
+    }
+
     private fun searchBarcodeTextOnInternet() {
         val intent = Intent(Intent.ACTION_WEB_SEARCH).apply {
             putExtra(SearchManager.QUERY, barcode.text)
@@ -372,6 +392,7 @@ class BarcodeActivity : BaseActivity() {
         showBarcodeDate()
         showBarcodeFormat()
         showBarcodeText()
+        showBarcodeCountry()
     }
 
     private fun showBarcodeMenuIfNeeded() {
@@ -379,7 +400,7 @@ class BarcodeActivity : BaseActivity() {
             return
         }
 
-        if (barcode.isInDb()) {
+        if (barcode.isInDb) {
             toolbar.inflateMenu(R.menu.menu_barcode)
         } else {
             toolbar.inflateMenu(R.menu.menu_barcode_without_delete)
@@ -420,12 +441,52 @@ class BarcodeActivity : BaseActivity() {
         }
     }
 
+    private fun showBarcodeCountry() {
+        val country = barcode.country ?: return
+        when (country.contains('/')) {
+            false -> showOneBarcodeCountry(country)
+            true -> showTwoBarcodeCountries(country.split('/'))
+        }
+    }
+
+    private fun showOneBarcodeCountry(country: String) {
+        val fullCountryName = buildFullCountryName(country)
+        showFullCountryName(fullCountryName)
+    }
+
+    private fun showTwoBarcodeCountries(countries: List<String>) {
+        val firstFullCountryName = buildFullCountryName(countries[0])
+        val secondFullCountryName = buildFullCountryName(countries[1])
+        val fullCountryName = "$firstFullCountryName / $secondFullCountryName"
+        showFullCountryName(fullCountryName)
+    }
+
+    private fun buildFullCountryName(country: String): String {
+        val currentLocale = currentLocale ?: return ""
+        val countryName = Locale("", country).getDisplayName(currentLocale)
+        val countryEmoji = country.toCountryEmoji()
+        return "$countryEmoji $countryName"
+    }
+
+    private fun showFullCountryName(fullCountryName: String) {
+        text_view_country.apply {
+            text = fullCountryName
+            isVisible = fullCountryName.isBlank().not()
+        }
+    }
+
     private fun showOrHideButtons() {
         button_search.isVisible = isCreated.not()
 
         if (isCreated) {
             return
         }
+
+        button_search_on_rate_and_goods.isVisible = barcode.isProductBarcode
+        button_search_on_amazon.isVisible = barcode.isProductBarcode
+        button_search_on_ebay.isVisible = barcode.isProductBarcode
+        button_search_on_web.isVisible = barcode.isProductBarcode
+        button_search.isVisible = barcode.isProductBarcode.not()
 
         button_add_to_calendar.isVisible = barcode.schema == BarcodeSchema.VEVENT
         button_add_to_contacts.isVisible = barcode.email.isNullOrEmpty().not() || barcode.phone.isNullOrEmpty().not()

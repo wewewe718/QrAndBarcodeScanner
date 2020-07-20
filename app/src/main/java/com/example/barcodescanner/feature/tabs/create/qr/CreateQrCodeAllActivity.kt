@@ -25,11 +25,18 @@ class CreateQrCodeAllActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_qr_code_all)
         initScrollView()
+        handleToolbarBackClicked()
         handleButtonsClicked()
     }
 
     private fun initScrollView() {
         scroll_view.makeSmoothScrollable()
+    }
+
+    private fun handleToolbarBackClicked() {
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
     }
 
     private fun handleButtonsClicked() {

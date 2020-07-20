@@ -10,7 +10,7 @@ class Settings(context: Context) {
         private var INSTANCE: Settings? = null
 
         fun getInstance(context: Context): Settings {
-            return INSTANCE ?: Settings(context).apply { INSTANCE = this }
+            return INSTANCE ?: Settings(context.applicationContext).apply { INSTANCE = this }
         }
     }
 

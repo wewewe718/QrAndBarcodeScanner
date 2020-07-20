@@ -56,6 +56,7 @@
                 app:icon="@drawable/ic_pdf417"
                 app:iconBackground="@color/orange"
                 app:text="@string/barcode_format_pdf_417"
+                app:isDelimiterVisible="false"
                 />
             <View
                 android:layout_width="match_parent"
@@ -74,36 +75,12 @@
                 style="@style/CreateBarcodeFragmentHintTextViewStyle"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
-                android:id="@+id/button_codabar"
+                android:id="@+id/button_ean_13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_barcode"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_format_codabar"
-                />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
-                android:id="@+id/button_code_39"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_barcode"
-                app:iconBackground="@color/blue3"
-                app:text="@string/barcode_format_code_39"
-                />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
-                android:id="@+id/button_code_93"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_barcode"
-                app:iconBackground="@color/blue3"
-                app:text="@string/barcode_format_code_93"
-                />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
-                android:id="@+id/button_code_128"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_barcode"
-                app:iconBackground="@color/blue3"
-                app:text="@string/barcode_format_code_128"
+                app:text="@string/barcode_format_ean_13"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
                 android:id="@+id/button_ean_8"
@@ -114,20 +91,12 @@
                 app:text="@string/barcode_format_ean_8"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
-                android:id="@+id/button_ean_13"
+                android:id="@+id/button_upc_e"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_barcode"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_format_ean_13"
-                />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
-                android:id="@+id/button_itf_14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_barcode"
-                app:iconBackground="@color/blue3"
-                app:text="@string/barcode_format_itf_14"
+                app:text="@string/barcode_format_upc_e"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
                 android:id="@+id/button_upc_a"
@@ -138,13 +107,45 @@
                 app:text="@string/barcode_format_upc_a"
                 />
             <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
-                android:id="@+id/button_upc_e"
+                android:id="@+id/button_code_128"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_barcode"
                 app:iconBackground="@color/blue3"
+                app:text="@string/barcode_format_code_128"
+                />
+            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+                android:id="@+id/button_code_93"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_barcode"
+                app:iconBackground="@color/blue3"
+                app:text="@string/barcode_format_code_93"
+                />
+            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+                android:id="@+id/button_code_39"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_barcode"
+                app:iconBackground="@color/blue3"
+                app:text="@string/barcode_format_code_39"
+                />
+            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+                android:id="@+id/button_codabar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_barcode"
+                app:iconBackground="@color/blue3"
+                app:text="@string/barcode_format_codabar"
+                />
+            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+                android:id="@+id/button_itf_14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_barcode"
+                app:iconBackground="@color/blue3"
+                app:text="@string/barcode_format_itf_14"
                 app:isDelimiterVisible="false"
-                app:text="@string/barcode_format_upc_e"
                 />
         </LinearLayout>
     </ScrollView>
@@ -155,7 +156,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        style="@style/ToolbarStyle"
+        style="@style/ToolbarWithBackButtonStyle"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
