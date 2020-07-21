@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isInvisible
-import androidx.paging.PagedList
+import androidx.core.view.isVisible
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +15,6 @@ import com.example.barcodescanner.extension.toColorId
 import com.example.barcodescanner.extension.toImageId
 import com.example.barcodescanner.extension.toStringId
 import com.example.barcodescanner.model.Barcode
-import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.item_barcode_history.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -48,6 +47,7 @@ class BarcodeHistoryAdapter(private val listener: Listener) : PagedListAdapter<B
             showText(barcode)
             showImage(barcode)
             showImageBackgroundColor(barcode)
+            showIsFavorite(barcode)
             showOrHideDelimiter(isLastItem)
             setClickListener(barcode)
         }
@@ -74,6 +74,10 @@ class BarcodeHistoryAdapter(private val listener: Listener) : PagedListAdapter<B
             val colorId = barcode.format.toColorId()
             val color = itemView.context.resources.getColor(colorId)
             (itemView.layout_image.background.mutate() as GradientDrawable).setColor(color)
+        }
+
+        private fun showIsFavorite(barcode: Barcode) {
+            itemView.image_view_favorite.isVisible = barcode.isFavorite
         }
 
         private fun showOrHideDelimiter(isLastItem: Boolean) {

@@ -19,16 +19,10 @@ import io.reactivex.BackpressureStrategy
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_barcode_history.*
 
-class BarcodeHistoryFragment : Fragment(), BarcodeHistoryAdapter.Listener {
-
-    companion object {
-        private const val PAGE_SIZE = 20
-    }
-
-    private val disposable = CompositeDisposable()
-    private val scanHistoryAdapter = BarcodeHistoryAdapter(this)
+class BarcodeHistoryFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,40 +35,11 @@ class BarcodeHistoryFragment : Fragment(), BarcodeHistoryAdapter.Listener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecyclerView()
-        loadHistory()
+        initTabs()
     }
 
-    override fun onBarcodeClicked(barcode: Barcode) {
-        BarcodeActivity.start(requireActivity(), barcode)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        disposable.clear()
-    }
-
-    private fun initRecyclerView() {
-        recycler_view_history.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = scanHistoryAdapter
-            makeSmoothScrollable()
-        }
-    }
-
-    private fun loadHistory() {
-        val config = PagedList.Config.Builder()
-            .setEnablePlaceholders(false)
-            .setPageSize(PAGE_SIZE)
-            .build()
-
-        RxPagedListBuilder<Int, Barcode>(barcodeDatabase.getAll(), config)
-            .buildFlowable(BackpressureStrategy.LATEST)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                scanHistoryAdapter::submitList,
-                ::showError
-            )
-            .addTo(disposable)
+    private fun initTabs() {
+        view_pager.adapter = BarcodeHistoryViewPagerAdapter(requireContext(), childFragmentManager)
+        tab_layout.setupWithViewPager(view_pager)
     }
 }

@@ -135,6 +135,10 @@
 
     <!--Barcode history fragment-->
     <string name="fragment_barcode_history_title">History</string>
+    <string-array name="fragment_barcode_history_tab_titles">
+        <item>All</item>
+        <item>Favorites</item>
+    </string-array>
     <string name="fragment_barcode_history_menu_title_delete_all">Clear history</string>
     <string name="fragment_barcode_history_delete_all_dialog_title">Delete</string>
     <string name="fragment_barcode_history_delete_all_dialog_message">Are you sure want to clear history?</string>
@@ -194,6 +198,7 @@
     <string name="activity_barcode_check_receipt">Check receipt</string>
     <string name="activity_barcode_copy">Copy to clipboard</string>
     <string name="activity_barcode_search">Search on the web</string>
+    <string name="activity_barcode_add_to_favorites">Add to favorites</string>
     <string name="activity_barcode_show_barcode_image">View code</string>
     <string name="activity_barcode_share_as_image">Share as image</string>
     <string name="activity_barcode_save_to_gallery">Save as image</string>

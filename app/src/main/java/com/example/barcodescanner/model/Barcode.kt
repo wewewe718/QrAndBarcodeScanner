@@ -18,6 +18,7 @@ data class Barcode(
     val schema: BarcodeSchema,
     val date: Long,
     val isGenerated: Boolean = false,
+    var isFavorite: Boolean = false,
     val errorCorrectionLevel: String? = null,
     val country: String? = null
 ) : Serializable

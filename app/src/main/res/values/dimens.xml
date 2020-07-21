@@ -28,7 +28,8 @@
     <dimen name="receipt_image_view_size">70dp</dimen>
     <dimen name="bottom_navigation_item_image_size">26dp</dimen>
     <dimen name="bottom_navigation_item_text_size">11sp</dimen>
-    <dimen name="tab_layout_indicator_height">4dp</dimen>
+    <dimen name="tab_layout_height">30dp</dimen>
+    <dimen name="tab_layout_indicator_height">2dp</dimen>
     <dimen name="fragment_barcode_history_recycler_view_top_margin">50dp</dimen>
     <dimen name="button_corner_radius">50dp</dimen>
 

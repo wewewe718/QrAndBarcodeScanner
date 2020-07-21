@@ -59,6 +59,9 @@ interface BarcodeDatabase {
     @Query("SELECT * FROM codes ORDER BY date DESC")
     fun getAll(): DataSource.Factory<Int, Barcode>
 
+    @Query("SELECT * FROM codes WHERE isFavorite = 1 ORDER BY date DESC")
+    fun getFavorites(): DataSource.Factory<Int, Barcode>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun save(barcode: Barcode): Completable
 

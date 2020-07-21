@@ -31,6 +31,12 @@
         <item name="navigationIcon">@drawable/ic_arrow_back</item>
     </style>
 
+    <style name="TabTextAppearance">
+        <item name="android:textSize">@dimen/default_text_size_small</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
     <style name="BottomNavigationItemTextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textSize">@dimen/bottom_navigation_item_text_size</item>
         <item name="android:textStyle">bold</item>

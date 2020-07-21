@@ -119,6 +119,7 @@ class BarcodeActivity : BaseActivity() {
     private fun handleToolbarMenuClicked() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.item_add_to_favorites -> toggleIsFavorite()
                 R.id.item_show_barcode_image -> navigateToBarcodeImageActivity()
                 R.id.item_delete -> deleteBarcode()
             }
@@ -156,6 +157,22 @@ class BarcodeActivity : BaseActivity() {
         button_print.setOnClickListener { printBarcode() }
     }
 
+
+    private fun toggleIsFavorite() {
+        val newBarcode = originalBarcode.copy(isFavorite = originalBarcode.isFavorite.not())
+
+        barcodeDatabase.save(newBarcode)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    originalBarcode.isFavorite = newBarcode.isFavorite
+                    showBarcodeIsFavorite(newBarcode.isFavorite)
+                },
+                {}
+            )
+            .addTo(disposable)
+    }
 
     private fun addToCalendar() {
         val intent = Intent(Intent.ACTION_INSERT).apply {
@@ -388,7 +405,9 @@ class BarcodeActivity : BaseActivity() {
 
     private fun showBarcode() {
         showBarcodeMenuIfNeeded()
+        showBarcodeIsFavorite()
         showBarcodeImageIfNeeded()
+        showIsFavorite()
         showBarcodeDate()
         showBarcodeFormat()
         showBarcodeText()
@@ -407,6 +426,19 @@ class BarcodeActivity : BaseActivity() {
         }
     }
 
+    private fun showBarcodeIsFavorite() {
+        showBarcodeIsFavorite(barcode.isFavorite)
+    }
+
+    private fun showBarcodeIsFavorite(isFavorite: Boolean) {
+        val iconId = if (isFavorite) {
+            R.drawable.ic_favorite_checked
+        } else {
+            R.drawable.ic_favorite_unchecked
+        }
+        toolbar.menu?.findItem(R.id.item_add_to_favorites)?.icon = getDrawable(iconId)
+    }
+
     private fun showBarcodeImageIfNeeded() {
         if (isCreated) {
             showBarcodeImage()
@@ -422,6 +454,10 @@ class BarcodeActivity : BaseActivity() {
             image_view_barcode.isVisible = false
             ex.printStackTrace()
         }
+    }
+
+    private fun showIsFavorite() {
+
     }
 
     private fun showBarcodeDate() {

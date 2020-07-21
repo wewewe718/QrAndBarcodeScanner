@@ -11,6 +11,7 @@ class ParsedBarcode(barcode: Barcode) {
     val format = barcode.format
     val schema = barcode.schema
     val date = barcode.date
+    val isFavorite = barcode.isFavorite
     val errorCorrectionLevel = barcode.errorCorrectionLevel
     val country = barcode.country
 
