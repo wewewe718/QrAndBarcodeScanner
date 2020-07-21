@@ -1,4 +1,4 @@
-package com.example.barcodescanner.feature.barcode
+package com.example.barcodescanner.feature.common
 
 import android.content.Context
 import android.util.AttributeSet

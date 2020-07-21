@@ -12,7 +12,6 @@ fun BarcodeSchema.toImageId(): Int? {
         BarcodeSchema.MMS -> R.drawable.ic_mms
         BarcodeSchema.MECARD -> R.drawable.ic_contact
         BarcodeSchema.PHONE -> R.drawable.ic_phone
-        BarcodeSchema.RECEIPT -> R.drawable.ic_receipt
         BarcodeSchema.SMS -> R.drawable.ic_sms
         BarcodeSchema.URL -> R.drawable.ic_link
         BarcodeSchema.VEVENT -> R.drawable.ic_calendar
@@ -33,7 +32,6 @@ fun BarcodeSchema.toStringId(): Int? {
         BarcodeSchema.MMS -> R.string.barcode_schema_mms
         BarcodeSchema.MECARD -> R.string.barcode_schema_me_card
         BarcodeSchema.PHONE -> R.string.barcode_schema_phone
-        BarcodeSchema.RECEIPT -> R.string.barcode_schema_receipt
         BarcodeSchema.SMS -> R.string.barcode_schema_sms
         BarcodeSchema.URL -> R.string.barcode_schema_url
         BarcodeSchema.VEVENT -> R.string.barcode_schema_v_event

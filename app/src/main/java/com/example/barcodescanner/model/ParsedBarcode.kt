@@ -57,13 +57,6 @@ class ParsedBarcode(barcode: Barcode) {
     var eventEndDate: Long? = null
     var eventSummary: String? = null
 
-    var receiptType: Int? = null
-    var receiptTime: String? = null
-    var receiptFiscalDriveNumber: String? = null
-    var receiptFiscalDocumentNumber: String? = null
-    var receiptFiscalSign: String? = null
-    var receiptSum: String? = null
-
     val isInDb: Boolean
         get() = id != 0L
 
@@ -89,7 +82,6 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.WIFI -> parseWifi()
             BarcodeSchema.YOUTUBE -> parseYoutube()
             BarcodeSchema.URL -> parseUrl()
-            BarcodeSchema.RECEIPT -> parseReceipt()
         }
     }
 
@@ -181,14 +173,5 @@ class ParsedBarcode(barcode: Barcode) {
 
     private fun parseUrl() {
         url = text
-    }
-
-    private fun parseReceipt() {
-        val receipt = Receipt.parse(text) ?: return
-        receiptType = receipt.type
-        receiptTime = receipt.time
-        receiptFiscalDriveNumber = receipt.fiscalDriveNumber
-        receiptFiscalDocumentNumber = receipt.fiscalDocumentNumber
-        receiptFiscalSign = receipt.fiscalSign
     }
 }

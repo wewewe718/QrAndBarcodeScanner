@@ -1,4 +1,4 @@
-package com.example.barcodescanner.feature.barcode.image
+package com.example.barcodescanner.feature.barcode
 
 import android.content.Context
 import android.content.Intent

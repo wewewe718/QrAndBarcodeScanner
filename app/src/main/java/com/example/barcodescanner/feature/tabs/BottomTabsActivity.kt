@@ -17,7 +17,8 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_tabs)
-        bottom_navigation_view.setOnNavigationItemSelectedListener(this)
+
+        initBottomNavigationView()
 
         if (savedInstanceState == null) {
             showInitialFragment()
@@ -30,6 +31,13 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
         }
         showFragment(item.itemId)
         return true
+    }
+
+    private fun initBottomNavigationView() {
+        bottom_navigation_view.apply {
+            clearAnimation()
+            setOnNavigationItemSelectedListener(this@BottomTabsActivity)
+        }
     }
 
     private fun showInitialFragment() {

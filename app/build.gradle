@@ -78,15 +78,8 @@ dependencies {
     implementation 'com.googlecode.ez-vcard:ez-vcard:0.10.6'
 
     // Rx
-    final rxBindingVersion = '2.2.0'
     implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
-    implementation "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rxBindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxBindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxBindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxBindingVersion"
-
-    // OkHttp
-    implementation "com.squareup.okhttp3:okhttp:4.7.2"
+    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:2.2.0"
 
     // Image Crop Library
     implementation 'com.isseiaoki:simplecropview:1.1.8'

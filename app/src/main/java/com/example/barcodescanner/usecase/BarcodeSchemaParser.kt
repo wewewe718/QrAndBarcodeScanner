@@ -22,7 +22,6 @@ object BarcodeSchemaParser {
             ?: Wifi.parse(text)
             ?: Email.parse(text)
             ?: Cryptocurrency.parse(text)
-            ?: Receipt.parse(text)
             ?: VEvent.parse(text)
             ?: MeCard.parse(text)
             ?: VCard.parse(text)

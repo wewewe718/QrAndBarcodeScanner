@@ -195,7 +195,6 @@
     <string name="activity_barcode_save_bookmark">Save to bookmarks</string>
     <string name="activity_barcode_open_link">Open link</string>
     <string name="activity_barcode_share_as_text">Share as text</string>
-    <string name="activity_barcode_check_receipt">Check receipt</string>
     <string name="activity_barcode_copy">Copy to clipboard</string>
     <string name="activity_barcode_search">Search on the web</string>
     <string name="activity_barcode_add_to_favorites">Add to favorites</string>
@@ -208,21 +207,6 @@
     <string name="activity_barcode_copied">Copied to clipboard</string>
     <string name="activity_barcode_barcode_image_saved">Saved to Gallery</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
-
-    <!--Check receipt activity-->
-    <string name="activity_check_receipt_title">Receipt</string>
-    <string name="activity_check_receipt_valid_receipt">The receipt is found</string>
-    <string name="activity_check_receipt_invalid_receipt">The receipt is not found!</string>
-    <string name="activity_check_receipt_show_receipt">Show the receipt</string>
-    <string name="activity_check_receipt_download_receipt">Save as .pdf</string>
-    <string name="activity_check_receipt_download_started">Download started</string>
-    <string name="activity_check_receipt_download_title">Receipt</string>
-    <string name="activity_check_receipt_download_description">Downloading</string>
-    <string name="activity_check_receipt_download_file_name">Receipt</string>
-
-    <!--Receipt activity-->
-    <string name="activity_receipt_title">Receipt</string>
-    <string name="activity_receipt_menu_item_download_title">Download as .pdf</string>
 
     <!--Barcode formats-->
     <string name="barcode_format_aztec">Aztec</string>
@@ -249,7 +233,6 @@
     <string name="barcode_schema_mms">MMS</string>
     <string name="barcode_schema_me_card">Contact (MeCard)</string>
     <string name="barcode_schema_phone">Phone</string>
-    <string name="barcode_schema_receipt">Receipt</string>
     <string name="barcode_schema_sms">SMS</string>
     <string name="barcode_schema_url">URL</string>
     <string name="barcode_schema_v_event">Event</string>

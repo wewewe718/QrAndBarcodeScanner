@@ -18,8 +18,6 @@ import com.example.barcodescanner.R
 import com.example.barcodescanner.di.*
 import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.BaseActivity
-import com.example.barcodescanner.feature.barcode.image.BarcodeImageActivity
-import com.example.barcodescanner.feature.barcode.receipt.CheckReceiptActivity
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
@@ -147,7 +145,6 @@ class BarcodeActivity : BaseActivity() {
         button_open_in_youtube.setOnClickListener { openInYoutube() }
         button_save_bookmark.setOnClickListener { saveBookmark() }
         button_open_link.setOnClickListener { openLink() }
-        button_check_receipt.setOnClickListener { checkReceipt() }
 
         button_share_as_text.setOnClickListener { shareBarcodeAsText() }
         button_copy.setOnClickListener { copyBarcodeTextToClipboard() }
@@ -290,18 +287,6 @@ class BarcodeActivity : BaseActivity() {
             putExtra("url", barcode.url.orEmpty())
         }
         startActivityIfExists(intent)
-    }
-
-    private fun checkReceipt() {
-        CheckReceiptActivity.start(
-            this,
-            barcode.receiptType.orZero(),
-            barcode.receiptTime.orEmpty(),
-            barcode.receiptFiscalDriveNumber.orEmpty(),
-            barcode.receiptFiscalDocumentNumber.orEmpty(),
-            barcode.receiptFiscalSign.orEmpty(),
-            barcode.receiptSum.orEmpty()
-        )
     }
 
     private fun shareBarcodeAsText() {
@@ -538,7 +523,6 @@ class BarcodeActivity : BaseActivity() {
         button_open_in_youtube.isVisible = barcode.youtubeUrl.isNullOrEmpty().not()
         button_open_link.isVisible = barcode.url.isNullOrEmpty().not()
         button_save_bookmark.isVisible = barcode.schema == BarcodeSchema.BOOKMARK
-        button_check_receipt.isVisible = barcode.schema == BarcodeSchema.RECEIPT
     }
 
     private fun showConnectToWifiButtonEnabled(isEnabled: Boolean) {

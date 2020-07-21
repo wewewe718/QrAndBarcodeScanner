@@ -22,9 +22,6 @@ val AppCompatActivity.barcodeImageGenerator
 val AppCompatActivity.barcodeImageSaver
     get() = BarcodeImageSaver
 
-val AppCompatActivity.checkReceiptApi
-    get() = CheckReceiptApi
-
 val AppCompatActivity.wifiConnector
     get() = WifiConnector
 

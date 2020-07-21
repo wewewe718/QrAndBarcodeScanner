@@ -24,7 +24,7 @@
             >
 
             <!--Barcode image-->
-            <com.example.barcodescanner.feature.barcode.SquareImageView
+            <com.example.barcodescanner.feature.common.SquareImageView
                 android:id="@+id/image_view_barcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
                 android:id="@+id/button_open_wifi_settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_settings"
+                app:icon="@drawable/ic_settings_checked"
                 app:iconBackground="@color/orange"
                 app:text="@string/activity_barcode_open_wifi_settings"
                 android:visibility="gone"
@@ -252,16 +252,6 @@
                 app:icon="@drawable/ic_link"
                 app:iconBackground="@color/orange"
                 app:text="@string/activity_barcode_open_link"
-                android:visibility="gone"
-                tools:visibility="visible"
-                />
-            <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_check_receipt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_receipt"
-                app:iconBackground="@color/orange"
-                app:text="@string/activity_barcode_check_receipt"
                 android:visibility="gone"
                 tools:visibility="visible"
                 />

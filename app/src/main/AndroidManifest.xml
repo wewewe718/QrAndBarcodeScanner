@@ -79,15 +79,7 @@
             android:screenOrientation="portrait"
             />
         <activity
-            android:name="com.example.barcodescanner.feature.barcode.image.BarcodeImageActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity
-            android:name=".feature.barcode.receipt.CheckReceiptActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity
-            android:name=".feature.barcode.receipt.ReceiptActivity"
+            android:name="com.example.barcodescanner.feature.barcode.BarcodeImageActivity"
             android:screenOrientation="portrait"
             />
 
