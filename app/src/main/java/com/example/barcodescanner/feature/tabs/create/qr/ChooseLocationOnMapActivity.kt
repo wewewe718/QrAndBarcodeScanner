@@ -52,7 +52,6 @@ class ChooseLocationOnMapActivity : BaseActivity(), OnMapReadyCallback, GoogleMa
         }
 
         toolbar.apply {
-            inflateMenu(R.menu.menu_choose_location_on_map)
             setNavigationOnClickListener {
                 finish()
             }

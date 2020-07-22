@@ -360,7 +360,7 @@ class BarcodeActivity : BaseActivity() {
 
     private fun saveBarcodeImageAsPng() {
         try {
-            val image = barcodeImageGenerator.generateBitmap(originalBarcode, 300, 300, 2)
+            val image = barcodeImageGenerator.generateBitmap(originalBarcode, 640, 640, 2)
             barcodeImageSaver.savePngImageToPublicDirectory(this, image, barcode)
         } catch (ex: Exception) {
             showError(ex)

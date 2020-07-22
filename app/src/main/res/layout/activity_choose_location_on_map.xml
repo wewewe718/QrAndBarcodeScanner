@@ -16,6 +16,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:title="@string/barcode_schema_geo"
+            app:menu="@menu/menu_choose_location_on_map"
             style="@style/ToolbarWithBackButtonStyle"
             />
     </com.google.android.material.appbar.AppBarLayout>

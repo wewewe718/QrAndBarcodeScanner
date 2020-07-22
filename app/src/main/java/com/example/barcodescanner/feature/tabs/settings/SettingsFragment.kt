@@ -110,8 +110,7 @@ class SettingsFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Lis
     }
 
     private fun showDeleteHistoryConfirmationDialog() {
-        val dialog =
-            DeleteHistoryConfirmationDialogFragment()
+        val dialog = DeleteHistoryConfirmationDialogFragment()
         dialog.show(childFragmentManager, "")
     }
 

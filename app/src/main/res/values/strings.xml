@@ -139,6 +139,7 @@
         <item>All</item>
         <item>Favorites</item>
     </string-array>
+    <string name="fragment_barcode_history_menu_title_export">Export history</string>
     <string name="fragment_barcode_history_menu_title_delete_all">Clear history</string>
     <string name="fragment_barcode_history_delete_all_dialog_title">Delete</string>
     <string name="fragment_barcode_history_delete_all_dialog_message">Are you sure want to clear history?</string>

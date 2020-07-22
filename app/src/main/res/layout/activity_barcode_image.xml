@@ -27,16 +27,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
-                android:layout_marginBottom="@dimen/default_margin_very_big"
-                android:layout_marginHorizontal="@dimen/default_margin_large"
-                android:scaleType="fitXY"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:layout_marginHorizontal="@dimen/default_margin_very_big"
+                android:scaleType="centerInside"
                 />
             <TextView
                 android:id="@+id/text_view_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin_small"
-                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginHorizontal="@dimen/default_margin_very_big"
                 tools:text="01.09.1993 12:00"
                 style="@style/SecondaryTextViewStyle"
                 />
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin_very_small"
                 android:layout_marginBottom="@dimen/default_margin"
-                android:layout_marginHorizontal="@dimen/default_margin"
+                android:layout_marginHorizontal="@dimen/default_margin_very_big"
                 tools:text="Hello World!"
                 style="@style/LargeTextViewStyle"
                 />

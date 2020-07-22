@@ -72,7 +72,7 @@ dependencies {
     implementation 'com.budiyev.android:code-scanner:2.1.0'
 
     // Barcode Image Generator
-    implementation 'com.journeyapps:zxing-android-embedded:3.3.0@aar'
+    implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
 
     // VCard Parser
     implementation 'com.googlecode.ez-vcard:ez-vcard:0.10.6'

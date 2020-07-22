@@ -4,9 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <item
-        android:id="@+id/item_delete_all"
+        android:id="@+id/item_export_history"
+        android:title="@string/fragment_barcode_history_menu_title_export"
+        android:icon="@drawable/ic_download"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/item_clear_history"
         android:title="@string/fragment_barcode_history_menu_title_delete_all"
         android:icon="@drawable/ic_delete"
-        app:showAsAction="always"
+        app:showAsAction="never"
         />
 </menu>
