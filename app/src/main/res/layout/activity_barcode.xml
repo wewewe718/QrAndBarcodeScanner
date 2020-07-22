@@ -290,12 +290,20 @@
                 app:text="@string/activity_barcode_share_as_image"
                 />
             <com.example.barcodescanner.feature.common.IconButton
-                android:id="@+id/button_save_to_gallery"
+                android:id="@+id/button_save_as_png"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_download"
                 app:iconBackground="@color/blue"
-                app:text="@string/activity_barcode_save_to_gallery"
+                app:text="@string/activity_barcode_save_as_png"
+                />
+            <com.example.barcodescanner.feature.common.IconButton
+                android:id="@+id/button_save_as_svg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_download"
+                app:iconBackground="@color/blue"
+                app:text="@string/activity_barcode_save_as_svg"
                 />
             <com.example.barcodescanner.feature.common.IconButton
                 android:id="@+id/button_print"

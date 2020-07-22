@@ -9,6 +9,7 @@ import androidx.core.content.FileProvider
 import com.example.barcodescanner.model.ParsedBarcode
 import java.io.File
 import java.io.FileOutputStream
+import java.io.OutputStream
 
 
 object BarcodeImageSaver {
@@ -33,21 +34,33 @@ object BarcodeImageSaver {
         return FileProvider.getUriForFile(context, "com.example.barcodescanner.fileprovider", imageFile)
     }
 
-    fun saveImageToPublicDirectory(context: Context, image: Bitmap, barcode: ParsedBarcode) {
-        val contentResolver = context.contentResolver
+    fun savePngImageToPublicDirectory(context: Context, image: Bitmap, barcode: ParsedBarcode) {
+        saveToPublicDirectory(context, barcode, "image/png") { outputStream ->
+            image.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+        }
+    }
+
+    fun saveSvgImageToPublicDirectory(context: Context, image: String, barcode: ParsedBarcode) {
+        saveToPublicDirectory(context, barcode, "image/svg+xml") { outputStream ->
+            outputStream.write(image.toByteArray())
+        }
+    }
+
+    private fun saveToPublicDirectory(context: Context, barcode: ParsedBarcode, mimeType:String, action: (OutputStream)-> Unit) {
+        val contentResolver = context.contentResolver ?: return
 
         val imageTitle = "${barcode.format}_${barcode.schema}_${barcode.date}"
 
         val values = ContentValues().apply {
             put(Images.Media.TITLE, imageTitle)
             put(Images.Media.DISPLAY_NAME, imageTitle)
-            put(Images.Media.MIME_TYPE, "image/png")
+            put(Images.Media.MIME_TYPE, mimeType)
             put(Images.Media.DATE_ADDED, System.currentTimeMillis() / 1000)
         }
 
         val uri = contentResolver.insert(Images.Media.EXTERNAL_CONTENT_URI, values) ?: return
         contentResolver.openOutputStream(uri)?.apply {
-            image.compress(Bitmap.CompressFormat.PNG, 100, this)
+            action(this)
             flush()
             close()
         }

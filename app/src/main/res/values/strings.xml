@@ -200,7 +200,8 @@
     <string name="activity_barcode_add_to_favorites">Add to favorites</string>
     <string name="activity_barcode_show_barcode_image">View code</string>
     <string name="activity_barcode_share_as_image">Share as image</string>
-    <string name="activity_barcode_save_to_gallery">Save as image</string>
+    <string name="activity_barcode_save_as_png">Save as .png</string>
+    <string name="activity_barcode_save_as_svg">Save as .svg</string>
     <string name="activity_barcode_print">Print</string>
     <string name="activity_barcode_delete">Delete</string>
     <string name="activity_barcode_connecting_to_wifi">Connecting</string>

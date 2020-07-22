@@ -3,7 +3,6 @@ package com.example.barcodescanner.di
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
-import com.example.barcodescanner.App
 import com.example.barcodescanner.usecase.*
 
 

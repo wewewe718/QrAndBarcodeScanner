@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.MotionEvent.ACTION_UP
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -87,9 +88,8 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
             return
         }
 
-        val intent = Intent().apply {
-            action = Intent.ACTION_GET_CONTENT
-            type = "image/*"
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI).apply {
+            setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
         }
 
         if (intent.resolveActivity(packageManager) != null) {

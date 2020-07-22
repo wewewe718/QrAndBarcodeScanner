@@ -25,13 +25,24 @@ data class VEvent(
         private const val END_PREFIX = "DTEND:"
         private const val SUMMARY_PREFIX = "SUMMARY:"
 
-        private val DATE_PARSER by lazy {
+        private val DATE_PARSERS by lazy {
+            listOf(
+                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'"),
+                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"),
+                SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'"),
+                SimpleDateFormat("yyyyMMdd'T'HHmmss"),
+                SimpleDateFormat("yyyy-MM-dd"),
+                SimpleDateFormat("yyyyMMdd")
+            )
+        }
+
+        private val BARCODE_TEXT_DATE_FORMATTER by lazy {
             SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'", Locale.US).apply {
                 timeZone = TimeZone.getTimeZone("UTC")
             }
         }
 
-        private val DATE_FORMATTER by lazy {
+        private val FORMATTED_TEXT_DATE_FORMATTER by lazy {
             SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
         }
 
@@ -65,13 +76,13 @@ data class VEvent(
 
                 if (part.startsWithIgnoreCase(START_PREFIX)) {
                     val startDateOriginal = part.removePrefix(START_PREFIX)
-                    startDate = DATE_PARSER.parseOrNull(startDateOriginal)?.time
+                    startDate = DATE_PARSERS.parseOrNull(startDateOriginal)?.time
                     return@forEach
                 }
 
                 if (part.startsWithIgnoreCase(END_PREFIX)) {
                     val endDateOriginal = part.removePrefix(END_PREFIX)
-                    endDate = DATE_PARSER.parseOrNull(endDateOriginal)?.time
+                    endDate = DATE_PARSERS.parseOrNull(endDateOriginal)?.time
                     return@forEach
                 }
 
@@ -92,15 +103,15 @@ data class VEvent(
             uid,
             stamp,
             summary,
-            DATE_FORMATTER.formatOrNull(startDate),
-            DATE_FORMATTER.formatOrNull(endDate),
+            FORMATTED_TEXT_DATE_FORMATTER.formatOrNull(startDate),
+            FORMATTED_TEXT_DATE_FORMATTER.formatOrNull(endDate),
             organizer
         ).joinNotNullOrBlankToStringWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {
-        val startDate = DATE_PARSER.formatOrNull(startDate)
-        val endDate = DATE_PARSER.formatOrNull(endDate)
+        val startDate = BARCODE_TEXT_DATE_FORMATTER.formatOrNull(startDate)
+        val endDate = BARCODE_TEXT_DATE_FORMATTER.formatOrNull(endDate)
 
         return "$SCHEMA_PREFIX$PARAMETERS_SEPARATOR_1" +
                 "$UID_PREFIX${uid.orEmpty()}$PARAMETERS_SEPARATOR_1" +

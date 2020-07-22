@@ -85,7 +85,7 @@
     </style>
 
     <style name="RadioButtonTheme">
-        <item name="colorControlNormal">@color/gray_transparent2</item>
+        <item name="colorControlNormal">@color/gray5</item>
         <item name="colorControlActivated">@color/blue</item>
         <item name="colorControlHighlight">@android:color/transparent</item>
     </style>

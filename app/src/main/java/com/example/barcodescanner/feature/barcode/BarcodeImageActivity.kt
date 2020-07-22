@@ -58,7 +58,7 @@ class BarcodeImageActivity : BaseActivity() {
 
     private fun showBarcodeImage() {
         try {
-            val bitmap = barcodeImageGenerator.generateImage(barcode, 2000, 2000, 0)
+            val bitmap = barcodeImageGenerator.generateBitmap(barcode, 2000, 2000, 0)
             image_view_barcode.setImageBitmap(bitmap)
         } catch (ex: Exception) {
             image_view_barcode.isVisible = false

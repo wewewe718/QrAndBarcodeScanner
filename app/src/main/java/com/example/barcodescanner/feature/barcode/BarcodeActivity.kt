@@ -33,7 +33,8 @@ import java.util.*
 class BarcodeActivity : BaseActivity() {
 
     companion object {
-        private const val REQUEST_PERMISSIONS_CODE = 101
+        private const val SAVE_AS_PNG_REQUEST_PERMISSIONS_CODE = 101
+        private const val SAVE_AS_SVG_REQUEST_PERMISSIONS_CODE = 102
         private const val BARCODE_KEY = "BARCODE_KEY"
         private const val IS_CREATED = "IS_CREATED"
 
@@ -80,8 +81,13 @@ class BarcodeActivity : BaseActivity() {
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        if (requestCode == REQUEST_PERMISSIONS_CODE && permissionsHelper.areAllPermissionsGranted(grantResults)) {
-            saveBarcodeImage()
+        if (permissionsHelper.areAllPermissionsGranted(grantResults).not()) {
+            return
+        }
+
+        when (requestCode) {
+            SAVE_AS_PNG_REQUEST_PERMISSIONS_CODE -> saveBarcodeImageAsPng()
+            SAVE_AS_SVG_REQUEST_PERMISSIONS_CODE -> saveBarcodeImageAsSvg()
         }
     }
 
@@ -150,7 +156,8 @@ class BarcodeActivity : BaseActivity() {
         button_copy.setOnClickListener { copyBarcodeTextToClipboard() }
         button_search.setOnClickListener { searchBarcodeTextOnInternet() }
         button_share_as_image.setOnClickListener { shareBarcodeAsImage() }
-        button_save_to_gallery.setOnClickListener { permissionsHelper.requestPermissions(this, permissions, REQUEST_PERMISSIONS_CODE) }
+        button_save_as_png.setOnClickListener { permissionsHelper.requestPermissions(this, permissions, SAVE_AS_PNG_REQUEST_PERMISSIONS_CODE) }
+        button_save_as_svg.setOnClickListener { permissionsHelper.requestPermissions(this, permissions, SAVE_AS_SVG_REQUEST_PERMISSIONS_CODE) }
         button_print.setOnClickListener { printBarcode() }
     }
 
@@ -192,18 +199,22 @@ class BarcodeActivity : BaseActivity() {
             putExtra(ContactsContract.Intents.Insert.JOB_TITLE, barcode.jobTitle.orEmpty())
 
             putExtra(ContactsContract.Intents.Insert.PHONE, barcode.phone.orEmpty())
-            putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, barcode.phoneType.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, barcode.phoneType.orEmpty().toPhoneType())
+
             putExtra(ContactsContract.Intents.Insert.SECONDARY_PHONE, barcode.secondaryPhone.orEmpty())
-            putExtra(ContactsContract.Intents.Insert.SECONDARY_PHONE_TYPE, barcode.secondaryPhoneType.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.SECONDARY_PHONE_TYPE, barcode.secondaryPhoneType.orEmpty().toPhoneType())
+
             putExtra(ContactsContract.Intents.Insert.TERTIARY_PHONE, barcode.tertiaryPhone.orEmpty())
-            putExtra(ContactsContract.Intents.Insert.TERTIARY_PHONE_TYPE, barcode.tertiaryPhoneType.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.TERTIARY_PHONE_TYPE, barcode.tertiaryPhoneType.orEmpty().toPhoneType())
 
             putExtra(ContactsContract.Intents.Insert.EMAIL, barcode.email.orEmpty())
-            putExtra(ContactsContract.Intents.Insert.EMAIL_TYPE, barcode.emailType.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.EMAIL_TYPE, barcode.emailType.orEmpty().toEmailType())
+
             putExtra(ContactsContract.Intents.Insert.SECONDARY_EMAIL, barcode.secondaryEmail.orEmpty())
-            putExtra(ContactsContract.Intents.Insert.SECONDARY_EMAIL_TYPE, barcode.secondaryEmailType.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.SECONDARY_EMAIL_TYPE, barcode.secondaryEmailType.orEmpty().toEmailType())
+
             putExtra(ContactsContract.Intents.Insert.TERTIARY_EMAIL, barcode.tertiaryEmail.orEmpty())
-            putExtra(ContactsContract.Intents.Insert.TERTIARY_EMAIL_TYPE, barcode.tertiaryEmailType.orEmpty())
+            putExtra(ContactsContract.Intents.Insert.TERTIARY_EMAIL_TYPE, barcode.tertiaryEmailType.orEmpty().toEmailType())
         }
         startActivityIfExists(intent)
     }
@@ -214,17 +225,18 @@ class BarcodeActivity : BaseActivity() {
     }
 
     private fun sendSmsOrMms() {
-        val smsUri = Uri.parse("sms:${barcode.phone.orEmpty()}")
-        val intent = Intent(Intent.ACTION_SENDTO, smsUri).apply {
+        val uri = Uri.parse("sms:${barcode.phone.orEmpty()}")
+        val intent = Intent(Intent.ACTION_SENDTO, uri).apply {
             putExtra("sms_body", barcode.smsBody.orEmpty())
         }
         startActivityIfExists(intent)
     }
 
     private fun sendEmail() {
-        val intent = Intent(Intent.ACTION_SEND).apply {
+        val uri = Uri.parse("mailto:${barcode.email.orEmpty()}")
+        val intent = Intent(Intent.ACTION_SEND, uri).apply {
             type = "text/plain"
-            putExtra(Intent.EXTRA_EMAIL, barcode.email.orEmpty())
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(barcode.email.orEmpty()))
             putExtra(Intent.EXTRA_SUBJECT, barcode.emailSubject.orEmpty())
             putExtra(Intent.EXTRA_TEXT, barcode.emailBody.orEmpty())
         }
@@ -330,7 +342,7 @@ class BarcodeActivity : BaseActivity() {
 
     private fun shareBarcodeAsImage() {
         val imageUri = try {
-            val image = barcodeImageGenerator.generateImage(barcode, 200, 200, 1)
+            val image = barcodeImageGenerator.generateBitmap(originalBarcode, 200, 200, 1)
             barcodeImageSaver.saveImageToCache(this, image, barcode)
         } catch (ex: Exception) {
             showError(ex)
@@ -346,10 +358,21 @@ class BarcodeActivity : BaseActivity() {
         startActivityIfExists(intent)
     }
 
-    private fun saveBarcodeImage() {
+    private fun saveBarcodeImageAsPng() {
         try {
-            val image = barcodeImageGenerator.generateImage(barcode, 300, 300, 2)
-            barcodeImageSaver.saveImageToPublicDirectory(this, image, barcode)
+            val image = barcodeImageGenerator.generateBitmap(originalBarcode, 300, 300, 2)
+            barcodeImageSaver.savePngImageToPublicDirectory(this, image, barcode)
+        } catch (ex: Exception) {
+            showError(ex)
+            return
+        }
+        showToast(R.string.activity_barcode_barcode_image_saved)
+    }
+
+    private fun saveBarcodeImageAsSvg() {
+        try {
+            val image = barcodeImageGenerator.generateSvg(originalBarcode, 300, 300, 2)
+            barcodeImageSaver.saveSvgImageToPublicDirectory(this, image, barcode)
         } catch (ex: Exception) {
             showError(ex)
             return
@@ -359,7 +382,7 @@ class BarcodeActivity : BaseActivity() {
 
     private fun printBarcode() {
         val barcodeImage = try {
-            barcodeImageGenerator.generateImage(barcode, 1000, 1000, 3)
+            barcodeImageGenerator.generateBitmap(originalBarcode, 1000, 1000, 3)
         } catch (ex: Exception) {
             showError(ex)
             return
@@ -392,7 +415,6 @@ class BarcodeActivity : BaseActivity() {
         showBarcodeMenuIfNeeded()
         showBarcodeIsFavorite()
         showBarcodeImageIfNeeded()
-        showIsFavorite()
         showBarcodeDate()
         showBarcodeFormat()
         showBarcodeText()
@@ -432,17 +454,13 @@ class BarcodeActivity : BaseActivity() {
 
     private fun showBarcodeImage() {
         try {
-            val bitmap = barcodeImageGenerator.generateImage(barcode, 2000, 2000, 0)
+            val bitmap = barcodeImageGenerator.generateBitmap(originalBarcode, 2000, 2000, 0)
             image_view_barcode.isVisible = true
             image_view_barcode.setImageBitmap(bitmap)
         } catch (ex: Exception) {
             image_view_barcode.isVisible = false
             ex.printStackTrace()
         }
-    }
-
-    private fun showIsFavorite() {
-
     }
 
     private fun showBarcodeDate() {
