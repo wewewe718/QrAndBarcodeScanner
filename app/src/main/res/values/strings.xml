@@ -197,6 +197,8 @@
     <string name="activity_barcode_open_link">Open link</string>
     <string name="activity_barcode_share_as_text">Share as text</string>
     <string name="activity_barcode_copy">Copy to clipboard</string>
+    <string name="activity_barcode_save_as_csv">Save as .csv</string>
+    <string name="activity_barcode_save_as_json">Save as .json</string>
     <string name="activity_barcode_search">Search on the web</string>
     <string name="activity_barcode_add_to_favorites">Add to favorites</string>
     <string name="activity_barcode_show_barcode_image">View code</string>
@@ -208,6 +210,7 @@
     <string name="activity_barcode_connecting_to_wifi">Connecting</string>
     <string name="activity_barcode_copied">Copied to clipboard</string>
     <string name="activity_barcode_barcode_image_saved">Saved to Gallery</string>
+    <string name="activity_barcode_barcode_text_saved">Saved to Downloads</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
 
     <!--Barcode formats-->

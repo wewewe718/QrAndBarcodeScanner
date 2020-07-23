@@ -6,13 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import com.example.barcodescanner.R
-import com.example.barcodescanner.di.barcodeSchemaParser
+import com.example.barcodescanner.di.barcodeParser
 import com.example.barcodescanner.extension.isNotBlank
 import com.example.barcodescanner.extension.textString
 import com.example.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
-import com.example.barcodescanner.feature.tabs.create.CreateBarcodeActivity
-import com.example.barcodescanner.model.schema.BarcodeSchema
-import com.example.barcodescanner.model.schema.Other
 import com.example.barcodescanner.model.schema.Schema
 import com.google.zxing.BarcodeFormat
 import kotlinx.android.synthetic.main.fragment_create_qr_code_text.*
@@ -42,7 +39,7 @@ class CreateQrCodeTextFragment : BaseCreateBarcodeFragment() {
     }
 
     override fun getBarcodeSchema(): Schema {
-        return barcodeSchemaParser.getSchema(BarcodeFormat.QR_CODE, edit_text.textString)
+        return barcodeParser.parseSchema(BarcodeFormat.QR_CODE, edit_text.textString)
     }
 
     private fun initEditText() {

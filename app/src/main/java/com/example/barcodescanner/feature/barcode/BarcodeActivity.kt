@@ -155,6 +155,8 @@ class BarcodeActivity : BaseActivity() {
         button_share_as_text.setOnClickListener { shareBarcodeAsText() }
         button_copy.setOnClickListener { copyBarcodeTextToClipboard() }
         button_search.setOnClickListener { searchBarcodeTextOnInternet() }
+        button_save_as_csv.setOnClickListener { saveBarcodeAsCsv() }
+        button_save_as_json.setOnClickListener { saveBarcodeAsJson() }
         button_share_as_image.setOnClickListener { shareBarcodeAsImage() }
         button_save_as_png.setOnClickListener { permissionsHelper.requestPermissions(this, permissions, SAVE_AS_PNG_REQUEST_PERMISSIONS_CODE) }
         button_save_as_svg.setOnClickListener { permissionsHelper.requestPermissions(this, permissions, SAVE_AS_SVG_REQUEST_PERMISSIONS_CODE) }
@@ -336,8 +338,22 @@ class BarcodeActivity : BaseActivity() {
         startActivityIfExists(intent)
     }
 
-    private fun navigateToBarcodeImageActivity() {
-        BarcodeImageActivity.start(this, originalBarcode)
+    private fun saveBarcodeAsCsv() {
+        try {
+            barcodeSaver.saveBarcodeAsCsv(this, originalBarcode)
+            showToast(R.string.activity_barcode_barcode_text_saved)
+        } catch (ex: Exception) {
+            showError(ex)
+        }
+    }
+
+    private fun saveBarcodeAsJson() {
+        try {
+            barcodeSaver.saveBarcodeAsJson(this, originalBarcode)
+            showToast(R.string.activity_barcode_barcode_text_saved)
+        } catch (ex: Exception) {
+            showError(ex)
+        }
     }
 
     private fun shareBarcodeAsImage() {
@@ -392,6 +408,10 @@ class BarcodeActivity : BaseActivity() {
             scaleMode = PrintHelper.SCALE_MODE_FIT
             printBitmap("${barcode.format}_${barcode.schema}_${barcode.date}", barcodeImage)
         }
+    }
+
+    private fun navigateToBarcodeImageActivity() {
+        BarcodeImageActivity.start(this, originalBarcode)
     }
 
     private fun deleteBarcode() {

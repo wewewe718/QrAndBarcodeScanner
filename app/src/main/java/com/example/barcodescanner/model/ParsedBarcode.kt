@@ -1,8 +1,12 @@
 package com.example.barcodescanner.model
 
+import com.example.barcodescanner.extension.formatOrNull
 import com.example.barcodescanner.model.schema.*
 import com.example.barcodescanner.model.schema.VEvent
 import com.google.zxing.BarcodeFormat
+import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ParsedBarcode(barcode: Barcode) {
     val id = barcode.id
@@ -12,7 +16,6 @@ class ParsedBarcode(barcode: Barcode) {
     val schema = barcode.schema
     val date = barcode.date
     val isFavorite = barcode.isFavorite
-    val errorCorrectionLevel = barcode.errorCorrectionLevel
     val country = barcode.country
 
     var firstName: String? = null

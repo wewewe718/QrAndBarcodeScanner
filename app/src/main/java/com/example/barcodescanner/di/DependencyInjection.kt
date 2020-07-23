@@ -6,17 +6,17 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.barcodescanner.usecase.*
 
 
-val AppCompatActivity.barcodeSchemaParser
-    get() = BarcodeSchemaParser
-
-val AppCompatActivity.barcodeScanResultParser
-    get() = BarcodeScanResultParser(barcodeSchemaParser)
+val AppCompatActivity.barcodeParser
+    get() = BarcodeParser
 
 val AppCompatActivity.barcodeImageScanner
     get() = BarcodeImageScanner
 
 val AppCompatActivity.barcodeImageGenerator
     get() = BarcodeImageGenerator
+
+val AppCompatActivity.barcodeSaver
+    get() = BarcodeSaver
 
 val AppCompatActivity.barcodeImageSaver
     get() = BarcodeImageSaver
@@ -40,11 +40,8 @@ val AppCompatActivity.permissionsHelper
 val Fragment.scannerCameraHelper
     get() = ScannerCameraHelper
 
-val Fragment.barcodeSchemaParser
-    get() = BarcodeSchemaParser
-
-val Fragment.barcodeScanResultParser
-    get() = BarcodeScanResultParser(barcodeSchemaParser)
+val Fragment.barcodeParser
+    get() = BarcodeParser
 
 val Fragment.barcodeDatabase
     get() = BarcodeDatabase.getInstance(requireContext())
