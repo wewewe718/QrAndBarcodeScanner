@@ -84,6 +84,11 @@
             />
 
         <activity
+            android:name=".feature.tabs.history.ExportHistoryActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity
             android:name=".feature.tabs.settings.camera.ChooseCameraActivity"
             android:screenOrientation="portrait"
             />

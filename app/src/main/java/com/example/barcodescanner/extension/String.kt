@@ -29,13 +29,8 @@ fun String.equalsAnyIgnoreCase(others: List<String>): Boolean {
     return false
 }
 
-fun String.containsAll(others: List<String>): Boolean {
-    others.forEach { other ->
-        if (contains(other).not()) {
-            return false
-        }
-    }
-    return true
+fun String.endsWithIgnoreCase(prefix: String): Boolean {
+    return endsWith(prefix, true)
 }
 
 fun List<String?>.joinNotNullOrBlankToStringWithLineSeparator(): String {

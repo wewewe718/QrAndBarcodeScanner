@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.paging.DataSource
 import androidx.room.*
 import com.example.barcodescanner.model.Barcode
+import com.example.barcodescanner.model.ExportBarcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.google.zxing.BarcodeFormat
 import io.reactivex.Completable
@@ -57,10 +58,13 @@ interface BarcodeDatabase {
     }
 
     @Query("SELECT * FROM codes ORDER BY date DESC")
-    fun getAll(): DataSource.Factory<Int, Barcode>
 
+    fun getAll(): DataSource.Factory<Int, Barcode>
     @Query("SELECT * FROM codes WHERE isFavorite = 1 ORDER BY date DESC")
     fun getFavorites(): DataSource.Factory<Int, Barcode>
+
+    @Query("SELECT date, format, text FROM codes ORDER BY date DESC")
+    fun getAllForExport(): Single<List<ExportBarcode>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun save(barcode: Barcode): Completable

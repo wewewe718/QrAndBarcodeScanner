@@ -146,6 +146,18 @@
     <string name="fragment_barcode_history_delete_all_dialog_positive_button">Clear</string>
     <string name="fragment_barcode_history_delete_all_dialog_negative_button">Cancel</string>
 
+    <!--Export history activity-->
+    <string name="activity_export_history_title">Export history</string>
+    <string name="activity_export_history_as_hint">Export as</string>
+    <string-array name="activity_export_history_types">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_export_history_file_name_hint">File name</string>
+    <string name="activity_export_history_file_name_default" translatable="false">db</string>
+    <string name="activity_export_history_export">Export</string>
+    <string name="activity_export_history_exported">Saved to Downloads</string>
+
     <!--Settings fragment-->
     <string name="fragment_settings_title">Settings</string>
     <string name="fragment_settings_clear_history_title">Warning</string>
