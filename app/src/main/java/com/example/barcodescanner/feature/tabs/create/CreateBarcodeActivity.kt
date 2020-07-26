@@ -269,7 +269,9 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { navigateToBarcodeScreen(barcode) },
+                { id ->
+                    navigateToBarcodeScreen(barcode.copy(id = id))
+                },
                 ::showError
             )
             .addTo(disposable)

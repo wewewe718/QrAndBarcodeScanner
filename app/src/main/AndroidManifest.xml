@@ -4,15 +4,18 @@
     package="com.example.barcodescanner"
     >
 
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <!--Normal permissions-->
     <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+
+    <!--Dangerous permissions-->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:allowBackup="true"
@@ -94,6 +97,10 @@
             />
         <activity
             android:name=".feature.tabs.settings.formats.SupportedFormatsActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".feature.tabs.settings.permissions.AllPermissionsActivity"
             android:screenOrientation="portrait"
             />
 

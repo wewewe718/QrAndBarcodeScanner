@@ -67,7 +67,7 @@ interface BarcodeDatabase {
     fun getAllForExport(): Single<List<ExportBarcode>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(barcode: Barcode): Completable
+    fun save(barcode: Barcode): Single<Long>
 
     @Query("DELETE FROM codes WHERE id = :id")
     fun delete(id: Long): Completable

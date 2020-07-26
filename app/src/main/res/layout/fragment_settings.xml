@@ -26,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin_small"
+                android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_settings_scanner_settings"
                 style="@style/CreateBarcodeFragmentHintTextViewStyle"
@@ -96,6 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_settings_history_settings"
                 style="@style/CreateBarcodeFragmentHintTextViewStyle"
@@ -132,15 +134,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_settings_about"
                 style="@style/CreateBarcodeFragmentHintTextViewStyle"
                 />
             <com.example.barcodescanner.feature.common.SettingsButton
-                android:id="@+id/button_rate_app"
+                android:id="@+id/button_check_updates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:text="@string/fragment_settings_rate"
+                app:text="@string/fragment_settings_check_updates"
+                app:isSwitchVisible="false"
+                app:isArrowVisible="true"
+                />
+            <com.example.barcodescanner.feature.common.SettingsButton
+                android:id="@+id/button_permissions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_permissions"
                 app:isSwitchVisible="false"
                 app:isArrowVisible="true"
                 />

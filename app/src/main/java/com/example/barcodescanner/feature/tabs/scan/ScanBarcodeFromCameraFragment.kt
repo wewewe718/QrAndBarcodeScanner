@@ -212,10 +212,10 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                {
+                { id ->
                     when (settings.continuousScanning) {
                         true -> restartPreviewWithDelay()
-                        else -> navigateToBarcodeScreen(barcode)
+                        else -> navigateToBarcodeScreen(barcode.copy(id = id))
                     }
                 },
                 ::showError

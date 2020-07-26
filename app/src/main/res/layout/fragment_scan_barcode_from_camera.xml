@@ -33,8 +33,7 @@
         app:layout_constraintBottom_toTopOf="@id/text_view_scan_from_file"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_image"
-        app:tint="@color/white"
+        app:srcCompat="@drawable/ic_image_white"
         />
     <TextView
         android:id="@+id/text_view_scan_from_file"

@@ -17,6 +17,7 @@ import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.tabs.settings.camera.ChooseCameraActivity
 import com.example.barcodescanner.feature.tabs.settings.formats.SupportedFormatsActivity
 import com.example.barcodescanner.feature.tabs.settings.history.DeleteHistoryConfirmationDialogFragment
+import com.example.barcodescanner.feature.tabs.settings.permissions.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -73,7 +74,8 @@ class SettingsFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Lis
         button_choose_camera.setOnClickListener { ChooseCameraActivity.start(requireActivity()) }
         button_select_supported_formats.setOnClickListener { SupportedFormatsActivity.start(requireActivity()) }
         button_clear_history.setOnClickListener { showDeleteHistoryConfirmationDialog() }
-        button_rate_app.setOnClickListener { showAppInMarket() }
+        button_permissions.setOnClickListener { showPermissionsScreen() }
+        button_check_updates.setOnClickListener { showAppInMarket() }
     }
 
     private fun clearHistory() {
@@ -112,8 +114,12 @@ class SettingsFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Lis
         dialog.show(childFragmentManager, "")
     }
 
+    private fun showPermissionsScreen() {
+        AllPermissionsActivity.start(requireActivity())
+    }
+
     private fun showAppInMarket() {
-        val uri = Uri.parse("http://play.google.com/store/apps/details?id=" + requireContext().packageName)
+        val uri = Uri.parse("market://details?id=" + requireContext().packageName)
         val intent = Intent(Intent.ACTION_VIEW, uri).apply {
             flags = Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
         }

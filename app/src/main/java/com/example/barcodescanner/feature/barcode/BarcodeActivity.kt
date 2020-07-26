@@ -33,10 +33,12 @@ import java.util.*
 class BarcodeActivity : BaseActivity() {
 
     companion object {
-        private const val SAVE_AS_PNG_REQUEST_PERMISSIONS_CODE = 101
-        private const val SAVE_AS_SVG_REQUEST_PERMISSIONS_CODE = 102
         private const val BARCODE_KEY = "BARCODE_KEY"
         private const val IS_CREATED = "IS_CREATED"
+
+        private const val SAVE_AS_PNG_REQUEST_PERMISSIONS_CODE = 101
+        private const val SAVE_AS_SVG_REQUEST_PERMISSIONS_CODE = 102
+        private val PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
         fun start(context: Context, barcode: Barcode, isCreated: Boolean = false) {
             val intent = Intent(context, BarcodeActivity::class.java).apply {
@@ -47,7 +49,6 @@ class BarcodeActivity : BaseActivity() {
         }
     }
 
-    private val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
     private val disposable = CompositeDisposable()
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
 
@@ -158,8 +159,8 @@ class BarcodeActivity : BaseActivity() {
         button_save_as_csv.setOnClickListener { saveBarcodeAsCsv() }
         button_save_as_json.setOnClickListener { saveBarcodeAsJson() }
         button_share_as_image.setOnClickListener { shareBarcodeAsImage() }
-        button_save_as_png.setOnClickListener { permissionsHelper.requestPermissions(this, permissions, SAVE_AS_PNG_REQUEST_PERMISSIONS_CODE) }
-        button_save_as_svg.setOnClickListener { permissionsHelper.requestPermissions(this, permissions, SAVE_AS_SVG_REQUEST_PERMISSIONS_CODE) }
+        button_save_as_png.setOnClickListener { permissionsHelper.requestPermissions(this, PERMISSIONS, SAVE_AS_PNG_REQUEST_PERMISSIONS_CODE) }
+        button_save_as_svg.setOnClickListener { permissionsHelper.requestPermissions(this, PERMISSIONS, SAVE_AS_SVG_REQUEST_PERMISSIONS_CODE) }
         button_print.setOnClickListener { printBarcode() }
     }
 
@@ -442,15 +443,21 @@ class BarcodeActivity : BaseActivity() {
     }
 
     private fun showBarcodeMenuIfNeeded() {
-        if (isCreated) {
-            return
+        toolbar.inflateMenu(R.menu.menu_barcode)
+        toolbar.menu.apply {
+            findItem(R.id.item_add_to_favorites)?.isVisible = barcode.isInDb
+            findItem(R.id.item_show_barcode_image)?.isVisible = isCreated.not()
+            findItem(R.id.item_delete)?.isVisible = barcode.isInDb
         }
 
-        if (barcode.isInDb) {
-            toolbar.inflateMenu(R.menu.menu_barcode)
-        } else {
-            toolbar.inflateMenu(R.menu.menu_barcode_without_delete)
-        }
+//        if (isCreated) {
+//            return
+//        }
+//
+//        if (barcode.isInDb) {
+//        } else {
+//            toolbar.inflateMenu(R.menu.menu_barcode_without_delete)
+//        }
     }
 
     private fun showBarcodeIsFavorite() {

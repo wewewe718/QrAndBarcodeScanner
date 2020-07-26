@@ -18,7 +18,7 @@
     <item
         android:id="@+id/item_change_image"
         android:title="@string/activity_scan_barcode_from_file_change_image"
-        android:icon="@drawable/ic_image"
+        android:icon="@drawable/ic_image_black"
         app:showAsAction="always"
         />
 </menu>

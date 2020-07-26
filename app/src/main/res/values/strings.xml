@@ -177,7 +177,8 @@
     <string name="fragment_settings_save_created_barcodes_to_history">Save created barcodes to history</string>
     <string name="fragment_settings_clear_history">Clear history</string>
     <string name="fragment_settings_about">About</string>
-    <string name="fragment_settings_rate">Rate this app</string>
+    <string name="fragment_settings_check_updates">Check for updates</string>
+    <string name="fragment_settings_permissions">Permissions</string>
     <string name="fragment_settings_app_version">App version</string>
 
     <!--Choose camera activity-->
@@ -187,6 +188,17 @@
 
     <!--Select supported formats activity-->
     <string name="activity_supported_formats_title">Supported formats</string>
+
+    <!--All permissions activity-->
+    <string name="activity_all_permissions_title">Permissions</string>
+    <string name="activity_all_permissions_camera_title">Camera</string>
+    <string name="activity_all_permissions_camera_hint">Used to scan QR codes and barcodes from camera</string>
+    <string name="activity_all_permissions_read_contacts_title">Read contacts</string>
+    <string name="activity_all_permissions_read_contacts_hint">Used to create a QR code by selecting a contact from your contact list</string>
+    <string name="activity_all_permissions_location_title">Location</string>
+    <string name="activity_all_permissions_location_hint">Used to show your current location while choosing a location to create a location QR code</string>
+    <string name="activity_all_permissions_storage_title">Storage</string>
+    <string name="activity_all_permissions_storage_hint">Used to access storage when you want to save your QR code or barcode as text or image</string>
 
     <!--Barcode activity-->
     <string name="activity_barcode_search_on_rate_and_goods">Search on Rate&amp;Goods</string>

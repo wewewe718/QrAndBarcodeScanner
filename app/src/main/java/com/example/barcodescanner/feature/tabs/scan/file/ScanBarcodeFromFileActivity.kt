@@ -193,7 +193,9 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { navigateToBarcodeScreen(barcode) },
+                { id ->
+                    navigateToBarcodeScreen(barcode.copy(id = id))
+                },
                 { error ->
                     showLoading(false)
                     showError(error)
