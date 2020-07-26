@@ -18,7 +18,6 @@ class Settings(context: Context) {
         OPEN_LINKS_AUTOMATICALLY,
         COPY_TO_CLIPBOARD,
         FLASHLIGHT,
-        AUTO_FOCUS,
         VIBRATE,
         CONTINUOUS_SCANNING,
         CONFIRM_SCANS_MANUALLY,
@@ -42,10 +41,6 @@ class Settings(context: Context) {
     var flash: Boolean
         get() = getBoolean(Key.FLASHLIGHT, false)
         set(value) = setBoolean(Key.FLASHLIGHT, value)
-
-    var autoFocus: Boolean
-        get() = getBoolean(Key.AUTO_FOCUS, true)
-        set(value) = setBoolean(Key.AUTO_FOCUS, value)
 
     var vibrate: Boolean
         get() = getBoolean(Key.VIBRATE, true)

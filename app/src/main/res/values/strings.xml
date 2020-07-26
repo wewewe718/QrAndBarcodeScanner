@@ -165,7 +165,6 @@
     <string name="fragment_settings_open_links_automatically">Open links automatically</string>
     <string name="fragment_settings_copy_to_clipboard">Copy to clipboard</string>
     <string name="fragment_settings_flash">Flash</string>
-    <string name="fragment_settings_auto_focus">Auto focus</string>
     <string name="fragment_settings_vibrate">Vibrate</string>
     <string name="fragment_settings_continuous_scanning">Continuous scanning</string>
     <string name="fragment_settings_continuous_scanning_hint">Save scans to history only</string>

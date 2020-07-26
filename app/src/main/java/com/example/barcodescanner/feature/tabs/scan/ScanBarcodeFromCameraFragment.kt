@@ -104,11 +104,11 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
                 CodeScanner.CAMERA_FRONT
             }
             formats = SupportedBarcodeFormats.FORMATS.filter(settings::isFormatSelected)
-            autoFocusMode = AutoFocusMode.SAFE
+            autoFocusMode = AutoFocusMode.CONTINUOUS
             scanMode = ScanMode.SINGLE
-            isAutoFocusEnabled = settings.autoFocus
+            isAutoFocusEnabled = true
             isFlashEnabled = settings.flash
-            isTouchFocusEnabled = true
+            isTouchFocusEnabled = false
             decodeCallback = DecodeCallback(::handleScannedBarcode)
             errorCallback = ErrorCallback(::showError)
         }
@@ -159,8 +159,10 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         codeScanner.apply {
             if (zoom > zoomStep) {
                 zoom -= zoomStep
-                seek_bar_zoom.progress = zoom
+            } else {
+                zoom = 0
             }
+            seek_bar_zoom.progress = zoom
         }
     }
 
@@ -168,8 +170,10 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         codeScanner.apply {
             if (zoom < maxZoom - zoomStep) {
                 zoom += zoomStep
-                seek_bar_zoom.progress = zoom
+            } else {
+                zoom = maxZoom
             }
+            seek_bar_zoom.progress = zoom
         }
     }
 
@@ -242,7 +246,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun requestPermissions() {
-        permissionsHelper.requestPermissions(requireActivity() as AppCompatActivity, permissions, PERMISSION_REQUEST_CODE)
+        permissionsHelper.requestNotGrantedPermissions(requireActivity() as AppCompatActivity, permissions, PERMISSION_REQUEST_CODE)
     }
 
     private fun areAllPermissionsGranted(): Boolean {

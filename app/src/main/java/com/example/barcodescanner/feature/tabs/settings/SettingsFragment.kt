@@ -62,7 +62,6 @@ class SettingsFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Lis
         button_open_links_automatically.setCheckedChangedListener { settings.openLinksAutomatically = it }
         button_copy_to_clipboard.setCheckedChangedListener { settings.copyToClipboard = it }
         button_flashlight.setCheckedChangedListener { settings.flash = it }
-        button_auto_focus.setCheckedChangedListener { settings.autoFocus = it }
         button_vibrate.setCheckedChangedListener { settings.vibrate = it }
         button_continuous_scanning.setCheckedChangedListener { settings.continuousScanning = it }
         button_confirm_scans_manually.setCheckedChangedListener { settings.confirmScansManually = it }
@@ -100,7 +99,6 @@ class SettingsFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Lis
             button_open_links_automatically.isChecked = openLinksAutomatically
             button_copy_to_clipboard.isChecked = copyToClipboard
             button_flashlight.isChecked = flash
-            button_auto_focus.isChecked = autoFocus
             button_vibrate.isChecked = vibrate
             button_continuous_scanning.isChecked = continuousScanning
             button_confirm_scans_manually.isChecked = confirmScansManually

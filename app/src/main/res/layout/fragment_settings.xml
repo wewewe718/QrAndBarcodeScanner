@@ -49,12 +49,6 @@
                 app:text="@string/fragment_settings_flash"
                 />
             <com.example.barcodescanner.feature.common.SettingsButton
-                android:id="@+id/button_auto_focus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:text="@string/fragment_settings_auto_focus"
-                />
-            <com.example.barcodescanner.feature.common.SettingsButton
                 android:id="@+id/button_vibrate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

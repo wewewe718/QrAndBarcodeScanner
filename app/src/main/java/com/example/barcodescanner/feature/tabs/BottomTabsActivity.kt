@@ -33,6 +33,14 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
         return true
     }
 
+    override fun onBackPressed() {
+        if (bottom_navigation_view.selectedItemId == R.id.item_scan) {
+            super.onBackPressed()
+        } else {
+            bottom_navigation_view.selectedItemId = R.id.item_scan
+        }
+    }
+
     private fun initBottomNavigationView() {
         bottom_navigation_view.apply {
             clearAnimation()
@@ -58,6 +66,7 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.layout_fragment_container, fragment)
+            .setReorderingAllowed(true)
             .commit()
     }
 }

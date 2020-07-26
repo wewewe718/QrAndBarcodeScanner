@@ -22,6 +22,13 @@ object PermissionsHelper {
         ActivityCompat.requestPermissions(activity, notGrantedPermissions.toTypedArray(), requestCode)
     }
 
+    fun requestNotGrantedPermissions(activity: AppCompatActivity, permissions: Array<out String>, requestCode: Int) {
+        val notGrantedPermissions = permissions.filterNot { isPermissionGranted(activity, it) }
+        if (notGrantedPermissions.isNotEmpty()) {
+            ActivityCompat.requestPermissions(activity, notGrantedPermissions.toTypedArray(), requestCode)
+        }
+    }
+
     fun areAllPermissionsGranted(context: Context, permissions: Array<out String>): Boolean {
         permissions.forEach { permission ->
             if (isPermissionGranted(context, permission).not()) {
