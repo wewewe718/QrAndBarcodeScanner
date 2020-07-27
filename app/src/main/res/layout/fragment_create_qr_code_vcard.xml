@@ -181,7 +181,7 @@
             android:layout_marginTop="@dimen/default_margin_big"
             android:layout_marginHorizontal="@dimen/default_margin"
             android:text="@string/fragment_create_barcode_alternative"
-            style="@style/CreateBarcodeFragmentHintTextViewStyle"
+            style="@style/SettingsGroupTitleTextViewStyle"
             />
         <TextView
             android:layout_width="match_parent"

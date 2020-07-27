@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_margin_big"
             android:text="@string/fragment_create_barcode_alternative"
-            style="@style/CreateBarcodeFragmentHintTextViewStyle"
+            style="@style/SettingsGroupTitleTextViewStyle"
             />
         <TextView
             android:layout_width="match_parent"

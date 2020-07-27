@@ -17,7 +17,7 @@ import com.example.barcodescanner.extension.vibrateOnce
 import com.example.barcodescanner.extension.vibrator
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
-import com.example.barcodescanner.feature.tabs.scan.confirm.ConfirmBarcodeDialogFragment
+import com.example.barcodescanner.feature.common.dialog.ConfirmBarcodeDialogFragment
 import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.usecase.SupportedBarcodeFormats

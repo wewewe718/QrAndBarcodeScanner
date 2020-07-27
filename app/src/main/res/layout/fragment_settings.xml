@@ -29,7 +29,7 @@
                 android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_settings_scanner_settings"
-                style="@style/CreateBarcodeFragmentHintTextViewStyle"
+                style="@style/SettingsGroupTitleTextViewStyle"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_open_links_automatically"
@@ -100,7 +100,7 @@
                 android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_settings_history_settings"
-                style="@style/CreateBarcodeFragmentHintTextViewStyle"
+                style="@style/SettingsGroupTitleTextViewStyle"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_save_scanned_barcodes"
@@ -137,7 +137,7 @@
                 android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_settings_about"
-                style="@style/CreateBarcodeFragmentHintTextViewStyle"
+                style="@style/SettingsGroupTitleTextViewStyle"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_check_updates"

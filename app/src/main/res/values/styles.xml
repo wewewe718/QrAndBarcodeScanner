@@ -86,10 +86,9 @@
         <item name="android:textSize">@dimen/default_text_size_very_small</item>
     </style>
 
-    <style name="CreateBarcodeFragmentHintTextViewStyle">
-        <item name="android:textColor">@color/gray6</item>
+    <style name="SettingsGroupTitleTextViewStyle">
+        <item name="android:textColor">@color/blue</item>
         <item name="android:textSize">@dimen/default_text_size_small2</item>
-        <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
     </style>
 

@@ -35,7 +35,7 @@
     <View
         android:id="@+id/delimiter"
         android:layout_width="0dp"
-        android:layout_height="0.2dp"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/default_margin"
         android:layout_marginEnd="@dimen/default_margin"
         app:layout_constraintStart_toStartOf="@id/text_view_text"
@@ -43,26 +43,19 @@
         app:layout_constraintTop_toBottomOf="@id/text_view_hint"
         android:background="@color/gray5"
         />
-    <com.suke.widget.SwitchButton
+    <Switch
         android:id="@+id/switch_button"
-        android:layout_width="@dimen/switch_width"
-        android:layout_height="@dimen/switch_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/icon_button_vertical_padding"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/delimiter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:sb_show_indicator="false"
-        app:sb_shadow_effect="false"
-        app:sb_checked_color="@color/blue"
-        app:sb_uncheck_color="@color/gray7"
-        app:sb_button_color="@color/white"
-        app:sb_effect_duration="150"
-        app:sb_background="@color/gray7"
         />
     <ImageView
         android:id="@+id/image_view_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="@dimen/default_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/delimiter"

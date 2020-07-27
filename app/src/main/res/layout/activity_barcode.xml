@@ -189,7 +189,7 @@
                 android:id="@+id/button_open_wifi_settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_settings_checked"
+                app:icon="@drawable/ic_settings"
                 app:iconBackground="@color/orange"
                 app:text="@string/activity_barcode_open_wifi_settings"
                 android:visibility="gone"

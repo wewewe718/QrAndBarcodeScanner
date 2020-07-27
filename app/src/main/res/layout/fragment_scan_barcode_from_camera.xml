@@ -22,7 +22,7 @@
         app:frameCornersRadius="8dp"
         app:frameAspectRatioWidth="1"
         app:frameAspectRatioHeight="1"
-        app:frameSize="0.6"
+        app:frameSize="0.55"
         />
 
     <ImageView

@@ -1,4 +1,4 @@
-package com.example.barcodescanner.feature.tabs.scan.confirm
+package com.example.barcodescanner.feature.common.dialog
 
 import android.app.Dialog
 import android.os.Bundle
@@ -23,6 +23,7 @@ class ConfirmBarcodeDialogFragment : DialogFragment() {
                 arguments = Bundle().apply {
                     putSerializable(BARCODE_KEY, barcode)
                 }
+                isCancelable = false
             }
         }
     }

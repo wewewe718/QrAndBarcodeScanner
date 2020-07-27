@@ -22,6 +22,7 @@ class DeleteConfirmationDialogFragment : DialogFragment() {
                 arguments = Bundle().apply {
                     putInt(MESSAGE_ID_KEY, messageId)
                 }
+                isCancelable = false
             }
         }
     }
@@ -34,24 +35,14 @@ class DeleteConfirmationDialogFragment : DialogFragment() {
         val listener = parentFragment as? Listener
         val messageId = arguments?.getInt(MESSAGE_ID_KEY).orZero()
 
-        val inflater = LayoutInflater.from(requireContext())
-        val view = inflater.inflate(R.layout.dialog_delete_confirmation, null, false)
-
         val dialog = AlertDialog.Builder(requireContext())
-            .setView(view)
+            .setMessage(messageId)
+            .setPositiveButton(R.string.dialog_delete_positive_button) { _, _ -> listener?.onDeleteConfirmed() }
+            .setNegativeButton(R.string.dialog_delete_negative_button, null)
             .create()
 
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        view.text_view_message.setText(messageId)
-
-        view.button_delete.setOnClickListener {
-            listener?.onDeleteConfirmed()
-            dialog.dismiss()
-        }
-
-        view.button_cancel.setOnClickListener {
-            dialog.dismiss()
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.red))
         }
 
         return dialog

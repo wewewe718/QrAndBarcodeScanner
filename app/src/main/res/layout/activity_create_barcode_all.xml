@@ -31,7 +31,7 @@
                 android:layout_marginBottom="@dimen/default_margin_medium2"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_create_barcode_list_2d"
-                style="@style/CreateBarcodeFragmentHintTextViewStyle"
+                style="@style/SettingsGroupTitleTextViewStyle"
                 />
             <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_data_matrix"
@@ -72,7 +72,7 @@
                 android:layout_marginBottom="@dimen/default_margin_medium2"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_create_barcode_list_1d"
-                style="@style/CreateBarcodeFragmentHintTextViewStyle"
+                style="@style/SettingsGroupTitleTextViewStyle"
                 />
             <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_ean_13"
