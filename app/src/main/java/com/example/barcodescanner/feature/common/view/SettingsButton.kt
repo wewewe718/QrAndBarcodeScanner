@@ -25,8 +25,6 @@ class SettingsButton : FrameLayout {
             showText(this)
             showHint(this)
             showSwitch(this)
-            showArrow(this)
-            showDelimiter(this)
             recycle()
         }
     }
@@ -65,13 +63,10 @@ class SettingsButton : FrameLayout {
 
     private fun showSwitch(attributes: TypedArray) {
         view.switch_button.isVisible = attributes.getBoolean(R.styleable.SettingsButton_isSwitchVisible, true)
-    }
-
-    private fun showArrow(attributes: TypedArray) {
-        view.image_view_arrow.isVisible = attributes.getBoolean(R.styleable.SettingsButton_isArrowVisible, false)
-    }
-
-    private fun showDelimiter(attributes: TypedArray) {
-        view.delimiter.isInvisible = attributes.getBoolean(R.styleable.SettingsButton_isDelimiterVisible, true).not()
+        if (view.switch_button.isVisible) {
+            view.setOnClickListener {
+                view.switch_button.toggle()
+            }
+        }
     }
 }

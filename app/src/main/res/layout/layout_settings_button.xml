@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_clickable"
+    android:background="?attr/selectableItemBackground"
     >
     <TextView
         android:id="@+id/text_view_text"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_view_hint"
         android:background="@color/gray5"
         />
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,6 +51,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/delimiter"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@null"
         />
     <ImageView
         android:id="@+id/image_view_arrow"

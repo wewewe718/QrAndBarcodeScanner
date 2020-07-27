@@ -25,6 +25,10 @@ class SettingsRadioButton : FrameLayout {
             showDelimiter(this)
             recycle()
         }
+
+        view.setOnClickListener {
+            radio_button.toggle()
+        }
     }
 
     var isChecked: Boolean

@@ -8,7 +8,7 @@
     android:orientation="horizontal"
     android:paddingHorizontal="@dimen/default_margin"
     android:paddingTop="@dimen/icon_button_with_delimiter_vertical_padding"
-    android:background="@drawable/background_clickable"
+    style="@style/ClickableBackground"
     >
     <FrameLayout
         android:id="@+id/layout_image"

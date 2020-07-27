@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_clickable"
+    style="@style/ClickableBackground"
     >
     <TextView
         android:id="@+id/text_view_text"
@@ -40,5 +40,6 @@
         app:layout_constraintBottom_toTopOf="@id/delimiter"
         app:layout_constraintEnd_toEndOf="parent"
         android:theme="@style/RadioButtonTheme"
+        android:background="@null"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
