@@ -24,7 +24,7 @@
             >
 
             <!--Barcode image-->
-            <com.example.barcodescanner.feature.common.SquareImageView
+            <com.example.barcodescanner.feature.common.view.SquareImageView
                 android:id="@+id/image_view_barcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 />
 
             <!--Specific buttons-->
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_search_on_rate_and_goods"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_search_on_amazon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_search_on_ebay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_search_on_web"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_add_to_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_add_to_contacts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_call_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_send_sms_or_mms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_send_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_show_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_connect_to_wifi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_open_wifi_settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -195,7 +195,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_copy_network_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -205,7 +205,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_copy_network_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -215,7 +215,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_open_in_google_play"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -225,7 +225,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_open_in_youtube"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -235,7 +235,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_save_bookmark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -245,7 +245,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_open_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -257,7 +257,7 @@
                 />
 
             <!--General-->
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_share_as_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -265,7 +265,7 @@
                 app:icon="@drawable/ic_share"
                 app:text="@string/activity_barcode_share_as_text"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_copy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -273,7 +273,7 @@
                 app:iconBackground="@color/green"
                 app:text="@string/activity_barcode_copy"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -281,7 +281,7 @@
                 app:iconBackground="@color/green"
                 app:text="@string/activity_barcode_search"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_save_as_csv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -289,7 +289,7 @@
                 app:iconBackground="@color/green"
                 app:text="@string/activity_barcode_save_as_csv"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_save_as_json"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -297,7 +297,7 @@
                 app:iconBackground="@color/green"
                 app:text="@string/activity_barcode_save_as_json"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_share_as_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -305,7 +305,7 @@
                 app:iconBackground="@color/blue"
                 app:text="@string/activity_barcode_share_as_image"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_save_as_png"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -313,7 +313,7 @@
                 app:iconBackground="@color/blue"
                 app:text="@string/activity_barcode_save_as_png"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_save_as_svg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -321,7 +321,7 @@
                 app:iconBackground="@color/blue"
                 app:text="@string/activity_barcode_save_as_svg"
                 />
-            <com.example.barcodescanner.feature.common.IconButton
+            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_print"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

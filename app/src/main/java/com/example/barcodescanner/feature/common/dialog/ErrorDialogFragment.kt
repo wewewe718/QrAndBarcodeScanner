@@ -1,4 +1,4 @@
-package com.example.barcodescanner.feature.common
+package com.example.barcodescanner.feature.common.dialog
 
 import android.app.Dialog
 import android.content.Context

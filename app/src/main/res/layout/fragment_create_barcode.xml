@@ -32,7 +32,7 @@
                 android:text="@string/fragment_create_barcode_qr_code"
                 style="@style/CreateBarcodeFragmentHintTextViewStyle"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_clipboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
                 app:iconBackground="@color/green"
                 app:text="@string/fragment_create_barcode_qr_code_clipboard"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/fragment_create_barcode_qr_code_text"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_url"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_url"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_wifi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_wifi"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_geo"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_contact_vcard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_v_card"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_show_all_qr_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
                 android:text="@string/fragment_create_barcode"
                 style="@style/CreateBarcodeFragmentHintTextViewStyle"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_create_barcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

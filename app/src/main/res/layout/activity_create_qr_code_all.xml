@@ -22,7 +22,7 @@
             android:paddingBottom="@dimen/default_margin_small"
             android:orientation="vertical"
             >
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/fragment_create_barcode_qr_code_text"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_url"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_url"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_wifi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_wifi"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_geo"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_contact_vcard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_v_card"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_contact_mecard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_me_card"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_v_event"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_phone"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_email"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_sms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_sms"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_mms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_mms"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_cryptocurrency"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_cryptocurrency"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_bookmark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                 app:iconBackground="@color/blue3"
                 app:text="@string/barcode_schema_bookmark"
                 />
-            <com.example.barcodescanner.feature.common.IconButtonWithDelimiter
+            <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

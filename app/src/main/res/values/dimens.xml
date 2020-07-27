@@ -18,6 +18,8 @@
     <dimen name="default_text_size">16sp</dimen>
     <dimen name="default_text_size_large">18sp</dimen>
 
+    <dimen name="dialog_corner_radius">16dp</dimen>
+
     <dimen name="zoom_seek_bar_height">100dp</dimen>
     
     <dimen name="icon_button_icon_size">18dp</dimen>

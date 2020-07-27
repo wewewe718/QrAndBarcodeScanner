@@ -47,6 +47,20 @@
         <item name="android:background">@drawable/background_button</item>
     </style>
 
+    <style name="DeleteDialogPositiveButtonStyle" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:background">@drawable/background_button_2</item>
+    </style>
+
+    <style name="DeleteDialogNegativeButtonStyle" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:background">@drawable/background_button_2</item>
+    </style>
+
     <style name="IconButtonStyle">
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@drawable/background_clickable</item>

@@ -7,6 +7,12 @@
     <string name="error_dialog_no_internet_message">No internet. Check your internet connection.</string>
     <string name="error_dialog_positive_button_text">OK</string>
 
+    <!--Delete dialog-->
+    <string name="dialog_delete_positive_button">Delete</string>
+    <string name="dialog_delete_negative_button">Cancel</string>
+    <string name="dialog_delete_clear_history_message">Delete history?</string>
+    <string name="dialog_delete_barcode_message">Delete?</string>
+
     <!--Bottom tabs activity-->
     <string name="activity_bottom_tabs_scan_tab">Scan</string>
     <string name="activity_bottom_tabs_create_tab">Create</string>
@@ -141,10 +147,7 @@
     </string-array>
     <string name="fragment_barcode_history_menu_title_export">Export history</string>
     <string name="fragment_barcode_history_menu_title_delete_all">Clear history</string>
-    <string name="fragment_barcode_history_delete_all_dialog_title">Delete</string>
-    <string name="fragment_barcode_history_delete_all_dialog_message">Are you sure want to clear history?</string>
-    <string name="fragment_barcode_history_delete_all_dialog_positive_button">Clear</string>
-    <string name="fragment_barcode_history_delete_all_dialog_negative_button">Cancel</string>
+
 
     <!--Export history activity-->
     <string name="activity_export_history_title">Export history</string>

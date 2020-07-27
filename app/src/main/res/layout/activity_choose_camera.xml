@@ -13,7 +13,7 @@
         app:title="@string/activity_choose_camera_title"
         style="@style/ToolbarWithBackButtonStyle"
         />
-    <com.example.barcodescanner.feature.common.SettingsRadioButton
+    <com.example.barcodescanner.feature.common.view.SettingsRadioButton
         android:id="@+id/button_back_camera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:text="@string/activity_choose_camera_back"
         />
-    <com.example.barcodescanner.feature.common.SettingsRadioButton
+    <com.example.barcodescanner.feature.common.view.SettingsRadioButton
         android:id="@+id/button_front_camera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

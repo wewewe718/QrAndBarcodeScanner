@@ -22,7 +22,7 @@
             android:paddingBottom="@dimen/default_margin"
             android:orientation="vertical"
             >
-            <com.example.barcodescanner.feature.common.SquareImageView
+            <com.example.barcodescanner.feature.common.view.SquareImageView
                 android:id="@+id/image_view_barcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

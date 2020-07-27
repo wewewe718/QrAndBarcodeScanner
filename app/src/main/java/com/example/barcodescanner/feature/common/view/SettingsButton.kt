@@ -1,4 +1,4 @@
-package com.example.barcodescanner.feature.common
+package com.example.barcodescanner.feature.common.view
 
 import android.content.Context
 import android.content.res.TypedArray

@@ -31,45 +31,45 @@
                 android:text="@string/fragment_settings_scanner_settings"
                 style="@style/CreateBarcodeFragmentHintTextViewStyle"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_open_links_automatically"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_open_links_automatically"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_copy_to_clipboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_copy_to_clipboard"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_flashlight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_flash"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_vibrate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_vibrate"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_continuous_scanning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_continuous_scanning"
                 app:hint="@string/fragment_settings_continuous_scanning_hint"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_confirm_scans_manually"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_confirm_scans_manually"
                 app:hint="@string/fragment_settings_confirm_scans_manually_hint"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_choose_camera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
                 app:isSwitchVisible="false"
                 app:isArrowVisible="true"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_select_supported_formats"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,19 +102,19 @@
                 android:text="@string/fragment_settings_history_settings"
                 style="@style/CreateBarcodeFragmentHintTextViewStyle"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_save_scanned_barcodes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_save_scanned_barcodes_to_history"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_save_created_barcodes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_save_created_barcodes_to_history"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_clear_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                 android:text="@string/fragment_settings_about"
                 style="@style/CreateBarcodeFragmentHintTextViewStyle"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_check_updates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
                 app:isSwitchVisible="false"
                 app:isArrowVisible="true"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_permissions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
                 app:isSwitchVisible="false"
                 app:isArrowVisible="true"
                 />
-            <com.example.barcodescanner.feature.common.SettingsButton
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_app_version"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

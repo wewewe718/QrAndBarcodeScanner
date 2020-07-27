@@ -14,10 +14,9 @@ import com.example.barcodescanner.di.settings
 import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.BaseActivity
-import com.example.barcodescanner.feature.tabs.settings.camera.ChooseCameraActivity
 import com.example.barcodescanner.feature.tabs.settings.formats.SupportedFormatsActivity
-import com.example.barcodescanner.feature.tabs.settings.history.DeleteHistoryConfirmationDialogFragment
 import com.example.barcodescanner.feature.tabs.settings.permissions.*
+import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -25,7 +24,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 
-class SettingsFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Listener {
+class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     private val disposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +45,7 @@ class SettingsFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Lis
         showAppVersion()
     }
 
-    override fun onDeleteHistoryPositiveButtonClicked() {
+    override fun onDeleteConfirmed() {
         clearHistory()
     }
 
@@ -110,7 +109,7 @@ class SettingsFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Lis
     }
 
     private fun showDeleteHistoryConfirmationDialog() {
-        val dialog = DeleteHistoryConfirmationDialogFragment()
+        val dialog = DeleteConfirmationDialogFragment.newInstance(R.string.dialog_delete_clear_history_message)
         dialog.show(childFragmentManager, "")
     }
 

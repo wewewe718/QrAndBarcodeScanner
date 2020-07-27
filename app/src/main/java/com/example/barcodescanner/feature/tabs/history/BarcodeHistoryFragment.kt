@@ -9,17 +9,16 @@ import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.BaseActivity
-import com.example.barcodescanner.feature.tabs.settings.history.DeleteHistoryConfirmationDialogFragment
+import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_barcode_history.*
 import kotlinx.android.synthetic.main.fragment_barcode_history.toolbar
-import kotlinx.android.synthetic.main.fragment_settings.*
 
 
-class BarcodeHistoryFragment : Fragment(), DeleteHistoryConfirmationDialogFragment.Listener {
+class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     private val disposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +36,7 @@ class BarcodeHistoryFragment : Fragment(), DeleteHistoryConfirmationDialogFragme
         handleMenuClicked()
     }
 
-    override fun onDeleteHistoryPositiveButtonClicked() {
+    override fun onDeleteConfirmed() {
         clearHistory()
     }
 
@@ -66,7 +65,7 @@ class BarcodeHistoryFragment : Fragment(), DeleteHistoryConfirmationDialogFragme
     }
 
     private fun showDeleteHistoryConfirmationDialog() {
-        val dialog = DeleteHistoryConfirmationDialogFragment()
+        val dialog = DeleteConfirmationDialogFragment.newInstance(R.string.dialog_delete_clear_history_message)
         dialog.show(childFragmentManager, "")
     }
 
