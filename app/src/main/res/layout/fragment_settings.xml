@@ -25,7 +25,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_small"
+                android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_settings_scanner_settings"
@@ -42,18 +42,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_copy_to_clipboard"
+                app:hint="@string/fragment_settings_copy_to_clipboard_hint"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_flashlight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_flash"
+                app:hint="@string/fragment_settings_flash_hint"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_vibrate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_vibrate"
+                app:hint="@string/fragment_settings_vibrate_hint"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_continuous_scanning"
@@ -75,28 +78,22 @@
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_camera"
                 app:isSwitchVisible="false"
-                app:isArrowVisible="true"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_select_supported_formats"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_supported_formats"
-                app:isDelimiterVisible="false"
                 app:isSwitchVisible="false"
-                app:isArrowVisible="true"
                 />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/default_margin_extra_small"
-                android:background="@color/gray3"
-                />
+
+            <View style="@style/DelimiterStyle" />
 
             <!--History-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin_very_big"
                 android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_settings_history_settings"
@@ -123,17 +120,14 @@
                 app:isSwitchVisible="false"
                 app:isArrowVisible="false"
                 />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/default_margin_extra_small"
-                android:background="@color/gray3"
-                />
+
+            <View style="@style/DelimiterStyle" />
 
             <!--About-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin_very_big"
                 android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_settings_about"

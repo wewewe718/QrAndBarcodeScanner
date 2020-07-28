@@ -167,8 +167,11 @@
     <string name="fragment_settings_scanner_settings">Scanner</string>
     <string name="fragment_settings_open_links_automatically">Open links automatically</string>
     <string name="fragment_settings_copy_to_clipboard">Copy to clipboard</string>
+    <string name="fragment_settings_copy_to_clipboard_hint">Copy scanned barcodes to clipboard</string>
     <string name="fragment_settings_flash">Flash</string>
+    <string name="fragment_settings_flash_hint">Enable flash on start</string>
     <string name="fragment_settings_vibrate">Vibrate</string>
+    <string name="fragment_settings_vibrate_hint">Vibrate on scan</string>
     <string name="fragment_settings_continuous_scanning">Continuous scanning</string>
     <string name="fragment_settings_continuous_scanning_hint">Save scans to history only</string>
     <string name="fragment_settings_confirm_scans_manually">Confirm scans manually</string>

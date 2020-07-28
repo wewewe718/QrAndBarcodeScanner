@@ -27,11 +27,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_small"
+                android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginBottom="@dimen/default_margin_medium2"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_create_barcode_qr_code"
-                style="@style/SettingsGroupTitleTextViewStyle"
+                style="@style/CreateBarcodeGroupTitleTextViewStyle"
                 />
             <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_clipboard"
@@ -91,21 +91,16 @@
                 app:isDelimiterVisible="false"
                 app:isArrowVisible="true"
                 />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/default_margin_small"
-                android:background="@color/gray3"
-                />
 
             <!--Barcode-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin_very_big"
                 android:layout_marginBottom="@dimen/default_margin_medium2"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_create_barcode"
-                style="@style/SettingsGroupTitleTextViewStyle"
+                style="@style/CreateBarcodeGroupTitleTextViewStyle"
                 />
             <com.example.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/button_create_barcode"
