@@ -1,4 +1,4 @@
-package com.example.barcodescanner.feature.tabs.settings
+package com.example.barcodescanner.feature.tabs.settings.camera
 
 import android.content.Context
 import android.content.Intent

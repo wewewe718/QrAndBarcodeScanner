@@ -73,7 +73,6 @@ class BarcodeActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_barcode)
         applySettings()
-        initScrollView()
         handleToolbarBackPressed()
         handleToolbarMenuClicked()
         handleButtonsClicked()
@@ -109,10 +108,6 @@ class BarcodeActivity : BaseActivity() {
             BarcodeSchema.URL -> openLink()
             else -> return
         }
-    }
-
-    private fun initScrollView() {
-        scroll_view.makeSmoothScrollable()
     }
 
     private fun handleToolbarBackPressed() {
@@ -576,7 +571,7 @@ class BarcodeActivity : BaseActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         progress_bar_loading.isVisible = isLoading
-        group_main_content.isVisible = isLoading.not()
+        scroll_view.isVisible = isLoading.not()
     }
 
 

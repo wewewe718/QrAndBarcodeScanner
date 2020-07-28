@@ -103,8 +103,12 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
             } else {
                 CodeScanner.CAMERA_FRONT
             }
+            autoFocusMode = if (settings.simpleAutoFocus) {
+                AutoFocusMode.SAFE
+            } else {
+                AutoFocusMode.CONTINUOUS
+            }
             formats = SupportedBarcodeFormats.FORMATS.filter(settings::isFormatSelected)
-            autoFocusMode = AutoFocusMode.CONTINUOUS
             scanMode = ScanMode.SINGLE
             isAutoFocusEnabled = true
             isFlashEnabled = settings.flash

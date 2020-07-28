@@ -36,8 +36,9 @@
     </style>
 
     <style name="TabTextAppearance">
-        <item name="android:textSize">@dimen/default_text_size_small</item>
+        <item name="android:textSize">@dimen/default_text_size_very_small</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
         <item name="android:singleLine">true</item>
     </style>
 
@@ -117,6 +118,20 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/gray12</item>
+    </style>
+
+    <style name="AppBarLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="liftOnScroll">true</item>
+        <item name="liftOnScrollTargetViewId">@id/scroll_view</item>
+    </style>
+
+    <style name="ScrollStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="layout_behavior">@string/appbar_scrolling_view_behavior</item>
+        <item name="android:scrollIndicators">none</item>
     </style>
 
 </resources>

@@ -40,7 +40,6 @@ class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
         recycler_view_formats.apply {
             layoutManager = LinearLayoutManager(this@SupportedFormatsActivity)
             adapter = formatsAdapter
-            makeSmoothScrollable()
         }
     }
 

@@ -54,9 +54,6 @@ dependencies {
     // Smooth scrolling
     implementation 'me.everything:overscroll-decor-android:1.1.0'
 
-    // Switch button ios style
-    implementation 'com.github.zcweng:switch-button:0.0.3@aar'
-
     // Room
     final roomVersion = "2.2.5"
     kapt "androidx.room:room-compiler:$roomVersion"

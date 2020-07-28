@@ -11,12 +11,12 @@ import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.settings
-import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.tabs.settings.formats.SupportedFormatsActivity
 import com.example.barcodescanner.feature.tabs.settings.permissions.*
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
+import com.example.barcodescanner.feature.tabs.settings.camera.ChooseCameraActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -55,12 +55,13 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     }
 
     private fun initScrollView() {
-        scroll_view.makeSmoothScrollable()
+        //scroll_view.makeSmoothScrollable()
     }
 
     private fun handleButtonCheckedChanged() {
         button_open_links_automatically.setCheckedChangedListener { settings.openLinksAutomatically = it }
         button_copy_to_clipboard.setCheckedChangedListener { settings.copyToClipboard = it }
+        button_simple_auto_focus.setCheckedChangedListener { settings.simpleAutoFocus = it }
         button_flashlight.setCheckedChangedListener { settings.flash = it }
         button_vibrate.setCheckedChangedListener { settings.vibrate = it }
         button_continuous_scanning.setCheckedChangedListener { settings.continuousScanning = it }
@@ -99,6 +100,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
         settings.apply {
             button_open_links_automatically.isChecked = openLinksAutomatically
             button_copy_to_clipboard.isChecked = copyToClipboard
+            button_simple_auto_focus.isChecked = simpleAutoFocus
             button_flashlight.isChecked = flash
             button_vibrate.isChecked = vibrate
             button_continuous_scanning.isChecked = continuousScanning

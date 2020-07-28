@@ -19,7 +19,7 @@
         app:flashButtonVisible="true"
         app:frameColor="@color/white"
         app:frameThickness="2dp"
-        app:frameCornersRadius="8dp"
+        app:frameCornersRadius="6dp"
         app:frameAspectRatioWidth="1"
         app:frameAspectRatioHeight="1"
         app:frameSize="0.55"

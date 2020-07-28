@@ -34,13 +34,8 @@ class BarcodeImageActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_barcode_image)
-        initScrollView()
         handleToolbarBackPressed()
         showBarcode()
-    }
-
-    private fun initScrollView() {
-        scroll_view.makeSmoothScrollable()
     }
 
     private fun handleToolbarBackPressed() {

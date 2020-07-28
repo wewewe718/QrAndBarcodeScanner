@@ -23,13 +23,8 @@ class CreateBarcodeAllActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_barcode_all)
-        initScrollView()
         handleToolbarBackClicked()
         handleButtonsClicked()
-    }
-
-    private fun initScrollView() {
-        scroll_view.makeSmoothScrollable()
     }
 
     private fun handleToolbarBackClicked() {

@@ -17,6 +17,7 @@ class Settings(context: Context) {
     private enum class Key {
         OPEN_LINKS_AUTOMATICALLY,
         COPY_TO_CLIPBOARD,
+        SIMPLE_AUTO_FOCUS,
         FLASHLIGHT,
         VIBRATE,
         CONTINUOUS_SCANNING,
@@ -37,6 +38,10 @@ class Settings(context: Context) {
     var copyToClipboard: Boolean
         get() = getBoolean(Key.COPY_TO_CLIPBOARD, true)
         set(value) = setBoolean(Key.COPY_TO_CLIPBOARD, value)
+
+    var simpleAutoFocus: Boolean
+        get() = getBoolean(Key.SIMPLE_AUTO_FOCUS, false)
+        set(value) = setBoolean(Key.SIMPLE_AUTO_FOCUS, value)
 
     var flash: Boolean
         get() = getBoolean(Key.FLASHLIGHT, false)

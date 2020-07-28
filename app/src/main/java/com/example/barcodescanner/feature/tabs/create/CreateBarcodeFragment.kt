@@ -30,12 +30,7 @@ class CreateBarcodeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initScrollView()
         handleButtonsClicked()
-    }
-
-    private fun initScrollView() {
-        scroll_view.makeSmoothScrollable()
     }
 
     private fun handleButtonsClicked() {

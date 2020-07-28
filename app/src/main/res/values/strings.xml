@@ -168,6 +168,8 @@
     <string name="fragment_settings_open_links_automatically">Open links automatically</string>
     <string name="fragment_settings_copy_to_clipboard">Copy to clipboard</string>
     <string name="fragment_settings_copy_to_clipboard_hint">Copy scanned barcodes to clipboard</string>
+    <string name="fragment_settings_simple_auto_focus">Simple auto focus mode</string>
+    <string name="fragment_settings_simple_auto_focus_hint">Enable only if you have problems focusing</string>
     <string name="fragment_settings_flash">Flash</string>
     <string name="fragment_settings_flash_hint">Enable flash on start</string>
     <string name="fragment_settings_vibrate">Vibrate</string>

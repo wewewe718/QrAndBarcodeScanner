@@ -92,7 +92,7 @@
             />
 
         <activity
-            android:name=".feature.tabs.settings.ChooseCameraActivity"
+            android:name=".feature.tabs.settings.camera.ChooseCameraActivity"
             android:screenOrientation="portrait"
             />
         <activity

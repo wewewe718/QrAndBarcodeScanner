@@ -6,36 +6,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        app:title="@string/fragment_barcode_history_title"
-        app:menu="@menu/menu_barcode_history"
-        style="@style/ToolbarStyle"
-        />
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="@dimen/tab_layout_height"
-        android:paddingTop="0dp"
-        app:tabTextAppearance="@style/TabTextAppearance"
-        app:tabTextColor="@color/gray_transparent2"
-        app:tabSelectedTextColor="@color/blue"
-        app:tabIndicatorColor="@color/blue"
-        app:tabIndicatorHeight="@dimen/tab_layout_indicator_height"
-        android:background="@color/white"
-        app:tabPaddingTop="0dp"
-        app:tabPaddingBottom="0dp"
-        app:tabPaddingStart="@dimen/default_margin_small"
-        app:tabPaddingEnd="@dimen/default_margin_small"
-        app:tabMode="fixed"
-        app:tabIndicatorFullWidth="false"
-        app:tabGravity="center"
 
-        />
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:title="@string/fragment_barcode_history_title"
+            app:menu="@menu/menu_barcode_history"
+            style="@style/ToolbarStyle"
+            />
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/tab_layout_height"
+            android:paddingTop="0dp"
+            app:tabTextAppearance="@style/TabTextAppearance"
+            app:tabTextColor="@color/gray_transparent2"
+            app:tabSelectedTextColor="@color/blue"
+            app:tabIndicatorColor="@color/blue"
+            app:tabIndicatorHeight="@dimen/tab_layout_indicator_height"
+            android:background="@color/white"
+            app:tabPaddingTop="0dp"
+            app:tabPaddingBottom="0dp"
+            app:tabPaddingStart="@dimen/default_margin"
+            app:tabPaddingEnd="@dimen/default_margin"
+            app:tabMode="fixed"
+            app:tabGravity="center"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
-        android:layout_marginTop="@dimen/default_margin_small"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

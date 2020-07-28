@@ -20,6 +20,5 @@ class AllPermissionsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_permissions)
         toolbar.setNavigationOnClickListener { finish() }
-        scroll_view.makeSmoothScrollable()
     }
 }
