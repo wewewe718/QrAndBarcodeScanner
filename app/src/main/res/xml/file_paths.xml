@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <paths>
         <cache-path name="shared_images" path="images/"/>
     </paths>
 </resources>

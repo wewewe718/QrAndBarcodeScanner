@@ -117,24 +117,4 @@
         app:srcCompat="@drawable/ic_plus"
         />
 
-    <FrameLayout
-        android:id="@+id/layout_loading"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/gray"
-        android:visibility="gone"
-        android:clickable="true"
-        >
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            />
-    </FrameLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

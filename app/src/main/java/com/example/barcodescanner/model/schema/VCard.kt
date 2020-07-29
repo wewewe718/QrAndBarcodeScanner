@@ -2,15 +2,11 @@ package com.example.barcodescanner.model.schema
 
 import com.example.barcodescanner.extension.joinNotNullOrBlankToStringWithLineSeparator
 import com.example.barcodescanner.extension.startsWithIgnoreCase
-import com.example.barcodescanner.extension.valueOrNull
 import ezvcard.Ezvcard
 import ezvcard.VCardVersion
-import ezvcard.parameter.EmailType
-import ezvcard.parameter.TelephoneType
 import ezvcard.property.*
 import ezvcard.property.Email
 import ezvcard.property.Url
-import ezvcard.util.GeoUri
 
 data class VCard(
     val firstName: String? = null,

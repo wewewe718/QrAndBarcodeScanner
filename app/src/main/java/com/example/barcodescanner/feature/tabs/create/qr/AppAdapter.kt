@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.barcodescanner.R
 import kotlinx.android.synthetic.main.item_app.view.*

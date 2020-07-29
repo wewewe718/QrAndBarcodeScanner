@@ -2,7 +2,6 @@ package com.example.barcodescanner.di
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.AndroidViewModel
 import com.example.barcodescanner.usecase.*
 
 
@@ -51,7 +50,3 @@ val Fragment.settings
 
 val Fragment.permissionsHelper
     get() = PermissionsHelper
-
-
-val AndroidViewModel.barcodeDatabase
-    get() = BarcodeDatabase.getInstance(getApplication())

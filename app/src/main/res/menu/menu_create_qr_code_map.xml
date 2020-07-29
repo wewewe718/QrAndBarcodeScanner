@@ -5,7 +5,7 @@
     >
     <item
         android:id="@+id/item_map"
-        android:title="@string/activity_create_barcode_menu_item_title"
+        android:title="@string/activity_create_barcode_location_menu_item_title"
         android:icon="@drawable/ic_location"
         app:showAsAction="always"
         />

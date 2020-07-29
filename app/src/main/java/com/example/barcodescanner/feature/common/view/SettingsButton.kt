@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import kotlinx.android.synthetic.main.layout_settings_button.view.*

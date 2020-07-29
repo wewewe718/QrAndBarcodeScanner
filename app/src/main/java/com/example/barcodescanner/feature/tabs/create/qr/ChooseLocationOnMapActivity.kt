@@ -1,6 +1,7 @@
 package com.example.barcodescanner.feature.tabs.create.qr
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -127,6 +128,7 @@ class ChooseLocationOnMapActivity : BaseActivity(), OnMapReadyCallback, GoogleMa
         showMarker(position)
     }
 
+    @SuppressLint("MissingPermission")
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,

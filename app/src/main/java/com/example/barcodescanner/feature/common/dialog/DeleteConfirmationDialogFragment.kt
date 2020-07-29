@@ -1,16 +1,11 @@
 package com.example.barcodescanner.feature.common.dialog
 
 import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.example.barcodescanner.R
 import com.example.barcodescanner.extension.orZero
-import kotlinx.android.synthetic.main.dialog_delete_confirmation.view.*
 
 class DeleteConfirmationDialogFragment : DialogFragment() {
 

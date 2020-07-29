@@ -11,7 +11,6 @@
     <string name="dialog_delete_positive_button">Delete</string>
     <string name="dialog_delete_negative_button">Cancel</string>
     <string name="dialog_delete_clear_history_message">Delete history?</string>
-    <string name="dialog_delete_barcode_message">Delete?</string>
 
     <!--Bottom tabs activity-->
     <string name="activity_bottom_tabs_scan_tab">Scan</string>
@@ -54,6 +53,7 @@
     <!--Create barcode activity-->
     <string name="activity_create_barcode_menu_item_title">Create</string>
     <string name="activity_create_barcode_contacts_menu_item_title">Contacts</string>
+    <string name="activity_create_barcode_location_menu_item_title">Map</string>
 
     <!--Base create barcode fragment -->
     <string name="fragment_create_barcode_alternative">Alternatively:</string>
@@ -164,7 +164,6 @@
 
     <!--Settings fragment-->
     <string name="fragment_settings_title">Settings</string>
-    <string name="fragment_settings_clear_history_title">Warning</string>
     <string name="fragment_settings_scanner_settings">Scanner</string>
     <string name="fragment_settings_open_links_automatically">Open links automatically</string>
     <string name="fragment_settings_copy_to_clipboard">Copy to clipboard</string>

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/default_margin_small"
     android:paddingBottom="@dimen/default_margin"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

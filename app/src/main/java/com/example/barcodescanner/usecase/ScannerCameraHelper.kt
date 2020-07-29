@@ -1,7 +1,6 @@
 package com.example.barcodescanner.usecase
 
 import android.hardware.Camera
-import com.budiyev.android.codescanner.CodeScanner
 
 
 object ScannerCameraHelper {

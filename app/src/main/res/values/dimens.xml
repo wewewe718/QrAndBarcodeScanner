@@ -18,8 +18,6 @@
     <dimen name="default_text_size">16sp</dimen>
     <dimen name="default_text_size_large">18sp</dimen>
 
-    <dimen name="dialog_corner_radius">16dp</dimen>
-
     <dimen name="zoom_seek_bar_height">100dp</dimen>
     
     <dimen name="icon_button_icon_size">18dp</dimen>
@@ -28,14 +26,9 @@
 
     <dimen name="icon_button_with_delimiter_vertical_padding">12dp</dimen>
 
-    <dimen name="margin_horizontal_barcode">74dp</dimen>
-    <dimen name="bottom_navigation_item_image_size">26dp</dimen>
     <dimen name="bottom_navigation_item_text_size">12sp</dimen>
     <dimen name="tab_layout_height">36dp</dimen>
     <dimen name="tab_layout_indicator_height">2dp</dimen>
-    <dimen name="fragment_barcode_history_recycler_view_top_margin">50dp</dimen>
     <dimen name="button_corner_radius">50dp</dimen>
 
-    <dimen name="switch_width">42dp</dimen>
-    <dimen name="switch_height">26dp</dimen>
 </resources>
