@@ -141,7 +141,7 @@
                 tools:visibility="visible"
                 />
             <com.example.barcodescanner.feature.common.view.IconButton
-                android:id="@+id/button_call_phone"
+                android:id="@+id/button_call_phone_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_phone"
@@ -151,7 +151,27 @@
                 tools:visibility="visible"
                 />
             <com.example.barcodescanner.feature.common.view.IconButton
-                android:id="@+id/button_send_sms_or_mms"
+                android:id="@+id/button_call_phone_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_phone"
+                app:iconBackground="@color/orange"
+                app:text="@string/activity_barcode_call_phone"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.barcodescanner.feature.common.view.IconButton
+                android:id="@+id/button_call_phone_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_phone"
+                app:iconBackground="@color/orange"
+                app:text="@string/activity_barcode_call_phone"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.barcodescanner.feature.common.view.IconButton
+                android:id="@+id/button_send_sms_or_mms_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_sms"
@@ -161,7 +181,47 @@
                 tools:visibility="visible"
                 />
             <com.example.barcodescanner.feature.common.view.IconButton
-                android:id="@+id/button_send_email"
+                android:id="@+id/button_send_sms_or_mms_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_sms"
+                app:iconBackground="@color/orange"
+                app:text="@string/activity_barcode_send_sms"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.barcodescanner.feature.common.view.IconButton
+                android:id="@+id/button_send_sms_or_mms_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_sms"
+                app:iconBackground="@color/orange"
+                app:text="@string/activity_barcode_send_sms"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.barcodescanner.feature.common.view.IconButton
+                android:id="@+id/button_send_email_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_email"
+                app:iconBackground="@color/orange"
+                app:text="@string/activity_barcode_send_email"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.barcodescanner.feature.common.view.IconButton
+                android:id="@+id/button_send_email_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_email"
+                app:iconBackground="@color/orange"
+                app:text="@string/activity_barcode_send_email"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.barcodescanner.feature.common.view.IconButton
+                android:id="@+id/button_send_email_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_email"

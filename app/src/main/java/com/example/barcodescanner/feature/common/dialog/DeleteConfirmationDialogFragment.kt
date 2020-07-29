@@ -27,7 +27,7 @@ class DeleteConfirmationDialogFragment : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val listener = parentFragment as? Listener
+        val listener = requireActivity() as? Listener ?: parentFragment as? Listener
         val messageId = arguments?.getInt(MESSAGE_ID_KEY).orZero()
 
         val dialog = AlertDialog.Builder(requireContext())

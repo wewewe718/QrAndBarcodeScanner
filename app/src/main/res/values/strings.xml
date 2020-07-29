@@ -11,6 +11,7 @@
     <string name="dialog_delete_positive_button">Delete</string>
     <string name="dialog_delete_negative_button">Cancel</string>
     <string name="dialog_delete_clear_history_message">Delete history?</string>
+    <string name="dialog_delete_barcode_message">Delete?</string>
 
     <!--Bottom tabs activity-->
     <string name="activity_bottom_tabs_scan_tab">Scan</string>
@@ -149,7 +150,6 @@
     <string name="fragment_barcode_history_menu_title_export">Export history</string>
     <string name="fragment_barcode_history_menu_title_delete_all">Clear history</string>
 
-
     <!--Export history activity-->
     <string name="activity_export_history_title">Export history</string>
     <string name="activity_export_history_as_hint">Export as</string>
@@ -214,9 +214,9 @@
     <string name="activity_barcode_search_on_ebay">Search on eBay</string>
     <string name="activity_barcode_add_to_calendar">Add to calendar</string>
     <string name="activity_barcode_add_to_contacts">Add to contacts</string>
-    <string name="activity_barcode_call_phone">Call</string>
-    <string name="activity_barcode_send_sms">Send SMS/MMS</string>
-    <string name="activity_barcode_send_email">Send Email</string>
+    <string name="activity_barcode_call_phone">Call %s</string>
+    <string name="activity_barcode_send_sms">Send SMS/MMS to %s</string>
+    <string name="activity_barcode_send_email">Email to %s</string>
     <string name="activity_barcode_show_location">Show location</string>
     <string name="activity_barcode_connect_to_wifi">Connect to Wi-Fi</string>
     <string name="activity_barcode_open_wifi_settings">Open Wi-Fi settings</string>

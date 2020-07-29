@@ -18,6 +18,7 @@ import com.example.barcodescanner.R
 import com.example.barcodescanner.di.*
 import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.BaseActivity
+import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
@@ -30,7 +31,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class BarcodeActivity : BaseActivity() {
+class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listener {
 
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"
@@ -91,6 +92,15 @@ class BarcodeActivity : BaseActivity() {
         }
     }
 
+    override fun onDeleteConfirmed() {
+        deleteBarcode()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
+    }
+
 
     private fun applySettings() {
         if (settings.copyToClipboard) {
@@ -121,7 +131,7 @@ class BarcodeActivity : BaseActivity() {
             when (item.itemId) {
                 R.id.item_add_to_favorites -> toggleIsFavorite()
                 R.id.item_show_barcode_image -> navigateToBarcodeImageActivity()
-                R.id.item_delete -> deleteBarcode()
+                R.id.item_delete -> showDeleteBarcodeConfirmationDialog()
             }
             return@setOnMenuItemClickListener true
         }
@@ -444,15 +454,6 @@ class BarcodeActivity : BaseActivity() {
             findItem(R.id.item_show_barcode_image)?.isVisible = isCreated.not()
             findItem(R.id.item_delete)?.isVisible = barcode.isInDb
         }
-
-//        if (isCreated) {
-//            return
-//        }
-//
-//        if (barcode.isInDb) {
-//        } else {
-//            toolbar.inflateMenu(R.menu.menu_barcode_without_delete)
-//        }
     }
 
     private fun showBarcodeIsFavorite() {
@@ -551,9 +552,19 @@ class BarcodeActivity : BaseActivity() {
 
         button_add_to_calendar.isVisible = barcode.schema == BarcodeSchema.VEVENT
         button_add_to_contacts.isVisible = barcode.email.isNullOrEmpty().not() || barcode.phone.isNullOrEmpty().not()
-        button_call_phone.isVisible = barcode.phone.isNullOrEmpty().not() && isCreated.not()
-        button_send_sms_or_mms.isVisible = barcode.phone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
-        button_send_email.isVisible = barcode.email.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
+
+        button_call_phone_1.isVisible = barcode.phone.isNullOrEmpty().not()
+        button_call_phone_2.isVisible = barcode.secondaryPhone.isNullOrEmpty().not()
+        button_call_phone_3.isVisible = barcode.tertiaryPhone.isNullOrEmpty().not()
+
+        button_send_sms_or_mms_1.isVisible = barcode.phone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
+        button_send_sms_or_mms_2.isVisible = barcode.secondaryPhone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
+        button_send_sms_or_mms_3.isVisible = barcode.tertiaryPhone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
+
+        button_send_email_1.isVisible = barcode.email.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
+        button_send_email_2.isVisible = barcode.secondaryEmail.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
+        button_send_email_3.isVisible = barcode.tertiaryEmail.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
+
         button_show_location.isVisible = barcode.geoUri.isNullOrEmpty().not()
         button_connect_to_wifi.isVisible = barcode.schema == BarcodeSchema.WIFI
         button_open_wifi_settings.isVisible = barcode.schema == BarcodeSchema.WIFI
@@ -567,6 +578,11 @@ class BarcodeActivity : BaseActivity() {
 
     private fun showConnectToWifiButtonEnabled(isEnabled: Boolean) {
         button_connect_to_wifi.isEnabled = isEnabled
+    }
+
+    private fun showDeleteBarcodeConfirmationDialog() {
+        val dialog = DeleteConfirmationDialogFragment.newInstance(R.string.dialog_delete_barcode_message)
+        dialog.show(supportFragmentManager, "")
     }
 
     private fun showLoading(isLoading: Boolean) {
