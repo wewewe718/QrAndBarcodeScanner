@@ -15,6 +15,10 @@ import kotlinx.android.synthetic.main.layout_icon_button.view.*
 class IconButton : FrameLayout {
     private val view: View
 
+    var text: String
+        get() = view.text_view.text.toString()
+        set(value) { view.text_view.text = value }
+
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
