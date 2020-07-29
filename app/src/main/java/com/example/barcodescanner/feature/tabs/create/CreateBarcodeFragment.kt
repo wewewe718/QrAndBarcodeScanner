@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.R
 import com.example.barcodescanner.extension.clipboardManager
-import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.orZero
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.tabs.create.barcode.CreateBarcodeAllActivity
@@ -15,7 +14,6 @@ import com.example.barcodescanner.feature.tabs.create.qr.CreateQrCodeAllActivity
 import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.google.zxing.BarcodeFormat
 import kotlinx.android.synthetic.main.fragment_create_barcode.*
-import kotlinx.android.synthetic.main.fragment_create_barcode.scroll_view
 
 class CreateBarcodeFragment : Fragment() {
 

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barcodescanner.R
-import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.example.barcodescanner.model.schema.App
 import com.example.barcodescanner.model.schema.Schema
@@ -34,7 +33,6 @@ class CreateQrCodeAppFragment : BaseCreateBarcodeFragment() {
         recycler_view_apps.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = appAdapter
-            makeSmoothScrollable()
         }
     }
 

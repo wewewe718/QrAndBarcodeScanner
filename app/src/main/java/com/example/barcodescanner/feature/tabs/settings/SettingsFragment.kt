@@ -38,7 +38,6 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initScrollView()
         handleButtonCheckedChanged()
         handleButtonClicks()
         showSettings()
@@ -52,10 +51,6 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     override fun onDestroyView() {
         super.onDestroyView()
         disposable.clear()
-    }
-
-    private fun initScrollView() {
-        //scroll_view.makeSmoothScrollable()
     }
 
     private fun handleButtonCheckedChanged() {

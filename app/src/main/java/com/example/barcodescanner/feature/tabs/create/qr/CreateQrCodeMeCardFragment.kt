@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.barcodescanner.R
-import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.textString
 import com.example.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.example.barcodescanner.model.Contact
@@ -21,7 +20,6 @@ class CreateQrCodeMeCardFragment : BaseCreateBarcodeFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        scroll_view.makeSmoothScrollable()
         edit_text_first_name.requestFocus()
         parentActivity.isCreateBarcodeButtonEnabled = true
     }

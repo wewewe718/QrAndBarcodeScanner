@@ -1,196 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/default_margin_small"
+    android:paddingBottom="@dimen/default_margin"
+    android:orientation="vertical"
     >
-    <LinearLayout
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/default_margin_small"
-        android:paddingBottom="@dimen/default_margin"
-        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/default_margin"
         >
-
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+            android:id="@+id/edit_text_first_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            >
-            <EditText
-                android:id="@+id/edit_text_first_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lines="1"
-                android:maxLines="1"
-                android:hint="@string/fragment_create_qr_code_contact_first_name_hint"
-                android:imeOptions="actionNext"
-                android:backgroundTint="@color/blue"
-                android:inputType="text"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            >
-            <EditText
-                android:id="@+id/edit_text_last_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lines="1"
-                android:maxLines="1"
-                android:hint="@string/fragment_create_qr_code_contact_last_name_hint"
-                android:imeOptions="actionNext"
-                android:backgroundTint="@color/blue"
-                android:inputType="text"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            >
-            <EditText
-                android:id="@+id/edit_text_organization"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lines="1"
-                android:maxLines="1"
-                android:hint="@string/fragment_create_qr_code_contact_organization_hint"
-                android:imeOptions="actionNext"
-                android:backgroundTint="@color/blue"
-                android:inputType="text"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            >
-            <EditText
-                android:id="@+id/edit_text_job"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lines="1"
-                android:maxLines="1"
-                android:hint="@string/fragment_create_qr_code_contact_job_hint"
-                android:imeOptions="actionNext"
-                android:backgroundTint="@color/blue"
-                android:inputType="text"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            >
-            <EditText
-                android:id="@+id/edit_text_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lines="1"
-                android:maxLines="1"
-                android:hint="@string/fragment_create_qr_code_contact_email_hint"
-                android:imeOptions="actionNext"
-                android:backgroundTint="@color/blue"
-                android:inputType="textEmailAddress"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            >
-            <EditText
-                android:id="@+id/edit_text_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lines="1"
-                android:maxLines="1"
-                android:hint="@string/fragment_create_qr_code_contact_phone_hint"
-                android:imeOptions="actionNext"
-                android:backgroundTint="@color/blue"
-                android:inputType="phone"
-                android:digits="+0123456789"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            >
-            <EditText
-                android:id="@+id/edit_text_fax"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lines="1"
-                android:maxLines="1"
-                android:hint="@string/fragment_create_qr_code_contact_fax_hint"
-                android:imeOptions="actionNext"
-                android:backgroundTint="@color/blue"
-                android:inputType="phone"
-                android:digits="+0123456789"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            >
-            <EditText
-                android:id="@+id/edit_text_website"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lines="1"
-                android:maxLines="1"
-                android:hint="@string/fragment_create_qr_code_contact_website_hint"
-                android:imeOptions="actionDone"
-                android:backgroundTint="@color/blue"
-                android:inputType="textUri"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_big"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            android:text="@string/fragment_create_barcode_alternative"
-            style="@style/SettingsGroupTitleTextViewStyle"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_contact_first_name_hint"
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/blue"
+            android:inputType="text"
             />
-        <TextView
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        >
+        <EditText
+            android:id="@+id/edit_text_last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            android:text="@string/fragment_create_qr_code_contact_alternative"
-            style="@style/CreateBarcodeFragmentAlternativeTextViewStyle"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_contact_last_name_hint"
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/blue"
+            android:inputType="text"
             />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
-</ScrollView>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        >
+        <EditText
+            android:id="@+id/edit_text_organization"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_contact_organization_hint"
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/blue"
+            android:inputType="text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        >
+        <EditText
+            android:id="@+id/edit_text_job"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_contact_job_hint"
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/blue"
+            android:inputType="text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        >
+        <EditText
+            android:id="@+id/edit_text_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_contact_email_hint"
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/blue"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        >
+        <EditText
+            android:id="@+id/edit_text_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_contact_phone_hint"
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/blue"
+            android:inputType="phone"
+            android:digits="+0123456789"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        >
+        <EditText
+            android:id="@+id/edit_text_fax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_contact_fax_hint"
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/blue"
+            android:inputType="phone"
+            android:digits="+0123456789"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        >
+        <EditText
+            android:id="@+id/edit_text_website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_contact_website_hint"
+            android:imeOptions="actionDone"
+            android:backgroundTint="@color/blue"
+            android:inputType="textUri"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_big"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:text="@string/fragment_create_barcode_alternative"
+        style="@style/SettingsGroupTitleTextViewStyle"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:text="@string/fragment_create_qr_code_contact_alternative"
+        style="@style/CreateBarcodeFragmentAlternativeTextViewStyle"
+        />
+
+</LinearLayout>

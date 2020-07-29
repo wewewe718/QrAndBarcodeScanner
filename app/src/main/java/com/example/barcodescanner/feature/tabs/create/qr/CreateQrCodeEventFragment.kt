@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.barcodescanner.R
-import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.textString
 import com.example.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
-import com.example.barcodescanner.model.schema.Other
 import com.example.barcodescanner.model.schema.Schema
 import com.example.barcodescanner.model.schema.VEvent
 import kotlinx.android.synthetic.main.fragment_create_qr_code_vevent.*
@@ -21,7 +19,6 @@ class CreateQrCodeEventFragment : BaseCreateBarcodeFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        scroll_view.makeSmoothScrollable()
         edit_text_title.requestFocus()
         parentActivity.isCreateBarcodeButtonEnabled = true
     }

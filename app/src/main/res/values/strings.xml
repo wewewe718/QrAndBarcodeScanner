@@ -21,6 +21,7 @@
 
     <!--Scan barcode from camera fragment-->
     <string name="fragment_scan_barcode_from_camera_scan_from_file">Scan image</string>
+    <string name="fragment_scan_barcode_from_camera_flash">Flash</string>
     <string name="fragment_scan_barcode_from_camera_barcode_saved">Saved</string>
     <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_title">Confirm</string>
     <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_positive_button">OK</string>

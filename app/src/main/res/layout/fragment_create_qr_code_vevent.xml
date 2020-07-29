@@ -1,73 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/default_margin_small"
+    android:paddingBottom="@dimen/default_margin"
+    android:orientation="vertical"
+    >
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/default_margin_small"
-        android:paddingBottom="@dimen/default_margin"
-        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/default_margin"
         >
-
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+            android:id="@+id/edit_text_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            >
-            <EditText
-                android:id="@+id/edit_text_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lines="1"
-                android:maxLines="1"
-                android:hint="@string/fragment_create_qr_code_event_title_hint"
-                android:imeOptions="actionNext"
-                android:backgroundTint="@color/blue"
-                android:inputType="text"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            >
-            <EditText
-                android:id="@+id/edit_text_summary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lines="1"
-                android:maxLines="1"
-                android:hint="@string/fragment_create_qr_code_event_summary_hint"
-                android:imeOptions="actionDone"
-                android:backgroundTint="@color/blue"
-                android:inputType="text"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.example.barcodescanner.feature.common.view.DateTimePickerButton
-            android:id="@+id/button_date_time_start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:paddingHorizontal="@dimen/default_margin_very_small"
-            app:hint="@string/fragment_create_qr_code_event_start_date_hint"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_event_title_hint"
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/blue"
+            android:inputType="text"
             />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <com.example.barcodescanner.feature.common.view.DateTimePickerButton
-            android:id="@+id/button_date_time_end"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        >
+        <EditText
+            android:id="@+id/edit_text_summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:paddingHorizontal="@dimen/default_margin_very_small"
-            app:hint="@string/fragment_create_qr_code_event_end_date_hint"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_event_summary_hint"
+            android:imeOptions="actionDone"
+            android:backgroundTint="@color/blue"
+            android:inputType="text"
             />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
-</ScrollView>
+    <com.example.barcodescanner.feature.common.view.DateTimePickerButton
+        android:id="@+id/button_date_time_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:paddingHorizontal="@dimen/default_margin_very_small"
+        app:hint="@string/fragment_create_qr_code_event_start_date_hint"
+        />
+
+    <com.example.barcodescanner.feature.common.view.DateTimePickerButton
+        android:id="@+id/button_date_time_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:paddingHorizontal="@dimen/default_margin_very_small"
+        app:hint="@string/fragment_create_qr_code_event_end_date_hint"
+        />
+
+</LinearLayout>

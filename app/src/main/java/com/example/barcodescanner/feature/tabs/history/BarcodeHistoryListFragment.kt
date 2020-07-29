@@ -10,10 +10,8 @@ import androidx.paging.RxPagedListBuilder
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
-import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.orZero
 import com.example.barcodescanner.extension.showError
-import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.model.Barcode
 import io.reactivex.BackpressureStrategy
@@ -73,7 +71,6 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
         recycler_view_history.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = scanHistoryAdapter
-            makeSmoothScrollable()
         }
     }
 

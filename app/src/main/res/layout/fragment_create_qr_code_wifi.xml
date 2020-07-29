@@ -1,86 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     >
-    <LinearLayout
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin_big"
+        android:text="@string/fragment_create_qr_code_wifi_encryption_hint"
+        android:textColor="@color/gray10"
+        android:textSize="@dimen/default_text_size_extra_small"
+        />
+
+    <Spinner
+        android:id="@+id/spinner_encryption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin_medium"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_medium"
+        android:layout_marginHorizontal="@dimen/default_margin"
         >
-
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/edit_text_network_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:layout_marginHorizontal="@dimen/default_margin_big"
-            android:text="@string/fragment_create_qr_code_wifi_encryption_hint"
-            android:textColor="@color/gray10"
-            android:textSize="@dimen/default_text_size_extra_small"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_wifi_network_name_hint"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/blue"
             />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/spinner_encryption"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        app:passwordToggleEnabled="true"
+        >
+        <EditText
+            android:id="@+id/edit_text_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:layout_marginHorizontal="@dimen/default_margin_medium"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_wifi_password_hint"
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"
+            android:backgroundTint="@color/blue"
             />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_medium"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            >
-            <EditText
-                android:id="@+id/edit_text_network_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lines="1"
-                android:maxLines="1"
-                android:hint="@string/fragment_create_qr_code_wifi_network_name_hint"
-                android:inputType="text"
-                android:imeOptions="actionNext"
-                android:backgroundTint="@color/blue"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
+    <CheckBox
+        android:id="@+id/check_box_is_hidden"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginHorizontal="@dimen/default_margin_medium"
+        android:textSize="@dimen/default_text_size"
+        android:textColor="@color/black"
+        android:text="@string/fragment_create_qr_code_wifi_is_hidden_hint"
+        />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin_small"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            app:passwordToggleEnabled="true"
-            >
-            <EditText
-                android:id="@+id/edit_text_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lines="1"
-                android:maxLines="1"
-                android:hint="@string/fragment_create_qr_code_wifi_password_hint"
-                android:inputType="textPassword"
-                android:imeOptions="actionDone"
-                android:backgroundTint="@color/blue"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <CheckBox
-            android:id="@+id/check_box_is_hidden"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_marginHorizontal="@dimen/default_margin_medium"
-            android:textSize="@dimen/default_text_size"
-            android:textColor="@color/black"
-            android:text="@string/fragment_create_qr_code_wifi_is_hidden_hint"
-            />
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

@@ -11,7 +11,6 @@ import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.barcodeSaver
 import com.example.barcodescanner.extension.isNotBlank
-import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.textString
 import com.example.barcodescanner.feature.BaseActivity
@@ -35,7 +34,6 @@ class ExportHistoryActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_export_history)
         initToolbar()
-        initScrollView()
         initExportTypeSpinner()
         initFileNameEditText()
         initExportButton()
@@ -45,10 +43,6 @@ class ExportHistoryActivity : BaseActivity() {
         toolbar.setNavigationOnClickListener {
             finish()
         }
-    }
-
-    private fun initScrollView() {
-        scroll_view.makeSmoothScrollable()
     }
 
     private fun initExportTypeSpinner() {

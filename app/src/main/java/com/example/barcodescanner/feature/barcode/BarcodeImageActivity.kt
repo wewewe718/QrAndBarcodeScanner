@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
-import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.toStringId
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.model.Barcode

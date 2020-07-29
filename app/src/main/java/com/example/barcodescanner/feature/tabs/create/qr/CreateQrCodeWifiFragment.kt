@@ -10,7 +10,6 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import com.example.barcodescanner.R
 import com.example.barcodescanner.extension.isNotBlank
-import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.textString
 import com.example.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.example.barcodescanner.model.schema.Schema
@@ -25,7 +24,6 @@ class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initScrollView()
         initEncryptionTypesSpinner()
         initNetworkNameEditText()
         handleTextChanged()
@@ -44,10 +42,6 @@ class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
             password = edit_text_password.textString,
             isHidden = check_box_is_hidden.isChecked
         )
-    }
-
-    private fun initScrollView() {
-        scroll_view.makeSmoothScrollable()
     }
 
     private fun initEncryptionTypesSpinner() {

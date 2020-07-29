@@ -58,8 +58,9 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         super.onViewCreated(view, savedInstanceState)
         initScanner()
         initZoomSeekBar()
-        handleZoomChanged()
+        initFlashButton()
         handleScanFromFileClicked()
+        handleZoomChanged()
         handleDecreaseZoomClicked()
         handleIncreaseZoomClicked()
         requestPermissions()
@@ -126,12 +127,17 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         }
     }
 
+    private fun initFlashButton() {
+        layout_flash_container.setOnClickListener {
+            toggleFlash()
+        }
+        image_view_flash.isActivated = settings.flash
+    }
+
     private fun handleScanFromFileClicked() {
-        val clickListener = View.OnClickListener {
+        layout_scan_from_file_container.setOnClickListener {
             navigateToScanFromFileScreen()
         }
-        image_view_scan_from_file.setOnClickListener(clickListener)
-        text_view_scan_from_file.setOnClickListener(clickListener)
     }
 
     private fun handleZoomChanged() {
@@ -240,6 +246,11 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     private fun restartPreview() {
         codeScanner.startPreview()
+    }
+
+    private fun toggleFlash() {
+        image_view_flash.isActivated = image_view_flash.isActivated.not()
+        codeScanner.isFlashEnabled = codeScanner.isFlashEnabled.not()
     }
 
     private fun showToast(stringId: Int) {

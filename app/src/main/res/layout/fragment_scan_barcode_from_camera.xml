@@ -15,8 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:autoFocusButtonVisible="false"
-        app:flashButtonColor="@color/white"
-        app:flashButtonVisible="true"
+        app:flashButtonVisible="false"
         app:frameColor="@color/white"
         app:frameThickness="2dp"
         app:frameCornersRadius="6dp"
@@ -26,12 +25,42 @@
         />
 
     <ImageView
+        android:id="@+id/image_view_flash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/image_view_scan_from_file"
+        app:srcCompat="@drawable/ic_flash"
+        />
+    <TextView
+        android:id="@+id/text_view_flash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/image_view_flash"
+        app:layout_constraintStart_toStartOf="@id/image_view_flash"
+        app:layout_constraintEnd_toEndOf="@id/image_view_flash"
+        android:textColor="@color/white"
+        android:text="@string/fragment_scan_barcode_from_camera_flash"
+        android:textSize="@dimen/default_text_size_extra_small"
+        />
+    <FrameLayout
+        android:id="@+id/layout_flash_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/image_view_flash"
+        app:layout_constraintBottom_toBottomOf="@id/text_view_flash"
+        app:layout_constraintStart_toStartOf="@id/text_view_flash"
+        app:layout_constraintEnd_toEndOf="@id/text_view_flash"
+        />
+
+    <ImageView
         android:id="@+id/image_view_scan_from_file"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/default_margin_very_small"
-        app:layout_constraintBottom_toTopOf="@id/text_view_scan_from_file"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/image_view_flash"
+        app:layout_constraintStart_toEndOf="@id/image_view_flash"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_image_white"
         />
@@ -39,14 +68,21 @@
         android:id="@+id/text_view_scan_from_file"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/default_margin_small"
-        app:layout_constraintBottom_toTopOf="@id/seek_bar_zoom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_scan_from_file"
+        app:layout_constraintStart_toStartOf="@id/image_view_scan_from_file"
+        app:layout_constraintEnd_toEndOf="@id/image_view_scan_from_file"
         android:textColor="@color/white"
         android:text="@string/fragment_scan_barcode_from_camera_scan_from_file"
-        android:textSize="@dimen/default_text_size_very_small"
-        android:textAllCaps="true"
+        android:textSize="@dimen/default_text_size_extra_small"
+        />
+    <FrameLayout
+        android:id="@+id/layout_scan_from_file_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/image_view_scan_from_file"
+        app:layout_constraintBottom_toBottomOf="@id/text_view_scan_from_file"
+        app:layout_constraintStart_toStartOf="@id/text_view_scan_from_file"
+        app:layout_constraintEnd_toEndOf="@id/text_view_scan_from_file"
         />
 
     <ImageView

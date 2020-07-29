@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import com.example.barcodescanner.R
 import com.example.barcodescanner.extension.isNotBlank
-import com.example.barcodescanner.extension.makeSmoothScrollable
 import com.example.barcodescanner.extension.textString
 import com.example.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.example.barcodescanner.model.schema.Mms
@@ -22,7 +21,6 @@ class CreateQrCodeMmsFragment : BaseCreateBarcodeFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initScrollView()
         initTitleEditText()
         handleTextChanged()
     }
@@ -40,10 +38,6 @@ class CreateQrCodeMmsFragment : BaseCreateBarcodeFragment() {
             subject = edit_text_subject.textString,
             message = edit_text_message.textString
         )
-    }
-
-    private fun initScrollView() {
-        scroll_view.makeSmoothScrollable()
     }
 
     private fun initTitleEditText() {
