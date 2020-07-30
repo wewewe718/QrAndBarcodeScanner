@@ -14,6 +14,11 @@ import kotlinx.android.synthetic.main.activity_bottom_tabs.*
 
 class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
+    companion object {
+        private const val ACTION_CREATE_BARCODE = "com.example.barcodescanner.CREATE_BARCODE"
+        private const val ACTION_HISTORY = "com.example.barcodescanner.HISTORY"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_tabs)
@@ -49,7 +54,11 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
     }
 
     private fun showInitialFragment() {
-        showFragment(R.id.item_scan)
+        when (intent?.action) {
+            ACTION_CREATE_BARCODE -> bottom_navigation_view.selectedItemId = R.id.item_create
+            ACTION_HISTORY -> bottom_navigation_view.selectedItemId = R.id.item_history
+            else -> showFragment(R.id.item_scan)
+        }
     }
 
     private fun showFragment(bottomItemId: Int) {

@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">QR &amp; Barcode Scanner</string>
 
+    <!--Shortcuts-->
+    <string name="shortcut_scan_from_camera">Scan</string>
+    <string name="shortcut_scan_from_file">Scan image</string>
+    <string name="shortcut_create_barcode">Create barcode</string>
+    <string name="shortcut_history">History</string>
+
+    <string name="aciton">com.example.barcodescanner.SCAN_FROM_FILE</string>
+
     <!--Error dialog-->
     <string name="error_dialog_title">Error</string>
     <string name="error_dialog_default_message">Something went wrong</string>

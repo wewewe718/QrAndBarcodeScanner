@@ -32,6 +32,8 @@
             android:value="AIzaSyBUyL08iwSOqWs9JZZH-ZpUzOtkjLj4AB4"
             />
 
+
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.barcodescanner.fileprovider"
@@ -52,6 +54,14 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.zxing.client.android.SCAN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts"
+                />
         </activity>
 
         <activity
