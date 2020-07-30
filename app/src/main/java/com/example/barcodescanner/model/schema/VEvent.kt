@@ -106,20 +106,23 @@ data class VEvent(
             FORMATTED_TEXT_DATE_FORMATTER.formatOrNull(startDate),
             FORMATTED_TEXT_DATE_FORMATTER.formatOrNull(endDate),
             organizer
-        ).joinNotNullOrBlankToStringWithLineSeparator()
+        ).joinToStringNotNullOrBlankWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {
         val startDate = BARCODE_TEXT_DATE_FORMATTER.formatOrNull(startDate)
         val endDate = BARCODE_TEXT_DATE_FORMATTER.formatOrNull(endDate)
 
-        return "$SCHEMA_PREFIX$PARAMETERS_SEPARATOR_1" +
-                "$UID_PREFIX${uid.orEmpty()}$PARAMETERS_SEPARATOR_1" +
-                "$STAMP_PREFIX${stamp.orEmpty()}$PARAMETERS_SEPARATOR_1" +
-                "$ORGANIZER_PREFIX${organizer.orEmpty()}$PARAMETERS_SEPARATOR_1" +
-                "$START_PREFIX${startDate.orEmpty()}$PARAMETERS_SEPARATOR_1" +
-                "$END_PREFIX${endDate.orEmpty()}$PARAMETERS_SEPARATOR_1" +
-                "$SUMMARY_PREFIX${summary.orEmpty()}$PARAMETERS_SEPARATOR_1" +
-                "$SCHEMA_SUFFIX$PARAMETERS_SEPARATOR_1"
+        return StringBuilder()
+            .append(SCHEMA_PREFIX)
+            .append(PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(UID_PREFIX, uid, PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(STAMP_PREFIX, stamp, PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(ORGANIZER_PREFIX, organizer, PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(START_PREFIX, startDate, PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(END_PREFIX, endDate, PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(SUMMARY_PREFIX, summary, PARAMETERS_SEPARATOR_1)
+            .append(SCHEMA_SUFFIX)
+            .toString()
     }
 }

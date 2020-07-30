@@ -53,7 +53,7 @@ class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
 
         spinner_encryption.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                edit_text_password.isVisible = position != 2
+                text_input_layout_password.isVisible = position != 2
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {

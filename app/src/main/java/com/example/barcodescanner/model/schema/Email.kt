@@ -1,7 +1,8 @@
 package com.example.barcodescanner.model.schema
 
 import android.net.MailTo
-import com.example.barcodescanner.extension.joinNotNullOrBlankToStringWithLineSeparator
+import com.example.barcodescanner.extension.appendIfNotNullOrBlank
+import com.example.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.example.barcodescanner.extension.removePrefixIgnoreCase
 import com.example.barcodescanner.extension.startsWithIgnoreCase
 
@@ -66,13 +67,16 @@ data class Email(
     override val schema = BarcodeSchema.EMAIL
 
     override fun toFormattedText(): String {
-        return listOf(email, subject, body).joinNotNullOrBlankToStringWithLineSeparator()
+        return listOf(email, subject, body).joinToStringNotNullOrBlankWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {
-        return MATMSG_SCHEMA_PREFIX +
-                "$MATMSG_EMAIL_PREFIX${email.orEmpty()}$MATMSG_SEPARATOR" +
-                "$MATMSG_SUBJECT_PREFIX${subject.orEmpty()}$MATMSG_SEPARATOR" +
-                "$MATMSG_BODY_PREFIX${body.orEmpty()}$MATMSG_SEPARATOR$MATMSG_SEPARATOR"
+        return StringBuilder()
+            .append(MATMSG_SCHEMA_PREFIX)
+            .appendIfNotNullOrBlank(MATMSG_EMAIL_PREFIX, email, MATMSG_SEPARATOR)
+            .appendIfNotNullOrBlank(MATMSG_SUBJECT_PREFIX, subject, MATMSG_SEPARATOR)
+            .appendIfNotNullOrBlank(MATMSG_BODY_PREFIX, body, MATMSG_SEPARATOR)
+            .append(MATMSG_SEPARATOR)
+            .toString()
     }
 }

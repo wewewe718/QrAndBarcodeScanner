@@ -64,6 +64,6 @@ class CreateQrCodeCryptocurrencyFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = edit_text_address.isNotBlank() && edit_text_amount.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled = edit_text_address.isNotBlank()
     }
 }

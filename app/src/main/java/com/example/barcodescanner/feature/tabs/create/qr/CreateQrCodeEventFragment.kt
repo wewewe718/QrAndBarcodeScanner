@@ -26,6 +26,7 @@ class CreateQrCodeEventFragment : BaseCreateBarcodeFragment() {
     override fun getBarcodeSchema(): Schema {
         return VEvent(
             uid = edit_text_title.textString,
+            organizer = edit_text_organizer.textString,
             summary = edit_text_summary.textString,
             startDate = button_date_time_start.dateTime,
             endDate = button_date_time_end.dateTime

@@ -4,8 +4,6 @@
 ### AndroidStudio ###
 # Covers files to be ignored for android development using Android Studio.
 
-java_pid4441.hprof
-
 # Generated files
 bin/
 gen/

@@ -1,7 +1,7 @@
 package com.example.barcodescanner.model.schema
 
-import com.example.barcodescanner.extension.joinNotNullOrBlankToStringWithLineSeparator
-import com.example.barcodescanner.extension.orFalse
+import com.example.barcodescanner.extension.appendIfNotNullOrBlank
+import com.example.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.example.barcodescanner.extension.removePrefixIgnoreCase
 import com.example.barcodescanner.extension.startsWithIgnoreCase
 
@@ -61,14 +61,17 @@ class Wifi(
     override val schema = BarcodeSchema.WIFI
 
     override fun toFormattedText(): String {
-        return listOf(name, encryption, password).joinNotNullOrBlankToStringWithLineSeparator()
+        return listOf(name, encryption, password).joinToStringNotNullOrBlankWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {
-        return SCHEMA_PREFIX +
-                "$ENCRYPTION_PREFIX${encryption.orEmpty()}$SEPARATOR" +
-                "$NAME_PREFIX${name.orEmpty()}$SEPARATOR" +
-                "$PASSWORD_PREFIX${password.orEmpty()}$SEPARATOR" +
-                "$IS_HIDDEN_PREFIX${isHidden.orFalse()}$SEPARATOR"
+        return StringBuilder()
+            .append(SCHEMA_PREFIX)
+            .appendIfNotNullOrBlank(ENCRYPTION_PREFIX, encryption, SEPARATOR)
+            .appendIfNotNullOrBlank(NAME_PREFIX, name, SEPARATOR)
+            .appendIfNotNullOrBlank(PASSWORD_PREFIX, password, SEPARATOR)
+            .appendIfNotNullOrBlank(IS_HIDDEN_PREFIX, isHidden?.toString(), SEPARATOR)
+            .append(SEPARATOR)
+            .toString()
     }
 }

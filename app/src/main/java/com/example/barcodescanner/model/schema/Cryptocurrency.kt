@@ -1,12 +1,12 @@
 package com.example.barcodescanner.model.schema
 
 import com.example.barcodescanner.extension.equalsAnyIgnoreCase
-import com.example.barcodescanner.extension.joinNotNullOrBlankToStringWithLineSeparator
+import com.example.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.example.barcodescanner.extension.removePrefixIgnoreCase
 import com.example.barcodescanner.extension.startsWithIgnoreCase
 
 class Cryptocurrency(
-    val cryptocurrency: String? = null,
+    val cryptocurrency: String,
     val address: String? = null,
     val amount: String? = null,
     val label: String? = null,
@@ -66,14 +66,48 @@ class Cryptocurrency(
     override val schema = BarcodeSchema.CRYPTOCURRENCY
 
     override fun toFormattedText(): String {
-        return listOf(cryptocurrency, address, label, amount, message).joinNotNullOrBlankToStringWithLineSeparator()
+        return listOf(cryptocurrency, address, label, amount, message).joinToStringNotNullOrBlankWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {
-        return "${cryptocurrency.orEmpty()}$PREFIX_END_SYMBOL" +
-                "${address.orEmpty()}$ADDRESS_SEPARATOR" +
-                "$AMOUNT_PREFIX${amount.orEmpty()}$PARAMETERS_SEPARATOR" +
-                "$LABEL_PREFIX${label.orEmpty()}$PARAMETERS_SEPARATOR" +
-                "$MESSAGE_PREFIX${message.orEmpty()}"
+        val result = StringBuilder()
+            .append("$cryptocurrency$PREFIX_END_SYMBOL")
+            .append(address)
+
+        if (amount.isNullOrBlank() && label.isNullOrBlank() && message.isNullOrBlank()) {
+            return result.toString()
+        }
+
+        result.append(ADDRESS_SEPARATOR)
+
+        var isAtLeastOneParamSet = false
+
+        if (amount.isNullOrBlank().not()) {
+            isAtLeastOneParamSet = true
+            result
+                .append(AMOUNT_PREFIX)
+                .append(amount)
+        }
+
+        if (label.isNullOrBlank().not()) {
+            if (isAtLeastOneParamSet) {
+                result.append(PARAMETERS_SEPARATOR)
+            }
+            isAtLeastOneParamSet = true
+            result
+                .append(LABEL_PREFIX)
+                .append(label)
+        }
+
+        if (message.isNullOrBlank().not()) {
+            if (isAtLeastOneParamSet) {
+                result.append(PARAMETERS_SEPARATOR)
+            }
+            result
+                .append(MESSAGE_PREFIX)
+                .append(message)
+        }
+
+        return result.toString()
     }
 }

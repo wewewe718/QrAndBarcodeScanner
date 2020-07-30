@@ -1,6 +1,6 @@
 package com.example.barcodescanner.model.schema
 
-import com.example.barcodescanner.extension.joinNotNullOrBlankToStringWithLineSeparator
+import com.example.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.example.barcodescanner.extension.removePrefixIgnoreCase
 import com.example.barcodescanner.extension.startsWithIgnoreCase
 
@@ -31,7 +31,7 @@ class Mms(
     override val schema = BarcodeSchema.MMS
 
     override fun toFormattedText(): String {
-        return listOf(phone, subject, message).joinNotNullOrBlankToStringWithLineSeparator()
+        return listOf(phone, subject, message).joinToStringNotNullOrBlankWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {

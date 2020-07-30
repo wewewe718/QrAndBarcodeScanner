@@ -35,6 +35,26 @@
         android:layout_marginHorizontal="@dimen/default_margin"
         >
         <EditText
+            android:id="@+id/edit_text_organizer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:lines="1"
+            android:maxLines="1"
+            android:hint="@string/fragment_create_qr_code_event_organizer_hint"
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/blue"
+            android:inputType="text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        >
+        <EditText
             android:id="@+id/edit_text_summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

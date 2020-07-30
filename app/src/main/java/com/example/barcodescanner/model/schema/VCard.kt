@@ -1,6 +1,6 @@
 package com.example.barcodescanner.model.schema
 
-import com.example.barcodescanner.extension.joinNotNullOrBlankToStringWithLineSeparator
+import com.example.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.example.barcodescanner.extension.startsWithIgnoreCase
 import ezvcard.Ezvcard
 import ezvcard.VCardVersion
@@ -125,7 +125,7 @@ data class VCard(
             "${tertiaryEmail.orEmpty()} ${tertiaryEmailType.orEmpty()}",
             geoUri,
             url
-        ).joinNotNullOrBlankToStringWithLineSeparator()
+        ).joinToStringNotNullOrBlankWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {
@@ -135,24 +135,52 @@ data class VCard(
             given = firstName
             family = lastName
         }
-        vCard.nickname = Nickname().apply {
-            values.add(nickname)
+
+        if (nickname.isNullOrBlank().not()) {
+            vCard.nickname = Nickname().apply { values.add(nickname) }
         }
-        vCard.organization = Organization().apply {
-            values.add(organization)
+
+        if (organization.isNullOrBlank().not()) {
+            vCard.organization = Organization().apply { values.add(organization) }
         }
-        vCard.addTitle(Title(title))
 
-        vCard.addEmail(Email(email))
-        vCard.addEmail(Email(secondaryEmail))
-        vCard.addEmail(Email(tertiaryEmail))
+        if (title.isNullOrBlank().not()) {
+            vCard.addTitle(Title(title))
+        }
 
-        vCard.addTelephoneNumber(Telephone(phone))
-        vCard.addTelephoneNumber(Telephone(secondaryPhone))
-        vCard.addTelephoneNumber(Telephone(tertiaryPhoneType))
+        if (email.isNullOrBlank().not()) {
+            vCard.addEmail(Email(email))
+        }
 
-        vCard.addUrl(Url(url))
+        if (secondaryEmail.isNullOrBlank().not()) {
+            vCard.addEmail(Email(secondaryEmail))
+        }
 
-        return Ezvcard.write(vCard).version(VCardVersion.V4_0).go()
+        if (tertiaryEmail.isNullOrBlank().not()) {
+            vCard.addEmail(Email(tertiaryEmail))
+        }
+
+        if (phone.isNullOrBlank().not()) {
+            vCard.addTelephoneNumber(Telephone(phone))
+        }
+
+        if (secondaryPhone.isNullOrBlank().not()) {
+            vCard.addTelephoneNumber(Telephone(secondaryPhone))
+        }
+
+        if (tertiaryPhone.isNullOrBlank().not()) {
+            vCard.addTelephoneNumber(Telephone(tertiaryPhoneType))
+        }
+
+        if (url.isNullOrBlank().not()) {
+            vCard.addUrl(Url(url))
+        }
+
+        return Ezvcard
+            .write(vCard)
+            .version(VCardVersion.V4_0)
+            .prodId(false)
+            .go()
+            .trimEnd('\n', '\r', ' ')
     }
 }

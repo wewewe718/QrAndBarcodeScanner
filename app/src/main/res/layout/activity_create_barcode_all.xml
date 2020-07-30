@@ -68,7 +68,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_very_big"
+                android:layout_marginTop="@dimen/default_margin_big"
                 android:layout_marginBottom="@dimen/default_margin_medium2"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_create_barcode_list_1d"

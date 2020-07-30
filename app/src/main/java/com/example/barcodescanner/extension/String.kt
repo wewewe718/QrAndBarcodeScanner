@@ -33,8 +33,12 @@ fun String.endsWithIgnoreCase(prefix: String): Boolean {
     return endsWith(prefix, true)
 }
 
-fun List<String?>.joinNotNullOrBlankToStringWithLineSeparator(): String {
-    return filter { it.isNullOrBlank().not() }.joinToString("\n")
+fun List<String?>.joinToStringNotNullOrBlankWithLineSeparator(): String {
+    return joinToStringNotNullOrBlank("\n")
+}
+
+fun List<String?>.joinToStringNotNullOrBlank(separator: String): String {
+    return filter { it.isNullOrBlank().not() }.joinToString(separator)
 }
 
 fun String.toCountryEmoji(): String {
