@@ -4,8 +4,6 @@ import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
 import androidx.multidex.MultiDexApplication
 import io.reactivex.plugins.RxJavaPlugins
-import leakcanary.LeakCanary
-
 
 class App : MultiDexApplication() {
 

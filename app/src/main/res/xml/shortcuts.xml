@@ -3,7 +3,7 @@
     <shortcut
         android:shortcutId="scanFromCamera"
         android:enabled="true"
-        android:icon="@drawable/ic_scan"
+        android:icon="@drawable/ic_shortcut_scan_from_camera"
         android:shortcutShortLabel="@string/shortcut_scan_from_camera"
         android:shortcutLongLabel="@string/shortcut_scan_from_camera"
         >
@@ -17,7 +17,7 @@
     <shortcut
         android:shortcutId="scanFromFile"
         android:enabled="true"
-        android:icon="@drawable/ic_image_white"
+        android:icon="@drawable/ic_shortcut_scan_from_file"
         android:shortcutShortLabel="@string/shortcut_scan_from_file"
         android:shortcutLongLabel="@string/shortcut_scan_from_file"
         >
@@ -31,7 +31,7 @@
     <shortcut
         android:shortcutId="createBarcode"
         android:enabled="true"
-        android:icon="@drawable/ic_image_white"
+        android:icon="@drawable/ic_shortcut_create_barcode"
         android:shortcutShortLabel="@string/shortcut_create_barcode"
         android:shortcutLongLabel="@string/shortcut_create_barcode"
         >
@@ -45,7 +45,7 @@
     <shortcut
         android:shortcutId="history"
         android:enabled="true"
-        android:icon="@drawable/ic_image_white"
+        android:icon="@drawable/ic_shortcut_history"
         android:shortcutShortLabel="@string/shortcut_history"
         android:shortcutLongLabel="@string/shortcut_history"
         >
