@@ -25,7 +25,7 @@
     <string name="activity_bottom_tabs_settings_tab">Настройки</string>
 
     <!--Scan barcode from camera fragment-->
-    <string name="fragment_scan_barcode_from_camera_scan_from_file">Сканировать файл</string>
+    <string name="fragment_scan_barcode_from_camera_scan_from_file">Сканировать\nфайл</string>
     <string name="fragment_scan_barcode_from_camera_flash">Фонарик</string>
     <string name="fragment_scan_barcode_from_camera_barcode_saved">Сохранено</string>
     <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_title">Подтвердить</string>

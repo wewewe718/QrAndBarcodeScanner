@@ -1,5 +1,6 @@
 package com.example.barcodescanner.feature
 
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -20,6 +21,10 @@ abstract class BaseActivity : AppCompatActivity() {
             return
         }
 
+        if (isDarkModeEnabled()) {
+            return
+        }
+
         window.apply {
             clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -33,11 +38,20 @@ abstract class BaseActivity : AppCompatActivity() {
             return
         }
 
+        if (isDarkModeEnabled()) {
+            return
+        }
+
         window.apply {
             clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             statusBarColor = ContextCompat.getColor(context, R.color.white)
         }
+    }
+
+    private fun isDarkModeEnabled(): Boolean {
+        val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return nightModeFlags == Configuration.UI_MODE_NIGHT_YES
     }
 }

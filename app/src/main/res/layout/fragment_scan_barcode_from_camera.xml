@@ -22,6 +22,7 @@
         app:frameAspectRatioWidth="1"
         app:frameAspectRatioHeight="1"
         app:frameSize="0.55"
+        android:forceDarkAllowed="false"
         />
 
     <ImageView
@@ -71,6 +72,7 @@
         app:layout_constraintTop_toBottomOf="@id/image_view_scan_from_file"
         app:layout_constraintStart_toStartOf="@id/image_view_scan_from_file"
         app:layout_constraintEnd_toEndOf="@id/image_view_scan_from_file"
+        android:gravity="center"
         android:textColor="@color/white"
         android:text="@string/fragment_scan_barcode_from_camera_scan_from_file"
         android:textSize="@dimen/default_text_size_extra_small"

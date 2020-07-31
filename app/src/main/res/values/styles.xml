@@ -6,6 +6,7 @@
         <item name="colorAccent">@color/blue</item>
         <item name="android:colorBackground">@color/white</item>
         <item name="android:textColorSecondary">@color/black</item>
+        <item name="android:forceDarkAllowed">true</item>
     </style>
 
     <style name="ClickableBackground">
