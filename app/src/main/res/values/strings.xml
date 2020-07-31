@@ -7,12 +7,9 @@
     <string name="shortcut_create_barcode">Create barcode</string>
     <string name="shortcut_history">History</string>
 
-    <string name="aciton">com.example.barcodescanner.SCAN_FROM_FILE</string>
-
     <!--Error dialog-->
     <string name="error_dialog_title">Error</string>
     <string name="error_dialog_default_message">Something went wrong</string>
-    <string name="error_dialog_no_internet_message">No internet. Check your internet connection.</string>
     <string name="error_dialog_positive_button_text">OK</string>
 
     <!--Delete dialog-->
@@ -44,11 +41,11 @@
 
     <!--Create barcode fragment-->
     <string name="fragment_create_barcode_title">Create</string>
-    <string name="fragment_create_barcode_qr_code">QR codes</string>
+    <string name="fragment_create_barcode_qr_code">QR code</string>
     <string name="fragment_create_barcode_qr_code_clipboard">Content from clipboard</string>
     <string name="fragment_create_barcode_qr_code_text">Text</string>
     <string name="fragment_create_barcode_qr_code_show_all">More QR codes</string>
-    <string name="fragment_create_barcode">Barcodes</string>
+    <string name="fragment_create_barcode">Barcode</string>
     <string name="fragment_create_barcode_show_all">Barcodes and other 2D codes</string>
 
     <!--Create QR code list activity-->
@@ -247,26 +244,11 @@
     <string name="activity_barcode_save_as_svg">Save as .svg</string>
     <string name="activity_barcode_print">Print</string>
     <string name="activity_barcode_delete">Delete</string>
-    <string name="activity_barcode_connecting_to_wifi">Connecting</string>
+    <string name="activity_barcode_connecting_to_wifi">Connecting…</string>
     <string name="activity_barcode_copied">Copied to clipboard</string>
     <string name="activity_barcode_barcode_image_saved">Saved to Gallery</string>
     <string name="activity_barcode_barcode_text_saved">Saved to Downloads</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
-
-    <!--Barcode formats-->
-    <string name="barcode_format_aztec">Aztec</string>
-    <string name="barcode_format_codabar">Codabar</string>
-    <string name="barcode_format_code_39">Code 39</string>
-    <string name="barcode_format_code_93">Code 93</string>
-    <string name="barcode_format_code_128">Code 128</string>
-    <string name="barcode_format_data_matrix">Data Matrix</string>
-    <string name="barcode_format_ean_8">EAN-8</string>
-    <string name="barcode_format_ean_13">EAN-13</string>
-    <string name="barcode_format_itf_14">ITF</string>
-    <string name="barcode_format_pdf_417">PDF417</string>
-    <string name="barcode_format_qr_code">QR Code</string>
-    <string name="barcode_format_upc_a">UPC-A</string>
-    <string name="barcode_format_upc_e">UPC-E</string>
 
     <!--Barcode schemas-->
     <string name="barcode_schema_bookmark">Bookmark</string>
@@ -285,5 +267,20 @@
     <string name="barcode_schema_wifi">Wi-Fi</string>
     <string name="barcode_schema_youtube">Youtube URL</string>
     <string name="barcode_schema_other">Text</string>
+
+    <!--Barcode formats-->
+    <string name="barcode_format_qr_code">QR Code</string>
+    <string name="barcode_format_aztec" translatable="false">Aztec</string>
+    <string name="barcode_format_codabar" translatable="false">Codabar</string>
+    <string name="barcode_format_code_39" translatable="false">Code 39</string>
+    <string name="barcode_format_code_93" translatable="false">Code 93</string>
+    <string name="barcode_format_code_128" translatable="false">Code 128</string>
+    <string name="barcode_format_data_matrix" translatable="false">Data Matrix</string>
+    <string name="barcode_format_ean_8"  translatable="false">EAN-8</string>
+    <string name="barcode_format_ean_13" translatable="false">EAN-13</string>
+    <string name="barcode_format_itf_14" translatable="false">ITF</string>
+    <string name="barcode_format_pdf_417" translatable="false">PDF417</string>
+    <string name="barcode_format_upc_a" translatable="false">UPC-A</string>
+    <string name="barcode_format_upc_e" translatable="false">UPC-E</string>
 
 </resources>

@@ -1,0 +1,273 @@
+<resources>
+    <string name="app_name">QR &amp; Barcode Scanner</string>
+
+    <!--Shortcuts-->
+    <string name="shortcut_scan_from_camera">Сканер</string>
+    <string name="shortcut_scan_from_file">Сканировать файл</string>
+    <string name="shortcut_create_barcode">Создать</string>
+    <string name="shortcut_history">История</string>
+
+    <!--Error dialog-->
+    <string name="error_dialog_title">Ошибка</string>
+    <string name="error_dialog_default_message">Что-то пошло не так</string>
+    <string name="error_dialog_positive_button_text">OK</string>
+
+    <!--Delete dialog-->
+    <string name="dialog_delete_positive_button">Удалить</string>
+    <string name="dialog_delete_negative_button">Отмена</string>
+    <string name="dialog_delete_clear_history_message">Очистить историю?</string>
+    <string name="dialog_delete_barcode_message">Удалить?</string>
+
+    <!--Bottom tabs activity-->
+    <string name="activity_bottom_tabs_scan_tab">Сканер</string>
+    <string name="activity_bottom_tabs_create_tab">Создать</string>
+    <string name="activity_bottom_tabs_history_tab">История</string>
+    <string name="activity_bottom_tabs_settings_tab">Настройки</string>
+
+    <!--Scan barcode from camera fragment-->
+    <string name="fragment_scan_barcode_from_camera_scan_from_file">Сканировать файл</string>
+    <string name="fragment_scan_barcode_from_camera_flash">Фонарик</string>
+    <string name="fragment_scan_barcode_from_camera_barcode_saved">Сохранено</string>
+    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_title">Подтвердить</string>
+    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_positive_button">OK</string>
+    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_negative_button">Отмена</string>
+
+    <!--Scan barcode from file activity-->
+    <string name="activity_scan_barcode_from_file_title">Сканировать</string>
+    <string name="activity_scan_barcode_from_file_scan">OK</string>
+    <string name="activity_scan_barcode_from_file_rotate_left">Повернуть влево</string>
+    <string name="activity_scan_barcode_from_file_rotate_right">Повернуть вправо</string>
+    <string name="activity_scan_barcode_from_file_change_image">Выбрать другой файл</string>
+
+    <!--Create barcode fragment-->
+    <string name="fragment_create_barcode_title">Создать</string>
+    <string name="fragment_create_barcode_qr_code">QR-код</string>
+    <string name="fragment_create_barcode_qr_code_clipboard">Содержимое буфера обмена</string>
+    <string name="fragment_create_barcode_qr_code_text">Текст</string>
+    <string name="fragment_create_barcode_qr_code_show_all">Другие QR-коды</string>
+    <string name="fragment_create_barcode">Штрихкод</string>
+    <string name="fragment_create_barcode_show_all">Штрихкоды и другие 2D коды</string>
+
+    <!--Create QR code list activity-->
+    <string name="fragment_create_qr_code_list_title">Создать QR-код</string>
+
+    <!--Create barcode list activity-->
+    <string name="fragment_create_barcode_list_title">Создать штрихкод</string>
+    <string name="fragment_create_barcode_list_2d">2D штрихкоды</string>
+    <string name="fragment_create_barcode_list_1d">1D штрихкоды</string>
+
+    <!--Create barcode activity-->
+    <string name="activity_create_barcode_menu_item_title">Создать</string>
+    <string name="activity_create_barcode_contacts_menu_item_title">Контакты</string>
+    <string name="activity_create_barcode_location_menu_item_title">Карта</string>
+
+    <!--Base create barcode fragment -->
+    <string name="fragment_create_barcode_alternative">Альтернативно:</string>
+
+    <!--Create QR code URL fragment-->
+    <string name="fragment_create_qr_code_url_alternative">- Откройте браузер\n- Откройте сайт\n- Нажмите \"Поделиться\" в меню\n- Выберите это приложение</string>
+
+    <!--Create QR code bookmark fragment-->
+    <string name="fragment_create_qr_code_bookmark_title_hint">Заголовок</string>
+
+    <!--Create QR code Wi-fi fragment-->
+    <string name="fragment_create_qr_code_wifi_encryption_hint">Тип</string>
+    <string-array name="fragment_create_qr_code_wifi_encryption_types">
+        <item>WPA/WPA2</item>
+        <item>WEP</item>
+        <item>Нет</item>
+    </string-array>
+    <string name="fragment_create_qr_code_wifi_network_name_hint">Имя сети</string>
+    <string name="fragment_create_qr_code_wifi_password_hint">Пароль</string>
+    <string name="fragment_create_qr_code_wifi_is_hidden_hint">Скрытая</string>
+
+    <!--Create QR code email fragment-->
+    <string name="fragment_create_qr_code_email_subject_hint">Получатель</string>
+    <string name="fragment_create_qr_code_email_message_hint">Сообщение</string>
+
+    <!--Create QR code SMS fragment-->
+    <string name="fragment_create_qr_code_sms_message_hint">Сообщение</string>
+
+    <!--Create QR code MMS fragment-->
+    <string name="fragment_create_qr_code_mms_subject_hint">Получатель</string>
+    <string name="fragment_create_qr_code_mms_message_hint">Сообщение</string>
+
+    <!--Create QR code cryptocurrency fragment-->
+    <string name="fragment_create_qr_code_cryptocurrency_type_hint">Криптовалюта</string>
+    <string-array name="fragment_create_qr_code_cryptocurrencies">
+        <item>Bitcoin</item>
+        <item>Bitcoin Cash</item>
+        <item>Ethereum</item>
+        <item>Litecoin</item>
+        <item>Dash</item>
+    </string-array>
+    <string name="fragment_create_qr_code_cryptocurrency_address_hint">Адрес получателя</string>
+    <string name="fragment_create_qr_code_cryptocurrency_amount_hint">Сумма</string>
+    <string name="fragment_create_qr_code_cryptocurrency_label_hint">Имя</string>
+    <string name="fragment_create_qr_code_cryptocurrency_message_hint">Сообщение</string>
+
+    <!--Create QR code location fragment-->
+    <string name="fragment_create_qr_code_location_latitude_hint">Ширина</string>
+    <string name="fragment_create_qr_code_location_longitude_hint">Долгота</string>
+    <string name="fragment_create_qr_code_location_altitude_hint">Высота (необязательно)</string>
+
+    <!--Create QR code event-->
+    <string name="fragment_create_qr_code_event_title_hint">Название</string>
+    <string name="fragment_create_qr_code_event_organizer_hint">Организатор</string>
+    <string name="fragment_create_qr_code_event_summary_hint">Описание</string>
+    <string name="fragment_create_qr_code_event_start_date_hint">Дата начала</string>
+    <string name="fragment_create_qr_code_event_end_date_hint">Дата окончания</string>
+
+    <!--Create QR code contact-->
+    <string name="fragment_create_qr_code_contact_first_name_hint">Имя</string>
+    <string name="fragment_create_qr_code_contact_last_name_hint">Фамилия</string>
+    <string name="fragment_create_qr_code_contact_organization_hint">Организация</string>
+    <string name="fragment_create_qr_code_contact_job_hint">Должность</string>
+    <string name="fragment_create_qr_code_contact_email_hint">Email</string>
+    <string name="fragment_create_qr_code_contact_phone_hint">Телефон</string>
+    <string name="fragment_create_qr_code_contact_fax_hint">Факс</string>
+    <string name="fragment_create_qr_code_contact_country_hint">Страна</string>
+    <string name="fragment_create_qr_code_contact_region_hint">Регион/область</string>
+    <string name="fragment_create_qr_code_contact_postcode_hint">Почтовый индекс</string>
+    <string name="fragment_create_qr_code_contact_city_hint">Город</string>
+    <string name="fragment_create_qr_code_contact_street_hint">Улица</string>
+    <string name="fragment_create_qr_code_contact_website_hint">Сайт</string>
+    <string name="fragment_create_qr_code_contact_alternative">- Откройте контакты\n- Выберите контакт или создайте новый\n- Нажмите \"Поделиться\" в меню\n- Выберите это приложение</string>
+
+    <!--Create barcode-->
+    <string name="fragment_create_data_matrix_hint">Текст без специальных символов</string>
+    <string name="fragment_create_aztec_hint">Текст без специальных символов</string>
+    <string name="fragment_create_codabar_hint">Цифры</string>
+    <string name="fragment_create_code_39_hint">Текст в верхнем регистре без специальных символов</string>
+    <string name="fragment_create_code_93_hint">Текст в верхнем регистре без специальных символов</string>
+    <string name="fragment_create_code_128_hint">Текст без специальных символов</string>
+    <string name="fragment_create_ean_8_hint">7 цифр</string>
+    <string name="fragment_create_ean_13_hint">12 цифр</string>
+    <string name="fragment_create_itf_14_hint">Четное число цифр</string>
+    <string name="fragment_create_upc_a_hint">11 цифр</string>
+    <string name="fragment_create_upc_e_hint">7 цифр</string>
+
+    <!--Barcode history fragment-->
+    <string name="fragment_barcode_history_title">История</string>
+    <string-array name="fragment_barcode_history_tab_titles">
+        <item>Все</item>
+        <item>Избранное</item>
+    </string-array>
+    <string name="fragment_barcode_history_menu_title_export">Экспорт истории</string>
+    <string name="fragment_barcode_history_menu_title_delete_all">Очистить историю</string>
+
+    <!--Export history activity-->
+    <string name="activity_export_history_title">Экспорт истории</string>
+    <string name="activity_export_history_as_hint">Сохранить как</string>
+    <string-array name="activity_export_history_types">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_export_history_file_name_hint">Файл</string>
+    <string name="activity_export_history_export">Сохранить</string>
+    <string name="activity_export_history_exported">Сохранено в Загрузках</string>
+
+    <!--Settings fragment-->
+    <string name="fragment_settings_title">Настройки</string>
+    <string name="fragment_settings_scanner_settings">Сканер</string>
+    <string name="fragment_settings_open_links_automatically">Автоматически открывать ссылки</string>
+    <string name="fragment_settings_copy_to_clipboard">Копировать в буфер обмена</string>
+    <string name="fragment_settings_copy_to_clipboard_hint">Копировать отсканированный результат в буфер обмена</string>
+    <string name="fragment_settings_simple_auto_focus">Простой режим автофокуса</string>
+    <string name="fragment_settings_simple_auto_focus_hint">Включите, только если проблемы с автофокусом</string>
+    <string name="fragment_settings_flash">Фонарик</string>
+    <string name="fragment_settings_flash_hint">Включать фонарик сразу при открытии сканера</string>
+    <string name="fragment_settings_vibrate">Вибрация</string>
+    <string name="fragment_settings_vibrate_hint">Вибрировать при обнаружении кода</string>
+    <string name="fragment_settings_continuous_scanning">Непрерывное сканирование</string>
+    <string name="fragment_settings_continuous_scanning_hint">Сохранять сразу в историю</string>
+    <string name="fragment_settings_confirm_scans_manually">Подтверждать сканы вручную</string>
+    <string name="fragment_settings_confirm_scans_manually_hint">Избегать случайных сканов</string>
+    <string name="fragment_settings_camera">Камера</string>
+    <string name="fragment_settings_supported_formats">Поддерживаемые форматы</string>
+    <string name="fragment_settings_history_settings">История</string>
+    <string name="fragment_settings_save_scanned_barcodes_to_history">Сохранять отсканированные штрихкоды в историю</string>
+    <string name="fragment_settings_save_created_barcodes_to_history">Сохранять созданные штрихкоды в историю</string>
+    <string name="fragment_settings_clear_history">Очистить историю</string>
+    <string name="fragment_settings_about">Приложение</string>
+    <string name="fragment_settings_check_updates">Проверить наличие обновлений</string>
+    <string name="fragment_settings_permissions">Разрешения</string>
+    <string name="fragment_settings_app_version">Версия</string>
+
+    <!--Choose camera activity-->
+    <string name="activity_choose_camera_title">Камера</string>
+    <string name="activity_choose_camera_front">Передняя</string>
+    <string name="activity_choose_camera_back">Задняя</string>
+
+    <!--Select supported formats activity-->
+    <string name="activity_supported_formats_title">Поддерживаемые форматы</string>
+
+    <!--All permissions activity-->
+    <string name="activity_all_permissions_title">Разрешения</string>
+    <string name="activity_all_permissions_camera_title">Камера</string>
+    <string name="activity_all_permissions_camera_hint">Нужно для сканирования QR и штрихкодов при помощи камеры</string>
+    <string name="activity_all_permissions_read_contacts_title">Контакты</string>
+    <string name="activity_all_permissions_read_contacts_hint">Нужно для создания QR-кода контакта</string>
+    <string name="activity_all_permissions_location_title">Геолокация</string>
+    <string name="activity_all_permissions_location_hint">Нужно для показа текущего местоположения на экране создания QR-кода геолокации</string>
+    <string name="activity_all_permissions_storage_title">Память</string>
+    <string name="activity_all_permissions_storage_hint">Нужно для сохранения QR и штрихкодов</string>
+
+    <!--Barcode activity-->
+    <string name="activity_barcode_search_on_rate_and_goods">Поиск на Rate&amp;Goods</string>
+    <string name="activity_barcode_search_on_amazon">Поиск на Amazon</string>
+    <string name="activity_barcode_search_on_ebay">Поиск на eBay</string>
+    <string name="activity_barcode_add_to_calendar">Добавить в календарь</string>
+    <string name="activity_barcode_add_to_contacts">Добавить в контакты</string>
+    <string name="activity_barcode_call_phone">Вызов %s</string>
+    <string name="activity_barcode_send_sms">Отправить СМС на номер %s</string>
+    <string name="activity_barcode_send_email">Отправить email по адресу %s</string>
+    <string name="activity_barcode_show_location">Просмотр адреса</string>
+    <string name="activity_barcode_connect_to_wifi">Подключиться к Wi-Fi</string>
+    <string name="activity_barcode_open_wifi_settings">Открыть настройки Wi-Fi</string>
+    <string name="activity_barcode_copy_network_name">Скопировать имя сети</string>
+    <string name="activity_barcode_copy_network_password">Скопировать пароль</string>
+    <string name="activity_barcode_open_in_google_play">Открыть в маркете</string>
+    <string name="activity_barcode_open_in_youtube">Открыть в Youtube</string>
+    <string name="activity_barcode_save_bookmark">Сохранить в закладки</string>
+    <string name="activity_barcode_open_link">Открыть ссылку</string>
+    <string name="activity_barcode_share_as_text">Поделиться текстом</string>
+    <string name="activity_barcode_copy">Копировать</string>
+    <string name="activity_barcode_save_as_csv">Сохранить как .csv</string>
+    <string name="activity_barcode_save_as_json">Сохранить как .json</string>
+    <string name="activity_barcode_search">Поиск в интернете</string>
+    <string name="activity_barcode_add_to_favorites">Добавить в избранное</string>
+    <string name="activity_barcode_show_barcode_image">Посмотреть код</string>
+    <string name="activity_barcode_share_as_image">Поделиться изображением</string>
+    <string name="activity_barcode_save_as_png">Сохранить как .png</string>
+    <string name="activity_barcode_save_as_svg">Сохранить как .svg</string>
+    <string name="activity_barcode_print">Печать</string>
+    <string name="activity_barcode_delete">Удалить</string>
+    <string name="activity_barcode_connecting_to_wifi">Подключение…</string>
+    <string name="activity_barcode_copied">Скопировано в буфер обмена</string>
+    <string name="activity_barcode_barcode_image_saved">Сохранено в Галерею</string>
+    <string name="activity_barcode_barcode_text_saved">Сохранено в Загрузки</string>
+    <string name="activity_barcode_no_app">Не найдено подходящее приложение</string>
+
+    <!--Barcode schemas-->
+    <string name="barcode_schema_bookmark">Закладка</string>
+    <string name="barcode_schema_cryptocurrency">Bitcoin</string>
+    <string name="barcode_schema_email">Email</string>
+    <string name="barcode_schema_geo">Геолокация</string>
+    <string name="barcode_schema_google_maps">Адрес</string>
+    <string name="barcode_schema_google_play">Приложение</string>
+    <string name="barcode_schema_mms">ММС</string>
+    <string name="barcode_schema_me_card">Контакт (MeCard)</string>
+    <string name="barcode_schema_phone">Телефон</string>
+    <string name="barcode_schema_sms">СМС</string>
+    <string name="barcode_schema_url">URL</string>
+    <string name="barcode_schema_v_event">Событие</string>
+    <string name="barcode_schema_v_card">Контакт (VCard)</string>
+    <string name="barcode_schema_wifi">Wi-Fi</string>
+    <string name="barcode_schema_youtube">Youtube URL</string>
+    <string name="barcode_schema_other">Текст</string>
+
+    <!--Barcode formats-->
+    <string name="barcode_format_qr_code">QR-код</string>
+
+</resources>

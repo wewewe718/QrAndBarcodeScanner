@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.example.barcodescanner.R
-import java.net.UnknownHostException
 
 class ErrorDialogFragment : DialogFragment() {
 
@@ -27,10 +26,7 @@ class ErrorDialogFragment : DialogFragment() {
         }
 
         private fun getErrorMessage(context: Context, error: Throwable?): String {
-            return when (error) {
-                is UnknownHostException -> context.getString(R.string.error_dialog_no_internet_message)
-                else -> error?.message ?: context.getString(R.string.error_dialog_default_message)
-            }
+            return error?.message ?: context.getString(R.string.error_dialog_default_message)
         }
     }
 
