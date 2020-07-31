@@ -1,6 +1,8 @@
 package com.example.barcodescanner.feature.tabs.scan
 
 import android.Manifest
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +24,7 @@ import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActi
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.usecase.SupportedBarcodeFormats
 import com.google.zxing.Result
+import com.google.zxing.ResultMetadataType
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -33,6 +36,7 @@ import java.util.concurrent.TimeUnit
 class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.Listener {
 
     companion object {
+        private const val ZXING_SCAN_INTENT_ACTION = "com.google.zxing.client.android.SCAN"
         private const val PERMISSION_REQUEST_CODE = 101
         private const val CONTINUOUS_SCANNING_PREVIEW_DELAY = 500L
     }
@@ -190,6 +194,11 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     private fun handleScannedBarcode(result: Result) {
         vibrateIfNeeded()
 
+        if (requireActivity().intent?.action == ZXING_SCAN_INTENT_ACTION) {
+            finishWithResult(result)
+            return
+        }
+
         val barcode = barcodeParser.parseResult(result)
 
         when {
@@ -278,5 +287,43 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     private fun navigateToBarcodeScreen(barcode: Barcode) {
         BarcodeActivity.start(requireActivity(), barcode)
+    }
+
+    private fun finishWithResult(result: Result) {
+        val intent = Intent()
+            .putExtra("SCAN_RESULT", result.text)
+            .putExtra("SCAN_RESULT_FORMAT", result.barcodeFormat.toString())
+
+        if (result.rawBytes?.isNotEmpty() == true) {
+            intent.putExtra("SCAN_RESULT_BYTES", result.rawBytes)
+        }
+
+        result.resultMetadata?.let { metadata ->
+            metadata[ResultMetadataType.UPC_EAN_EXTENSION]?.let {
+                intent.putExtra("SCAN_RESULT_ORIENTATION", it.toString())
+            }
+
+            metadata[ResultMetadataType.ERROR_CORRECTION_LEVEL]?.let {
+                intent.putExtra("SCAN_RESULT_ERROR_CORRECTION_LEVEL", it.toString())
+            }
+
+            metadata[ResultMetadataType.UPC_EAN_EXTENSION]?.let {
+                intent.putExtra("SCAN_RESULT_UPC_EAN_EXTENSION", it.toString())
+            }
+
+            metadata[ResultMetadataType.BYTE_SEGMENTS]?.let {
+                var i = 0
+                @Suppress("UNCHECKED_CAST")
+                for (seg in it as Iterable<ByteArray>) {
+                    intent.putExtra("SCAN_RESULT_BYTE_SEGMENTS_$i", seg)
+                    ++i
+                }
+            }
+        }
+
+        requireActivity().apply {
+            setResult(Activity.RESULT_OK, intent)
+            finish()
+        }
     }
 }
