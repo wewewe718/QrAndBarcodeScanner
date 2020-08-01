@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.usecase.SupportedBarcodeFormats
 import com.google.zxing.BarcodeFormat
@@ -20,9 +21,9 @@ class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
         }
     }
 
-    private val formats by lazy { SupportedBarcodeFormats.FORMATS }
-    private val formatSelection by lazy { formats.map(settings::isFormatSelected) }
-    private val formatsAdapter by lazy { FormatsAdapter(this, formats, formatSelection) }
+    private val formats by unsafeLazy { SupportedBarcodeFormats.FORMATS }
+    private val formatSelection by unsafeLazy { formats.map(settings::isFormatSelected) }
+    private val formatsAdapter by unsafeLazy { FormatsAdapter(this, formats, formatSelection) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

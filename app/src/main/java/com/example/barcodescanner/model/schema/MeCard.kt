@@ -27,8 +27,8 @@ data class MeCard(
         private const val NAME_SEPARATOR = ","
         private const val PARAMETER_SEPARATOR = ";"
         private const val SCHEMA_SUFFIX = ";;"
-        private val DATE_PARSER by lazy { SimpleDateFormat("yyyyMMdd", Locale.ENGLISH) }
-        private val DATE_FORMATTER by lazy { SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH) }
+        private val DATE_PARSER by unsafeLazy { SimpleDateFormat("yyyyMMdd", Locale.ENGLISH) }
+        private val DATE_FORMATTER by unsafeLazy { SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH) }
 
         fun parse(text: String): MeCard? {
             if (text.startsWithIgnoreCase(SCHEMA_PREFIX).not()) {

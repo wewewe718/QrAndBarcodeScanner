@@ -12,8 +12,7 @@ import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.contactHelper
 import com.example.barcodescanner.di.permissionsHelper
 import com.example.barcodescanner.di.settings
-import com.example.barcodescanner.extension.showError
-import com.example.barcodescanner.extension.toStringId
+import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.feature.tabs.create.barcode.*
@@ -56,16 +55,16 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
 
     private val disposable = CompositeDisposable()
 
-    private val barcodeFormat by lazy {
+    private val barcodeFormat by unsafeLazy {
         BarcodeFormat.values().getOrNull(intent?.getIntExtra(BARCODE_FORMAT_KEY, -1) ?: -1)
             ?: throw IllegalArgumentException("No barcode format passed")
     }
 
-    private val barcodeSchema by lazy {
+    private val barcodeSchema by unsafeLazy {
         BarcodeSchema.values().getOrNull(intent?.getIntExtra(BARCODE_SCHEMA_KEY, -1) ?: -1)
     }
 
-    private val defaultText by lazy {
+    private val defaultText by unsafeLazy {
         intent?.getStringExtra(DEFAULT_TEXT_KEY).orEmpty()
     }
 

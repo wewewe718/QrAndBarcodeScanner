@@ -2,11 +2,13 @@ package com.example.barcodescanner.feature.barcode
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.*
+import android.graphics.drawable.*
 import android.os.Bundle
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
-import com.example.barcodescanner.di.barcodeImageGenerator
-import com.example.barcodescanner.extension.toStringId
+import com.example.barcodescanner.di.*
+import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.model.Barcode
 import kotlinx.android.synthetic.main.activity_barcode_image.*
@@ -26,7 +28,7 @@ class BarcodeImageActivity : BaseActivity() {
     }
 
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
-    private val barcode by lazy {
+    private val barcode by unsafeLazy {
         intent?.getSerializableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
     }
 
@@ -51,8 +53,10 @@ class BarcodeImageActivity : BaseActivity() {
     }
 
     private fun showBarcodeImage() {
+        val codeColor = if (settings.isDarkTheme) Color.WHITE else Color.BLACK
+        val backgroundColor = resources.getColor(R.color.transparent)
         try {
-            val bitmap = barcodeImageGenerator.generateBitmap(barcode, 2000, 2000, 0)
+            val bitmap = barcodeImageGenerator.generateBitmap(barcode, 2000, 2000, 0, codeColor, backgroundColor)
             image_view_barcode.setImageBitmap(bitmap)
         } catch (ex: Exception) {
             image_view_barcode.isVisible = false

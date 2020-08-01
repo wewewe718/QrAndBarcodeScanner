@@ -2,6 +2,7 @@ package com.example.barcodescanner.usecase
 
 import android.content.Context
 import androidx.appcompat.app.*
+import com.example.barcodescanner.extension.*
 import com.google.zxing.BarcodeFormat
 
 class Settings(context: Context) {
@@ -29,7 +30,7 @@ class Settings(context: Context) {
         SAVE_CREATED_BARCODES_TO_HISTORY,
     }
 
-    private val sharedPreferences by lazy {
+    private val sharedPreferences by unsafeLazy {
         context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
     }
 
@@ -39,6 +40,9 @@ class Settings(context: Context) {
             set(Key.THEME, value)
             AppCompatDelegate.setDefaultNightMode(value)
         }
+
+    val isDarkTheme: Boolean
+        get() = theme == AppCompatDelegate.MODE_NIGHT_YES
 
     var openLinksAutomatically: Boolean
         get() = get(Key.OPEN_LINKS_AUTOMATICALLY, false)

@@ -25,7 +25,7 @@ data class VEvent(
         private const val END_PREFIX = "DTEND:"
         private const val SUMMARY_PREFIX = "SUMMARY:"
 
-        private val DATE_PARSERS by lazy {
+        private val DATE_PARSERS by unsafeLazy {
             listOf(
                 SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'"),
                 SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"),
@@ -36,13 +36,13 @@ data class VEvent(
             )
         }
 
-        private val BARCODE_TEXT_DATE_FORMATTER by lazy {
+        private val BARCODE_TEXT_DATE_FORMATTER by unsafeLazy {
             SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'", Locale.US).apply {
                 timeZone = TimeZone.getTimeZone("UTC")
             }
         }
 
-        private val FORMATTED_TEXT_DATE_FORMATTER by lazy {
+        private val FORMATTED_TEXT_DATE_FORMATTER by unsafeLazy {
             SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
         }
 

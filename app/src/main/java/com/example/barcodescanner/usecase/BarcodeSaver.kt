@@ -6,8 +6,7 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import androidx.annotation.RequiresApi
-import com.example.barcodescanner.extension.endsWithIgnoreCase
-import com.example.barcodescanner.extension.formatOrNull
+import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ExportBarcode
 import com.google.zxing.BarcodeFormat
@@ -29,7 +28,7 @@ object BarcodeSaver {
     private const val CSV_MIME_TYPE = "text/csv"
     private const val CSV_FILE_EXTENSION = ".csv"
 
-    private val dateFormatter by lazy {
+    private val dateFormatter by unsafeLazy {
         SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
     }
 

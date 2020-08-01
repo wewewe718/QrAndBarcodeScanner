@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barcodescanner.R
-import com.example.barcodescanner.extension.showError
+import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.example.barcodescanner.model.schema.App
 import com.example.barcodescanner.model.schema.Schema
@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_create_qr_code_app.*
 
 class CreateQrCodeAppFragment : BaseCreateBarcodeFragment() {
     private val disposable = CompositeDisposable()
-    private val appAdapter by lazy { AppAdapter(parentActivity) }
+    private val appAdapter by unsafeLazy { AppAdapter(parentActivity) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_create_qr_code_app, container, false)

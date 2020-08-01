@@ -7,6 +7,7 @@ import android.view.*
 import androidx.appcompat.app.*
 import com.example.barcodescanner.*
 import com.example.barcodescanner.di.*
+import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.*
 import kotlinx.android.synthetic.main.activity_choose_theme.*
 
@@ -19,7 +20,7 @@ class ChooseThemeActivity : BaseActivity() {
         }
     }
 
-    private val buttons by lazy {
+    private val buttons by unsafeLazy {
         listOf(button_system_theme, button_light_theme, button_dark_theme)
     }
 
