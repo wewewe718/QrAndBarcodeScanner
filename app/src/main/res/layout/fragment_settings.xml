@@ -26,11 +26,31 @@
             android:orientation="vertical"
             >
 
-            <!--Scanner-->
+            <!--Appearance-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin_small"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:text="@string/fragment_settings_appearance_settings"
+                style="@style/SettingsGroupTitleTextViewStyle"
+                />
+            <com.example.barcodescanner.feature.common.view.SettingsButton
+                android:id="@+id/button_choose_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_theme"
+                app:isSwitchVisible="false"
+                android:visibility="gone"
+                />
+            <View style="@style/DelimiterStyle" />
+
+            <!--Scanner-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin_very_big"
                 android:layout_marginBottom="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_settings_scanner_settings"

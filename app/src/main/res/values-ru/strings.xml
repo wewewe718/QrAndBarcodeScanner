@@ -169,6 +169,8 @@
 
     <!--Settings fragment-->
     <string name="fragment_settings_title">Настройки</string>
+    <string name="fragment_settings_appearance_settings">Внешний вид</string>
+    <string name="fragment_settings_theme">Тема</string>
     <string name="fragment_settings_scanner_settings">Сканер</string>
     <string name="fragment_settings_open_links_automatically">Автоматически открывать ссылки</string>
     <string name="fragment_settings_copy_to_clipboard">Копировать в буфер обмена</string>
@@ -193,6 +195,12 @@
     <string name="fragment_settings_check_updates">Проверить наличие обновлений</string>
     <string name="fragment_settings_permissions">Разрешения</string>
     <string name="fragment_settings_app_version">Версия</string>
+
+    <!--Choose theme activity-->
+    <string name="activity_choose_theme_title">Тема</string>
+    <string name="activity_choose_theme_system">Системная</string>
+    <string name="activity_choose_theme_light">Светлая</string>
+    <string name="activity_choose_theme_dark">Темная</string>
 
     <!--Choose camera activity-->
     <string name="activity_choose_camera_title">Камера</string>

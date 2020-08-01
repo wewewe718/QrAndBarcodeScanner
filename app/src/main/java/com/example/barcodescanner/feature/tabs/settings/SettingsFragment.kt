@@ -2,10 +2,11 @@ package com.example.barcodescanner.feature.tabs.settings
 
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
+import android.os.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.*
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
@@ -17,6 +18,7 @@ import com.example.barcodescanner.feature.tabs.settings.formats.SupportedFormats
 import com.example.barcodescanner.feature.tabs.settings.permissions.*
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.example.barcodescanner.feature.tabs.settings.camera.ChooseCameraActivity
+import com.example.barcodescanner.feature.tabs.settings.theme.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -36,8 +38,8 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onResume() {
+        super.onResume()
         handleButtonCheckedChanged()
         handleButtonClicks()
         showSettings()
@@ -66,6 +68,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     }
 
     private fun handleButtonClicks() {
+        button_choose_theme.setOnClickListener { ChooseThemeActivity.start(requireActivity()) }
         button_choose_camera.setOnClickListener { ChooseCameraActivity.start(requireActivity()) }
         button_select_supported_formats.setOnClickListener { SupportedFormatsActivity.start(requireActivity()) }
         button_clear_history.setOnClickListener { showDeleteHistoryConfirmationDialog() }
@@ -92,6 +95,8 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     }
 
     private fun showSettings() {
+        button_choose_theme.isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+
         settings.apply {
             button_open_links_automatically.isChecked = openLinksAutomatically
             button_copy_to_clipboard.isChecked = copyToClipboard

@@ -114,6 +114,10 @@
             android:name=".feature.tabs.settings.permissions.AllPermissionsActivity"
             android:screenOrientation="portrait"
             />
+        <activity
+            android:name=".feature.tabs.settings.theme.ChooseThemeActivity"
+            android:screenOrientation="portrait"
+            />
 
     </application>
 

@@ -23,6 +23,7 @@
         app:frameAspectRatioHeight="1"
         app:frameSize="0.55"
         android:forceDarkAllowed="false"
+        app:maskColor="@color/black_transparent3"
         />
 
     <ImageView

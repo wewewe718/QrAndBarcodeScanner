@@ -1,6 +1,7 @@
 package com.example.barcodescanner.usecase
 
 import android.content.Context
+import androidx.appcompat.app.*
 import com.google.zxing.BarcodeFormat
 
 class Settings(context: Context) {
@@ -15,6 +16,7 @@ class Settings(context: Context) {
     }
 
     private enum class Key {
+        THEME,
         OPEN_LINKS_AUTOMATICALLY,
         COPY_TO_CLIPBOARD,
         SIMPLE_AUTO_FOCUS,
@@ -31,45 +33,52 @@ class Settings(context: Context) {
         context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
     }
 
+    var theme: Int
+        get() = get(Key.THEME, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        set(value) {
+            set(Key.THEME, value)
+            AppCompatDelegate.setDefaultNightMode(value)
+        }
+
     var openLinksAutomatically: Boolean
-        get() = getBoolean(Key.OPEN_LINKS_AUTOMATICALLY, false)
-        set(value) = setBoolean(Key.OPEN_LINKS_AUTOMATICALLY, value)
+        get() = get(Key.OPEN_LINKS_AUTOMATICALLY, false)
+        set(value) = set(Key.OPEN_LINKS_AUTOMATICALLY, value)
 
     var copyToClipboard: Boolean
-        get() = getBoolean(Key.COPY_TO_CLIPBOARD, true)
-        set(value) = setBoolean(Key.COPY_TO_CLIPBOARD, value)
+        get() = get(Key.COPY_TO_CLIPBOARD, true)
+        set(value) = set(Key.COPY_TO_CLIPBOARD, value)
 
     var simpleAutoFocus: Boolean
-        get() = getBoolean(Key.SIMPLE_AUTO_FOCUS, false)
-        set(value) = setBoolean(Key.SIMPLE_AUTO_FOCUS, value)
+        get() = get(Key.SIMPLE_AUTO_FOCUS, false)
+        set(value) = set(Key.SIMPLE_AUTO_FOCUS, value)
 
     var flash: Boolean
-        get() = getBoolean(Key.FLASHLIGHT, false)
-        set(value) = setBoolean(Key.FLASHLIGHT, value)
+        get() = get(Key.FLASHLIGHT, false)
+        set(value) = set(Key.FLASHLIGHT, value)
 
     var vibrate: Boolean
-        get() = getBoolean(Key.VIBRATE, true)
-        set(value) = setBoolean(Key.VIBRATE, value)
+        get() = get(Key.VIBRATE, true)
+        set(value) = set(Key.VIBRATE, value)
 
     var continuousScanning: Boolean
-        get() = getBoolean(Key.CONTINUOUS_SCANNING, false)
-        set(value) = setBoolean(Key.CONTINUOUS_SCANNING, value)
+        get() = get(Key.CONTINUOUS_SCANNING, false)
+        set(value) = set(Key.CONTINUOUS_SCANNING, value)
 
     var confirmScansManually: Boolean
-        get() = getBoolean(Key.CONFIRM_SCANS_MANUALLY, false)
-        set(value) = setBoolean(Key.CONFIRM_SCANS_MANUALLY, value)
+        get() = get(Key.CONFIRM_SCANS_MANUALLY, false)
+        set(value) = set(Key.CONFIRM_SCANS_MANUALLY, value)
 
     var isBackCamera: Boolean
-        get() = getBoolean(Key.IS_BACK_CAMERA, true)
-        set(value) = setBoolean(Key.IS_BACK_CAMERA, value)
+        get() = get(Key.IS_BACK_CAMERA, true)
+        set(value) = set(Key.IS_BACK_CAMERA, value)
 
     var saveScannedBarcodesToHistory: Boolean
-        get() = getBoolean(Key.SAVE_SCANNED_BARCODES_TO_HISTORY, true)
-        set(value) = setBoolean(Key.SAVE_SCANNED_BARCODES_TO_HISTORY, value)
+        get() = get(Key.SAVE_SCANNED_BARCODES_TO_HISTORY, true)
+        set(value) = set(Key.SAVE_SCANNED_BARCODES_TO_HISTORY, value)
 
     var saveCreatedBarcodesToHistory: Boolean
-        get() = getBoolean(Key.SAVE_CREATED_BARCODES_TO_HISTORY, true)
-        set(value) = setBoolean(Key.SAVE_CREATED_BARCODES_TO_HISTORY, value)
+        get() = get(Key.SAVE_CREATED_BARCODES_TO_HISTORY, true)
+        set(value) = set(Key.SAVE_CREATED_BARCODES_TO_HISTORY, value)
 
     fun isFormatSelected(format: BarcodeFormat): Boolean {
         return sharedPreferences.getBoolean(format.name, true)
@@ -81,11 +90,21 @@ class Settings(context: Context) {
             .apply()
     }
 
-    private fun getBoolean(key: Key, default: Boolean = false): Boolean {
+    private fun get(key: Key, default: Int): Int {
+        return sharedPreferences.getInt(key.name, default)
+    }
+
+    private fun set(key: Key, value: Int) {
+        return sharedPreferences.edit()
+            .putInt(key.name, value)
+            .apply()
+    }
+
+    private fun get(key: Key, default: Boolean = false): Boolean {
         return sharedPreferences.getBoolean(key.name, default)
     }
 
-    private fun setBoolean(key: Key, value: Boolean) {
+    private fun set(key: Key, value: Boolean) {
         sharedPreferences.edit()
             .putBoolean(key.name, value)
             .apply()

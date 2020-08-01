@@ -2,7 +2,12 @@ package com.example.barcodescanner.di
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.barcodescanner.*
 import com.example.barcodescanner.usecase.*
+
+
+val App.settings
+    get() = Settings.getInstance(applicationContext)
 
 
 val AppCompatActivity.barcodeParser

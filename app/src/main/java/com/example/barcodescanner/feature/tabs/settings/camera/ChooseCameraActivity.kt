@@ -20,8 +20,12 @@ class ChooseCameraActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_camera)
-        showSelectedCamera()
         handleToolbarBackClicked()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showSelectedCamera()
         handleBackCameraButtonChecked()
         handleFrontCameraButtonChecked()
     }
