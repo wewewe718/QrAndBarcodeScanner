@@ -72,7 +72,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
         button_choose_camera.setOnClickListener { ChooseCameraActivity.start(requireActivity()) }
         button_select_supported_formats.setOnClickListener { SupportedFormatsActivity.start(requireActivity()) }
         button_clear_history.setOnClickListener { showDeleteHistoryConfirmationDialog() }
-        button_permissions.setOnClickListener { showPermissionsScreen() }
+        button_permissions.setOnClickListener { AllPermissionsActivity.start(requireActivity()) }
         button_check_updates.setOnClickListener { showAppInMarket() }
     }
 
@@ -95,7 +95,11 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     }
 
     private fun showSettings() {
-        button_choose_theme.isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            text_view_appearance_title.isVisible = true
+            button_choose_theme.isVisible = true
+            delimiter_appearance.isVisible = true
+        }
 
         settings.apply {
             button_open_links_automatically.isChecked = openLinksAutomatically
@@ -113,10 +117,6 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     private fun showDeleteHistoryConfirmationDialog() {
         val dialog = DeleteConfirmationDialogFragment.newInstance(R.string.dialog_delete_clear_history_message)
         dialog.show(childFragmentManager, "")
-    }
-
-    private fun showPermissionsScreen() {
-        AllPermissionsActivity.start(requireActivity())
     }
 
     private fun showAppInMarket() {

@@ -28,6 +28,7 @@
 
             <!--Appearance-->
             <TextView
+                android:id="@+id/text_view_appearance_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
@@ -35,6 +36,7 @@
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_settings_appearance_settings"
                 style="@style/SettingsGroupTitleTextViewStyle"
+                android:visibility="gone"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_choose_theme"
@@ -44,7 +46,11 @@
                 app:isSwitchVisible="false"
                 android:visibility="gone"
                 />
-            <View style="@style/DelimiterStyle" />
+            <View
+                android:id="@+id/delimiter_appearance"
+                android:visibility="gone"
+                style="@style/DelimiterStyle"
+                />
 
             <!--Scanner-->
             <TextView
