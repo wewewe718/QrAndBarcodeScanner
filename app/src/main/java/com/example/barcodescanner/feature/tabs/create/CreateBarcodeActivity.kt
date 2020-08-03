@@ -4,22 +4,22 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.widget.Toast
 import com.example.barcodescanner.R
-import com.example.barcodescanner.di.barcodeDatabase
-import com.example.barcodescanner.di.contactHelper
-import com.example.barcodescanner.di.permissionsHelper
-import com.example.barcodescanner.di.settings
-import com.example.barcodescanner.extension.*
+import com.example.barcodescanner.di.*
+import com.example.barcodescanner.extension.showError
+import com.example.barcodescanner.extension.toStringId
+import com.example.barcodescanner.extension.unsafeLazy
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.feature.tabs.create.barcode.*
 import com.example.barcodescanner.feature.tabs.create.qr.*
 import com.example.barcodescanner.model.Barcode
-import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.example.barcodescanner.model.schema.App
+import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.example.barcodescanner.model.schema.Schema
 import com.google.zxing.BarcodeFormat
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -57,7 +57,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
 
     private val barcodeFormat by unsafeLazy {
         BarcodeFormat.values().getOrNull(intent?.getIntExtra(BARCODE_FORMAT_KEY, -1) ?: -1)
-            ?: throw IllegalArgumentException("No barcode format passed")
+            ?: BarcodeFormat.QR_CODE
     }
 
     private val barcodeSchema by unsafeLazy {
@@ -85,13 +85,18 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (createBarcodeImmediatelyIfNeeded()) {
+            finish()
+            return
+        }
+
         setContentView(R.layout.activity_create_barcode)
         handleToolbarBackClicked()
         handleToolbarMenuItemClicked()
         showToolbarTitle()
         showToolbarMenu()
         showFragment()
-        isCreateBarcodeButtonEnabled = false
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -125,6 +130,60 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     override fun onDestroy() {
         super.onDestroy()
         disposable.clear()
+    }
+
+    private fun createBarcodeImmediatelyIfNeeded(): Boolean {
+        if (intent?.action != Intent.ACTION_SEND) {
+            return false
+        }
+
+        return when (intent?.type) {
+            "text/plain" -> {
+                createBarcodeForPlainText()
+                true
+            }
+            "text/x-vcard" -> {
+                createBarcodeForVCard()
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun createBarcodeForPlainText() {
+        val text = intent?.getStringExtra(Intent.EXTRA_TEXT).orEmpty()
+        val schema = barcodeParser.parseSchema(barcodeFormat, text)
+        createBarcode(schema)
+    }
+
+    private fun createBarcodeForVCard() {
+        val uri = intent?.extras?.get(Intent.EXTRA_STREAM) as? Uri ?: return
+        val text = readDataFromVCardUri(uri).orEmpty()
+        val schema = barcodeParser.parseSchema(barcodeFormat, text)
+        createBarcode(schema)
+    }
+
+    private fun readDataFromVCardUri(uri: Uri): String? {
+        val stream = try {
+            contentResolver.openInputStream(uri) ?: return null
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return null
+        }
+
+        val fileContent = StringBuilder("")
+
+        var ch: Int
+        try {
+            while (stream.read().also { ch = it } != -1) {
+                fileContent.append(ch.toChar())
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        stream.close()
+
+        return fileContent.toString()
     }
 
     private fun handleToolbarBackClicked() {

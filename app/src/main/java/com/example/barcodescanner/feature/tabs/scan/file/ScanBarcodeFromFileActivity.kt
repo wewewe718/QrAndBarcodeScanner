@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.os.Parcelable
 import android.provider.MediaStore
 import android.view.MotionEvent.ACTION_UP
 import androidx.core.view.isInvisible
@@ -47,11 +48,15 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan_barcode_from_file)
-        startChooseImageActivity(savedInstanceState)
+
         handleToolbarBackPressed()
         handleToolbarMenuItemClicked()
         handleImageCropAreaChanged()
         handleScanButtonClicked()
+
+        if (showImageFromIntent().not()) {
+            startChooseImageActivity(savedInstanceState)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -73,6 +78,25 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         } else {
             finish()
         }
+    }
+
+    private fun showImageFromIntent(): Boolean {
+        var uri: Uri? = null
+
+        if (intent?.action == Intent.ACTION_SEND && intent.type.orEmpty().startsWith("image/")) {
+            uri = intent.getParcelableExtra<Parcelable>(Intent.EXTRA_STREAM) as? Uri
+        }
+
+        if (intent?.action == Intent.ACTION_VIEW && intent.type.orEmpty().startsWith("image/")) {
+            uri = intent.data
+        }
+
+        if (uri == null) {
+            return false
+        }
+
+        showImage(uri)
+        return true
     }
 
     private fun startChooseImageActivity(savedInstanceState: Bundle?) {

@@ -1,13 +1,17 @@
 package com.example.barcodescanner.usecase
 
 import android.content.Context
-import androidx.appcompat.app.*
-import com.example.barcodescanner.extension.*
+import androidx.appcompat.app.AppCompatDelegate
+import com.example.barcodescanner.extension.unsafeLazy
 import com.google.zxing.BarcodeFormat
 
 class Settings(context: Context) {
 
     companion object {
+        const val THEME_SYSTEM = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+        const val THEME_LIGHT = AppCompatDelegate.MODE_NIGHT_NO
+        const val THEME_DARK = AppCompatDelegate.MODE_NIGHT_YES
+
         private const val SHARED_PREFERENCES_NAME = "SHARED_PREFERENCES_NAME"
         private var INSTANCE: Settings? = null
 
@@ -35,7 +39,7 @@ class Settings(context: Context) {
     }
 
     var theme: Int
-        get() = get(Key.THEME, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        get() = get(Key.THEME, THEME_SYSTEM)
         set(value) {
             set(Key.THEME, value)
             AppCompatDelegate.setDefaultNightMode(value)

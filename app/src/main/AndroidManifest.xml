@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.barcodescanner"
     >
 
@@ -68,13 +69,40 @@
         <activity
             android:name=".feature.tabs.scan.file.ScanBarcodeFromFileActivity"
             android:screenOrientation="portrait"
-            />
+            tools:ignore="AppLinkUrlError"
+            >
+
+            <intent-filter android:label="@string/intent_filter_scan_image">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+
+            <intent-filter android:label="@string/intent_filter_scan_image">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+
+        </activity>
 
         <activity
             android:name=".feature.tabs.create.CreateBarcodeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible"
-            />
+            >
+            <intent-filter android:label="@string/intent_filter_create_qr_code_text">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+
+            <intent-filter android:label="@string/intent_filter_create_qr_code_text">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/x-vcard"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".feature.tabs.create.qr.CreateQrCodeAllActivity"
             android:screenOrientation="portrait"

@@ -1,14 +1,14 @@
 package com.example.barcodescanner.feature.tabs.settings.theme
 
-import android.content.*
-import android.os.*
-import android.util.*
-import android.view.*
-import androidx.appcompat.app.*
-import com.example.barcodescanner.*
-import com.example.barcodescanner.di.*
-import com.example.barcodescanner.extension.*
-import com.example.barcodescanner.feature.*
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import com.example.barcodescanner.R
+import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.extension.unsafeLazy
+import com.example.barcodescanner.feature.BaseActivity
+import com.example.barcodescanner.usecase.Settings
 import kotlinx.android.synthetic.main.activity_choose_theme.*
 
 class ChooseThemeActivity : BaseActivity() {
@@ -41,11 +41,10 @@ class ChooseThemeActivity : BaseActivity() {
     }
 
     private fun showInitialSettings() {
-        Log.d("InitialState", settings.theme.toString())
         val theme = settings.theme
-        button_system_theme.isChecked = theme == AppCompatDelegate.MODE_NIGHT_UNSPECIFIED || theme == AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-        button_light_theme.isChecked = theme == AppCompatDelegate.MODE_NIGHT_NO
-        button_dark_theme.isChecked = theme == AppCompatDelegate.MODE_NIGHT_YES
+        button_system_theme.isChecked = theme == Settings.THEME_SYSTEM
+        button_light_theme.isChecked = theme == Settings.THEME_LIGHT
+        button_dark_theme.isChecked = theme == Settings.THEME_DARK
     }
 
     private fun handleSettingsChanged() {
@@ -55,7 +54,7 @@ class ChooseThemeActivity : BaseActivity() {
             }
 
             uncheckOtherButtons(button_system_theme)
-            settings.theme = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+            settings.theme = Settings.THEME_SYSTEM
         }
 
         button_light_theme.setCheckedChangedListener { isChecked ->
@@ -64,7 +63,7 @@ class ChooseThemeActivity : BaseActivity() {
             }
 
             uncheckOtherButtons(button_light_theme)
-            settings.theme = AppCompatDelegate.MODE_NIGHT_NO
+            settings.theme = Settings.THEME_LIGHT
         }
 
         button_dark_theme.setCheckedChangedListener { isChecked ->
@@ -73,7 +72,7 @@ class ChooseThemeActivity : BaseActivity() {
             }
 
             uncheckOtherButtons(button_dark_theme)
-            settings.theme = AppCompatDelegate.MODE_NIGHT_YES
+            settings.theme = Settings.THEME_DARK
         }
     }
 
