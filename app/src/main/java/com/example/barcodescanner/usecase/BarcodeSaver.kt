@@ -6,7 +6,9 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import androidx.annotation.RequiresApi
-import com.example.barcodescanner.extension.*
+import com.example.barcodescanner.extension.endsWithIgnoreCase
+import com.example.barcodescanner.extension.formatOrNull
+import com.example.barcodescanner.extension.unsafeLazy
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ExportBarcode
 import com.google.zxing.BarcodeFormat
@@ -33,14 +35,28 @@ object BarcodeSaver {
     }
 
 
-    fun saveBarcodeAsJson(context: Context, barcode: Barcode) {
-        val json = convertToJson(barcode)
-        saveToDownloads(context, barcode, json, JSON_FILE_EXTENSION, JSON_MIME_TYPE)
+    fun saveBarcodeAsJson(context: Context, barcode: Barcode): Completable {
+        return Completable.create { emitter ->
+            try {
+                val json = convertToJson(barcode)
+                saveToDownloads(context, barcode, json, JSON_FILE_EXTENSION, JSON_MIME_TYPE)
+                emitter.onComplete()
+            } catch (ex: Exception) {
+                emitter.onError(ex)
+            }
+        }
     }
 
-    fun saveBarcodeAsCsv(context: Context, barcode: Barcode) {
-        val csv = convertToCsv(barcode)
-        saveToDownloads(context, barcode, csv, CSV_FILE_EXTENSION, CSV_MIME_TYPE)
+    fun saveBarcodeAsCsv(context: Context, barcode: Barcode): Completable {
+        return Completable.create { emitter ->
+            try {
+                val csv = convertToCsv(barcode)
+                saveToDownloads(context, barcode, csv, CSV_FILE_EXTENSION, CSV_MIME_TYPE)
+                emitter.onComplete()
+            } catch (ex: Exception) {
+                emitter.onError(ex)
+            }
+        }
     }
 
 

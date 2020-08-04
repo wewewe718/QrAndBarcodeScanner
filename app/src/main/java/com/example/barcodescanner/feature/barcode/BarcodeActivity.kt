@@ -1,12 +1,11 @@
 package com.example.barcodescanner.feature.barcode
 
-import android.Manifest
 import android.app.SearchManager
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
-import android.graphics.*
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
@@ -19,6 +18,8 @@ import com.example.barcodescanner.R
 import com.example.barcodescanner.di.*
 import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.BaseActivity
+import com.example.barcodescanner.feature.barcode.save.SaveBarcodeAsImageActivity
+import com.example.barcodescanner.feature.barcode.save.SaveBarcodeAsTextActivity
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
@@ -37,10 +38,6 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"
         private const val IS_CREATED = "IS_CREATED"
-
-        private const val SAVE_AS_PNG_REQUEST_PERMISSIONS_CODE = 101
-        private const val SAVE_AS_SVG_REQUEST_PERMISSIONS_CODE = 102
-        private val PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
         fun start(context: Context, barcode: Barcode, isCreated: Boolean = false) {
             val intent = Intent(context, BarcodeActivity::class.java).apply {
@@ -81,17 +78,6 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         showBarcode()
         showOrHideButtons()
         showButtonText()
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        if (permissionsHelper.areAllPermissionsGranted(grantResults).not()) {
-            return
-        }
-
-        when (requestCode) {
-            SAVE_AS_PNG_REQUEST_PERMISSIONS_CODE -> saveBarcodeImageAsPng()
-            SAVE_AS_SVG_REQUEST_PERMISSIONS_CODE -> saveBarcodeImageAsSvg()
-        }
     }
 
     override fun onDeleteConfirmed() {
@@ -172,11 +158,9 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_share_as_text.setOnClickListener { shareBarcodeAsText() }
         button_copy.setOnClickListener { copyBarcodeTextToClipboard() }
         button_search.setOnClickListener { searchBarcodeTextOnInternet() }
-        button_save_as_csv.setOnClickListener { saveBarcodeAsCsv() }
-        button_save_as_json.setOnClickListener { saveBarcodeAsJson() }
+        button_save_as_text.setOnClickListener { navigateToSaveBarcodeAsTextActivity() }
         button_share_as_image.setOnClickListener { shareBarcodeAsImage() }
-        button_save_as_png.setOnClickListener { permissionsHelper.requestPermissions(this, PERMISSIONS, SAVE_AS_PNG_REQUEST_PERMISSIONS_CODE) }
-        button_save_as_svg.setOnClickListener { permissionsHelper.requestPermissions(this, PERMISSIONS, SAVE_AS_SVG_REQUEST_PERMISSIONS_CODE) }
+        button_save_as_image.setOnClickListener { navigateToSaveBarcodeAsImageActivity() }
         button_print.setOnClickListener { printBarcode() }
     }
 
@@ -391,27 +375,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         startActivityIfExists(intent)
     }
 
-    private fun saveBarcodeImageAsPng() {
-        try {
-            val image = barcodeImageGenerator.generateBitmap(originalBarcode, 640, 640, 2)
-            barcodeImageSaver.savePngImageToPublicDirectory(this, image, barcode)
-        } catch (ex: Exception) {
-            showError(ex)
-            return
-        }
-        showToast(R.string.activity_barcode_barcode_image_saved)
-    }
 
-    private fun saveBarcodeImageAsSvg() {
-        try {
-            val image = barcodeImageGenerator.generateSvg(originalBarcode, 300, 300, 2)
-            barcodeImageSaver.saveSvgImageToPublicDirectory(this, image, barcode)
-        } catch (ex: Exception) {
-            showError(ex)
-            return
-        }
-        showToast(R.string.activity_barcode_barcode_image_saved)
-    }
 
     private fun printBarcode() {
         val barcodeImage = try {
@@ -429,6 +393,14 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun navigateToBarcodeImageActivity() {
         BarcodeImageActivity.start(this, originalBarcode)
+    }
+
+    private fun navigateToSaveBarcodeAsTextActivity() {
+        SaveBarcodeAsTextActivity.start(this, originalBarcode)
+    }
+
+    private fun navigateToSaveBarcodeAsImageActivity() {
+        SaveBarcodeAsImageActivity.start(this, originalBarcode)
     }
 
     private fun deleteBarcode() {

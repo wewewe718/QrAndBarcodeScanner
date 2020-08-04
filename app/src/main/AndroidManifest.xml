@@ -124,9 +124,17 @@
             android:name="com.example.barcodescanner.feature.barcode.BarcodeImageActivity"
             android:screenOrientation="portrait"
             />
+        <activity
+            android:name=".feature.barcode.save.SaveBarcodeAsTextActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".feature.barcode.save.SaveBarcodeAsImageActivity"
+            android:screenOrientation="portrait"
+            />
 
         <activity
-            android:name=".feature.tabs.history.ExportHistoryActivity"
+            android:name=".feature.tabs.history.export.ExportHistoryActivity"
             android:screenOrientation="portrait"
             />
 

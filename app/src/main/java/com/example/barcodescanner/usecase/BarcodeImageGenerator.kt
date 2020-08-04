@@ -1,14 +1,34 @@
 package com.example.barcodescanner.usecase
 
-import android.graphics.*
-import com.example.barcodescanner.model.*
-import com.google.zxing.*
-import com.google.zxing.common.*
-import com.journeyapps.barcodescanner.*
+import android.graphics.Bitmap
+import android.graphics.Color
+import com.example.barcodescanner.model.Barcode
+import com.google.zxing.EncodeHintType
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.common.BitMatrix
+import com.journeyapps.barcodescanner.BarcodeEncoder
+import io.reactivex.Single
 
 object BarcodeImageGenerator {
     private val encoder = BarcodeEncoder()
     private val writer = MultiFormatWriter()
+
+    fun generateBitmapAsync(
+        barcode: Barcode,
+        width: Int,
+        height: Int,
+        margin: Int = 0,
+        codeColor: Int = Color.BLACK,
+        backgroundColor: Int = Color.WHITE
+    ): Single<Bitmap> {
+        return Single.create { emitter ->
+            try {
+                emitter.onSuccess(generateBitmap(barcode, width, height, margin, codeColor, backgroundColor))
+            } catch (ex: Exception) {
+                emitter.onError(ex)
+            }
+        }
+    }
 
     fun generateBitmap(
         barcode: Barcode,
@@ -26,6 +46,16 @@ object BarcodeImageGenerator {
             createHints(barcode.errorCorrectionLevel, margin)
         )
         return createBitmap(matrix, codeColor, backgroundColor)
+    }
+
+    fun generateSvgAsync(barcode: Barcode, width: Int, height: Int, margin: Int = 0): Single<String> {
+        return Single.create { emitter ->
+            try {
+                emitter.onSuccess(generateSvg(barcode, width, height, margin))
+            } catch (ex: Exception) {
+                emitter.onError(ex)
+            }
+        }
     }
 
     fun generateSvg(barcode: Barcode, width: Int, height: Int, margin: Int = 0): String {

@@ -6,7 +6,9 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.provider.MediaStore.Images
 import androidx.core.content.FileProvider
+import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
+import io.reactivex.Completable
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -34,19 +36,33 @@ object BarcodeImageSaver {
         return FileProvider.getUriForFile(context, "com.example.barcodescanner.fileprovider", imageFile)
     }
 
-    fun savePngImageToPublicDirectory(context: Context, image: Bitmap, barcode: ParsedBarcode) {
-        saveToPublicDirectory(context, barcode, "image/png") { outputStream ->
-            image.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+    fun savePngImageToPublicDirectory(context: Context, image: Bitmap, barcode: Barcode): Completable {
+        return Completable.create { emitter ->
+            try {
+                saveToPublicDirectory(context, barcode, "image/png") { outputStream ->
+                    image.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                }
+                emitter.onComplete()
+            } catch (ex: Exception) {
+                emitter.onError(ex)
+            }
         }
     }
 
-    fun saveSvgImageToPublicDirectory(context: Context, image: String, barcode: ParsedBarcode) {
-        saveToPublicDirectory(context, barcode, "image/svg+xml") { outputStream ->
-            outputStream.write(image.toByteArray())
+    fun saveSvgImageToPublicDirectory(context: Context, image: String, barcode: Barcode): Completable {
+        return Completable.create { emitter ->
+            try {
+                saveToPublicDirectory(context, barcode, "image/svg+xml") { outputStream ->
+                    outputStream.write(image.toByteArray())
+                }
+                emitter.onComplete()
+            } catch (ex: Exception) {
+                emitter.onError(ex)
+            }
         }
     }
 
-    private fun saveToPublicDirectory(context: Context, barcode: ParsedBarcode, mimeType:String, action: (OutputStream)-> Unit) {
+    private fun saveToPublicDirectory(context: Context, barcode: Barcode, mimeType:String, action: (OutputStream)-> Unit) {
         val contentResolver = context.contentResolver ?: return
 
         val imageTitle = "${barcode.format}_${barcode.schema}_${barcode.date}"

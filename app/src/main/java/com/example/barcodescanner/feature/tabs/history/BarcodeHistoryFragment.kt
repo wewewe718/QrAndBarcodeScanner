@@ -10,6 +10,7 @@ import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
+import com.example.barcodescanner.feature.tabs.history.export.ExportHistoryActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo

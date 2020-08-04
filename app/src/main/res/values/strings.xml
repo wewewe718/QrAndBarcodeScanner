@@ -246,14 +246,12 @@
     <string name="activity_barcode_open_link">Open link</string>
     <string name="activity_barcode_share_as_text">Share as text</string>
     <string name="activity_barcode_copy">Copy to clipboard</string>
-    <string name="activity_barcode_save_as_csv">Save as .csv</string>
-    <string name="activity_barcode_save_as_json">Save as .json</string>
+    <string name="activity_barcode_save_as_text">Save as text</string>
     <string name="activity_barcode_search">Search on the web</string>
     <string name="activity_barcode_add_to_favorites">Add to favorites</string>
     <string name="activity_barcode_show_barcode_image">View code</string>
     <string name="activity_barcode_share_as_image">Share as image</string>
-    <string name="activity_barcode_save_as_png">Save as .png</string>
-    <string name="activity_barcode_save_as_svg">Save as .svg</string>
+    <string name="activity_barcode_save_as_image">Save as image</string>
     <string name="activity_barcode_print">Print</string>
     <string name="activity_barcode_delete">Delete</string>
     <string name="activity_barcode_connecting_to_wifi">Connecting…</string>
@@ -262,6 +260,26 @@
     <string name="activity_barcode_barcode_text_saved">Saved to Downloads</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
 
+    <!--Save barcode as text activity-->
+    <string name="activity_save_barcode_as_text_title">Save</string>
+    <string name="activity_save_barcode_as_text_save_as_hint">Save as</string>
+    <string-array name="activity_save_barcode_as_text_formats">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_save_barcode_as_text_file_name_save">Save</string>
+    <string name="activity_save_barcode_as_text_file_name_saved">Saved to Downloads</string>
+
+    <!--Save barcode as image activity-->
+    <string name="activity_save_barcode_as_image_title">Save</string>
+    <string name="activity_save_barcode_as_image_save_as_hint">Save as</string>
+    <string-array name="activity_save_barcode_as_image_formats">
+        <item>PNG</item>
+        <item>SVG</item>
+    </string-array>
+    <string name="activity_save_barcode_as_image_file_name_save">Save</string>
+    <string name="activity_save_barcode_as_image_file_name_saved">Saved to Gallery</string>
+    
     <!--Barcode schemas-->
     <string name="barcode_schema_bookmark">Bookmark</string>
     <string name="barcode_schema_cryptocurrency">Bitcoin</string>

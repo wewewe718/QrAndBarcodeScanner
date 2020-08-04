@@ -347,20 +347,12 @@
                 app:text="@string/activity_barcode_search"
                 />
             <com.example.barcodescanner.feature.common.view.IconButton
-                android:id="@+id/button_save_as_csv"
+                android:id="@+id/button_save_as_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_download"
                 app:iconBackground="@color/green"
-                app:text="@string/activity_barcode_save_as_csv"
-                />
-            <com.example.barcodescanner.feature.common.view.IconButton
-                android:id="@+id/button_save_as_json"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_download"
-                app:iconBackground="@color/green"
-                app:text="@string/activity_barcode_save_as_json"
+                app:text="@string/activity_barcode_save_as_text"
                 />
             <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_share_as_image"
@@ -371,20 +363,12 @@
                 app:text="@string/activity_barcode_share_as_image"
                 />
             <com.example.barcodescanner.feature.common.view.IconButton
-                android:id="@+id/button_save_as_png"
+                android:id="@+id/button_save_as_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_download"
                 app:iconBackground="@color/blue"
-                app:text="@string/activity_barcode_save_as_png"
-                />
-            <com.example.barcodescanner.feature.common.view.IconButton
-                android:id="@+id/button_save_as_svg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_download"
-                app:iconBackground="@color/blue"
-                app:text="@string/activity_barcode_save_as_svg"
+                app:text="@string/activity_barcode_save_as_image"
                 />
             <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_print"
