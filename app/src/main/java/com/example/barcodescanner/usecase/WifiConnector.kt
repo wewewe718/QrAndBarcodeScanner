@@ -2,9 +2,12 @@ package com.example.barcodescanner.usecase
 
 import android.content.Context
 import android.net.wifi.WifiConfiguration
+import android.net.wifi.WifiNetworkSuggestion
+import android.os.Build
+import androidx.annotation.RequiresApi
+import com.example.barcodescanner.extension.toCaps
 import com.example.barcodescanner.extension.wifiManager
 import io.reactivex.Completable
-import io.reactivex.CompletableEmitter
 import io.reactivex.schedulers.Schedulers
 
 object WifiConnector {
@@ -12,27 +15,78 @@ object WifiConnector {
     fun connect(context: Context, authType: String, name: String, password: String): Completable {
         return Completable
             .create { emitter ->
-                connect(context, authType, name, password, emitter)
+                try {
+                    tryToConnect(context, authType, name, password)
+                    emitter.onComplete()
+                } catch (ex: Exception) {
+                    emitter.onError(ex)
+                }
             }
             .subscribeOn(Schedulers.newThread())
     }
 
-    private fun connect(context: Context, authType: String, name: String, password: String, emitter: CompletableEmitter) {
-        try {
-            tryToConnect(context, authType, name, password)
-            emitter.onComplete()
-        } catch (ex: Exception) {
-            emitter.onError(ex)
+    private fun tryToConnect(context: Context, authType: String, name: String, password: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            tryToConnectNewApi(context, authType, name, password)
+        } else {
+            tryToConnectOldApi(context, authType, name, password)
         }
     }
 
-    private fun tryToConnect(context: Context, authType: String, name: String, password: String) {
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun tryToConnectNewApi(context: Context, authType: String, name: String, password: String) {
+        when (authType.toCaps()) {
+            "", "NOPASS" -> connectToOpenNetworkNewApi(context, name)
+            "WPA", "WPA2" -> connectToWpa2NetworkNewApi(context, name, password)
+            "WPA3" -> connectToWpa3NetworkNewApi(context, name, password)
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun connectToOpenNetworkNewApi(context: Context, name: String) {
+        val builder = WifiNetworkSuggestion.Builder()
+            .setSsid(name)
+
+        connect(context, builder)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun connectToWpa2NetworkNewApi(context: Context, name: String, password: String) {
+        val builder = WifiNetworkSuggestion.Builder()
+            .setSsid(name)
+            .setWpa2Passphrase(password)
+
+        connect(context, builder)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun connectToWpa3NetworkNewApi(context: Context, name: String, password: String) {
+        val builder = WifiNetworkSuggestion.Builder()
+            .setSsid(name)
+            .setWpa3Passphrase(password)
+
+        connect(context, builder)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun connect(context: Context, builder: WifiNetworkSuggestion.Builder) {
+        val suggestions = listOf(builder.build())
+
+        context.wifiManager?.apply {
+            removeNetworkSuggestions(suggestions)
+            addNetworkSuggestions(suggestions)
+        }
+    }
+
+
+    private fun tryToConnectOldApi(context: Context, authType: String, name: String, password: String) {
         enableWifiIfNeeded(context)
 
-        when (authType) {
-            "nopass" -> connectToOpenNetwork(context, name)
-            "WPA" -> connectToWpaNetwork(context, name, password)
-            "WEP" -> connectToWepNetwork(context, name, password)
+        when (authType.toCaps()) {
+            "", "NOPASS" -> connectToOpenNetworkOldApi(context, name)
+            "WPA", "WPA2" -> connectToWpaNetworkOldApi(context, name, password)
+            "WEP" -> connectToWepNetworkOldApi(context, name, password)
         }
     }
 
@@ -44,7 +98,7 @@ object WifiConnector {
         }
     }
 
-    private fun connectToOpenNetwork(context: Context, name: String) {
+    private fun connectToOpenNetworkOldApi(context: Context, name: String) {
         val wifiConfiguration = WifiConfiguration().apply {
             SSID = "\"" + name + "\""
             allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE)
@@ -61,7 +115,7 @@ object WifiConnector {
         connect(context, wifiConfiguration)
     }
 
-    private fun connectToWpaNetwork(context: Context, name: String, password: String) {
+    private fun connectToWpaNetworkOldApi(context: Context, name: String, password: String) {
         val wifiConfiguration = WifiConfiguration().apply {
             SSID = "\"" + name + "\""
             preSharedKey = "\"" + password + "\""
@@ -78,7 +132,7 @@ object WifiConnector {
         connect(context, wifiConfiguration)
     }
 
-    private fun connectToWepNetwork(context: Context, name: String, password: String) {
+    private fun connectToWepNetworkOldApi(context: Context, name: String, password: String) {
         val wifiConfiguration = WifiConfiguration().apply {
             SSID = "\"" + name + "\""
             wepKeys[0] = "\"" + password + "\""

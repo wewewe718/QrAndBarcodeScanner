@@ -3,6 +3,10 @@ package com.example.barcodescanner.extension
 import android.provider.ContactsContract
 import java.util.*
 
+fun String.toCaps(): String {
+    return toUpperCase(Locale.ROOT)
+}
+
 fun String.removePrefixIgnoreCase(prefix: String): String {
     return substring(prefix.length)
 }
