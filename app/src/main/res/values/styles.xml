@@ -21,15 +21,17 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="android:background">@color/white</item>
+        <item name="titleTextAppearance">@style/ToolbarTitle</item>
     </style>
 
-    <style name="ToolbarWithBackButtonStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="android:background">@color/white</item>
+    <style name="ToolbarWithBackButtonStyle" parent="ToolbarStyle">
         <item name="navigationIcon">@drawable/ic_arrow_back</item>
     </style>
 
+    <style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">20sp</item>
+    </style>
+    
     <style name="TabTextAppearance">
         <item name="android:textSize">@dimen/default_text_size_very_small</item>
         <item name="android:textStyle">bold</item>
