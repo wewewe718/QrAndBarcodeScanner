@@ -16,7 +16,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_barcode_history.*
-import kotlinx.android.synthetic.main.fragment_barcode_history.toolbar
 
 
 class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1085465274600",
+    "firebase_url": "https://qrandbarcodescanner-70224.firebaseio.com",
+    "project_id": "qrandbarcodescanner-70224",
+    "storage_bucket": "qrandbarcodescanner-70224.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085465274600:android:87b1ef08c8dc8ec08b815d",
+        "android_client_info": {
+          "package_name": "com.example.barcodescanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1085465274600-6ahpq4gpn7raf146b6th4vhc9r37r92b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApxZJbHcNaGJNCOdIkJU4PGVY-1UToBAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1085465274600-6ahpq4gpn7raf146b6th4vhc9r37r92b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
