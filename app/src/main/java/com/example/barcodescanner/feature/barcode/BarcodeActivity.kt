@@ -514,7 +514,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
             return
         }
 
-        button_search_on_rate_and_goods.isVisible = barcode.isProductBarcode
+        button_search_on_rate_and_goods.isVisible = barcode.isProductBarcode && currentLocale.isRussian
         button_search_on_amazon.isVisible = barcode.isProductBarcode
         button_search_on_ebay.isVisible = barcode.isProductBarcode
         button_search_on_web.isVisible = barcode.isProductBarcode
