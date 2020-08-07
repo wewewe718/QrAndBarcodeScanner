@@ -148,7 +148,8 @@ object ContactHelper {
     private fun Cursor.getStringOrNull(columnName: String): String? {
         return try {
             getString(getColumnIndex(columnName))
-        } catch (_: Exception) {
+        } catch (ex: Exception) {
+            Logger.log(ex)
             null
         }
     }
@@ -156,7 +157,8 @@ object ContactHelper {
     private fun Cursor.getIntOrNull(columnName: String): Int? {
         return try {
             getInt(getColumnIndex(columnName))
-        } catch (_: Exception) {
+        } catch (ex: Exception) {
+            Logger.log(ex)
             null
         }
     }

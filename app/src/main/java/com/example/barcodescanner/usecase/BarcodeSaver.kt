@@ -42,6 +42,7 @@ object BarcodeSaver {
                 saveToDownloads(context, barcode, json, JSON_FILE_EXTENSION, JSON_MIME_TYPE)
                 emitter.onComplete()
             } catch (ex: Exception) {
+                Logger.log(ex)
                 emitter.onError(ex)
             }
         }
@@ -54,6 +55,7 @@ object BarcodeSaver {
                 saveToDownloads(context, barcode, csv, CSV_FILE_EXTENSION, CSV_MIME_TYPE)
                 emitter.onComplete()
             } catch (ex: Exception) {
+                Logger.log(ex)
                 emitter.onError(ex)
             }
         }
@@ -66,6 +68,7 @@ object BarcodeSaver {
                 trySaveBarcodeHistoryAsJson(context, fileName, barcodes)
                 emitter.onComplete()
             } catch (ex: Exception) {
+                Logger.log(ex)
                 emitter.onError(ex)
             }
         }
@@ -77,6 +80,7 @@ object BarcodeSaver {
                 trySaveBarcodeHistoryCsv(context, fileName, barcodes)
                 emitter.onComplete()
             } catch (ex: Exception) {
+                Logger.log(ex)
                 emitter.onError(ex)
             }
         }

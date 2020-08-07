@@ -21,6 +21,7 @@ import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.schema.App
 import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.example.barcodescanner.model.schema.Schema
+import com.example.barcodescanner.usecase.Logger
 import com.google.zxing.BarcodeFormat
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -167,7 +168,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
         val stream = try {
             contentResolver.openInputStream(uri) ?: return null
         } catch (e: Exception) {
-            e.printStackTrace()
+            Logger.log(e)
             return null
         }
 
@@ -179,7 +180,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
                 fileContent.append(ch.toChar())
             }
         } catch (e: Exception) {
-            e.printStackTrace()
+            Logger.log(e)
         }
         stream.close()
 

@@ -44,6 +44,7 @@ object BarcodeImageSaver {
                 }
                 emitter.onComplete()
             } catch (ex: Exception) {
+                Logger.log(ex)
                 emitter.onError(ex)
             }
         }
@@ -57,6 +58,7 @@ object BarcodeImageSaver {
                 }
                 emitter.onComplete()
             } catch (ex: Exception) {
+                Logger.log(ex)
                 emitter.onError(ex)
             }
         }

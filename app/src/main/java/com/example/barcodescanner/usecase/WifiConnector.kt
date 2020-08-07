@@ -19,6 +19,7 @@ object WifiConnector {
                     tryToConnect(context, authType, name, password)
                     emitter.onComplete()
                 } catch (ex: Exception) {
+                    Logger.log(ex)
                     emitter.onError(ex)
                 }
             }

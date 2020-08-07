@@ -5,6 +5,7 @@ import com.example.barcodescanner.extension.appendIfNotNullOrBlank
 import com.example.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.example.barcodescanner.extension.removePrefixIgnoreCase
 import com.example.barcodescanner.extension.startsWithIgnoreCase
+import com.example.barcodescanner.usecase.Logger
 
 data class Email(
     val email: String? = null,
@@ -58,7 +59,8 @@ data class Email(
             return try {
                 val mailto = MailTo.parse(text)
                 Email(mailto.to, mailto.subject, mailto.body)
-            } catch (_: Exception) {
+            } catch (ex: Exception) {
+                Logger.log(ex)
                 null
             }
         }

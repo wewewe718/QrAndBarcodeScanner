@@ -1,5 +1,6 @@
 package com.example.barcodescanner.extension
 
+import com.example.barcodescanner.usecase.Logger
 import java.text.DateFormat
 import java.util.*
 
@@ -7,6 +8,7 @@ fun DateFormat.parseOrNull(date: String?): Date? {
     return try {
         parse(date.orEmpty())
     } catch (ex: Exception) {
+        Logger.log(ex)
         null
     }
 }
@@ -25,6 +27,7 @@ fun DateFormat.formatOrNull(time: Long?): String? {
     return try {
         format(Date(time!!))
     } catch (ex: Exception) {
+        Logger.log(ex)
         null
     }
 }

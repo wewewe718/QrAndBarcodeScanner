@@ -2,7 +2,10 @@ package com.example.barcodescanner.usecase
 
 import android.graphics.Bitmap
 import com.example.barcodescanner.extension.orZero
-import com.google.zxing.*
+import com.google.zxing.BinaryBitmap
+import com.google.zxing.MultiFormatReader
+import com.google.zxing.RGBLuminanceSource
+import com.google.zxing.Result
 import com.google.zxing.common.HybridBinarizer
 import io.reactivex.Single
 import io.reactivex.SingleEmitter
@@ -23,6 +26,7 @@ object BarcodeImageScanner {
         try {
             emitter.onSuccess(tryParse(image))
         } catch (ex: Exception) {
+            Logger.log(ex)
             emitter.onError(ex)
         }
     }

@@ -24,6 +24,7 @@ import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialog
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
+import com.example.barcodescanner.usecase.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -339,29 +340,12 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         startActivityIfExists(intent)
     }
 
-    private fun saveBarcodeAsCsv() {
-        try {
-            barcodeSaver.saveBarcodeAsCsv(this, originalBarcode)
-            showToast(R.string.activity_barcode_barcode_text_saved)
-        } catch (ex: Exception) {
-            showError(ex)
-        }
-    }
-
-    private fun saveBarcodeAsJson() {
-        try {
-            barcodeSaver.saveBarcodeAsJson(this, originalBarcode)
-            showToast(R.string.activity_barcode_barcode_text_saved)
-        } catch (ex: Exception) {
-            showError(ex)
-        }
-    }
-
     private fun shareBarcodeAsImage() {
         val imageUri = try {
             val image = barcodeImageGenerator.generateBitmap(originalBarcode, 200, 200, 1)
             barcodeImageSaver.saveImageToCache(this, image, barcode)
         } catch (ex: Exception) {
+            Logger.log(ex)
             showError(ex)
             return
         }
@@ -381,6 +365,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         val barcodeImage = try {
             barcodeImageGenerator.generateBitmap(originalBarcode, 1000, 1000, 3)
         } catch (ex: Exception) {
+            Logger.log(ex)
             showError(ex)
             return
         }
@@ -466,8 +451,8 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
             image_view_barcode.isVisible = true
             image_view_barcode.setImageBitmap(bitmap)
         } catch (ex: Exception) {
+            Logger.log(ex)
             image_view_barcode.isVisible = false
-            ex.printStackTrace()
         }
     }
 
