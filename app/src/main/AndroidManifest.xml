@@ -28,6 +28,11 @@
         android:name="com.example.barcodescanner.App"
         >
 
+        <meta-data
+            android:name="io.sentry.dsn"
+            android:value="https://09f3022eb19f4fa7ba332b1f44188ff1@o432234.ingest.sentry.io/5384638"
+            />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.barcodescanner.fileprovider"
@@ -108,11 +113,6 @@
             />
         <activity
             android:name=".feature.tabs.create.barcode.CreateBarcodeAllActivity"
-            android:screenOrientation="fullSensor"
-            android:configChanges="orientation|screenSize"
-            />
-        <activity
-            android:name=".feature.tabs.create.qr.ChooseLocationOnMapActivity"
             android:screenOrientation="fullSensor"
             android:configChanges="orientation|screenSize"
             />

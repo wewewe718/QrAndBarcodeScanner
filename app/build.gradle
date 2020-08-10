@@ -83,9 +83,9 @@ dependencies {
     // Image Crop Library
     implementation 'com.isseiaoki:simplecropview:1.1.8'
 
-    // Google Maps
-    implementation "com.google.android.gms:play-services-maps:17.0.0"
-
     // Date time picker
     implementation 'com.github.florent37:singledateandtimepicker:2.2.6'
+
+    // Sentry
+    implementation 'io.sentry:sentry-android:2.3.0'
 }
