@@ -28,11 +28,6 @@
         android:name="com.example.barcodescanner.App"
         >
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyApxZJbHcNaGJNCOdIkJU4PGVY-1UToBAg"
-            />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.barcodescanner.fileprovider"

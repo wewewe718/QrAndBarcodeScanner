@@ -18,7 +18,7 @@
         app:flashButtonVisible="false"
         app:frameColor="@color/white"
         app:frameThickness="2dp"
-        app:frameCornersRadius="6dp"
+        app:frameCornersRadius="2dp"
         app:frameAspectRatioWidth="1"
         app:frameAspectRatioHeight="1"
         app:frameSize="0.55"

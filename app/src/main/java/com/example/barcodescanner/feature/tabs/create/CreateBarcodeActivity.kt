@@ -39,7 +39,6 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
 
         private const val CHOOSE_PHONE_REQUEST_CODE = 1
         private const val CHOOSE_CONTACT_REQUEST_CODE = 2
-        private const val CHOOSE_LOCATION_REQUEST_CODE = 3
 
         private const val CONTACTS_PERMISSION_REQUEST_CODE = 101
         private val CONTACTS_PERMISSIONS = arrayOf(Manifest.permission.READ_CONTACTS)
@@ -110,7 +109,6 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
         when (requestCode) {
             CHOOSE_PHONE_REQUEST_CODE -> showChosenPhone(data)
             CHOOSE_CONTACT_REQUEST_CODE -> showChosenContact(data)
-            CHOOSE_LOCATION_REQUEST_CODE -> showChosenLocation(data)
         }
     }
 
@@ -198,7 +196,6 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             when (item.itemId) {
                 R.id.item_phone -> choosePhone()
                 R.id.item_contacts -> requestContactsPermissions()
-                R.id.item_map -> chooseLocationOnMap()
                 R.id.item_create_barcode -> createBarcode()
             }
             return@setOnMenuItemClickListener true
@@ -215,7 +212,6 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             BarcodeSchema.APP -> return
             BarcodeSchema.PHONE, BarcodeSchema.SMS, BarcodeSchema.MMS -> R.menu.menu_create_qr_code_phone
             BarcodeSchema.VCARD, BarcodeSchema.MECARD -> R.menu.menu_create_qr_code_contacts
-            BarcodeSchema.GEO -> R.menu.menu_create_qr_code_map
             else -> R.menu.menu_create_barcode
         }
         toolbar.inflateMenu(menuId)
@@ -281,19 +277,6 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     private fun showChosenContact(data: Intent?) {
         val contact = contactHelper.getContact(this, data) ?: return
         getCurrentFragment().showContact(contact)
-    }
-
-    private fun chooseLocationOnMap() {
-        val fragment = getCurrentFragment()
-        val latitude = fragment.latitude
-        val longitude = fragment.longitude
-        ChooseLocationOnMapActivity.start(this, CHOOSE_LOCATION_REQUEST_CODE, latitude, longitude)
-    }
-
-    private fun showChosenLocation(data: Intent?) {
-        val latitude = data?.getDoubleExtra(ChooseLocationOnMapActivity.LATITUDE_KEY, 0.0)
-        val longitude = data?.getDoubleExtra(ChooseLocationOnMapActivity.LONGITUDE_KEY, 0.0)
-        getCurrentFragment().showLocation(latitude, longitude)
     }
 
     private fun startActivityForResultIfExists(intent: Intent, requestCode: Int) {

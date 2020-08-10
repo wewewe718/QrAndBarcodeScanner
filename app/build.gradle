@@ -2,8 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 29
@@ -90,10 +88,4 @@ dependencies {
 
     // Date time picker
     implementation 'com.github.florent37:singledateandtimepicker:2.2.6'
-
-    // Leak Canary
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
-
-    // Crashlytics
-    implementation 'com.google.firebase:firebase-crashlytics:17.1.1'
 }
