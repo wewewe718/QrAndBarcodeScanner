@@ -184,6 +184,9 @@
     <string name="fragment_settings_save_scanned_barcodes_to_history">Сохранять отсканированные штрихкоды в историю</string>
     <string name="fragment_settings_save_created_barcodes_to_history">Сохранять созданные штрихкоды в историю</string>
     <string name="fragment_settings_clear_history">Очистить историю</string>
+    <string name="fragment_settings_error_reports">Отчеты об ошибках</string>
+    <string name="fragment_settings_enable_error_reports">Отчеты об ошибках</string>
+    <string name="fragment_settings_enable_error_reports_hint">Помогите нам в исправлении багов</string>
     <string name="fragment_settings_about">Приложение</string>
     <string name="fragment_settings_check_updates">Проверить наличие обновлений</string>
     <string name="fragment_settings_permissions">Разрешения</string>

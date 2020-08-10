@@ -3,7 +3,11 @@ package com.example.barcodescanner.usecase
 import io.sentry.core.Sentry
 
 object Logger {
+    var isEnabled: Boolean = true
+
     fun log(error: Throwable) {
-        Sentry.captureException(error)
+        if (isEnabled) {
+            Sentry.captureException(error)
+        }
     }
 }

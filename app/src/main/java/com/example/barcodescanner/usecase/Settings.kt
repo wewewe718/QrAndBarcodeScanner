@@ -32,6 +32,7 @@ class Settings(context: Context) {
         IS_BACK_CAMERA,
         SAVE_SCANNED_BARCODES_TO_HISTORY,
         SAVE_CREATED_BARCODES_TO_HISTORY,
+        ERROR_REPORTS,
     }
 
     private val sharedPreferences by unsafeLazy {
@@ -87,6 +88,13 @@ class Settings(context: Context) {
     var saveCreatedBarcodesToHistory: Boolean
         get() = get(Key.SAVE_CREATED_BARCODES_TO_HISTORY, true)
         set(value) = set(Key.SAVE_CREATED_BARCODES_TO_HISTORY, value)
+
+    var areErrorReportsEnabled: Boolean
+        get() = get(Key.ERROR_REPORTS, true)
+        set(value) {
+            set(Key.ERROR_REPORTS, value)
+            Logger.isEnabled = value
+        }
 
     fun isFormatSelected(format: BarcodeFormat): Boolean {
         return sharedPreferences.getBoolean(format.name, true)

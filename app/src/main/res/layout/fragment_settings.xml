@@ -124,7 +124,6 @@
                 app:text="@string/fragment_settings_supported_formats"
                 app:isSwitchVisible="false"
                 />
-
             <View style="@style/DelimiterStyle" />
 
             <!--History-->
@@ -158,7 +157,25 @@
                 app:isSwitchVisible="false"
                 app:isArrowVisible="false"
                 />
+            <View style="@style/DelimiterStyle" />
 
+            <!--Error reports-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin_very_big"
+                android:layout_marginBottom="@dimen/default_margin_small"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:text="@string/fragment_settings_error_reports"
+                style="@style/SettingsGroupTitleTextViewStyle"
+                />
+            <com.example.barcodescanner.feature.common.view.SettingsButton
+                android:id="@+id/button_enable_error_reports"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_enable_error_reports"
+                app:hint="@string/fragment_settings_enable_error_reports_hint"
+                />
             <View style="@style/DelimiterStyle" />
 
             <!--About-->

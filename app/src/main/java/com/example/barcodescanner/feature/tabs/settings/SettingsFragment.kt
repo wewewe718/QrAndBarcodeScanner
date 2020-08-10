@@ -2,11 +2,12 @@ package com.example.barcodescanner.feature.tabs.settings
 
 import android.content.Intent
 import android.net.Uri
-import android.os.*
+import android.os.Build
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.*
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
@@ -14,11 +15,11 @@ import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.settings
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.BaseActivity
-import com.example.barcodescanner.feature.tabs.settings.formats.SupportedFormatsActivity
-import com.example.barcodescanner.feature.tabs.settings.permissions.*
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.example.barcodescanner.feature.tabs.settings.camera.ChooseCameraActivity
-import com.example.barcodescanner.feature.tabs.settings.theme.*
+import com.example.barcodescanner.feature.tabs.settings.formats.SupportedFormatsActivity
+import com.example.barcodescanner.feature.tabs.settings.permissions.AllPermissionsActivity
+import com.example.barcodescanner.feature.tabs.settings.theme.ChooseThemeActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -65,6 +66,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
         button_confirm_scans_manually.setCheckedChangedListener { settings.confirmScansManually = it }
         button_save_scanned_barcodes.setCheckedChangedListener { settings.saveScannedBarcodesToHistory = it }
         button_save_created_barcodes.setCheckedChangedListener { settings.saveCreatedBarcodesToHistory = it }
+        button_enable_error_reports.setCheckedChangedListener { settings.areErrorReportsEnabled = it }
     }
 
     private fun handleButtonClicks() {
@@ -111,6 +113,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
             button_confirm_scans_manually.isChecked = confirmScansManually
             button_save_scanned_barcodes.isChecked = saveScannedBarcodesToHistory
             button_save_created_barcodes.isChecked = saveCreatedBarcodesToHistory
+            button_enable_error_reports.isChecked = areErrorReportsEnabled
         }
     }
 
