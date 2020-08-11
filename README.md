@@ -63,7 +63,3 @@ The app can create the following barcode formats:
 [upc_e]: https://en.wikipedia.org/wiki/Universal_Product_Code#UPC-E
 [upc_ean]: https://en.wikipedia.org/wiki/Universal_Product_Code#EAN-13
 [rs]: https://developer.android.com/guide/topics/renderscript/compute
-
-## Licence
-
-MIT
