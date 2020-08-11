@@ -155,7 +155,6 @@
                 app:text="@string/fragment_settings_clear_history"
                 app:isDelimiterVisible="false"
                 app:isSwitchVisible="false"
-                app:isArrowVisible="false"
                 />
             <View style="@style/DelimiterStyle" />
 
@@ -194,7 +193,6 @@
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_check_updates"
                 app:isSwitchVisible="false"
-                app:isArrowVisible="true"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_permissions"
@@ -202,7 +200,13 @@
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_permissions"
                 app:isSwitchVisible="false"
-                app:isArrowVisible="true"
+                />
+            <com.example.barcodescanner.feature.common.view.SettingsButton
+                android:id="@+id/button_source_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_source_code"
+                app:isSwitchVisible="false"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_app_version"
@@ -211,7 +215,6 @@
                 app:text="@string/fragment_settings_app_version"
                 app:isDelimiterVisible="false"
                 app:isSwitchVisible="false"
-                app:isArrowVisible="false"
                 />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

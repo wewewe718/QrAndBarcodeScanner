@@ -41,3 +41,6 @@ Barcodes and 2D codes:
 • Code 39, Code 93 and Code 128
 • Codabar
 • ITF
+
+Source code:
+https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner

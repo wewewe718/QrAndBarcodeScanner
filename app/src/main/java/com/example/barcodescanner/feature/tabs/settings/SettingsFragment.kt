@@ -13,6 +13,7 @@ import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.extension.packageManager
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
@@ -76,6 +77,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
         button_clear_history.setOnClickListener { showDeleteHistoryConfirmationDialog() }
         button_permissions.setOnClickListener { AllPermissionsActivity.start(requireActivity()) }
         button_check_updates.setOnClickListener { showAppInMarket() }
+        button_source_code.setOnClickListener { showSourceCode() }
     }
 
     private fun clearHistory() {
@@ -128,6 +130,13 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
             flags = Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
         }
         if (intent.resolveActivity(requireContext().packageManager) != null) {
+            startActivity(intent)
+        }
+    }
+
+    private fun showSourceCode() {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner"))
+        if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
         }
     }

@@ -202,6 +202,7 @@
     <string name="fragment_settings_about">About</string>
     <string name="fragment_settings_check_updates">Check for updates</string>
     <string name="fragment_settings_permissions">Permissions</string>
+    <string name="fragment_settings_source_code">Source code</string>
     <string name="fragment_settings_app_version">App version</string>
 
     <!--Choose theme activity-->

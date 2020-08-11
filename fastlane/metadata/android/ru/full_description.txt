@@ -41,3 +41,6 @@
 • Code 39, Code 93 and Code 128
 • Codabar
 • ITF
+
+Исходный код:
+https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner

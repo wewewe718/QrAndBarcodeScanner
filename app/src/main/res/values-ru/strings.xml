@@ -190,6 +190,7 @@
     <string name="fragment_settings_about">Приложение</string>
     <string name="fragment_settings_check_updates">Проверить наличие обновлений</string>
     <string name="fragment_settings_permissions">Разрешения</string>
+    <string name="fragment_settings_source_code">Исходный код</string>
     <string name="fragment_settings_app_version">Версия</string>
 
     <!--Choose theme activity-->
