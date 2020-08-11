@@ -87,7 +87,6 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
         super.onCreate(savedInstanceState)
 
         if (createBarcodeImmediatelyIfNeeded()) {
-            finish()
             return
         }
 
@@ -152,14 +151,14 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     private fun createBarcodeForPlainText() {
         val text = intent?.getStringExtra(Intent.EXTRA_TEXT).orEmpty()
         val schema = barcodeParser.parseSchema(barcodeFormat, text)
-        createBarcode(schema)
+        createBarcode(schema, true)
     }
 
     private fun createBarcodeForVCard() {
         val uri = intent?.extras?.get(Intent.EXTRA_STREAM) as? Uri ?: return
         val text = readDataFromVCardUri(uri).orEmpty()
         val schema = barcodeParser.parseSchema(barcodeFormat, text)
-        createBarcode(schema)
+        createBarcode(schema, true)
     }
 
     private fun readDataFromVCardUri(uri: Uri): String? {
@@ -292,7 +291,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
         createBarcode(schema)
     }
 
-    private fun createBarcode(schema: Schema) {
+    private fun createBarcode(schema: Schema, finish: Boolean = false) {
         val barcode = Barcode(
             text = schema.toBarcodeText(),
             formattedText = schema.toFormattedText(),
@@ -303,7 +302,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
         )
 
         if (settings.saveCreatedBarcodesToHistory.not()) {
-            navigateToBarcodeScreen(barcode)
+            navigateToBarcodeScreen(barcode, finish)
             return
         }
 
@@ -312,7 +311,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { id ->
-                    navigateToBarcodeScreen(barcode.copy(id = id))
+                    navigateToBarcodeScreen(barcode.copy(id = id), finish)
                 },
                 ::showError
             )
@@ -323,7 +322,11 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
         return supportFragmentManager.findFragmentById(R.id.container) as BaseCreateBarcodeFragment
     }
 
-    private fun navigateToBarcodeScreen(barcode: Barcode) {
+    private fun navigateToBarcodeScreen(barcode: Barcode, finish: Boolean) {
         BarcodeActivity.start(this, barcode, true)
+
+        if (finish) {
+            finish()
+        }
     }
 }
