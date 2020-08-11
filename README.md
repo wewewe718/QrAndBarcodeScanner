@@ -4,11 +4,7 @@ QR & Barcode Scanner is an ad-free, open-source scanner app. It uses the [ZXing]
 
 ## Screenshots
 
-<img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/fastlane/metadata/android/en-US/images/phoneScreenshots/1_scan.png" width="180" height="370"/>
-<img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/fastlane/metadata/android/en-US/images/phoneScreenshots/2_result.png" width="180" height="370"/>
-<img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/fastlane/metadata/android/en-US/images/phoneScreenshots/3_create.png" width="180" height="370"/>
-<img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/fastlane/metadata/android/en-US/images/phoneScreenshots/4_history.png" width="180" height="370"/>
-<img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/fastlane/metadata/android/en-US/images/phoneScreenshots/5_settings.png" width="180" height="370"/>
+<img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/fastlane/metadata/android/en-US/images/phoneScreenshots/1_scan.png" width="180" height="370"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/fastlane/metadata/android/en-US/images/phoneScreenshots/2_result.png" width="180" height="370"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/fastlane/metadata/android/en-US/images/phoneScreenshots/3_create.png" width="180" height="370"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/fastlane/metadata/android/en-US/images/phoneScreenshots/4_history.png" width="180" height="370"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/fastlane/metadata/android/en-US/images/phoneScreenshots/5_settings.png" width="180" height="370"/>
 
 ## Supported Barcode Formats
 
