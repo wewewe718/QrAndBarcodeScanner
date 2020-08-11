@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_margin_extra_small">2dp</dimen>
     <dimen name="default_margin_very_small">4dp</dimen>
+    <dimen name="default_margin_small">8dp</dimen>
+    <dimen name="default_margin_medium2">12dp</dimen>
+    <dimen name="default_margin_medium">14dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_margin_big">20dp</dimen>
+    <dimen name="default_margin_very_big">24dp</dimen>
     <dimen name="default_margin_large">32dp</dimen>
+    <dimen name="default_margin_very_large">40dp</dimen>
+
+    <dimen name="default_text_size_extra_small">12sp</dimen>
+    <dimen name="default_text_size_very_small">13sp</dimen>
+    <dimen name="default_text_size_small2">14sp</dimen>
+    <dimen name="default_text_size_small">15sp</dimen>
     <dimen name="default_text_size">16sp</dimen>
-    <dimen name="small_text_size">13sp</dimen>
+    <dimen name="default_text_size_large">18sp</dimen>
+
+    <dimen name="zoom_seek_bar_height">100dp</dimen>
+    
+    <dimen name="icon_button_icon_size">18dp</dimen>
+    <dimen name="icon_button_icon_padding">9dp</dimen>
+    <dimen name="icon_button_vertical_padding">12dp</dimen>
+
+    <dimen name="icon_button_with_delimiter_vertical_padding">12dp</dimen>
+
+    <dimen name="bottom_navigation_item_text_size">12sp</dimen>
+    <dimen name="tab_layout_height">36dp</dimen>
+    <dimen name="tab_layout_indicator_height">2dp</dimen>
+    <dimen name="button_corner_radius">50dp</dimen>
+
 </resources>

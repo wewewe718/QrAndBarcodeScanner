@@ -1,0 +1,46 @@
+ALL COMMON FORMATS
+Scan all common barcode formats: QR, Data Matrix, Aztec, UPC, EAN and more.
+
+FLASHLIGHT AND ZOOM
+Enable the flashlight to scan in the dark. Use zoom to read barcodes from far distances.
+
+RELEVANT ACTIONS
+Open links, connect to WiFi, view geolocations, add calendar events, find product information, etc.
+
+SCAN FROM IMAGES
+Scan codes from image files or directly using the camera.
+
+CREATE QR CODES AND BARCODES
+Create your own QR codes or barcodes with the built-in generator.
+
+HISTORY
+View scanned and created codes in history.
+
+CSV AND JSON EXPORT
+Export codes as CSV or JSON files.
+
+SETTINGS
+Customize your app with flexible settings.
+
+Supported QR codes:
+• website links (URL)
+• WiFi hotspot access information
+• geo locations
+• contact data (MeCard, vCard)
+• calendar events
+• phones
+• email
+• SMS
+
+Barcodes and 2D codes:
+• Data Matrix
+• Aztec
+• PDF417
+• EAN-13, EAN-8
+• UPC-E, UPC-A
+• Code 39, Code 93 and Code 128
+• Codabar
+• ITF
+
+Source code:
+https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner

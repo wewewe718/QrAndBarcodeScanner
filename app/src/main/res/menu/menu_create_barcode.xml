@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/item_create_barcode"
+        android:title="@string/activity_create_barcode_menu_item_title"
+        android:icon="@drawable/ic_confirm_disabled"
+        app:showAsAction="always"
+        android:enabled="false"
+        />
+</menu>

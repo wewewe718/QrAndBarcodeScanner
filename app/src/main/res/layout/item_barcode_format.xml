@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/ClickableBackground"
+    >
+    <TextView
+        android:id="@+id/text_view_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/check_box"
+        style="@style/BlackTextViewStyle"
+        tools:text="Textffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        />
+    <View
+        android:id="@+id/delimiter"
+        android:layout_width="0dp"
+        android:layout_height="0.2dp"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        app:layout_constraintStart_toStartOf="@id/text_view_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_text"
+        android:background="@color/gray5"
+        />
+    <CheckBox
+        android:id="@+id/check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_margin_medium"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/delimiter"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:theme="@style/RadioButtonTheme"
+        android:background="@null"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

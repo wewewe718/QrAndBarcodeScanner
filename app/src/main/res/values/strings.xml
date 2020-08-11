@@ -1,35 +1,320 @@
 <resources>
-    <string name="app_name">Qr Code Scanner</string>
+    <string name="app_name">QR &amp; Barcode Scanner</string>
 
+    <!--Shortcuts-->
+    <string name="shortcut_scan_from_camera">Scan</string>
+    <string name="shortcut_scan_from_file">Scan image</string>
+    <string name="shortcut_create_barcode">Create barcode</string>
+    <string name="shortcut_history">History</string>
+
+    <!--Intent filters-->
+    <string name="intent_filter_create_qr_code_text">Create QR code</string>
+    <string name="intent_filter_scan_image">Scan image</string>
+
+    <!--Error dialog-->
     <string name="error_dialog_title">Error</string>
     <string name="error_dialog_default_message">Something went wrong</string>
     <string name="error_dialog_positive_button_text">OK</string>
 
-    <string name="activity_scan_history">Scan History</string>
+    <!--Delete dialog-->
+    <string name="dialog_delete_positive_button">Delete</string>
+    <string name="dialog_delete_negative_button">Cancel</string>
+    <string name="dialog_delete_clear_history_message">Delete history?</string>
+    <string name="dialog_delete_barcode_message">Delete?</string>
 
-    <string name="activity_request_permissions_title">Request permissions</string>
-    <string name="activity_request_permissions_message">The app needs camera permission to scan QR codes</string>
-    <string name="activity_request_permissions_button_text">Grant permissions</string>
+    <!--Bottom tabs activity-->
+    <string name="activity_bottom_tabs_scan_tab">Scan</string>
+    <string name="activity_bottom_tabs_create_tab">Create</string>
+    <string name="activity_bottom_tabs_history_tab">History</string>
+    <string name="activity_bottom_tabs_settings_tab">Settings</string>
 
-    <string name="activity_qr_code_title">QR Code</string>
-    <string name="activity_qr_code_menu_item_delete">Delete</string>
-    <string name="activity_qr_code_copy">Copy</string>
-    <string name="activity_qr_code_copied">Copied to clipboard</string>
-    <string name="activity_qr_code_format_aztec">Aztec</string>
-    <string name="activity_qr_code_format_codabar">CODABAR</string>
-    <string name="activity_qr_code_format_code_39">Code 39</string>
-    <string name="activity_qr_code_format_code_93">Code 93</string>
-    <string name="activity_qr_code_format_code_128">Code 128</string>
-    <string name="activity_qr_code_format_data_matrix">Data Matrix</string>
-    <string name="activity_qr_code_format_ean_8">EAN-8</string>
-    <string name="activity_qr_code_format_ean_13">EAN-13</string>
-    <string name="activity_qr_code_format_itf">ITF</string>
-    <string name="activity_qr_code_format_maxi_code">MaxiCode</string>
-    <string name="activity_qr_code_format_pdf_417">PDF417</string>
-    <string name="activity_qr_code_format_qr_code">QR Code</string>
-    <string name="activity_qr_code_format_rss_14">RSS 14</string>
-    <string name="activity_qr_code_format_rss_expanded">RSS EXPANDED</string>
-    <string name="activity_qr_code_format_upc_a">UPC-A</string>
-    <string name="activity_qr_code_format_upc_e">UPC-E</string>
-    <string name="activity_qr_code_format_upc_ean">UPC/EAN</string>
+    <!--Scan barcode from camera fragment-->
+    <string name="fragment_scan_barcode_from_camera_scan_from_file">Scan image</string>
+    <string name="fragment_scan_barcode_from_camera_flash">Flash</string>
+    <string name="fragment_scan_barcode_from_camera_barcode_saved">Saved</string>
+    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_title">Confirm</string>
+    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_positive_button">OK</string>
+    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_negative_button">Cancel</string>
+
+    <!--Scan barcode from file activity-->
+    <string name="activity_scan_barcode_from_file_title">Scan</string>
+    <string name="activity_scan_barcode_from_file_scan">OK</string>
+    <string name="activity_scan_barcode_from_file_rotate_left">Rotate left</string>
+    <string name="activity_scan_barcode_from_file_rotate_right">Rotate right</string>
+    <string name="activity_scan_barcode_from_file_change_image">Choose another image</string>
+
+    <!--Create barcode fragment-->
+    <string name="fragment_create_barcode_title">Create</string>
+    <string name="fragment_create_barcode_qr_code">QR code</string>
+    <string name="fragment_create_barcode_qr_code_clipboard">Content from clipboard</string>
+    <string name="fragment_create_barcode_qr_code_text">Text</string>
+    <string name="fragment_create_barcode_qr_code_show_all">More QR codes</string>
+    <string name="fragment_create_barcode">Barcode</string>
+    <string name="fragment_create_barcode_show_all">Barcodes and other 2D codes</string>
+
+    <!--Create QR code list activity-->
+    <string name="fragment_create_qr_code_list_title">Create QR code</string>
+
+    <!--Create barcode list activity-->
+    <string name="fragment_create_barcode_list_title">Create barcode</string>
+    <string name="fragment_create_barcode_list_2d">2D barcodes</string>
+    <string name="fragment_create_barcode_list_1d">1D barcodes</string>
+
+    <!--Create barcode activity-->
+    <string name="activity_create_barcode_menu_item_title">Create</string>
+    <string name="activity_create_barcode_contacts_menu_item_title">Contacts</string>
+    <string name="activity_create_barcode_location_menu_item_title">Map</string>
+
+    <!--Base create barcode fragment -->
+    <string name="fragment_create_barcode_alternative">Alternatively:</string>
+
+    <!--Create QR code URL fragment-->
+    <string name="fragment_create_qr_code_url_alternative">- Open your browser app\n- Load a website\n- Click \"Share\" from the menu\n- Select this app</string>
+
+    <!--Create QR code bookmark fragment-->
+    <string name="fragment_create_qr_code_bookmark_title_hint">Title</string>
+
+    <!--Create QR code Wi-fi fragment-->
+    <string name="fragment_create_qr_code_wifi_encryption_hint">Encryption</string>
+    <string-array name="fragment_create_qr_code_wifi_encryption_types">
+        <item>WPA/WPA2</item>
+        <item>WEP</item>
+        <item>None</item>
+    </string-array>
+    <string name="fragment_create_qr_code_wifi_network_name_hint">Network name</string>
+    <string name="fragment_create_qr_code_wifi_password_hint">Password</string>
+    <string name="fragment_create_qr_code_wifi_is_hidden_hint">Hidden</string>
+
+    <!--Create QR code email fragment-->
+    <string name="fragment_create_qr_code_email_subject_hint">Subject</string>
+    <string name="fragment_create_qr_code_email_message_hint">Message</string>
+
+    <!--Create QR code SMS fragment-->
+    <string name="fragment_create_qr_code_sms_message_hint">Message</string>
+
+    <!--Create QR code MMS fragment-->
+    <string name="fragment_create_qr_code_mms_subject_hint">Subject</string>
+    <string name="fragment_create_qr_code_mms_message_hint">Message</string>
+
+    <!--Create QR code cryptocurrency fragment-->
+    <string name="fragment_create_qr_code_cryptocurrency_type_hint">Cryptocurrency</string>
+    <string-array name="fragment_create_qr_code_cryptocurrencies">
+        <item>Bitcoin</item>
+        <item>Bitcoin Cash</item>
+        <item>Ethereum</item>
+        <item>Litecoin</item>
+        <item>Dash</item>
+    </string-array>
+    <string name="fragment_create_qr_code_cryptocurrency_address_hint">Receiver address</string>
+    <string name="fragment_create_qr_code_cryptocurrency_amount_hint">Amount</string>
+    <string name="fragment_create_qr_code_cryptocurrency_label_hint">Label</string>
+    <string name="fragment_create_qr_code_cryptocurrency_message_hint">Message</string>
+
+    <!--Create QR code location fragment-->
+    <string name="fragment_create_qr_code_location_latitude_hint">Latitude</string>
+    <string name="fragment_create_qr_code_location_longitude_hint">Longitude</string>
+    <string name="fragment_create_qr_code_location_altitude_hint">Altitude (optional)</string>
+
+    <!--Create QR code event-->
+    <string name="fragment_create_qr_code_event_title_hint">Title</string>
+    <string name="fragment_create_qr_code_event_organizer_hint">Organizer</string>
+    <string name="fragment_create_qr_code_event_summary_hint">Summary</string>
+    <string name="fragment_create_qr_code_event_start_date_hint">Start date</string>
+    <string name="fragment_create_qr_code_event_end_date_hint">End date</string>
+
+    <!--Create QR code contact-->
+    <string name="fragment_create_qr_code_contact_first_name_hint">First Name</string>
+    <string name="fragment_create_qr_code_contact_last_name_hint">Last Name</string>
+    <string name="fragment_create_qr_code_contact_organization_hint">Organization</string>
+    <string name="fragment_create_qr_code_contact_job_hint">Job</string>
+    <string name="fragment_create_qr_code_contact_email_hint">Email</string>
+    <string name="fragment_create_qr_code_contact_phone_hint">Phone</string>
+    <string name="fragment_create_qr_code_contact_fax_hint">Fax</string>
+    <string name="fragment_create_qr_code_contact_country_hint">Country</string>
+    <string name="fragment_create_qr_code_contact_region_hint">Region/State</string>
+    <string name="fragment_create_qr_code_contact_postcode_hint">Postcode</string>
+    <string name="fragment_create_qr_code_contact_city_hint">City</string>
+    <string name="fragment_create_qr_code_contact_street_hint">Street</string>
+    <string name="fragment_create_qr_code_contact_website_hint">Website</string>
+    <string name="fragment_create_qr_code_contact_alternative">- Open your contacts app\n- Open an existing contact or create a new one\n- Click \"Share\" from the menu\n- Select this app</string>
+
+    <!--Create barcode-->
+    <string name="fragment_create_data_matrix_hint">Text without special characters</string>
+    <string name="fragment_create_aztec_hint">Text without special characters</string>
+    <string name="fragment_create_codabar_hint">Digits</string>
+    <string name="fragment_create_code_39_hint">Text in upper case without special characters</string>
+    <string name="fragment_create_code_93_hint">Text in upper case without special characters</string>
+    <string name="fragment_create_code_128_hint">Text without special characters</string>
+    <string name="fragment_create_ean_8_hint">7 digits</string>
+    <string name="fragment_create_ean_13_hint">12 digits</string>
+    <string name="fragment_create_itf_14_hint">Even number of digits</string>
+    <string name="fragment_create_upc_a_hint">11 digits</string>
+    <string name="fragment_create_upc_e_hint">7 digits</string>
+
+    <!--Barcode history fragment-->
+    <string name="fragment_barcode_history_title">History</string>
+    <string-array name="fragment_barcode_history_tab_titles">
+        <item>All</item>
+        <item>Favorites</item>
+    </string-array>
+    <string name="fragment_barcode_history_menu_title_export">Export history</string>
+    <string name="fragment_barcode_history_menu_title_delete_all">Clear history</string>
+
+    <!--Export history activity-->
+    <string name="activity_export_history_title">Export history</string>
+    <string name="activity_export_history_as_hint">Export as</string>
+    <string-array name="activity_export_history_types">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_export_history_file_name_hint">File name</string>
+    <string name="activity_export_history_file_name_default" translatable="false">db</string>
+    <string name="activity_export_history_export">Export</string>
+    <string name="activity_export_history_exported">Saved to Downloads</string>
+
+    <!--Settings fragment-->
+    <string name="fragment_settings_title">Settings</string>
+    <string name="fragment_settings_appearance_settings">Appearance</string>
+    <string name="fragment_settings_theme">Theme</string>
+    <string name="fragment_settings_scanner_settings">Scanner</string>
+    <string name="fragment_settings_open_links_automatically">Open links automatically</string>
+    <string name="fragment_settings_copy_to_clipboard">Copy to clipboard</string>
+    <string name="fragment_settings_copy_to_clipboard_hint">Copy scanned barcodes to clipboard</string>
+    <string name="fragment_settings_simple_auto_focus">Simple auto focus mode</string>
+    <string name="fragment_settings_simple_auto_focus_hint">Enable only if you have problems focusing</string>
+    <string name="fragment_settings_flash">Flash</string>
+    <string name="fragment_settings_flash_hint">Enable flash on start</string>
+    <string name="fragment_settings_vibrate">Vibrate</string>
+    <string name="fragment_settings_vibrate_hint">Vibrate on scan</string>
+    <string name="fragment_settings_continuous_scanning">Continuous scanning</string>
+    <string name="fragment_settings_continuous_scanning_hint">Save scans to history only</string>
+    <string name="fragment_settings_confirm_scans_manually">Confirm scans manually</string>
+    <string name="fragment_settings_confirm_scans_manually_hint">Avoid accidental scans</string>
+    <string name="fragment_settings_camera">Camera</string>
+    <string name="fragment_settings_supported_formats">Supported formats</string>
+    <string name="fragment_settings_history_settings">History</string>
+    <string name="fragment_settings_save_scanned_barcodes_to_history">Save scanned barcodes to history</string>
+    <string name="fragment_settings_save_created_barcodes_to_history">Save created barcodes to history</string>
+    <string name="fragment_settings_clear_history">Clear history</string>
+    <string name="fragment_settings_error_reports">Error reports</string>
+    <string name="fragment_settings_enable_error_reports">Enable error reports</string>
+    <string name="fragment_settings_enable_error_reports_hint">Help us to fix bugs</string>
+    <string name="fragment_settings_about">About</string>
+    <string name="fragment_settings_check_updates">Check for updates</string>
+    <string name="fragment_settings_permissions">Permissions</string>
+    <string name="fragment_settings_source_code">Source code</string>
+    <string name="fragment_settings_app_version">App version</string>
+
+    <!--Choose theme activity-->
+    <string name="activity_choose_theme_title">Theme</string>
+    <string name="activity_choose_theme_system">Same as system</string>
+    <string name="activity_choose_theme_light">Light</string>
+    <string name="activity_choose_theme_dark">Dark</string>
+
+    <!--Choose camera activity-->
+    <string name="activity_choose_camera_title">Camera</string>
+    <string name="activity_choose_camera_front">Front</string>
+    <string name="activity_choose_camera_back">Back</string>
+
+    <!--Select supported formats activity-->
+    <string name="activity_supported_formats_title">Supported formats</string>
+
+    <!--All permissions activity-->
+    <string name="activity_all_permissions_title">Permissions</string>
+    <string name="activity_all_permissions_camera_title">Camera</string>
+    <string name="activity_all_permissions_camera_hint">Used to scan QR codes and barcodes from camera</string>
+    <string name="activity_all_permissions_read_contacts_title">Read contacts</string>
+    <string name="activity_all_permissions_read_contacts_hint">Used to create a QR code by selecting a contact from your contact list</string>
+    <string name="activity_all_permissions_location_title">Location</string>
+    <string name="activity_all_permissions_location_hint">Used to show your current location while choosing a location to create a location QR code</string>
+    <string name="activity_all_permissions_storage_title">Storage</string>
+    <string name="activity_all_permissions_storage_hint">Used to access storage when you want to save your QR code or barcode as text or image</string>
+
+    <!--Barcode activity-->
+    <string name="activity_barcode_search_on_rate_and_goods">Search on Rate&amp;Goods</string>
+    <string name="activity_barcode_search_on_amazon">Search on Amazon</string>
+    <string name="activity_barcode_search_on_ebay">Search on eBay</string>
+    <string name="activity_barcode_add_to_calendar">Add to calendar</string>
+    <string name="activity_barcode_add_to_contacts">Add to contacts</string>
+    <string name="activity_barcode_call_phone">Call %s</string>
+    <string name="activity_barcode_send_sms">Send SMS/MMS to %s</string>
+    <string name="activity_barcode_send_email">Email to %s</string>
+    <string name="activity_barcode_show_location">Show location</string>
+    <string name="activity_barcode_connect_to_wifi">Connect to Wi-Fi</string>
+    <string name="activity_barcode_open_wifi_settings">Open Wi-Fi settings</string>
+    <string name="activity_barcode_copy_network_name">Copy network name</string>
+    <string name="activity_barcode_copy_network_password">Copy network password</string>
+    <string name="activity_barcode_open_in_google_play">Open in market</string>
+    <string name="activity_barcode_open_in_youtube">Open in Youtube</string>
+    <string name="activity_barcode_save_bookmark">Save to bookmarks</string>
+    <string name="activity_barcode_open_link">Open link</string>
+    <string name="activity_barcode_share_as_text">Share as text</string>
+    <string name="activity_barcode_copy">Copy to clipboard</string>
+    <string name="activity_barcode_save_as_text">Save as text</string>
+    <string name="activity_barcode_search">Search on the web</string>
+    <string name="activity_barcode_add_to_favorites">Add to favorites</string>
+    <string name="activity_barcode_show_barcode_image">View code</string>
+    <string name="activity_barcode_share_as_image">Share as image</string>
+    <string name="activity_barcode_save_as_image">Save as image</string>
+    <string name="activity_barcode_print">Print</string>
+    <string name="activity_barcode_delete">Delete</string>
+    <string name="activity_barcode_connecting_to_wifi">Connecting…</string>
+    <string name="activity_barcode_copied">Copied to clipboard</string>
+    <string name="activity_barcode_barcode_image_saved">Saved to Gallery</string>
+    <string name="activity_barcode_barcode_text_saved">Saved to Downloads</string>
+    <string name="activity_barcode_no_app">No app found for this action</string>
+
+    <!--Save barcode as text activity-->
+    <string name="activity_save_barcode_as_text_title">Save</string>
+    <string name="activity_save_barcode_as_text_save_as_hint">Save as</string>
+    <string-array name="activity_save_barcode_as_text_formats">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_save_barcode_as_text_file_name_save">Save</string>
+    <string name="activity_save_barcode_as_text_file_name_saved">Saved to Downloads</string>
+
+    <!--Save barcode as image activity-->
+    <string name="activity_save_barcode_as_image_title">Save</string>
+    <string name="activity_save_barcode_as_image_save_as_hint">Save as</string>
+    <string-array name="activity_save_barcode_as_image_formats">
+        <item>PNG</item>
+        <item>SVG</item>
+    </string-array>
+    <string name="activity_save_barcode_as_image_file_name_save">Save</string>
+    <string name="activity_save_barcode_as_image_file_name_saved">Saved to Gallery</string>
+    
+    <!--Barcode schemas-->
+    <string name="barcode_schema_bookmark">Bookmark</string>
+    <string name="barcode_schema_cryptocurrency">Bitcoin</string>
+    <string name="barcode_schema_email">Email</string>
+    <string name="barcode_schema_geo">Location</string>
+    <string name="barcode_schema_google_maps">Address</string>
+    <string name="barcode_schema_google_play">App</string>
+    <string name="barcode_schema_mms">MMS</string>
+    <string name="barcode_schema_me_card">Contact (MeCard)</string>
+    <string name="barcode_schema_phone">Phone</string>
+    <string name="barcode_schema_sms">SMS</string>
+    <string name="barcode_schema_url">URL</string>
+    <string name="barcode_schema_v_event">Event</string>
+    <string name="barcode_schema_v_card">Contact (VCard)</string>
+    <string name="barcode_schema_wifi">Wi-Fi</string>
+    <string name="barcode_schema_youtube">Youtube URL</string>
+    <string name="barcode_schema_other">Text</string>
+
+    <!--Barcode formats-->
+    <string name="barcode_format_qr_code">QR Code</string>
+    <string name="barcode_format_aztec" translatable="false">Aztec</string>
+    <string name="barcode_format_codabar" translatable="false">Codabar</string>
+    <string name="barcode_format_code_39" translatable="false">Code 39</string>
+    <string name="barcode_format_code_93" translatable="false">Code 93</string>
+    <string name="barcode_format_code_128" translatable="false">Code 128</string>
+    <string name="barcode_format_data_matrix" translatable="false">Data Matrix</string>
+    <string name="barcode_format_ean_8"  translatable="false">EAN-8</string>
+    <string name="barcode_format_ean_13" translatable="false">EAN-13</string>
+    <string name="barcode_format_itf_14" translatable="false">ITF</string>
+    <string name="barcode_format_pdf_417" translatable="false">PDF417</string>
+    <string name="barcode_format_upc_a" translatable="false">UPC-A</string>
+    <string name="barcode_format_upc_e" translatable="false">UPC-E</string>
+
 </resources>

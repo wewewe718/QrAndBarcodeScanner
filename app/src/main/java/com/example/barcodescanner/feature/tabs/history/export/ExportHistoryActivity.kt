@@ -1,0 +1,106 @@
+package com.example.barcodescanner.feature.tabs.history.export
+
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
+import com.example.barcodescanner.R
+import com.example.barcodescanner.di.barcodeDatabase
+import com.example.barcodescanner.di.barcodeSaver
+import com.example.barcodescanner.extension.isNotBlank
+import com.example.barcodescanner.extension.showError
+import com.example.barcodescanner.extension.textString
+import com.example.barcodescanner.feature.BaseActivity
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_export_history.*
+
+class ExportHistoryActivity : BaseActivity() {
+    private val disposable = CompositeDisposable()
+
+    companion object {
+        fun start(context: Context) {
+            val intent = Intent(context, ExportHistoryActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_export_history)
+        initToolbar()
+        initExportTypeSpinner()
+        initFileNameEditText()
+        initExportButton()
+    }
+
+    private fun initToolbar() {
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
+    }
+
+    private fun initExportTypeSpinner() {
+        spinner_export_as.adapter = ArrayAdapter.createFromResource(
+            this, R.array.activity_export_history_types, android.R.layout.simple_spinner_item
+        ).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+    }
+
+    private fun initFileNameEditText() {
+        edit_text_file_name.addTextChangedListener {
+            button_export.isEnabled = edit_text_file_name.isNotBlank()
+        }
+    }
+
+    private fun initExportButton() {
+        button_export.setOnClickListener {
+            exportHistory()
+        }
+    }
+
+    private fun exportHistory() {
+        val fileName = edit_text_file_name.textString
+        val saveFunc = when (spinner_export_as.selectedItemPosition) {
+            0 -> barcodeSaver::saveBarcodeHistoryAsCsv
+            1 -> barcodeSaver::saveBarcodeHistoryAsJson
+            else -> return
+        }
+
+        showLoading(true)
+
+        barcodeDatabase
+            .getAllForExport()
+            .flatMapCompletable { barcodes ->
+                saveFunc(this, fileName, barcodes)
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    showHistoryExported()
+                },
+                { error ->
+                    showLoading(false)
+                    showError(error)
+                }
+            )
+            .addTo(disposable)
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        progress_bar_loading.isVisible = isLoading
+        scroll_view.isVisible = isLoading.not()
+    }
+
+    private fun showHistoryExported() {
+        Toast.makeText(this, R.string.activity_export_history_exported, Toast.LENGTH_LONG).show()
+        finish()
+    }
+}

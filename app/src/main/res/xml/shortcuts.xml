@@ -1,0 +1,59 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="scanFromCamera"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_scan_from_camera"
+        android:shortcutShortLabel="@string/shortcut_scan_from_camera"
+        android:shortcutLongLabel="@string/shortcut_scan_from_camera"
+        >
+        <intent
+            android:action="com.example.barcodescanner.SCAN_FROM_CAMERA"
+            android:targetPackage="com.example.barcodescanner"
+            android:targetClass="com.example.barcodescanner.feature.tabs.BottomTabsActivity"
+            />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="scanFromFile"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_scan_from_file"
+        android:shortcutShortLabel="@string/shortcut_scan_from_file"
+        android:shortcutLongLabel="@string/shortcut_scan_from_file"
+        >
+        <intent
+            android:action="com.example.barcodescanner.SCAN_FROM_FILE"
+            android:targetPackage="com.example.barcodescanner"
+            android:targetClass="com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity"
+            />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="createBarcode"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_create_barcode"
+        android:shortcutShortLabel="@string/shortcut_create_barcode"
+        android:shortcutLongLabel="@string/shortcut_create_barcode"
+        >
+        <intent
+            android:action="com.example.barcodescanner.CREATE_BARCODE"
+            android:targetPackage="com.example.barcodescanner"
+            android:targetClass="com.example.barcodescanner.feature.tabs.BottomTabsActivity"
+            />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="history"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_history"
+        android:shortcutShortLabel="@string/shortcut_history"
+        android:shortcutLongLabel="@string/shortcut_history"
+        >
+        <intent
+            android:action="com.example.barcodescanner.HISTORY"
+            android:targetPackage="com.example.barcodescanner"
+            android:targetClass="com.example.barcodescanner.feature.tabs.BottomTabsActivity"
+            />
+    </shortcut>
+
+</shortcuts>

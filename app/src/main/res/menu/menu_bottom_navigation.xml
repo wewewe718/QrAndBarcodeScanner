@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_scan"
+        android:icon="@drawable/ic_scan"
+        android:title="@string/activity_bottom_tabs_scan_tab"
+        />
+    <item
+        android:id="@+id/item_create"
+        android:icon="@drawable/ic_create"
+        android:title="@string/activity_bottom_tabs_create_tab"
+        />
+    <item
+        android:id="@+id/item_history"
+        android:icon="@drawable/ic_history"
+        android:title="@string/activity_bottom_tabs_history_tab"
+        />
+    <item
+        android:id="@+id/item_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/activity_bottom_tabs_settings_tab"
+        />
+</menu>
