@@ -4,11 +4,11 @@ QR & Barcode Scanner is an ad-free, open-source scanner app. It uses the [ZXing]
 
 ## Screenshots
 
-![Screenshot Scanning](fastlane/metadata/android/en-US/images/phoneScreenshots/1_scan.png)
-![Screenshot Result](fastlane/metadata/android/en-US/images/phoneScreenshots/2_result.png)
-![Screenshot Create](fastlane/metadata/android/en-US/images/phoneScreenshots/3_create.png)
-![Screenshot History](fastlane/metadata/android/en-US/images/phoneScreenshots/4_history.png)
-![Screenshot Settings](fastlane/metadata/android/en-US/images/phoneScreenshots/5_settings.png)
+![Screenshot Scanning](fastlane/metadata/android/en-US/images/phoneScreenshots/1_scan.png =360x740)
+![Screenshot Result](fastlane/metadata/android/en-US/images/phoneScreenshots/2_result.png =360x740)
+![Screenshot Create](fastlane/metadata/android/en-US/images/phoneScreenshots/3_create.png =360x740)
+![Screenshot History](fastlane/metadata/android/en-US/images/phoneScreenshots/4_history.png =360x740)
+![Screenshot Settings](fastlane/metadata/android/en-US/images/phoneScreenshots/5_settings.png =360x740)
 
 ## Supported Barcode Formats
 
