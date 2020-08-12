@@ -61,7 +61,6 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initScanner()
-        initZoomSeekBar()
         initFlashButton()
         handleScanFromFileClicked()
         handleZoomChanged()
@@ -73,12 +72,14 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     override fun onResume() {
         super.onResume()
         if (areAllPermissionsGranted()) {
+            initZoomSeekBar()
             codeScanner.startPreview()
         }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == PERMISSION_REQUEST_CODE && areAllPermissionsGranted(grantResults)) {
+            initZoomSeekBar()
             codeScanner.startPreview()
         }
     }
@@ -114,7 +115,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
                 AutoFocusMode.CONTINUOUS
             }
             formats = SupportedBarcodeFormats.FORMATS.filter(settings::isFormatSelected)
-            scanMode = ScanMode.PREVIEW
+            scanMode = ScanMode.SINGLE
             isAutoFocusEnabled = true
             isFlashEnabled = settings.flash
             isTouchFocusEnabled = false

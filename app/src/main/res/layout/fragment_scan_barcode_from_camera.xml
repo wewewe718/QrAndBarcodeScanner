@@ -46,6 +46,7 @@
         android:textColor="@color/white"
         android:text="@string/fragment_scan_barcode_from_camera_flash"
         android:textSize="@dimen/default_text_size_extra_small"
+        android:textStyle="bold"
         />
     <FrameLayout
         android:id="@+id/layout_flash_container"
@@ -77,6 +78,7 @@
         android:textColor="@color/white"
         android:text="@string/fragment_scan_barcode_from_camera_scan_from_file"
         android:textSize="@dimen/default_text_size_extra_small"
+        android:textStyle="bold"
         />
     <FrameLayout
         android:id="@+id/layout_scan_from_file_container"
