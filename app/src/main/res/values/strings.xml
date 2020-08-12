@@ -225,8 +225,6 @@
     <string name="activity_all_permissions_camera_hint">Used to scan QR codes and barcodes from camera</string>
     <string name="activity_all_permissions_read_contacts_title">Read contacts</string>
     <string name="activity_all_permissions_read_contacts_hint">Used to create a QR code by selecting a contact from your contact list</string>
-    <string name="activity_all_permissions_location_title">Location</string>
-    <string name="activity_all_permissions_location_hint">Used to show your current location while choosing a location to create a location QR code</string>
     <string name="activity_all_permissions_storage_title">Storage</string>
     <string name="activity_all_permissions_storage_hint">Used to access storage when you want to save your QR code or barcode as text or image</string>
 

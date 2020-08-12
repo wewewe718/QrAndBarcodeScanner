@@ -44,14 +44,6 @@
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:text="@string/activity_all_permissions_location_title"
-                app:hint="@string/activity_all_permissions_location_hint"
-                app:isDelimiterVisible="true"
-                app:isSwitchVisible="false"
-                />
-            <com.example.barcodescanner.feature.common.view.SettingsButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 app:text="@string/activity_all_permissions_storage_title"
                 app:hint="@string/activity_all_permissions_storage_hint"
                 app:isDelimiterVisible="false"

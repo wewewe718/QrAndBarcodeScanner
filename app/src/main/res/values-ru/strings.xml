@@ -213,8 +213,6 @@
     <string name="activity_all_permissions_camera_hint">Нужно для сканирования QR и штрихкодов при помощи камеры</string>
     <string name="activity_all_permissions_read_contacts_title">Контакты</string>
     <string name="activity_all_permissions_read_contacts_hint">Нужно для создания QR-кода контакта</string>
-    <string name="activity_all_permissions_location_title">Геолокация</string>
-    <string name="activity_all_permissions_location_hint">Нужно для показа текущего местоположения на экране создания QR-кода геолокации</string>
     <string name="activity_all_permissions_storage_title">Память</string>
     <string name="activity_all_permissions_storage_hint">Нужно для сохранения QR и штрихкодов</string>
 
