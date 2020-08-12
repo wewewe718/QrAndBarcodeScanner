@@ -3,6 +3,10 @@
 
 QR & Barcode Scanner is an ad-free, open-source scanner app. It uses the [ZXing][zxing] scanning library.
 
+## Download
+
+<a href="https://appgallery7.huawei.com/#/app/C102717909"><img alt="Explore it on AppGallery" src="https://huaweimobileservices.com/wp-content/uploads/2020/05/Explore-it-on-AppGallery.png" height="80"/></a>  
+
 ## Screenshots
 
 <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/screenshots/original/en/1_scan.png" width="180" height="370"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/screenshots/original/en/2_result.png" width="180" height="370"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/screenshots/original/en/3_create.png" width="180" height="370"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/screenshots/original/en/4_history.png" width="180" height="370"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/screenshots/original/en/5_settings.png" width="180" height="370"/>
