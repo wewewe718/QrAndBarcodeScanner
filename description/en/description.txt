@@ -1,6 +1,6 @@
 Ad-free QR & Barcode Scanner
 
-QR & Barcode Scanner is an ad-free, open-source scanner app with all the features you need.
+Ad-free, open-source scanner app with all the features you need.
 
 ALL COMMON FORMATS
 Scan all common barcode formats: QR, Data Matrix, Aztec, UPC, EAN and more.
