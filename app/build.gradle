@@ -23,6 +23,8 @@ android {
                 arguments = ["room.incremental":"true"]
             }
         }
+
+        buildConfigField "boolean", "ERROR_REPORTS_ENABLED_BY_DEFAULT", "true"
     }
 
     compileOptions {
@@ -46,6 +48,9 @@ android {
         appGallery {}
         googlePlay {
             applicationId "org.barcodescanner"
+        }
+        fDroid {
+            buildConfigField "boolean", "ERROR_REPORTS_ENABLED_BY_DEFAULT", "false"
         }
     }
 }
