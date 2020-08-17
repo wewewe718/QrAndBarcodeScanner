@@ -23,13 +23,8 @@ android {
                 arguments = ["room.incremental":"true"]
             }
         }
-    }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+        buildConfigField "boolean", "ERROR_REPORTS_ENABLED_BY_DEFAULT", "true"
     }
 
     compileOptions {
@@ -39,6 +34,24 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "market"
+    productFlavors {
+        appGallery {}
+        googlePlay {
+            applicationId "org.barcodescanner"
+        }
+        fDroid {
+            buildConfigField "boolean", "ERROR_REPORTS_ENABLED_BY_DEFAULT", "false"
+        }
     }
 }
 

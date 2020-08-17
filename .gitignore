@@ -8,6 +8,8 @@
 bin/
 gen/
 out/
+*.apk
+*.aab
 
 # Gradle files
 .gradle
@@ -90,6 +92,3 @@ atlassian-ide-plugin.xml
 
 # Mongo Explorer plugin
 .idea/mongoSettings.xml
-
-app/src/main/java/com/motmom/clientscard/ui/profile/mocardbinding
-Будет удалено app/release/

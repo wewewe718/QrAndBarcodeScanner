@@ -2,6 +2,7 @@ package com.example.barcodescanner.usecase
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
+import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.extension.unsafeLazy
 import com.google.zxing.BarcodeFormat
 
@@ -90,7 +91,7 @@ class Settings(context: Context) {
         set(value) = set(Key.SAVE_CREATED_BARCODES_TO_HISTORY, value)
 
     var areErrorReportsEnabled: Boolean
-        get() = get(Key.ERROR_REPORTS, true)
+        get() = get(Key.ERROR_REPORTS, BuildConfig.ERROR_REPORTS_ENABLED_BY_DEFAULT)
         set(value) {
             set(Key.ERROR_REPORTS, value)
             Logger.isEnabled = value
