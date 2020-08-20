@@ -5,8 +5,7 @@ QR & Barcode Scanner is an ad-free, open-source scanner app. It uses the [ZXing]
 
 ## Download
 
-<a href="https://play.google.com/store/apps/details?id=org.barcodescanner"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="80"/></a>
-<a href="https://appgallery7.huawei.com/#/app/C102717909"><img alt="Explore it on AppGallery" src="https://huaweimobileservices.com/wp-content/uploads/2020/05/Explore-it-on-AppGallery.png" height="80"/></a>  
+<a href="https://play.google.com/store/apps/details?id=org.barcodescanner"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="100"/></a> <a href="https://www.amazon.com/dp/B08GCTQ444/ref=apps_sf_sta"><img alt="Available at Amazon Appstore" src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal2/res/images/amazon-appstore-badge-english-white.png" height="80"/></a> <a href="https://appgallery7.huawei.com/#/app/C102717909"><img alt="Explore it on AppGallery" src="https://huaweimobileservices.com/wp-content/uploads/2020/05/Explore-it-on-AppGallery.png" height="120"/></a>
 
 ## Screenshots
 
