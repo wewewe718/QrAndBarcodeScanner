@@ -49,6 +49,9 @@ android {
         googlePlay {
             applicationId "org.barcodescanner"
         }
+        amazon {
+            applicationId "org.barcodescanner"
+        }
         fDroid {
             buildConfigField "boolean", "ERROR_REPORTS_ENABLED_BY_DEFAULT", "false"
         }
