@@ -5,11 +5,7 @@ QR & Barcode Scanner is an ad-free, open-source scanner app. It uses the [ZXing]
 
 ## Download
 
-<a href="https://play.google.com/store/apps/details?id=org.barcodescanner"><img alt="Get it on Google Play" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/google_play/badge.png" height="80"/></a> 
-
-<a href="https://www.amazon.com/dp/B08GCTQ444/ref=apps_sf_sta"><img alt="Available at Amazon Appstore" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/amazon/badge.png" height="80"/></a>
-
-<a href="https://appgallery7.huawei.com/#/app/C102717909"><img alt="Explore it on AppGallery" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/app_gallery/badge.png" height="80"/></a>
+<a href="https://play.google.com/store/apps/details?id=org.barcodescanner"><img alt="Get it on Google Play" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/google_play/badge.png" height="80"/></a>   <a href="https://www.amazon.com/dp/B08GCTQ444/ref=apps_sf_sta"><img alt="Available at Amazon Appstore" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/amazon/badge.png" height="80"/></a>   <a href="https://appgallery7.huawei.com/#/app/C102717909"><img alt="Explore it on AppGallery" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/app_gallery/badge.png" height="80"/></a>
 
 <a href="https://apt.izzysoft.de/fdroid/index/apk/com.example.barcodescanner"><img alt="Get it on IzzyOnDroid" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/IzzyOnDroid.png" height="80"/></a>
 
