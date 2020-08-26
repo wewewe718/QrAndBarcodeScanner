@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/check_box"
-        style="@style/BlackTextViewStyle"
+        style="@style/DefaultTextViewStyle"
         tools:text="Textffffffffffffffffffffffffffffffffffffffffffffffffffffff"
         />
     <View
@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="@id/text_view_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_text"
-        android:background="@color/gray5"
+        android:background="@color/delimiter_color"
         />
     <CheckBox
         android:id="@+id/check_box"

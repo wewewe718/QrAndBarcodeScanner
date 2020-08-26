@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toStartOf="@id/image_view_arrow"
         android:textColor="@color/color_icon_button_icon_and_text"
         tools:text="Copy"
-        style="@style/BlackTextViewStyle"
+        style="@style/DefaultTextViewStyle"
         />
     <ImageView
         android:id="@+id/image_view_arrow"
@@ -59,6 +59,6 @@
         app:layout_constraintStart_toStartOf="@id/text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_image"
-        android:background="@color/gray5"
+        android:background="@color/delimiter_color"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

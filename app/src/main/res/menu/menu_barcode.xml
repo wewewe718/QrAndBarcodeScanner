@@ -13,12 +13,14 @@
         android:id="@+id/item_show_barcode_image"
         android:title="@string/activity_barcode_show_barcode_image"
         android:icon="@drawable/ic_qr_code"
+        app:iconTint="@color/toolbar_menu_color"
         app:showAsAction="ifRoom"
         />
     <item
         android:id="@+id/item_delete"
         android:title="@string/activity_barcode_delete"
         android:icon="@drawable/ic_delete"
+        app:iconTint="@color/toolbar_menu_color"
         app:showAsAction="ifRoom"
         />
 </menu>

@@ -15,7 +15,6 @@ import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.settings
 import com.example.barcodescanner.extension.packageManager
 import com.example.barcodescanner.extension.showError
-import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.example.barcodescanner.feature.tabs.settings.camera.ChooseCameraActivity
 import com.example.barcodescanner.feature.tabs.settings.formats.SupportedFormatsActivity
@@ -30,11 +29,6 @@ import kotlinx.android.synthetic.main.fragment_settings.*
 
 class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     private val disposable = CompositeDisposable()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (requireActivity() as? BaseActivity)?.setWhiteStatusBar()
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_settings, container, false)

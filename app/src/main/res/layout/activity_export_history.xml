@@ -48,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin_medium"
                 android:layout_marginHorizontal="@dimen/default_margin"
+                style="@style/TextInputLayoutStyle"
                 >
                 <EditText
                     android:id="@+id/edit_text_file_name"
@@ -61,6 +62,7 @@
                     android:imeOptions="actionNext"
                     android:backgroundTint="@color/blue"
                     android:text="@string/activity_export_history_file_name_default"
+                    style="@style/EditTextStyle"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 

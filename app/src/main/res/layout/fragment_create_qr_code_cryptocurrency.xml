@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin_medium"
         android:layout_marginHorizontal="@dimen/default_margin"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text_address"
@@ -39,7 +40,7 @@
             android:inputType="text"
             android:imeOptions="actionNext"
             android:backgroundTint="@color/blue"
-
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin_medium"
         android:layout_marginHorizontal="@dimen/default_margin"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text_amount"
@@ -61,6 +63,7 @@
             android:imeOptions="actionNext"
             android:backgroundTint="@color/blue"
             android:digits="01234567890."
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,6 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin_medium"
         android:layout_marginHorizontal="@dimen/default_margin"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text_label"
@@ -81,6 +85,7 @@
             android:inputType="text"
             android:imeOptions="actionNext"
             android:backgroundTint="@color/blue"
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,6 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin_medium"
         android:layout_marginHorizontal="@dimen/default_margin"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text_message"
@@ -101,6 +107,7 @@
             android:inputType="text"
             android:imeOptions="actionDone"
             android:backgroundTint="@color/blue"
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 

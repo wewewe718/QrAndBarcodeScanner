@@ -1,9 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="color_primary">@color/white</color>
+    <color name="color_primary_dark">@color/black</color>
+    <color name="color_accent">@color/blue</color>
+    <color name="color_background">@color/white</color>
+    <color name="text_color_secondary">@color/black</color>
+
+    <color name="toolbar_background_color">@color/white</color>
+    <color name="toolbar_title_color">@color/black</color>
+    <color name="toolbar_menu_color">@color/black</color>
+    <color name="toolbar_menu_create_barcode_button_disabled_color">@color/gray5</color>
+    <color name="toolbar_menu_create_barcode_button_enabled_color">@color/black</color>
+    <color name="tab_layout_background_color">@color/white</color>
+    <color name="tab_layout_text_color_inactive">@color/gray_transparent2</color>
+    <color name="tab_layout_text_color_active">@color/blue</color>
+    <color name="bottom_navigation_background_color">@color/white</color>
+    <color name="bottom_navigation_text_color_inactive">@color/gray11</color>
+    <color name="bottom_navigation_text_color_active">@color/blue</color>
+    <color name="create_barcode_group_title_text_color">@color/gray6</color>
+    <color name="default_text_color">@color/black</color>
+    <color name="secondary_text_color">@color/gray</color>
+    <color name="delimiter_color">@color/gray5</color>
+    <color name="delimiter_color2">@color/gray12</color>
+    <color name="switch_background_color">@color/gray17</color>
+    <color name="button_background_color_disabled">@color/gray4</color>
+    <color name="crop_image_view_background_color">@color/white</color>
+    <color name="edit_text_text_color">@color/black</color>
+    <color name="edit_text_hint_color">@color/gray10</color>
+
     <color name="transparent">#00000000</color>
     <color name="white">#FFFFFF</color>
     <color name="white_transparent">#2C000000</color>
     <color name="black">#000000</color>
+    <color name="black2">#202124</color>
+    <color name="black3">#3B3C40</color>
+    <color name="black4">#202124</color>
     <color name="black_transparent2">#5E000000</color>
     <color name="black_transparent3">#40000000</color>
     <color name="gray">#7D7D7D</color>
@@ -14,6 +45,11 @@
     <color name="gray11">#5F6267</color>
     <color name="gray12">#E0E0E0</color>
     <color name="gray13">#757575</color>
+    <color name="gray14">#9BA0A6</color>
+    <color name="gray15">#9C9FA6</color>
+    <color name="gray16">#343538</color>
+    <color name="gray17">#636466</color>
+    <color name="gray18">#B2B2B2</color>
     <color name="gray_transparent2">#6B7D7D7D</color>
     <color name="yellow1">#FDD70A</color>
     <color name="blue">#00B1FF</color>
