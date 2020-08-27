@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/tab_layout_background_color"
         >
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -20,22 +20,15 @@
             />
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="@dimen/tab_layout_height"
-            android:paddingTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:tabTextAppearance="@style/TabTextAppearance"
-            app:tabTextColor="@color/gray_transparent2"
-            app:tabSelectedTextColor="@color/blue"
-            app:tabIndicatorColor="@color/blue"
+            app:tabTextColor="@color/tab_layout_text_color_inactive"
+            app:tabSelectedTextColor="@color/tab_layout_text_color_active"
+            app:tabIndicatorColor="@color/tab_layout_text_color_active"
             app:tabIndicatorHeight="@dimen/tab_layout_indicator_height"
-            android:background="@color/white"
-            app:tabPaddingTop="0dp"
-            app:tabPaddingBottom="0dp"
-            app:tabPaddingStart="@dimen/default_margin"
-            app:tabPaddingEnd="@dimen/default_margin"
+            android:background="@color/tab_layout_background_color"
             app:tabMode="fixed"
-            app:tabGravity="center"
             />
     </com.google.android.material.appbar.AppBarLayout>
 

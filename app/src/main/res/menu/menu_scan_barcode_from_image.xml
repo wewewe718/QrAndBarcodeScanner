@@ -7,18 +7,21 @@
         android:id="@+id/item_rotate_left"
         android:title="@string/activity_scan_barcode_from_file_rotate_left"
         android:icon="@drawable/ic_rotate_left"
+        app:iconTint="@color/toolbar_menu_color"
         app:showAsAction="always"
         />
     <item
         android:id="@+id/item_rotate_right"
         android:title="@string/activity_scan_barcode_from_file_rotate_right"
         android:icon="@drawable/ic_rotate_right"
+        app:iconTint="@color/toolbar_menu_color"
         app:showAsAction="always"
         />
     <item
         android:id="@+id/item_change_image"
         android:title="@string/activity_scan_barcode_from_file_change_image"
         android:icon="@drawable/ic_image_black"
+        app:iconTint="@color/toolbar_menu_color"
         app:showAsAction="always"
         />
 </menu>

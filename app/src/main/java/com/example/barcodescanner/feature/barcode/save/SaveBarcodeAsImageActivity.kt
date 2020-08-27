@@ -64,9 +64,9 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
 
     private fun initFormatSpinner() {
         spinner_save_as.adapter = ArrayAdapter.createFromResource(
-            this, R.array.activity_save_barcode_as_image_formats, android.R.layout.simple_spinner_item
+            this, R.array.activity_save_barcode_as_image_formats, R.layout.item_spinner
         ).apply {
-            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            setDropDownViewResource(R.layout.item_spinner_dropdown)
         }
     }
 

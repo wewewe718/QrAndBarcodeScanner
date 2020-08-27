@@ -10,6 +10,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text"
@@ -19,6 +20,7 @@
             android:hint="@string/fragment_create_data_matrix_hint"
             android:inputType="textMultiLine"
             android:backgroundTint="@color/blue"
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 </FrameLayout>

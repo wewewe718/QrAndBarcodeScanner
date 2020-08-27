@@ -14,10 +14,7 @@ import androidx.fragment.app.Fragment
 import com.budiyev.android.codescanner.*
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.*
-import com.example.barcodescanner.extension.showError
-import com.example.barcodescanner.extension.vibrateOnce
-import com.example.barcodescanner.extension.vibrator
-import com.example.barcodescanner.feature.BaseActivity
+import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.feature.common.dialog.ConfirmBarcodeDialogFragment
 import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity
@@ -48,11 +45,6 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     private val zoomStep = 5
     private lateinit var codeScanner: CodeScanner
     private var toast: Toast? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (requireActivity() as? BaseActivity)?.setBlackStatusBar()
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_scan_barcode_from_camera, container, false)

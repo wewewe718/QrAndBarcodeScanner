@@ -10,6 +10,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text"
@@ -24,6 +25,7 @@
             android:backgroundTint="@color/blue"
             android:maxLength="12"
             android:imeOptions="actionDone"
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 </FrameLayout>

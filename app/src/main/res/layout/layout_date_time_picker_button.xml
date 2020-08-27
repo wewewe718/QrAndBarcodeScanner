@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="@id/text_view_hint"
         android:textColor="@color/color_icon_button_icon_and_text"
         tools:text="12.07.2020 13:00"
-        style="@style/BlackTextViewStyle"
+        style="@style/DefaultTextViewStyle"
         />
     <ImageView
         android:layout_width="wrap_content"
