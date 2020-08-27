@@ -33,7 +33,7 @@ class ConfirmBarcodeDialogFragment : DialogFragment() {
         val barcode = arguments?.getSerializable(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
         val messageId = barcode.format.toStringId()
 
-        return AlertDialog.Builder(requireContext())
+        return AlertDialog.Builder(requireActivity(), R.style.DialogTheme)
             .setTitle(R.string.fragment_scan_barcode_from_camera_confirm_barcode_dialog_title)
             .setMessage(messageId)
             .setCancelable(false)

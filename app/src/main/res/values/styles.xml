@@ -102,9 +102,14 @@
         <item name="android:background">@color/delimiter_color2</item>
     </style>
 
-    <style name="AppBarLayoutStyle">
+    <style name="BaseAppBarLayoutStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="liftOnScroll">true</item>
+        <item name="liftOnScrollTargetViewId">@id/scroll_view</item>
+    </style>
+
+    <style name="AppBarLayoutStyle" parent="BaseAppBarLayoutStyle">
         <item name="liftOnScroll">true</item>
         <item name="liftOnScrollTargetViewId">@id/scroll_view</item>
     </style>
@@ -117,7 +122,7 @@
     </style>
 
     <style name="SwitchTheme" parent="Theme.AppCompat.Light">
-        <item name="colorAccent">@color/blue</item>
+        <item name="colorAccent">@color/color_accent</item>
         <item name="android:colorForeground">@color/switch_background_color</item>
     </style>
 
@@ -130,6 +135,10 @@
         <item name="hintTextColor">@color/edit_text_hint_color</item>
         <item name="android:textColorHint">@color/edit_text_hint_color</item>
         <item name="android:backgroundTint">@color/blue</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="colorAccent">@color/color_accent</item>
     </style>
 
 </resources>

@@ -1,0 +1,12 @@
+<CheckedTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    android:singleLine="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/default_margin_small"
+    android:paddingVertical="@dimen/default_margin_medium2"
+    android:ellipsize="marquee"
+    android:background="?attr/selectableItemBackground"
+    style="@style/DefaultTextViewStyle"
+    />

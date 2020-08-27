@@ -52,7 +52,6 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setBlackStatusBar()
         initScanner()
         initFlashButton()
         handleScanFromFileClicked()
@@ -92,7 +91,6 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     override fun onDestroyView() {
         super.onDestroyView()
-        setWhiteStatusBar()
         disposable.clear()
     }
 
