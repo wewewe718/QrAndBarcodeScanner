@@ -2,12 +2,10 @@ package com.example.barcodescanner.feature.tabs.settings
 
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
@@ -93,12 +91,6 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     }
 
     private fun showSettings() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            text_view_appearance_title.isVisible = true
-            button_choose_theme.isVisible = true
-            delimiter_appearance.isVisible = true
-        }
-
         settings.apply {
             button_open_links_automatically.isChecked = openLinksAutomatically
             button_copy_to_clipboard.isChecked = copyToClipboard

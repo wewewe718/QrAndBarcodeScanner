@@ -17,7 +17,7 @@ class App : MultiDexApplication() {
     }
 
     private fun applyTheme() {
-        AppCompatDelegate.setDefaultNightMode(settings.theme)
+        settings.reapplyTheme()
     }
 
     private fun handleUnhandledRxJavaErrors() {

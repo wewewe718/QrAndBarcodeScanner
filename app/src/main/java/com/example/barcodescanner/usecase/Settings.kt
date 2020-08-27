@@ -1,6 +1,7 @@
 package com.example.barcodescanner.usecase
 
 import android.content.Context
+import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.extension.unsafeLazy
@@ -44,7 +45,7 @@ class Settings(context: Context) {
         get() = get(Key.THEME, THEME_SYSTEM)
         set(value) {
             set(Key.THEME, value)
-            AppCompatDelegate.setDefaultNightMode(value)
+            applyTheme(value)
         }
 
     val isDarkTheme: Boolean
@@ -107,6 +108,10 @@ class Settings(context: Context) {
             .apply()
     }
 
+    fun reapplyTheme() {
+        applyTheme(theme)
+    }
+
     private fun get(key: Key, default: Int): Int {
         return sharedPreferences.getInt(key.name, default)
     }
@@ -125,5 +130,20 @@ class Settings(context: Context) {
         sharedPreferences.edit()
             .putBoolean(key.name, value)
             .apply()
+    }
+
+    private fun applyTheme(theme: Int) {
+        when (theme) {
+            AppCompatDelegate.MODE_NIGHT_NO, AppCompatDelegate.MODE_NIGHT_YES -> {
+                AppCompatDelegate.setDefaultNightMode(theme)
+            }
+            else -> {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
+                }
+            }
+        }
     }
 }
