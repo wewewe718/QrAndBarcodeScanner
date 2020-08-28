@@ -5,11 +5,12 @@
     <color name="color_accent">@color/blue</color>
     <color name="color_background">@color/black2</color>
     <color name="text_color_secondary">@color/white</color>
+    <color name="navigation_bar_color">@color/black2</color>
 
     <color name="toolbar_background_color">@color/gray16</color>
     <color name="toolbar_title_color">@color/white</color>
     <color name="toolbar_menu_color">@color/gray14</color>
-    <color name="toolbar_menu_create_barcode_button_disabled_color">@color/white_transparent</color>
+    <color name="toolbar_menu_create_barcode_button_disabled_color">@color/black_transparent</color>
     <color name="toolbar_menu_create_barcode_button_enabled_color">@color/gray14</color>
     <color name="tab_layout_background_color">@color/gray16</color>
     <color name="tab_layout_text_color_inactive">@color/gray14</color>

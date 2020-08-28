@@ -3,6 +3,7 @@ package com.example.barcodescanner.feature.tabs.scan
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,10 +56,8 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        image_view_flash.applySystemWindowInsets(applyTop = true)
-        image_view_scan_from_file.applySystemWindowInsets(applyTop = true)
-
+        supportEdgeToEdge()
+        setDarkStatusBar()
         initScanner()
         initFlashButton()
         handleScanFromFileClicked()
@@ -98,7 +97,41 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     override fun onDestroyView() {
         super.onDestroyView()
+        setLightStatusBar()
         disposable.clear()
+    }
+
+    private fun supportEdgeToEdge() {
+        image_view_flash.applySystemWindowInsets(applyTop = true)
+        image_view_scan_from_file.applySystemWindowInsets(applyTop = true)
+    }
+
+    private fun setDarkStatusBar() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return
+        }
+
+        if (settings.isDarkTheme) {
+            return
+        }
+
+        requireActivity().window.decorView.apply {
+            systemUiVisibility = systemUiVisibility xor View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
+    }
+
+    private fun setLightStatusBar() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return
+        }
+
+        if (settings.isDarkTheme) {
+            return
+        }
+
+        requireActivity().window.decorView.apply {
+            systemUiVisibility = systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
     }
 
     private fun initScanner() {

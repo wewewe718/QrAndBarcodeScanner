@@ -20,8 +20,7 @@
         app:frameThickness="2.5dp"
         app:frameAspectRatioWidth="1"
         app:frameAspectRatioHeight="1"
-        app:frameSize="0.55"
-        android:forceDarkAllowed="false"
+        app:frameSize="0.53"
         app:maskColor="@color/black_transparent3"
         />
 
@@ -29,7 +28,7 @@
         android:id="@+id/image_view_flash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin_big"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/image_view_scan_from_file"

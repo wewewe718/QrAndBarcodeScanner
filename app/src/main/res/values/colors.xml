@@ -5,6 +5,7 @@
     <color name="color_accent">@color/blue</color>
     <color name="color_background">@color/white</color>
     <color name="text_color_secondary">@color/black</color>
+    <color name="navigation_bar_color">@color/black2</color>
 
     <color name="toolbar_background_color">@color/white</color>
     <color name="toolbar_title_color">@color/black</color>
@@ -30,11 +31,12 @@
 
     <color name="transparent">#00000000</color>
     <color name="white">#FFFFFF</color>
-    <color name="white_transparent">#2C000000</color>
+    <color name="white_transparent">#2CFFFFFF</color>
     <color name="black">#000000</color>
     <color name="black2">#202124</color>
     <color name="black3">#3B3C40</color>
     <color name="black4">#202124</color>
+    <color name="black_transparent">#2C000000</color>
     <color name="black_transparent2">#5E000000</color>
     <color name="black_transparent3">#40000000</color>
     <color name="gray">#7D7D7D</color>
