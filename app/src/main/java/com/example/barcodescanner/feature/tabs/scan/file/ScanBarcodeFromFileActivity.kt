@@ -13,6 +13,7 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.*
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
@@ -49,6 +50,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan_barcode_from_file)
 
+        supportEdgeToEdge()
         handleToolbarBackPressed()
         handleToolbarMenuItemClicked()
         handleImageCropAreaChanged()
@@ -78,6 +80,10 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         } else {
             finish()
         }
+    }
+
+    private fun supportEdgeToEdge() {
+        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun showImageFromIntent(): Boolean {

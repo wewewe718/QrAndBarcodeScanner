@@ -11,6 +11,7 @@ import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.packageManager
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
@@ -32,6 +33,11 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        supportEdgeToEdge()
+    }
+
     override fun onResume() {
         super.onResume()
         handleButtonCheckedChanged()
@@ -47,6 +53,10 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     override fun onDestroyView() {
         super.onDestroyView()
         disposable.clear()
+    }
+
+    fun supportEdgeToEdge() {
+        app_bar_layout.applySystemWindowInsets(applyTop = true)
     }
 
     private fun handleButtonCheckedChanged() {

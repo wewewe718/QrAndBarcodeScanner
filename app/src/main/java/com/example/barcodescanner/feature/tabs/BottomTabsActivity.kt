@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.R
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.tabs.create.CreateBarcodeFragment
 import com.example.barcodescanner.feature.tabs.history.BarcodeHistoryFragment
@@ -23,6 +24,7 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_tabs)
 
+        supportEdgeToEdge()
         initBottomNavigationView()
 
         if (savedInstanceState == null) {
@@ -44,6 +46,10 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
         } else {
             bottom_navigation_view.selectedItemId = R.id.item_scan
         }
+    }
+
+    private fun supportEdgeToEdge() {
+        bottom_navigation_view.applySystemWindowInsets(applyBottom = true)
     }
 
     private fun initBottomNavigationView() {

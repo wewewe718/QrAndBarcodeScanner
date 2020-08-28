@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.example.barcodescanner.feature.tabs.history.export.ExportHistoryActivity
@@ -26,6 +27,7 @@ class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.List
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        supportEdgeToEdge()
         initTabs()
         handleMenuClicked()
     }
@@ -37,6 +39,10 @@ class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.List
     override fun onDestroyView() {
         super.onDestroyView()
         disposable.clear()
+    }
+
+    private fun supportEdgeToEdge() {
+        app_bar_layout.applySystemWindowInsets(applyTop = true)
     }
 
     private fun initTabs() {
