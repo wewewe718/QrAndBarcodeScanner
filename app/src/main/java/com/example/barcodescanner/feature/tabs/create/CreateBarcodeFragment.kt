@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.R
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.clipboardManager
 import com.example.barcodescanner.extension.orZero
 import com.example.barcodescanner.feature.tabs.create.barcode.CreateBarcodeAllActivity
@@ -22,7 +23,12 @@ class CreateBarcodeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        supportEdgeToEdge()
         handleButtonsClicked()
+    }
+
+    private fun supportEdgeToEdge() {
+        app_bar_layout.applySystemWindowInsets(applyTop = true)
     }
 
     private fun handleButtonsClicked() {

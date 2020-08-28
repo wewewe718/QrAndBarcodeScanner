@@ -10,6 +10,7 @@ import android.provider.ContactsContract
 import android.widget.Toast
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.*
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.toStringId
 import com.example.barcodescanner.extension.unsafeLazy
@@ -91,6 +92,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
         }
 
         setContentView(R.layout.activity_create_barcode)
+        supportEdgeToEdge()
         handleToolbarBackClicked()
         handleToolbarMenuItemClicked()
         showToolbarTitle()
@@ -128,6 +130,10 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     override fun onDestroy() {
         super.onDestroy()
         disposable.clear()
+    }
+
+    private fun supportEdgeToEdge() {
+        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun createBarcodeImmediatelyIfNeeded(): Boolean {

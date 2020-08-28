@@ -11,6 +11,7 @@ import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
 import com.example.barcodescanner.di.barcodeImageSaver
 import com.example.barcodescanner.di.permissionsHelper
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.unsafeLazy
 import com.example.barcodescanner.feature.BaseActivity
@@ -45,6 +46,7 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_save_barcode_as_image)
+        supportEdgeToEdge()
         initToolbar()
         initFormatSpinner()
         initSaveButton()
@@ -54,6 +56,10 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
         if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
             saveBarcode()
         }
+    }
+
+    private fun supportEdgeToEdge() {
+        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun initToolbar() {

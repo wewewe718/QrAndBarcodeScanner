@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
 import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.toStringId
 import com.example.barcodescanner.extension.unsafeLazy
 import com.example.barcodescanner.feature.BaseActivity
@@ -37,8 +38,13 @@ class BarcodeImageActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_barcode_image)
+        supportEdgeToEdge()
         handleToolbarBackPressed()
         showBarcode()
+    }
+
+    private fun supportEdgeToEdge() {
+        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun handleToolbarBackPressed() {

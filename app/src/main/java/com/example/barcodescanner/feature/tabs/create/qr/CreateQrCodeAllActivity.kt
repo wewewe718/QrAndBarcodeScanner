@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.example.barcodescanner.R
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.tabs.create.CreateBarcodeActivity
 import com.example.barcodescanner.model.schema.BarcodeSchema
@@ -23,8 +24,13 @@ class CreateQrCodeAllActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_qr_code_all)
+        supportEdgeToEdge()
         handleToolbarBackClicked()
         handleButtonsClicked()
+    }
+
+    private fun supportEdgeToEdge() {
+        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun handleToolbarBackClicked() {

@@ -6,7 +6,8 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.settings
-import com.example.barcodescanner.extension.*
+import com.example.barcodescanner.extension.applySystemWindowInsets
+import com.example.barcodescanner.extension.unsafeLazy
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.usecase.SupportedBarcodeFormats
 import com.google.zxing.BarcodeFormat
@@ -28,12 +29,17 @@ class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_supported_formats)
+        supportEdgeToEdge()
         initRecyclerView()
         handleToolbarBackClicked()
     }
 
     override fun onFormatChecked(format: BarcodeFormat, isChecked: Boolean) {
         settings.setFormatSelected(format, isChecked)
+    }
+
+    private fun supportEdgeToEdge() {
+        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun initRecyclerView() {
