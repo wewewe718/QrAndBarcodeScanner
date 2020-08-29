@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.showError
-import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.example.barcodescanner.feature.tabs.history.export.ExportHistoryActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -21,17 +21,13 @@ import kotlinx.android.synthetic.main.fragment_barcode_history.*
 class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     private val disposable = CompositeDisposable()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (requireActivity() as? BaseActivity)?.setWhiteStatusBar()
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_barcode_history, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        supportEdgeToEdge()
         initTabs()
         handleMenuClicked()
     }
@@ -43,6 +39,10 @@ class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.List
     override fun onDestroyView() {
         super.onDestroyView()
         disposable.clear()
+    }
+
+    private fun supportEdgeToEdge() {
+        app_bar_layout.applySystemWindowInsets(applyTop = true)
     }
 
     private fun initTabs() {

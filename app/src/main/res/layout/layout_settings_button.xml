@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/switch_button"
-        style="@style/BlackTextViewStyle"
+        style="@style/DefaultTextViewStyle"
         android:textColor="@color/color_icon_button_icon_and_text"
         tools:text="Textffffffffffffffffffffffffffffffffffffffffffffffffffffff"
         />
@@ -31,9 +31,8 @@
         app:layout_constraintEnd_toStartOf="@id/switch_button"
         app:layout_constraintBottom_toBottomOf="parent"
         android:textSize="@dimen/default_text_size_small2"
-        android:textColor="@color/gray13"
         tools:text="Hint"
-        style="@style/GrayTextViewStyle"
+        style="@style/SmallTextViewStyle"
         />
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch_button"
@@ -43,5 +42,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@null"
+        android:theme="@style/SwitchTheme"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

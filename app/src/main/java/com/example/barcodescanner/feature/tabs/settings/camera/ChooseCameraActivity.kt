@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.feature.BaseActivity
 import kotlinx.android.synthetic.main.activity_choose_camera.*
 
@@ -20,6 +21,7 @@ class ChooseCameraActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_camera)
+        supportEdgeToEdge()
         handleToolbarBackClicked()
     }
 
@@ -34,6 +36,10 @@ class ChooseCameraActivity : BaseActivity() {
         val isBackCamera = settings.isBackCamera
         button_back_camera.isChecked = isBackCamera
         button_front_camera.isChecked = isBackCamera.not()
+    }
+
+    private fun supportEdgeToEdge() {
+        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun handleToolbarBackClicked() {

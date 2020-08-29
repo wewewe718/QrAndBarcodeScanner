@@ -11,8 +11,8 @@ android {
         applicationId "com.example.barcodescanner"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 2
-        versionName "1.0"
+        versionCode 3
+        versionName "1.1"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary  true
         resConfigs "en", "ru"
@@ -63,12 +63,13 @@ dependencies {
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    kapt 'com.android.databinding:compiler:3.1.4'
 
     // Android
     implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0'
     implementation 'androidx.multidex:multidex:2.0.1'
 
     // Room
@@ -103,5 +104,5 @@ dependencies {
     implementation 'com.github.florent37:singledateandtimepicker:2.2.6'
 
     // Sentry
-    implementation 'io.sentry:sentry-android:2.3.0'
+    implementation 'io.sentry:sentry-android:2.3.1'
 }

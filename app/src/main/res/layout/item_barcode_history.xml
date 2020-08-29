@@ -50,7 +50,7 @@
         android:maxLines="1"
         tools:text="Hello World!"
         android:includeFontPadding="false"
-        style="@style/BlackTextViewStyle"
+        style="@style/DefaultTextViewStyle"
         />
     <TextView
         android:id="@+id/text_view_format"
@@ -82,6 +82,6 @@
         app:layout_constraintTop_toBottomOf="@id/text_view_format"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/gray5"
+        android:background="@color/delimiter_color"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

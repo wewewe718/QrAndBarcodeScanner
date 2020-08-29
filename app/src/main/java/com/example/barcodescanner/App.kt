@@ -2,9 +2,9 @@ package com.example.barcodescanner
 
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
-import androidx.appcompat.app.*
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDexApplication
-import com.example.barcodescanner.di.*
+import com.example.barcodescanner.di.settings
 import io.reactivex.plugins.RxJavaPlugins
 
 class App : MultiDexApplication() {
@@ -12,12 +12,12 @@ class App : MultiDexApplication() {
     override fun onCreate() {
         handleUnhandledRxJavaErrors()
         enableStrictModeIfNeeded()
-        showTheme()
+        applyTheme()
         super.onCreate()
     }
 
-    private fun showTheme() {
-        AppCompatDelegate.setDefaultNightMode(settings.theme)
+    private fun applyTheme() {
+        settings.reapplyTheme()
     }
 
     private fun handleUnhandledRxJavaErrors() {

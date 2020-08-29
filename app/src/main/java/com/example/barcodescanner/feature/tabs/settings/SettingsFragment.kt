@@ -2,20 +2,18 @@ package com.example.barcodescanner.feature.tabs.settings
 
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.packageManager
 import com.example.barcodescanner.extension.showError
-import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.example.barcodescanner.feature.tabs.settings.camera.ChooseCameraActivity
 import com.example.barcodescanner.feature.tabs.settings.formats.SupportedFormatsActivity
@@ -31,13 +29,13 @@ import kotlinx.android.synthetic.main.fragment_settings.*
 class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     private val disposable = CompositeDisposable()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (requireActivity() as? BaseActivity)?.setWhiteStatusBar()
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_settings, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        supportEdgeToEdge()
     }
 
     override fun onResume() {
@@ -55,6 +53,10 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     override fun onDestroyView() {
         super.onDestroyView()
         disposable.clear()
+    }
+
+    fun supportEdgeToEdge() {
+        app_bar_layout.applySystemWindowInsets(applyTop = true)
     }
 
     private fun handleButtonCheckedChanged() {
@@ -99,12 +101,6 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     }
 
     private fun showSettings() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            text_view_appearance_title.isVisible = true
-            button_choose_theme.isVisible = true
-            delimiter_appearance.isVisible = true
-        }
-
         settings.apply {
             button_open_links_automatically.isChecked = openLinksAutomatically
             button_copy_to_clipboard.isChecked = copyToClipboard

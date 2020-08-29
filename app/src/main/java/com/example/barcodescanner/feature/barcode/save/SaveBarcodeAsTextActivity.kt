@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeSaver
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.unsafeLazy
 import com.example.barcodescanner.feature.BaseActivity
@@ -40,9 +41,14 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_save_barcode_as_text)
+        supportEdgeToEdge()
         initToolbar()
         initFormatSpinner()
         initSaveButton()
+    }
+
+    private fun supportEdgeToEdge() {
+        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun initToolbar() {
@@ -53,9 +59,9 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
 
     private fun initFormatSpinner() {
         spinner_save_as.adapter = ArrayAdapter.createFromResource(
-            this, R.array.activity_save_barcode_as_text_formats, android.R.layout.simple_spinner_item
+            this, R.array.activity_save_barcode_as_text_formats, R.layout.item_spinner
         ).apply {
-            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            setDropDownViewResource(R.layout.item_spinner_dropdown)
         }
     }
 

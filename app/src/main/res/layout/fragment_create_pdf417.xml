@@ -13,5 +13,6 @@
         android:layout_height="match_parent"
         android:gravity="start|top"
         android:background="@null"
+        style="@style/EditTextStyle"
         />
 </FrameLayout>

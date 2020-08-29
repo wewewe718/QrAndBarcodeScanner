@@ -104,7 +104,7 @@
     <string name="fragment_create_qr_code_cryptocurrency_message_hint">Сообщение</string>
 
     <!--Create QR code location fragment-->
-    <string name="fragment_create_qr_code_location_latitude_hint">Ширина</string>
+    <string name="fragment_create_qr_code_location_latitude_hint">Широта</string>
     <string name="fragment_create_qr_code_location_longitude_hint">Долгота</string>
     <string name="fragment_create_qr_code_location_altitude_hint">Высота (необязательно)</string>
 

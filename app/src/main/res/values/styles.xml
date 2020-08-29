@@ -1,13 +1,16 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/blue</item>
-        <item name="android:colorBackground">@color/white</item>
-        <item name="android:textColorSecondary">@color/black</item>
-        <item name="android:forceDarkAllowed">true</item>
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="android:textColorSecondary">@color/text_color_secondary</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:navigationBarColor">@color/navigation_bar_color</item>
     </style>
+
+    <style name="AppTheme" parent="BaseAppTheme"/>
 
     <style name="ClickableBackground">
         <item name="android:background">?attr/selectableItemBackground</item>
@@ -20,23 +23,18 @@
     <style name="ToolbarStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="android:background">@color/white</item>
+        <item name="android:background">@color/toolbar_background_color</item>
         <item name="titleTextAppearance">@style/ToolbarTitle</item>
+        <item name="titleTextColor">@color/toolbar_title_color</item>
     </style>
 
     <style name="ToolbarWithBackButtonStyle" parent="ToolbarStyle">
         <item name="navigationIcon">@drawable/ic_arrow_back</item>
+        <item name="iconTint">@color/toolbar_menu_color</item>
     </style>
 
     <style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">20sp</item>
-    </style>
-    
-    <style name="TabTextAppearance">
-        <item name="android:textSize">@dimen/default_text_size_very_small</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:singleLine">true</item>
     </style>
 
     <style name="BottomNavigationItemTextAppearance" parent="TextAppearance.AppCompat">
@@ -44,28 +42,35 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TabTextAppearance">
+        <item name="android:textSize">@dimen/default_text_size_very_small</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
     <style name="ButtonStyle" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:textColor">@color/color_button_text</item>
         <item name="android:background">@drawable/background_button</item>
     </style>
 
-    <style name="BlackTextViewStyle">
-        <item name="android:textSize">@dimen/default_text_size</item>
-        <item name="android:textColor">@color/black</item>
+    <style name="SmallTextViewStyle">
+        <item name="android:textSize">@dimen/default_text_size_small</item>
+        <item name="android:textColor">@color/secondary_text_color</item>
     </style>
 
-    <style name="GrayTextViewStyle">
-        <item name="android:textSize">@dimen/default_text_size_small</item>
-        <item name="android:textColor">@color/gray</item>
+    <style name="DefaultTextViewStyle">
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:textColor">@color/default_text_color</item>
     </style>
 
     <style name="LargeTextViewStyle">
         <item name="android:textSize">@dimen/default_text_size_large</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/default_text_color</item>
     </style>
 
     <style name="SecondaryTextViewStyle">
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textColor">@color/secondary_text_color</item>
         <item name="android:textSize">@dimen/default_text_size_very_small</item>
     </style>
 
@@ -76,13 +81,13 @@
     </style>
 
     <style name="CreateBarcodeGroupTitleTextViewStyle">
-        <item name="android:textColor">@color/gray6</item>
+        <item name="android:textColor">@color/create_barcode_group_title_text_color</item>
         <item name="android:textSize">@dimen/default_text_size_small2</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="CreateBarcodeFragmentAlternativeTextViewStyle">
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/default_text_color</item>
         <item name="android:textSize">@dimen/default_text_size</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
     </style>
@@ -96,12 +101,17 @@
     <style name="DelimiterStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-        <item name="android:background">@color/gray12</item>
+        <item name="android:background">@color/delimiter_color2</item>
     </style>
 
-    <style name="AppBarLayoutStyle">
+    <style name="BaseAppBarLayoutStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="liftOnScroll">true</item>
+        <item name="liftOnScrollTargetViewId">@id/scroll_view</item>
+    </style>
+
+    <style name="AppBarLayoutStyle" parent="BaseAppBarLayoutStyle">
         <item name="liftOnScroll">true</item>
         <item name="liftOnScrollTargetViewId">@id/scroll_view</item>
     </style>
@@ -111,6 +121,26 @@
         <item name="android:layout_height">match_parent</item>
         <item name="layout_behavior">@string/appbar_scrolling_view_behavior</item>
         <item name="android:scrollIndicators">none</item>
+    </style>
+
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:colorForeground">@color/switch_background_color</item>
+    </style>
+
+    <style name="TextInputLayoutStyle">
+        <item name="android:textColorHint">@color/edit_text_hint_color</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="android:textColor">@color/edit_text_text_color</item>
+        <item name="hintTextColor">@color/edit_text_hint_color</item>
+        <item name="android:textColorHint">@color/edit_text_hint_color</item>
+        <item name="android:backgroundTint">@color/blue</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="colorAccent">@color/color_accent</item>
     </style>
 
 </resources>

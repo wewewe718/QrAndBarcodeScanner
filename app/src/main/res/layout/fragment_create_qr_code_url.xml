@@ -19,6 +19,7 @@
         android:inputType="textUri"
         android:imeOptions="actionDone"
         android:backgroundTint="@color/blue"
+        style="@style/EditTextStyle"
         />
     <TextView
         android:layout_width="wrap_content"

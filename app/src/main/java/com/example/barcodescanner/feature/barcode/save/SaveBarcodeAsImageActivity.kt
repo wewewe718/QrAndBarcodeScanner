@@ -11,6 +11,7 @@ import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeImageGenerator
 import com.example.barcodescanner.di.barcodeImageSaver
 import com.example.barcodescanner.di.permissionsHelper
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.unsafeLazy
 import com.example.barcodescanner.feature.BaseActivity
@@ -45,6 +46,7 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_save_barcode_as_image)
+        supportEdgeToEdge()
         initToolbar()
         initFormatSpinner()
         initSaveButton()
@@ -56,6 +58,10 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
         }
     }
 
+    private fun supportEdgeToEdge() {
+        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
+    }
+
     private fun initToolbar() {
         toolbar.setNavigationOnClickListener {
             finish()
@@ -64,9 +70,9 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
 
     private fun initFormatSpinner() {
         spinner_save_as.adapter = ArrayAdapter.createFromResource(
-            this, R.array.activity_save_barcode_as_image_formats, android.R.layout.simple_spinner_item
+            this, R.array.activity_save_barcode_as_image_formats, R.layout.item_spinner
         ).apply {
-            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            setDropDownViewResource(R.layout.item_spinner_dropdown)
         }
     }
 

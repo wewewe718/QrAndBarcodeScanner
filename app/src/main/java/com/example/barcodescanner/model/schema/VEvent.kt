@@ -8,6 +8,7 @@ data class VEvent(
     val uid: String? = null,
     val stamp: String? = null,
     val organizer: String? = null,
+    val description: String? = null,
     val startDate: Long? = null,
     val endDate: Long? = null,
     val summary: String? = null
@@ -21,6 +22,7 @@ data class VEvent(
         private const val UID_PREFIX = "UID:"
         private const val STAMP_PREFIX = "DTSTAMP:"
         private const val ORGANIZER_PREFIX = "ORGANIZER:"
+        private const val DESCRIPTION_PREFIX = "DESCRIPTION:"
         private const val START_PREFIX = "DTSTART:"
         private const val END_PREFIX = "DTEND:"
         private const val SUMMARY_PREFIX = "SUMMARY:"
@@ -54,6 +56,7 @@ data class VEvent(
             var uid: String? = null
             var stamp: String? = null
             var organizer: String? = null
+            var description: String? = null
             var startDate: Long? = null
             var endDate: Long? = null
             var summary: String? = null
@@ -71,6 +74,11 @@ data class VEvent(
 
                 if (part.startsWithIgnoreCase(ORGANIZER_PREFIX)) {
                     organizer = part.removePrefixIgnoreCase(ORGANIZER_PREFIX)
+                    return@forEach
+                }
+
+                if (part.startsWithIgnoreCase(DESCRIPTION_PREFIX)) {
+                    description = part.removePrefixIgnoreCase(DESCRIPTION_PREFIX)
                     return@forEach
                 }
 
@@ -92,7 +100,7 @@ data class VEvent(
                 }
             }
 
-            return VEvent(uid, stamp, organizer, startDate, endDate, summary)
+            return VEvent(uid, stamp, organizer, description, startDate, endDate, summary)
         }
     }
 
@@ -103,6 +111,7 @@ data class VEvent(
             uid,
             stamp,
             summary,
+            description,
             FORMATTED_TEXT_DATE_FORMATTER.formatOrNull(startDate),
             FORMATTED_TEXT_DATE_FORMATTER.formatOrNull(endDate),
             organizer
@@ -119,6 +128,7 @@ data class VEvent(
             .appendIfNotNullOrBlank(UID_PREFIX, uid, PARAMETERS_SEPARATOR_1)
             .appendIfNotNullOrBlank(STAMP_PREFIX, stamp, PARAMETERS_SEPARATOR_1)
             .appendIfNotNullOrBlank(ORGANIZER_PREFIX, organizer, PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(DESCRIPTION_PREFIX, description, PARAMETERS_SEPARATOR_1)
             .appendIfNotNullOrBlank(START_PREFIX, startDate, PARAMETERS_SEPARATOR_1)
             .appendIfNotNullOrBlank(END_PREFIX, endDate, PARAMETERS_SEPARATOR_1)
             .appendIfNotNullOrBlank(SUMMARY_PREFIX, summary, PARAMETERS_SEPARATOR_1)

@@ -8,6 +8,7 @@
     >
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
         style="@style/AppBarLayoutStyle"
         >
         <androidx.appcompat.widget.Toolbar

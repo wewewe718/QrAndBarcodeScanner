@@ -72,6 +72,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_barcode)
+        supportEdgeToEdge()
         applySettings()
         handleToolbarBackPressed()
         handleToolbarMenuClicked()
@@ -90,6 +91,10 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         disposable.clear()
     }
 
+
+    private fun supportEdgeToEdge() {
+        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
+    }
 
     private fun applySettings() {
         if (settings.copyToClipboard) {

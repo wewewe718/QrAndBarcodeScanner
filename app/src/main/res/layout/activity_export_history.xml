@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/root_view"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin_medium"
                 android:layout_marginHorizontal="@dimen/default_margin"
+                style="@style/TextInputLayoutStyle"
                 >
                 <EditText
                     android:id="@+id/edit_text_file_name"
@@ -61,6 +63,7 @@
                     android:imeOptions="actionNext"
                     android:backgroundTint="@color/blue"
                     android:text="@string/activity_export_history_file_name_default"
+                    style="@style/EditTextStyle"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 

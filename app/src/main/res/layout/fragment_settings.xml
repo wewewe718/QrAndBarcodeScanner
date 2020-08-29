@@ -7,6 +7,7 @@
     >
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
         style="@style/AppBarLayoutStyle"
         >
         <androidx.appcompat.widget.Toolbar
@@ -36,7 +37,6 @@
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:text="@string/fragment_settings_appearance_settings"
                 style="@style/SettingsGroupTitleTextViewStyle"
-                android:visibility="gone"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_choose_theme"
@@ -44,11 +44,9 @@
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_theme"
                 app:isSwitchVisible="false"
-                android:visibility="gone"
                 />
             <View
                 android:id="@+id/delimiter_appearance"
-                android:visibility="gone"
                 style="@style/DelimiterStyle"
                 />
 

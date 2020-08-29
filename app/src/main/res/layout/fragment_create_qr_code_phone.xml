@@ -20,5 +20,6 @@
         android:backgroundTint="@color/blue"
         android:inputType="phone"
         android:digits="+0123456789"
+        style="@style/EditTextStyle"
         />
 </LinearLayout>

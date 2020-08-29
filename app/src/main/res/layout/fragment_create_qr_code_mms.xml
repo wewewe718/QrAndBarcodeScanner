@@ -12,6 +12,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text_phone"
@@ -25,6 +26,7 @@
             android:backgroundTint="@color/blue"
             android:inputType="phone"
             android:digits="+0123456789"
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -32,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin_small"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text_subject"
@@ -42,6 +45,7 @@
             android:inputType="text"
             android:backgroundTint="@color/blue"
             android:imeOptions="actionNext"
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin_small"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text_message"
@@ -59,6 +64,7 @@
             android:inputType="text"
             android:backgroundTint="@color/blue"
             android:imeOptions="actionDone"
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 

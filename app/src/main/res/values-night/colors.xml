@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">@color/black2</color>
+    <color name="color_primary_dark">@color/black2</color>
+    <color name="color_accent">@color/blue</color>
+    <color name="color_background">@color/black2</color>
+    <color name="text_color_secondary">@color/white</color>
+    <color name="navigation_bar_color">@color/black2</color>
+
+    <color name="toolbar_background_color">@color/gray16</color>
+    <color name="toolbar_title_color">@color/white</color>
+    <color name="toolbar_menu_color">@color/gray14</color>
+    <color name="toolbar_menu_create_barcode_button_disabled_color">@color/black_transparent</color>
+    <color name="toolbar_menu_create_barcode_button_enabled_color">@color/gray14</color>
+    <color name="tab_layout_background_color">@color/gray16</color>
+    <color name="tab_layout_text_color_inactive">@color/gray14</color>
+    <color name="tab_layout_text_color_active">@color/blue</color>
+    <color name="bottom_navigation_background_color">@color/gray16</color>
+    <color name="bottom_navigation_text_color_inactive">@color/gray14</color>
+    <color name="bottom_navigation_text_color_active">@color/blue</color>
+    <color name="create_barcode_group_title_text_color">@color/gray15</color>
+    <color name="default_text_color">@color/white</color>
+    <color name="secondary_text_color">@color/gray14</color>
+    <color name="delimiter_color">@color/black3</color>
+    <color name="delimiter_color2">@color/black3</color>
+    <color name="switch_background_color">@color/gray18</color>
+    <color name="button_background_color_disabled">@color/gray15</color>
+    <color name="crop_image_view_background_color">@color/black2</color>
+    <color name="edit_text_text_color">@color/white</color>
+    <color name="edit_text_hint_color">@color/gray14</color>
+</resources>

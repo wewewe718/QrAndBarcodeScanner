@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/default_margin"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text_first_name"
@@ -22,6 +23,7 @@
             android:imeOptions="actionNext"
             android:backgroundTint="@color/blue"
             android:inputType="text"
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -30,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin_small"
         android:layout_marginHorizontal="@dimen/default_margin"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text_last_name"
@@ -42,6 +45,7 @@
             android:imeOptions="actionNext"
             android:backgroundTint="@color/blue"
             android:inputType="text"
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,6 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin_small"
         android:layout_marginHorizontal="@dimen/default_margin"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text_email"
@@ -62,6 +67,7 @@
             android:imeOptions="actionNext"
             android:backgroundTint="@color/blue"
             android:inputType="textEmailAddress"
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,6 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin_small"
         android:layout_marginHorizontal="@dimen/default_margin"
+        style="@style/TextInputLayoutStyle"
         >
         <EditText
             android:id="@+id/edit_text_phone"
@@ -83,6 +90,7 @@
             android:backgroundTint="@color/blue"
             android:inputType="phone"
             android:digits="+0123456789"
+            style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 

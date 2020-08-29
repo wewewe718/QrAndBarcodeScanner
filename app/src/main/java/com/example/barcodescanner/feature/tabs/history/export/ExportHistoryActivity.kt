@@ -10,6 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.barcodeSaver
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.isNotBlank
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.textString
@@ -33,10 +34,15 @@ class ExportHistoryActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_export_history)
+        supportEdgeToEdge()
         initToolbar()
         initExportTypeSpinner()
         initFileNameEditText()
         initExportButton()
+    }
+
+    private fun supportEdgeToEdge() {
+        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun initToolbar() {
@@ -47,9 +53,9 @@ class ExportHistoryActivity : BaseActivity() {
 
     private fun initExportTypeSpinner() {
         spinner_export_as.adapter = ArrayAdapter.createFromResource(
-            this, R.array.activity_export_history_types, android.R.layout.simple_spinner_item
+            this, R.array.activity_export_history_types, R.layout.item_spinner
         ).apply {
-            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            setDropDownViewResource(R.layout.item_spinner_dropdown)
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.barcodescanner.feature.tabs.scan
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +15,10 @@ import androidx.fragment.app.Fragment
 import com.budiyev.android.codescanner.*
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.*
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.vibrateOnce
 import com.example.barcodescanner.extension.vibrator
-import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.feature.common.dialog.ConfirmBarcodeDialogFragment
 import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity
@@ -49,17 +50,14 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     private lateinit var codeScanner: CodeScanner
     private var toast: Toast? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (requireActivity() as? BaseActivity)?.setBlackStatusBar()
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_scan_barcode_from_camera, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        supportEdgeToEdge()
+        setDarkStatusBar()
         initScanner()
         initFlashButton()
         handleScanFromFileClicked()
@@ -99,7 +97,41 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     override fun onDestroyView() {
         super.onDestroyView()
+        setLightStatusBar()
         disposable.clear()
+    }
+
+    private fun supportEdgeToEdge() {
+        image_view_flash.applySystemWindowInsets(applyTop = true)
+        image_view_scan_from_file.applySystemWindowInsets(applyTop = true)
+    }
+
+    private fun setDarkStatusBar() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return
+        }
+
+        if (settings.isDarkTheme) {
+            return
+        }
+
+        requireActivity().window.decorView.apply {
+            systemUiVisibility = systemUiVisibility xor View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
+    }
+
+    private fun setLightStatusBar() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return
+        }
+
+        if (settings.isDarkTheme) {
+            return
+        }
+
+        requireActivity().window.decorView.apply {
+            systemUiVisibility = systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
     }
 
     private fun initScanner() {

@@ -20,8 +20,7 @@
         app:frameThickness="2.5dp"
         app:frameAspectRatioWidth="1"
         app:frameAspectRatioHeight="1"
-        app:frameSize="0.55"
-        android:forceDarkAllowed="false"
+        app:frameSize="0.53"
         app:maskColor="@color/black_transparent3"
         />
 
@@ -29,7 +28,7 @@
         android:id="@+id/image_view_flash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin_big"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/image_view_scan_from_file"
@@ -91,8 +90,8 @@
 
     <ImageView
         android:id="@+id/button_decrease_zoom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/button_zoom_size"
+        android:layout_height="@dimen/button_zoom_size"
         android:layout_marginStart="@dimen/default_margin"
         android:layout_marginBottom="@dimen/default_margin_large"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +102,7 @@
         android:id="@+id/seek_bar_zoom"
         android:layout_width="0dp"
         android:layout_height="@dimen/zoom_seek_bar_height"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginHorizontal="@dimen/default_margin_small"
         app:layout_constraintTop_toTopOf="@id/button_decrease_zoom"
         app:layout_constraintBottom_toBottomOf="@id/button_decrease_zoom"
         app:layout_constraintStart_toEndOf="@id/button_decrease_zoom"
@@ -112,8 +111,8 @@
         />
     <ImageView
         android:id="@+id/button_increase_zoom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/button_zoom_size"
+        android:layout_height="@dimen/button_zoom_size"
         android:layout_marginEnd="@dimen/default_margin"
         app:layout_constraintTop_toTopOf="@id/button_decrease_zoom"
         app:layout_constraintBottom_toBottomOf="@id/button_decrease_zoom"

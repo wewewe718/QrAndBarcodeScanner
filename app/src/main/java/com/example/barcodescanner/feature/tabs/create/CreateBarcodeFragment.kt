@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.R
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.clipboardManager
 import com.example.barcodescanner.extension.orZero
-import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.tabs.create.barcode.CreateBarcodeAllActivity
 import com.example.barcodescanner.feature.tabs.create.qr.CreateQrCodeAllActivity
 import com.example.barcodescanner.model.schema.BarcodeSchema
@@ -17,18 +17,18 @@ import kotlinx.android.synthetic.main.fragment_create_barcode.*
 
 class CreateBarcodeFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (requireActivity() as? BaseActivity)?.setWhiteStatusBar()
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_create_barcode, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        supportEdgeToEdge()
         handleButtonsClicked()
+    }
+
+    private fun supportEdgeToEdge() {
+        app_bar_layout.applySystemWindowInsets(applyTop = true)
     }
 
     private fun handleButtonsClicked() {

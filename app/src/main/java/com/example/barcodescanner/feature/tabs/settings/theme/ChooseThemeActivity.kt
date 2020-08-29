@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.unsafeLazy
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.usecase.Settings
@@ -27,6 +28,7 @@ class ChooseThemeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_theme)
+        supportEdgeToEdge()
         initToolbar()
     }
 
@@ -34,6 +36,10 @@ class ChooseThemeActivity : BaseActivity() {
         super.onResume()
         showInitialSettings()
         handleSettingsChanged()
+    }
+
+    private fun supportEdgeToEdge() {
+        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun initToolbar() {

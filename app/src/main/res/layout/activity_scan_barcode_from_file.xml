@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/root_view"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -28,8 +29,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         custom:scv_crop_mode="free"
-        custom:scv_background_color="@color/white"
-        custom:scv_overlay_color="@color/white_transparent"
+        custom:scv_background_color="@color/crop_image_view_background_color"
+        custom:scv_overlay_color="@color/black_transparent"
         custom:scv_handle_show_mode="show_always"
         custom:scv_handle_color="@color/yellow1"
         custom:scv_handle_size="14dp"

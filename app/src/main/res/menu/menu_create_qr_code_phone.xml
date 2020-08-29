@@ -7,6 +7,7 @@
         android:id="@+id/item_phone"
         android:title="@string/activity_create_barcode_menu_item_title"
         android:icon="@drawable/ic_contact"
+        app:iconTint="@color/toolbar_menu_color"
         app:showAsAction="always"
         />
     <item
