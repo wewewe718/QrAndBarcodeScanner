@@ -234,6 +234,7 @@
     <string name="activity_barcode_open_in_youtube">Открыть в Youtube</string>
     <string name="activity_barcode_save_bookmark">Сохранить в закладки</string>
     <string name="activity_barcode_open_link">Открыть ссылку</string>
+    <string name="activity_barcode_open_otp">Открыть в другом приложении</string>
     <string name="activity_barcode_share_as_text">Поделиться текстом</string>
     <string name="activity_barcode_copy">Копировать</string>
     <string name="activity_barcode_save_as_text">Сохранить текст</string>

@@ -46,6 +46,7 @@ class ParsedBarcode(barcode: Barcode) {
     var url: String? = null
     var googlePlayUrl: String? = null
     var youtubeUrl: String? = null
+    var otpUrl: String? = null
     var geoUri: String? = null
 
     var eventUid: String? = null
@@ -79,6 +80,7 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.VCARD -> parseVCard()
             BarcodeSchema.WIFI -> parseWifi()
             BarcodeSchema.YOUTUBE -> parseYoutube()
+            BarcodeSchema.OTP_AUTH -> parseOtp()
             BarcodeSchema.URL -> parseUrl()
         }
     }
@@ -167,6 +169,10 @@ class ParsedBarcode(barcode: Barcode) {
 
     private fun parseYoutube() {
         youtubeUrl = text
+    }
+
+    private fun parseOtp() {
+        otpUrl = text
     }
 
     private fun parseUrl() {

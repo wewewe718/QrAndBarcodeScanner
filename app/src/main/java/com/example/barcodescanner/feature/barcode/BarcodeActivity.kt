@@ -146,8 +146,9 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
         button_open_in_google_play.setOnClickListener { openInGooglePlay() }
         button_open_in_youtube.setOnClickListener { openInYoutube() }
-        button_save_bookmark.setOnClickListener { saveBookmark() }
+        button_open_otp.setOnClickListener { openOtpInOtherApp() }
         button_open_link.setOnClickListener { openLink() }
+        button_save_bookmark.setOnClickListener { saveBookmark() }
 
         button_call_phone_1.setOnClickListener { callPhone(barcode.phone) }
         button_call_phone_2.setOnClickListener { callPhone(barcode.secondaryPhone) }
@@ -298,6 +299,10 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         startActivityIfExists(Intent.ACTION_VIEW, barcode.youtubeUrl.orEmpty())
     }
 
+    private fun openOtpInOtherApp() {
+        startActivityIfExists(Intent.ACTION_VIEW, barcode.otpUrl.orEmpty())
+    }
+
     private fun openLink() {
         startActivityIfExists(Intent.ACTION_VIEW, barcode.url.orEmpty())
     }
@@ -363,8 +368,6 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
         startActivityIfExists(intent)
     }
-
-
 
     private fun printBarcode() {
         val barcodeImage = try {
@@ -547,6 +550,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_copy_network_password.isVisible = barcode.networkPassword.isNullOrEmpty().not()
         button_open_in_google_play.isVisible = barcode.googlePlayUrl.isNullOrEmpty().not()
         button_open_in_youtube.isVisible = barcode.youtubeUrl.isNullOrEmpty().not()
+        button_open_otp.isVisible = barcode.otpUrl.isNullOrEmpty().not()
         button_open_link.isVisible = barcode.url.isNullOrEmpty().not()
         button_save_bookmark.isVisible = barcode.schema == BarcodeSchema.BOOKMARK
     }
