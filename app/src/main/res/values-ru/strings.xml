@@ -108,6 +108,16 @@
     <string name="fragment_create_qr_code_location_longitude_hint">Долгота</string>
     <string name="fragment_create_qr_code_location_altitude_hint">Высота (необязательно)</string>
 
+    <!--Create QR code OTP fragment-->
+    <string name="fragment_create_qr_code_otp_type_hint">Тип</string>
+    <string name="fragment_create_qr_code_otp_issuer_hint">Издатель</string>
+    <string name="fragment_create_qr_code_otp_account_hint">Аккаунт</string>
+    <string name="fragment_create_qr_code_otp_secret_hint">Ключ</string>
+    <string name="fragment_create_qr_code_otp_algorithm_hint">Алгоритм</string>
+    <string name="fragment_create_qr_code_otp_digits_hint">Число знаков</string>
+    <string name="fragment_create_qr_code_otp_period_hint">Период</string>
+    <string name="fragment_create_qr_code_otp_counter_hint">Счетчик</string>
+
     <!--Create QR code event-->
     <string name="fragment_create_qr_code_event_title_hint">Название</string>
     <string name="fragment_create_qr_code_event_organizer_hint">Организатор</string>
@@ -234,6 +244,7 @@
     <string name="activity_barcode_open_in_youtube">Открыть в Youtube</string>
     <string name="activity_barcode_save_bookmark">Сохранить в закладки</string>
     <string name="activity_barcode_open_link">Открыть ссылку</string>
+    <string name="activity_barcode_open_bitcoin_url">Открыть в другом приложении</string>
     <string name="activity_barcode_open_otp">Открыть в другом приложении</string>
     <string name="activity_barcode_share_as_text">Поделиться текстом</string>
     <string name="activity_barcode_copy">Копировать</string>
@@ -273,6 +284,7 @@
     <string name="barcode_schema_mms">ММС</string>
     <string name="barcode_schema_me_card">Контакт (MeCard)</string>
     <string name="barcode_schema_phone">Телефон</string>
+    <string name="barcode_schema_otp">OTP</string>
     <string name="barcode_schema_sms">СМС</string>
     <string name="barcode_schema_url">URL</string>
     <string name="barcode_schema_v_event">Событие</string>

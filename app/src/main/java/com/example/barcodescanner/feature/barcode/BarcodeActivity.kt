@@ -147,6 +147,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_open_in_google_play.setOnClickListener { openInGooglePlay() }
         button_open_in_youtube.setOnClickListener { openInYoutube() }
         button_open_otp.setOnClickListener { openOtpInOtherApp() }
+        button_open_bitcoin_uri.setOnClickListener { openBitcoinUrl() }
         button_open_link.setOnClickListener { openLink() }
         button_save_bookmark.setOnClickListener { saveBookmark() }
 
@@ -301,6 +302,10 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun openOtpInOtherApp() {
         startActivityIfExists(Intent.ACTION_VIEW, barcode.otpUrl.orEmpty())
+    }
+
+    private fun openBitcoinUrl() {
+        startActivityIfExists(Intent.ACTION_VIEW, barcode.bitcoinUri.orEmpty())
     }
 
     private fun openLink() {
@@ -551,6 +556,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_open_in_google_play.isVisible = barcode.googlePlayUrl.isNullOrEmpty().not()
         button_open_in_youtube.isVisible = barcode.youtubeUrl.isNullOrEmpty().not()
         button_open_otp.isVisible = barcode.otpUrl.isNullOrEmpty().not()
+        button_open_bitcoin_uri.isVisible = barcode.bitcoinUri.isNullOrEmpty().not()
         button_open_link.isVisible = barcode.url.isNullOrEmpty().not()
         button_save_bookmark.isVisible = barcode.schema == BarcodeSchema.BOOKMARK
     }

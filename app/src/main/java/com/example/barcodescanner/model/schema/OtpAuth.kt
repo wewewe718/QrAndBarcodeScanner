@@ -1,9 +1,7 @@
 package com.example.barcodescanner.model.schema
 
 import android.net.Uri
-import com.example.barcodescanner.extension.appendQueryParameterIfNotNull
-import com.example.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
-import java.util.*
+import com.example.barcodescanner.extension.appendQueryParameterIfNotNullOrBlank
 
 class OtpAuth(
     val type: String? = null,
@@ -58,7 +56,7 @@ class OtpAuth(
     override val schema = BarcodeSchema.OTP_AUTH
 
     override fun toFormattedText(): String {
-        return listOf(label, type?.toUpperCase(Locale.ENGLISH)).joinToStringNotNullOrBlankWithLineSeparator()
+        return label.orEmpty()
     }
 
     override fun toBarcodeText(): String {
@@ -66,12 +64,12 @@ class OtpAuth(
             .scheme(URI_SCHEME)
             .authority(type)
             .appendPath(label)
-            .appendQueryParameterIfNotNull(SECRET_KEY, secret)
-            .appendQueryParameterIfNotNull(ISSUER_KEY, issuer)
-            .appendQueryParameterIfNotNull(ALGORITHM_KEY, algorithm)
-            .appendQueryParameterIfNotNull(DIGITS_KEY, digits?.toString())
-            .appendQueryParameterIfNotNull(COUNTER_KEY, counter?.toString())
-            .appendQueryParameterIfNotNull(PERIOD_KEY, period?.toString())
+            .appendQueryParameterIfNotNullOrBlank(SECRET_KEY, secret)
+            .appendQueryParameterIfNotNullOrBlank(ISSUER_KEY, issuer)
+            .appendQueryParameterIfNotNullOrBlank(ALGORITHM_KEY, algorithm)
+            .appendQueryParameterIfNotNullOrBlank(DIGITS_KEY, digits?.toString())
+            .appendQueryParameterIfNotNullOrBlank(COUNTER_KEY, counter?.toString())
+            .appendQueryParameterIfNotNullOrBlank(PERIOD_KEY, period?.toString())
             .build()
             .toString()
     }
