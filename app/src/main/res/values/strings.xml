@@ -267,6 +267,7 @@
     <string name="activity_barcode_save_bookmark">Save to bookmarks</string>
     <string name="activity_barcode_open_link">Open link</string>
     <string name="activity_barcode_open_bitcoin_url">Open in other app</string>
+    <string name="activity_barcode_show_otp">Show password</string>
     <string name="activity_barcode_open_otp">Open in other app</string>
     <string name="activity_barcode_share_as_text">Share as text</string>
     <string name="activity_barcode_copy">Copy to clipboard</string>

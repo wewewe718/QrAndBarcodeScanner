@@ -246,6 +246,7 @@
     <string name="activity_barcode_save_bookmark">Сохранить в закладки</string>
     <string name="activity_barcode_open_link">Открыть ссылку</string>
     <string name="activity_barcode_open_bitcoin_url">Открыть в другом приложении</string>
+    <string name="activity_barcode_show_otp">Показать пароль</string>
     <string name="activity_barcode_open_otp">Открыть в другом приложении</string>
     <string name="activity_barcode_share_as_text">Поделиться текстом</string>
     <string name="activity_barcode_copy">Копировать</string>
