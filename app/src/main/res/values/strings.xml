@@ -129,10 +129,11 @@
     </string-array>
     <string name="fragment_create_qr_code_otp_issuer_hint">Issuer</string>
     <string name="fragment_create_qr_code_otp_account_hint">Account</string>
-    <string name="fragment_create_qr_code_otp_secret_hint">Secret</string>
     <string name="fragment_create_qr_code_otp_digits_hint">Digits</string>
     <string name="fragment_create_qr_code_otp_period_hint">Period</string>
     <string name="fragment_create_qr_code_otp_counter_hint">Counter</string>
+    <string name="fragment_create_qr_code_otp_secret_hint">Secret</string>
+    <string name="fragment_create_qr_code_otp_generate_random_secret">Random Secret</string>
 
     <!--Create QR code event-->
     <string name="fragment_create_qr_code_event_title_hint">Title</string>

@@ -15,9 +15,13 @@ import com.example.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.example.barcodescanner.model.schema.OtpAuth
 import com.example.barcodescanner.model.schema.Schema
 import kotlinx.android.synthetic.main.fragment_create_qr_code_otp.*
+import org.apache.commons.codec.binary.Base32
 import java.util.*
 
 class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
+    private val randomGenerator = Random()
+    private val base32Encoder = Base32()
+    private val reusedSecretBytes = ByteArray(32)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_create_qr_code_otp, container, false)
@@ -28,6 +32,8 @@ class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
         initOtpTypesSpinner()
         initAlgorithmsSpinner()
         initEditTexts()
+        initGenerateRandomSecretButton()
+        showRandomSecret()
     }
 
     override fun getBarcodeSchema(): Schema {
@@ -80,10 +86,25 @@ class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
         edit_text_counter.addTextChangedListener { toggleCreateBarcodeButton() }
     }
 
+    private fun initGenerateRandomSecretButton() {
+        button_generate_random_secret.setOnClickListener {
+            showRandomSecret()
+        }
+    }
+
     private fun toggleCreateBarcodeButton() {
         val isHotp = spinner_opt_types.selectedItemPosition == 0
         val areGeneralFieldsNotBlank = edit_text_account.isNotBlank() && edit_text_secret.isNotBlank()
         val areHotpFieldsNotBlank = edit_text_counter.isNotBlank() && edit_text_period.isNotBlank()
         parentActivity.isCreateBarcodeButtonEnabled = areGeneralFieldsNotBlank && (isHotp.not() || isHotp && areHotpFieldsNotBlank)
+    }
+
+    private fun showRandomSecret() {
+        edit_text_secret.setText(generateRandomSecret())
+    }
+
+    private fun generateRandomSecret(): String {
+        randomGenerator.nextBytes(reusedSecretBytes)
+        return base32Encoder.encodeAsString(reusedSecretBytes)
     }
 }

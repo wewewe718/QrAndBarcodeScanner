@@ -30,6 +30,6 @@
     <dimen name="bottom_navigation_item_text_size">12sp</dimen>
     <dimen name="tab_layout_height">36dp</dimen>
     <dimen name="tab_layout_indicator_height">2dp</dimen>
-    <dimen name="button_corner_radius">8dp</dimen>
+    <dimen name="button_corner_radius">4dp</dimen>
 
 </resources>

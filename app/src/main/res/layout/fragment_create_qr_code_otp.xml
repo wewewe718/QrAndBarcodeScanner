@@ -160,12 +160,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/fragment_create_qr_code_otp_secret_hint"
             android:imeOptions="actionDone"
             style="@style/EditTextStyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_generate_random_secret"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_medium"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:text="@string/fragment_create_qr_code_otp_generate_random_secret"
+        style="@style/ButtonStyle"
+        />
 
 </LinearLayout>
