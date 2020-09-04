@@ -94,6 +94,12 @@ dependencies {
     // VCard Parser
     implementation 'com.googlecode.ez-vcard:ez-vcard:0.10.6'
 
+    // Base32 Encoder
+    implementation "commons-codec:commons-codec:1.15"
+
+    // OTP
+    implementation "dev.turingcomplete:kotlin-onetimepassword:2.0.1"
+
     // Rx
     implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
     implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:2.2.0"
@@ -106,7 +112,4 @@ dependencies {
 
     // Sentry
     implementation 'io.sentry:sentry-android:2.3.1'
-
-    // Base32 Encoder
-    implementation "commons-codec:commons-codec:1.15"
 }

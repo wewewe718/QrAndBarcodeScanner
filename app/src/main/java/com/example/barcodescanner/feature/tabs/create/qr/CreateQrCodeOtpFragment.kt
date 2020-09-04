@@ -9,19 +9,19 @@ import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import com.example.barcodescanner.R
+import com.example.barcodescanner.extension.encodeBase32
 import com.example.barcodescanner.extension.isNotBlank
 import com.example.barcodescanner.extension.textString
+import com.example.barcodescanner.extension.toHmacAlgorithm
 import com.example.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.example.barcodescanner.model.schema.OtpAuth
 import com.example.barcodescanner.model.schema.Schema
+import dev.turingcomplete.kotlinonetimepassword.RandomSecretGenerator
 import kotlinx.android.synthetic.main.fragment_create_qr_code_otp.*
-import org.apache.commons.codec.binary.Base32
 import java.util.*
 
 class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
-    private val randomGenerator = Random()
-    private val base32Encoder = Base32()
-    private val reusedSecretBytes = ByteArray(32)
+    private val randomGenerator = RandomSecretGenerator()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_create_qr_code_otp, container, false)
@@ -47,8 +47,8 @@ class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
             },
             issuer = edit_text_issuer.textString,
             digits = edit_text_digits.textString.toIntOrNull(),
-            period = edit_text_period.textString.toIntOrNull(),
-            counter = edit_text_counter.textString.toIntOrNull(),
+            period = edit_text_period.textString.toLongOrNull(),
+            counter = edit_text_counter.textString.toLongOrNull(),
             secret = edit_text_secret.textString
         )
     }
@@ -104,7 +104,8 @@ class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun generateRandomSecret(): String {
-        randomGenerator.nextBytes(reusedSecretBytes)
-        return base32Encoder.encodeAsString(reusedSecretBytes)
+        val algorithm = spinner_algorithms.selectedItem?.toString().toHmacAlgorithm()
+        val secret = randomGenerator.createRandomSecret(algorithm)
+        return secret.encodeBase32()
     }
 }

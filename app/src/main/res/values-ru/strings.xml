@@ -264,6 +264,12 @@
     <string name="activity_barcode_barcode_text_saved">Сохранено в Загрузки</string>
     <string name="activity_barcode_no_app">Не найдено подходящее приложение</string>
 
+    <!--OTP barcode activity-->
+    <string name="activity_barcode_otp_title">OTP</string>
+    <string name="activity_barcode_otp_unable_to_generate_otp">Не удалось создать пароль</string>
+    <string name="activity_barcode_otp_counter">Счетчик: %s</string>
+    <string name="activity_barcode_otp_refresh_otp">Обновить</string>
+
     <!--Save barcode as text activity-->
     <string name="activity_save_barcode_as_text_title">Сохранить</string>
     <string name="activity_save_barcode_as_text_save_as_hint">Сохранить как</string>
