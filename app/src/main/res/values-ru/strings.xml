@@ -268,6 +268,7 @@
     <string name="activity_barcode_otp_title">OTP</string>
     <string name="activity_barcode_otp_unable_to_generate_otp">Не удалось создать пароль</string>
     <string name="activity_barcode_otp_counter">Счетчик: %s</string>
+    <string name="activity_barcode_otp_timer">Осталось %s:%s</string>
     <string name="activity_barcode_otp_refresh_otp">Обновить</string>
 
     <!--Save barcode as text activity-->

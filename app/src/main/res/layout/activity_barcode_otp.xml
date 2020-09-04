@@ -28,6 +28,8 @@
             android:padding="@dimen/default_margin"
             android:orientation="vertical"
             >
+
+            <!--Password-->
             <TextView
                 android:id="@+id/text_view_password"
                 android:layout_width="match_parent"
@@ -37,6 +39,8 @@
                 app:autoSizeTextType="uniform"
                 style="@style/DefaultTextViewStyle"
                 />
+
+            <!--HOTP-->
             <TextView
                 android:id="@+id/text_view_counter"
                 android:layout_width="match_parent"
@@ -54,6 +58,17 @@
                 android:visibility="gone"
                 android:text="@string/activity_barcode_otp_refresh_otp"
                 style="@style/ButtonStyle"
+                />
+
+            <!--TOTP-->
+            <TextView
+                android:id="@+id/text_view_timer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:gravity="center"
+                android:visibility="gone"
+                style="@style/DefaultTextViewStyle"
                 />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
