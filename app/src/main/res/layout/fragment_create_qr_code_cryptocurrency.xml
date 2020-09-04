@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <TextView
         android:layout_width="wrap_content"
@@ -10,10 +12,9 @@
         android:layout_marginTop="@dimen/default_margin_small"
         android:layout_marginHorizontal="@dimen/default_margin_big"
         android:text="@string/fragment_create_qr_code_cryptocurrency_type_hint"
-        android:textColor="@color/gray10"
+        android:textColor="@color/edit_text_hint_color"
         android:textSize="@dimen/default_text_size_extra_small"
         />
-
     <Spinner
         android:id="@+id/spinner_cryptocurrency"
         android:layout_width="match_parent"

@@ -54,7 +54,6 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
 
     private fun initBottomNavigationView() {
         bottom_navigation_view.apply {
-            clearAnimation()
             setOnNavigationItemSelectedListener(this@BottomTabsActivity)
         }
     }

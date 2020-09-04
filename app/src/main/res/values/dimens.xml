@@ -17,6 +17,7 @@
     <dimen name="default_text_size_small">15sp</dimen>
     <dimen name="default_text_size">16sp</dimen>
     <dimen name="default_text_size_large">18sp</dimen>
+    <dimen name="default_text_size_very_large">22sp</dimen>
 
     <dimen name="button_zoom_size">28dp</dimen>
     <dimen name="zoom_seek_bar_height">100dp</dimen>
@@ -30,6 +31,6 @@
     <dimen name="bottom_navigation_item_text_size">12sp</dimen>
     <dimen name="tab_layout_height">36dp</dimen>
     <dimen name="tab_layout_indicator_height">2dp</dimen>
-    <dimen name="button_corner_radius">50dp</dimen>
+    <dimen name="button_corner_radius">4dp</dimen>
 
 </resources>

@@ -18,12 +18,14 @@ import com.example.barcodescanner.R
 import com.example.barcodescanner.di.*
 import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.BaseActivity
+import com.example.barcodescanner.feature.barcode.otp.OtpActivity
 import com.example.barcodescanner.feature.barcode.save.SaveBarcodeAsImageActivity
 import com.example.barcodescanner.feature.barcode.save.SaveBarcodeAsTextActivity
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
+import com.example.barcodescanner.model.schema.OtpAuth
 import com.example.barcodescanner.usecase.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -146,8 +148,11 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
         button_open_in_google_play.setOnClickListener { openInGooglePlay() }
         button_open_in_youtube.setOnClickListener { openInYoutube() }
-        button_save_bookmark.setOnClickListener { saveBookmark() }
+        button_show_otp.setOnClickListener { showOtp() }
+        button_open_otp.setOnClickListener { openOtpInOtherApp() }
+        button_open_bitcoin_uri.setOnClickListener { openBitcoinUrl() }
         button_open_link.setOnClickListener { openLink() }
+        button_save_bookmark.setOnClickListener { saveBookmark() }
 
         button_call_phone_1.setOnClickListener { callPhone(barcode.phone) }
         button_call_phone_2.setOnClickListener { callPhone(barcode.secondaryPhone) }
@@ -298,6 +303,19 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         startActivityIfExists(Intent.ACTION_VIEW, barcode.youtubeUrl.orEmpty())
     }
 
+    private fun showOtp() {
+        val otp = OtpAuth.parse(barcode.otpUrl.orEmpty()) ?: return
+        OtpActivity.start(this, otp)
+    }
+
+    private fun openOtpInOtherApp() {
+        startActivityIfExists(Intent.ACTION_VIEW, barcode.otpUrl.orEmpty())
+    }
+
+    private fun openBitcoinUrl() {
+        startActivityIfExists(Intent.ACTION_VIEW, barcode.bitcoinUri.orEmpty())
+    }
+
     private fun openLink() {
         startActivityIfExists(Intent.ACTION_VIEW, barcode.url.orEmpty())
     }
@@ -363,8 +381,6 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
         startActivityIfExists(intent)
     }
-
-
 
     private fun printBarcode() {
         val barcodeImage = try {
@@ -547,6 +563,9 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_copy_network_password.isVisible = barcode.networkPassword.isNullOrEmpty().not()
         button_open_in_google_play.isVisible = barcode.googlePlayUrl.isNullOrEmpty().not()
         button_open_in_youtube.isVisible = barcode.youtubeUrl.isNullOrEmpty().not()
+        button_show_otp.isVisible = barcode.otpUrl.isNullOrEmpty().not()
+        button_open_otp.isVisible = barcode.otpUrl.isNullOrEmpty().not()
+        button_open_bitcoin_uri.isVisible = barcode.bitcoinUri.isNullOrEmpty().not()
         button_open_link.isVisible = barcode.url.isNullOrEmpty().not()
         button_save_bookmark.isVisible = barcode.schema == BarcodeSchema.BOOKMARK
     }

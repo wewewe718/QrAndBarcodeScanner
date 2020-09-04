@@ -1,7 +1,25 @@
 package com.example.barcodescanner.extension
 
 import android.provider.ContactsContract
+import dev.turingcomplete.kotlinonetimepassword.HmacAlgorithm
+import org.apache.commons.codec.binary.Base32
 import java.util.*
+
+fun String?.toHmacAlgorithm(): HmacAlgorithm {
+    return when (this) {
+        "SHA1" -> HmacAlgorithm.SHA1
+        "SHA256" -> HmacAlgorithm.SHA256
+        "SHA512" -> HmacAlgorithm.SHA512
+        else -> HmacAlgorithm.SHA1
+    }
+}
+
+fun String?.decodeBase32(): ByteArray? {
+    if (isNullOrBlank()) {
+        return null
+    }
+    return Base32().decode(this)
+}
 
 fun String.toCaps(): String {
     return toUpperCase(Locale.ROOT)

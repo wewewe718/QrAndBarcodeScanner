@@ -302,12 +302,32 @@
                 tools:visibility="visible"
                 />
             <com.example.barcodescanner.feature.common.view.IconButton
-                android:id="@+id/button_save_bookmark"
+                android:id="@+id/button_show_otp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_bookmark"
+                app:icon="@drawable/ic_otp"
                 app:iconBackground="@color/orange"
-                app:text="@string/activity_barcode_save_bookmark"
+                app:text="@string/activity_barcode_show_otp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.barcodescanner.feature.common.view.IconButton
+                android:id="@+id/button_open_otp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_app"
+                app:iconBackground="@color/orange"
+                app:text="@string/activity_barcode_open_otp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.barcodescanner.feature.common.view.IconButton
+                android:id="@+id/button_open_bitcoin_uri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_link"
+                app:iconBackground="@color/orange"
+                app:text="@string/activity_barcode_open_bitcoin_url"
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
@@ -318,6 +338,16 @@
                 app:icon="@drawable/ic_link"
                 app:iconBackground="@color/orange"
                 app:text="@string/activity_barcode_open_link"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.barcodescanner.feature.common.view.IconButton
+                android:id="@+id/button_save_bookmark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_bookmark"
+                app:iconBackground="@color/orange"
+                app:text="@string/activity_barcode_save_bookmark"
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
