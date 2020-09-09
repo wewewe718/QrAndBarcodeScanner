@@ -28,6 +28,7 @@
     <color name="crop_image_view_background_color">@color/white</color>
     <color name="edit_text_text_color">@color/black</color>
     <color name="edit_text_hint_color">@color/gray10</color>
+    <color name="date_time_picker_dialog_background_color">@color/white</color>
 
     <color name="transparent">#00000000</color>
     <color name="white">#FFFFFF</color>
@@ -52,6 +53,7 @@
     <color name="gray16">#2A2A2E</color>
     <color name="gray17">#636466</color>
     <color name="gray18">#B2B2B2</color>
+    <color name="gray19">#424242</color>
     <color name="gray_transparent2">#6B7D7D7D</color>
     <color name="yellow1">#FDD70A</color>
     <color name="blue">#00B1FF</color>
