@@ -13,10 +13,9 @@
         android:layout_marginTop="@dimen/default_margin_small"
         android:layout_marginHorizontal="@dimen/default_margin_big"
         android:text="@string/fragment_create_qr_code_wifi_encryption_hint"
-        android:textColor="@color/gray10"
+        android:textColor="@color/edit_text_hint_color"
         android:textSize="@dimen/default_text_size_extra_small"
         />
-
     <Spinner
         android:id="@+id/spinner_encryption"
         android:layout_width="match_parent"

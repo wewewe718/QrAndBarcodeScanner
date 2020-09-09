@@ -115,6 +115,26 @@
     <string name="fragment_create_qr_code_location_longitude_hint">Longitude</string>
     <string name="fragment_create_qr_code_location_altitude_hint">Altitude (optional)</string>
 
+    <!--Create QR code OTP fragment-->
+    <string name="fragment_create_qr_code_otp_type_hint">Type</string>
+    <string-array name="fragment_create_qr_code_otp_types">
+        <item>HOTP</item>
+        <item>TOTP</item>
+    </string-array>
+    <string name="fragment_create_qr_code_otp_algorithm_hint">Algorithm</string>
+    <string-array name="fragment_create_qr_code_otp_algorithms">
+        <item>SHA1</item>
+        <item>SHA256</item>
+        <item>SHA512</item>
+    </string-array>
+    <string name="fragment_create_qr_code_otp_issuer_hint">Issuer</string>
+    <string name="fragment_create_qr_code_otp_account_hint">Account</string>
+    <string name="fragment_create_qr_code_otp_digits_hint">Digits</string>
+    <string name="fragment_create_qr_code_otp_period_hint">Period</string>
+    <string name="fragment_create_qr_code_otp_counter_hint">Counter</string>
+    <string name="fragment_create_qr_code_otp_secret_hint">Secret</string>
+    <string name="fragment_create_qr_code_otp_generate_random_secret">Random Secret</string>
+
     <!--Create QR code event-->
     <string name="fragment_create_qr_code_event_title_hint">Title</string>
     <string name="fragment_create_qr_code_event_organizer_hint">Organizer</string>
@@ -246,6 +266,9 @@
     <string name="activity_barcode_open_in_youtube">Open in Youtube</string>
     <string name="activity_barcode_save_bookmark">Save to bookmarks</string>
     <string name="activity_barcode_open_link">Open link</string>
+    <string name="activity_barcode_open_bitcoin_url">Open in other app</string>
+    <string name="activity_barcode_show_otp">Show password</string>
+    <string name="activity_barcode_open_otp">Open in other app</string>
     <string name="activity_barcode_share_as_text">Share as text</string>
     <string name="activity_barcode_copy">Copy to clipboard</string>
     <string name="activity_barcode_save_as_text">Save as text</string>
@@ -261,6 +284,13 @@
     <string name="activity_barcode_barcode_image_saved">Saved to Gallery</string>
     <string name="activity_barcode_barcode_text_saved">Saved to Downloads</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
+
+    <!--OTP barcode activity-->
+    <string name="activity_barcode_otp_title">OTP</string>
+    <string name="activity_barcode_otp_unable_to_generate_otp">Unable to generate password</string>
+    <string name="activity_barcode_otp_counter">Counter: %s</string>
+    <string name="activity_barcode_otp_timer">%s:%s left</string>
+    <string name="activity_barcode_otp_refresh_otp">Refresh</string>
 
     <!--Save barcode as text activity-->
     <string name="activity_save_barcode_as_text_title">Save</string>
@@ -292,6 +322,7 @@
     <string name="barcode_schema_mms">MMS</string>
     <string name="barcode_schema_me_card">Contact (MeCard)</string>
     <string name="barcode_schema_phone">Phone</string>
+    <string name="barcode_schema_otp">OTP</string>
     <string name="barcode_schema_sms">SMS</string>
     <string name="barcode_schema_url">URL</string>
     <string name="barcode_schema_v_event">Event</string>

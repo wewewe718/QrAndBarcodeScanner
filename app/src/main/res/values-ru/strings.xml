@@ -108,6 +108,17 @@
     <string name="fragment_create_qr_code_location_longitude_hint">Долгота</string>
     <string name="fragment_create_qr_code_location_altitude_hint">Высота (необязательно)</string>
 
+    <!--Create QR code OTP fragment-->
+    <string name="fragment_create_qr_code_otp_type_hint">Тип</string>
+    <string name="fragment_create_qr_code_otp_issuer_hint">Издатель</string>
+    <string name="fragment_create_qr_code_otp_account_hint">Аккаунт</string>
+    <string name="fragment_create_qr_code_otp_algorithm_hint">Алгоритм</string>
+    <string name="fragment_create_qr_code_otp_digits_hint">Число знаков</string>
+    <string name="fragment_create_qr_code_otp_period_hint">Период</string>
+    <string name="fragment_create_qr_code_otp_counter_hint">Счетчик</string>
+    <string name="fragment_create_qr_code_otp_secret_hint">Ключ</string>
+    <string name="fragment_create_qr_code_otp_generate_random_secret">Случайный ключ</string>
+
     <!--Create QR code event-->
     <string name="fragment_create_qr_code_event_title_hint">Название</string>
     <string name="fragment_create_qr_code_event_organizer_hint">Организатор</string>
@@ -234,6 +245,9 @@
     <string name="activity_barcode_open_in_youtube">Открыть в Youtube</string>
     <string name="activity_barcode_save_bookmark">Сохранить в закладки</string>
     <string name="activity_barcode_open_link">Открыть ссылку</string>
+    <string name="activity_barcode_open_bitcoin_url">Открыть в другом приложении</string>
+    <string name="activity_barcode_show_otp">Показать пароль</string>
+    <string name="activity_barcode_open_otp">Открыть в другом приложении</string>
     <string name="activity_barcode_share_as_text">Поделиться текстом</string>
     <string name="activity_barcode_copy">Копировать</string>
     <string name="activity_barcode_save_as_text">Сохранить текст</string>
@@ -249,6 +263,13 @@
     <string name="activity_barcode_barcode_image_saved">Сохранено в Галерею</string>
     <string name="activity_barcode_barcode_text_saved">Сохранено в Загрузки</string>
     <string name="activity_barcode_no_app">Не найдено подходящее приложение</string>
+
+    <!--OTP barcode activity-->
+    <string name="activity_barcode_otp_title">OTP</string>
+    <string name="activity_barcode_otp_unable_to_generate_otp">Не удалось создать пароль</string>
+    <string name="activity_barcode_otp_counter">Счетчик: %s</string>
+    <string name="activity_barcode_otp_timer">Осталось %s:%s</string>
+    <string name="activity_barcode_otp_refresh_otp">Обновить</string>
 
     <!--Save barcode as text activity-->
     <string name="activity_save_barcode_as_text_title">Сохранить</string>
@@ -272,6 +293,7 @@
     <string name="barcode_schema_mms">ММС</string>
     <string name="barcode_schema_me_card">Контакт (MeCard)</string>
     <string name="barcode_schema_phone">Телефон</string>
+    <string name="barcode_schema_otp">OTP</string>
     <string name="barcode_schema_sms">СМС</string>
     <string name="barcode_schema_url">URL</string>
     <string name="barcode_schema_v_event">Событие</string>

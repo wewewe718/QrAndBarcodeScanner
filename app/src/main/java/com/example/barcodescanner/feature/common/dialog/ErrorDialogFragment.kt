@@ -39,11 +39,18 @@ class ErrorDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val message = arguments?.getString(ERROR_MESSAGE_KEY).orEmpty()
-        return AlertDialog.Builder(requireActivity(), R.style.DialogTheme)
+
+        val dialog = AlertDialog.Builder(requireActivity(), R.style.DialogTheme)
             .setTitle(R.string.error_dialog_title)
             .setMessage(message)
             .setCancelable(false)
             .setPositiveButton(R.string.error_dialog_positive_button_text) { _, _ -> listener?.onErrorDialogPositiveButtonClicked() }
             .create()
+
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.blue))
+        }
+
+        return dialog
     }
 }

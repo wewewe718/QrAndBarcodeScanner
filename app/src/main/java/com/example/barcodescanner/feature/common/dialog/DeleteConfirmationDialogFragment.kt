@@ -38,6 +38,7 @@ class DeleteConfirmationDialogFragment : DialogFragment() {
 
         dialog.setOnShowListener {
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.red))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.blue))
         }
 
         return dialog

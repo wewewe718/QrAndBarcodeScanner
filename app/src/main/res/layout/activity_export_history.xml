@@ -32,10 +32,9 @@
                 android:layout_marginTop="@dimen/default_margin_small"
                 android:layout_marginHorizontal="@dimen/default_margin_big"
                 android:text="@string/activity_export_history_as_hint"
-                android:textColor="@color/gray10"
+                android:textColor="@color/edit_text_hint_color"
                 android:textSize="@dimen/default_text_size_extra_small"
                 />
-
             <Spinner
                 android:id="@+id/spinner_export_as"
                 android:layout_width="match_parent"

@@ -29,6 +29,5 @@
         app:itemTextAppearanceActive="@style/BottomNavigationItemTextAppearance"
         app:itemTextAppearanceInactive="@style/BottomNavigationItemTextAppearance"
         app:itemHorizontalTranslationEnabled="false"
-        app:itemBackground="@null"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

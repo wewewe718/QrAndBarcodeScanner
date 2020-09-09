@@ -28,4 +28,5 @@
     <color name="crop_image_view_background_color">@color/black2</color>
     <color name="edit_text_text_color">@color/white</color>
     <color name="edit_text_hint_color">@color/gray14</color>
+    <color name="date_time_picker_dialog_background_color">@color/gray19</color>
 </resources>

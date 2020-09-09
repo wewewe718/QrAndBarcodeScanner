@@ -126,6 +126,11 @@
             android:configChanges="orientation|screenSize"
             />
         <activity
+            android:name=".feature.barcode.otp.OtpActivity"
+            android:screenOrientation="fullSensor"
+            android:configChanges="orientation|screenSize"
+            />
+        <activity
             android:name=".feature.barcode.save.SaveBarcodeAsTextActivity"
             android:screenOrientation="fullSensor"
             android:configChanges="orientation|screenSize"

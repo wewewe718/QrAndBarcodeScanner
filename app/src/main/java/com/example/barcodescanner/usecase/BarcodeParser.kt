@@ -41,6 +41,7 @@ object BarcodeParser {
             ?: VEvent.parse(text)
             ?: MeCard.parse(text)
             ?: VCard.parse(text)
+            ?: OtpAuth.parse(text)
             ?: Other(text)
     }
 }

@@ -2,7 +2,7 @@ package com.example.barcodescanner.di
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.barcodescanner.*
+import com.example.barcodescanner.App
 import com.example.barcodescanner.usecase.*
 
 
@@ -27,6 +27,9 @@ val AppCompatActivity.barcodeImageSaver
 
 val AppCompatActivity.wifiConnector
     get() = WifiConnector
+
+val AppCompatActivity.otpGenerator
+    get() = OTPGenerator
 
 val AppCompatActivity.barcodeDatabase
     get() = BarcodeDatabase.getInstance(this)

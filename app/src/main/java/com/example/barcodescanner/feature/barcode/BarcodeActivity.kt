@@ -18,12 +18,14 @@ import com.example.barcodescanner.R
 import com.example.barcodescanner.di.*
 import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.BaseActivity
+import com.example.barcodescanner.feature.barcode.otp.OtpActivity
 import com.example.barcodescanner.feature.barcode.save.SaveBarcodeAsImageActivity
 import com.example.barcodescanner.feature.barcode.save.SaveBarcodeAsTextActivity
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
+import com.example.barcodescanner.model.schema.OtpAuth
 import com.example.barcodescanner.usecase.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -146,8 +148,11 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
         button_open_in_google_play.setOnClickListener { openInGooglePlay() }
         button_open_in_youtube.setOnClickListener { openInYoutube() }
-        button_save_bookmark.setOnClickListener { saveBookmark() }
+        button_show_otp.setOnClickListener { showOtp() }
+        button_open_otp.setOnClickListener { openOtpInOtherApp() }
+        button_open_bitcoin_uri.setOnClickListener { openBitcoinUrl() }
         button_open_link.setOnClickListener { openLink() }
+        button_save_bookmark.setOnClickListener { saveBookmark() }
 
         button_call_phone_1.setOnClickListener { callPhone(barcode.phone) }
         button_call_phone_2.setOnClickListener { callPhone(barcode.secondaryPhone) }
@@ -190,8 +195,9 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private fun addToCalendar() {
         val intent = Intent(Intent.ACTION_INSERT).apply {
             data = CalendarContract.Events.CONTENT_URI
-            putExtra(CalendarContract.Events.TITLE, barcode.eventUid)
-            putExtra(CalendarContract.Events.DESCRIPTION, barcode.eventSummary)
+            putExtra(CalendarContract.Events.TITLE, barcode.eventSummary)
+            putExtra(CalendarContract.Events.DESCRIPTION, barcode.eventDescription)
+            putExtra(CalendarContract.Events.EVENT_LOCATION, barcode.eventLocation)
             putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, barcode.eventStartDate)
             putExtra(CalendarContract.EXTRA_EVENT_END_TIME, barcode.eventEndDate)
         }
@@ -224,6 +230,8 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
             putExtra(ContactsContract.Intents.Insert.TERTIARY_EMAIL, barcode.tertiaryEmail.orEmpty())
             putExtra(ContactsContract.Intents.Insert.TERTIARY_EMAIL_TYPE, barcode.tertiaryEmailType.orEmpty().toEmailType())
+
+            putExtra(ContactsContract.Intents.Insert.NOTES, barcode.note.orEmpty())
         }
         startActivityIfExists(intent)
     }
@@ -260,7 +268,17 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         showConnectToWifiButtonEnabled(false)
 
         wifiConnector
-            .connect(this, barcode.networkAuthType.orEmpty(), barcode.networkName.orEmpty(), barcode.networkPassword.orEmpty())
+            .connect(
+                    this,
+                    barcode.networkAuthType.orEmpty(),
+                    barcode.networkName.orEmpty(),
+                    barcode.networkPassword.orEmpty(),
+                    barcode.isHidden.orFalse(),
+                    barcode.anonymousIdentity.orEmpty(),
+                    barcode.identity.orEmpty(),
+                    barcode.eapMethod.orEmpty(),
+                    barcode.phase2Method.orEmpty()
+            )
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
@@ -296,6 +314,19 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun openInYoutube() {
         startActivityIfExists(Intent.ACTION_VIEW, barcode.youtubeUrl.orEmpty())
+    }
+
+    private fun showOtp() {
+        val otp = OtpAuth.parse(barcode.otpUrl.orEmpty()) ?: return
+        OtpActivity.start(this, otp)
+    }
+
+    private fun openOtpInOtherApp() {
+        startActivityIfExists(Intent.ACTION_VIEW, barcode.otpUrl.orEmpty())
+    }
+
+    private fun openBitcoinUrl() {
+        startActivityIfExists(Intent.ACTION_VIEW, barcode.bitcoinUri.orEmpty())
     }
 
     private fun openLink() {
@@ -363,8 +394,6 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
         startActivityIfExists(intent)
     }
-
-
 
     private fun printBarcode() {
         val barcodeImage = try {
@@ -533,12 +562,12 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_call_phone_3.isVisible = barcode.tertiaryPhone.isNullOrEmpty().not()
 
         button_send_sms_or_mms_1.isVisible = barcode.phone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
-        button_send_sms_or_mms_2.isVisible = barcode.secondaryPhone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
-        button_send_sms_or_mms_3.isVisible = barcode.tertiaryPhone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
+        button_send_sms_or_mms_2.isVisible = barcode.secondaryPhone.isNullOrEmpty().not()
+        button_send_sms_or_mms_3.isVisible = barcode.tertiaryPhone.isNullOrEmpty().not()
 
         button_send_email_1.isVisible = barcode.email.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
-        button_send_email_2.isVisible = barcode.secondaryEmail.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
-        button_send_email_3.isVisible = barcode.tertiaryEmail.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
+        button_send_email_2.isVisible = barcode.secondaryEmail.isNullOrEmpty().not()
+        button_send_email_3.isVisible = barcode.tertiaryEmail.isNullOrEmpty().not()
 
         button_show_location.isVisible = barcode.geoUri.isNullOrEmpty().not()
         button_connect_to_wifi.isVisible = barcode.schema == BarcodeSchema.WIFI
@@ -547,6 +576,9 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_copy_network_password.isVisible = barcode.networkPassword.isNullOrEmpty().not()
         button_open_in_google_play.isVisible = barcode.googlePlayUrl.isNullOrEmpty().not()
         button_open_in_youtube.isVisible = barcode.youtubeUrl.isNullOrEmpty().not()
+        button_show_otp.isVisible = barcode.otpUrl.isNullOrEmpty().not()
+        button_open_otp.isVisible = barcode.otpUrl.isNullOrEmpty().not()
+        button_open_bitcoin_uri.isVisible = barcode.bitcoinUri.isNullOrEmpty().not()
         button_open_link.isVisible = barcode.url.isNullOrEmpty().not()
         button_save_bookmark.isVisible = barcode.schema == BarcodeSchema.BOOKMARK
     }

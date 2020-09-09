@@ -12,8 +12,8 @@
     >
     <ImageView
         android:id="@+id/image_view"
-        android:layout_width="@dimen/default_margin_large"
-        android:layout_height="@dimen/default_margin_large"
+        android:layout_width="@dimen/default_margin_very_large"
+        android:layout_height="@dimen/default_margin_very_large"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:srcCompat="@mipmap/ic_launcher"
@@ -39,6 +39,6 @@
         app:layout_constraintStart_toStartOf="@id/text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/image_view"
-        android:background="@color/gray5"
+        android:background="@color/delimiter_color"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

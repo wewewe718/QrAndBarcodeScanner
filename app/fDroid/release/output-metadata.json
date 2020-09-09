@@ -4,17 +4,17 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "org.barcodescanner",
-  "variantName": "googlePlayRelease",
+  "applicationId": "com.example.barcodescanner",
+  "variantName": "fDroidRelease",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "properties": [],
-      "versionCode": 2,
-      "versionName": "1.0",
+      "versionCode": 3,
+      "versionName": "1.1",
       "enabled": true,
-      "outputFile": "app-googlePlay-release.apk"
+      "outputFile": "app-fDroid-release.apk"
     }
   ]
 }
