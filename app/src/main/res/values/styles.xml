@@ -5,9 +5,11 @@
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
         <item name="android:colorBackground">@color/color_background</item>
+        <item name="android:textColor">@color/default_text_color</item>
         <item name="android:textColorSecondary">@color/text_color_secondary</item>
         <item name="android:statusBarColor">@color/transparent</item>
         <item name="android:navigationBarColor">@color/navigation_bar_color</item>
+        <item name="android:actionOverflowButtonStyle">@style/ToolbarMenuButtonStyle</item>
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme"/>
@@ -35,6 +37,10 @@
 
     <style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ToolbarMenuButtonStyle" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
+        <item name="android:tint">@color/toolbar_menu_color</item>
     </style>
 
     <style name="BottomNavigationItemTextAppearance" parent="TextAppearance.AppCompat">
