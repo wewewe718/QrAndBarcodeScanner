@@ -1,0 +1,3 @@
+* Added support for OTP (One time password) QR codes
+* Decreased app size
+* Bug fixes
