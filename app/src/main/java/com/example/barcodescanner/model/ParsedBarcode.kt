@@ -28,6 +28,7 @@ class ParsedBarcode(barcode: Barcode) {
     var secondaryEmailType: String? = null
     var tertiaryEmail: String? = null
     var tertiaryEmailType: String? = null
+    var note: String? = null
 
     var phone: String? = null
     var phoneType: String? = null
@@ -41,6 +42,11 @@ class ParsedBarcode(barcode: Barcode) {
     var networkAuthType: String? = null
     var networkName: String? = null
     var networkPassword: String? = null
+    var isHidden: Boolean? = null
+    var anonymousIdentity: String? = null
+    var identity: String? = null
+    var eapMethod: String? = null
+    var phase2Method: String? = null
 
     var bookmarkTitle: String? = null
     var url: String? = null
@@ -53,9 +59,11 @@ class ParsedBarcode(barcode: Barcode) {
     var eventUid: String? = null
     var eventStamp: String? = null
     var eventOrganizer: String? = null
+    var eventDescription: String? = null
+    var eventLocation: String? = null
+    var eventSummary: String? = null
     var eventStartDate: Long? = null
     var eventEndDate: Long? = null
-    var eventSummary: String? = null
 
     val isInDb: Boolean
         get() = id != 0L
@@ -113,6 +121,8 @@ class ParsedBarcode(barcode: Barcode) {
         eventUid = calendar.uid
         eventStamp = calendar.stamp
         eventOrganizer = calendar.organizer
+        eventDescription = calendar.description
+        eventLocation = calendar.location
         eventSummary = calendar.summary
         eventStartDate = calendar.startDate
         eventEndDate = calendar.endDate
@@ -135,6 +145,7 @@ class ParsedBarcode(barcode: Barcode) {
         address = meCard.address
         phone = meCard.phone
         email = meCard.email
+        note = meCard.note
     }
 
     private fun parseVCard() {
@@ -167,6 +178,11 @@ class ParsedBarcode(barcode: Barcode) {
         networkAuthType = wifi.encryption
         networkName = wifi.name
         networkPassword = wifi.password
+        isHidden = wifi.isHidden
+        anonymousIdentity = wifi.anonymousIdentity
+        identity = wifi.identity
+        eapMethod = wifi.eapMethod
+        phase2Method = wifi.phase2Method
     }
 
     private fun parseYoutube() {

@@ -9,6 +9,7 @@ data class VEvent(
     val stamp: String? = null,
     val organizer: String? = null,
     val description: String? = null,
+    val location: String? = null,
     val startDate: Long? = null,
     val endDate: Long? = null,
     val summary: String? = null
@@ -23,6 +24,7 @@ data class VEvent(
         private const val STAMP_PREFIX = "DTSTAMP:"
         private const val ORGANIZER_PREFIX = "ORGANIZER:"
         private const val DESCRIPTION_PREFIX = "DESCRIPTION:"
+        private const val LOCATION_PREFIX = "LOCATION:"
         private const val START_PREFIX = "DTSTART:"
         private const val END_PREFIX = "DTEND:"
         private const val SUMMARY_PREFIX = "SUMMARY:"
@@ -57,6 +59,7 @@ data class VEvent(
             var stamp: String? = null
             var organizer: String? = null
             var description: String? = null
+            var location: String? = null
             var startDate: Long? = null
             var endDate: Long? = null
             var summary: String? = null
@@ -82,6 +85,11 @@ data class VEvent(
                     return@forEach
                 }
 
+                if (part.startsWithIgnoreCase(LOCATION_PREFIX)) {
+                    location = part.removePrefixIgnoreCase(LOCATION_PREFIX)
+                    return@forEach
+                }
+
                 if (part.startsWithIgnoreCase(START_PREFIX)) {
                     val startDateOriginal = part.removePrefix(START_PREFIX)
                     startDate = DATE_PARSERS.parseOrNull(startDateOriginal)?.time
@@ -100,7 +108,7 @@ data class VEvent(
                 }
             }
 
-            return VEvent(uid, stamp, organizer, description, startDate, endDate, summary)
+            return VEvent(uid, stamp, organizer, description, location, startDate, endDate, summary)
         }
     }
 
@@ -112,6 +120,7 @@ data class VEvent(
             stamp,
             summary,
             description,
+            location,
             FORMATTED_TEXT_DATE_FORMATTER.formatOrNull(startDate),
             FORMATTED_TEXT_DATE_FORMATTER.formatOrNull(endDate),
             organizer

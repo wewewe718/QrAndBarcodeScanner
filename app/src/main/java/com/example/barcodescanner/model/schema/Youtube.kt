@@ -5,7 +5,7 @@ import com.example.barcodescanner.extension.startsWithAnyIgnoreCase
 class Youtube(val url: String) : Schema {
 
     companion object {
-        private val PREFIXES = listOf("vnd.youtube://", "http://www.youtube.com/watch?v=", "https://www.youtube.com/watch?v=")
+        private val PREFIXES = listOf("vnd.youtube://", "http://www.youtube.com", "https://www.youtube.com")
 
         fun parse(text: String): Youtube? {
             if (text.startsWithAnyIgnoreCase(PREFIXES).not()) {

@@ -22,7 +22,7 @@ data class MeCard(
         private const val PHONE_PREFIX = "TEL:"
         private const val EMAIL_PREFIX = "EMAIL:"
         private const val BIRTHDAY_PREFIX = "BDAY:"
-        private const val NOTE_PREFIX = "TEL:"
+        private const val NOTE_PREFIX = "NOTE:"
         private const val ADDRESS_PREFIX = "ADR:"
         private const val NAME_SEPARATOR = ","
         private const val PARAMETER_SEPARATOR = ";"
@@ -94,6 +94,7 @@ data class MeCard(
     override fun toFormattedText(): String {
         val parsedBirthday = DATE_PARSER.parseOrNull(birthday)?.time
         val formattedBirthday = DATE_FORMATTER.formatOrNull(parsedBirthday)
+        val formattedAddress = address?.removeStartAll(',')
 
         return listOf(
             "${firstName.orEmpty()} ${lastName.orEmpty()}",
@@ -101,9 +102,8 @@ data class MeCard(
             formattedBirthday,
             phone,
             email,
-            birthday,
             note,
-            address
+            formattedAddress
         ).joinToStringNotNullOrBlankWithLineSeparator()
     }
 

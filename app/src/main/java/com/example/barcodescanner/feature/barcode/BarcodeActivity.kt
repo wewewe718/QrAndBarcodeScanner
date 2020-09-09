@@ -195,8 +195,9 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private fun addToCalendar() {
         val intent = Intent(Intent.ACTION_INSERT).apply {
             data = CalendarContract.Events.CONTENT_URI
-            putExtra(CalendarContract.Events.TITLE, barcode.eventUid)
-            putExtra(CalendarContract.Events.DESCRIPTION, barcode.eventSummary)
+            putExtra(CalendarContract.Events.TITLE, barcode.eventSummary)
+            putExtra(CalendarContract.Events.DESCRIPTION, barcode.eventDescription)
+            putExtra(CalendarContract.Events.EVENT_LOCATION, barcode.eventLocation)
             putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, barcode.eventStartDate)
             putExtra(CalendarContract.EXTRA_EVENT_END_TIME, barcode.eventEndDate)
         }
@@ -229,6 +230,8 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
             putExtra(ContactsContract.Intents.Insert.TERTIARY_EMAIL, barcode.tertiaryEmail.orEmpty())
             putExtra(ContactsContract.Intents.Insert.TERTIARY_EMAIL_TYPE, barcode.tertiaryEmailType.orEmpty().toEmailType())
+
+            putExtra(ContactsContract.Intents.Insert.NOTES, barcode.note.orEmpty())
         }
         startActivityIfExists(intent)
     }
@@ -265,7 +268,17 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         showConnectToWifiButtonEnabled(false)
 
         wifiConnector
-            .connect(this, barcode.networkAuthType.orEmpty(), barcode.networkName.orEmpty(), barcode.networkPassword.orEmpty())
+            .connect(
+                    this,
+                    barcode.networkAuthType.orEmpty(),
+                    barcode.networkName.orEmpty(),
+                    barcode.networkPassword.orEmpty(),
+                    barcode.isHidden.orFalse(),
+                    barcode.anonymousIdentity.orEmpty(),
+                    barcode.identity.orEmpty(),
+                    barcode.eapMethod.orEmpty(),
+                    barcode.phase2Method.orEmpty()
+            )
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
@@ -549,12 +562,12 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_call_phone_3.isVisible = barcode.tertiaryPhone.isNullOrEmpty().not()
 
         button_send_sms_or_mms_1.isVisible = barcode.phone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
-        button_send_sms_or_mms_2.isVisible = barcode.secondaryPhone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
-        button_send_sms_or_mms_3.isVisible = barcode.tertiaryPhone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
+        button_send_sms_or_mms_2.isVisible = barcode.secondaryPhone.isNullOrEmpty().not()
+        button_send_sms_or_mms_3.isVisible = barcode.tertiaryPhone.isNullOrEmpty().not()
 
         button_send_email_1.isVisible = barcode.email.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
-        button_send_email_2.isVisible = barcode.secondaryEmail.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
-        button_send_email_3.isVisible = barcode.tertiaryEmail.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty().not() || barcode.emailBody.isNullOrEmpty().not()
+        button_send_email_2.isVisible = barcode.secondaryEmail.isNullOrEmpty().not()
+        button_send_email_3.isVisible = barcode.tertiaryEmail.isNullOrEmpty().not()
 
         button_show_location.isVisible = barcode.geoUri.isNullOrEmpty().not()
         button_connect_to_wifi.isVisible = barcode.schema == BarcodeSchema.WIFI
