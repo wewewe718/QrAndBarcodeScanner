@@ -2,9 +2,9 @@ package com.example.barcodescanner
 
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDexApplication
 import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.usecase.Logger
 import io.reactivex.plugins.RxJavaPlugins
 
 class App : MultiDexApplication() {
@@ -22,7 +22,7 @@ class App : MultiDexApplication() {
 
     private fun handleUnhandledRxJavaErrors() {
         RxJavaPlugins.setErrorHandler { error ->
-            error.printStackTrace()
+            Logger.log(error)
         }
     }
 
