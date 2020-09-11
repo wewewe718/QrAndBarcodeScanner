@@ -16,7 +16,7 @@ android {
         versionName "1.2"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary  true
-        resConfigs "en", "ru"
+        resConfigs "en", "ru", "de"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
