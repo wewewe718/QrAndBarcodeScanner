@@ -44,6 +44,11 @@ class OtpActivity : BaseActivity() {
         showOtp()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
+    }
+
     private fun enableSecurity() {
         window.setFlags(
             WindowManager.LayoutParams.FLAG_SECURE,
