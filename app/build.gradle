@@ -49,6 +49,7 @@ android {
     productFlavors {
         appGallery {}
         getApps {}
+        xda {}
         googlePlay {
             applicationId "org.barcodescanner"
         }
