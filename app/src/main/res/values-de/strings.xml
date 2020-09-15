@@ -167,7 +167,8 @@
     <string name="fragment_settings_appearance_settings">Aussehen</string>
     <string name="fragment_settings_theme">Design</string>
     <string name="fragment_settings_scanner_settings">Scanner</string>
-    <string name="fragment_settings_open_links_automatically">Links automatisch öffnen</string>
+    <string name="fragment_settings_open_content_automatically">Links automatisch öffnen</string>
+    <string name="fragment_settings_open_content_automatically_hint">May open harmful content</string>
     <string name="fragment_settings_copy_to_clipboard">In die Zwischenablage kopieren</string>
     <string name="fragment_settings_copy_to_clipboard_hint">Gescannte Barcodes in die Zwischenablage kopieren</string>
     <string name="fragment_settings_simple_auto_focus">Einfacher Autofokus</string>

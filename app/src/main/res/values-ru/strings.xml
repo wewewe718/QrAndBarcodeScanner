@@ -175,7 +175,8 @@
     <string name="fragment_settings_appearance_settings">Внешний вид</string>
     <string name="fragment_settings_theme">Тема</string>
     <string name="fragment_settings_scanner_settings">Сканер</string>
-    <string name="fragment_settings_open_links_automatically">Автоматически открывать ссылки</string>
+    <string name="fragment_settings_open_content_automatically">Автоматически открывать содержимое отсканированных кодов</string>
+    <string name="fragment_settings_open_content_automatically_hint">Может привести к открытию небезопасного содержимого</string>
     <string name="fragment_settings_copy_to_clipboard">Копировать в буфер обмена</string>
     <string name="fragment_settings_copy_to_clipboard_hint">Копировать отсканированный результат в буфер обмена</string>
     <string name="fragment_settings_simple_auto_focus">Простой режим автофокуса</string>

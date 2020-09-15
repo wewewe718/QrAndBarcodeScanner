@@ -103,15 +103,27 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
             copyToClipboard(barcode.text)
         }
 
-        if (settings.openLinksAutomatically.not()) {
+        if (settings.openLinksAutomatically.not() || isCreated) {
             return
         }
 
         when (barcode.schema) {
             BarcodeSchema.APP -> openInGooglePlay()
-            BarcodeSchema.YOUTUBE -> openInYoutube()
+            BarcodeSchema.BOOKMARK -> saveBookmark()
+            BarcodeSchema.CRYPTOCURRENCY -> openBitcoinUrl()
+            BarcodeSchema.EMAIL -> sendEmail(barcode.email)
+            BarcodeSchema.GEO -> showLocation()
             BarcodeSchema.GOOGLE_MAPS -> showLocation()
+            BarcodeSchema.MMS -> sendSmsOrMms(barcode.phone)
+            BarcodeSchema.MECARD -> addToContacts()
+            BarcodeSchema.OTP_AUTH -> openOtpInOtherApp()
+            BarcodeSchema.PHONE -> callPhone(barcode.phone)
+            BarcodeSchema.SMS -> sendSmsOrMms(barcode.phone)
             BarcodeSchema.URL -> openLink()
+            BarcodeSchema.VEVENT -> addToCalendar()
+            BarcodeSchema.VCARD -> addToContacts()
+            BarcodeSchema.WIFI -> connectToWifi()
+            BarcodeSchema.YOUTUBE -> openInYoutube()
             else -> return
         }
     }
