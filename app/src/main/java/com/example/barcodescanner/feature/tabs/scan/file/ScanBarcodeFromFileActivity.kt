@@ -82,6 +82,12 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        scanDisposable.clear()
+        disposable.clear()
+    }
+
     private fun supportEdgeToEdge() {
         root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }

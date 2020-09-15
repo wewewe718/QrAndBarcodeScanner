@@ -1,5 +1,6 @@
 package com.example.barcodescanner.feature.barcode.save
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeSaver
+import com.example.barcodescanner.di.permissionsHelper
 import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.extension.unsafeLazy
@@ -22,6 +24,9 @@ import kotlinx.android.synthetic.main.activity_save_barcode_as_text.*
 class SaveBarcodeAsTextActivity : BaseActivity() {
 
     companion object {
+        private const val REQUEST_PERMISSIONS_CODE = 101
+        private val PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
         private const val BARCODE_KEY = "BARCODE_KEY"
 
         fun start(context: Context, barcode: Barcode) {
@@ -47,6 +52,17 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
         initSaveButton()
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
+            saveBarcode()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
+    }
+
     private fun supportEdgeToEdge() {
         root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
@@ -67,8 +83,12 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
 
     private fun initSaveButton() {
         button_save.setOnClickListener {
-            saveBarcode()
+            requestPermissions()
         }
+    }
+
+    private fun requestPermissions() {
+        permissionsHelper.requestPermissions(this, PERMISSIONS, REQUEST_PERMISSIONS_CODE)
     }
 
     private fun saveBarcode() {

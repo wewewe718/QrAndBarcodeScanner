@@ -15,10 +15,7 @@ import androidx.fragment.app.Fragment
 import com.budiyev.android.codescanner.*
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.*
-import com.example.barcodescanner.extension.applySystemWindowInsets
-import com.example.barcodescanner.extension.showError
-import com.example.barcodescanner.extension.vibrateOnce
-import com.example.barcodescanner.extension.vibrator
+import com.example.barcodescanner.extension.*
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.feature.common.dialog.ConfirmBarcodeDialogFragment
 import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity
@@ -49,6 +46,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     private val zoomStep = 5
     private lateinit var codeScanner: CodeScanner
     private var toast: Toast? = null
+    private var lastResult: Barcode? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_scan_barcode_from_camera, container, false)
@@ -225,12 +223,18 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun handleScannedBarcode(result: Result) {
-        vibrateIfNeeded()
-
         if (requireActivity().intent?.action == ZXING_SCAN_INTENT_ACTION) {
+            vibrateIfNeeded()
             finishWithResult(result)
             return
         }
+
+        if (settings.continuousScanning && result.equalTo(lastResult)) {
+            restartPreviewWithDelay(false)
+            return
+        }
+
+        vibrateIfNeeded()
 
         val barcode = barcodeParser.parseResult(result)
 
@@ -250,7 +254,11 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     private fun vibrateIfNeeded() {
         if (settings.vibrate) {
-            requireContext().vibrator?.vibrateOnce(vibrationPattern)
+            requireActivity().apply {
+                runOnUiThread {
+                    applicationContext.vibrator?.vibrateOnce(vibrationPattern)
+                }
+            }
         }
     }
 
@@ -265,8 +273,9 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { id ->
+                    lastResult = barcode
                     when (settings.continuousScanning) {
-                        true -> restartPreviewWithDelay()
+                        true -> restartPreviewWithDelay(true)
                         else -> navigateToBarcodeScreen(barcode.copy(id = id))
                     }
                 },
@@ -275,19 +284,23 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
             .addTo(disposable)
     }
 
-    private fun restartPreviewWithDelay() {
+    private fun restartPreviewWithDelay(showMessage: Boolean) {
         Completable
             .timer(CONTINUOUS_SCANNING_PREVIEW_DELAY, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                showToast(R.string.fragment_scan_barcode_from_camera_barcode_saved)
+                if (showMessage) {
+                    showToast(R.string.fragment_scan_barcode_from_camera_barcode_saved)
+                }
                 restartPreview()
             }
             .addTo(disposable)
     }
 
     private fun restartPreview() {
-        codeScanner.startPreview()
+        requireActivity().runOnUiThread {
+            codeScanner.startPreview()
+        }
     }
 
     private fun toggleFlash() {

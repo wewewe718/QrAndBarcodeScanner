@@ -64,7 +64,8 @@
                 android:id="@+id/button_open_links_automatically"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:text="@string/fragment_settings_open_links_automatically"
+                app:text="@string/fragment_settings_open_content_automatically"
+                app:hint="@string/fragment_settings_open_content_automatically_hint"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_copy_to_clipboard"

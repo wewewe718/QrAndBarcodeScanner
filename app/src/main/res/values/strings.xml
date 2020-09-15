@@ -63,7 +63,6 @@
     <!--Create barcode activity-->
     <string name="activity_create_barcode_menu_item_title">Create</string>
     <string name="activity_create_barcode_contacts_menu_item_title">Contacts</string>
-    <string name="activity_create_barcode_location_menu_item_title">Map</string>
 
     <!--Base create barcode fragment -->
     <string name="fragment_create_barcode_alternative">Alternatively:</string>
@@ -197,7 +196,8 @@
     <string name="fragment_settings_appearance_settings">Appearance</string>
     <string name="fragment_settings_theme">Theme</string>
     <string name="fragment_settings_scanner_settings">Scanner</string>
-    <string name="fragment_settings_open_links_automatically">Open links automatically</string>
+    <string name="fragment_settings_open_content_automatically">Open content of scanned codes automatically</string>
+    <string name="fragment_settings_open_content_automatically_hint">May open harmful content</string>
     <string name="fragment_settings_copy_to_clipboard">Copy to clipboard</string>
     <string name="fragment_settings_copy_to_clipboard_hint">Copy scanned barcodes to clipboard</string>
     <string name="fragment_settings_simple_auto_focus">Simple auto focus mode</string>

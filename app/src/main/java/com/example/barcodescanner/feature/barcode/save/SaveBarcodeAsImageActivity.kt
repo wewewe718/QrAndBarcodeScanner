@@ -23,6 +23,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_save_barcode_as_image.*
 
 class SaveBarcodeAsImageActivity : BaseActivity() {
+
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
         private val PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -56,6 +57,11 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
         if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
             saveBarcode()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
     }
 
     private fun supportEdgeToEdge() {

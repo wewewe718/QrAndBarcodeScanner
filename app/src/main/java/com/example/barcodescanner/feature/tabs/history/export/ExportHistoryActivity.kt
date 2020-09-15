@@ -1,5 +1,6 @@
 package com.example.barcodescanner.feature.tabs.history.export
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +11,7 @@ import androidx.core.widget.addTextChangedListener
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
 import com.example.barcodescanner.di.barcodeSaver
+import com.example.barcodescanner.di.permissionsHelper
 import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.extension.isNotBlank
 import com.example.barcodescanner.extension.showError
@@ -25,6 +27,9 @@ class ExportHistoryActivity : BaseActivity() {
     private val disposable = CompositeDisposable()
 
     companion object {
+        private const val REQUEST_PERMISSIONS_CODE = 101
+        private val PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
         fun start(context: Context) {
             val intent = Intent(context, ExportHistoryActivity::class.java)
             context.startActivity(intent)
@@ -39,6 +44,17 @@ class ExportHistoryActivity : BaseActivity() {
         initExportTypeSpinner()
         initFileNameEditText()
         initExportButton()
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
+            exportHistory()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
     }
 
     private fun supportEdgeToEdge() {
@@ -67,8 +83,12 @@ class ExportHistoryActivity : BaseActivity() {
 
     private fun initExportButton() {
         button_export.setOnClickListener {
-            exportHistory()
+            requestPermissions()
         }
+    }
+
+    private fun requestPermissions() {
+        permissionsHelper.requestPermissions(this, PERMISSIONS, REQUEST_PERMISSIONS_CODE)
     }
 
     private fun exportHistory() {
