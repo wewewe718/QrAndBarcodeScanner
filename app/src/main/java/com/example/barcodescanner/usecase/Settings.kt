@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.extension.unsafeLazy
+import com.example.barcodescanner.model.SearchEngine
 import com.google.zxing.BarcodeFormat
 
 class Settings(context: Context) {
@@ -34,6 +35,7 @@ class Settings(context: Context) {
         IS_BACK_CAMERA,
         SAVE_SCANNED_BARCODES_TO_HISTORY,
         SAVE_CREATED_BARCODES_TO_HISTORY,
+        SEARCH_ENGINE,
         ERROR_REPORTS,
     }
 
@@ -91,6 +93,10 @@ class Settings(context: Context) {
         get() = get(Key.SAVE_CREATED_BARCODES_TO_HISTORY, true)
         set(value) = set(Key.SAVE_CREATED_BARCODES_TO_HISTORY, value)
 
+    var searchEngine: SearchEngine
+        get() = get(Key.SEARCH_ENGINE, SearchEngine.NONE)
+        set(value) = set(Key.SEARCH_ENGINE, value)
+
     var areErrorReportsEnabled: Boolean
         get() = get(Key.ERROR_REPORTS, BuildConfig.ERROR_REPORTS_ENABLED_BY_DEFAULT)
         set(value) {
@@ -129,6 +135,17 @@ class Settings(context: Context) {
     private fun set(key: Key, value: Boolean) {
         sharedPreferences.edit()
             .putBoolean(key.name, value)
+            .apply()
+    }
+
+    private fun get(key: Key, default: SearchEngine = SearchEngine.NONE): SearchEngine {
+        val rawValue = sharedPreferences.getString(key.name, null) ?: default.name
+        return SearchEngine.valueOf(rawValue)
+    }
+
+    private fun set(key: Key, value: SearchEngine) {
+        sharedPreferences.edit()
+            .putString(key.name, value.name)
             .apply()
     }
 

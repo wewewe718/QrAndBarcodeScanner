@@ -18,6 +18,7 @@ import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialog
 import com.example.barcodescanner.feature.tabs.settings.camera.ChooseCameraActivity
 import com.example.barcodescanner.feature.tabs.settings.formats.SupportedFormatsActivity
 import com.example.barcodescanner.feature.tabs.settings.permissions.AllPermissionsActivity
+import com.example.barcodescanner.feature.tabs.settings.search.ChooseSearchEngineActivity
 import com.example.barcodescanner.feature.tabs.settings.theme.ChooseThemeActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -77,6 +78,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
         button_choose_camera.setOnClickListener { ChooseCameraActivity.start(requireActivity()) }
         button_select_supported_formats.setOnClickListener { SupportedFormatsActivity.start(requireActivity()) }
         button_clear_history.setOnClickListener { showDeleteHistoryConfirmationDialog() }
+        button_choose_search_engine.setOnClickListener { ChooseSearchEngineActivity.start(requireContext()) }
         button_permissions.setOnClickListener { AllPermissionsActivity.start(requireActivity()) }
         button_check_updates.setOnClickListener { showAppInMarket() }
         button_source_code.setOnClickListener { showSourceCode() }

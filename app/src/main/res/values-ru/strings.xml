@@ -195,6 +195,9 @@
     <string name="fragment_settings_save_scanned_barcodes_to_history">Сохранять отсканированные штрихкоды в историю</string>
     <string name="fragment_settings_save_created_barcodes_to_history">Сохранять созданные штрихкоды в историю</string>
     <string name="fragment_settings_clear_history">Очистить историю</string>
+    <string name="fragment_settings_advanced_settings">Расширенные настройки</string>
+    <string name="fragment_settings_choose_search_engines">Поисковые системы</string>
+    <string name="fragment_settings_choose_search_engines_hint">Выберите поисковую систему для поиска в интернете</string>
     <string name="fragment_settings_error_reports">Отчеты об ошибках</string>
     <string name="fragment_settings_enable_error_reports">Отчеты об ошибках</string>
     <string name="fragment_settings_enable_error_reports_hint">Помогите нам в исправлении багов</string>
@@ -217,6 +220,16 @@
 
     <!--Select supported formats activity-->
     <string name="activity_supported_formats_title">Поддерживаемые форматы</string>
+
+    <!--Choose search engine activity-->
+    <string name="activity_choose_search_engine_title">Поисковые системы</string>
+    <string name="activity_choose_search_engine_none">Не выбрано</string>
+    <string name="activity_choose_search_engine_ask_every_time">Спрашивать каждый раз</string>
+    <string name="activity_choose_search_engine_google">Google</string>
+    <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
+    <string name="activity_choose_search_engine_yandex">Яндекс</string>
+    <string name="activity_choose_search_engine_bing">Bing</string>
+    <string name="activity_choose_search_engine_yahoo">Yahoo</string>
 
     <!--All permissions activity-->
     <string name="activity_all_permissions_title">Разрешения</string>
