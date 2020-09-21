@@ -297,6 +297,7 @@
     <string name="activity_barcode_barcode_image_saved">Salvado para a Galeria</string>
     <string name="activity_barcode_barcode_text_saved">Salvado para os Downloads</string>
     <string name="activity_barcode_no_app">Nenhum aplicativo encontrado para isso</string>
+    <string name="activity_barcode_choose_search_engine_dialog_negative_button">Cancelar</string>
 
     <!--OTP barcode activity-->
     <string name="activity_barcode_otp_title">OTP</string>

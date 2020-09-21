@@ -146,6 +146,7 @@
     </style>
 
     <style name="DialogTheme" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:colorBackground">@color/dialog_background_color</item>
         <item name="colorAccent">@color/color_accent</item>
     </style>
 

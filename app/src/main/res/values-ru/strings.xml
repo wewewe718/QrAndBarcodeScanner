@@ -276,6 +276,7 @@
     <string name="activity_barcode_barcode_image_saved">Сохранено в Галерею</string>
     <string name="activity_barcode_barcode_text_saved">Сохранено в Загрузки</string>
     <string name="activity_barcode_no_app">Не найдено подходящее приложение</string>
+    <string name="activity_barcode_choose_search_engine_dialog_negative_button">Отмена</string>
 
     <!--OTP barcode activity-->
     <string name="activity_barcode_otp_title">OTP</string>
