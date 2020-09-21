@@ -7,6 +7,7 @@
     <color name="text_color_secondary">@color/white</color>
     <color name="navigation_bar_color">@color/black2</color>
 
+    <color name="dialog_background_color">@color/gray16</color>
     <color name="toolbar_background_color">@color/gray16</color>
     <color name="toolbar_title_color">@color/white</color>
     <color name="toolbar_menu_color">@color/gray14</color>

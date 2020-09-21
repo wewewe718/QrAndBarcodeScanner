@@ -21,9 +21,11 @@ import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.otp.OtpActivity
 import com.example.barcodescanner.feature.barcode.save.SaveBarcodeAsImageActivity
 import com.example.barcodescanner.feature.barcode.save.SaveBarcodeAsTextActivity
+import com.example.barcodescanner.feature.common.dialog.ChooseSearchEngineDialogFragment
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
+import com.example.barcodescanner.model.SearchEngine
 import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.example.barcodescanner.model.schema.OtpAuth
 import com.example.barcodescanner.usecase.Logger
@@ -36,7 +38,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listener {
+class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listener, ChooseSearchEngineDialogFragment.Listener {
 
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"
@@ -86,6 +88,10 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     override fun onDeleteConfirmed() {
         deleteBarcode()
+    }
+
+    override fun onSearchEngineSelected(searchEngine: SearchEngine) {
+        performWebSearchUsingSearchEngine(searchEngine)
     }
 
     override fun onDestroy() {
@@ -382,10 +388,24 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun searchBarcodeTextOnInternet() {
+        val searchEngine = settings.searchEngine
+        when (searchEngine) {
+           SearchEngine.NONE -> performWebSearch()
+           SearchEngine.ASK_EVERY_TIME -> showSearchEnginesDialog()
+           else -> performWebSearchUsingSearchEngine(searchEngine)
+        }
+    }
+
+    private fun performWebSearch() {
         val intent = Intent(Intent.ACTION_WEB_SEARCH).apply {
             putExtra(SearchManager.QUERY, barcode.text)
         }
         startActivityIfExists(intent)
+    }
+
+    private fun performWebSearchUsingSearchEngine(searchEngine: SearchEngine) {
+        val url = searchEngine.templateUrl + barcode.text
+        startActivityIfExists(Intent.ACTION_VIEW, url)
     }
 
     private fun shareBarcodeAsImage() {
@@ -615,6 +635,11 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun showDeleteBarcodeConfirmationDialog() {
         val dialog = DeleteConfirmationDialogFragment.newInstance(R.string.dialog_delete_barcode_message)
+        dialog.show(supportFragmentManager, "")
+    }
+
+    private fun showSearchEnginesDialog() {
+        val dialog = ChooseSearchEngineDialogFragment()
         dialog.show(supportFragmentManager, "")
     }
 

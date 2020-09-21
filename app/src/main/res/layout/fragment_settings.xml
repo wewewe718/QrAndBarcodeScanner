@@ -157,6 +157,26 @@
                 />
             <View style="@style/DelimiterStyle" />
 
+            <!--Advanced-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin_very_big"
+                android:layout_marginBottom="@dimen/default_margin_small"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:text="@string/fragment_settings_advanced_settings"
+                style="@style/SettingsGroupTitleTextViewStyle"
+                />
+            <com.example.barcodescanner.feature.common.view.SettingsButton
+                android:id="@+id/button_choose_search_engine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_choose_search_engines"
+                app:hint="@string/fragment_settings_choose_search_engines_hint"
+                app:isSwitchVisible="false"
+                />
+            <View style="@style/DelimiterStyle" />
+
             <!--Error reports-->
             <TextView
                 android:layout_width="match_parent"

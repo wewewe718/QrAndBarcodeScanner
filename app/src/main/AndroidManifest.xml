@@ -148,6 +148,11 @@
             />
 
         <activity
+            android:name=".feature.tabs.settings.theme.ChooseThemeActivity"
+            android:screenOrientation="fullSensor"
+            android:configChanges="orientation|screenSize"
+            />
+        <activity
             android:name=".feature.tabs.settings.camera.ChooseCameraActivity"
             android:screenOrientation="fullSensor"
             android:configChanges="orientation|screenSize"
@@ -158,12 +163,12 @@
             android:configChanges="orientation|screenSize"
             />
         <activity
-            android:name=".feature.tabs.settings.permissions.AllPermissionsActivity"
+            android:name=".feature.tabs.settings.search.ChooseSearchEngineActivity"
             android:screenOrientation="fullSensor"
             android:configChanges="orientation|screenSize"
             />
         <activity
-            android:name=".feature.tabs.settings.theme.ChooseThemeActivity"
+            android:name=".feature.tabs.settings.permissions.AllPermissionsActivity"
             android:screenOrientation="fullSensor"
             android:configChanges="orientation|screenSize"
             />
