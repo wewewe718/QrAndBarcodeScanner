@@ -34,12 +34,16 @@ class BarcodeImageActivity : BaseActivity() {
     private val barcode by unsafeLazy {
         intent?.getSerializableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
     }
+    private var originalBrightness: Float = 0.5f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_barcode_image)
         supportEdgeToEdge()
+        saveOriginalBrightness()
         handleToolbarBackPressed()
+        handleToolbarMenuItemClicked()
+        showMenu()
         showBarcode()
     }
 
@@ -47,10 +51,40 @@ class BarcodeImageActivity : BaseActivity() {
         root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
+    private fun saveOriginalBrightness() {
+        originalBrightness = window.attributes.screenBrightness
+    }
+
     private fun handleToolbarBackPressed() {
         toolbar.setNavigationOnClickListener {
             finish()
         }
+    }
+
+    private fun handleToolbarMenuItemClicked() {
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.item_increase_brightness -> {
+                    increaseBrightnessToMax()
+                    toolbar.menu.apply {
+                        findItem(R.id.item_increase_brightness).isVisible = false
+                        findItem(R.id.item_decrease_brightness).isVisible = true
+                    }
+                }
+                R.id.item_decrease_brightness -> {
+                    restoreOriginalBrightness()
+                    toolbar.menu.apply {
+                        findItem(R.id.item_decrease_brightness).isVisible = false
+                        findItem(R.id.item_increase_brightness).isVisible = true
+                    }
+                }
+            }
+            return@setOnMenuItemClickListener true
+        }
+    }
+
+    private fun showMenu() {
+        toolbar.inflateMenu(R.menu.menu_barcode_image)
     }
 
     private fun showBarcode() {
@@ -83,5 +117,19 @@ class BarcodeImageActivity : BaseActivity() {
 
     private fun showBarcodeText() {
         text_view_barcode_text.text = barcode.text
+    }
+
+    private fun increaseBrightnessToMax() {
+        setBrightness(1.0f)
+    }
+
+    private fun restoreOriginalBrightness() {
+        setBrightness(originalBrightness)
+    }
+
+    private fun setBrightness(brightness: Float) {
+        window.attributes = window.attributes.apply {
+            screenBrightness = brightness
+        }
     }
 }

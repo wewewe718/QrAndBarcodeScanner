@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/item_increase_brightness"
+        android:title="@string/activity_barcode_image_increase_brightness"
+        android:icon="@drawable/ic_brightness_high"
+        app:iconTint="@color/toolbar_menu_color"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/item_decrease_brightness"
+        android:title="@string/activity_barcode_image_decrease_brightness"
+        android:icon="@drawable/ic_brightness_low"
+        android:visible="false"
+        app:iconTint="@color/toolbar_menu_color"
+        app:showAsAction="ifRoom"
+        />
+</menu>

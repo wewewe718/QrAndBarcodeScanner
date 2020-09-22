@@ -12,6 +12,7 @@ import android.provider.CalendarContract
 import android.provider.ContactsContract
 import android.provider.Settings
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.print.PrintHelper
 import com.example.barcodescanner.R
@@ -500,7 +501,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         } else {
             R.drawable.ic_favorite_unchecked
         }
-        toolbar.menu?.findItem(R.id.item_add_to_favorites)?.icon = getDrawable(iconId)
+        toolbar.menu?.findItem(R.id.item_add_to_favorites)?.icon = ContextCompat.getDrawable(this, iconId)
     }
 
     private fun showBarcodeImageIfNeeded() {

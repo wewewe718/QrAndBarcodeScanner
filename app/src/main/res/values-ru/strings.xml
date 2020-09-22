@@ -278,6 +278,10 @@
     <string name="activity_barcode_no_app">Не найдено подходящее приложение</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Отмена</string>
 
+    <!--Barcode image activity-->
+    <string name="activity_barcode_image_increase_brightness">Увеличить яркость</string>
+    <string name="activity_barcode_image_decrease_brightness">Уменьшить яркость</string>
+
     <!--OTP barcode activity-->
     <string name="activity_barcode_otp_title">OTP</string>
     <string name="activity_barcode_otp_unable_to_generate_otp">Не удалось создать пароль</string>

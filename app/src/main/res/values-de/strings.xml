@@ -270,6 +270,10 @@
     <string name="activity_barcode_no_app">Keine passende App gefunden</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Abbrechen</string>
 
+    <!--Barcode image activity-->
+    <string name="activity_barcode_image_increase_brightness">Increase brightness</string>
+    <string name="activity_barcode_image_decrease_brightness">Decrease brightness</string>
+
     <!--OTP barcode activity-->
     <string name="activity_barcode_otp_refresh_otp">Aktualisieren</string>
     <string name="activity_barcode_otp_timer">Noch %s:%s</string>

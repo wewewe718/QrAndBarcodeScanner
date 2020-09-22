@@ -299,6 +299,10 @@
     <string name="activity_barcode_no_app">No app found for this action</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Cancel</string>
 
+    <!--Barcode image activity-->
+    <string name="activity_barcode_image_increase_brightness">Increase brightness</string>
+    <string name="activity_barcode_image_decrease_brightness">Decrease brightness</string>
+
     <!--OTP barcode activity-->
     <string name="activity_barcode_otp_title">OTP</string>
     <string name="activity_barcode_otp_unable_to_generate_otp">Unable to generate password</string>
