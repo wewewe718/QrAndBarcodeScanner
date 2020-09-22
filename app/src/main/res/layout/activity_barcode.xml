@@ -37,7 +37,7 @@
                 android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginBottom="@dimen/default_margin"
                 android:layout_marginHorizontal="@dimen/default_margin_very_big"
-                android:scaleType="fitXY"
+                android:scaleType="centerInside"
                 android:visibility="gone"
                 />
 

@@ -73,11 +73,14 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     }
 
+    private var originalBrightness: Float = 0.5f
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_barcode)
         supportEdgeToEdge()
+        saveOriginalBrightness()
         applySettings()
         handleToolbarBackPressed()
         handleToolbarMenuClicked()
@@ -103,6 +106,10 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun supportEdgeToEdge() {
         root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
+    }
+
+    private fun saveOriginalBrightness() {
+        originalBrightness = window.attributes.screenBrightness
     }
 
     private fun applySettings() {
@@ -144,6 +151,16 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private fun handleToolbarMenuClicked() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.item_increase_brightness -> {
+                    increaseBrightnessToMax()
+                    toolbar.menu.findItem(R.id.item_increase_brightness).isVisible = false
+                    toolbar.menu.findItem(R.id.item_decrease_brightness).isVisible = true
+                }
+                R.id.item_decrease_brightness -> {
+                    restoreOriginalBrightness()
+                    toolbar.menu.findItem(R.id.item_increase_brightness).isVisible = true
+                    toolbar.menu.findItem(R.id.item_decrease_brightness).isVisible = false
+                }
                 R.id.item_add_to_favorites -> toggleIsFavorite()
                 R.id.item_show_barcode_image -> navigateToBarcodeImageActivity()
                 R.id.item_delete -> showDeleteBarcodeConfirmationDialog()
@@ -485,6 +502,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private fun showBarcodeMenuIfNeeded() {
         toolbar.inflateMenu(R.menu.menu_barcode)
         toolbar.menu.apply {
+            findItem(R.id.item_increase_brightness).isVisible = isCreated
             findItem(R.id.item_add_to_favorites)?.isVisible = barcode.isInDb
             findItem(R.id.item_show_barcode_image)?.isVisible = isCreated.not()
             findItem(R.id.item_delete)?.isVisible = barcode.isInDb
@@ -670,5 +688,19 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun showToast(stringId: Int) {
         Toast.makeText(this, stringId, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun increaseBrightnessToMax() {
+        setBrightness(1.0f)
+    }
+
+    private fun restoreOriginalBrightness() {
+        setBrightness(originalBrightness)
+    }
+
+    private fun setBrightness(brightness: Float) {
+        window.attributes = window.attributes.apply {
+            screenBrightness = brightness
+        }
     }
 }
