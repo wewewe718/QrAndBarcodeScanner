@@ -174,6 +174,8 @@
     <string name="fragment_settings_title">Настройки</string>
     <string name="fragment_settings_appearance_settings">Внешний вид</string>
     <string name="fragment_settings_theme">Тема</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme">Инвертировать цвета кодов при темной теме</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">Показывать коды в белом цвете на темном фоне</string>
     <string name="fragment_settings_scanner_settings">Сканер</string>
     <string name="fragment_settings_open_content_automatically">Автоматически открывать содержимое отсканированных кодов</string>
     <string name="fragment_settings_open_content_automatically_hint">Может привести к открытию небезопасного содержимого</string>

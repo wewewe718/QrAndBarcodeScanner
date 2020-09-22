@@ -61,6 +61,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     }
 
     private fun handleButtonCheckedChanged() {
+        button_inverse_barcode_colors_in_dark_theme.setCheckedChangedListener { settings.areBarcodeColorsInversed = it }
         button_open_links_automatically.setCheckedChangedListener { settings.openLinksAutomatically = it }
         button_copy_to_clipboard.setCheckedChangedListener { settings.copyToClipboard = it }
         button_simple_auto_focus.setCheckedChangedListener { settings.simpleAutoFocus = it }
@@ -104,6 +105,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
 
     private fun showSettings() {
         settings.apply {
+            button_inverse_barcode_colors_in_dark_theme.isChecked = areBarcodeColorsInversed
             button_open_links_automatically.isChecked = openLinksAutomatically
             button_copy_to_clipboard.isChecked = copyToClipboard
             button_simple_auto_focus.isChecked = simpleAutoFocus

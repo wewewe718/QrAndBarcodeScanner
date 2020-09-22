@@ -1,6 +1,7 @@
 package com.example.barcodescanner.usecase
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.barcodescanner.BuildConfig
@@ -25,6 +26,7 @@ class Settings(context: Context) {
 
     private enum class Key {
         THEME,
+        INVERSE_BARCODE_COLORS,
         OPEN_LINKS_AUTOMATICALLY,
         COPY_TO_CLIPBOARD,
         SIMPLE_AUTO_FOCUS,
@@ -52,6 +54,22 @@ class Settings(context: Context) {
 
     val isDarkTheme: Boolean
         get() = theme == AppCompatDelegate.MODE_NIGHT_YES
+
+    var areBarcodeColorsInversed: Boolean
+        get() = get(Key.INVERSE_BARCODE_COLORS, true)
+        set(value) = set(Key.INVERSE_BARCODE_COLORS, value)
+
+    val barcodeContentColor: Int
+        get() = when  {
+            isDarkTheme && areBarcodeColorsInversed -> Color.WHITE
+            else -> Color.BLACK
+        }
+
+    val barcodeBackgroundColor: Int
+        get() = when {
+            isDarkTheme && areBarcodeColorsInversed.not() -> Color.WHITE
+            else -> Color.TRANSPARENT
+        }
 
     var openLinksAutomatically: Boolean
         get() = get(Key.OPEN_LINKS_AUTOMATICALLY, false)

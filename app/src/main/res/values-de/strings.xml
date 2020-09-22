@@ -166,6 +166,8 @@
     <string name="fragment_settings_title">Einstellungen</string>
     <string name="fragment_settings_appearance_settings">Aussehen</string>
     <string name="fragment_settings_theme">Design</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme">Inverse code colors in dark theme</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">Show codes with white content on dark background</string>
     <string name="fragment_settings_scanner_settings">Scanner</string>
     <string name="fragment_settings_open_content_automatically">Links automatisch öffnen</string>
     <string name="fragment_settings_open_content_automatically_hint">May open harmful content</string>

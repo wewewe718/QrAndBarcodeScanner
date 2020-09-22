@@ -5,7 +5,6 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
@@ -529,12 +528,11 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun showBarcodeImage() {
-        val codeColor = if (settings.isDarkTheme) Color.WHITE else Color.BLACK
-        val backgroundColor = resources.getColor(R.color.transparent)
         try {
-            val bitmap = barcodeImageGenerator.generateBitmap(originalBarcode, 2000, 2000, 0, codeColor, backgroundColor)
+            val bitmap = barcodeImageGenerator.generateBitmap(originalBarcode, 2000, 2000, 0, settings.barcodeContentColor, settings.barcodeBackgroundColor)
             image_view_barcode.isVisible = true
             image_view_barcode.setImageBitmap(bitmap)
+            image_view_barcode.setBackgroundColor(settings.barcodeBackgroundColor)
         } catch (ex: Exception) {
             Logger.log(ex)
             image_view_barcode.isVisible = false
