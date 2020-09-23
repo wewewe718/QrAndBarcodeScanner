@@ -56,7 +56,7 @@ class Settings(context: Context) {
         get() = theme == AppCompatDelegate.MODE_NIGHT_YES
 
     var areBarcodeColorsInversed: Boolean
-        get() = get(Key.INVERSE_BARCODE_COLORS, true)
+        get() = get(Key.INVERSE_BARCODE_COLORS, false)
         set(value) = set(Key.INVERSE_BARCODE_COLORS, value)
 
     val barcodeContentColor: Int

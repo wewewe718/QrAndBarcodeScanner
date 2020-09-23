@@ -530,9 +530,15 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private fun showBarcodeImage() {
         try {
             val bitmap = barcodeImageGenerator.generateBitmap(originalBarcode, 2000, 2000, 0, settings.barcodeContentColor, settings.barcodeBackgroundColor)
+            layout_barcode_image_background.isVisible = true
             image_view_barcode.isVisible = true
             image_view_barcode.setImageBitmap(bitmap)
             image_view_barcode.setBackgroundColor(settings.barcodeBackgroundColor)
+            layout_barcode_image_background.setBackgroundColor(settings.barcodeBackgroundColor)
+
+            if (settings.isDarkTheme.not() || settings.areBarcodeColorsInversed) {
+                layout_barcode_image_background.setPadding(0, 0, 0, 0)
+            }
         } catch (ex: Exception) {
             Logger.log(ex)
             image_view_barcode.isVisible = false
