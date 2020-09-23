@@ -30,16 +30,24 @@
             >
 
             <!--Barcode image-->
-            <com.example.barcodescanner.feature.common.view.SquareImageView
-                android:id="@+id/image_view_barcode"
+            <FrameLayout
+                android:id="@+id/layout_barcode_image_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginBottom="@dimen/default_margin"
-                android:layout_marginHorizontal="@dimen/default_margin_very_big"
-                android:scaleType="fitXY"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:padding="@dimen/default_margin_medium2"
                 android:visibility="gone"
-                />
+                >
+                <com.example.barcodescanner.feature.common.view.SquareImageView
+                    android:id="@+id/image_view_barcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerInside"
+                    android:visibility="gone"
+                    />
+            </FrameLayout>
 
             <!--General barcode info-->
             <TextView

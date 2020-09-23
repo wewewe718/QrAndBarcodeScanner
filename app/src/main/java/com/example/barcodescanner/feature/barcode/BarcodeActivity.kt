@@ -5,13 +5,13 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.provider.ContactsContract
 import android.provider.Settings
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.print.PrintHelper
 import com.example.barcodescanner.R
@@ -21,9 +21,11 @@ import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.otp.OtpActivity
 import com.example.barcodescanner.feature.barcode.save.SaveBarcodeAsImageActivity
 import com.example.barcodescanner.feature.barcode.save.SaveBarcodeAsTextActivity
+import com.example.barcodescanner.feature.common.dialog.ChooseSearchEngineDialogFragment
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
+import com.example.barcodescanner.model.SearchEngine
 import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.example.barcodescanner.model.schema.OtpAuth
 import com.example.barcodescanner.usecase.Logger
@@ -36,7 +38,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listener {
+class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listener, ChooseSearchEngineDialogFragment.Listener {
 
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"
@@ -70,11 +72,14 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     }
 
+    private var originalBrightness: Float = 0.5f
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_barcode)
         supportEdgeToEdge()
+        saveOriginalBrightness()
         applySettings()
         handleToolbarBackPressed()
         handleToolbarMenuClicked()
@@ -88,6 +93,10 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         deleteBarcode()
     }
 
+    override fun onSearchEngineSelected(searchEngine: SearchEngine) {
+        performWebSearchUsingSearchEngine(searchEngine)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         disposable.clear()
@@ -96,6 +105,10 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun supportEdgeToEdge() {
         root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
+    }
+
+    private fun saveOriginalBrightness() {
+        originalBrightness = window.attributes.screenBrightness
     }
 
     private fun applySettings() {
@@ -137,6 +150,16 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private fun handleToolbarMenuClicked() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.item_increase_brightness -> {
+                    increaseBrightnessToMax()
+                    toolbar.menu.findItem(R.id.item_increase_brightness).isVisible = false
+                    toolbar.menu.findItem(R.id.item_decrease_brightness).isVisible = true
+                }
+                R.id.item_decrease_brightness -> {
+                    restoreOriginalBrightness()
+                    toolbar.menu.findItem(R.id.item_increase_brightness).isVisible = true
+                    toolbar.menu.findItem(R.id.item_decrease_brightness).isVisible = false
+                }
                 R.id.item_add_to_favorites -> toggleIsFavorite()
                 R.id.item_show_barcode_image -> navigateToBarcodeImageActivity()
                 R.id.item_delete -> showDeleteBarcodeConfirmationDialog()
@@ -382,10 +405,24 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun searchBarcodeTextOnInternet() {
+        val searchEngine = settings.searchEngine
+        when (searchEngine) {
+           SearchEngine.NONE -> performWebSearch()
+           SearchEngine.ASK_EVERY_TIME -> showSearchEnginesDialog()
+           else -> performWebSearchUsingSearchEngine(searchEngine)
+        }
+    }
+
+    private fun performWebSearch() {
         val intent = Intent(Intent.ACTION_WEB_SEARCH).apply {
             putExtra(SearchManager.QUERY, barcode.text)
         }
         startActivityIfExists(intent)
+    }
+
+    private fun performWebSearchUsingSearchEngine(searchEngine: SearchEngine) {
+        val url = searchEngine.templateUrl + barcode.text
+        startActivityIfExists(Intent.ACTION_VIEW, url)
     }
 
     private fun shareBarcodeAsImage() {
@@ -464,6 +501,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private fun showBarcodeMenuIfNeeded() {
         toolbar.inflateMenu(R.menu.menu_barcode)
         toolbar.menu.apply {
+            findItem(R.id.item_increase_brightness).isVisible = isCreated
             findItem(R.id.item_add_to_favorites)?.isVisible = barcode.isInDb
             findItem(R.id.item_show_barcode_image)?.isVisible = isCreated.not()
             findItem(R.id.item_delete)?.isVisible = barcode.isInDb
@@ -480,7 +518,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         } else {
             R.drawable.ic_favorite_unchecked
         }
-        toolbar.menu?.findItem(R.id.item_add_to_favorites)?.icon = getDrawable(iconId)
+        toolbar.menu?.findItem(R.id.item_add_to_favorites)?.icon = ContextCompat.getDrawable(this, iconId)
     }
 
     private fun showBarcodeImageIfNeeded() {
@@ -490,12 +528,17 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun showBarcodeImage() {
-        val codeColor = if (settings.isDarkTheme) Color.WHITE else Color.BLACK
-        val backgroundColor = resources.getColor(R.color.transparent)
         try {
-            val bitmap = barcodeImageGenerator.generateBitmap(originalBarcode, 2000, 2000, 0, codeColor, backgroundColor)
+            val bitmap = barcodeImageGenerator.generateBitmap(originalBarcode, 2000, 2000, 0, settings.barcodeContentColor, settings.barcodeBackgroundColor)
+            layout_barcode_image_background.isVisible = true
             image_view_barcode.isVisible = true
             image_view_barcode.setImageBitmap(bitmap)
+            image_view_barcode.setBackgroundColor(settings.barcodeBackgroundColor)
+            layout_barcode_image_background.setBackgroundColor(settings.barcodeBackgroundColor)
+
+            if (settings.isDarkTheme.not() || settings.areBarcodeColorsInversed) {
+                layout_barcode_image_background.setPadding(0, 0, 0, 0)
+            }
         } catch (ex: Exception) {
             Logger.log(ex)
             image_view_barcode.isVisible = false
@@ -618,6 +661,11 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         dialog.show(supportFragmentManager, "")
     }
 
+    private fun showSearchEnginesDialog() {
+        val dialog = ChooseSearchEngineDialogFragment()
+        dialog.show(supportFragmentManager, "")
+    }
+
     private fun showLoading(isLoading: Boolean) {
         progress_bar_loading.isVisible = isLoading
         scroll_view.isVisible = isLoading.not()
@@ -644,5 +692,19 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun showToast(stringId: Int) {
         Toast.makeText(this, stringId, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun increaseBrightnessToMax() {
+        setBrightness(1.0f)
+    }
+
+    private fun restoreOriginalBrightness() {
+        setBrightness(originalBrightness)
+    }
+
+    private fun setBrightness(brightness: Float) {
+        window.attributes = window.attributes.apply {
+            screenBrightness = brightness
+        }
     }
 }

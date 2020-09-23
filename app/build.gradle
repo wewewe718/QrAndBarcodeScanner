@@ -12,11 +12,10 @@ android {
         applicationId "com.example.barcodescanner"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 5
-        versionName "1.3"
+        versionCode 6
+        versionName "1.4"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary  true
-        resConfigs "en", "ru", "de"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
