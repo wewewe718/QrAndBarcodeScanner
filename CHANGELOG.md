@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.4
+* Add Brazilian Portuguese translation
+* Add the option to choose what search engine to use for searching codes on the web
+* Add the option for dark theme to show codes on white background with white content
+
 ## 1.3
 * Add German translation
 * Improve continuous scanning
