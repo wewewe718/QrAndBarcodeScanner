@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -15,8 +16,9 @@ import androidx.fragment.app.Fragment
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.permissionsHelper
 import com.example.barcodescanner.di.settings
+import com.example.barcodescanner.extension.applySystemWindowInsets
+import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity
 import com.example.barcodescanner.usecase.Logger
-import com.google.common.util.concurrent.ListenableFuture
 import kotlinx.android.synthetic.main.fragment_scan_barcode_from_camera_new.*
 
 class NewScanBarcodeFromCameraFragment : Fragment() {
@@ -26,7 +28,7 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
         private const val PERMISSION_REQUEST_CODE = 111
     }
 
-    private lateinit var cameraProviderFuture : ListenableFuture<ProcessCameraProvider>
+    private var camera: Camera? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_scan_barcode_from_camera_new, container, false)
@@ -34,8 +36,12 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         supportEdgeToEdge()
         setDarkStatusBar()
+
+        initFlashButton()
+        initScanFromFileButton()
 
         if (areAllPermissionsGranted()) {
             startCamera()
@@ -51,8 +57,8 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
     }
 
     private fun supportEdgeToEdge() {
-//        image_view_flash.applySystemWindowInsets(applyTop = true)
-//        image_view_scan_from_file.applySystemWindowInsets(applyTop = true)
+        image_view_flash.applySystemWindowInsets(applyTop = true)
+        image_view_scan_from_file.applySystemWindowInsets(applyTop = true)
     }
 
     private fun setDarkStatusBar() {
@@ -70,7 +76,7 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
     }
 
     private fun startCamera() {
-        cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 
         cameraProviderFuture.addListener(Runnable {
             val cameraProvider = cameraProviderFuture.get()
@@ -81,11 +87,41 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
 
             try {
                 cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(this, cameraSelector, preview)
+                camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview)
             } catch(error: Exception) {
                 Logger.log(error)
+                return@Runnable
+            }
+
+            if (settings.flash) {
+                toggleFlash()
             }
         }, ContextCompat.getMainExecutor(requireContext()))
+    }
+
+    private fun initFlashButton() {
+        layout_flash_container.setOnClickListener {
+            toggleFlash()
+        }
+    }
+
+    private fun initScanFromFileButton() {
+        layout_scan_from_file_container.setOnClickListener {
+            navigateToScanFromFileScreen()
+        }
+    }
+
+    private fun toggleFlash() {
+        camera?.apply {
+            if (cameraInfo.hasFlashUnit()) {
+                image_view_flash.isActivated = image_view_flash.isActivated.not()
+                cameraControl.enableTorch(image_view_flash.isActivated)
+            }
+        }
+    }
+
+    private fun navigateToScanFromFileScreen() {
+        ScanBarcodeFromFileActivity.start(requireActivity())
     }
 
     private fun requestPermissions() {
