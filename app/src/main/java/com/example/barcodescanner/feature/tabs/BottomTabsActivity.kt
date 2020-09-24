@@ -8,7 +8,7 @@ import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.tabs.create.CreateBarcodeFragment
 import com.example.barcodescanner.feature.tabs.history.BarcodeHistoryFragment
-import com.example.barcodescanner.feature.tabs.scan.ScanBarcodeFromCameraFragment
+import com.example.barcodescanner.feature.tabs.scan.NewScanBarcodeFromCameraFragment
 import com.example.barcodescanner.feature.tabs.settings.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_bottom_tabs.*
@@ -68,7 +68,7 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
 
     private fun showFragment(bottomItemId: Int) {
         val fragment = when (bottomItemId) {
-            R.id.item_scan -> ScanBarcodeFromCameraFragment()
+            R.id.item_scan -> NewScanBarcodeFromCameraFragment()
             R.id.item_create -> CreateBarcodeFragment()
             R.id.item_history -> BarcodeHistoryFragment()
             R.id.item_settings -> SettingsFragment()
