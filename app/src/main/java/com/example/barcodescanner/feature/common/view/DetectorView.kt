@@ -57,46 +57,17 @@ class DetectorView : View {
         distToFull = (24f * dp).roundToInt()
         val minMoveThreshold = (8f * dp).roundToInt()
         minMoveThresholdSq = minMoveThreshold * minMoveThreshold
-        cornerRadius = (8f * dp).roundToInt()
+        cornerRadius = (2f * dp).roundToInt()
         fabHeight = (92f * dp).roundToInt()
         padding = (20f * dp).roundToInt()
         isSaveEnabled = true
     }
 
-    constructor(context: Context, attrs: AttributeSet) :
-            super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) :
-            super(context, attrs, defStyleAttr)
-
-    fun setCropHandlePos(x: Int, y: Int, orientation: Int) {
-        if (orientation == currentOrientation) {
-            handlePos.set(x, y)
-        } else {
-            handlePos.set(y, x)
-        }
-        if (x > -1) {
-            handleActive = true
-        }
-    }
-
-    fun getCropHandlePos() = if (handleActive) {
-        handlePos
-    } else {
-        Point(-1, -1)
-    }
-
-    fun mark(points: List<Point>) {
-        marks = points
-        invalidate()
-        removeCallbacks(invalidateRunnable)
-        postDelayed(invalidateRunnable, 500)
-    }
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     override fun onSaveInstanceState(): Parcelable? {
-        if (!handleActive) {
-            return super.onSaveInstanceState()
-        }
         return SavedState(super.onSaveInstanceState()).apply {
             savedHandlePos.set(getCropHandlePos())
             savedOrientation = currentOrientation
@@ -104,25 +75,27 @@ class DetectorView : View {
     }
 
     override fun onRestoreInstanceState(state: Parcelable) {
-        super.onRestoreInstanceState(
-            if (state is SavedState) {
-                setCropHandlePos(
-                    state.savedHandlePos.x,
-                    state.savedHandlePos.y,
-                    state.savedOrientation
-                )
-                state.superState
-            } else {
-                state
-            }
+        if (state !is SavedState) {
+            super.onRestoreInstanceState(state)
+            return
+        }
+
+        setCropHandlePos(
+            state.savedHandlePos.x,
+            state.savedHandlePos.y,
+            state.savedOrientation
         )
+
+        super.onRestoreInstanceState(state.superState)
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         event ?: return super.onTouchEvent(event)
+
         val x = event.x.roundToInt()
         val y = event.y.roundToInt()
+
         return when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 if (true) {
@@ -180,6 +153,30 @@ class DetectorView : View {
         }
     }
 
+    fun mark(points: List<Point>) {
+        marks = points
+        invalidate()
+        removeCallbacks(invalidateRunnable)
+        postDelayed(invalidateRunnable, 500)
+    }
+
+    private fun setCropHandlePos(x: Int, y: Int, orientation: Int) {
+        if (orientation == currentOrientation) {
+            handlePos.set(x, y)
+        } else {
+            handlePos.set(y, x)
+        }
+        if (x > -1) {
+            handleActive = true
+        }
+    }
+
+    private fun getCropHandlePos() = if (handleActive) {
+        handlePos
+    } else {
+        Point(-1, -1)
+    }
+
     private fun snap(x: Int, y: Int) {
         val cx = clampX(x)
         val cy = clampY(y)
@@ -226,20 +223,18 @@ class DetectorView : View {
 
     override fun onDraw(canvas: Canvas) {
         canvas.drawColor(0, PorterDuff.Mode.CLEAR)
-        if (handleActive) {
-            drawClip(canvas)
-        }
+        drawClip(canvas)
+
 //        marks?.let {
 //            dots.draw(canvas, it)
 //        }
-        if (true) {
-            canvas.drawBitmap(
-                handleBitmap,
-                (handlePos.x - handleXRadius).toFloat(),
-                (handlePos.y - handleYRadius).toFloat(),
-                null
-            )
-        }
+
+        canvas.drawBitmap(
+            handleBitmap,
+            (handlePos.x - handleXRadius).toFloat(),
+            (handlePos.y - handleYRadius).toFloat(),
+            null
+        )
     }
 
     private fun drawClip(canvas: Canvas) {

@@ -62,6 +62,11 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        setLightStatusBar()
+    }
+
 
     private fun supportEdgeToEdge() {
         image_view_flash.applySystemWindowInsets(applyTop = true)
@@ -79,6 +84,20 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
 
         requireActivity().window.decorView.apply {
             systemUiVisibility = systemUiVisibility xor View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
+    }
+
+    private fun setLightStatusBar() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return
+        }
+
+        if (settings.isDarkTheme) {
+            return
+        }
+
+        requireActivity().window.decorView.apply {
+            systemUiVisibility = systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
     }
 
