@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.core.Camera
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.Preview
+import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -22,6 +20,7 @@ import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity
 import com.example.barcodescanner.usecase.Logger
 import kotlinx.android.synthetic.main.fragment_scan_barcode_from_camera_new.*
+import java.util.concurrent.TimeUnit
 
 class NewScanBarcodeFromCameraFragment : Fragment() {
 
@@ -83,30 +82,6 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
         }
     }
 
-    private fun startCamera() {
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
-
-        cameraProviderFuture.addListener(Runnable {
-            val cameraProvider = cameraProviderFuture.get()
-            val preview = Preview.Builder().build()
-            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
-
-            preview.setSurfaceProvider(preview_view.surfaceProvider)
-
-            try {
-                cameraProvider.unbindAll()
-                camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview)
-            } catch(error: Exception) {
-                Logger.log(error)
-                return@Runnable
-            }
-
-            if (settings.flash) {
-                toggleFlash()
-            }
-        }, ContextCompat.getMainExecutor(requireContext()))
-    }
-
 
     private fun initFlashButton() {
         layout_flash_container.setOnClickListener {
@@ -147,12 +122,61 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
     }
 
 
+    private fun startCamera() {
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+
+        cameraProviderFuture.addListener(Runnable {
+            val cameraProvider = cameraProviderFuture.get()
+            val preview = Preview.Builder().build()
+            val cameraSelector = if (settings.isBackCamera) {
+                CameraSelector.DEFAULT_BACK_CAMERA
+            } else {
+                CameraSelector.DEFAULT_FRONT_CAMERA
+            }
+
+            preview.setSurfaceProvider(preview_view.surfaceProvider)
+
+            try {
+                cameraProvider.unbindAll()
+                camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview)
+            } catch(error: Exception) {
+                Logger.log(error)
+                return@Runnable
+            }
+
+            if (settings.flash) {
+                toggleFlash()
+            }
+
+            if (settings.simpleAutoFocus) {
+                startSimpleAutoFocusMode()
+            }
+        }, ContextCompat.getMainExecutor(requireContext()))
+    }
+
     private fun toggleFlash() {
         camera?.apply {
             if (cameraInfo.hasFlashUnit()) {
                 image_view_flash.isActivated = image_view_flash.isActivated.not()
                 cameraControl.enableTorch(image_view_flash.isActivated)
             }
+        }
+    }
+
+    private fun startSimpleAutoFocusMode() {
+        val centerWidth = preview_view.width.toFloat() / 2
+        val centerHeight = preview_view.height.toFloat() / 2
+        val autoFocusPoint = SurfaceOrientedMeteringPointFactory(preview_view.width.toFloat(), preview_view.height.toFloat())
+            .createPoint(centerWidth, centerHeight)
+
+        val focusConfig = FocusMeteringAction.Builder(autoFocusPoint, FocusMeteringAction.FLAG_AF)
+            .setAutoCancelDuration(1, TimeUnit.SECONDS)
+            .build()
+
+        try {
+            camera?.cameraControl?.startFocusAndMetering(focusConfig)
+        } catch (e: Exception) {
+            Logger.log(e)
         }
     }
 
