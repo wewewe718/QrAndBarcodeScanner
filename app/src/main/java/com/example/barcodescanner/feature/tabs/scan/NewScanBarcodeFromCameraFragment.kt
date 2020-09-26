@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
@@ -13,6 +14,7 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.permissionsHelper
 import com.example.barcodescanner.di.settings
@@ -26,9 +28,12 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
     companion object {
         private val PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val PERMISSION_REQUEST_CODE = 111
+        private const val ZOOM_STEP = 5
     }
 
+
     private var camera: Camera? = null
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_scan_barcode_from_camera_new, container, false)
@@ -42,6 +47,8 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
 
         initFlashButton()
         initScanFromFileButton()
+        initZoomSeekBar()
+        initZoomButtons()
 
         if (areAllPermissionsGranted()) {
             startCamera()
@@ -55,6 +62,7 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
             startCamera()
         }
     }
+
 
     private fun supportEdgeToEdge() {
         image_view_flash.applySystemWindowInsets(applyTop = true)
@@ -99,6 +107,7 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 
+
     private fun initFlashButton() {
         layout_flash_container.setOnClickListener {
             toggleFlash()
@@ -111,6 +120,33 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
         }
     }
 
+    private fun initZoomSeekBar() {
+        camera?.cameraInfo?.zoomState?.observe(this, Observer { zoomState ->
+            seek_bar_zoom.max = (zoomState.maxZoomRatio * 100).toInt()
+            seek_bar_zoom.progress = (zoomState.linearZoom * 100).toInt()
+        })
+
+        seek_bar_zoom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onStartTrackingTouch(seekBar: SeekBar?) { }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) { }
+
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                setZoom(progress)
+            }
+        })
+    }
+
+    private fun initZoomButtons() {
+        button_decrease_zoom.setOnClickListener {
+            decreaseZoom()
+        }
+
+        button_increase_zoom.setOnClickListener {
+            increaseZoom()
+        }
+    }
+
+
     private fun toggleFlash() {
         camera?.apply {
             if (cameraInfo.hasFlashUnit()) {
@@ -120,9 +156,31 @@ class NewScanBarcodeFromCameraFragment : Fragment() {
         }
     }
 
+    private fun decreaseZoom() {
+        var newZoom = seek_bar_zoom.progress - ZOOM_STEP
+        if (newZoom < 0) {
+            newZoom = 0
+        }
+        seek_bar_zoom.progress = newZoom
+    }
+
+    private fun increaseZoom() {
+        var newZoom = seek_bar_zoom.progress + ZOOM_STEP
+        if (newZoom > seek_bar_zoom.max) {
+            newZoom = seek_bar_zoom.max
+        }
+        seek_bar_zoom.progress = newZoom
+    }
+
+    private fun setZoom(zoom: Int) {
+        camera?.cameraControl?.setLinearZoom(zoom / 100.toFloat())
+    }
+
+
     private fun navigateToScanFromFileScreen() {
         ScanBarcodeFromFileActivity.start(requireActivity())
     }
+
 
     private fun requestPermissions() {
         permissionsHelper.requestNotGrantedPermissions(requireActivity() as AppCompatActivity, PERMISSIONS, PERMISSION_REQUEST_CODE)
