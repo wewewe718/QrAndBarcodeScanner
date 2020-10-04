@@ -12,6 +12,10 @@ QR & Barcode Scanner is an ad-free, open-source scanner app. It uses the [ZXing]
 
 <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/screenshots/en/1_scan.png" width="180" height="320"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/screenshots/en/2_scan_from_file.png" width="180" height="320"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/screenshots/en/3_result.png" width="180" height="320"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/screenshots/en/4_result_dark_theme.png" width="180" height="320"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/screenshots/en/5_create.png" width="180" height="320"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/screenshots/en/6_history.png" width="180" height="320"/> <img src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/screenshots/en/7_settings.png" width="180" height="320"/>
 
+## Contributing
+
+You can contribute by adding a translation on [Transifex][transifex], reporting a bug or asking for a feature.
+
 ## Supported Barcode Formats
 
 ### Read
@@ -52,6 +56,7 @@ The app can create the following barcode formats:
 * [UPC-E][upc_e]
 
 [zxing]: https://github.com/zxing/zxing
+[transifex]: https://www.transifex.com/a-302/qr-barcode-scanner/
 [aztec]: https://en.wikipedia.org/wiki/Aztec_Code
 [codabar]: https://en.wikipedia.org/wiki/Codabar
 [code_39]: https://en.wikipedia.org/wiki/Code_39
