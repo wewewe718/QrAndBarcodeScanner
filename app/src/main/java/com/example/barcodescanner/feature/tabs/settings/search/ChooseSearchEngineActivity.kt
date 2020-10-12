@@ -23,7 +23,7 @@ class ChooseSearchEngineActivity : BaseActivity() {
     }
 
     private val buttons by unsafeLazy {
-        listOf(button_none, button_ask_every_time, button_google, button_duck_duck_go, button_yandex, button_bing, button_yahoo)
+        listOf(button_none, button_ask_every_time, button_google, button_duck_duck_go, button_yandex, button_bing, button_yahoo, button_qwant)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +52,7 @@ class ChooseSearchEngineActivity : BaseActivity() {
             SearchEngine.YANDEX -> button_yandex.isChecked = true
             SearchEngine.BING -> button_bing.isChecked = true
             SearchEngine.YAHOO -> button_yahoo.isChecked = true
+            SearchEngine.QWANT -> button_qwant.isChecked = true
         }
     }
 
@@ -63,6 +64,7 @@ class ChooseSearchEngineActivity : BaseActivity() {
         button_yandex.setCheckedChangedListener(SearchEngine.YANDEX)
         button_bing.setCheckedChangedListener(SearchEngine.BING)
         button_yahoo.setCheckedChangedListener(SearchEngine.YAHOO)
+        button_qwant.setCheckedChangedListener(SearchEngine.QWANT)
     }
 
     private fun SettingsRadioButton.setCheckedChangedListener(searchEngine: SearchEngine) {

@@ -8,4 +8,5 @@ enum class SearchEngine(val templateUrl: String) {
     YANDEX("https://www.yandex.ru/search/?text="),
     BING("https://www.bing.com/search?q="),
     YAHOO("https://search.yahoo.com/search?p="),
+    QWANT("https://www.qwant.com/?q="),
 }

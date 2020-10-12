@@ -15,7 +15,8 @@ class ChooseSearchEngineDialogFragment : DialogFragment() {
             SearchEngine.DUCK_DUCK_GO,
             SearchEngine.YANDEX,
             SearchEngine.BING,
-            SearchEngine.YAHOO
+            SearchEngine.YAHOO,
+            SearchEngine.QWANT
         )
     }
 
@@ -31,7 +32,8 @@ class ChooseSearchEngineDialogFragment : DialogFragment() {
             getString(R.string.activity_choose_search_engine_duck_duck_go),
             getString(R.string.activity_choose_search_engine_yandex),
             getString(R.string.activity_choose_search_engine_bing),
-            getString(R.string.activity_choose_search_engine_yahoo)
+            getString(R.string.activity_choose_search_engine_yahoo),
+            getString(R.string.activity_choose_search_engine_qwant)
         )
 
         val dialog = AlertDialog.Builder(requireActivity(), R.style.DialogTheme)

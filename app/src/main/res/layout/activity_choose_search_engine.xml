@@ -88,6 +88,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:text="@string/activity_choose_search_engine_yahoo"
+                />
+            <com.example.barcodescanner.feature.common.view.SettingsRadioButton
+                android:id="@+id/button_qwant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:text="@string/activity_choose_search_engine_qwant"
                 app:isDelimiterVisible="false"
                 />
         </LinearLayout>

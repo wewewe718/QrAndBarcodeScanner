@@ -62,6 +62,7 @@
     <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
     <string name="activity_choose_search_engine_google">Google</string>
     <string name="activity_choose_search_engine_none">無</string>
+    <string name="activity_choose_search_engine_qwant">Qwant</string>
     <string name="activity_choose_search_engine_title">搜尋引擎</string>
     <string name="activity_choose_search_engine_yahoo">Yahoo</string>
     <string name="activity_choose_search_engine_yandex">Yandex</string>
