@@ -11,12 +11,12 @@ class ChooseSearchEngineDialogFragment : DialogFragment() {
 
     companion object {
         private val ITEMS = arrayOf(
-            SearchEngine.GOOGLE,
-            SearchEngine.DUCK_DUCK_GO,
-            SearchEngine.YANDEX,
             SearchEngine.BING,
+            SearchEngine.DUCK_DUCK_GO,
+            SearchEngine.GOOGLE,
+            SearchEngine.QWANT,
             SearchEngine.YAHOO,
-            SearchEngine.QWANT
+            SearchEngine.YANDEX
         )
     }
 
@@ -28,12 +28,12 @@ class ChooseSearchEngineDialogFragment : DialogFragment() {
         val listener = requireActivity() as? Listener
 
         val items = arrayOf(
-            getString(R.string.activity_choose_search_engine_google),
-            getString(R.string.activity_choose_search_engine_duck_duck_go),
-            getString(R.string.activity_choose_search_engine_yandex),
             getString(R.string.activity_choose_search_engine_bing),
+            getString(R.string.activity_choose_search_engine_duck_duck_go),
+            getString(R.string.activity_choose_search_engine_google),
+            getString(R.string.activity_choose_search_engine_qwant),
             getString(R.string.activity_choose_search_engine_yahoo),
-            getString(R.string.activity_choose_search_engine_qwant)
+            getString(R.string.activity_choose_search_engine_yandex)
         )
 
         val dialog = AlertDialog.Builder(requireActivity(), R.style.DialogTheme)
