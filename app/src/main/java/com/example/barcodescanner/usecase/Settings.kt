@@ -1,6 +1,7 @@
 package com.example.barcodescanner.usecase
 
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
@@ -9,7 +10,7 @@ import com.example.barcodescanner.extension.unsafeLazy
 import com.example.barcodescanner.model.SearchEngine
 import com.google.zxing.BarcodeFormat
 
-class Settings(context: Context) {
+class Settings(private val context: Context) {
 
     companion object {
         const val THEME_SYSTEM = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
@@ -53,7 +54,7 @@ class Settings(context: Context) {
         }
 
     val isDarkTheme: Boolean
-        get() = theme == AppCompatDelegate.MODE_NIGHT_YES
+        get() = theme == THEME_DARK || (theme == THEME_SYSTEM && isSystemDarkModeEnabled())
 
     var areBarcodeColorsInversed: Boolean
         get() = get(Key.INVERSE_BARCODE_COLORS, false)
@@ -180,5 +181,10 @@ class Settings(context: Context) {
                 }
             }
         }
+    }
+
+    private fun isSystemDarkModeEnabled(): Boolean {
+        val mode = context.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)
+        return mode == Configuration.UI_MODE_NIGHT_YES
     }
 }
