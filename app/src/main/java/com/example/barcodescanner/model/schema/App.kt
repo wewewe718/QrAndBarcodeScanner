@@ -1,6 +1,8 @@
 package com.example.barcodescanner.model.schema
 
+import com.example.barcodescanner.extension.removePrefixIgnoreCase
 import com.example.barcodescanner.extension.startsWithAnyIgnoreCase
+import com.example.barcodescanner.extension.unsafeLazy
 
 class App(val url: String) : Schema {
 
@@ -22,4 +24,8 @@ class App(val url: String) : Schema {
     override val schema = BarcodeSchema.APP
     override fun toFormattedText(): String = url
     override fun toBarcodeText(): String = url
+
+    val appPackage by unsafeLazy {
+        url.removePrefixIgnoreCase(PREFIXES[0])
+    }
 }

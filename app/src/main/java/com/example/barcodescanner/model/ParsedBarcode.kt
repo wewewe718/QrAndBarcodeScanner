@@ -50,7 +50,6 @@ class ParsedBarcode(barcode: Barcode) {
 
     var bookmarkTitle: String? = null
     var url: String? = null
-    var googlePlayUrl: String? = null
     var youtubeUrl: String? = null
     var bitcoinUri: String? = null
     var otpUrl: String? = null
@@ -64,6 +63,9 @@ class ParsedBarcode(barcode: Barcode) {
     var eventSummary: String? = null
     var eventStartDate: Long? = null
     var eventEndDate: Long? = null
+
+    var appMarketUrl: String? = null
+    var appPackage: String? = null
 
     val isInDb: Boolean
         get() = id != 0L
@@ -80,7 +82,7 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.EMAIL -> parseEmail()
             BarcodeSchema.GEO,
             BarcodeSchema.GOOGLE_MAPS -> parseGeoInfo()
-            BarcodeSchema.APP -> parseGooglePlay()
+            BarcodeSchema.APP -> parseApp()
             BarcodeSchema.VEVENT -> parseCalendar()
             BarcodeSchema.MMS,
             BarcodeSchema.SMS -> parseSms()
@@ -112,8 +114,9 @@ class ParsedBarcode(barcode: Barcode) {
         geoUri = text
     }
 
-    private fun parseGooglePlay() {
-        googlePlayUrl = text
+    private fun parseApp() {
+        appMarketUrl = text
+        appPackage = App.parse(text)?.appPackage
     }
 
     private fun parseCalendar() {

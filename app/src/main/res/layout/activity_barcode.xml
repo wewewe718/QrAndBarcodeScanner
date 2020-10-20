@@ -290,12 +290,22 @@
                 tools:visibility="visible"
                 />
             <com.example.barcodescanner.feature.common.view.IconButton
-                android:id="@+id/button_open_in_google_play"
+                android:id="@+id/button_open_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_open_app"
+                app:iconBackground="@color/orange"
+                app:text="@string/activity_barcode_open_app"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+            <com.example.barcodescanner.feature.common.view.IconButton
+                android:id="@+id/button_open_in_app_market"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_app"
                 app:iconBackground="@color/orange"
-                app:text="@string/activity_barcode_open_in_google_play"
+                app:text="@string/activity_barcode_open_in_app_market"
                 android:visibility="gone"
                 tools:visibility="visible"
                 />

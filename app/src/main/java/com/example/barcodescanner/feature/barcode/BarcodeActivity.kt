@@ -121,7 +121,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         }
 
         when (barcode.schema) {
-            BarcodeSchema.APP -> openInGooglePlay()
+            BarcodeSchema.APP -> openInAppMarket()
             BarcodeSchema.BOOKMARK -> saveBookmark()
             BarcodeSchema.CRYPTOCURRENCY -> openBitcoinUrl()
             BarcodeSchema.EMAIL -> sendEmail(barcode.email)
@@ -181,7 +181,8 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_open_wifi_settings.setOnClickListener { openWifiSettings() }
         button_copy_network_name.setOnClickListener { copyNetworkNameToClipboard() }
         button_copy_network_password.setOnClickListener { copyNetworkPasswordToClipboard() }
-        button_open_in_google_play.setOnClickListener { openInGooglePlay() }
+        button_open_app.setOnClickListener { openApp() }
+        button_open_in_app_market.setOnClickListener { openInAppMarket() }
         button_open_in_youtube.setOnClickListener { openInYoutube() }
         button_show_otp.setOnClickListener { showOtp() }
         button_open_otp.setOnClickListener { openOtpInOtherApp() }
@@ -343,8 +344,15 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         showToast(R.string.activity_barcode_copied)
     }
 
-    private fun openInGooglePlay() {
-        startActivityIfExists(Intent.ACTION_VIEW, barcode.googlePlayUrl.orEmpty())
+    private fun openApp() {
+        val intent = packageManager?.getLaunchIntentForPackage(barcode.appPackage.orEmpty())
+        if (intent != null) {
+            startActivityIfExists(intent)
+        }
+    }
+
+    private fun openInAppMarket() {
+        startActivityIfExists(Intent.ACTION_VIEW, barcode.appMarketUrl.orEmpty())
     }
 
     private fun openInYoutube() {
@@ -629,7 +637,8 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_open_wifi_settings.isVisible = barcode.schema == BarcodeSchema.WIFI
         button_copy_network_name.isVisible = barcode.networkName.isNullOrEmpty().not()
         button_copy_network_password.isVisible = barcode.networkPassword.isNullOrEmpty().not()
-        button_open_in_google_play.isVisible = barcode.googlePlayUrl.isNullOrEmpty().not()
+        button_open_app.isVisible = barcode.appPackage.isNullOrEmpty().not() && isAppInstalled(barcode.appPackage)
+        button_open_in_app_market.isVisible = barcode.appMarketUrl.isNullOrEmpty().not()
         button_open_in_youtube.isVisible = barcode.youtubeUrl.isNullOrEmpty().not()
         button_show_otp.isVisible = barcode.otpUrl.isNullOrEmpty().not()
         button_open_otp.isVisible = barcode.otpUrl.isNullOrEmpty().not()
@@ -678,11 +687,19 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun startActivityIfExists(intent: Intent) {
+        intent.apply {
+            flags = flags or Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
         } else {
             showToast(R.string.activity_barcode_no_app)
         }
+    }
+
+    private fun isAppInstalled(appPackage: String?): Boolean {
+        return packageManager?.getLaunchIntentForPackage(appPackage.orEmpty()) != null
     }
 
     private fun copyToClipboard(text: String) {

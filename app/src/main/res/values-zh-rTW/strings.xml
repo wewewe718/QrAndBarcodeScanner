@@ -25,7 +25,7 @@
     <string name="activity_barcode_image_increase_brightness">增加亮度</string>
     <string name="activity_barcode_no_app">找不至與此操作相關的應用程式</string>
     <string name="activity_barcode_open_bitcoin_url">在其他應用程式中開啟</string>
-    <string name="activity_barcode_open_in_google_play">於 Google Play 中開啟</string>
+    <string name="activity_barcode_open_in_app_market">於 Google Play 中開啟</string>
     <string name="activity_barcode_open_in_youtube">在 YouTube 中開啟</string>
     <string name="activity_barcode_open_link">開啟連結</string>
     <string name="activity_barcode_open_otp">在其他應用程式中開啟</string>

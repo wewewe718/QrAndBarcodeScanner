@@ -278,7 +278,8 @@
     <string name="activity_barcode_open_wifi_settings">Open Wi-Fi settings</string>
     <string name="activity_barcode_copy_network_name">Copy network name</string>
     <string name="activity_barcode_copy_network_password">Copy network password</string>
-    <string name="activity_barcode_open_in_google_play">Open in market</string>
+    <string name="activity_barcode_open_app">Open app</string>
+    <string name="activity_barcode_open_in_app_market">Open in market</string>
     <string name="activity_barcode_open_in_youtube">Open in Youtube</string>
     <string name="activity_barcode_save_bookmark">Save to bookmarks</string>
     <string name="activity_barcode_open_link">Open link</string>

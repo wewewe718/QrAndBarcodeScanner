@@ -257,7 +257,8 @@
     <string name="activity_barcode_open_wifi_settings">Открыть настройки Wi-Fi</string>
     <string name="activity_barcode_copy_network_name">Скопировать имя сети</string>
     <string name="activity_barcode_copy_network_password">Скопировать пароль</string>
-    <string name="activity_barcode_open_in_google_play">Открыть в маркете</string>
+    <string name="activity_barcode_open_app">Открыть приложение</string>
+    <string name="activity_barcode_open_in_app_market">Открыть в маркете</string>
     <string name="activity_barcode_open_in_youtube">Открыть в Youtube</string>
     <string name="activity_barcode_save_bookmark">Сохранить в закладки</string>
     <string name="activity_barcode_open_link">Открыть ссылку</string>

@@ -256,7 +256,7 @@
     <string name="activity_barcode_open_link">Link öffnen</string>
     <string name="activity_barcode_save_bookmark">In Lesezeichen speichern</string>
     <string name="activity_barcode_open_in_youtube">In YouTube öffnen</string>
-    <string name="activity_barcode_open_in_google_play">In App-Store öffnen</string>
+    <string name="activity_barcode_open_in_app_market">In App-Store öffnen</string>
     <string name="activity_barcode_copy_network_password">Passwort kopieren</string>
     <string name="activity_barcode_copy_network_name">Name kopieren</string>
     <string name="activity_barcode_open_wifi_settings">WLAN-Einstellungen öffnen</string>
