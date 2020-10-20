@@ -11,8 +11,7 @@ import com.example.barcodescanner.extension.wifiManager
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
 
-object WifiConnector {
-    private val escapedRegex = """\\([\\;,":])""".toRegex()
+object WifiConnector {    
     private val hexRegex = """^[0-9a-f]+$""".toRegex(RegexOption.IGNORE_CASE)
 
     fun connect(
@@ -31,12 +30,12 @@ object WifiConnector {
                 try {
                     tryToConnect(
                             context,
-                            authType.unescape(),
-                            name.unescape(),
-                            password.unescape(),
+                            authType,
+                            name,
+                            password,
                             isHidden,
-                            anonymousIdentity.unescape(),
-                            identity.unescape(),
+                            anonymousIdentity,
+                            identity,
                             eapMethod.toEapMethod(),
                             phase2Method.toPhase2Method()
                     )
@@ -325,13 +324,7 @@ object WifiConnector {
         }
     }
 
-
-    private fun String.unescape(): String {
-        return replace(escapedRegex) { escaped ->
-            escaped.groupValues[1]
-        }
-    }
-
+    
     private fun String.quote(): String {
         return if (startsWith("\"") && endsWith("\"")) this else "\"$this\""
     }

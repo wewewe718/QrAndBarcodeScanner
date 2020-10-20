@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.5
+* Add Chinese (Taiwan) translation
+* Add a Quick Settings tile for the app
+* Add the option to start an app when scanning an app link QR code
+* Fix doubling of slash in Wi-Fi passwords
+* Fix barcode background color in dark theme
+* Bug fix: the system orientation lock was not respected by the app
+
 ## 1.4
 * Add Brazilian Portuguese translation
 * Add the option to choose what search engine to use for searching codes on the web

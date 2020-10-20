@@ -43,6 +43,9 @@ val AppCompatActivity.contactHelper
 val AppCompatActivity.permissionsHelper
     get() = PermissionsHelper
 
+val AppCompatActivity.rotationHelper
+    get() = RotationHelper
+
 
 val Fragment.scannerCameraHelper
     get() = ScannerCameraHelper

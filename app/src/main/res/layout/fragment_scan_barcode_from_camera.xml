@@ -20,7 +20,7 @@
         app:frameThickness="2.5dp"
         app:frameAspectRatioWidth="1"
         app:frameAspectRatioHeight="1"
-        app:frameSize="0.53"
+        app:frameSize="0.6"
         app:maskColor="@color/black_transparent3"
         />
 

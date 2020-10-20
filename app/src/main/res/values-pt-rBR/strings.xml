@@ -248,11 +248,12 @@
     <string name="activity_choose_search_engine_title">Sites de Busca</string>
     <string name="activity_choose_search_engine_none">Nenhum</string>
     <string name="activity_choose_search_engine_ask_every_time">Pergunte todas as vezes</string>
-    <string name="activity_choose_search_engine_google">Google</string>
-    <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
-    <string name="activity_choose_search_engine_yandex">Yandex</string>
     <string name="activity_choose_search_engine_bing">Bing</string>
+    <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
+    <string name="activity_choose_search_engine_google">Google</string>
+    <string name="activity_choose_search_engine_qwant">Qwant</string>
     <string name="activity_choose_search_engine_yahoo">Yahoo</string>
+    <string name="activity_choose_search_engine_yandex">Yandex</string>
 
     <!--All permissions activity-->
     <string name="activity_all_permissions_title">Permissões</string>
@@ -277,7 +278,7 @@
     <string name="activity_barcode_open_wifi_settings">Abrir as configurações do Wi-Fi</string>
     <string name="activity_barcode_copy_network_name">Copiar o nome da rede</string>
     <string name="activity_barcode_copy_network_password">Copiar a senha da rede</string>
-    <string name="activity_barcode_open_in_google_play">Abrir no Google Play</string>
+    <string name="activity_barcode_open_in_app_market">Abrir no Google Play</string>
     <string name="activity_barcode_open_in_youtube">Abrir no Youtube</string>
     <string name="activity_barcode_save_bookmark">Salvar nos favoritos</string>
     <string name="activity_barcode_open_link">Abrir o link</string>

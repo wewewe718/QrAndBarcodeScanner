@@ -45,13 +45,13 @@
                 app:text="@string/activity_choose_search_engine_ask_every_time"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsRadioButton
-                android:id="@+id/button_google"
+                android:id="@+id/button_bing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/button_back_camera"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:text="@string/activity_choose_search_engine_google"
+                app:text="@string/activity_choose_search_engine_bing"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsRadioButton
                 android:id="@+id/button_duck_duck_go"
@@ -63,22 +63,22 @@
                 app:text="@string/activity_choose_search_engine_duck_duck_go"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsRadioButton
-                android:id="@+id/button_yandex"
+                android:id="@+id/button_google"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/button_back_camera"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:text="@string/activity_choose_search_engine_yandex"
+                app:text="@string/activity_choose_search_engine_google"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsRadioButton
-                android:id="@+id/button_bing"
+                android:id="@+id/button_qwant"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/button_back_camera"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:text="@string/activity_choose_search_engine_bing"
+                app:text="@string/activity_choose_search_engine_qwant"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsRadioButton
                 android:id="@+id/button_yahoo"
@@ -88,6 +88,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:text="@string/activity_choose_search_engine_yahoo"
+                />
+            <com.example.barcodescanner.feature.common.view.SettingsRadioButton
+                android:id="@+id/button_yandex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:text="@string/activity_choose_search_engine_yandex"
                 app:isDelimiterVisible="false"
                 />
         </LinearLayout>

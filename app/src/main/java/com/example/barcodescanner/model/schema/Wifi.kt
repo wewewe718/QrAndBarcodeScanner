@@ -1,9 +1,6 @@
 package com.example.barcodescanner.model.schema
 
-import com.example.barcodescanner.extension.appendIfNotNullOrBlank
-import com.example.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
-import com.example.barcodescanner.extension.removePrefixIgnoreCase
-import com.example.barcodescanner.extension.startsWithIgnoreCase
+import com.example.barcodescanner.extension.*
 
 class Wifi(
     val encryption: String? = null,
@@ -87,12 +84,12 @@ class Wifi(
                 }
 
             return Wifi(
-                    encryption,
-                    name,
-                    password,
+                    encryption?.unescape(),
+                    name?.unescape(),
+                    password?.unescape(),
                     isHidden,
-                    anonymousIdentity,
-                    identity,
+                    anonymousIdentity?.unescape(),
+                    identity?.unescape(),
                     eapMethod,
                     phase2Method
             )

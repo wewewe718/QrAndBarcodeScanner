@@ -5,6 +5,14 @@ import dev.turingcomplete.kotlinonetimepassword.HmacAlgorithm
 import org.apache.commons.codec.binary.Base32
 import java.util.*
 
+private val escapedRegex = """\\([\\;,":])""".toRegex()
+
+fun String.unescape(): String {
+    return replace(escapedRegex) { escaped ->
+        escaped.groupValues[1]
+    }
+}
+
 fun String?.toHmacAlgorithm(): HmacAlgorithm {
     return when (this) {
         "SHA1" -> HmacAlgorithm.SHA1
