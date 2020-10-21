@@ -23,7 +23,7 @@
             android:layout_width="@dimen/icon_button_icon_size"
             android:layout_height="@dimen/icon_button_icon_size"
             android:layout_gravity="center_vertical"
-            android:tint="@color/white"
+            app:tint="@color/white"
             tools:src="@drawable/ic_copy"
             />
     </FrameLayout>
@@ -50,6 +50,7 @@
         android:maxLines="1"
         tools:text="Hello World!"
         android:includeFontPadding="false"
+        android:ellipsize="end"
         style="@style/DefaultTextViewStyle"
         />
     <TextView

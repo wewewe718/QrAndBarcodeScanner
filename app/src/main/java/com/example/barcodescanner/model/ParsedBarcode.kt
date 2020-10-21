@@ -4,7 +4,7 @@ import com.example.barcodescanner.model.schema.*
 import com.google.zxing.BarcodeFormat
 
 class ParsedBarcode(barcode: Barcode) {
-    val id = barcode.id
+    var id = barcode.id
     val text = barcode.text
     val formattedText = barcode.formattedText
     val format = barcode.format

@@ -23,12 +23,22 @@
         android:id="@+id/item_add_to_favorites"
         android:title="@string/activity_barcode_add_to_favorites"
         android:icon="@drawable/ic_favorite_unchecked"
+        android:visible="false"
         app:showAsAction="ifRoom"
         />
     <item
         android:id="@+id/item_show_barcode_image"
         android:title="@string/activity_barcode_show_barcode_image"
         android:icon="@drawable/ic_qr_code"
+        android:visible="false"
+        app:iconTint="@color/toolbar_menu_color"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/item_save"
+        android:title="@string/activity_barcode_delete"
+        android:icon="@drawable/ic_save"
+        android:visible="false"
         app:iconTint="@color/toolbar_menu_color"
         app:showAsAction="ifRoom"
         />
@@ -36,6 +46,7 @@
         android:id="@+id/item_delete"
         android:title="@string/activity_barcode_delete"
         android:icon="@drawable/ic_delete"
+        android:visible="false"
         app:iconTint="@color/toolbar_menu_color"
         app:showAsAction="ifRoom"
         />

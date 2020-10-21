@@ -162,6 +162,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
                 }
                 R.id.item_add_to_favorites -> toggleIsFavorite()
                 R.id.item_show_barcode_image -> navigateToBarcodeImageActivity()
+                R.id.item_save -> saveBarcode()
                 R.id.item_delete -> showDeleteBarcodeConfirmationDialog()
             }
             return@setOnMenuItemClickListener true
@@ -224,6 +225,41 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
                     showBarcodeIsFavorite(newBarcode.isFavorite)
                 },
                 {}
+            )
+            .addTo(disposable)
+    }
+
+    private fun saveBarcode() {
+        toolbar?.menu?.findItem(R.id.item_save)?.isVisible = false
+
+        barcodeDatabase.save(originalBarcode)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { id ->
+                    barcode.id = id
+                    toolbar?.menu?.findItem(R.id.item_delete)?.isVisible = true
+                },
+                { error ->
+                    toolbar?.menu?.findItem(R.id.item_save)?.isVisible = true
+                    showError(error)
+                }
+            )
+            .addTo(disposable)
+    }
+
+    private fun deleteBarcode() {
+        showLoading(true)
+
+        barcodeDatabase.delete(barcode.id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { finish() },
+                { error ->
+                    showLoading(false)
+                    showError(error)
+                }
             )
             .addTo(disposable)
     }
@@ -479,22 +515,6 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         SaveBarcodeAsImageActivity.start(this, originalBarcode)
     }
 
-    private fun deleteBarcode() {
-        showLoading(true)
-
-        barcodeDatabase.delete(barcode.id)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { finish() },
-                { error ->
-                    showLoading(false)
-                    showError(error)
-                }
-            )
-            .addTo(disposable)
-    }
-
 
     private fun showBarcode() {
         showBarcodeMenuIfNeeded()
@@ -512,6 +532,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
             findItem(R.id.item_increase_brightness).isVisible = isCreated
             findItem(R.id.item_add_to_favorites)?.isVisible = barcode.isInDb
             findItem(R.id.item_show_barcode_image)?.isVisible = isCreated.not()
+            findItem(R.id.item_save)?.isVisible = barcode.isInDb.not()
             findItem(R.id.item_delete)?.isVisible = barcode.isInDb
         }
     }
