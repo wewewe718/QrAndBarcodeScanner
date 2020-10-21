@@ -58,13 +58,16 @@ interface BarcodeDatabase {
     }
 
     @Query("SELECT * FROM codes ORDER BY date DESC")
-
     fun getAll(): DataSource.Factory<Int, Barcode>
+
     @Query("SELECT * FROM codes WHERE isFavorite = 1 ORDER BY date DESC")
     fun getFavorites(): DataSource.Factory<Int, Barcode>
 
     @Query("SELECT date, format, text FROM codes ORDER BY date DESC")
     fun getAllForExport(): Single<List<ExportBarcode>>
+
+    @Query("SELECT * FROM codes WHERE format = :format AND text = :text LIMIT 1")
+    fun find(format: String, text: String): Single<List<Barcode>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun save(barcode: Barcode): Single<Long>
@@ -74,4 +77,23 @@ interface BarcodeDatabase {
 
     @Query("DELETE FROM codes")
     fun deleteAll(): Completable
+}
+
+fun BarcodeDatabase.save(barcode: Barcode, doNotSaveDuplicates: Boolean): Single<Long> {
+    return if (doNotSaveDuplicates) {
+        saveIfNotPresent(barcode)
+    } else {
+        save(barcode)
+    }
+}
+
+fun BarcodeDatabase.saveIfNotPresent(barcode: Barcode): Single<Long> {
+    return find(barcode.format.name, barcode.text)
+        .flatMap { found ->
+            if (found.isEmpty()) {
+                save(barcode)
+            } else {
+                Single.just(found[0].id)
+            }
+        }
 }

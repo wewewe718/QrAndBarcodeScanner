@@ -71,6 +71,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
         button_confirm_scans_manually.setCheckedChangedListener { settings.confirmScansManually = it }
         button_save_scanned_barcodes.setCheckedChangedListener { settings.saveScannedBarcodesToHistory = it }
         button_save_created_barcodes.setCheckedChangedListener { settings.saveCreatedBarcodesToHistory = it }
+        button_do_not_save_duplicates.setCheckedChangedListener { settings.doNotSaveDuplicates = it }
         button_enable_error_reports.setCheckedChangedListener { settings.areErrorReportsEnabled = it }
     }
 
@@ -115,6 +116,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
             button_confirm_scans_manually.isChecked = confirmScansManually
             button_save_scanned_barcodes.isChecked = saveScannedBarcodesToHistory
             button_save_created_barcodes.isChecked = saveCreatedBarcodesToHistory
+            button_do_not_save_duplicates.isChecked = doNotSaveDuplicates
             button_enable_error_reports.isChecked = areErrorReportsEnabled
         }
     }

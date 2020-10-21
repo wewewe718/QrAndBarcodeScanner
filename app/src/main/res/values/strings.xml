@@ -217,6 +217,8 @@
     <string name="fragment_settings_history_settings">History</string>
     <string name="fragment_settings_save_scanned_barcodes_to_history">Save scanned barcodes to history</string>
     <string name="fragment_settings_save_created_barcodes_to_history">Save created barcodes to history</string>
+    <string name="fragment_settings_do_not_save_duplicates">Do not save duplicates</string>
+    <string name="fragment_settings_do_not_save_duplicates_hint">Avoid duplicates in history</string>
     <string name="fragment_settings_clear_history">Clear history</string>
     <string name="fragment_settings_advanced_settings">Advanced</string>
     <string name="fragment_settings_choose_search_engines">Search Engines</string>

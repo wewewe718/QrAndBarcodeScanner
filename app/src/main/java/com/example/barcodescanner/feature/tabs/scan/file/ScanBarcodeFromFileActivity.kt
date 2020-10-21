@@ -18,6 +18,7 @@ import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
 import com.example.barcodescanner.model.Barcode
+import com.example.barcodescanner.usecase.save
 import com.google.zxing.Result
 import com.isseiaoki.simplecropview.CropImageView
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -225,7 +226,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
 
         showLoading(true)
 
-        barcodeDatabase.save(barcode)
+        barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

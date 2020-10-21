@@ -29,6 +29,7 @@ import com.example.barcodescanner.model.SearchEngine
 import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.example.barcodescanner.model.schema.OtpAuth
 import com.example.barcodescanner.usecase.Logger
+import com.example.barcodescanner.usecase.save
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -232,7 +233,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private fun saveBarcode() {
         toolbar?.menu?.findItem(R.id.item_save)?.isVisible = false
 
-        barcodeDatabase.save(originalBarcode)
+        barcodeDatabase.save(originalBarcode, settings.doNotSaveDuplicates)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

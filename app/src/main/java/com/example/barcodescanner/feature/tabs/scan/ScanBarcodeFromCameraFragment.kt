@@ -21,6 +21,7 @@ import com.example.barcodescanner.feature.common.dialog.ConfirmBarcodeDialogFrag
 import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.usecase.SupportedBarcodeFormats
+import com.example.barcodescanner.usecase.save
 import com.google.zxing.Result
 import com.google.zxing.ResultMetadataType
 import io.reactivex.Completable
@@ -268,7 +269,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun saveScannedBarcode(barcode: Barcode) {
-        barcodeDatabase.save(barcode)
+        barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

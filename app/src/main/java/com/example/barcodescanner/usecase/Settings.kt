@@ -38,6 +38,7 @@ class Settings(private val context: Context) {
         IS_BACK_CAMERA,
         SAVE_SCANNED_BARCODES_TO_HISTORY,
         SAVE_CREATED_BARCODES_TO_HISTORY,
+        DO_NOT_SAVE_DUPLICATES,
         SEARCH_ENGINE,
         ERROR_REPORTS,
     }
@@ -111,6 +112,10 @@ class Settings(private val context: Context) {
     var saveCreatedBarcodesToHistory: Boolean
         get() = get(Key.SAVE_CREATED_BARCODES_TO_HISTORY, true)
         set(value) = set(Key.SAVE_CREATED_BARCODES_TO_HISTORY, value)
+
+    var doNotSaveDuplicates: Boolean
+        get() = get(Key.DO_NOT_SAVE_DUPLICATES, false)
+        set(value) = set(Key.DO_NOT_SAVE_DUPLICATES, value)
 
     var searchEngine: SearchEngine
         get() = get(Key.SEARCH_ENGINE, SearchEngine.NONE)
