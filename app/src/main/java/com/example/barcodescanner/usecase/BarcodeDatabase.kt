@@ -3,6 +3,8 @@ package com.example.barcodescanner.usecase
 import android.content.Context
 import androidx.paging.DataSource
 import androidx.room.*
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ExportBarcode
 import com.example.barcodescanner.model.schema.BarcodeSchema
@@ -35,7 +37,7 @@ class BarcodeDatabaseTypeConverter {
 }
 
 
-@Database(entities = [Barcode::class], version = 1)
+@Database(entities = [Barcode::class], version = 2)
 abstract class BarcodeDatabaseFactory : RoomDatabase() {
     abstract fun getBarcodeDatabase(): BarcodeDatabase
 }
@@ -50,6 +52,11 @@ interface BarcodeDatabase {
         fun getInstance(context: Context): BarcodeDatabase {
             return INSTANCE ?: Room
                 .databaseBuilder(context.applicationContext, BarcodeDatabaseFactory::class.java, "db")
+                .addMigrations(object : Migration(1, 2) {
+                    override fun migrate(database: SupportSQLiteDatabase) {
+                        database.execSQL("ALTER TABLE codes ADD COLUMN name TEXT")
+                    }
+                })
                 .build()
                 .getBarcodeDatabase().apply {
                     INSTANCE = this

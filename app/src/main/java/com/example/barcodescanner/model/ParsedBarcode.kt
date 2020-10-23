@@ -5,6 +5,7 @@ import com.google.zxing.BarcodeFormat
 
 class ParsedBarcode(barcode: Barcode) {
     var id = barcode.id
+    val name = barcode.name
     val text = barcode.text
     val formattedText = barcode.formattedText
     val format = barcode.format

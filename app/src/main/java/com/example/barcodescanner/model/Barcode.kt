@@ -12,6 +12,7 @@ import java.io.Serializable
 @TypeConverters(BarcodeDatabaseTypeConverter::class)
 data class Barcode(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    var name: String? = null,
     val text: String,
     val formattedText: String,
     val format: BarcodeFormat,

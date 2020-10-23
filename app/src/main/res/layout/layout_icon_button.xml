@@ -24,7 +24,7 @@
             android:layout_width="@dimen/icon_button_icon_size"
             android:layout_height="@dimen/icon_button_icon_size"
             android:layout_gravity="center_vertical"
-            android:tint="@color/white"
+            app:tint="@color/white"
             tools:src="@drawable/ic_copy"
             />
     </FrameLayout>

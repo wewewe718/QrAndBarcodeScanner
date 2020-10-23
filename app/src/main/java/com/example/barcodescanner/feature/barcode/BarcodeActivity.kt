@@ -23,6 +23,7 @@ import com.example.barcodescanner.feature.barcode.save.SaveBarcodeAsImageActivit
 import com.example.barcodescanner.feature.barcode.save.SaveBarcodeAsTextActivity
 import com.example.barcodescanner.feature.common.dialog.ChooseSearchEngineDialogFragment
 import com.example.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
+import com.example.barcodescanner.feature.common.dialog.EditBarcodeNameDialogFragment
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.model.ParsedBarcode
 import com.example.barcodescanner.model.SearchEngine
@@ -39,7 +40,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listener, ChooseSearchEngineDialogFragment.Listener {
+class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listener, ChooseSearchEngineDialogFragment.Listener, EditBarcodeNameDialogFragment.Listener {
 
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"
@@ -78,13 +79,17 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_barcode)
+
         supportEdgeToEdge()
         saveOriginalBrightness()
         applySettings()
+
         handleToolbarBackPressed()
         handleToolbarMenuClicked()
         handleButtonsClicked()
+
         showBarcode()
         showOrHideButtons()
         showButtonText()
@@ -92,6 +97,10 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     override fun onDeleteConfirmed() {
         deleteBarcode()
+    }
+
+    override fun onNameConfirmed(name: String) {
+        updateBarcodeName(name)
     }
 
     override fun onSearchEngineSelected(searchEngine: SearchEngine) {
@@ -142,6 +151,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         }
     }
 
+
     private fun handleToolbarBackPressed() {
         toolbar.setNavigationOnClickListener {
             finish()
@@ -171,6 +181,8 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun handleButtonsClicked() {
+        button_edit_name.setOnClickListener { showEditBarcodeNameDialog() }
+
         button_search_on_rate_and_goods.setOnClickListener { searchBarcodeTextOnRateAndGoods() }
         button_search_on_amazon.setOnClickListener { searchBarcodeTextOnAmazon() }
         button_search_on_ebay.setOnClickListener { searchBarcodeTextOnEbay() }
@@ -226,6 +238,25 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
                     showBarcodeIsFavorite(newBarcode.isFavorite)
                 },
                 {}
+            )
+            .addTo(disposable)
+    }
+
+    private fun updateBarcodeName(name: String) {
+        if (name.isBlank()) {
+            return
+        }
+
+        val newBarcode = originalBarcode.copy(name = name)
+
+        barcodeDatabase.save(newBarcode)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                   originalBarcode.name = name
+                },
+                ::showError
             )
             .addTo(disposable)
     }
@@ -523,6 +554,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         showBarcodeImageIfNeeded()
         showBarcodeDate()
         showBarcodeFormat()
+        showBarcodeName()
         showBarcodeText()
         showBarcodeCountry()
     }
@@ -584,6 +616,15 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         toolbar.setTitle(format)
     }
 
+    private fun showBarcodeName() {
+        showBarcodeName(barcode.name)
+    }
+
+    private fun showBarcodeName(name: String?) {
+        text_view_barcode_name.isVisible = name.isNullOrBlank().not()
+        text_view_barcode_name.text = name.orEmpty()
+    }
+
     private fun showBarcodeText() {
         text_view_barcode_text.text = if (isCreated) {
             barcode.text
@@ -628,6 +669,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun showOrHideButtons() {
         button_search.isVisible = isCreated.not()
+        button_edit_name.isVisible = barcode.isInDb
 
         if (isCreated) {
             return
@@ -689,6 +731,11 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun showDeleteBarcodeConfirmationDialog() {
         val dialog = DeleteConfirmationDialogFragment.newInstance(R.string.dialog_delete_barcode_message)
+        dialog.show(supportFragmentManager, "")
+    }
+
+    private fun showEditBarcodeNameDialog() {
+        val dialog = EditBarcodeNameDialogFragment()
         dialog.show(supportFragmentManager, "")
     }
 
