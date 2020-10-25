@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="AppTheme" parent="BaseAppTheme">
+        <item name="colorControlHighlight">@color/gray14</item>
+    </style>
+
     <style name="AppBarLayoutStyle" parent="BaseAppBarLayoutStyle">
         <item name="liftOnScroll">false</item>
     </style>
+
 </resources>
