@@ -18,8 +18,21 @@ class EditBarcodeNameDialogFragment : DialogFragment() {
         fun onNameConfirmed(name: String)
     }
 
+    companion object {
+        private const val NAME_KEY = "NAME_KEY"
+
+        fun newInstance(name: String?): EditBarcodeNameDialogFragment {
+            return EditBarcodeNameDialogFragment().apply {
+                arguments = Bundle().apply {
+                    putString(NAME_KEY, name)
+                }
+            }
+        }
+    }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val listener = requireActivity() as? Listener
+        val name = arguments?.getString(NAME_KEY).orEmpty()
 
         val view = LayoutInflater
             .from(requireContext())
@@ -29,14 +42,14 @@ class EditBarcodeNameDialogFragment : DialogFragment() {
             .setTitle(R.string.dialog_edit_barcode_name_title)
             .setView(view)
             .setPositiveButton(R.string.dialog_confirm_barcode_positive_button) { _, _ ->
-                val name = view.edit_text_barcode_name.text.toString()
-                listener?.onNameConfirmed(name)
+                val newName = view.edit_text_barcode_name.text.toString()
+                listener?.onNameConfirmed(newName)
             }
             .setNegativeButton(R.string.dialog_confirm_barcode_negative_button, null)
             .create()
 
         dialog.setOnShowListener {
-            showKeyboard(view.edit_text_barcode_name)
+            initNameEditText(view.edit_text_barcode_name, name)
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.blue))
             dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
         }
@@ -44,8 +57,13 @@ class EditBarcodeNameDialogFragment : DialogFragment() {
         return dialog
     }
 
-    private fun showKeyboard(editText: EditText) {
-        editText.requestFocus()
+    private fun initNameEditText(editText: EditText, name: String) {
+        editText.apply {
+            setText(name)
+            setSelection(name.length)
+            requestFocus()
+        }
+
         val manager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager
         manager?.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
     }

@@ -254,7 +254,8 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                   originalBarcode.name = name
+                    originalBarcode.name = name
+                    showBarcodeName(name)
                 },
                 ::showError
             )
@@ -735,7 +736,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun showEditBarcodeNameDialog() {
-        val dialog = EditBarcodeNameDialogFragment()
+        val dialog = EditBarcodeNameDialogFragment.newInstance(originalBarcode.name)
         dialog.show(supportFragmentManager, "")
     }
 
