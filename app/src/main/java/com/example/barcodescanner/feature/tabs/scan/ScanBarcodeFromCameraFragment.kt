@@ -35,12 +35,12 @@ import java.util.concurrent.TimeUnit
 class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.Listener {
 
     companion object {
-        private const val ZXING_SCAN_INTENT_ACTION = "com.google.zxing.client.android.SCAN"
+        private val PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val PERMISSION_REQUEST_CODE = 101
+        private const val ZXING_SCAN_INTENT_ACTION = "com.google.zxing.client.android.SCAN"
         private const val CONTINUOUS_SCANNING_PREVIEW_DELAY = 500L
     }
 
-    private val permissions = arrayOf(Manifest.permission.CAMERA)
     private val vibrationPattern = arrayOf<Long>(0, 350).toLongArray()
     private val disposable = CompositeDisposable()
     private var maxZoom: Int = 0
@@ -317,11 +317,11 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun requestPermissions() {
-        permissionsHelper.requestNotGrantedPermissions(requireActivity() as AppCompatActivity, permissions, PERMISSION_REQUEST_CODE)
+        permissionsHelper.requestNotGrantedPermissions(requireActivity() as AppCompatActivity, PERMISSIONS, PERMISSION_REQUEST_CODE)
     }
 
     private fun areAllPermissionsGranted(): Boolean {
-       return permissionsHelper.areAllPermissionsGranted(requireActivity(), permissions)
+       return permissionsHelper.areAllPermissionsGranted(requireActivity(), PERMISSIONS)
     }
 
     private fun areAllPermissionsGranted(grantResults: IntArray): Boolean {
