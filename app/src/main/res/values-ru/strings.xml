@@ -245,12 +245,20 @@
 
     <!--All permissions activity-->
     <string name="activity_all_permissions_title">Разрешения</string>
+    <string name="activity_all_permissions_normal_permissions">Обычные</string>
+    <string name="activity_all_permissions_vibrate_title">Вибрация</string>
+    <string name="activity_all_permissions_vibrate_hint">Используется для вибрирования при сканировании</string>
+    <string name="activity_all_permissions_wifi_title">Wi-Fi</string>
+    <string name="activity_all_permissions_wifi_hint">Используется для подключения к Wi-Fi с помощью QR кода</string>
+    <string name="activity_all_permissions_internet_title">Интернет</string>
+    <string name="activity_all_permissions_internet_hint">Используется для отправки отчетов об ошибках. Может быть отключено в настройках.</string>
+    <string name="activity_all_permissions_runtime_permissions">Запрашиваемые</string>
     <string name="activity_all_permissions_camera_title">Камера</string>
-    <string name="activity_all_permissions_camera_hint">Нужно для сканирования QR и штрихкодов при помощи камеры</string>
+    <string name="activity_all_permissions_camera_hint">Используется для сканирования QR и штрихкодов при помощи камеры</string>
     <string name="activity_all_permissions_read_contacts_title">Контакты</string>
-    <string name="activity_all_permissions_read_contacts_hint">Нужно для создания QR-кода контакта</string>
+    <string name="activity_all_permissions_read_contacts_hint">Используется для создания QR-кодов контактов</string>
     <string name="activity_all_permissions_storage_title">Память</string>
-    <string name="activity_all_permissions_storage_hint">Нужно для сохранения QR и штрихкодов</string>
+    <string name="activity_all_permissions_storage_hint">Используется для сохранения QR и штрихкодов</string>
 
     <!--Barcode activity-->
     <string name="activity_barcode_search_on_rate_and_goods">Поиск на Rate&amp;Goods</string>

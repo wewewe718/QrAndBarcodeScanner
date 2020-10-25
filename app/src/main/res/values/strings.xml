@@ -266,6 +266,14 @@
 
     <!--All permissions activity-->
     <string name="activity_all_permissions_title">Permissions</string>
+    <string name="activity_all_permissions_normal_permissions">Normal</string>
+    <string name="activity_all_permissions_vibrate_title">Vibrate</string>
+    <string name="activity_all_permissions_vibrate_hint">Used to vibrate on scan</string>
+    <string name="activity_all_permissions_wifi_title">Wi-Fi</string>
+    <string name="activity_all_permissions_wifi_hint">Used to connect to Wi-Fi by scanning a QR code</string>
+    <string name="activity_all_permissions_internet_title">Internet</string>
+    <string name="activity_all_permissions_internet_hint">Used to send error reports. This can be disabled in settings.</string>
+    <string name="activity_all_permissions_runtime_permissions">Runtime</string>
     <string name="activity_all_permissions_camera_title">Camera</string>
     <string name="activity_all_permissions_camera_hint">Used to scan QR codes and barcodes from camera</string>
     <string name="activity_all_permissions_read_contacts_title">Read contacts</string>
