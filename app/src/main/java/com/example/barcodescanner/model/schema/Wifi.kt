@@ -1,6 +1,7 @@
 package com.example.barcodescanner.model.schema
 
 import com.example.barcodescanner.extension.*
+import java.util.*
 
 class Wifi(
     val encryption: String? = null,
@@ -14,6 +15,8 @@ class Wifi(
 ) : Schema {
 
     companion object {
+        private val WIFI_REGEX = """^WIFI:((?:.+?:(?:[^\\;]|\\.)*;)+);?$""".toRegex()
+        private val PAIR_REGEX = """(.+?):((?:[^\\;]|\\.)*);""".toRegex()
         private const val SCHEMA_PREFIX = "WIFI:"
         private const val ENCRYPTION_PREFIX = "T:"
         private const val NAME_PREFIX = "S:"
@@ -30,68 +33,23 @@ class Wifi(
                 return null
             }
 
-            var encryption: String? = null
-            var name: String? = null
-            var password: String? = null
-            var isHidden: Boolean? = null
-            var anonymousIdentity: String? = null
-            var identity: String? = null
-            var eapMethod: String? = null
-            var phase2Method: String? = null
-
-            text.removePrefixIgnoreCase(SCHEMA_PREFIX)
-                .split(SEPARATOR)
-                .forEach { part ->
-                    if (part.startsWithIgnoreCase(ENCRYPTION_PREFIX)) {
-                        encryption = part.removePrefixIgnoreCase(ENCRYPTION_PREFIX)
-                        return@forEach
-                    }
-
-                    if (part.startsWithIgnoreCase(NAME_PREFIX)) {
-                        name = part.removePrefixIgnoreCase(NAME_PREFIX)
-                        return@forEach
-                    }
-
-                    if (part.startsWithIgnoreCase(PASSWORD_PREFIX)) {
-                        password = part.removePrefixIgnoreCase(PASSWORD_PREFIX)
-                        return@forEach
-                    }
-
-                    if (part.startsWithIgnoreCase(IS_HIDDEN_PREFIX)) {
-                        isHidden = part.removePrefixIgnoreCase(IS_HIDDEN_PREFIX).toBoolean()
-                        return@forEach
-                    }
-
-                    if (part.startsWithIgnoreCase(ANONYMOUS_IDENTITY_PREFIX)) {
-                        anonymousIdentity = part.removePrefixIgnoreCase(ANONYMOUS_IDENTITY_PREFIX)
-                        return@forEach
-                    }
-
-                    if (part.startsWithIgnoreCase(IDENTITY_PREFIX)) {
-                        identity = part.removePrefixIgnoreCase(IDENTITY_PREFIX)
-                        return@forEach
-                    }
-
-                    if (part.startsWithIgnoreCase(EAP_PREFIX)) {
-                        eapMethod = part.removePrefixIgnoreCase(EAP_PREFIX)
-                        return@forEach
-                    }
-
-                    if (part.startsWithIgnoreCase(PHASE2_PREFIX)) {
-                        phase2Method = part.removePrefixIgnoreCase(PHASE2_PREFIX)
-                        return@forEach
-                    }
+            val keysAndValuesSubstring = WIFI_REGEX.matchEntire(text)?.groupValues?.get(1) ?: return null
+            val keysAndValues = PAIR_REGEX
+                .findAll(keysAndValuesSubstring)
+                .map { pair ->
+                    "${pair.groupValues[1].toUpperCase(Locale.US)}:" to pair.groupValues[2]
                 }
+                .toMap()
 
             return Wifi(
-                    encryption?.unescape(),
-                    name?.unescape(),
-                    password?.unescape(),
-                    isHidden,
-                    anonymousIdentity?.unescape(),
-                    identity?.unescape(),
-                    eapMethod,
-                    phase2Method
+                keysAndValues[ENCRYPTION_PREFIX]?.unescape(),
+                keysAndValues[NAME_PREFIX]?.unescape(),
+                keysAndValues[PASSWORD_PREFIX]?.unescape(),
+                keysAndValues[IS_HIDDEN_PREFIX].toBoolean(),
+                keysAndValues[ANONYMOUS_IDENTITY_PREFIX]?.unescape(),
+                keysAndValues[IDENTITY_PREFIX]?.unescape(),
+                keysAndValues[EAP_PREFIX],
+                keysAndValues[PHASE2_PREFIX]
             )
         }
     }
@@ -99,7 +57,7 @@ class Wifi(
     override val schema = BarcodeSchema.WIFI
 
     override fun toFormattedText(): String {
-        return listOf(name, password).joinToStringNotNullOrBlankWithLineSeparator()
+        return listOf(name, encryption, password).joinToStringNotNullOrBlankWithLineSeparator()
     }
 
     override fun toBarcodeText(): String {
