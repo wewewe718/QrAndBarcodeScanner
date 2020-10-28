@@ -1,5 +1,6 @@
 package com.example.barcodescanner.model.schema
 
+import com.example.barcodescanner.extension.joinToStringNotNullOrBlank
 import com.example.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.example.barcodescanner.extension.startsWithIgnoreCase
 import ezvcard.Ezvcard
@@ -26,12 +27,14 @@ data class VCard(
     val secondaryPhoneType: String? = null,
     val tertiaryPhone: String? = null,
     val tertiaryPhoneType: String? = null,
+    val address: String? = null,
     val geoUri: String? = null,
     val url: String? = null
 ) : Schema {
 
     companion object {
         private const val SCHEMA_PREFIX = "BEGIN:VCARD"
+        private const val ADDRESS_SEPARATOR = ","
 
         fun parse(text: String): VCard? {
             if (text.startsWithIgnoreCase(SCHEMA_PREFIX).not()) {
@@ -58,6 +61,7 @@ data class VCard(
             var secondaryPhoneType: String? = null
             var tertiaryPhone: String? = null
             var tertiaryPhoneType: String? = null
+            var address: String? = null
 
             vCard.emails?.getOrNull(0)?.apply {
                 email = value
@@ -85,6 +89,16 @@ data class VCard(
                 tertiaryPhoneType = types?.firstOrNull()?.value
             }
 
+            vCard.addresses.firstOrNull()?.apply {
+                address = listOf(
+                    country,
+                    postalCode,
+                    region,
+                    locality,
+                    streetAddress
+                ).joinToStringNotNullOrBlank(ADDRESS_SEPARATOR)
+            }
+
             return VCard(
                 firstName,
                 lastName,
@@ -103,6 +117,7 @@ data class VCard(
                 secondaryPhoneType,
                 tertiaryPhone,
                 tertiaryPhoneType,
+                address,
                 geoUri,
                 url
             )
@@ -123,6 +138,7 @@ data class VCard(
             "${email.orEmpty()} ${emailType.orEmpty()}",
             "${secondaryEmail.orEmpty()} ${secondaryEmailType.orEmpty()}",
             "${tertiaryEmail.orEmpty()} ${tertiaryEmailType.orEmpty()}",
+            address,
             geoUri,
             url
         ).joinToStringNotNullOrBlankWithLineSeparator()
