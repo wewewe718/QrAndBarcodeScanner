@@ -227,14 +227,14 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
 
     private fun toggleIsFavorite() {
-        val newBarcode = originalBarcode.copy(isFavorite = originalBarcode.isFavorite.not())
+        val newBarcode = originalBarcode.copy(isFavorite = barcode.isFavorite.not())
 
         barcodeDatabase.save(newBarcode)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    originalBarcode.isFavorite = newBarcode.isFavorite
+                    barcode.isFavorite = newBarcode.isFavorite
                     showBarcodeIsFavorite(newBarcode.isFavorite)
                 },
                 {}
@@ -247,14 +247,17 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
             return
         }
 
-        val newBarcode = originalBarcode.copy(name = name)
+        val newBarcode = originalBarcode.copy(
+            id = barcode.id,
+            name = name
+        )
 
         barcodeDatabase.save(newBarcode)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    originalBarcode.name = name
+                    barcode.name = name
                     showBarcodeName(name)
                 },
                 ::showError
@@ -271,6 +274,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
             .subscribe(
                 { id ->
                     barcode.id = id
+                    button_edit_name.isVisible = true
                     toolbar?.menu?.findItem(R.id.item_delete)?.isVisible = true
                 },
                 { error ->
@@ -736,7 +740,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun showEditBarcodeNameDialog() {
-        val dialog = EditBarcodeNameDialogFragment.newInstance(originalBarcode.name)
+        val dialog = EditBarcodeNameDialogFragment.newInstance(barcode.name)
         dialog.show(supportFragmentManager, "")
     }
 
