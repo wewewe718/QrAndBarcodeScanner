@@ -23,12 +23,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name="com.example.barcodescanner.App"
+        android:name=".App"
         >
 
         <meta-data
             android:name="io.sentry.dsn"
-            android:value="https://09f3022eb19f4fa7ba332b1f44188ff1@o432234.ingest.sentry.io/5384638"
+            android:value="@string/sentryDSN"
             />
 
         <provider
