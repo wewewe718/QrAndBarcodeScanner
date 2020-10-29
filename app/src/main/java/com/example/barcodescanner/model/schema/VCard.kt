@@ -41,7 +41,7 @@ data class VCard(
                 return null
             }
 
-            val vCard = Ezvcard.parse(text).first()
+            val vCard = Ezvcard.parse(text).first() ?: return null
             val firstName = vCard.structuredName?.given
             val lastName = vCard.structuredName?.family
             val nickname = vCard.nickname?.values?.firstOrNull()
