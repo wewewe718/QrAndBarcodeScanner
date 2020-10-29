@@ -39,14 +39,18 @@ object BarcodeImageGenerator {
         codeColor: Int = Color.BLACK,
         backgroundColor: Int = Color.WHITE
     ): Bitmap {
-        val matrix = encoder.encode(
-            barcode.text,
-            barcode.format,
-            width,
-            height,
-            createHints(barcode.errorCorrectionLevel, margin)
-        )
-        return createBitmap(matrix, codeColor, backgroundColor)
+        try {
+            val matrix = encoder.encode(
+                barcode.text,
+                barcode.format,
+                width,
+                height,
+                createHints(barcode.errorCorrectionLevel, margin)
+            )
+            return createBitmap(matrix, codeColor, backgroundColor)
+        } catch (ex: Exception) {
+            throw Exception("Unable to generate barcode image, ${barcode.format}, ${barcode.text}", ex)
+        }
     }
 
     fun generateSvgAsync(barcode: Barcode, width: Int, height: Int, margin: Int = 0): Single<String> {
