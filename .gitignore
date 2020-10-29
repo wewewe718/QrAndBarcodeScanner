@@ -94,4 +94,4 @@ atlassian-ide-plugin.xml
 .idea/mongoSettings.xml
 
 # Sentry
-./sentry.properties
+/sentry.properties
