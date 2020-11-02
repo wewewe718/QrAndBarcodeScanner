@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.6
+* Add a setting to avoid duplicates in history
+* Add an option to manually save to history
+* Add an option to set a name to a history item
+* Bug fix: app shortcuts were not working
+* Bug fix: Wi-Fi QR code passwords were scanned wrong
+
 ## 1.5
 * Add Chinese (Taiwan) translation
 * Add a Quick Settings tile for the app
