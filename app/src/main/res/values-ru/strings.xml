@@ -22,6 +22,16 @@
     <string name="dialog_delete_clear_history_message">Очистить историю?</string>
     <string name="dialog_delete_barcode_message">Удалить?</string>
 
+    <!--Confirm barcode dialog-->
+    <string name="dialog_confirm_barcode_title">Подтвердить</string>
+    <string name="dialog_confirm_barcode_positive_button">OK</string>
+    <string name="dialog_confirm_barcode_negative_button">Отмена</string>
+
+    <!--Edit barcode name dialog-->
+    <string name="dialog_edit_barcode_name_title">Изменить название</string>
+    <string name="dialog_edit_barcode_name_positive_button">OK</string>
+    <string name="dialog_edit_barcode_name_negative_button">Отмена</string>
+
     <!--Bottom tabs activity-->
     <string name="activity_bottom_tabs_scan_tab">Сканер</string>
     <string name="activity_bottom_tabs_create_tab">Создать</string>
@@ -32,9 +42,6 @@
     <string name="fragment_scan_barcode_from_camera_scan_from_file">Сканировать\nфайл</string>
     <string name="fragment_scan_barcode_from_camera_flash">Фонарик</string>
     <string name="fragment_scan_barcode_from_camera_barcode_saved">Сохранено</string>
-    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_title">Подтвердить</string>
-    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_positive_button">OK</string>
-    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_negative_button">Отмена</string>
 
     <!--Scan barcode from file activity-->
     <string name="activity_scan_barcode_from_file_title">Сканировать</string>
@@ -196,6 +203,8 @@
     <string name="fragment_settings_history_settings">История</string>
     <string name="fragment_settings_save_scanned_barcodes_to_history">Сохранять отсканированные штрихкоды в историю</string>
     <string name="fragment_settings_save_created_barcodes_to_history">Сохранять созданные штрихкоды в историю</string>
+    <string name="fragment_settings_do_not_save_duplicates">Не сохранять дубликаты</string>
+    <string name="fragment_settings_do_not_save_duplicates_hint">Не сохранять дубликаты в истории</string>
     <string name="fragment_settings_clear_history">Очистить историю</string>
     <string name="fragment_settings_advanced_settings">Расширенные настройки</string>
     <string name="fragment_settings_choose_search_engines">Поисковые системы</string>
@@ -236,12 +245,20 @@
 
     <!--All permissions activity-->
     <string name="activity_all_permissions_title">Разрешения</string>
+    <string name="activity_all_permissions_normal_permissions">Обычные</string>
+    <string name="activity_all_permissions_vibrate_title">Вибрация</string>
+    <string name="activity_all_permissions_vibrate_hint">Используется для вибрирования при сканировании</string>
+    <string name="activity_all_permissions_wifi_title">Wi-Fi</string>
+    <string name="activity_all_permissions_wifi_hint">Используется для подключения к Wi-Fi с помощью QR кода</string>
+    <string name="activity_all_permissions_internet_title">Интернет</string>
+    <string name="activity_all_permissions_internet_hint">Используется для отправки отчетов об ошибках. Может быть отключено в настройках.</string>
+    <string name="activity_all_permissions_runtime_permissions">Запрашиваемые</string>
     <string name="activity_all_permissions_camera_title">Камера</string>
-    <string name="activity_all_permissions_camera_hint">Нужно для сканирования QR и штрихкодов при помощи камеры</string>
+    <string name="activity_all_permissions_camera_hint">Используется для сканирования QR и штрихкодов при помощи камеры</string>
     <string name="activity_all_permissions_read_contacts_title">Контакты</string>
-    <string name="activity_all_permissions_read_contacts_hint">Нужно для создания QR-кода контакта</string>
+    <string name="activity_all_permissions_read_contacts_hint">Используется для создания QR-кодов контактов</string>
     <string name="activity_all_permissions_storage_title">Память</string>
-    <string name="activity_all_permissions_storage_hint">Нужно для сохранения QR и штрихкодов</string>
+    <string name="activity_all_permissions_storage_hint">Используется для сохранения QR и штрихкодов</string>
 
     <!--Barcode activity-->
     <string name="activity_barcode_search_on_rate_and_goods">Поиск на Rate&amp;Goods</string>

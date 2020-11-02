@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import com.example.barcodescanner.R
 import kotlinx.android.synthetic.main.layout_icon_button.view.*
 
@@ -41,7 +42,10 @@ class IconButton : FrameLayout {
     }
 
     private fun showIconBackgroundColor(attributes: TypedArray) {
-        val color = attributes.getColor(R.styleable.IconButton_iconBackground, view.context.resources.getColor(R.color.green))
+        val color = attributes.getColor(
+            R.styleable.IconButton_iconBackground,
+            ContextCompat.getColor(view.context, R.color.green)
+        )
         (view.layout_image.background.mutate() as GradientDrawable).setColor(color)
     }
 

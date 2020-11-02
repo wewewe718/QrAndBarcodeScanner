@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.*
 import com.example.barcodescanner.extension.applySystemWindowInsets
@@ -23,6 +24,7 @@ import com.example.barcodescanner.model.schema.App
 import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.example.barcodescanner.model.schema.Schema
 import com.example.barcodescanner.usecase.Logger
+import com.example.barcodescanner.usecase.save
 import com.google.zxing.BarcodeFormat
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -79,7 +81,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             }
 
             toolbar.menu?.findItem(R.id.item_create_barcode)?.apply {
-                icon = getDrawable(iconId)
+                icon = ContextCompat.getDrawable(this@CreateBarcodeActivity, iconId)
                 isEnabled = enabled
             }
         }
@@ -313,7 +315,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             return
         }
 
-        barcodeDatabase.save(barcode)
+        barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

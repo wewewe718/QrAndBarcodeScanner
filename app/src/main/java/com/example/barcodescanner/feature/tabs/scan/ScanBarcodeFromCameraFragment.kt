@@ -21,6 +21,7 @@ import com.example.barcodescanner.feature.common.dialog.ConfirmBarcodeDialogFrag
 import com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity
 import com.example.barcodescanner.model.Barcode
 import com.example.barcodescanner.usecase.SupportedBarcodeFormats
+import com.example.barcodescanner.usecase.save
 import com.google.zxing.Result
 import com.google.zxing.ResultMetadataType
 import io.reactivex.Completable
@@ -34,12 +35,12 @@ import java.util.concurrent.TimeUnit
 class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.Listener {
 
     companion object {
-        private const val ZXING_SCAN_INTENT_ACTION = "com.google.zxing.client.android.SCAN"
+        private val PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val PERMISSION_REQUEST_CODE = 101
+        private const val ZXING_SCAN_INTENT_ACTION = "com.google.zxing.client.android.SCAN"
         private const val CONTINUOUS_SCANNING_PREVIEW_DELAY = 500L
     }
 
-    private val permissions = arrayOf(Manifest.permission.CAMERA)
     private val vibrationPattern = arrayOf<Long>(0, 350).toLongArray()
     private val disposable = CompositeDisposable()
     private var maxZoom: Int = 0
@@ -268,7 +269,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun saveScannedBarcode(barcode: Barcode) {
-        barcodeDatabase.save(barcode)
+        barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -316,11 +317,11 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun requestPermissions() {
-        permissionsHelper.requestNotGrantedPermissions(requireActivity() as AppCompatActivity, permissions, PERMISSION_REQUEST_CODE)
+        permissionsHelper.requestNotGrantedPermissions(requireActivity() as AppCompatActivity, PERMISSIONS, PERMISSION_REQUEST_CODE)
     }
 
     private fun areAllPermissionsGranted(): Boolean {
-       return permissionsHelper.areAllPermissionsGranted(requireActivity(), permissions)
+       return permissionsHelper.areAllPermissionsGranted(requireActivity(), PERMISSIONS)
     }
 
     private fun areAllPermissionsGranted(grantResults: IntArray): Boolean {

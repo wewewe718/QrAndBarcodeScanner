@@ -1,0 +1,5 @@
+* Add a setting to avoid duplicates in history
+* Add an option to manually save to history
+* Add an option to set a name to a history item
+* Bug fix: app shortcuts were not working
+* Bug fix: Wi-Fi QR code passwords were scanned wrong

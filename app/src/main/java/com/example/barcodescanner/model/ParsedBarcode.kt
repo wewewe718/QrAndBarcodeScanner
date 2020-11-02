@@ -4,13 +4,14 @@ import com.example.barcodescanner.model.schema.*
 import com.google.zxing.BarcodeFormat
 
 class ParsedBarcode(barcode: Barcode) {
-    val id = barcode.id
+    var id = barcode.id
+    var name = barcode.name
     val text = barcode.text
     val formattedText = barcode.formattedText
     val format = barcode.format
     val schema = barcode.schema
     val date = barcode.date
-    val isFavorite = barcode.isFavorite
+    var isFavorite = barcode.isFavorite
     val country = barcode.country
 
     var firstName: String? = null

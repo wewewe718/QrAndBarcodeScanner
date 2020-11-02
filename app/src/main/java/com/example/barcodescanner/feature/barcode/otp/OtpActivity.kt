@@ -12,6 +12,7 @@ import com.example.barcodescanner.extension.orZero
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.model.schema.OtpAuth
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_barcode_otp.*
@@ -106,13 +107,13 @@ class OtpActivity : BaseActivity() {
         val secondsPassed = currentTimeInSeconds % period
         val secondsLeft = period - secondsPassed
 
-
         Observable
             .interval(1, TimeUnit.SECONDS)
             .map { it + 1 }
             .take(secondsLeft)
             .map { secondsLeft - it }
             .startWith(secondsLeft)
+            .observeOn(AndroidSchedulers.mainThread())
             .doOnComplete { showOtp() }
             .subscribe(::showTime)
             .addTo(disposable)

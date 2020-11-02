@@ -22,6 +22,16 @@
     <string name="dialog_delete_clear_history_message">Excluir o histórico?</string>
     <string name="dialog_delete_barcode_message">Excluir?</string>
 
+    <!--Confirm barcode dialog-->
+    <string name="dialog_confirm_barcode_title">Confirmar</string>
+    <string name="dialog_confirm_barcode_positive_button">OK</string>
+    <string name="dialog_confirm_barcode_negative_button">Cancelar</string>
+
+    <!--Edit barcode name dialog-->
+    <string name="dialog_edit_barcode_name_title">Edit name</string>
+    <string name="dialog_edit_barcode_name_positive_button">OK</string>
+    <string name="dialog_edit_barcode_name_negative_button">Cancel</string>
+
     <!--Bottom tabs activity-->
     <string name="activity_bottom_tabs_scan_tab">Escanear</string>
     <string name="activity_bottom_tabs_create_tab">Criar</string>
@@ -32,9 +42,6 @@
     <string name="fragment_scan_barcode_from_camera_scan_from_file">Escanear a imagem</string>
     <string name="fragment_scan_barcode_from_camera_flash">Flash</string>
     <string name="fragment_scan_barcode_from_camera_barcode_saved">Salvado</string>
-    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_title">Confirmar</string>
-    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_positive_button">OK</string>
-    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_negative_button">Cancelar</string>
 
     <!--Scan barcode from file activity-->
     <string name="activity_scan_barcode_from_file_title">Escanear</string>

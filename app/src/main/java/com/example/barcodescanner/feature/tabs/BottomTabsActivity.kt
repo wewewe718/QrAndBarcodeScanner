@@ -3,6 +3,7 @@ package com.example.barcodescanner.feature.tabs
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
 import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.feature.BaseActivity
@@ -16,8 +17,8 @@ import kotlinx.android.synthetic.main.activity_bottom_tabs.*
 class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     companion object {
-        private const val ACTION_CREATE_BARCODE = "com.example.barcodescanner.CREATE_BARCODE"
-        private const val ACTION_HISTORY = "com.example.barcodescanner.HISTORY"
+        private const val ACTION_CREATE_BARCODE = "${BuildConfig.APPLICATION_ID}.CREATE_BARCODE"
+        private const val ACTION_HISTORY = "${BuildConfig.APPLICATION_ID}.HISTORY"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

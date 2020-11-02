@@ -7,11 +7,15 @@
     <attr name="icon" format="reference" />
     <attr name="iconBackground" format="color" />
 
+    <declare-styleable name="ResultPointsView">
+        <attr name="resultPointColor" format="color" />
+        <attr name="resultPointSize" format="dimension" />
+    </declare-styleable>
+
     <declare-styleable name="IconButton">
         <attr name="icon" />
         <attr name="iconBackground" />
         <attr name="text" />
-        <attr name="isDelimiterVisible" />
     </declare-styleable>
 
     <declare-styleable name="IconButtonWithDelimiter">

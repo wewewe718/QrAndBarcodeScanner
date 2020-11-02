@@ -3,6 +3,7 @@ package com.example.barcodescanner.feature.common.dialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.example.barcodescanner.R
 import com.example.barcodescanner.extension.toStringId
@@ -34,20 +35,20 @@ class ConfirmBarcodeDialogFragment : DialogFragment() {
         val messageId = barcode.format.toStringId()
 
         val dialog = AlertDialog.Builder(requireActivity(), R.style.DialogTheme)
-            .setTitle(R.string.fragment_scan_barcode_from_camera_confirm_barcode_dialog_title)
+            .setTitle(R.string.dialog_confirm_barcode_title)
             .setMessage(messageId)
             .setCancelable(false)
-            .setPositiveButton(R.string.fragment_scan_barcode_from_camera_confirm_barcode_dialog_positive_button) { _, _ ->
+            .setPositiveButton(R.string.dialog_confirm_barcode_positive_button) { _, _ ->
                 listener?.onBarcodeConfirmed(barcode)
             }
-            .setNegativeButton(R.string.fragment_scan_barcode_from_camera_confirm_barcode_dialog_negative_button) { _, _ ->
+            .setNegativeButton(R.string.dialog_confirm_barcode_negative_button) { _, _ ->
                 listener?.onBarcodeDeclined()
             }
             .create()
 
         dialog.setOnShowListener {
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.blue))
-            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.red))
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.blue))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
         }
 
         return dialog

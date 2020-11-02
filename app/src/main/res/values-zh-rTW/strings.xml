@@ -191,9 +191,9 @@
     <string name="fragment_create_upc_a_hint">11 位數字</string>
     <string name="fragment_create_upc_e_hint">7 位數字</string>
     <string name="fragment_scan_barcode_from_camera_barcode_saved">已儲存</string>
-    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_negative_button">取消</string>
-    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_positive_button">OK</string>
-    <string name="fragment_scan_barcode_from_camera_confirm_barcode_dialog_title">確認</string>
+    <string name="dialog_confirm_barcode_negative_button">取消</string>
+    <string name="dialog_confirm_barcode_positive_button">OK</string>
+    <string name="dialog_confirm_barcode_title">確認</string>
     <string name="fragment_scan_barcode_from_camera_flash">閃光燈</string>
     <string name="fragment_scan_barcode_from_camera_scan_from_file">掃描圖片</string>
     <string name="fragment_settings_about">關於</string>

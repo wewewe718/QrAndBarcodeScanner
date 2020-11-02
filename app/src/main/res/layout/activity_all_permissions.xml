@@ -26,6 +26,52 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
+
+            <!--Normal permissions-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin_small"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:text="@string/activity_all_permissions_normal_permissions"
+                style="@style/SettingsGroupTitleTextViewStyle"
+                />
+            <com.example.barcodescanner.feature.common.view.SettingsButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/activity_all_permissions_vibrate_title"
+                app:hint="@string/activity_all_permissions_vibrate_hint"
+                app:isDelimiterVisible="true"
+                app:isSwitchVisible="false"
+                />
+            <com.example.barcodescanner.feature.common.view.SettingsButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/activity_all_permissions_wifi_title"
+                app:hint="@string/activity_all_permissions_wifi_hint"
+                app:isDelimiterVisible="true"
+                app:isSwitchVisible="false"
+                />
+            <com.example.barcodescanner.feature.common.view.SettingsButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/activity_all_permissions_internet_title"
+                app:hint="@string/activity_all_permissions_internet_hint"
+                app:isDelimiterVisible="true"
+                app:isSwitchVisible="false"
+                />
+
+            <!--Dangerous permissions-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin_small"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:text="@string/activity_all_permissions_runtime_permissions"
+                style="@style/SettingsGroupTitleTextViewStyle"
+                />
             <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,6 +96,8 @@
                 app:isDelimiterVisible="false"
                 app:isSwitchVisible="false"
                 />
+
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

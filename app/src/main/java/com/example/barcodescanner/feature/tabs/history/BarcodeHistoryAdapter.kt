@@ -61,7 +61,7 @@ class BarcodeHistoryAdapter(private val listener: Listener) : PagedListAdapter<B
         }
 
         private fun showText(barcode: Barcode) {
-            itemView.text_view_text.text = barcode.formattedText
+            itemView.text_view_text.text = barcode.name ?: barcode.formattedText
         }
 
         private fun showImage(barcode: Barcode) {
