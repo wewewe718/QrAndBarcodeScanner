@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.7
+* Add translations: Chinese, French, Japanese, Polish, Spanish
+
 ## 1.6
 * Add a setting to avoid duplicates in history
 * Add an option to manually save to history
