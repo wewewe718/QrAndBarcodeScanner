@@ -1,0 +1,374 @@
+<resources>
+    <string name="app_name">二维码&amp; 条形码扫描器</string>
+
+    <!--Shortcuts-->
+    <string name="shortcut_scan_from_camera">扫描</string>
+    <string name="shortcut_scan_from_file">扫描图像</string>
+    <string name="shortcut_create_barcode">创建条形码</string>
+    <string name="shortcut_history">历史</string>
+
+    <!--Intent filters-->
+    <string name="intent_filter_create_qr_code_text">创建二维码</string>
+    <string name="intent_filter_scan_image">扫描图像</string>
+
+    <!--Error dialog-->
+    <string name="error_dialog_title">错误</string>
+    <string name="error_dialog_default_message">出了点问题</string>
+    <string name="error_dialog_positive_button_text">OK</string>
+
+    <!--Delete dialog-->
+    <string name="dialog_delete_positive_button">清除</string>
+    <string name="dialog_delete_negative_button">取消</string>
+    <string name="dialog_delete_clear_history_message">清除历史？</string>
+    <string name="dialog_delete_barcode_message">清除？</string>
+
+    <!--Confirm barcode dialog-->
+    <string name="dialog_confirm_barcode_title">确定</string>
+    <string name="dialog_confirm_barcode_positive_button">OK</string>
+    <string name="dialog_confirm_barcode_negative_button">取消</string>
+
+    <!--Edit barcode name dialog-->
+    <string name="dialog_edit_barcode_name_title">编辑名称</string>
+    <string name="dialog_edit_barcode_name_positive_button">OK</string>
+    <string name="dialog_edit_barcode_name_negative_button">取消</string>
+
+    <!--Bottom tabs activity-->
+    <string name="activity_bottom_tabs_scan_tab">扫描</string>
+    <string name="activity_bottom_tabs_create_tab">创建</string>
+    <string name="activity_bottom_tabs_history_tab">历史</string>
+    <string name="activity_bottom_tabs_settings_tab">设置</string>
+
+    <!--Scan barcode from camera fragment-->
+    <string name="fragment_scan_barcode_from_camera_scan_from_file">扫描图像</string>
+    <string name="fragment_scan_barcode_from_camera_flash">闪光灯</string>
+    <string name="fragment_scan_barcode_from_camera_barcode_saved">已保存</string>
+
+    <!--Scan barcode from file activity-->
+    <string name="activity_scan_barcode_from_file_title">扫描</string>
+    <string name="activity_scan_barcode_from_file_scan">OK</string>
+    <string name="activity_scan_barcode_from_file_rotate_left">向左旋转</string>
+    <string name="activity_scan_barcode_from_file_rotate_right">向右旋转</string>
+    <string name="activity_scan_barcode_from_file_change_image">选择另一张图片</string>
+
+    <!--Create barcode fragment-->
+    <string name="fragment_create_barcode_title">创建</string>
+    <string name="fragment_create_barcode_qr_code">二维码</string>
+    <string name="fragment_create_barcode_qr_code_clipboard">剪切板的内容</string>
+    <string name="fragment_create_barcode_qr_code_text">文本</string>
+    <string name="fragment_create_barcode_qr_code_show_all">更多二维码</string>
+    <string name="fragment_create_barcode">条形码</string>
+    <string name="fragment_create_barcode_show_all">条形码或其他2D码</string>
+
+    <!--Create QR code list activity-->
+    <string name="fragment_create_qr_code_list_title">创建二维码</string>
+
+    <!--Create barcode list activity-->
+    <string name="fragment_create_barcode_list_title">创建条形码</string>
+    <string name="fragment_create_barcode_list_2d">2D 条形码</string>
+    <string name="fragment_create_barcode_list_1d">1D 条形码</string>
+
+    <!--Create barcode activity-->
+    <string name="activity_create_barcode_menu_item_title">创建</string>
+    <string name="activity_create_barcode_contacts_menu_item_title">联系人</string>
+
+    <!--Base create barcode fragment -->
+    <string name="fragment_create_barcode_alternative">或者：</string>
+
+    <!--Create QR code URL fragment-->
+    <string name="fragment_create_qr_code_url_alternative">- 打开浏览器\n- 进入一个网页\n- 按菜单中的分享按钮\n- 选择这个APP</string>
+
+    <!--Create QR code bookmark fragment-->
+    <string name="fragment_create_qr_code_bookmark_title_hint">标题</string>
+
+    <!--Create QR code Wi-fi fragment-->
+    <string name="fragment_create_qr_code_wifi_encryption_hint">安全性</string>
+    <string-array name="fragment_create_qr_code_wifi_encryption_types">
+        <item>WPA/WPA2</item>
+        <item>WEP</item>
+        <item>无</item>
+    </string-array>
+    <string name="fragment_create_qr_code_wifi_network_name_hint">网络名称</string>
+    <string name="fragment_create_qr_code_wifi_password_hint">密码</string>
+    <string name="fragment_create_qr_code_wifi_is_hidden_hint">不可见</string>
+
+    <!--Create QR code email fragment-->
+    <string name="fragment_create_qr_code_email_subject_hint">主题</string>
+    <string name="fragment_create_qr_code_email_message_hint">内容</string>
+
+    <!--Create QR code SMS fragment-->
+    <string name="fragment_create_qr_code_sms_message_hint">信息</string>
+
+    <!--Create QR code MMS fragment-->
+    <string name="fragment_create_qr_code_mms_subject_hint">主题</string>
+    <string name="fragment_create_qr_code_mms_message_hint">信息</string>
+
+    <!--Create QR code cryptocurrency fragment-->
+    <string name="fragment_create_qr_code_cryptocurrency_type_hint">加密货币</string>
+    <string-array name="fragment_create_qr_code_cryptocurrencies">
+        <item>Bitcoin</item>
+        <item>Bitcoin Cash</item>
+        <item>Ethereum</item>
+        <item>Litecoin</item>
+        <item>Dash</item>
+    </string-array>
+    <string name="fragment_create_qr_code_cryptocurrency_address_hint">接收地址</string>
+    <string name="fragment_create_qr_code_cryptocurrency_amount_hint">金额</string>
+    <string name="fragment_create_qr_code_cryptocurrency_label_hint">标签</string>
+    <string name="fragment_create_qr_code_cryptocurrency_message_hint">信息</string>
+
+    <!--Create QR code location fragment-->
+    <string name="fragment_create_qr_code_location_latitude_hint">纬度</string>
+    <string name="fragment_create_qr_code_location_longitude_hint">经度</string>
+    <string name="fragment_create_qr_code_location_altitude_hint">属性（可选）</string>
+
+    <!--Create QR code OTP fragment-->
+    <string name="fragment_create_qr_code_otp_type_hint">类型</string>
+    <string-array name="fragment_create_qr_code_otp_types">
+        <item>HOTP</item>
+        <item>TOTP</item>
+    </string-array>
+    <string name="fragment_create_qr_code_otp_algorithm_hint">混淆算法</string>
+    <string-array name="fragment_create_qr_code_otp_algorithms">
+        <item>SHA1</item>
+        <item>SHA256</item>
+        <item>SHA512</item>
+    </string-array>
+    <string name="fragment_create_qr_code_otp_issuer_hint">发行方</string>
+    <string name="fragment_create_qr_code_otp_account_hint">账号</string>
+    <string name="fragment_create_qr_code_otp_digits_hint">位数</string>
+    <string name="fragment_create_qr_code_otp_period_hint">更新周期</string>
+    <string name="fragment_create_qr_code_otp_counter_hint">计数器</string>
+    <string name="fragment_create_qr_code_otp_secret_hint">密匙</string>
+    <string name="fragment_create_qr_code_otp_generate_random_secret">随机密匙</string>
+
+    <!--Create QR code event-->
+    <string name="fragment_create_qr_code_event_title_hint">标题</string>
+    <string name="fragment_create_qr_code_event_organizer_hint">组织者</string>
+    <string name="fragment_create_qr_code_event_summary_hint">摘要</string>
+    <string name="fragment_create_qr_code_event_start_date_hint">起始日期</string>
+    <string name="fragment_create_qr_code_event_end_date_hint">截止日期</string>
+
+    <!--Create QR code contact-->
+    <string name="fragment_create_qr_code_contact_first_name_hint">名</string>
+    <string name="fragment_create_qr_code_contact_last_name_hint">姓</string>
+    <string name="fragment_create_qr_code_contact_organization_hint">组织</string>
+    <string name="fragment_create_qr_code_contact_job_hint">工作</string>
+    <string name="fragment_create_qr_code_contact_email_hint">电子邮件</string>
+    <string name="fragment_create_qr_code_contact_phone_hint">电话号码</string>
+    <string name="fragment_create_qr_code_contact_fax_hint">传真</string>
+    <string name="fragment_create_qr_code_contact_country_hint">国家</string>
+    <string name="fragment_create_qr_code_contact_region_hint">地区/州</string>
+    <string name="fragment_create_qr_code_contact_postcode_hint">邮政编码</string>
+    <string name="fragment_create_qr_code_contact_city_hint">城市</string>
+    <string name="fragment_create_qr_code_contact_street_hint">街道</string>
+    <string name="fragment_create_qr_code_contact_website_hint">网站</string>
+    <string name="fragment_create_qr_code_contact_alternative">- 打开联系人应用\n- 打开或创建一个联系人\n- 点击菜单中的分享按钮\n- 选择这个APP</string>
+
+    <!--Create barcode-->
+    <string name="fragment_create_data_matrix_hint">不含特殊字符的文本</string>
+    <string name="fragment_create_aztec_hint">不含特殊字符的文本</string>
+    <string name="fragment_create_codabar_hint">位数</string>
+    <string name="fragment_create_code_39_hint">不含特殊字符的大写字母</string>
+    <string name="fragment_create_code_93_hint">不含特殊字符的大写字母</string>
+    <string name="fragment_create_code_128_hint">不含特殊字符的文本</string>
+    <string name="fragment_create_ean_8_hint">7位数字</string>
+    <string name="fragment_create_ean_13_hint">12位数字</string>
+    <string name="fragment_create_itf_14_hint">偶数位数字</string>
+    <string name="fragment_create_upc_a_hint">11位数字</string>
+    <string name="fragment_create_upc_e_hint">7位数字</string>
+
+    <!--Barcode history fragment-->
+    <string name="fragment_barcode_history_title">历史记录</string>
+    <string-array name="fragment_barcode_history_tab_titles">
+        <item>全部</item>
+        <item>喜爱</item>
+    </string-array>
+    <string name="fragment_barcode_history_menu_title_export">导出历史</string>
+    <string name="fragment_barcode_history_menu_title_delete_all">清除历史</string>
+
+    <!--Export history activity-->
+    <string name="activity_export_history_title">导出历史</string>
+    <string name="activity_export_history_as_hint">导出为</string>
+    <string-array name="activity_export_history_types">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_export_history_file_name_hint">文件名</string>
+    <string name="activity_export_history_export">导出</string>
+    <string name="activity_export_history_exported">保存到下载</string>
+
+    <!--Settings fragment-->
+    <string name="fragment_settings_title">设置</string>
+    <string name="fragment_settings_appearance_settings">外观</string>
+    <string name="fragment_settings_theme">主题</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme">使用深色主题时条码反色</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">在深色背景中显示带白色内容的条码</string>
+    <string name="fragment_settings_scanner_settings">扫描器</string>
+    <string name="fragment_settings_open_content_automatically">自动打开扫描内容</string>
+    <string name="fragment_settings_open_content_automatically_hint">可能会打开有害内容</string>
+    <string name="fragment_settings_copy_to_clipboard">复制到剪贴板</string>
+    <string name="fragment_settings_copy_to_clipboard_hint">复制扫描到的条形码到剪贴板</string>
+    <string name="fragment_settings_simple_auto_focus">简易对焦模式</string>
+    <string name="fragment_settings_simple_auto_focus_hint">仅当对焦有问题时打开</string>
+    <string name="fragment_settings_flash">闪光灯</string>
+    <string name="fragment_settings_flash_hint">启动时自动打开闪光灯</string>
+    <string name="fragment_settings_vibrate">震动</string>
+    <string name="fragment_settings_vibrate_hint">扫描到时震动</string>
+    <string name="fragment_settings_continuous_scanning">连续扫描</string>
+    <string name="fragment_settings_continuous_scanning_hint">扫描结果仅保存到历史</string>
+    <string name="fragment_settings_confirm_scans_manually">手动确认扫描结果</string>
+    <string name="fragment_settings_confirm_scans_manually_hint">避免意外的扫描</string>
+    <string name="fragment_settings_camera">相机</string>
+    <string name="fragment_settings_supported_formats">支持的格式</string>
+    <string name="fragment_settings_history_settings">历史</string>
+    <string name="fragment_settings_save_scanned_barcodes_to_history">保存扫描到的条形码到历史</string>
+    <string name="fragment_settings_save_created_barcodes_to_history">保存创建的条形码到历史</string>
+    <string name="fragment_settings_do_not_save_duplicates">不要保存副本</string>
+    <string name="fragment_settings_do_not_save_duplicates_hint">避免重复保存到历史</string>
+    <string name="fragment_settings_clear_history">清除历史</string>
+    <string name="fragment_settings_advanced_settings">高级设置</string>
+    <string name="fragment_settings_choose_search_engines">搜索引擎</string>
+    <string name="fragment_settings_choose_search_engines_hint">从网页中选择搜索引擎</string>
+    <string name="fragment_settings_error_reports">错误报告</string>
+    <string name="fragment_settings_enable_error_reports">启用错误报告</string>
+    <string name="fragment_settings_enable_error_reports_hint">帮助我们修复问题</string>
+    <string name="fragment_settings_about">关于</string>
+    <string name="fragment_settings_check_updates">检查更新</string>
+    <string name="fragment_settings_permissions">权限</string>
+    <string name="fragment_settings_source_code">源代码</string>
+    <string name="fragment_settings_app_version">应用版本</string>
+
+    <!--Choose theme activity-->
+    <string name="activity_choose_theme_title">主题</string>
+    <string name="activity_choose_theme_system">保持系统主题</string>
+    <string name="activity_choose_theme_light">浅色</string>
+    <string name="activity_choose_theme_dark">深色</string>
+
+    <!--Choose camera activity-->
+    <string name="activity_choose_camera_title">相机</string>
+    <string name="activity_choose_camera_front">前置</string>
+    <string name="activity_choose_camera_back">返回</string>
+
+    <!--Select supported formats activity-->
+    <string name="activity_supported_formats_title">支持的格式</string>
+
+    <!--Choose search engine activity-->
+    <string name="activity_choose_search_engine_title">搜索引擎</string>
+    <string name="activity_choose_search_engine_none">无</string>
+    <string name="activity_choose_search_engine_ask_every_time">每次都询问</string>
+    <string name="activity_choose_search_engine_bing">Bing</string>
+    <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
+    <string name="activity_choose_search_engine_google">Google</string>
+    <string name="activity_choose_search_engine_qwant">Qwant</string>
+    <string name="activity_choose_search_engine_yahoo">Yahoo</string>
+    <string name="activity_choose_search_engine_yandex">Yandex</string>
+
+    <!--All permissions activity-->
+    <string name="activity_all_permissions_title">权限</string>
+    <string name="activity_all_permissions_normal_permissions">普通权限</string>
+    <string name="activity_all_permissions_vibrate_title">震动</string>
+    <string name="activity_all_permissions_vibrate_hint">用于扫描到时震动</string>
+    <string name="activity_all_permissions_wifi_title">Wi-Fi</string>
+    <string name="activity_all_permissions_wifi_hint">用于通过扫描二维码连接到Wi-Fi</string>
+    <string name="activity_all_permissions_internet_title">网络</string>
+    <string name="activity_all_permissions_internet_hint">用于发送错误报告，可在设置中关闭</string>
+    <string name="activity_all_permissions_runtime_permissions">运行时</string>
+    <string name="activity_all_permissions_camera_title">相机</string>
+    <string name="activity_all_permissions_camera_hint">用于扫描二维码和条形码</string>
+    <string name="activity_all_permissions_read_contacts_title">读取联系人</string>
+    <string name="activity_all_permissions_read_contacts_hint">用于从选择的联系人中创建二维码</string>
+    <string name="activity_all_permissions_storage_title">存储</string>
+    <string name="activity_all_permissions_storage_hint">用于在您希望将二维码或条形码保存为文本或图像时访问存储</string>
+
+    <!--Barcode activity-->
+    <string name="activity_barcode_search_on_rate_and_goods">搜寻价格及货品</string>
+    <string name="activity_barcode_search_on_amazon">搜索 Amazon</string>
+    <string name="activity_barcode_search_on_ebay">搜索 eBay</string>
+    <string name="activity_barcode_add_to_calendar">添加到日历</string>
+    <string name="activity_barcode_add_to_contacts">添加到联系人</string>
+    <string name="activity_barcode_call_phone">拨打%s</string>
+    <string name="activity_barcode_send_sms">发送信息给 %s</string>
+    <string name="activity_barcode_send_email">发送电子邮件给 %s</string>
+    <string name="activity_barcode_show_location">显示位置</string>
+    <string name="activity_barcode_connect_to_wifi">连接到Wi-Fi</string>
+    <string name="activity_barcode_open_wifi_settings">打开 Wi-Fi 设置</string>
+    <string name="activity_barcode_copy_network_name">复制网络名称</string>
+    <string name="activity_barcode_copy_network_password">复制网络密码</string>
+    <string name="activity_barcode_open_app">在应用中打开</string>
+    <string name="activity_barcode_open_in_app_market">在市场中打开</string>
+    <string name="activity_barcode_open_in_youtube">在YouTube中打开</string>
+    <string name="activity_barcode_save_bookmark">保存到书签</string>
+    <string name="activity_barcode_open_link">打开链接</string>
+    <string name="activity_barcode_open_bitcoin_url">在其他应用中打开</string>
+    <string name="activity_barcode_show_otp">显示密码</string>
+    <string name="activity_barcode_open_otp">在其他应用中打开</string>
+    <string name="activity_barcode_share_as_text">分享为文本</string>
+    <string name="activity_barcode_copy">复制到剪贴板</string>
+    <string name="activity_barcode_save_as_text">保存为文本</string>
+    <string name="activity_barcode_search">在网页中搜索</string>
+    <string name="activity_barcode_add_to_favorites">添加到喜爱</string>
+    <string name="activity_barcode_show_barcode_image">查看条形码</string>
+    <string name="activity_barcode_share_as_image">分享为图像</string>
+    <string name="activity_barcode_save_as_image">保存为图像</string>
+    <string name="activity_barcode_print">打印</string>
+    <string name="activity_barcode_delete">清除</string>
+    <string name="activity_barcode_connecting_to_wifi">正在连接...</string>
+    <string name="activity_barcode_copied">复制到剪贴板</string>
+    <string name="activity_barcode_barcode_image_saved">保存到图库</string>
+    <string name="activity_barcode_barcode_text_saved">保存到下载</string>
+    <string name="activity_barcode_no_app">没有找到能打开的应用</string>
+    <string name="activity_barcode_choose_search_engine_dialog_negative_button">取消</string>
+
+    <!--Barcode image activity-->
+    <string name="activity_barcode_image_increase_brightness">增加亮度</string>
+    <string name="activity_barcode_image_decrease_brightness">减少亮度</string>
+
+    <!--OTP barcode activity-->
+    <string name="activity_barcode_otp_title">OTP</string>
+    <string name="activity_barcode_otp_unable_to_generate_otp">无法生成密码</string>
+    <string name="activity_barcode_otp_counter">计数器: %s</string>
+    <string name="activity_barcode_otp_timer">%s:%s 剩余</string>
+    <string name="activity_barcode_otp_refresh_otp">刷新</string>
+
+    <!--Save barcode as text activity-->
+    <string name="activity_save_barcode_as_text_title">保存</string>
+    <string name="activity_save_barcode_as_text_save_as_hint">保存为</string>
+    <string-array name="activity_save_barcode_as_text_formats">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_save_barcode_as_text_file_name_save">保存</string>
+    <string name="activity_save_barcode_as_text_file_name_saved">保存到下载</string>
+
+    <!--Save barcode as image activity-->
+    <string name="activity_save_barcode_as_image_title">保存</string>
+    <string name="activity_save_barcode_as_image_save_as_hint">保存为</string>
+    <string-array name="activity_save_barcode_as_image_formats">
+        <item>PNG</item>
+        <item>SVG</item>
+    </string-array>
+    <string name="activity_save_barcode_as_image_file_name_save">保存</string>
+    <string name="activity_save_barcode_as_image_file_name_saved">保存到图库</string>
+    
+    <!--Barcode schemas-->
+    <string name="barcode_schema_bookmark">书签</string>
+    <string name="barcode_schema_cryptocurrency">比特币</string>
+    <string name="barcode_schema_email">电子邮件</string>
+    <string name="barcode_schema_geo">位置</string>
+    <string name="barcode_schema_google_maps">地址</string>
+    <string name="barcode_schema_google_play">应用</string>
+    <string name="barcode_schema_mms">MMS</string>
+    <string name="barcode_schema_me_card">联系人(MeCard)</string>
+    <string name="barcode_schema_phone">电话</string>
+    <string name="barcode_schema_otp">OTP</string>
+    <string name="barcode_schema_sms">SMS</string>
+    <string name="barcode_schema_url">URL</string>
+    <string name="barcode_schema_v_event">事件</string>
+    <string name="barcode_schema_v_card">联系人(VCard)</string>
+    <string name="barcode_schema_wifi">Wi-Fi</string>
+    <string name="barcode_schema_youtube">Youtube URL</string>
+    <string name="barcode_schema_other">文本</string>
+
+    <!--Barcode formats-->
+    <string name="barcode_format_qr_code">二维码</string>
+    </resources>

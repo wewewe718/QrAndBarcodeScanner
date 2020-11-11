@@ -194,7 +194,6 @@
         <item>JSON</item>
     </string-array>
     <string name="activity_export_history_file_name_hint">Nome do arquivo</string>
-    <string name="activity_export_history_file_name_default" translatable="false">db</string>
     <string name="activity_export_history_export">Exportar</string>
     <string name="activity_export_history_exported">Salvado em pasta de Downloads</string>
 
@@ -361,5 +360,4 @@
 
     <!--Barcode formats-->
     <string name="barcode_format_qr_code">Código QR</string>
-
 </resources>
