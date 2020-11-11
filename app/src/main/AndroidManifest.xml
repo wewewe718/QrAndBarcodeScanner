@@ -28,7 +28,7 @@
 
         <meta-data
             android:name="io.sentry.dsn"
-            android:value="@string/sentryDSN"
+            android:value="https://09f3022eb19f4fa7ba332b1f44188ff1@o432234.ingest.sentry.io/5384638"
             />
 
         <provider

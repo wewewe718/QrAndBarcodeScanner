@@ -24,10 +24,6 @@ android {
             }
         }
 
-        Properties properties = new Properties()
-        properties.load(project.rootProject.file("local.properties").newDataInputStream())
-
-        resValue "string", "sentryDSN", properties.getProperty("sentryDSN")
         buildConfigField "boolean", "ERROR_REPORTS_ENABLED_BY_DEFAULT", "true"
     }
 
