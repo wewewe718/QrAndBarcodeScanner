@@ -1,0 +1,46 @@
+TODOS OS FORMATOS COMUNS
+Digitalizar todos os formatos comuns de códigos de barras: QR, Matriz de dados, Aztec, UPC, EAN e muito mais.
+
+LANTERNA E ZOOM
+Ativar a lanterna para digitalizar no escuro. Use o zoom para ler os códigos de barras longe de você.
+
+AÇÕES RELEVANTES
+Abrir links, conectar-se a WiFi, visualizar geo-localizações, adicionar eventos de calendário, encontrar informações sobre produtos, etc.
+
+DIGITALIZAR DE IMAGENS
+Digitalizar os códigos de arquivos de imagem ou diretamente via a câmera.
+
+CRIAR CÓDIGOS CÓDIGOS DE BARRAS E QR
+Criar seus próprios códigos de barras ou QR com a funcionalidade incorporada.
+
+HISTÓRICO
+Visualizar os códigos digitalizados e criados no histórico.
+
+CSV E JSON EXPORT
+Exportar os códigos como arquivos CSV ou JSON.
+
+CONFIGURAÇÕES
+Personalizar seu aplicativo com configurações flexíveis.
+
+Códigos QR suportados:
+- links do site (URL)
+- informações de acesso a hotspots de WiFi
+- geo-localizações
+- dados de contato (MeCard, vCard)
+- eventos de calendário
+- telefones
+- e-mails
+- SMS
+
+Códigos de barras e códigos 2D:
+- Matriz de dados
+- Astec
+- PDF417
+- EAN-13, EAN-8
+- UPC-E, UPC-A
+- Código 39, Código 93 e Código 128
+- Codabar
+- ITF
+
+Código fonte:
+https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner
