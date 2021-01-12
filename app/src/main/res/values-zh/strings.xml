@@ -349,7 +349,7 @@
     </string-array>
     <string name="activity_save_barcode_as_image_file_name_save">保存</string>
     <string name="activity_save_barcode_as_image_file_name_saved">保存到图库</string>
-    
+
     <!--Barcode schemas-->
     <string name="barcode_schema_bookmark">书签</string>
     <string name="barcode_schema_cryptocurrency">比特币</string>
@@ -371,4 +371,4 @@
 
     <!--Barcode formats-->
     <string name="barcode_format_qr_code">二维码</string>
-    </resources>
+</resources>

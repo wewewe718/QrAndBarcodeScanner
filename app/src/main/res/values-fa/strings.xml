@@ -1,0 +1,62 @@
+<resources>
+    <string name="shortcut_history">پیشینه</string>
+
+    <!--Delete dialog-->
+    <string name="dialog_delete_positive_button">هذف</string>
+    <string name="dialog_confirm_barcode_positive_button">خوب</string>
+    <string name="activity_bottom_tabs_history_tab">پیشینه</string>
+    <string name="activity_scan_barcode_from_file_scan">خوب</string>
+    <string-array name="fragment_create_qr_code_wifi_encryption_types">
+        <item>WPA/WPA2</item>
+        <item>WEP</item>
+    </string-array>
+    <string name="fragment_create_qr_code_wifi_network_name_hint">نام شبکه</string>
+    <string name="fragment_create_qr_code_wifi_password_hint">گذرواژه</string>
+    <!--Create QR code SMS fragment-->
+    <string name="fragment_create_qr_code_sms_message_hint">پیام</string>
+
+    <string name="fragment_create_qr_code_mms_message_hint">پیام</string>
+
+    <string-array name="fragment_create_qr_code_cryptocurrencies">
+        <item>بیت‌کوین</item>
+        <item>بیت‌کوین کش</item>
+    </string-array>
+    <string name="fragment_create_qr_code_cryptocurrency_message_hint">پیام</string>
+
+    <string name="fragment_create_qr_code_contact_city_hint">شهر</string>
+    <!--Barcode history fragment-->
+    <string name="fragment_barcode_history_title">پیشینه</string>
+    <string-array name="fragment_barcode_history_tab_titles">
+        <item>همه</item>
+    </string-array>
+    <string-array name="activity_export_history_types">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_export_history_file_name_hint">نام پرونده</string>
+    <!--Settings fragment-->
+    <string name="fragment_settings_title">ساماندهی</string>
+    <string name="fragment_settings_camera">دوربین</string>
+    <string name="fragment_settings_history_settings">پیشینه</string>
+    <!--Choose theme activity-->
+    <string name="activity_choose_theme_title">پوسته</string>
+    <string name="activity_choose_theme_light">روشن</string>
+    <string name="activity_choose_theme_dark">تیره</string>
+
+    <string name="activity_choose_search_engine_bing">بینگ</string>
+    <string name="activity_choose_search_engine_google">گوگل</string>
+    <string name="activity_choose_search_engine_yahoo">یاهو</string>
+    <string name="activity_all_permissions_internet_title">اینترنت</string>
+    <string name="activity_all_permissions_camera_title">دوربین</string>
+    <string name="activity_barcode_search_on_amazon">جستجو در آمازون</string>
+    <string name="activity_barcode_show_otp">نمایش گذرواژه</string>
+    <string-array name="activity_save_barcode_as_text_formats">
+        <item>JSON</item>
+    </string-array>
+    <string-array name="activity_save_barcode_as_image_formats">
+        <item>PNG</item>
+        <item>SVG</item>
+    </string-array>
+    <string name="activity_save_barcode_as_image_file_name_save">اندوختن</string>
+    <string name="barcode_schema_cryptocurrency">بیت‌کوین</string>
+</resources>

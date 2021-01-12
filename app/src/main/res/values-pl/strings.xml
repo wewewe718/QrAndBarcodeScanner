@@ -89,7 +89,7 @@
     </string-array>
     <string name="fragment_create_qr_code_wifi_network_name_hint">Nazwa sieci</string>
     <string name="fragment_create_qr_code_wifi_password_hint">Hasło</string>
-    <string name="fragment_create_qr_code_wifi_is_hidden_hint">Ukryj</string>
+    <string name="fragment_create_qr_code_wifi_is_hidden_hint">Ukryta</string>
 
     <!--Create QR code email fragment-->
     <string name="fragment_create_qr_code_email_subject_hint">Temat</string>
@@ -106,7 +106,7 @@
     <string name="fragment_create_qr_code_cryptocurrency_type_hint">Kryptowaluta</string>
     <string-array name="fragment_create_qr_code_cryptocurrencies">
         <item>Bitcoin</item>
-        <item>Gotówka Bitcoin</item>
+        <item>Bitcoin Cash</item>
         <item>Ethereum</item>
         <item>Litecoin</item>
         <item>Dash</item>
@@ -133,11 +133,14 @@
         <item>SHA256</item>
         <item>SHA512</item>
     </string-array>
+    <string name="fragment_create_qr_code_otp_issuer_hint">Wystawca</string>
     <string name="fragment_create_qr_code_otp_account_hint">Konto</string>
-    <string name="fragment_create_qr_code_otp_digits_hint">Cyfry</string>
+    <string name="fragment_create_qr_code_otp_digits_hint">Cyfr</string>
     <string name="fragment_create_qr_code_otp_period_hint">Okres</string>
     <string name="fragment_create_qr_code_otp_counter_hint">Licznik</string>
-    <string name="fragment_create_qr_code_otp_secret_hint">Tajne</string>
+    <string name="fragment_create_qr_code_otp_secret_hint">Klucz</string>
+    <string name="fragment_create_qr_code_otp_generate_random_secret">Losowy klucz</string>
+
     <!--Create QR code event-->
     <string name="fragment_create_qr_code_event_title_hint">Tytuł</string>
     <string name="fragment_create_qr_code_event_organizer_hint">Organizator</string>
@@ -244,7 +247,7 @@
     <!--Choose camera activity-->
     <string name="activity_choose_camera_title">Aparat</string>
     <string name="activity_choose_camera_front">Przód</string>
-    <string name="activity_choose_camera_back">Wstecz</string>
+    <string name="activity_choose_camera_back">Tył</string>
 
     <!--Select supported formats activity-->
     <string name="activity_supported_formats_title">Obsługiwane formaty</string>
@@ -269,9 +272,10 @@
     <string name="activity_all_permissions_wifi_hint">Służy do łączenia się z Wi-Fi poprzez skanowanie kodu QR</string>
     <string name="activity_all_permissions_internet_title">Internet</string>
     <string name="activity_all_permissions_internet_hint">Służy do wysyłania raportów o błędach. Można to wyłączyć w ustawieniach.</string>
+    <string name="activity_all_permissions_runtime_permissions">Środowiska wykonawcze</string>
     <string name="activity_all_permissions_camera_title">Aparat</string>
     <string name="activity_all_permissions_camera_hint">Służy do skanowania kodów QR i kodów kreskowych przy pomocy aparatu</string>
-    <string name="activity_all_permissions_read_contacts_title">Odczytaj kontakty</string>
+    <string name="activity_all_permissions_read_contacts_title">Odczytywanie kontaktów</string>
     <string name="activity_all_permissions_read_contacts_hint">Służy do tworzenia kodu QR przez wybranie kontaktu z listy kontaktów</string>
     <string name="activity_all_permissions_storage_title">Pamięć</string>
     <string name="activity_all_permissions_storage_hint">Służy do uzyskiwania dostępu do pamięci masowej, gdy chcesz zapisać kod QR lub kod kreskowy jako tekst lub obraz</string>
@@ -345,7 +349,7 @@
     </string-array>
     <string name="activity_save_barcode_as_image_file_name_save">Zapisz</string>
     <string name="activity_save_barcode_as_image_file_name_saved">Zapisano w Galerii</string>
-    
+
     <!--Barcode schemas-->
     <string name="barcode_schema_bookmark">Zakładka</string>
     <string name="barcode_schema_cryptocurrency">Bitcoin</string>
@@ -367,4 +371,4 @@
 
     <!--Barcode formats-->
     <string name="barcode_format_qr_code">Kod QR</string>
-    </resources>
+</resources>

@@ -349,7 +349,7 @@
     </string-array>
     <string name="activity_save_barcode_as_image_file_name_save">Enregistrer</string>
     <string name="activity_save_barcode_as_image_file_name_saved">Enregistrer dans Galerie</string>
-    
+
     <!--Barcode schemas-->
     <string name="barcode_schema_bookmark">Favoris</string>
     <string name="barcode_schema_cryptocurrency">Bitcoin</string>
@@ -371,4 +371,4 @@
 
     <!--Barcode formats-->
     <string name="barcode_format_qr_code">QR Code</string>
-    </resources>
+</resources>
