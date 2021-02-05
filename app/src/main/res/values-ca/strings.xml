@@ -206,7 +206,7 @@
     <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">Mostra codis de contingut blanc amb fons fosc</string>
     <string name="fragment_settings_scanner_settings">Escàner</string>
     <string name="fragment_settings_open_content_automatically">Obre el contingut dels codis escanejats automàticament</string>
-    <string name="fragment_settings_open_content_automatically_hint">Potser que obri contingut perjudicial</string>
+    <string name="fragment_settings_open_content_automatically_hint">Pot obrir contingut perjudicial</string>
     <string name="fragment_settings_copy_to_clipboard">Copia al porta-retalls</string>
     <string name="fragment_settings_copy_to_clipboard_hint">Copia els codis de barres escanejats al porta-retalls</string>
     <string name="fragment_settings_simple_auto_focus">Mode d\'enfocament automàtic senzill</string>
