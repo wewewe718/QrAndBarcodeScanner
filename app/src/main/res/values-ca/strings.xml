@@ -46,12 +46,12 @@
     <!--Scan barcode from file activity-->
     <string name="activity_scan_barcode_from_file_title">Escaneja</string>
     <string name="activity_scan_barcode_from_file_scan">D\'acord</string>
-    <string name="activity_scan_barcode_from_file_rotate_left">Gira esquerra</string>
-    <string name="activity_scan_barcode_from_file_rotate_right">Gira dreta</string>
-    <string name="activity_scan_barcode_from_file_change_image">Escull altra imatge</string>
+    <string name="activity_scan_barcode_from_file_rotate_left">Gira a l\'esquerra</string>
+    <string name="activity_scan_barcode_from_file_rotate_right">Gira a la dreta</string>
+    <string name="activity_scan_barcode_from_file_change_image">Escull una altra imatge</string>
 
     <!--Create barcode fragment-->
-    <string name="fragment_create_barcode_title">Crea</string>
+    <string name="fragment_create_barcode_title">Crear</string>
     <string name="fragment_create_barcode_qr_code">Codi QR</string>
     <string name="fragment_create_barcode_qr_code_clipboard">Contingut del porta-retalls</string>
     <string name="fragment_create_barcode_qr_code_text">Text</string>
@@ -60,15 +60,15 @@
     <string name="fragment_create_barcode_show_all">Codis de barres i altres codis 2D</string>
 
     <!--Create QR code list activity-->
-    <string name="fragment_create_qr_code_list_title">Crea codi QR</string>
+    <string name="fragment_create_qr_code_list_title">Crear codi QR</string>
 
     <!--Create barcode list activity-->
-    <string name="fragment_create_barcode_list_title">Crea codi de barres</string>
+    <string name="fragment_create_barcode_list_title">Crear codi de barres</string>
     <string name="fragment_create_barcode_list_2d">Codis de barres 2D</string>
     <string name="fragment_create_barcode_list_1d">Codis de barres 1D</string>
 
     <!--Create barcode activity-->
-    <string name="activity_create_barcode_menu_item_title">Crea</string>
+    <string name="activity_create_barcode_menu_item_title">Crear</string>
     <string name="activity_create_barcode_contacts_menu_item_title">Contactes</string>
 
     <!--Base create barcode fragment -->
@@ -89,7 +89,7 @@
     </string-array>
     <string name="fragment_create_qr_code_wifi_network_name_hint">Nom de la xarxa</string>
     <string name="fragment_create_qr_code_wifi_password_hint">Paraula clau</string>
-    <string name="fragment_create_qr_code_wifi_is_hidden_hint">Amagat</string>
+    <string name="fragment_create_qr_code_wifi_is_hidden_hint">Amagada</string>
 
     <!--Create QR code email fragment-->
     <string name="fragment_create_qr_code_email_subject_hint">Assumpte</string>
@@ -202,8 +202,8 @@
     <string name="fragment_settings_title">Configuració</string>
     <string name="fragment_settings_appearance_settings">Aparença</string>
     <string name="fragment_settings_theme">Tema</string>
-    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme">Invertir els colors del codi en mode obscur</string>
-    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">Mostra codis de contingut blanc amb fons obscur</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme">Invertir els colors del codi en mode fosc</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">Mostra codis de contingut blanc amb fons fosc</string>
     <string name="fragment_settings_scanner_settings">Escàner</string>
     <string name="fragment_settings_open_content_automatically">Obre el contingut dels codis escanejats automàticament</string>
     <string name="fragment_settings_open_content_automatically_hint">Potser que obri contingut perjudicial</string>
@@ -243,7 +243,7 @@
     <string name="activity_choose_theme_title">Tema</string>
     <string name="activity_choose_theme_system">El del sistema</string>
     <string name="activity_choose_theme_light">Clar</string>
-    <string name="activity_choose_theme_dark">Obscur</string>
+    <string name="activity_choose_theme_dark">Fosc</string>
 
     <!--Choose camera activity-->
     <string name="activity_choose_camera_title">Càmera</string>
@@ -256,7 +256,7 @@
     <!--Choose search engine activity-->
     <string name="activity_choose_search_engine_title">Motors de cerca</string>
     <string name="activity_choose_search_engine_none">Cap</string>
-    <string name="activity_choose_search_engine_ask_every_time">Pregunta cada cop</string>
+    <string name="activity_choose_search_engine_ask_every_time">Pregunta sempre</string>
     <string name="activity_choose_search_engine_bing">Bing</string>
     <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
     <string name="activity_choose_search_engine_google">Google</string>
@@ -296,7 +296,7 @@
     <string name="activity_barcode_copy_network_name">Copia nom de la xarxa</string>
     <string name="activity_barcode_copy_network_password">Copia paraula clau de la xarxa</string>
     <string name="activity_barcode_open_app">Obre aplicació</string>
-    <string name="activity_barcode_open_in_app_market">Obre al mercat</string>
+    <string name="activity_barcode_open_in_app_market">Obre a la tenda d\'aplicacions</string>
     <string name="activity_barcode_open_in_youtube">Obre a YouTube</string>
     <string name="activity_barcode_save_bookmark">Desa a marcadors</string>
     <string name="activity_barcode_open_link">Obre enllaç</string>
@@ -310,23 +310,23 @@
     <string name="activity_barcode_add_to_favorites">Afegeix a favorits</string>
     <string name="activity_barcode_show_barcode_image">Mostra el codi</string>
     <string name="activity_barcode_share_as_image">Comparteix com a imatge</string>
-    <string name="activity_barcode_save_as_image">Desca com a imatge</string>
+    <string name="activity_barcode_save_as_image">Desa com a imatge</string>
     <string name="activity_barcode_print">Imprimeix</string>
     <string name="activity_barcode_delete">Esborra</string>
     <string name="activity_barcode_connecting_to_wifi">Connectant…</string>
     <string name="activity_barcode_copied">Copiat al porta-retalls</string>
     <string name="activity_barcode_barcode_image_saved">Desat a la Galeria</string>
-    <string name="activity_barcode_barcode_text_saved">Dest a Baixades</string>
+    <string name="activity_barcode_barcode_text_saved">Desat a Baixades</string>
     <string name="activity_barcode_no_app">No s\'ha trobat cap aplicació per a aquesta acció</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Canceŀla</string>
 
     <!--Barcode image activity-->
-    <string name="activity_barcode_image_increase_brightness">Incrementa brillantor</string>
-    <string name="activity_barcode_image_decrease_brightness">Decrementa brillantor</string>
+    <string name="activity_barcode_image_increase_brightness">Puja la brillantor</string>
+    <string name="activity_barcode_image_decrease_brightness">Baixa la brillantor</string>
 
     <!--OTP barcode activity-->
     <string name="activity_barcode_otp_title">OTP</string>
-    <string name="activity_barcode_otp_unable_to_generate_otp">No es pot generar paraula claua</string>
+    <string name="activity_barcode_otp_unable_to_generate_otp">No es pot generar la paraula clau</string>
     <string name="activity_barcode_otp_counter">Comptador: %s</string>
     <string name="activity_barcode_otp_timer">%s:%s restant</string>
     <string name="activity_barcode_otp_refresh_otp">Actualitza</string>
@@ -349,7 +349,7 @@
         <item>SVG</item>
     </string-array>
     <string name="activity_save_barcode_as_image_file_name_save">Desa</string>
-    <string name="activity_save_barcode_as_image_file_name_saved">Desat a Galeria</string>
+    <string name="activity_save_barcode_as_image_file_name_saved">Desat a la Galeria</string>
     
     <!--Barcode schemas-->
     <string name="barcode_schema_bookmark">Marcadors</string>
