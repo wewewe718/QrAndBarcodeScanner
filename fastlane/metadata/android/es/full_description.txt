@@ -24,7 +24,7 @@ Personaliza tu aplicación con configuraciones flexibles.
 
 Códigos QR soportados:
 • Enlaces web (URL)
-• Información de \ acceso a puntos de red WiFi
+• Información de acceso a puntos de red WiFi
 • Geolocalitzacions
 • Datos de contacto (MeCard, vCard)
 • Eventos de calendario
