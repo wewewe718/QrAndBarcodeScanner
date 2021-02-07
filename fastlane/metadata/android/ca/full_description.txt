@@ -1,0 +1,46 @@
+ELS FORMATS MÉS CONEGUTS
+Escaneja els formats més coneguts de codi de barres: QR, Matriu de dades, Aztec, UPC, EAN i més.
+
+Llanterna i zoom
+Activa la llanterna per escanejar en la foscor. Empra el zoom per llegir codis de barres des de distàncies llunyanes.
+
+ACCIONS RELLEVANTS
+Obrir enllaços, connectar a una xarxa WiFi, veure geolocalitzacions, afegir events al calendari, trobar informació d\'un producte, etc.
+
+ESCANEJA IMATGES
+Escaneja codis a un arxiu d\'imatge o directament utilitzant la càmera.
+
+CREA CODIS QR I DE BARRES
+Crea el teu propi codi QR o de barres amb el generador inclòs.
+
+HISTORIAL
+Visualitza a l\'historial codis escanejats i creats.
+
+EXPORTA CSV I JSON
+Exporta codis com a arxius CSV o JSON.
+
+CONFIGURACIÓ
+Personalitza la teva aplicació amb configuracions flexibles.
+
+Codis QR suportats:
+• enllaços web (URL)
+• Informació d\'accès a punts de xarxa WiFi
+• Geolocalitzacions
+• Dades de contacte (MeCard, vCard)
+• Events de calendari
+• Telèfons
+• Correu electrònic
+• SMS
+
+Codis de barres i codis 2D:
+• Matriu de dades
+• Aztec
+• PDF417
+• EAN-13, EAN-8
+• UPC-E, UPC-A
+• Codi 39, Codi 93 i Codi 128
+• Codabar
+• ITF
+
+Codi font:
+https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner
