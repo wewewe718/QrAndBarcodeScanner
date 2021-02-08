@@ -1,7 +1,7 @@
 LOS FORMATOS MÁS CONOCIDOS
 Escanea los formatos más conocidos de código de barras: QR, Matriz de datos, Aztec, UPC, EAN y más.
 
-Linterna y zoom
+LINTERNA Y ZOOM
 Activa la linterna para escanear en la oscuridad. Usa el zoom para leer códigos de barras desde distancias lejanas.
 
 ACCIONES RELEVANTES
