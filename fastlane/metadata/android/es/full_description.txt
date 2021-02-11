@@ -1,0 +1,46 @@
+LOS FORMATOS MÁS CONOCIDOS
+Escanea los formatos más conocidos de código de barras: QR, Matriz de datos, Aztec, UPC, EAN y más.
+
+LINTERNA Y ZOOM
+Activa la linterna para escanear en la oscuridad. Usa el zoom para leer códigos de barras desde distancias lejanas.
+
+ACCIONES RELEVANTES
+Abrir enlaces, conectar a una red WiFi, ver geolocalizaciones, añadir eventos al calendario, encontrar información de un producto, etc.
+
+ESCANEAR IMÁGENES
+Escanear códigos a un archivo de imagen o directamente utilizando la cámara.
+
+CREA CÓDIGOS QR Y DE BARRAS
+Crea tu propio código QR o de barras con el generador incluido.
+
+HISTORIAL
+Ver en el historial códigos escaneados y creados.
+
+EXPORTA CSV Y JSON
+Exportar códigos como archivos CSV o JSON.
+
+CONFIGURACIÓN
+Personaliza tu aplicación con configuraciones flexibles.
+
+Códigos QR soportados:
+• Enlaces web (URL)
+• Información de acceso a puntos de red WiFi
+• Geolocalitzacions
+• Datos de contacto (MeCard, vCard)
+• Eventos de calendario
+• Teléfonos
+• Correo electrónico
+• SMS
+
+Códigos de barras y códigos 2D:
+• Matriz de datos
+• Aztec
+• PDF417
+• EAN-13, EAN-8
+• UPC-E, UPC-A
+• Código 39, Código 93 y Código 128
+• Codabar
+• ITF
+
+Código fuente:
+https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner
