@@ -152,7 +152,7 @@
     <string name="fragment_create_qr_code_contact_first_name_hint">Nom</string>
     <string name="fragment_create_qr_code_contact_last_name_hint">Cognom</string>
     <string name="fragment_create_qr_code_contact_organization_hint">Organització</string>
-    <string name="fragment_create_qr_code_contact_job_hint">Feina</string>
+    <string name="fragment_create_qr_code_contact_job_hint">Ocupació</string>
     <string name="fragment_create_qr_code_contact_email_hint">Correu electrònic</string>
     <string name="fragment_create_qr_code_contact_phone_hint">Telèfon</string>
     <string name="fragment_create_qr_code_contact_fax_hint">Fax</string>
