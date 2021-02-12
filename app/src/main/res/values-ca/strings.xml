@@ -328,7 +328,7 @@
     <string name="activity_barcode_otp_title">OTP</string>
     <string name="activity_barcode_otp_unable_to_generate_otp">No es pot generar la paraula clau</string>
     <string name="activity_barcode_otp_counter">Comptador: %s</string>
-    <string name="activity_barcode_otp_timer">%s:%s restant</string>
+    <string name="activity_barcode_otp_timer">%s:%s restants</string>
     <string name="activity_barcode_otp_refresh_otp">Actualitza</string>
 
     <!--Save barcode as text activity-->
