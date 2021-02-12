@@ -1,7 +1,7 @@
 ELS FORMATS MÉS CONEGUTS
 Escaneja els formats més coneguts de codi de barres: QR, Matriu de dades, Aztec, UPC, EAN i més.
 
-Llanterna i zoom
+LLANTERNA I ZOOM
 Activa la llanterna per escanejar en la foscor. Empra el zoom per llegir codis de barres des de distàncies llunyanes.
 
 ACCIONS RELLEVANTS
