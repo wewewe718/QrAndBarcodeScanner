@@ -287,7 +287,7 @@
     <string name="activity_barcode_search_on_ebay">Cerca a eBay</string>
     <string name="activity_barcode_add_to_calendar">Afegeix al calendari</string>
     <string name="activity_barcode_add_to_contacts">Afegeix als contactes</string>
-    <string name="activity_barcode_call_phone">Truca %s</string>
+    <string name="activity_barcode_call_phone">Truca a %s</string>
     <string name="activity_barcode_send_sms">Envia SMS/MMS a %s</string>
     <string name="activity_barcode_send_email">Envia correu electrònic a %s</string>
     <string name="activity_barcode_show_location">Mostra ubicació</string>
