@@ -290,7 +290,7 @@
     <string name="activity_barcode_call_phone">Truca %s</string>
     <string name="activity_barcode_send_sms">Envia SMS/MMS a %s</string>
     <string name="activity_barcode_send_email">Envia correu electrònic a %s</string>
-    <string name="activity_barcode_show_location">Mostra localització</string>
+    <string name="activity_barcode_show_location">Mostra ubicació</string>
     <string name="activity_barcode_connect_to_wifi">Connectar a xarxa Wi-Fi</string>
     <string name="activity_barcode_open_wifi_settings">Obre configuració de xarxa Wi-Fi</string>
     <string name="activity_barcode_copy_network_name">Copia nom de la xarxa</string>
@@ -355,7 +355,7 @@
     <string name="barcode_schema_bookmark">Marcadors</string>
     <string name="barcode_schema_cryptocurrency">Bitcoin</string>
     <string name="barcode_schema_email">Correu electrònic</string>
-    <string name="barcode_schema_geo">Localització</string>
+    <string name="barcode_schema_geo">Ubicació</string>
     <string name="barcode_schema_google_maps">Adreça</string>
     <string name="barcode_schema_google_play">Aplicació</string>
     <string name="barcode_schema_mms">MMS</string>
