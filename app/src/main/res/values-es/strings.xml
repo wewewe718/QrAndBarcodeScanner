@@ -75,7 +75,7 @@
     <string name="fragment_create_barcode_alternative">Alternativamente:</string>
 
     <!--Create QR code URL fragment-->
-    <string name="fragment_create_qr_code_url_alternative">- Abra su navegador - Cargue una página web - Pulse \\"Compartir\\" desde el menú - Seleccione esta aplicación</string>
+    <string name="fragment_create_qr_code_url_alternative">- Abra su navegador\n - Cargue una página web\n - Pulse \"Compartir\" desde el menú\n - Seleccione esta aplicación</string>
 
     <!--Create QR code bookmark fragment-->
     <string name="fragment_create_qr_code_bookmark_title_hint">Título</string>
@@ -152,7 +152,7 @@
     <string name="fragment_create_qr_code_contact_first_name_hint">Nombre</string>
     <string name="fragment_create_qr_code_contact_last_name_hint">Apellido</string>
     <string name="fragment_create_qr_code_contact_organization_hint">Organización</string>
-    <string name="fragment_create_qr_code_contact_job_hint">Puesto</string>
+    <string name="fragment_create_qr_code_contact_job_hint">Empleo</string>
     <string name="fragment_create_qr_code_contact_email_hint">Email</string>
     <string name="fragment_create_qr_code_contact_phone_hint">Teléfono</string>
     <string name="fragment_create_qr_code_contact_fax_hint">Fax</string>
@@ -162,7 +162,7 @@
     <string name="fragment_create_qr_code_contact_city_hint">Ciudad</string>
     <string name="fragment_create_qr_code_contact_street_hint">Calle</string>
     <string name="fragment_create_qr_code_contact_website_hint">Sitio Web</string>
-    <string name="fragment_create_qr_code_contact_alternative">- Abra sus contactos - Abrir un contacto existente o crear uno nuevo - Pulse \\"Compartir\\" en el menú - Selecione esta aplicación</string>
+    <string name="fragment_create_qr_code_contact_alternative">- Abra sus contactos\n - Abrir un contacto existente o crear uno nuevo\n - Pulse \"Compartir\" en el menú\n - Selecione esta aplicación</string>
 
     <!--Create barcode-->
     <string name="fragment_create_data_matrix_hint">Texto sin caracteres especiales</string>
@@ -229,8 +229,8 @@
     <string name="fragment_settings_advanced_settings">Avanzado</string>
     <string name="fragment_settings_choose_search_engines">Motores de búsqueda</string>
     <string name="fragment_settings_choose_search_engines_hint">Elija un motor de búsqueda para las búsquedas en la web</string>
-    <string name="fragment_settings_error_reports">Reportes de errores</string>
-    <string name="fragment_settings_enable_error_reports">Habilitar el reporte de errores</string>
+    <string name="fragment_settings_error_reports">Informes de errores</string>
+    <string name="fragment_settings_enable_error_reports">Habilitar informes de errores</string>
     <string name="fragment_settings_enable_error_reports_hint">Ayúdenos a resolver las fallas</string>
     <string name="fragment_settings_about">Acerca de</string>
     <string name="fragment_settings_check_updates">Buscar actualizaciones</string>
@@ -286,7 +286,7 @@
     <string name="activity_barcode_search_on_ebay">Buscar en eBay</string>
     <string name="activity_barcode_add_to_calendar">Agregar al calendario</string>
     <string name="activity_barcode_add_to_contacts">Agregar a Contactos</string>
-    <string name="activity_barcode_call_phone">Llamar%s</string>
+    <string name="activity_barcode_call_phone">Llamar a %s</string>
     <string name="activity_barcode_send_sms">Enviar un SMS/MMS a %s</string>
     <string name="activity_barcode_send_email">Enviar un email a %s</string>
     <string name="activity_barcode_show_location">Mostrar ubicación</string>
@@ -314,7 +314,7 @@
     <string name="activity_barcode_delete">Borrar</string>
     <string name="activity_barcode_connecting_to_wifi">Conectando…</string>
     <string name="activity_barcode_copied">Copiado al portapapeles</string>
-    <string name="activity_barcode_barcode_image_saved">Guardado en la galería</string>
+    <string name="activity_barcode_barcode_image_saved">Guardado en la Galería</string>
     <string name="activity_barcode_barcode_text_saved">Guardado en Descargas</string>
     <string name="activity_barcode_no_app">No se encontró ninguna aplicación para esta acción</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Cancelar</string>
@@ -327,7 +327,7 @@
     <string name="activity_barcode_otp_title">OTP</string>
     <string name="activity_barcode_otp_unable_to_generate_otp">No fue posible generar una contraseña</string>
     <string name="activity_barcode_otp_counter">Contador: %s</string>
-    <string name="activity_barcode_otp_timer">%s:%s izquierda</string>
+    <string name="activity_barcode_otp_timer">%s:%s restantes</string>
     <string name="activity_barcode_otp_refresh_otp">Actualizar</string>
 
     <!--Save barcode as text activity-->
@@ -342,13 +342,13 @@
 
     <!--Save barcode as image activity-->
     <string name="activity_save_barcode_as_image_title">Guardar</string>
-    <string name="activity_save_barcode_as_image_save_as_hint">Guardado como</string>
+    <string name="activity_save_barcode_as_image_save_as_hint">Guardar como</string>
     <string-array name="activity_save_barcode_as_image_formats">
         <item>PNG</item>
         <item>SVG</item>
     </string-array>
     <string name="activity_save_barcode_as_image_file_name_save">Guardar</string>
-    <string name="activity_save_barcode_as_image_file_name_saved">Guardado en la galería</string>
+    <string name="activity_save_barcode_as_image_file_name_saved">Guardado en la Galería</string>
 
     <!--Barcode schemas-->
     <string name="barcode_schema_bookmark">Favoritos</string>
