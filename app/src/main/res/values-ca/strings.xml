@@ -152,7 +152,7 @@
     <string name="fragment_create_qr_code_contact_first_name_hint">Nom</string>
     <string name="fragment_create_qr_code_contact_last_name_hint">Cognom</string>
     <string name="fragment_create_qr_code_contact_organization_hint">Organització</string>
-    <string name="fragment_create_qr_code_contact_job_hint">Feina</string>
+    <string name="fragment_create_qr_code_contact_job_hint">Ocupació</string>
     <string name="fragment_create_qr_code_contact_email_hint">Correu electrònic</string>
     <string name="fragment_create_qr_code_contact_phone_hint">Telèfon</string>
     <string name="fragment_create_qr_code_contact_fax_hint">Fax</string>
@@ -287,10 +287,10 @@
     <string name="activity_barcode_search_on_ebay">Cerca a eBay</string>
     <string name="activity_barcode_add_to_calendar">Afegeix al calendari</string>
     <string name="activity_barcode_add_to_contacts">Afegeix als contactes</string>
-    <string name="activity_barcode_call_phone">Truca %s</string>
+    <string name="activity_barcode_call_phone">Truca a %s</string>
     <string name="activity_barcode_send_sms">Envia SMS/MMS a %s</string>
     <string name="activity_barcode_send_email">Envia correu electrònic a %s</string>
-    <string name="activity_barcode_show_location">Mostra localització</string>
+    <string name="activity_barcode_show_location">Mostra ubicació</string>
     <string name="activity_barcode_connect_to_wifi">Connectar a xarxa Wi-Fi</string>
     <string name="activity_barcode_open_wifi_settings">Obre configuració de xarxa Wi-Fi</string>
     <string name="activity_barcode_copy_network_name">Copia nom de la xarxa</string>
@@ -328,7 +328,7 @@
     <string name="activity_barcode_otp_title">OTP</string>
     <string name="activity_barcode_otp_unable_to_generate_otp">No es pot generar la paraula clau</string>
     <string name="activity_barcode_otp_counter">Comptador: %s</string>
-    <string name="activity_barcode_otp_timer">%s:%s restant</string>
+    <string name="activity_barcode_otp_timer">%s:%s restants</string>
     <string name="activity_barcode_otp_refresh_otp">Actualitza</string>
 
     <!--Save barcode as text activity-->
@@ -355,7 +355,7 @@
     <string name="barcode_schema_bookmark">Marcadors</string>
     <string name="barcode_schema_cryptocurrency">Bitcoin</string>
     <string name="barcode_schema_email">Correu electrònic</string>
-    <string name="barcode_schema_geo">Localització</string>
+    <string name="barcode_schema_geo">Ubicació</string>
     <string name="barcode_schema_google_maps">Adreça</string>
     <string name="barcode_schema_google_play">Aplicació</string>
     <string name="barcode_schema_mms">MMS</string>
