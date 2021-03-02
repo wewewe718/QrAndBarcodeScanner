@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.8
+* Update translations
+
 ## 1.7
 * Add translations: Chinese, French, Japanese, Polish, Spanish
 

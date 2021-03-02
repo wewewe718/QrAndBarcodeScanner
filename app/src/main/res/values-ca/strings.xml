@@ -272,7 +272,7 @@
     <string name="activity_all_permissions_wifi_title">Wi-Fi</string>
     <string name="activity_all_permissions_wifi_hint">Emprat per connectar a la xarxa Wi-Fi escanejant un codi QR</string>
     <string name="activity_all_permissions_internet_title">Internet</string>
-    <string name="activity_all_permissions_internet_hint">Emprat per enviar informes d'\error. Es pot desactivar a configuració.</string>
+    <string name="activity_all_permissions_internet_hint">Emprat per enviar informes d\'\error. Es pot desactivar a configuració.</string>
     <string name="activity_all_permissions_runtime_permissions">Temps d\'execució</string>
     <string name="activity_all_permissions_camera_title">Càmera</string>
     <string name="activity_all_permissions_camera_hint">Emprat per escanejar codis QR i de barres des de la càmera</string>
