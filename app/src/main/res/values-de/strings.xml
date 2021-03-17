@@ -243,8 +243,6 @@
     <string name="activity_all_permissions_storage_hint">Zum Speichern Ihrer QR- oder Barcodes</string>
 
     <!--Barcode activity-->
-    <string name="activity_barcode_barcode_text_saved">In Downloads gespeichert</string>
-    <string name="activity_barcode_barcode_image_saved">In Galerie gespeichert</string>
     <string name="activity_barcode_copied">In die Zwischenablage kopiert</string>
     <string name="activity_barcode_connecting_to_wifi">Wird verbunden…</string>
     <string name="activity_barcode_delete">Löschen</string>
@@ -274,9 +272,6 @@
     <string name="activity_barcode_call_phone">%s anrufen</string>
     <string name="activity_barcode_add_to_contacts">Kontakt hinzufügen</string>
     <string name="activity_barcode_add_to_calendar">Ereignis hinzufügen</string>
-    <string name="activity_barcode_search_on_ebay">Auf eBay suchen</string>
-    <string name="activity_barcode_search_on_amazon">Auf Amazon suchen</string>
-    <string name="activity_barcode_search_on_rate_and_goods">Auf Rate&amp;Goods suchen</string>
     <string name="activity_barcode_no_app">Keine passende App gefunden</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Abbrechen</string>
 

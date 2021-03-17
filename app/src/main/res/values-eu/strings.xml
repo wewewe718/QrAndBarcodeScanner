@@ -281,9 +281,6 @@
     <string name="activity_all_permissions_storage_hint">QR- edo barra-kodea testu edo irudi gisa gorde nahi duzunean biltegiratzera sartzeko erabiltzen da</string>
 
     <!--Barcode activity-->
-    <string name="activity_barcode_search_on_rate_and_goods">Rate&amp;Goods aplikazioan bilatu</string>
-    <string name="activity_barcode_search_on_amazon">Bilatu Amazonen</string>
-    <string name="activity_barcode_search_on_ebay">Bilatu eBay-en</string>
     <string name="activity_barcode_add_to_calendar">Gehitu egutegian</string>
     <string name="activity_barcode_add_to_contacts">Gehitu kontaktuetan</string>
     <string name="activity_barcode_call_phone">Deitu %s</string>
@@ -312,10 +309,8 @@
     <string name="activity_barcode_save_as_image">Gorde irudi gisa</string>
     <string name="activity_barcode_print">Inprimatu</string>
     <string name="activity_barcode_delete">Ezabatu</string>
-    <string name="activity_barcode_connecting_to_wifi">Konektatzen...</string>
+    <string name="activity_barcode_connecting_to_wifi">Konektatzen…</string>
     <string name="activity_barcode_copied">Arbelean kopiatuta</string>
-    <string name="activity_barcode_barcode_image_saved">Galerian gorde da</string>
-    <string name="activity_barcode_barcode_text_saved">Deskargetan gorde da</string>
     <string name="activity_barcode_no_app">Ez da aplikaziorik aurkitu ekintza honetarako</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Utzi</string>
 

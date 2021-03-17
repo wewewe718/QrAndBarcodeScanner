@@ -281,9 +281,6 @@
     <string name="activity_all_permissions_storage_hint">用于在您希望将二维码或条形码保存为文本或图像时访问存储</string>
 
     <!--Barcode activity-->
-    <string name="activity_barcode_search_on_rate_and_goods">搜寻价格及货品</string>
-    <string name="activity_barcode_search_on_amazon">搜索 Amazon</string>
-    <string name="activity_barcode_search_on_ebay">搜索 eBay</string>
     <string name="activity_barcode_add_to_calendar">添加到日历</string>
     <string name="activity_barcode_add_to_contacts">添加到联系人</string>
     <string name="activity_barcode_call_phone">拨打%s</string>
@@ -312,10 +309,8 @@
     <string name="activity_barcode_save_as_image">保存为图像</string>
     <string name="activity_barcode_print">打印</string>
     <string name="activity_barcode_delete">清除</string>
-    <string name="activity_barcode_connecting_to_wifi">正在连接...</string>
+    <string name="activity_barcode_connecting_to_wifi">正在连接…</string>
     <string name="activity_barcode_copied">复制到剪贴板</string>
-    <string name="activity_barcode_barcode_image_saved">保存到图库</string>
-    <string name="activity_barcode_barcode_text_saved">保存到下载</string>
     <string name="activity_barcode_no_app">没有找到能打开的应用</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">取消</string>
 

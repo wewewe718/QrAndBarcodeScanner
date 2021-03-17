@@ -282,9 +282,6 @@
     <string name="activity_all_permissions_storage_hint">Used to access storage when you want to save your QR code or barcode as text or image</string>
 
     <!--Barcode activity-->
-    <string name="activity_barcode_search_on_rate_and_goods">Search on Rate&amp;Goods</string>
-    <string name="activity_barcode_search_on_amazon">Search on Amazon</string>
-    <string name="activity_barcode_search_on_ebay">Search on eBay</string>
     <string name="activity_barcode_add_to_calendar">Add to calendar</string>
     <string name="activity_barcode_add_to_contacts">Add to contacts</string>
     <string name="activity_barcode_call_phone">Call %s</string>
@@ -315,8 +312,6 @@
     <string name="activity_barcode_delete">Delete</string>
     <string name="activity_barcode_connecting_to_wifi">Connecting…</string>
     <string name="activity_barcode_copied">Copied to clipboard</string>
-    <string name="activity_barcode_barcode_image_saved">Saved to Gallery</string>
-    <string name="activity_barcode_barcode_text_saved">Saved to Downloads</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Cancel</string>
 

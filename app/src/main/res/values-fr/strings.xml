@@ -281,9 +281,6 @@
     <string name="activity_all_permissions_storage_hint">Utilisé pour accéder au stockage lorsque vous souhaitez enregistrer votre QR code ou votre code-barres sous forme de texte ou d\'image</string>
 
     <!--Barcode activity-->
-    <string name="activity_barcode_search_on_rate_and_goods">Chercher sur Rate&amp;Goods</string>
-    <string name="activity_barcode_search_on_amazon">Chercher sur Amazon</string>
-    <string name="activity_barcode_search_on_ebay">Chercher sur eBay</string>
     <string name="activity_barcode_add_to_calendar">Ajouter au calendrier</string>
     <string name="activity_barcode_add_to_contacts">Ajouter aux contacts</string>
     <string name="activity_barcode_call_phone">Appeler %s</string>
@@ -312,10 +309,8 @@
     <string name="activity_barcode_save_as_image">Enregistrer en tant qu\'image</string>
     <string name="activity_barcode_print">Imprimer</string>
     <string name="activity_barcode_delete">Supprimer</string>
-    <string name="activity_barcode_connecting_to_wifi">Connection...</string>
+    <string name="activity_barcode_connecting_to_wifi">Connection…</string>
     <string name="activity_barcode_copied">Copier dans le presse-papier</string>
-    <string name="activity_barcode_barcode_image_saved">Enregistrer dans Galerie</string>
-    <string name="activity_barcode_barcode_text_saved">Enregistrer dans Téléchargements</string>
     <string name="activity_barcode_no_app">Aucune application trouvée pour cette action</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Annuler</string>
 
