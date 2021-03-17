@@ -47,15 +47,7 @@ android {
     flavorDimensions "market"
     productFlavors {
         appGallery {}
-        getApps {}
-        xda {}
         googlePlay {
-            applicationId "org.barcodescanner"
-        }
-        amazon {
-            applicationId "org.barcodescanner"
-        }
-        aptoide {
             applicationId "org.barcodescanner"
         }
         fDroid {

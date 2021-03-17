@@ -23,6 +23,12 @@ class MyCropImageView : CropImageView {
         return super.onTouchEvent(event)
     }
 
+    override fun rotateImage(degrees: RotateDegrees?) {
+        if (drawable != null) {
+            super.rotateImage(degrees)
+        }
+    }
+
     fun touches(): Observable<MotionEvent> {
         return touches
     }
