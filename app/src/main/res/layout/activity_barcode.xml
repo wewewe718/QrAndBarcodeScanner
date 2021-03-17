@@ -118,36 +118,6 @@
 
             <!--Specific buttons-->
             <com.example.barcodescanner.feature.common.view.IconButton
-                android:id="@+id/button_search_on_rate_and_goods"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_search"
-                app:iconBackground="@color/orange"
-                app:text="@string/activity_barcode_search_on_rate_and_goods"
-                android:visibility="gone"
-                tools:visibility="visible"
-                />
-            <com.example.barcodescanner.feature.common.view.IconButton
-                android:id="@+id/button_search_on_amazon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_search"
-                app:iconBackground="@color/orange"
-                app:text="@string/activity_barcode_search_on_amazon"
-                android:visibility="gone"
-                tools:visibility="visible"
-                />
-            <com.example.barcodescanner.feature.common.view.IconButton
-                android:id="@+id/button_search_on_ebay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_search"
-                app:iconBackground="@color/orange"
-                app:text="@string/activity_barcode_search_on_ebay"
-                android:visibility="gone"
-                tools:visibility="visible"
-                />
-            <com.example.barcodescanner.feature.common.view.IconButton
                 android:id="@+id/button_search_on_web"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
