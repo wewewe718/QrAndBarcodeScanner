@@ -1,12 +1,15 @@
 ## Overview
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
-[![](https://img.shields.io/github/v/release/dmitriy-ilchenko/QrAndBarcodeScanner)](https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/releases/latest)
 
 QR & Barcode Scanner is an ad-free, open-source scanner app. It uses the [ZXing][zxing] scanning library.
 
+* Forked from https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner
+* Added support NZ COVID Tracer QR Codes
+* Added option to auto clear history enteries older than x days
+
 ## Download
 
-<a href="https://play.google.com/store/apps/details?id=org.barcodescanner"><img alt="Get it on Google Play" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/google_play/badge.png" height="60"/></a>   <a href="https://www.amazon.com/dp/B08GCTQ444/ref=apps_sf_sta"><img alt="Available at Amazon Appstore" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/amazon/badge.png" height="60"/></a>   <a href="https://ad-free-qr-barcode-scanner.en.aptoide.com/app"><img alt="Get it on Aptoide" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/aptoide_badge.svg" height="60"/></a>   <a href="https://appgallery7.huawei.com/#/app/C102717909"><img alt="Explore it on AppGallery" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/app_gallery/badge.png" height="60"/></a>   <a href="https://www.f-droid.org/en/packages/com.example.barcodescanner/"><img alt="Get it on FDroid" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/fdroid_badge.png" height="60"/></a>   <a href="https://apt.izzysoft.de/fdroid/index/apk/com.example.barcodescanner"><img alt="Get it on IzzyOnDroid" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/IzzyOnDroid.png" height="60"/></a>   <a href="https://labs.xda-developers.com/store/app/com.example.barcodescanner"><img alt="Get it on XDA Labs" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/xda-badge.png" height="60"/></a>   <a href="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/releases"><img alt="Get it on Github" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/get-it-on-github.png" height="60"/></a>
+<a href="https://play.google.com/store/apps/details?id=com.brdbnt.barcodescanner"><img alt="Get it on Google Play" src="https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner/blob/develop/images/google_play/badge.png" height="60"/></a>
 
 ## Screenshots
 
@@ -14,7 +17,8 @@ QR & Barcode Scanner is an ad-free, open-source scanner app. It uses the [ZXing]
 
 ## Contributing
 
-You can contribute by adding a translation on [Transifex][transifex], reporting a bug or asking for a feature.
+You can contribute to the orginal project, I will try and keep this in sync with the orginal project. I have requested my changes are merged into the orginal project. So, this may become redundant.
+https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner
 
 ## Supported Barcode Formats
 

@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.8.1
+* Forked from https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner
+* Added support NZ COVID Tracer QR Codes
+* Added option to auto clear history enteries older than x days
+
 ## 1.8
 * Update translations
 
