@@ -84,6 +84,9 @@ interface BarcodeDatabase {
 
     @Query("DELETE FROM codes")
     fun deleteAll(): Completable
+
+    @Query("DELETE FROM codes WHERE date <= (strftime('%s', datetime('now', '-' || :days || ' days'))* 1000)")
+    fun deleteOlder(days: Int): Completable
 }
 
 fun BarcodeDatabase.save(barcode: Barcode, doNotSaveDuplicates: Boolean): Single<Long> {

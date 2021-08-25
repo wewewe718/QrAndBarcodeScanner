@@ -3,6 +3,8 @@ package com.example.barcodescanner.feature.tabs.settings
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +27,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_settings.*
+import java.lang.Exception
 
 
 class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
@@ -73,6 +76,23 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
         button_save_created_barcodes.setCheckedChangedListener { settings.saveCreatedBarcodesToHistory = it }
         button_do_not_save_duplicates.setCheckedChangedListener { settings.doNotSaveDuplicates = it }
         button_enable_error_reports.setCheckedChangedListener { settings.areErrorReportsEnabled = it }
+        edit_text_auto_clear_days.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+                if ( s.isBlank() ) { settings.auto_clear_days = 0 }
+                else {
+                    try {
+                        settings.auto_clear_days = s.toString().toInt()
+                    } catch (e: Exception) {
+                    }
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                                        count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+            }
+        })
     }
 
     private fun handleButtonClicks() {
@@ -118,6 +138,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
             button_save_created_barcodes.isChecked = saveCreatedBarcodesToHistory
             button_do_not_save_duplicates.isChecked = doNotSaveDuplicates
             button_enable_error_reports.isChecked = areErrorReportsEnabled
+            edit_text_auto_clear_days.setText(auto_clear_days.toString())
         }
     }
 

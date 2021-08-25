@@ -38,6 +38,7 @@ class Settings(private val context: Context) {
         IS_BACK_CAMERA,
         SAVE_SCANNED_BARCODES_TO_HISTORY,
         SAVE_CREATED_BARCODES_TO_HISTORY,
+        AUTO_CLEAR_DAYS,
         DO_NOT_SAVE_DUPLICATES,
         SEARCH_ENGINE,
         ERROR_REPORTS,
@@ -112,6 +113,10 @@ class Settings(private val context: Context) {
     var saveCreatedBarcodesToHistory: Boolean
         get() = get(Key.SAVE_CREATED_BARCODES_TO_HISTORY, true)
         set(value) = set(Key.SAVE_CREATED_BARCODES_TO_HISTORY, value)
+
+    var auto_clear_days: Int
+        get() = get(Key.AUTO_CLEAR_DAYS, 0)
+        set(value) = set(Key.AUTO_CLEAR_DAYS, value)
 
     var doNotSaveDuplicates: Boolean
         get() = get(Key.DO_NOT_SAVE_DUPLICATES, false)

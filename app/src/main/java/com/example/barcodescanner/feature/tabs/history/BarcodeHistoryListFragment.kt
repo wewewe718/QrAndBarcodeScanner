@@ -10,6 +10,7 @@ import androidx.paging.RxPagedListBuilder
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barcodescanner.R
 import com.example.barcodescanner.di.barcodeDatabase
+import com.example.barcodescanner.di.settings
 import com.example.barcodescanner.extension.orZero
 import com.example.barcodescanner.extension.showError
 import com.example.barcodescanner.feature.barcode.BarcodeActivity
@@ -18,6 +19,7 @@ import io.reactivex.BackpressureStrategy
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_barcode_history_list.*
 
 class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
@@ -75,6 +77,15 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
     }
 
     private fun loadHistory() {
+        if (settings.auto_clear_days > 0) {
+            barcodeDatabase.deleteOlder(settings.auto_clear_days)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(
+                    )
+                    .addTo(disposable)
+        }
+
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
             .setPageSize(PAGE_SIZE)

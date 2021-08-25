@@ -162,6 +162,34 @@
                 app:hint="@string/fragment_settings_do_not_save_duplicates_hint"
                 />
             <com.example.barcodescanner.feature.common.view.SettingsButton
+                android:id="@+id/button_auto_clear_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_auto_clear_days"
+                app:hint="@string/fragment_settings_auto_clear_hint"
+                app:isDelimiterVisible="false"
+                app:isSwitchVisible="false"
+                >
+                <EditText
+                    android:id="@+id/edit_text_auto_clear_days"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:gravity="center_horizontal"
+                    android:textAlignment="center"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:ems="10"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:maxLength="2"
+                    android:hint="@string/fragment_settings_days"
+                    android:inputType="number"
+                    android:backgroundTint="@color/blue"
+                    style="@style/EditTextStyle"
+                    android:importantForAutofill="no"
+                    />
+            </com.example.barcodescanner.feature.common.view.SettingsButton>
+            <com.example.barcodescanner.feature.common.view.SettingsButton
                 android:id="@+id/button_clear_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
