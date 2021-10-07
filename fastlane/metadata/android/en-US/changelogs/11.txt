@@ -1,0 +1,2 @@
+* Add support for New Zealand Covid Tracer QR Codes
+* Update translations
