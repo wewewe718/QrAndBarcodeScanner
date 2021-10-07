@@ -41,11 +41,11 @@ class EditBarcodeNameDialogFragment : DialogFragment() {
         val dialog = AlertDialog.Builder(requireActivity(), R.style.DialogTheme)
             .setTitle(R.string.dialog_edit_barcode_name_title)
             .setView(view)
-            .setPositiveButton(R.string.dialog_confirm_barcode_positive_button) { _, _ ->
+            .setPositiveButton(R.string.dialog_edit_barcode_name_positive_button) { _, _ ->
                 val newName = view.edit_text_barcode_name.text.toString()
                 listener?.onNameConfirmed(newName)
             }
-            .setNegativeButton(R.string.dialog_confirm_barcode_negative_button, null)
+            .setNegativeButton(R.string.dialog_edit_barcode_name_negative_button, null)
             .create()
 
         dialog.setOnShowListener {

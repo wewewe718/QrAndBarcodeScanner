@@ -33,11 +33,9 @@
 
     <color name="transparent">#00000000</color>
     <color name="white">#FFFFFF</color>
-    <color name="white_transparent">#2CFFFFFF</color>
     <color name="black">#000000</color>
     <color name="black2">#202124</color>
     <color name="black3">#3B3C40</color>
-    <color name="black4">#202124</color>
     <color name="black_transparent">#2C000000</color>
     <color name="black_transparent2">#5E000000</color>
     <color name="black_transparent3">#40000000</color>
@@ -48,7 +46,6 @@
     <color name="gray10">#9E9E9E</color>
     <color name="gray11">#5F6267</color>
     <color name="gray12">#E0E0E0</color>
-    <color name="gray13">#757575</color>
     <color name="gray14">#9BA0A6</color>
     <color name="gray15">#9C9FA6</color>
     <color name="gray16">#2A2A2E</color>

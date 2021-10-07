@@ -9,7 +9,8 @@ class Url(val url: String) : Schema {
         private const val HTTP_PREFIX = "http://"
         private const val HTTPS_PREFIX = "https://"
         private const val WWW_PREFIX = "www."
-        private val PREFIXES = listOf(HTTP_PREFIX, HTTPS_PREFIX, WWW_PREFIX)
+        private const val F_DROID_REPOSITORY_PREFIX = "fdroidrepos://"
+        private val PREFIXES = listOf(HTTP_PREFIX, HTTPS_PREFIX, WWW_PREFIX, F_DROID_REPOSITORY_PREFIX)
 
         fun parse(text: String): Url? {
             if (text.startsWithAnyIgnoreCase(PREFIXES).not()) {

@@ -261,9 +261,6 @@
     <string name="activity_all_permissions_storage_hint">Используется для сохранения QR и штрихкодов</string>
 
     <!--Barcode activity-->
-    <string name="activity_barcode_search_on_rate_and_goods">Поиск на Rate&amp;Goods</string>
-    <string name="activity_barcode_search_on_amazon">Поиск на Amazon</string>
-    <string name="activity_barcode_search_on_ebay">Поиск на eBay</string>
     <string name="activity_barcode_add_to_calendar">Добавить в календарь</string>
     <string name="activity_barcode_add_to_contacts">Добавить в контакты</string>
     <string name="activity_barcode_call_phone">Вызов %s</string>
@@ -294,8 +291,6 @@
     <string name="activity_barcode_delete">Удалить</string>
     <string name="activity_barcode_connecting_to_wifi">Подключение…</string>
     <string name="activity_barcode_copied">Скопировано в буфер обмена</string>
-    <string name="activity_barcode_barcode_image_saved">Сохранено в Галерею</string>
-    <string name="activity_barcode_barcode_text_saved">Сохранено в Загрузки</string>
     <string name="activity_barcode_no_app">Не найдено подходящее приложение</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Отмена</string>
 

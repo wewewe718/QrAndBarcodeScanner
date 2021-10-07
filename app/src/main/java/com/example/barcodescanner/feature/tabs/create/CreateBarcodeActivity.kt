@@ -210,7 +210,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     }
 
     private fun showToolbarTitle() {
-        val titleId = barcodeSchema?.toStringId() ?: barcodeFormat.toStringId() ?: return
+        val titleId = barcodeSchema?.toStringId() ?: barcodeFormat.toStringId()
         toolbar.setTitle(titleId)
     }
 

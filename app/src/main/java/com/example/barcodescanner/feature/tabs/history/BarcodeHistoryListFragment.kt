@@ -86,7 +86,7 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
             else -> return
         }
 
-        RxPagedListBuilder<Int, Barcode>(dataSource, config)
+        RxPagedListBuilder(dataSource, config)
             .buildFlowable(BackpressureStrategy.LATEST)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

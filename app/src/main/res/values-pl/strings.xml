@@ -281,9 +281,6 @@
     <string name="activity_all_permissions_storage_hint">Służy do uzyskiwania dostępu do pamięci masowej, gdy chcesz zapisać kod QR lub kod kreskowy jako tekst lub obraz</string>
 
     <!--Barcode activity-->
-    <string name="activity_barcode_search_on_rate_and_goods">Wyszukaj w Rate&amp;Goods</string>
-    <string name="activity_barcode_search_on_amazon">Szukaj na Amazon</string>
-    <string name="activity_barcode_search_on_ebay">Szukaj w serwisie eBay</string>
     <string name="activity_barcode_add_to_calendar">Dodaj do kalendarza</string>
     <string name="activity_barcode_add_to_contacts">Dodaj do kontaktów</string>
     <string name="activity_barcode_call_phone">Zadzwoń na numer %s</string>
@@ -312,10 +309,8 @@
     <string name="activity_barcode_save_as_image">Zapisz jako obraz</string>
     <string name="activity_barcode_print">Drukuj</string>
     <string name="activity_barcode_delete">Usuń</string>
-    <string name="activity_barcode_connecting_to_wifi">Trwa łączenie...</string>
+    <string name="activity_barcode_connecting_to_wifi">Trwa łączenie…</string>
     <string name="activity_barcode_copied">Skopiowano do schowka</string>
-    <string name="activity_barcode_barcode_image_saved">Zapisano w Galerii</string>
-    <string name="activity_barcode_barcode_text_saved">Zapisano w Pobranych</string>
     <string name="activity_barcode_no_app">Nie znaleziono aplikacji dla tego działania</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Anuluj</string>
 

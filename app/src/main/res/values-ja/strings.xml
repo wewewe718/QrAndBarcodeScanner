@@ -281,9 +281,6 @@
     <string name="activity_all_permissions_storage_hint">作成したQRコードやバーコードをストレージに保存するため</string>
 
     <!--Barcode activity-->
-    <string name="activity_barcode_search_on_rate_and_goods">Rate&amp;Goodsで検索</string>
-    <string name="activity_barcode_search_on_amazon">Amazonで検索</string>
-    <string name="activity_barcode_search_on_ebay">eBayで検索</string>
     <string name="activity_barcode_add_to_calendar">カレンダーに追加</string>
     <string name="activity_barcode_add_to_contacts">連絡先に追加</string>
     <string name="activity_barcode_call_phone">%s に通話を発信</string>
@@ -314,8 +311,6 @@
     <string name="activity_barcode_delete">削除</string>
     <string name="activity_barcode_connecting_to_wifi">接続中…</string>
     <string name="activity_barcode_copied">クリップボードにコピーしました</string>
-    <string name="activity_barcode_barcode_image_saved">画像を保存しました</string>
-    <string name="activity_barcode_barcode_text_saved">Downloadフォルダに保存しました</string>
     <string name="activity_barcode_no_app">対応アプリを確認できませんでした</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">キャンセル</string>
 

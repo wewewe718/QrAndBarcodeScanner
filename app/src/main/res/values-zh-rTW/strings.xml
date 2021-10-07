@@ -232,9 +232,6 @@
     <string name="activity_all_permissions_storage_hint">用於儲存 QR 碼或條碼成文字或圖片至內存</string>
 
     <!--Barcode activity-->
-    <string name="activity_barcode_search_on_rate_and_goods">在 Rate &amp; Goods 上搜尋</string>
-    <string name="activity_barcode_search_on_amazon">在 Amazon 上搜尋</string>
-    <string name="activity_barcode_search_on_ebay">在 eBay 上搜尋</string>
     <string name="activity_barcode_add_to_calendar">新增至日曆</string>
     <string name="activity_barcode_add_to_contacts">新增至通訊錄</string>
     <string name="activity_barcode_call_phone">致電 %s</string>
@@ -264,8 +261,6 @@
     <string name="activity_barcode_delete">刪除</string>
     <string name="activity_barcode_connecting_to_wifi">連接中…</string>
     <string name="activity_barcode_copied">已複製至剪貼簿</string>
-    <string name="activity_barcode_barcode_image_saved">已另存至相簿</string>
-    <string name="activity_barcode_barcode_text_saved">已另存至下載資料夾</string>
     <string name="activity_barcode_no_app">找不至與此操作相關的應用程式</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">取消</string>
 

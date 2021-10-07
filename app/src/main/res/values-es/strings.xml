@@ -281,9 +281,6 @@
     <string name="activity_all_permissions_storage_hint">Utilizado para acceder al almacenamiento cuando desee guardar su código QR o de barras como texto o imagen</string>
 
     <!--Barcode activity-->
-    <string name="activity_barcode_search_on_rate_and_goods">Buscar en Rate&amp;Goods</string>
-    <string name="activity_barcode_search_on_amazon">Buscar en Amazon</string>
-    <string name="activity_barcode_search_on_ebay">Buscar en eBay</string>
     <string name="activity_barcode_add_to_calendar">Agregar al calendario</string>
     <string name="activity_barcode_add_to_contacts">Agregar a Contactos</string>
     <string name="activity_barcode_call_phone">Llamar a %s</string>
@@ -314,8 +311,6 @@
     <string name="activity_barcode_delete">Borrar</string>
     <string name="activity_barcode_connecting_to_wifi">Conectando…</string>
     <string name="activity_barcode_copied">Copiado al portapapeles</string>
-    <string name="activity_barcode_barcode_image_saved">Guardado en la Galería</string>
-    <string name="activity_barcode_barcode_text_saved">Guardado en Descargas</string>
     <string name="activity_barcode_no_app">No se encontró ninguna aplicación para esta acción</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Cancelar</string>
 

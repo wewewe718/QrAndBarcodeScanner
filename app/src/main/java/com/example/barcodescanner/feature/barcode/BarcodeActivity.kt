@@ -183,11 +183,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private fun handleButtonsClicked() {
         button_edit_name.setOnClickListener { showEditBarcodeNameDialog() }
 
-        button_search_on_rate_and_goods.setOnClickListener { searchBarcodeTextOnRateAndGoods() }
-        button_search_on_amazon.setOnClickListener { searchBarcodeTextOnAmazon() }
-        button_search_on_ebay.setOnClickListener { searchBarcodeTextOnEbay() }
         button_search_on_web.setOnClickListener { searchBarcodeTextOnInternet() }
-
         button_add_to_calendar.setOnClickListener { addToCalendar() }
         button_add_to_contacts.setOnClickListener { addToContacts() }
         button_show_location.setOnClickListener { showLocation() }
@@ -470,21 +466,6 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         showToast(R.string.activity_barcode_copied)
     }
 
-    private fun searchBarcodeTextOnRateAndGoods() {
-        val url = "https://ratengoods.com/product/${barcode.text}/"
-        startActivityIfExists(Intent.ACTION_VIEW, url)
-    }
-
-    private fun searchBarcodeTextOnAmazon() {
-        val url = "https://www.amazon.com/s?k=${barcode.text}"
-        startActivityIfExists(Intent.ACTION_VIEW, url)
-    }
-
-    private fun searchBarcodeTextOnEbay() {
-        val url = "https://www.ebay.com/sch/i.html/?_nkw=${barcode.text}"
-        startActivityIfExists(Intent.ACTION_VIEW, url)
-    }
-
     private fun searchBarcodeTextOnInternet() {
         val searchEngine = settings.searchEngine
         when (searchEngine) {
@@ -680,9 +661,6 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
             return
         }
 
-        button_search_on_rate_and_goods.isVisible = barcode.isProductBarcode && currentLocale.isRussian
-        button_search_on_amazon.isVisible = barcode.isProductBarcode
-        button_search_on_ebay.isVisible = barcode.isProductBarcode
         button_search_on_web.isVisible = barcode.isProductBarcode
         button_search.isVisible = barcode.isProductBarcode.not()
 

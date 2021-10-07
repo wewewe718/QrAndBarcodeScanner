@@ -64,7 +64,7 @@ object BarcodeImageGenerator {
         }
     }
 
-    fun generateSvg(barcode: Barcode, width: Int, height: Int, margin: Int = 0): String {
+    private fun generateSvg(barcode: Barcode, width: Int, height: Int, margin: Int = 0): String {
         val matrix = writer.encode(
             barcode.text,
             barcode.format,

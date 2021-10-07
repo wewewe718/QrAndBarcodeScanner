@@ -282,9 +282,6 @@
     <string name="activity_all_permissions_storage_hint">Emprat per accedir a l\'emmagatzematge quan vols desar el teu codi QR o de barres com a text o imatge</string>
 
     <!--Barcode activity-->
-    <string name="activity_barcode_search_on_rate_and_goods">Cerca a Rate&amp;Goods</string>
-    <string name="activity_barcode_search_on_amazon">Cerca a Amazon</string>
-    <string name="activity_barcode_search_on_ebay">Cerca a eBay</string>
     <string name="activity_barcode_add_to_calendar">Afegeix al calendari</string>
     <string name="activity_barcode_add_to_contacts">Afegeix als contactes</string>
     <string name="activity_barcode_call_phone">Truca a %s</string>
@@ -315,8 +312,6 @@
     <string name="activity_barcode_delete">Esborra</string>
     <string name="activity_barcode_connecting_to_wifi">Connectant…</string>
     <string name="activity_barcode_copied">Copiat al porta-retalls</string>
-    <string name="activity_barcode_barcode_image_saved">Desat a la Galeria</string>
-    <string name="activity_barcode_barcode_text_saved">Desat a Baixades</string>
     <string name="activity_barcode_no_app">No s\'ha trobat cap aplicació per a aquesta acció</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Canceŀla</string>
 
