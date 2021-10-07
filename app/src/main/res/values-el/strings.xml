@@ -1,0 +1,369 @@
+<resources>
+    <string name="app_name">Σαρωτής QR &amp; Γραμμωτού Κώδικα</string>
+
+    <!--Shortcuts-->
+    <string name="shortcut_scan_from_camera">Σάρωση</string>
+    <string name="shortcut_scan_from_file">Σάρωση εικόνας</string>
+    <string name="shortcut_create_barcode">Δημιουργία γραμμωτού κώδικα</string>
+    <string name="shortcut_history">Ιστορικό</string>
+
+    <!--Intent filters-->
+    <string name="intent_filter_create_qr_code_text">Δημιουργία κώδικα QR</string>
+    <string name="intent_filter_scan_image">Σάρωση εικόνας</string>
+
+    <!--Error dialog-->
+    <string name="error_dialog_title">Σφάλμα</string>
+    <string name="error_dialog_default_message">Κάτι πήγε στραβά</string>
+    <string name="error_dialog_positive_button_text">ΟΚ</string>
+
+    <!--Delete dialog-->
+    <string name="dialog_delete_positive_button">Διαγραφή</string>
+    <string name="dialog_delete_negative_button">Ακύρωση</string>
+    <string name="dialog_delete_clear_history_message">Διαγραφή ιστορικού;</string>
+    <string name="dialog_delete_barcode_message">Διαγραφή;</string>
+
+    <!--Confirm barcode dialog-->
+    <string name="dialog_confirm_barcode_title">Επιβεβαίωση</string>
+    <string name="dialog_confirm_barcode_positive_button">ΟΚ</string>
+    <string name="dialog_confirm_barcode_negative_button">Ακύρωση</string>
+
+    <!--Edit barcode name dialog-->
+    <string name="dialog_edit_barcode_name_title">Τροποποίηση ονόματος</string>
+    <string name="dialog_edit_barcode_name_positive_button">ΟΚ</string>
+    <string name="dialog_edit_barcode_name_negative_button">Ακύρωση</string>
+
+    <!--Bottom tabs activity-->
+    <string name="activity_bottom_tabs_scan_tab">Σάρωση</string>
+    <string name="activity_bottom_tabs_create_tab">Δημιουργία</string>
+    <string name="activity_bottom_tabs_history_tab">Ιστορικό</string>
+    <string name="activity_bottom_tabs_settings_tab">Ρυθμίσεις</string>
+
+    <!--Scan barcode from camera fragment-->
+    <string name="fragment_scan_barcode_from_camera_scan_from_file">Σάρωση εικόνας</string>
+    <string name="fragment_scan_barcode_from_camera_flash">Φλας</string>
+    <string name="fragment_scan_barcode_from_camera_barcode_saved">Αποθηκεύτηκε</string>
+
+    <!--Scan barcode from file activity-->
+    <string name="activity_scan_barcode_from_file_title">Σάρωση</string>
+    <string name="activity_scan_barcode_from_file_scan">ΟΚ</string>
+    <string name="activity_scan_barcode_from_file_rotate_left">Περιστροφή αριστερά</string>
+    <string name="activity_scan_barcode_from_file_rotate_right">Περιστροφή δεξιά</string>
+    <string name="activity_scan_barcode_from_file_change_image">Επιλογή άλλης εικόνας</string>
+
+    <!--Create barcode fragment-->
+    <string name="fragment_create_barcode_title">Δημιουργία</string>
+    <string name="fragment_create_barcode_qr_code">Κώδικας QR</string>
+    <string name="fragment_create_barcode_qr_code_clipboard">Περιεχόμενο από το πρόχειρο</string>
+    <string name="fragment_create_barcode_qr_code_text">Κείμενο</string>
+    <string name="fragment_create_barcode_qr_code_show_all">Περισσότεροι κωδικοί QR</string>
+    <string name="fragment_create_barcode">Γραμμωτός κώδικας</string>
+    <string name="fragment_create_barcode_show_all">Γραμμωτοί και άλλοι 2D κώδικες</string>
+
+    <!--Create QR code list activity-->
+    <string name="fragment_create_qr_code_list_title">Δημιουργία κώδικα QR</string>
+
+    <!--Create barcode list activity-->
+    <string name="fragment_create_barcode_list_title">Δημιουργία γραμμωτού κώδικα</string>
+    <string name="fragment_create_barcode_list_2d">Κώδικες 2D</string>
+    <string name="fragment_create_barcode_list_1d">Κώδικες 1D</string>
+
+    <!--Create barcode activity-->
+    <string name="activity_create_barcode_menu_item_title">Δημιουργία</string>
+    <string name="activity_create_barcode_contacts_menu_item_title">Επαφές</string>
+
+    <!--Base create barcode fragment -->
+    <string name="fragment_create_barcode_alternative">Εναλλακτικά:</string>
+
+    <!--Create QR code URL fragment-->
+    <string name="fragment_create_qr_code_url_alternative">- Ανοίξτε τον περιηγητή ιστού\n- Φορτώστε μια ιστοσελίδα\n- Πατήστε \"Κοινοποίηση\" από το μενού\n- Επιλέξτε αυτήν την εφαρμογή</string>
+
+    <!--Create QR code bookmark fragment-->
+    <string name="fragment_create_qr_code_bookmark_title_hint">Τίτλος</string>
+
+    <!--Create QR code Wi-fi fragment-->
+    <string name="fragment_create_qr_code_wifi_encryption_hint">Κρυπτογράφηση</string>
+    <string-array name="fragment_create_qr_code_wifi_encryption_types">
+        <item>WPA/WPA2</item>
+        <item>WEP</item>
+        <item>Καμία</item>
+    </string-array>
+    <string name="fragment_create_qr_code_wifi_network_name_hint">Όνομα δικτύου</string>
+    <string name="fragment_create_qr_code_wifi_password_hint">Κωδικός</string>
+    <string name="fragment_create_qr_code_wifi_is_hidden_hint">Κρυφός</string>
+
+    <!--Create QR code email fragment-->
+    <string name="fragment_create_qr_code_email_subject_hint">Θέμα</string>
+    <string name="fragment_create_qr_code_email_message_hint">Μήνυμα</string>
+
+    <!--Create QR code SMS fragment-->
+    <string name="fragment_create_qr_code_sms_message_hint">Μήνυμα</string>
+
+    <!--Create QR code MMS fragment-->
+    <string name="fragment_create_qr_code_mms_subject_hint">Θέμα</string>
+    <string name="fragment_create_qr_code_mms_message_hint">Μήνυμα</string>
+
+    <!--Create QR code cryptocurrency fragment-->
+    <string name="fragment_create_qr_code_cryptocurrency_type_hint">Κρυπτονόμισμα</string>
+    <string-array name="fragment_create_qr_code_cryptocurrencies">
+        <item>Bitcoin</item>
+        <item>Ρευστό Bitcoin</item>
+        <item>Ethereum</item>
+        <item>Litecoin</item>
+        <item>Dash</item>
+    </string-array>
+    <string name="fragment_create_qr_code_cryptocurrency_address_hint">Διεύθυνση παραλήπτη</string>
+    <string name="fragment_create_qr_code_cryptocurrency_amount_hint">Ποσό</string>
+    <string name="fragment_create_qr_code_cryptocurrency_label_hint">Ετικέτα</string>
+    <string name="fragment_create_qr_code_cryptocurrency_message_hint">Μήνυμα</string>
+
+    <!--Create QR code location fragment-->
+    <string name="fragment_create_qr_code_location_latitude_hint">Γεωγραφικό πλάτος</string>
+    <string name="fragment_create_qr_code_location_longitude_hint">Γεωγραφικό μήκος</string>
+    <string name="fragment_create_qr_code_location_altitude_hint">Υψόμετρο (προαιρετικά)</string>
+
+    <!--Create QR code OTP fragment-->
+    <string name="fragment_create_qr_code_otp_type_hint">Τύπος</string>
+    <string-array name="fragment_create_qr_code_otp_types">
+        <item>HOTP</item>
+        <item>TOTP</item>
+    </string-array>
+    <string name="fragment_create_qr_code_otp_algorithm_hint">Αλγόριθμος</string>
+    <string-array name="fragment_create_qr_code_otp_algorithms">
+        <item>SHA1</item>
+        <item>SHA256</item>
+        <item>SHA512</item>
+    </string-array>
+    <string name="fragment_create_qr_code_otp_issuer_hint">Εκδότης</string>
+    <string name="fragment_create_qr_code_otp_account_hint">Λογαριασμός</string>
+    <string name="fragment_create_qr_code_otp_digits_hint">Ψηφία</string>
+    <string name="fragment_create_qr_code_otp_period_hint">Περίοδος</string>
+    <string name="fragment_create_qr_code_otp_counter_hint">Μετρητής</string>
+    <string name="fragment_create_qr_code_otp_secret_hint">Μυστικός</string>
+    <string name="fragment_create_qr_code_otp_generate_random_secret">Τυχαίος μυστικός</string>
+
+    <!--Create QR code event-->
+    <string name="fragment_create_qr_code_event_title_hint">Τίτλος</string>
+    <string name="fragment_create_qr_code_event_organizer_hint">Οργανωτής</string>
+    <string name="fragment_create_qr_code_event_summary_hint">Σύνοψη</string>
+    <string name="fragment_create_qr_code_event_start_date_hint">Ημερομηνία έναρξης</string>
+    <string name="fragment_create_qr_code_event_end_date_hint">Ημερομηνία λήξης</string>
+
+    <!--Create QR code contact-->
+    <string name="fragment_create_qr_code_contact_first_name_hint">Όνομα</string>
+    <string name="fragment_create_qr_code_contact_last_name_hint">Επίθετο</string>
+    <string name="fragment_create_qr_code_contact_organization_hint">Οργανισμός</string>
+    <string name="fragment_create_qr_code_contact_job_hint">Επάγγελμα</string>
+    <string name="fragment_create_qr_code_contact_email_hint">Email</string>
+    <string name="fragment_create_qr_code_contact_phone_hint">Τηλέφωνο</string>
+    <string name="fragment_create_qr_code_contact_fax_hint">Φαξ</string>
+    <string name="fragment_create_qr_code_contact_country_hint">Χώρα</string>
+    <string name="fragment_create_qr_code_contact_region_hint">Νομός/Πολιτεία</string>
+    <string name="fragment_create_qr_code_contact_postcode_hint">Τ.Κ.</string>
+    <string name="fragment_create_qr_code_contact_city_hint">Πόλη</string>
+    <string name="fragment_create_qr_code_contact_street_hint">Οδός</string>
+    <string name="fragment_create_qr_code_contact_website_hint">Ιστοσελίδα</string>
+    <string name="fragment_create_qr_code_contact_alternative">- Ανοίξτε την εφαρμογή επαφών σας\n- Ανοίξτε μια επαφή ή δημιουργήστε μια καινούργια\n- Πατήστε \"Κοινοποίηση\" στο μενού\n- Επιλέξτε αυτήν την εφαρμογή</string>
+
+    <!--Create barcode-->
+    <string name="fragment_create_data_matrix_hint">Κείμενο χωρίς ειδικούς χαρακτήρες</string>
+    <string name="fragment_create_aztec_hint">Κείμενο χωρίς ειδικούς χαρακτήρες</string>
+    <string name="fragment_create_codabar_hint">Ψηφία</string>
+    <string name="fragment_create_code_39_hint">Κείμενο με κεφαλαία, χωρίς ειδικούς χαρακτήρες</string>
+    <string name="fragment_create_code_93_hint">Κείμενο με κεφαλαία, χωρίς ειδικούς χαρακτήρες</string>
+    <string name="fragment_create_code_128_hint">Κείμενο χωρίς ειδικούς χαρακτήρες</string>
+    <string name="fragment_create_ean_8_hint">7 ψηφία</string>
+    <string name="fragment_create_ean_13_hint">12 ψηφία</string>
+    <string name="fragment_create_itf_14_hint">Ζυγός αριθμός ψηφίων</string>
+    <string name="fragment_create_upc_a_hint">11 ψηφία</string>
+    <string name="fragment_create_upc_e_hint">7 ψηφία</string>
+
+    <!--Barcode history fragment-->
+    <string name="fragment_barcode_history_title">Ιστορικό</string>
+    <string-array name="fragment_barcode_history_tab_titles">
+        <item>Όλα</item>
+        <item>Αγαπημένα</item>
+    </string-array>
+    <string name="fragment_barcode_history_menu_title_export">Εξαγωγή ιστορικού</string>
+    <string name="fragment_barcode_history_menu_title_delete_all">Εκκαθάριση ιστορικού</string>
+
+    <!--Export history activity-->
+    <string name="activity_export_history_title">Εξαγωγή ιστορικού</string>
+    <string name="activity_export_history_as_hint">Εξαγωγή ως</string>
+    <string-array name="activity_export_history_types">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_export_history_file_name_hint">Όνομα αρχείου</string>
+    <string name="activity_export_history_export">Εξαγωγή</string>
+    <string name="activity_export_history_exported">Αποθηκεύτηκαν στις Λήψεις</string>
+
+    <!--Settings fragment-->
+    <string name="fragment_settings_title">Ρυθμίσεις</string>
+    <string name="fragment_settings_appearance_settings">Εμφάνιση</string>
+    <string name="fragment_settings_theme">Θέμα</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme">Αντιστροφή χρωμάτων στο σκούρο θέμα</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">Εμφάνιση κωδικών με λευκό περιεχόμενο σε σκούρο φόντο</string>
+    <string name="fragment_settings_scanner_settings">Σαρωτής</string>
+    <string name="fragment_settings_open_content_automatically">Αυτόματο άνοιγμα του περιεχομένου των σαρωμένων κωδικών</string>
+    <string name="fragment_settings_open_content_automatically_hint">Μπορεί να ανοιχθεί επιβλαβές περιεχόμενο</string>
+    <string name="fragment_settings_copy_to_clipboard">Αντιγραφή στο πρόχειρο</string>
+    <string name="fragment_settings_copy_to_clipboard_hint">Αντιγραφή των σαρωμένων κωδικών στο πρόχειρο</string>
+    <string name="fragment_settings_simple_auto_focus">Απλή λειτουργία αυτόματης εστίασης</string>
+    <string name="fragment_settings_simple_auto_focus_hint">Ενεργοποιήστε την μόνο αν αντιμετωπίζετε προβλήματα εστίασης</string>
+    <string name="fragment_settings_flash">Φλας</string>
+    <string name="fragment_settings_flash_hint">Ενεργοποίηση του φλας κατά την εκκίνηση</string>
+    <string name="fragment_settings_vibrate">Δόνηση</string>
+    <string name="fragment_settings_vibrate_hint">Δόνηση με την ολοκλήρωση της σάρωσης</string>
+    <string name="fragment_settings_continuous_scanning">Συνεχόμενη σάρωση</string>
+    <string name="fragment_settings_continuous_scanning_hint">Αποθήκευση των σαρώσεων μόνο στο ιστορικό</string>
+    <string name="fragment_settings_confirm_scans_manually">Χειροκίνητη επιβεβαίωση των σαρώσεων</string>
+    <string name="fragment_settings_confirm_scans_manually_hint">Αποφυγή εκ παραδρομής σαρώσεων</string>
+    <string name="fragment_settings_camera">Κάμερα</string>
+    <string name="fragment_settings_supported_formats">Υποστηριζόμενοι τύποι</string>
+    <string name="fragment_settings_history_settings">Ιστορικό</string>
+    <string name="fragment_settings_save_scanned_barcodes_to_history">Αποθήκευση σαρωμένων κωδικών στο ιστορικό</string>
+    <string name="fragment_settings_save_created_barcodes_to_history">Αποθήκευση δημιουργημένων κωδικών στο ιστορικό</string>
+    <string name="fragment_settings_do_not_save_duplicates">Όχι αποθήκευση διπλότυπων</string>
+    <string name="fragment_settings_do_not_save_duplicates_hint">Αποφυγή διπλοτύπων στο ιστορικό</string>
+    <string name="fragment_settings_clear_history">Καθαρισμός ιστορικού</string>
+    <string name="fragment_settings_advanced_settings">Προχωρημένες</string>
+    <string name="fragment_settings_choose_search_engines">Μηχανές αναζήτησης</string>
+    <string name="fragment_settings_choose_search_engines_hint">Επιλογή μηχανής αναζήτησης στο διαδίκτυο</string>
+    <string name="fragment_settings_error_reports">Αναφορές σφαλμάτων</string>
+    <string name="fragment_settings_enable_error_reports">Ενεργοποίηση αναφορών σφαλμάτων</string>
+    <string name="fragment_settings_enable_error_reports_hint">Μας βοηθούν να διορθώσουμε τα σφάλματα</string>
+    <string name="fragment_settings_about">Περί</string>
+    <string name="fragment_settings_check_updates">Έλεγχος για αναβαθμίσεις</string>
+    <string name="fragment_settings_permissions">Άδειες</string>
+    <string name="fragment_settings_source_code">Πηγαίος κώδικας</string>
+    <string name="fragment_settings_app_version">Έκδοση εφαρμογής</string>
+
+    <!--Choose theme activity-->
+    <string name="activity_choose_theme_title">Θέμα</string>
+    <string name="activity_choose_theme_system">Σύμφωνα με το σύστημα</string>
+    <string name="activity_choose_theme_light">Ανοικτό</string>
+    <string name="activity_choose_theme_dark">Σκούρο</string>
+
+    <!--Choose camera activity-->
+    <string name="activity_choose_camera_title">Κάμερα</string>
+    <string name="activity_choose_camera_front">Εμπρόσθια</string>
+    <string name="activity_choose_camera_back">Οπίσθια</string>
+
+    <!--Select supported formats activity-->
+    <string name="activity_supported_formats_title">Υποστηριζόμενοι τύποι</string>
+
+    <!--Choose search engine activity-->
+    <string name="activity_choose_search_engine_title">Μηχανές αναζήτησης</string>
+    <string name="activity_choose_search_engine_none">Καμία</string>
+    <string name="activity_choose_search_engine_ask_every_time">Ερώτηση κάθε φορά</string>
+    <string name="activity_choose_search_engine_bing">Bing</string>
+    <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
+    <string name="activity_choose_search_engine_google">Google</string>
+    <string name="activity_choose_search_engine_qwant">Qwant</string>
+    <string name="activity_choose_search_engine_yahoo">Yahoo</string>
+    <string name="activity_choose_search_engine_yandex">Yandex</string>
+
+    <!--All permissions activity-->
+    <string name="activity_all_permissions_title">Άδειες</string>
+    <string name="activity_all_permissions_normal_permissions">Κανονικές</string>
+    <string name="activity_all_permissions_vibrate_title">Δόνηση</string>
+    <string name="activity_all_permissions_vibrate_hint">Για τη δόνηση με την ολοκλήρωση της σάρωσης</string>
+    <string name="activity_all_permissions_wifi_title">Wi-Fi</string>
+    <string name="activity_all_permissions_wifi_hint">Για τη σύνδεση σε Wi-Fi μέσω σάρωσης κωδικού</string>
+    <string name="activity_all_permissions_internet_title">Διαδίκτυο</string>
+    <string name="activity_all_permissions_internet_hint">Για την αποστολή αναφορών σφαλμάτων. Μπορεί να απενεργοποιηθεί στις ρυθμίσεις.</string>
+    <string name="activity_all_permissions_runtime_permissions">Χρόνου εκτέλεσης</string>
+    <string name="activity_all_permissions_camera_title">Κάμερα</string>
+    <string name="activity_all_permissions_camera_hint">Για τη σάρωση κωδικών μέσω της κάμερας</string>
+    <string name="activity_all_permissions_read_contacts_title">Ανάγνωση επαφών</string>
+    <string name="activity_all_permissions_read_contacts_hint">Για τη δημιουργία κωδικών αποθηκευμένων επαφών</string>
+    <string name="activity_all_permissions_storage_title">Αποθηκευτικός χώρος</string>
+    <string name="activity_all_permissions_storage_hint">Για αποθήκευση κωδικών ως κείμενο ή εικόνα</string>
+
+    <!--Barcode activity-->
+    <string name="activity_barcode_add_to_calendar">Προσθήκη στο ημερολόγιο</string>
+    <string name="activity_barcode_add_to_contacts">Προσθήκη στις επαφές</string>
+    <string name="activity_barcode_call_phone">Κλήση %s</string>
+    <string name="activity_barcode_send_sms">Αποστολή SMS/MMS στο %s</string>
+    <string name="activity_barcode_send_email">Email στο %s</string>
+    <string name="activity_barcode_show_location">Εμφάνιση τοποθεσίας</string>
+    <string name="activity_barcode_connect_to_wifi">Σύνδεση σε Wi-Fi</string>
+    <string name="activity_barcode_open_wifi_settings">Άνοιγμα ρυθμίσεων Wi-Fi</string>
+    <string name="activity_barcode_copy_network_name">Αντιγραφή ονόματος δικτύου</string>
+    <string name="activity_barcode_copy_network_password">Αντιγραφή κωδικού δικτύου</string>
+    <string name="activity_barcode_open_app">Άνοιγμα εφαρμογής</string>
+    <string name="activity_barcode_open_in_app_market">Άνοιγμα στην αγορά</string>
+    <string name="activity_barcode_open_in_youtube">Άνοιγμα στο Youtube</string>
+    <string name="activity_barcode_save_bookmark">Αποθήκευση στους σελιδοδείκτες</string>
+    <string name="activity_barcode_open_link">Άνοιγμα συνδέσμου</string>
+    <string name="activity_barcode_open_bitcoin_url">Άνοιγμα σε άλλη εφαρμογή</string>
+    <string name="activity_barcode_show_otp">Εμφάνιση κωδικού</string>
+    <string name="activity_barcode_open_otp">Άνοιγμα σε άλλη εφαρμογή</string>
+    <string name="activity_barcode_share_as_text">Κοινοποίηση ως κείμενο</string>
+    <string name="activity_barcode_copy">Αντιγραφή στο πρόχειρο</string>
+    <string name="activity_barcode_save_as_text">Αποθήκευση ως κείμενο</string>
+    <string name="activity_barcode_search">Αναζήτηση στο διαδίκτυο</string>
+    <string name="activity_barcode_add_to_favorites">Προσθήκη στα αγαπημένα</string>
+    <string name="activity_barcode_show_barcode_image">Εμφάνιση κωδικού</string>
+    <string name="activity_barcode_share_as_image">Κοινοποίηση ως εικόνα</string>
+    <string name="activity_barcode_save_as_image">Αποθήκευση ως εικόνα</string>
+    <string name="activity_barcode_print">Εκτύπωση</string>
+    <string name="activity_barcode_delete">Διαγραφή</string>
+    <string name="activity_barcode_connecting_to_wifi">Σύνδεση...</string>
+    <string name="activity_barcode_copied">Αντιγράφηκε στο πρόχειρο</string>
+    <string name="activity_barcode_no_app">Δε βρέθηκε εφαρμογή για αυτήν την ενέργεια</string>
+    <string name="activity_barcode_choose_search_engine_dialog_negative_button">Ακύρωση</string>
+
+    <!--Barcode image activity-->
+    <string name="activity_barcode_image_increase_brightness">Αύξηση φωτεινότητας</string>
+    <string name="activity_barcode_image_decrease_brightness">Μείωση φωτεινότητας</string>
+
+    <!--OTP barcode activity-->
+    <string name="activity_barcode_otp_title">OTP</string>
+    <string name="activity_barcode_otp_unable_to_generate_otp">Αδυναμία δημιουργίας κωδικού</string>
+    <string name="activity_barcode_otp_counter">Μετρητής: %s</string>
+    <string name="activity_barcode_otp_timer">%s:%s μένουν</string>
+    <string name="activity_barcode_otp_refresh_otp">Ανανέωση</string>
+
+    <!--Save barcode as text activity-->
+    <string name="activity_save_barcode_as_text_title">Αποθήκευση</string>
+    <string name="activity_save_barcode_as_text_save_as_hint">Αποθήκευση ως</string>
+    <string-array name="activity_save_barcode_as_text_formats">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_save_barcode_as_text_file_name_save">Αποθήκευση</string>
+    <string name="activity_save_barcode_as_text_file_name_saved">Αποθηκεύτηκε στις Λήψεις</string>
+
+    <!--Save barcode as image activity-->
+    <string name="activity_save_barcode_as_image_title">Αποθήκευση</string>
+    <string name="activity_save_barcode_as_image_save_as_hint">Αποθήκευση ως</string>
+    <string-array name="activity_save_barcode_as_image_formats">
+        <item>PNG</item>
+        <item>SVG</item>
+    </string-array>
+    <string name="activity_save_barcode_as_image_file_name_save">Αποθήκευση</string>
+    <string name="activity_save_barcode_as_image_file_name_saved">Αποθηκεύτηκε στην Έκθεση</string>
+
+    <!--Barcode schemas-->
+    <string name="barcode_schema_bookmark">Σελιδοδείκτης</string>
+    <string name="barcode_schema_cryptocurrency">Bitcoin</string>
+    <string name="barcode_schema_email">Email</string>
+    <string name="barcode_schema_geo">Τοποθεσία</string>
+    <string name="barcode_schema_google_maps">Διεύθυνση</string>
+    <string name="barcode_schema_google_play">Εφαρμογή</string>
+    <string name="barcode_schema_mms">MMS</string>
+    <string name="barcode_schema_me_card">Επαφή (MeCard)</string>
+    <string name="barcode_schema_phone">Τηλέφωνο</string>
+    <string name="barcode_schema_otp">OTP</string>
+    <string name="barcode_schema_sms">SMS</string>
+    <string name="barcode_schema_url">URL</string>
+    <string name="barcode_schema_v_event">Εκδήλωση</string>
+    <string name="barcode_schema_v_card">Επαφή (VCard)</string>
+    <string name="barcode_schema_wifi">Wi-Fi</string>
+    <string name="barcode_schema_youtube">Youtube URL</string>
+    <string name="barcode_schema_other">Κείμενο</string>
+
+    <!--Barcode formats-->
+    <string name="barcode_format_qr_code">Κώδικας QR</string>
+</resources>

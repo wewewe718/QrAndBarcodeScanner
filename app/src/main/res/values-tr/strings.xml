@@ -1,0 +1,369 @@
+<resources>
+    <string name="app_name">Karekod ve Barkod Okuyucu</string>
+
+    <!--Shortcuts-->
+    <string name="shortcut_scan_from_camera">Tara</string>
+    <string name="shortcut_scan_from_file">Görüntü tara</string>
+    <string name="shortcut_create_barcode">Barkod oluştur</string>
+    <string name="shortcut_history">Geçmiş</string>
+
+    <!--Intent filters-->
+    <string name="intent_filter_create_qr_code_text">Karekod oluştur</string>
+    <string name="intent_filter_scan_image">Görüntü tara</string>
+
+    <!--Error dialog-->
+    <string name="error_dialog_title">Hata</string>
+    <string name="error_dialog_default_message">Bir şeyler ters gitti</string>
+    <string name="error_dialog_positive_button_text">Tamam</string>
+
+    <!--Delete dialog-->
+    <string name="dialog_delete_positive_button">Sil</string>
+    <string name="dialog_delete_negative_button">İptal</string>
+    <string name="dialog_delete_clear_history_message">Geçmiş silinsin mi?</string>
+    <string name="dialog_delete_barcode_message">Barkod silinsin mi?</string>
+
+    <!--Confirm barcode dialog-->
+    <string name="dialog_confirm_barcode_title">Onayla</string>
+    <string name="dialog_confirm_barcode_positive_button">Tamam</string>
+    <string name="dialog_confirm_barcode_negative_button">İptal</string>
+
+    <!--Edit barcode name dialog-->
+    <string name="dialog_edit_barcode_name_title">İsmi düzenle</string>
+    <string name="dialog_edit_barcode_name_positive_button">Kaydet</string>
+    <string name="dialog_edit_barcode_name_negative_button">İptal</string>
+
+    <!--Bottom tabs activity-->
+    <string name="activity_bottom_tabs_scan_tab">Tara</string>
+    <string name="activity_bottom_tabs_create_tab">Oluştur</string>
+    <string name="activity_bottom_tabs_history_tab">Geçmiş</string>
+    <string name="activity_bottom_tabs_settings_tab">Ayarlar</string>
+
+    <!--Scan barcode from camera fragment-->
+    <string name="fragment_scan_barcode_from_camera_scan_from_file">Görüntü tara</string>
+    <string name="fragment_scan_barcode_from_camera_flash">Flaş</string>
+    <string name="fragment_scan_barcode_from_camera_barcode_saved">Kaydedildi</string>
+
+    <!--Scan barcode from file activity-->
+    <string name="activity_scan_barcode_from_file_title">Tara</string>
+    <string name="activity_scan_barcode_from_file_scan">Tamam</string>
+    <string name="activity_scan_barcode_from_file_rotate_left">Sola döndür</string>
+    <string name="activity_scan_barcode_from_file_rotate_right">Sağa döndür</string>
+    <string name="activity_scan_barcode_from_file_change_image">Başka bir görüntü seç</string>
+
+    <!--Create barcode fragment-->
+    <string name="fragment_create_barcode_title">Oluştur</string>
+    <string name="fragment_create_barcode_qr_code">Karekod</string>
+    <string name="fragment_create_barcode_qr_code_clipboard">Panodan içerik</string>
+    <string name="fragment_create_barcode_qr_code_text">Metin</string>
+    <string name="fragment_create_barcode_qr_code_show_all">Daha fazla karekod</string>
+    <string name="fragment_create_barcode">Barkod</string>
+    <string name="fragment_create_barcode_show_all">Barkodlar ve diğer karekodlar</string>
+
+    <!--Create QR code list activity-->
+    <string name="fragment_create_qr_code_list_title">Karekod oluştur</string>
+
+    <!--Create barcode list activity-->
+    <string name="fragment_create_barcode_list_title">Barkod oluştur</string>
+    <string name="fragment_create_barcode_list_2d">2D barkodlar</string>
+    <string name="fragment_create_barcode_list_1d">1D barkodlar</string>
+
+    <!--Create barcode activity-->
+    <string name="activity_create_barcode_menu_item_title">Oluştur</string>
+    <string name="activity_create_barcode_contacts_menu_item_title">Kişiler</string>
+
+    <!--Base create barcode fragment -->
+    <string name="fragment_create_barcode_alternative">Alternatif olarak:</string>
+
+    <!--Create QR code URL fragment-->
+    <string name="fragment_create_qr_code_url_alternative">- Uygulamayı internet tarayıcınızda açın\n- Bir site yükleyin\n- Menüde \"Paylaş\" seçeneğine tıklayın\n- Bu uygulamayı seçin</string>
+
+    <!--Create QR code bookmark fragment-->
+    <string name="fragment_create_qr_code_bookmark_title_hint">Başlık</string>
+
+    <!--Create QR code Wi-fi fragment-->
+    <string name="fragment_create_qr_code_wifi_encryption_hint">Güvenlik</string>
+    <string-array name="fragment_create_qr_code_wifi_encryption_types">
+        <item>WPA/WPA2</item>
+        <item>WEP</item>
+        <item>Hiçbiri</item>
+    </string-array>
+    <string name="fragment_create_qr_code_wifi_network_name_hint">Ağ adı</string>
+    <string name="fragment_create_qr_code_wifi_password_hint">Şifre</string>
+    <string name="fragment_create_qr_code_wifi_is_hidden_hint">Gizli</string>
+
+    <!--Create QR code email fragment-->
+    <string name="fragment_create_qr_code_email_subject_hint">Konu</string>
+    <string name="fragment_create_qr_code_email_message_hint">İleti</string>
+
+    <!--Create QR code SMS fragment-->
+    <string name="fragment_create_qr_code_sms_message_hint">İleti</string>
+
+    <!--Create QR code MMS fragment-->
+    <string name="fragment_create_qr_code_mms_subject_hint">Konu</string>
+    <string name="fragment_create_qr_code_mms_message_hint">İleti</string>
+
+    <!--Create QR code cryptocurrency fragment-->
+    <string name="fragment_create_qr_code_cryptocurrency_type_hint">Kripto para</string>
+    <string-array name="fragment_create_qr_code_cryptocurrencies">
+        <item>Bitcoin</item>
+        <item>Bitcoin Cash</item>
+        <item>Ethereum</item>
+        <item>Litecoin</item>
+        <item>Dash</item>
+    </string-array>
+    <string name="fragment_create_qr_code_cryptocurrency_address_hint">Alıcı adresi</string>
+    <string name="fragment_create_qr_code_cryptocurrency_amount_hint">Miktar</string>
+    <string name="fragment_create_qr_code_cryptocurrency_label_hint">Etiket</string>
+    <string name="fragment_create_qr_code_cryptocurrency_message_hint">İleti</string>
+
+    <!--Create QR code location fragment-->
+    <string name="fragment_create_qr_code_location_latitude_hint">Enlem</string>
+    <string name="fragment_create_qr_code_location_longitude_hint">Boylam</string>
+    <string name="fragment_create_qr_code_location_altitude_hint">Rakım (isteğe bağlı)</string>
+
+    <!--Create QR code OTP fragment-->
+    <string name="fragment_create_qr_code_otp_type_hint">Tür</string>
+    <string-array name="fragment_create_qr_code_otp_types">
+        <item>HOTP</item>
+        <item>TOTP</item>
+    </string-array>
+    <string name="fragment_create_qr_code_otp_algorithm_hint">Algoritma</string>
+    <string-array name="fragment_create_qr_code_otp_algorithms">
+        <item>SHA1</item>
+        <item>SHA256</item>
+        <item>SHA512</item>
+    </string-array>
+    <string name="fragment_create_qr_code_otp_issuer_hint">Düzenleyen</string>
+    <string name="fragment_create_qr_code_otp_account_hint">Hesap</string>
+    <string name="fragment_create_qr_code_otp_digits_hint">Rakamlar</string>
+    <string name="fragment_create_qr_code_otp_period_hint">Süre</string>
+    <string name="fragment_create_qr_code_otp_counter_hint">Sayaç</string>
+    <string name="fragment_create_qr_code_otp_secret_hint">Şifre</string>
+    <string name="fragment_create_qr_code_otp_generate_random_secret">Şifre oluştur</string>
+
+    <!--Create QR code event-->
+    <string name="fragment_create_qr_code_event_title_hint">Başlık</string>
+    <string name="fragment_create_qr_code_event_organizer_hint">Düzenleyen</string>
+    <string name="fragment_create_qr_code_event_summary_hint">Özet</string>
+    <string name="fragment_create_qr_code_event_start_date_hint">Başlangıç tarihi</string>
+    <string name="fragment_create_qr_code_event_end_date_hint">Bitiş tarihi</string>
+
+    <!--Create QR code contact-->
+    <string name="fragment_create_qr_code_contact_first_name_hint">Ad</string>
+    <string name="fragment_create_qr_code_contact_last_name_hint">Soyad</string>
+    <string name="fragment_create_qr_code_contact_organization_hint">Organizasyon</string>
+    <string name="fragment_create_qr_code_contact_job_hint">İş</string>
+    <string name="fragment_create_qr_code_contact_email_hint">E-posta adresi</string>
+    <string name="fragment_create_qr_code_contact_phone_hint">Telefon numarası</string>
+    <string name="fragment_create_qr_code_contact_fax_hint">Faks</string>
+    <string name="fragment_create_qr_code_contact_country_hint">Ülke</string>
+    <string name="fragment_create_qr_code_contact_region_hint">Bölge/Eyalet</string>
+    <string name="fragment_create_qr_code_contact_postcode_hint">Posta kodu</string>
+    <string name="fragment_create_qr_code_contact_city_hint">İl</string>
+    <string name="fragment_create_qr_code_contact_street_hint">Sokak</string>
+    <string name="fragment_create_qr_code_contact_website_hint">İnternet sitesi</string>
+    <string name="fragment_create_qr_code_contact_alternative">- \"Kişiler\" uygulamasını açın\n- Var olan bir kişiyi seçin veya yeni bir kişi oluşturun\n- Menüde \"Paylaş\" seçeneğine tıklayın\n- Bu uygulamayı seçin</string>
+
+    <!--Create barcode-->
+    <string name="fragment_create_data_matrix_hint">Özel karakter kullanmadan doldurunuz</string>
+    <string name="fragment_create_aztec_hint">Özel karakter kullanmadan doldurunuz</string>
+    <string name="fragment_create_codabar_hint">Rakamlar</string>
+    <string name="fragment_create_code_39_hint">Büyük harflerle, özel karakter kullanmadan doldurunuz</string>
+    <string name="fragment_create_code_93_hint">Büyük harflerle, özel karakter kullanmadan doldurunuz</string>
+    <string name="fragment_create_code_128_hint">Özel karakter kullanmadan doldurunuz</string>
+    <string name="fragment_create_ean_8_hint">7 haneli</string>
+    <string name="fragment_create_ean_13_hint">12 haneli</string>
+    <string name="fragment_create_itf_14_hint">Çift haneli</string>
+    <string name="fragment_create_upc_a_hint">11 haneli</string>
+    <string name="fragment_create_upc_e_hint">7 haneli</string>
+
+    <!--Barcode history fragment-->
+    <string name="fragment_barcode_history_title">Geçmiş</string>
+    <string-array name="fragment_barcode_history_tab_titles">
+        <item>Tümü</item>
+        <item>Sık kullanılanlar</item>
+    </string-array>
+    <string name="fragment_barcode_history_menu_title_export">Geçmişi dışarı aktar</string>
+    <string name="fragment_barcode_history_menu_title_delete_all">Geçmişi temizle</string>
+
+    <!--Export history activity-->
+    <string name="activity_export_history_title">Geçmişi dışarı aktar</string>
+    <string name="activity_export_history_as_hint">Dosya türü</string>
+    <string-array name="activity_export_history_types">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_export_history_file_name_hint">Dosya adı</string>
+    <string name="activity_export_history_export">Dışarı aktar</string>
+    <string name="activity_export_history_exported">İndirilenlere kaydedildi</string>
+
+    <!--Settings fragment-->
+    <string name="fragment_settings_title">Ayarlar</string>
+    <string name="fragment_settings_appearance_settings">Görünüm</string>
+    <string name="fragment_settings_theme">Tema</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme">Koyu mod etkinken barkodları ters renkte göster</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">Barkodların içeriğini koyu arka plan üzerinde beyaz olarak gösterir</string>
+    <string name="fragment_settings_scanner_settings">Tarama</string>
+    <string name="fragment_settings_open_content_automatically">Taranan kodların içeriğini otomatik olarak aç</string>
+    <string name="fragment_settings_open_content_automatically_hint">Zararlı içeriklerin açılmasına neden olabilir</string>
+    <string name="fragment_settings_copy_to_clipboard">Panoya kopyala</string>
+    <string name="fragment_settings_copy_to_clipboard_hint">Taranan barkodlar panoya kopyalanır</string>
+    <string name="fragment_settings_simple_auto_focus">Basit otomatik odaklama modu</string>
+    <string name="fragment_settings_simple_auto_focus_hint">Yalnızca odaklama sorunu varsa etkinleştirin</string>
+    <string name="fragment_settings_flash">Flaş</string>
+    <string name="fragment_settings_flash_hint">Başlangıçta flaşı otomatik olarak etkinleştir</string>
+    <string name="fragment_settings_vibrate">Titreşim</string>
+    <string name="fragment_settings_vibrate_hint">Tarama sonrası titret</string>
+    <string name="fragment_settings_continuous_scanning">Sürekli tarama</string>
+    <string name="fragment_settings_continuous_scanning_hint">Taramaları yalnızca geçmişe kaydet</string>
+    <string name="fragment_settings_confirm_scans_manually">Taramaları onaylamadan önce sor</string>
+    <string name="fragment_settings_confirm_scans_manually_hint">Yanlışlıkla yapılan taramaları önler</string>
+    <string name="fragment_settings_camera">Kamera</string>
+    <string name="fragment_settings_supported_formats">Desteklenen formatlar</string>
+    <string name="fragment_settings_history_settings">Geçmiş</string>
+    <string name="fragment_settings_save_scanned_barcodes_to_history">Taranan barkodları geçmişe kaydet</string>
+    <string name="fragment_settings_save_created_barcodes_to_history">Oluşturulan barkodları geçmişe kaydet</string>
+    <string name="fragment_settings_do_not_save_duplicates">Yinelenenleri kaydetme</string>
+    <string name="fragment_settings_do_not_save_duplicates_hint">Geçmiş kısmında aynı kodun birden fazla kopyasının oluşturulmasını önleyin</string>
+    <string name="fragment_settings_clear_history">Geçmişi temizle</string>
+    <string name="fragment_settings_advanced_settings">Gelişmiş</string>
+    <string name="fragment_settings_choose_search_engines">Arama Motorları</string>
+    <string name="fragment_settings_choose_search_engines_hint">Web\'de arama yapmak için bir arama motoru seçin</string>
+    <string name="fragment_settings_error_reports">Hata raporları</string>
+    <string name="fragment_settings_enable_error_reports">Hata raporlarına izin ver</string>
+    <string name="fragment_settings_enable_error_reports_hint">Hataları düzeltmemizde yardımcı olun</string>
+    <string name="fragment_settings_about">Hakkında</string>
+    <string name="fragment_settings_check_updates">Güncellemeleri denetle</string>
+    <string name="fragment_settings_permissions">Uygulama İzinleri</string>
+    <string name="fragment_settings_source_code">Kaynak kodu</string>
+    <string name="fragment_settings_app_version">Uygulama sürümü</string>
+
+    <!--Choose theme activity-->
+    <string name="activity_choose_theme_title">Tema</string>
+    <string name="activity_choose_theme_system">Sistem varsayılanını kullan</string>
+    <string name="activity_choose_theme_light">Açık</string>
+    <string name="activity_choose_theme_dark">Koyu</string>
+
+    <!--Choose camera activity-->
+    <string name="activity_choose_camera_title">Kamera</string>
+    <string name="activity_choose_camera_front">Ön</string>
+    <string name="activity_choose_camera_back">Arka</string>
+
+    <!--Select supported formats activity-->
+    <string name="activity_supported_formats_title">Desteklenen formatlar</string>
+
+    <!--Choose search engine activity-->
+    <string name="activity_choose_search_engine_title">Arama Motorları</string>
+    <string name="activity_choose_search_engine_none">Hiçbiri</string>
+    <string name="activity_choose_search_engine_ask_every_time">Her seferinde sor</string>
+    <string name="activity_choose_search_engine_bing">Bing</string>
+    <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
+    <string name="activity_choose_search_engine_google">Google</string>
+    <string name="activity_choose_search_engine_qwant">Qwant</string>
+    <string name="activity_choose_search_engine_yahoo">Yahoo</string>
+    <string name="activity_choose_search_engine_yandex">Yandex</string>
+
+    <!--All permissions activity-->
+    <string name="activity_all_permissions_title">İzinler</string>
+    <string name="activity_all_permissions_normal_permissions">Normal izinler</string>
+    <string name="activity_all_permissions_vibrate_title">Titreşim</string>
+    <string name="activity_all_permissions_vibrate_hint">Tarama sonrası titreşimi etkinleştirmek için kullanılır.</string>
+    <string name="activity_all_permissions_wifi_title">Kablosuz ağ</string>
+    <string name="activity_all_permissions_wifi_hint">Karekod taratarak bir kablosuz ağa bağlanmak için kullanılır.</string>
+    <string name="activity_all_permissions_internet_title">İnternet</string>
+    <string name="activity_all_permissions_internet_hint">Hata raporlarını bildirmek için kullanılır. Bu ayarı seçeneklerden devre dışı bırakabilirsiniz.</string>
+    <string name="activity_all_permissions_runtime_permissions">Özel izinler</string>
+    <string name="activity_all_permissions_camera_title">Kamera</string>
+    <string name="activity_all_permissions_camera_hint">Karekod ve barkodları taramak için kullanılır.</string>
+    <string name="activity_all_permissions_read_contacts_title">Kişiler</string>
+    <string name="activity_all_permissions_read_contacts_hint">Rehberden bir kişi seçerek karekod oluşturmak için kulannılır.</string>
+    <string name="activity_all_permissions_storage_title">Depolama</string>
+    <string name="activity_all_permissions_storage_hint">Karekod ya da barkodları metin veya görüntü olarak kaydetmek için kullanılır.</string>
+
+    <!--Barcode activity-->
+    <string name="activity_barcode_add_to_calendar">Takvime ekle</string>
+    <string name="activity_barcode_add_to_contacts">Kişilere ekle</string>
+    <string name="activity_barcode_call_phone">Ara: %s</string>
+    <string name="activity_barcode_send_sms">SMS/MMS gönder: %s</string>
+    <string name="activity_barcode_send_email">E-posta gönder: %s</string>
+    <string name="activity_barcode_show_location">Konumu göster</string>
+    <string name="activity_barcode_connect_to_wifi">Kablosuz ağa bağlan</string>
+    <string name="activity_barcode_open_wifi_settings">Kablosuz ağ ayarlarını aç</string>
+    <string name="activity_barcode_copy_network_name">Ağ adını kopyala</string>
+    <string name="activity_barcode_copy_network_password">Ağ şifresini kopyala</string>
+    <string name="activity_barcode_open_app">Uygulamayı aç</string>
+    <string name="activity_barcode_open_in_app_market">Mağazada aç</string>
+    <string name="activity_barcode_open_in_youtube">Youtube üzerinde aç</string>
+    <string name="activity_barcode_save_bookmark">Yer imlerine ekle</string>
+    <string name="activity_barcode_open_link">Bağlantıyı aç</string>
+    <string name="activity_barcode_open_bitcoin_url">Başka bir uygulamada aç</string>
+    <string name="activity_barcode_show_otp">Şifreyi göster</string>
+    <string name="activity_barcode_open_otp">Başka bir uygulamada aç</string>
+    <string name="activity_barcode_share_as_text">Metin olarak paylaş</string>
+    <string name="activity_barcode_copy">Panoya kopyala</string>
+    <string name="activity_barcode_save_as_text">Metin olarak kaydet</string>
+    <string name="activity_barcode_search">Web\'de ara</string>
+    <string name="activity_barcode_add_to_favorites">Sık kullanılanlara ekle</string>
+    <string name="activity_barcode_show_barcode_image">Barkodu görüntüle</string>
+    <string name="activity_barcode_share_as_image">Görüntü olarak paylaş</string>
+    <string name="activity_barcode_save_as_image">Görüntü olarak kaydet</string>
+    <string name="activity_barcode_print">Yazdır</string>
+    <string name="activity_barcode_delete">Sil</string>
+    <string name="activity_barcode_connecting_to_wifi">Bağlanıyor...</string>
+    <string name="activity_barcode_copied">Panoya kopyalandı</string>
+    <string name="activity_barcode_no_app">Bu eylemi gerçekleştirecek bir uygulama bulunamadı</string>
+    <string name="activity_barcode_choose_search_engine_dialog_negative_button">İptal</string>
+
+    <!--Barcode image activity-->
+    <string name="activity_barcode_image_increase_brightness">Parlaklığı artır</string>
+    <string name="activity_barcode_image_decrease_brightness">Parlaklığı azalt</string>
+
+    <!--OTP barcode activity-->
+    <string name="activity_barcode_otp_title">Tek Kullanımlık Şifre</string>
+    <string name="activity_barcode_otp_unable_to_generate_otp">Şifre oluşturulamadı</string>
+    <string name="activity_barcode_otp_counter">Sayaç: %s</string>
+    <string name="activity_barcode_otp_timer">%s:%s kaldı</string>
+    <string name="activity_barcode_otp_refresh_otp">Yenile</string>
+
+    <!--Save barcode as text activity-->
+    <string name="activity_save_barcode_as_text_title">Kaydet</string>
+    <string name="activity_save_barcode_as_text_save_as_hint">Dosya türü</string>
+    <string-array name="activity_save_barcode_as_text_formats">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_save_barcode_as_text_file_name_save">Kaydet</string>
+    <string name="activity_save_barcode_as_text_file_name_saved">İndirilenlere kaydedildi</string>
+
+    <!--Save barcode as image activity-->
+    <string name="activity_save_barcode_as_image_title">Kaydet</string>
+    <string name="activity_save_barcode_as_image_save_as_hint">Dosya türü</string>
+    <string-array name="activity_save_barcode_as_image_formats">
+        <item>PNG</item>
+        <item>SVG</item>
+    </string-array>
+    <string name="activity_save_barcode_as_image_file_name_save">Kaydet</string>
+    <string name="activity_save_barcode_as_image_file_name_saved">Galeriye kaydedildi</string>
+
+    <!--Barcode schemas-->
+    <string name="barcode_schema_bookmark">Yer imleri</string>
+    <string name="barcode_schema_cryptocurrency">Bitcoin</string>
+    <string name="barcode_schema_email">E-posta</string>
+    <string name="barcode_schema_geo">Konum</string>
+    <string name="barcode_schema_google_maps">Adres</string>
+    <string name="barcode_schema_google_play">Uygulama</string>
+    <string name="barcode_schema_mms">MMS</string>
+    <string name="barcode_schema_me_card">Elektronik kartvizit (MeCard)</string>
+    <string name="barcode_schema_phone">Telefon</string>
+    <string name="barcode_schema_otp">Tek Kullanımlık Şifre</string>
+    <string name="barcode_schema_sms">SMS</string>
+    <string name="barcode_schema_url">URL</string>
+    <string name="barcode_schema_v_event">Etkinlik</string>
+    <string name="barcode_schema_v_card">Elektronik kartvizit (VCard)</string>
+    <string name="barcode_schema_wifi">Kablosuz ağ</string>
+    <string name="barcode_schema_youtube">Youtube URL</string>
+    <string name="barcode_schema_other">Metin</string>
+
+    <!--Barcode formats-->
+    <string name="barcode_format_qr_code">Karekod</string>
+</resources>

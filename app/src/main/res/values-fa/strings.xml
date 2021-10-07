@@ -48,7 +48,6 @@
     <string name="activity_choose_search_engine_yahoo">یاهو</string>
     <string name="activity_all_permissions_internet_title">اینترنت</string>
     <string name="activity_all_permissions_camera_title">دوربین</string>
-    <string name="activity_barcode_search_on_amazon">جستجو در آمازون</string>
     <string name="activity_barcode_show_otp">نمایش گذرواژه</string>
     <string-array name="activity_save_barcode_as_text_formats">
         <item>JSON</item>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">QR &amp; ﾊﾞｰｺｰﾄﾞｽｷｬﾅｰ</string>
+    <string name="app_name">QR &amp; バーコードスキャナー</string>
 
     <!--Shortcuts-->
     <string name="shortcut_scan_from_camera">スキャン</string>
@@ -8,7 +8,7 @@
     <string name="shortcut_history">履歴</string>
 
     <!--Intent filters-->
-    <string name="intent_filter_create_qr_code_text">QRコードを作成</string>
+    <string name="intent_filter_create_qr_code_text">QR コードを作成</string>
     <string name="intent_filter_scan_image">画像をスキャン</string>
 
     <!--Error dialog-->
@@ -52,15 +52,15 @@
 
     <!--Create barcode fragment-->
     <string name="fragment_create_barcode_title">作成</string>
-    <string name="fragment_create_barcode_qr_code">QRコード</string>
+    <string name="fragment_create_barcode_qr_code">QR コード</string>
     <string name="fragment_create_barcode_qr_code_clipboard">クリップボードから作成</string>
     <string name="fragment_create_barcode_qr_code_text">テキスト</string>
-    <string name="fragment_create_barcode_qr_code_show_all">その他のQRコード</string>
+    <string name="fragment_create_barcode_qr_code_show_all">その他の QR コード</string>
     <string name="fragment_create_barcode">バーコード</string>
     <string name="fragment_create_barcode_show_all">バーコードとその他の二次元コード</string>
 
     <!--Create QR code list activity-->
-    <string name="fragment_create_qr_code_list_title">QRコードを作成</string>
+    <string name="fragment_create_qr_code_list_title">QR コードを作成</string>
 
     <!--Create barcode list activity-->
     <string name="fragment_create_barcode_list_title">バーコードを作成</string>
@@ -75,7 +75,7 @@
     <string name="fragment_create_barcode_alternative">または以下の手順でも可能です：</string>
 
     <!--Create QR code URL fragment-->
-    <string name="fragment_create_qr_code_url_alternative">- ブラウザを開く\n- Webサイトを読み込む\n- メニューから \"共有\" を選択\n- このアプリを選ぶ</string>
+    <string name="fragment_create_qr_code_url_alternative">- ブラウザを開く\n- ウェブサイトを読み込む\n- メニューから「共有」を選択\n- このアプリを選ぶ</string>
 
     <!--Create QR code bookmark fragment-->
     <string name="fragment_create_qr_code_bookmark_title_hint">タイトル</string>
@@ -161,7 +161,7 @@
     <string name="fragment_create_qr_code_contact_postcode_hint">郵便番号</string>
     <string name="fragment_create_qr_code_contact_city_hint">市区町村</string>
     <string name="fragment_create_qr_code_contact_street_hint">番地・マンション名・部屋番号</string>
-    <string name="fragment_create_qr_code_contact_website_hint">Webサイト</string>
+    <string name="fragment_create_qr_code_contact_website_hint">ウェブサイト</string>
     <string name="fragment_create_qr_code_contact_alternative">- 連絡先アプリを開く\n- 連絡先を選択または新規作成\n- メニューから \"共有\" を選択\n- このアプリを選択</string>
 
     <!--Create barcode-->
@@ -171,11 +171,11 @@
     <string name="fragment_create_code_39_hint">大文字テキスト（特殊文字を除く）</string>
     <string name="fragment_create_code_93_hint">大文字テキスト（特殊文字を除く）</string>
     <string name="fragment_create_code_128_hint">テキスト（特殊文字を除く）</string>
-    <string name="fragment_create_ean_8_hint">7桁</string>
-    <string name="fragment_create_ean_13_hint">12桁</string>
+    <string name="fragment_create_ean_8_hint">7 桁</string>
+    <string name="fragment_create_ean_13_hint">12 桁</string>
     <string name="fragment_create_itf_14_hint">数字（偶数）</string>
-    <string name="fragment_create_upc_a_hint">11桁</string>
-    <string name="fragment_create_upc_e_hint">7桁</string>
+    <string name="fragment_create_upc_a_hint">11 桁</string>
+    <string name="fragment_create_upc_e_hint">7 桁</string>
 
     <!--Barcode history fragment-->
     <string name="fragment_barcode_history_title">履歴</string>
@@ -195,7 +195,7 @@
     </string-array>
     <string name="activity_export_history_file_name_hint">ファイル名</string>
     <string name="activity_export_history_export">エクスポート</string>
-    <string name="activity_export_history_exported">ダウンロードに保存しました</string>
+    <string name="activity_export_history_exported">Download フォルダに保存しました</string>
 
     <!--Settings fragment-->
     <string name="fragment_settings_title">設定</string>
@@ -211,7 +211,7 @@
     <string name="fragment_settings_simple_auto_focus">シンプルオートフォーカス</string>
     <string name="fragment_settings_simple_auto_focus_hint">フォーカスの問題を回避します</string>
     <string name="fragment_settings_flash">フラッシュ</string>
-    <string name="fragment_settings_flash_hint">起動時にフラッシュをONにします</string>
+    <string name="fragment_settings_flash_hint">起動時にフラッシュを ON にします</string>
     <string name="fragment_settings_vibrate">バイブレーション</string>
     <string name="fragment_settings_vibrate_hint">スキャン完了で振動します</string>
     <string name="fragment_settings_continuous_scanning">継続スキャン</string>
@@ -228,7 +228,7 @@
     <string name="fragment_settings_clear_history">履歴を削除</string>
     <string name="fragment_settings_advanced_settings">高度な設定</string>
     <string name="fragment_settings_choose_search_engines">検索エンジン</string>
-    <string name="fragment_settings_choose_search_engines_hint">Web検索に利用する検索エンジンを選択します</string>
+    <string name="fragment_settings_choose_search_engines_hint">ウェブ検索に利用する検索エンジンを選択します</string>
     <string name="fragment_settings_error_reports">エラー報告</string>
     <string name="fragment_settings_enable_error_reports">エラー報告を許可</string>
     <string name="fragment_settings_enable_error_reports_hint">バグ修正にご協力ください</string>
@@ -268,32 +268,32 @@
     <string name="activity_all_permissions_normal_permissions">通常時</string>
     <string name="activity_all_permissions_vibrate_title">バイブレーションの制御</string>
     <string name="activity_all_permissions_vibrate_hint">スキャン完了をバイブレーションで通知するため</string>
-    <string name="activity_all_permissions_wifi_title">Wi-Fi接続の表示・接続と切断</string>
-    <string name="activity_all_permissions_wifi_hint">QRコードをスキャンしてWi-Fiに接続するため</string>
+    <string name="activity_all_permissions_wifi_title">Wi-Fi 接続の表示・接続と切断</string>
+    <string name="activity_all_permissions_wifi_hint">QR コードをスキャンして Wi-Fi に接続するため</string>
     <string name="activity_all_permissions_internet_title">ネットワークへのフルアクセス</string>
     <string name="activity_all_permissions_internet_hint">エラー報告をするため。設定で無効にできます</string>
     <string name="activity_all_permissions_runtime_permissions">起動時</string>
     <string name="activity_all_permissions_camera_title">写真と動画の撮影（カメラ）</string>
-    <string name="activity_all_permissions_camera_hint">カメラからQRコードとバーコードをスキャンするため</string>
+    <string name="activity_all_permissions_camera_hint">カメラから QR コードとバーコードをスキャンするため</string>
     <string name="activity_all_permissions_read_contacts_title">連絡先の読み取り</string>
-    <string name="activity_all_permissions_read_contacts_hint">連絡先リストから連絡先を選択してQRコードを作成するため</string>
+    <string name="activity_all_permissions_read_contacts_hint">連絡先リストから連絡先を選択して QR コードを作成するため</string>
     <string name="activity_all_permissions_storage_title">ストレージ</string>
-    <string name="activity_all_permissions_storage_hint">作成したQRコードやバーコードをストレージに保存するため</string>
+    <string name="activity_all_permissions_storage_hint">作成した QR コードやバーコードをストレージに保存するため</string>
 
     <!--Barcode activity-->
     <string name="activity_barcode_add_to_calendar">カレンダーに追加</string>
     <string name="activity_barcode_add_to_contacts">連絡先に追加</string>
     <string name="activity_barcode_call_phone">%s に通話を発信</string>
-    <string name="activity_barcode_send_sms">%s にSMS/MMSを送信</string>
+    <string name="activity_barcode_send_sms">%s に SMS/MMS を送信</string>
     <string name="activity_barcode_send_email">%s にメールを送信</string>
     <string name="activity_barcode_show_location">位置情報を表示</string>
-    <string name="activity_barcode_connect_to_wifi">Wi-Fiに接続</string>
-    <string name="activity_barcode_open_wifi_settings">Wi-Fi設定を開く</string>
+    <string name="activity_barcode_connect_to_wifi">Wi-Fi に接続</string>
+    <string name="activity_barcode_open_wifi_settings">Wi-Fi 設定を開く</string>
     <string name="activity_barcode_copy_network_name">ネットワーク名をコピー</string>
     <string name="activity_barcode_copy_network_password">ネットワークのパスワードをコピー</string>
     <string name="activity_barcode_open_app">アプリを開く</string>
     <string name="activity_barcode_open_in_app_market">アプリストアを開く</string>
-    <string name="activity_barcode_open_in_youtube">YouTubeで開く</string>
+    <string name="activity_barcode_open_in_youtube">YouTube で開く</string>
     <string name="activity_barcode_save_bookmark">ブックマークに保存</string>
     <string name="activity_barcode_open_link">リンクを開く</string>
     <string name="activity_barcode_open_bitcoin_url">他のアプリで開く</string>
@@ -302,7 +302,7 @@
     <string name="activity_barcode_share_as_text">テキストを共有</string>
     <string name="activity_barcode_copy">クリップボードにコピー</string>
     <string name="activity_barcode_save_as_text">テキストを保存</string>
-    <string name="activity_barcode_search">Webを検索</string>
+    <string name="activity_barcode_search">ウェブを検索</string>
     <string name="activity_barcode_add_to_favorites">お気に入りに追加</string>
     <string name="activity_barcode_show_barcode_image">コードを表示</string>
     <string name="activity_barcode_share_as_image">画像を共有</string>
@@ -333,7 +333,7 @@
         <item>JSON</item>
     </string-array>
     <string name="activity_save_barcode_as_text_file_name_save">保存</string>
-    <string name="activity_save_barcode_as_text_file_name_saved">Downloadフォルダに保存しました</string>
+    <string name="activity_save_barcode_as_text_file_name_saved">Download フォルダに保存しました</string>
 
     <!--Save barcode as image activity-->
     <string name="activity_save_barcode_as_image_title">保存</string>
@@ -365,5 +365,5 @@
     <string name="barcode_schema_other">テキスト</string>
 
     <!--Barcode formats-->
-    <string name="barcode_format_qr_code">QRコード</string>
+    <string name="barcode_format_qr_code">QR コード</string>
 </resources>
