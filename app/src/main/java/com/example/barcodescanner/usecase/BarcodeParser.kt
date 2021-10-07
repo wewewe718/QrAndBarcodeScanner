@@ -42,6 +42,7 @@ object BarcodeParser {
             ?: MeCard.parse(text)
             ?: VCard.parse(text)
             ?: OtpAuth.parse(text)
+            ?: NZCovidTracer.parse(text)
             ?: Other(text)
     }
 }

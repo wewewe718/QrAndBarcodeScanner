@@ -147,6 +147,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
             BarcodeSchema.VCARD -> addToContacts()
             BarcodeSchema.WIFI -> connectToWifi()
             BarcodeSchema.YOUTUBE -> openInYoutube()
+            BarcodeSchema.NZCOVIDTRACER -> openLink()
             else -> return
         }
     }

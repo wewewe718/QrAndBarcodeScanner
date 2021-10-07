@@ -94,6 +94,7 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.YOUTUBE -> parseYoutube()
             BarcodeSchema.CRYPTOCURRENCY -> parseBitcoin()
             BarcodeSchema.OTP_AUTH -> parseOtp()
+            BarcodeSchema.NZCOVIDTRACER -> parseNZCovidTracer()
             BarcodeSchema.URL -> parseUrl()
         }
     }
@@ -203,5 +204,12 @@ class ParsedBarcode(barcode: Barcode) {
 
     private fun parseUrl() {
         url = text
+    }
+
+    private fun parseNZCovidTracer() {
+        val objNZCovidTracer = NZCovidTracer.parse(text) ?: return
+        //title = objNZCovidTracer.title
+        address = objNZCovidTracer.addr
+        url = "http://maps.google.com/maps?q=" + (objNZCovidTracer.addr)?.replace("\n", ", ")
     }
 }
