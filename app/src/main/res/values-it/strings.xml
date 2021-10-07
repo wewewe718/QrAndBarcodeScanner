@@ -1,0 +1,369 @@
+<resources>
+    <string name="app_name">QR &amp; Barcode Scanner</string>
+
+    <!--Shortcuts-->
+    <string name="shortcut_scan_from_camera">Scansione</string>
+    <string name="shortcut_scan_from_file">Scansione file</string>
+    <string name="shortcut_create_barcode">Crea codice a barre</string>
+    <string name="shortcut_history">Cronologia</string>
+
+    <!--Intent filters-->
+    <string name="intent_filter_create_qr_code_text">Crea codice QR</string>
+    <string name="intent_filter_scan_image">Scansione immagine</string>
+
+    <!--Error dialog-->
+    <string name="error_dialog_title">Errore</string>
+    <string name="error_dialog_default_message">Qualcosa è andato storto</string>
+    <string name="error_dialog_positive_button_text">OK</string>
+
+    <!--Delete dialog-->
+    <string name="dialog_delete_positive_button">Elimina</string>
+    <string name="dialog_delete_negative_button">Annulla</string>
+    <string name="dialog_delete_clear_history_message">Eliminare la cronologia?</string>
+    <string name="dialog_delete_barcode_message">Vuoi eliminare?</string>
+
+    <!--Confirm barcode dialog-->
+    <string name="dialog_confirm_barcode_title">Conferma</string>
+    <string name="dialog_confirm_barcode_positive_button">OK</string>
+    <string name="dialog_confirm_barcode_negative_button">Annulla</string>
+
+    <!--Edit barcode name dialog-->
+    <string name="dialog_edit_barcode_name_title">Modifica nome</string>
+    <string name="dialog_edit_barcode_name_positive_button">OK</string>
+    <string name="dialog_edit_barcode_name_negative_button">Annulla</string>
+
+    <!--Bottom tabs activity-->
+    <string name="activity_bottom_tabs_scan_tab">Scansione</string>
+    <string name="activity_bottom_tabs_create_tab">Crea</string>
+    <string name="activity_bottom_tabs_history_tab">Cronologia</string>
+    <string name="activity_bottom_tabs_settings_tab">Impostazioni</string>
+
+    <!--Scan barcode from camera fragment-->
+    <string name="fragment_scan_barcode_from_camera_scan_from_file">Scansione immagine</string>
+    <string name="fragment_scan_barcode_from_camera_flash">Flash</string>
+    <string name="fragment_scan_barcode_from_camera_barcode_saved">Salvato</string>
+
+    <!--Scan barcode from file activity-->
+    <string name="activity_scan_barcode_from_file_title">Scansione</string>
+    <string name="activity_scan_barcode_from_file_scan">OK</string>
+    <string name="activity_scan_barcode_from_file_rotate_left">Ruota a sinistra</string>
+    <string name="activity_scan_barcode_from_file_rotate_right">Ruota a destra</string>
+    <string name="activity_scan_barcode_from_file_change_image">Scegli un\'altra immagine</string>
+
+    <!--Create barcode fragment-->
+    <string name="fragment_create_barcode_title">Crea</string>
+    <string name="fragment_create_barcode_qr_code">Codice QR</string>
+    <string name="fragment_create_barcode_qr_code_clipboard">Contenuti dagli appunti</string>
+    <string name="fragment_create_barcode_qr_code_text">Testo</string>
+    <string name="fragment_create_barcode_qr_code_show_all">Altri codici QR</string>
+    <string name="fragment_create_barcode">Codice a barre</string>
+    <string name="fragment_create_barcode_show_all">Codici a barre e altri codici 2D</string>
+
+    <!--Create QR code list activity-->
+    <string name="fragment_create_qr_code_list_title">Crea codice QR</string>
+
+    <!--Create barcode list activity-->
+    <string name="fragment_create_barcode_list_title">Crea codice a barre</string>
+    <string name="fragment_create_barcode_list_2d">Codici a barre 2D</string>
+    <string name="fragment_create_barcode_list_1d">Codici a barre 1D</string>
+
+    <!--Create barcode activity-->
+    <string name="activity_create_barcode_menu_item_title">Crea</string>
+    <string name="activity_create_barcode_contacts_menu_item_title">Contatti</string>
+
+    <!--Base create barcode fragment -->
+    <string name="fragment_create_barcode_alternative">In alternativa:</string>
+
+    <!--Create QR code URL fragment-->
+    <string name="fragment_create_qr_code_url_alternative">- Apri il browser\n- Naviga su un sito\n- Seleziona \"Condividi\" dal menù\n- Scegli questa app</string>
+
+    <!--Create QR code bookmark fragment-->
+    <string name="fragment_create_qr_code_bookmark_title_hint">Titol</string>
+
+    <!--Create QR code Wi-fi fragment-->
+    <string name="fragment_create_qr_code_wifi_encryption_hint">Crittografia</string>
+    <string-array name="fragment_create_qr_code_wifi_encryption_types">
+        <item>WPA/WPA2</item>
+        <item>WEP</item>
+        <item>Nessuna</item>
+    </string-array>
+    <string name="fragment_create_qr_code_wifi_network_name_hint">Nome rete</string>
+    <string name="fragment_create_qr_code_wifi_password_hint">Password</string>
+    <string name="fragment_create_qr_code_wifi_is_hidden_hint">Nascosta</string>
+
+    <!--Create QR code email fragment-->
+    <string name="fragment_create_qr_code_email_subject_hint">Oggetto</string>
+    <string name="fragment_create_qr_code_email_message_hint">Messaggio</string>
+
+    <!--Create QR code SMS fragment-->
+    <string name="fragment_create_qr_code_sms_message_hint">Messaggio</string>
+
+    <!--Create QR code MMS fragment-->
+    <string name="fragment_create_qr_code_mms_subject_hint">Oggetto</string>
+    <string name="fragment_create_qr_code_mms_message_hint">Messaggio</string>
+
+    <!--Create QR code cryptocurrency fragment-->
+    <string name="fragment_create_qr_code_cryptocurrency_type_hint">Criptovaluta</string>
+    <string-array name="fragment_create_qr_code_cryptocurrencies">
+        <item>Bitcoin</item>
+        <item>Bitcoin Cash</item>
+        <item>Ethereum</item>
+        <item>Litecoin</item>
+        <item>Dash</item>
+    </string-array>
+    <string name="fragment_create_qr_code_cryptocurrency_address_hint">Indirizzo ricevente</string>
+    <string name="fragment_create_qr_code_cryptocurrency_amount_hint">Importo</string>
+    <string name="fragment_create_qr_code_cryptocurrency_label_hint">Etichetta</string>
+    <string name="fragment_create_qr_code_cryptocurrency_message_hint">Messaggio</string>
+
+    <!--Create QR code location fragment-->
+    <string name="fragment_create_qr_code_location_latitude_hint">Latitudine</string>
+    <string name="fragment_create_qr_code_location_longitude_hint">Longitudine</string>
+    <string name="fragment_create_qr_code_location_altitude_hint">Altitudine (opzionale)</string>
+
+    <!--Create QR code OTP fragment-->
+    <string name="fragment_create_qr_code_otp_type_hint">Tipo</string>
+    <string-array name="fragment_create_qr_code_otp_types">
+        <item>HOTP</item>
+        <item>TOTP</item>
+    </string-array>
+    <string name="fragment_create_qr_code_otp_algorithm_hint">Algoritmo</string>
+    <string-array name="fragment_create_qr_code_otp_algorithms">
+        <item>SHA1</item>
+        <item>SHA256</item>
+        <item>SHA512</item>
+    </string-array>
+    <string name="fragment_create_qr_code_otp_issuer_hint">Autorità di certificazione</string>
+    <string name="fragment_create_qr_code_otp_account_hint">Account</string>
+    <string name="fragment_create_qr_code_otp_digits_hint">Cifre</string>
+    <string name="fragment_create_qr_code_otp_period_hint">Periodo</string>
+    <string name="fragment_create_qr_code_otp_counter_hint">Contatore</string>
+    <string name="fragment_create_qr_code_otp_secret_hint">Segreto</string>
+    <string name="fragment_create_qr_code_otp_generate_random_secret">Segreto casuale</string>
+
+    <!--Create QR code event-->
+    <string name="fragment_create_qr_code_event_title_hint">Titolo</string>
+    <string name="fragment_create_qr_code_event_organizer_hint">Organizzatore</string>
+    <string name="fragment_create_qr_code_event_summary_hint">Riepilogo</string>
+    <string name="fragment_create_qr_code_event_start_date_hint">Data di inizio</string>
+    <string name="fragment_create_qr_code_event_end_date_hint">Data di fine</string>
+
+    <!--Create QR code contact-->
+    <string name="fragment_create_qr_code_contact_first_name_hint">Nome</string>
+    <string name="fragment_create_qr_code_contact_last_name_hint">Cognome</string>
+    <string name="fragment_create_qr_code_contact_organization_hint">Azienda</string>
+    <string name="fragment_create_qr_code_contact_job_hint">Titolo</string>
+    <string name="fragment_create_qr_code_contact_email_hint">Email</string>
+    <string name="fragment_create_qr_code_contact_phone_hint">Telefono</string>
+    <string name="fragment_create_qr_code_contact_fax_hint">Fax</string>
+    <string name="fragment_create_qr_code_contact_country_hint">Nazione</string>
+    <string name="fragment_create_qr_code_contact_region_hint">Regione/Stato</string>
+    <string name="fragment_create_qr_code_contact_postcode_hint">CAP</string>
+    <string name="fragment_create_qr_code_contact_city_hint">Città</string>
+    <string name="fragment_create_qr_code_contact_street_hint">Via</string>
+    <string name="fragment_create_qr_code_contact_website_hint">Sito Web</string>
+    <string name="fragment_create_qr_code_contact_alternative">- Apri la rubrica\n- Apri un contatto esistente o creane uno nuovo\n- Seleziona \"Condividi\" dal menù\n- Scegli questa app</string>
+
+    <!--Create barcode-->
+    <string name="fragment_create_data_matrix_hint">Testo senza caratteri speciali</string>
+    <string name="fragment_create_aztec_hint">Testo senza caratteri speciali</string>
+    <string name="fragment_create_codabar_hint">Cifre</string>
+    <string name="fragment_create_code_39_hint">Testo in maiuscolo senza caratteri speciali</string>
+    <string name="fragment_create_code_93_hint">Testo in maiuscolo senza caratteri speciali</string>
+    <string name="fragment_create_code_128_hint">Testo senza caratteri speciali</string>
+    <string name="fragment_create_ean_8_hint">7 cifre</string>
+    <string name="fragment_create_ean_13_hint">12 cifre</string>
+    <string name="fragment_create_itf_14_hint">Numero pari di cifre</string>
+    <string name="fragment_create_upc_a_hint">11 cifre</string>
+    <string name="fragment_create_upc_e_hint">7 cifre</string>
+
+    <!--Barcode history fragment-->
+    <string name="fragment_barcode_history_title">Cronologia</string>
+    <string-array name="fragment_barcode_history_tab_titles">
+        <item>Tutto</item>
+        <item>Preferiti</item>
+    </string-array>
+    <string name="fragment_barcode_history_menu_title_export">Esporta cronologia</string>
+    <string name="fragment_barcode_history_menu_title_delete_all">Pulisi cronologia</string>
+
+    <!--Export history activity-->
+    <string name="activity_export_history_title">Esporta cronologia</string>
+    <string name="activity_export_history_as_hint">Esporta come</string>
+    <string-array name="activity_export_history_types">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_export_history_file_name_hint">Nome file</string>
+    <string name="activity_export_history_export">Esporta</string>
+    <string name="activity_export_history_exported">Salvato nei Download</string>
+
+    <!--Settings fragment-->
+    <string name="fragment_settings_title">Impostazioni</string>
+    <string name="fragment_settings_appearance_settings">Aspetto</string>
+    <string name="fragment_settings_theme">Tema</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme">Inverti colori dei codici a barre su tema scuro</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">Mostra i codici a barre in bianco quando si usa il tema scuro</string>
+    <string name="fragment_settings_scanner_settings">Scansione</string>
+    <string name="fragment_settings_open_content_automatically">Apri automaticamente il contenuto dei codici a barre</string>
+    <string name="fragment_settings_open_content_automatically_hint">Potrebbe aprire contenuto non sicuro</string>
+    <string name="fragment_settings_copy_to_clipboard">Copia negli appunti</string>
+    <string name="fragment_settings_copy_to_clipboard_hint">Copia i codici a barre scansionati negli appunti</string>
+    <string name="fragment_settings_simple_auto_focus">Messa a fuoco semplificata</string>
+    <string name="fragment_settings_simple_auto_focus_hint">Abilita solo se ci sono problemi durante la messa a fuoco</string>
+    <string name="fragment_settings_flash">Flash</string>
+    <string name="fragment_settings_flash_hint">Abilita flash all\'avvio</string>
+    <string name="fragment_settings_vibrate">Vibra</string>
+    <string name="fragment_settings_vibrate_hint">Vibra alla scansione</string>
+    <string name="fragment_settings_continuous_scanning">Scansione continua</string>
+    <string name="fragment_settings_continuous_scanning_hint">Salva le scansioni nella cronologia</string>
+    <string name="fragment_settings_confirm_scans_manually">Conferma manualmente le scansioni</string>
+    <string name="fragment_settings_confirm_scans_manually_hint">Evita scansioni accidentali</string>
+    <string name="fragment_settings_camera">Fotocamera</string>
+    <string name="fragment_settings_supported_formats">Formati supportati</string>
+    <string name="fragment_settings_history_settings">Cronologia</string>
+    <string name="fragment_settings_save_scanned_barcodes_to_history">Salva i codici a barre scansionati nella cronologia</string>
+    <string name="fragment_settings_save_created_barcodes_to_history">Salva i codici a barre creati nella cronologia</string>
+    <string name="fragment_settings_do_not_save_duplicates">Non salvare duplicati</string>
+    <string name="fragment_settings_do_not_save_duplicates_hint">Evita duplicati nella cronologia</string>
+    <string name="fragment_settings_clear_history">Pulisci cronologia</string>
+    <string name="fragment_settings_advanced_settings">Avanzate</string>
+    <string name="fragment_settings_choose_search_engines">Motori di ricerca</string>
+    <string name="fragment_settings_choose_search_engines_hint">Scegli un motore di ricerca per le ricerche su internet</string>
+    <string name="fragment_settings_error_reports">Report di errore</string>
+    <string name="fragment_settings_enable_error_reports">Abilita i report di errore</string>
+    <string name="fragment_settings_enable_error_reports_hint">Aiutaci a risolvere i bug</string>
+    <string name="fragment_settings_about">Info su</string>
+    <string name="fragment_settings_check_updates">Controlla aggiornamenti</string>
+    <string name="fragment_settings_permissions">Permessi</string>
+    <string name="fragment_settings_source_code">Codice sorgente</string>
+    <string name="fragment_settings_app_version">Versione app</string>
+
+    <!--Choose theme activity-->
+    <string name="activity_choose_theme_title">Tema</string>
+    <string name="activity_choose_theme_system">Segue il sistema</string>
+    <string name="activity_choose_theme_light">Chiaro</string>
+    <string name="activity_choose_theme_dark">Scuro</string>
+
+    <!--Choose camera activity-->
+    <string name="activity_choose_camera_title">Fotocamera</string>
+    <string name="activity_choose_camera_front">Anteriore</string>
+    <string name="activity_choose_camera_back">Posteriore</string>
+
+    <!--Select supported formats activity-->
+    <string name="activity_supported_formats_title">Formati supportati</string>
+
+    <!--Choose search engine activity-->
+    <string name="activity_choose_search_engine_title">Motori di ricerca</string>
+    <string name="activity_choose_search_engine_none">Nessun</string>
+    <string name="activity_choose_search_engine_ask_every_time">Chiedi ogni volta</string>
+    <string name="activity_choose_search_engine_bing">Bing</string>
+    <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
+    <string name="activity_choose_search_engine_google">Google</string>
+    <string name="activity_choose_search_engine_qwant">Qwant</string>
+    <string name="activity_choose_search_engine_yahoo">Yaho</string>
+    <string name="activity_choose_search_engine_yandex">Yandex</string>
+
+    <!--All permissions activity-->
+    <string name="activity_all_permissions_title">Permessi</string>
+    <string name="activity_all_permissions_normal_permissions">Normale</string>
+    <string name="activity_all_permissions_vibrate_title">Vibra</string>
+    <string name="activity_all_permissions_vibrate_hint">Usato per vibrare durante la scansione</string>
+    <string name="activity_all_permissions_wifi_title">Wi-Fi</string>
+    <string name="activity_all_permissions_wifi_hint">Usato per connettersi a una rete Wi-Fi dopo la scansione di un codice QR</string>
+    <string name="activity_all_permissions_internet_title">Internet</string>
+    <string name="activity_all_permissions_internet_hint">Usato per mandare i report di errore. Può essere disabilitato nelle impostazioni</string>
+    <string name="activity_all_permissions_runtime_permissions">Ambiente</string>
+    <string name="activity_all_permissions_camera_title">Fotocamera</string>
+    <string name="activity_all_permissions_camera_hint">Usato per scansionare i codici QR e i codici a barre con la fotocamera</string>
+    <string name="activity_all_permissions_read_contacts_title">Lettura contatti</string>
+    <string name="activity_all_permissions_read_contacts_hint">Usato per creare codici QR selezionando un contatto dai tuoi contatti</string>
+    <string name="activity_all_permissions_storage_title">Archiviazione</string>
+    <string name="activity_all_permissions_storage_hint">Usato per accedere all\'archiviazione quando salvi un codice QR o codice a barre come testo o immagine</string>
+
+    <!--Barcode activity-->
+    <string name="activity_barcode_add_to_calendar">Aggiungi al calendario</string>
+    <string name="activity_barcode_add_to_contacts">Aggiungi ai contatti</string>
+    <string name="activity_barcode_call_phone">Chiama %s</string>
+    <string name="activity_barcode_send_sms">Manda SMS/MMS a %s</string>
+    <string name="activity_barcode_send_email">Manda email a %s</string>
+    <string name="activity_barcode_show_location">Mostra posizione</string>
+    <string name="activity_barcode_connect_to_wifi">Connetti a Wi-Fi</string>
+    <string name="activity_barcode_open_wifi_settings">Apri impostazioni Wi-Fi</string>
+    <string name="activity_barcode_copy_network_name">Copia nome rete</string>
+    <string name="activity_barcode_copy_network_password">Copia password rete</string>
+    <string name="activity_barcode_open_app">Apri app</string>
+    <string name="activity_barcode_open_in_app_market">Apri nello store</string>
+    <string name="activity_barcode_open_in_youtube">Apri su Youtube</string>
+    <string name="activity_barcode_save_bookmark">Salva nei preferiti</string>
+    <string name="activity_barcode_open_link">Apri link</string>
+    <string name="activity_barcode_open_bitcoin_url">Apri in un\'altra app</string>
+    <string name="activity_barcode_show_otp">Mostra password</string>
+    <string name="activity_barcode_open_otp">Apri in un\'altra app</string>
+    <string name="activity_barcode_share_as_text">Condividi come testo</string>
+    <string name="activity_barcode_copy">Copia negli appunti</string>
+    <string name="activity_barcode_save_as_text">Salva come testo</string>
+    <string name="activity_barcode_search">Cerca su internet</string>
+    <string name="activity_barcode_add_to_favorites">Aggiungi ai preferiti</string>
+    <string name="activity_barcode_show_barcode_image">Mostra codice</string>
+    <string name="activity_barcode_share_as_image">Condividi come immagine</string>
+    <string name="activity_barcode_save_as_image">Salva come immagine</string>
+    <string name="activity_barcode_print">Stampa</string>
+    <string name="activity_barcode_delete">Elimina</string>
+    <string name="activity_barcode_connecting_to_wifi">Connessione in corso..</string>
+    <string name="activity_barcode_copied">Copiato negli appunti</string>
+    <string name="activity_barcode_no_app">Nessuna app è stata trovata per questa azione</string>
+    <string name="activity_barcode_choose_search_engine_dialog_negative_button">Annulla</string>
+
+    <!--Barcode image activity-->
+    <string name="activity_barcode_image_increase_brightness">Aumenta luminosità</string>
+    <string name="activity_barcode_image_decrease_brightness">Diminuisci luminosità</string>
+
+    <!--OTP barcode activity-->
+    <string name="activity_barcode_otp_title">OTP</string>
+    <string name="activity_barcode_otp_unable_to_generate_otp">Impossibile generare la password</string>
+    <string name="activity_barcode_otp_counter">Contatore: %s</string>
+    <string name="activity_barcode_otp_timer">%s:%s rimasto</string>
+    <string name="activity_barcode_otp_refresh_otp">Aggiorna</string>
+
+    <!--Save barcode as text activity-->
+    <string name="activity_save_barcode_as_text_title">Salva</string>
+    <string name="activity_save_barcode_as_text_save_as_hint">Salva come</string>
+    <string-array name="activity_save_barcode_as_text_formats">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_save_barcode_as_text_file_name_save">Salva</string>
+    <string name="activity_save_barcode_as_text_file_name_saved">Salvato nei Download</string>
+
+    <!--Save barcode as image activity-->
+    <string name="activity_save_barcode_as_image_title">Salva</string>
+    <string name="activity_save_barcode_as_image_save_as_hint">Salva come</string>
+    <string-array name="activity_save_barcode_as_image_formats">
+        <item>PNG</item>
+        <item>SVG</item>
+    </string-array>
+    <string name="activity_save_barcode_as_image_file_name_save">Salva</string>
+    <string name="activity_save_barcode_as_image_file_name_saved">Salvato nella galleria</string>
+
+    <!--Barcode schemas-->
+    <string name="barcode_schema_bookmark">Preferito</string>
+    <string name="barcode_schema_cryptocurrency">Bitcoin</string>
+    <string name="barcode_schema_email">Email</string>
+    <string name="barcode_schema_geo">Posizione</string>
+    <string name="barcode_schema_google_maps">Indirizzo</string>
+    <string name="barcode_schema_google_play">Ap</string>
+    <string name="barcode_schema_mms">MMS</string>
+    <string name="barcode_schema_me_card">Contatto (MeCard)</string>
+    <string name="barcode_schema_phone">Telefono</string>
+    <string name="barcode_schema_otp">OTP</string>
+    <string name="barcode_schema_sms">SMS</string>
+    <string name="barcode_schema_url">URL</string>
+    <string name="barcode_schema_v_event">Evento</string>
+    <string name="barcode_schema_v_card">Contatto (VCard)</string>
+    <string name="barcode_schema_wifi">Wi-Fi</string>
+    <string name="barcode_schema_youtube">URL Youtube</string>
+    <string name="barcode_schema_other">Testo</string>
+
+    <!--Barcode formats-->
+    <string name="barcode_format_qr_code">Codice QR</string>
+</resources>

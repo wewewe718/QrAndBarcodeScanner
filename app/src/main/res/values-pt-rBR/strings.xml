@@ -1,15 +1,15 @@
 <resources>
-    <string name="app_name">Leitor de códigos de barras e QR</string>
+    <string name="app_name">Leitor de código de barras e QR</string>
 
     <!--Shortcuts-->
-    <string name="shortcut_scan_from_camera">Digitalizar</string>
-    <string name="shortcut_scan_from_file">Digitalizar uma imagem</string>
+    <string name="shortcut_scan_from_camera">Escanear</string>
+    <string name="shortcut_scan_from_file">Escanear a imagem</string>
     <string name="shortcut_create_barcode">Criar um código de barras</string>
     <string name="shortcut_history">Histórico</string>
 
     <!--Intent filters-->
     <string name="intent_filter_create_qr_code_text">Criar um código QR</string>
-    <string name="intent_filter_scan_image">Digitalizar uma imagem</string>
+    <string name="intent_filter_scan_image">Escanear a imagem</string>
 
     <!--Error dialog-->
     <string name="error_dialog_title">Erro</string>
@@ -28,23 +28,23 @@
     <string name="dialog_confirm_barcode_negative_button">Cancelar</string>
 
     <!--Edit barcode name dialog-->
-    <string name="dialog_edit_barcode_name_title">Editar o nome</string>
+    <string name="dialog_edit_barcode_name_title">Edit name</string>
     <string name="dialog_edit_barcode_name_positive_button">OK</string>
-    <string name="dialog_edit_barcode_name_negative_button">Cancelar</string>
+    <string name="dialog_edit_barcode_name_negative_button">Cancel</string>
 
     <!--Bottom tabs activity-->
-    <string name="activity_bottom_tabs_scan_tab">Digitalizar</string>
+    <string name="activity_bottom_tabs_scan_tab">Escanear</string>
     <string name="activity_bottom_tabs_create_tab">Criar</string>
     <string name="activity_bottom_tabs_history_tab">Histórico</string>
     <string name="activity_bottom_tabs_settings_tab">Configurações</string>
 
     <!--Scan barcode from camera fragment-->
-    <string name="fragment_scan_barcode_from_camera_scan_from_file">Digitalizar uma imagem</string>
+    <string name="fragment_scan_barcode_from_camera_scan_from_file">Escanear a imagem</string>
     <string name="fragment_scan_barcode_from_camera_flash">Flash</string>
-    <string name="fragment_scan_barcode_from_camera_barcode_saved">Salvo</string>
+    <string name="fragment_scan_barcode_from_camera_barcode_saved">Salvado</string>
 
     <!--Scan barcode from file activity-->
-    <string name="activity_scan_barcode_from_file_title">Digitalizar</string>
+    <string name="activity_scan_barcode_from_file_title">Escanear</string>
     <string name="activity_scan_barcode_from_file_scan">OK</string>
     <string name="activity_scan_barcode_from_file_rotate_left">Girar à esquerda</string>
     <string name="activity_scan_barcode_from_file_rotate_right">Girar à direita</string>
@@ -56,11 +56,11 @@
     <string name="fragment_create_barcode_qr_code_clipboard">Conteúdo do Clipboard</string>
     <string name="fragment_create_barcode_qr_code_text">Texto</string>
     <string name="fragment_create_barcode_qr_code_show_all">Mais códigos QR</string>
-    <string name="fragment_create_barcode">Códigos de barras</string>
+    <string name="fragment_create_barcode">Código de barras</string>
     <string name="fragment_create_barcode_show_all">Códigos de barras e outros códigos 2D</string>
 
     <!--Create QR code list activity-->
-    <string name="fragment_create_qr_code_list_title">Criar um código QR</string>
+    <string name="fragment_create_qr_code_list_title">Criar o código QR</string>
 
     <!--Create barcode list activity-->
     <string name="fragment_create_barcode_list_title">Criar um código de barras</string>
@@ -75,7 +75,7 @@
     <string name="fragment_create_barcode_alternative">Alternativamente:</string>
 
     <!--Create QR code URL fragment-->
-    <string name="fragment_create_qr_code_url_alternative">- Abra seu navegador\n- Carregar um site\n- Clique no \"Compartilhar\" do menu\n- Selecione este aplicativo</string>
+    <string name="fragment_create_qr_code_url_alternative">- Abra seu navegador\n- Carregar um site\n- Clique \"Compartilhar\" do menu\n- Selecione este aplicativo</string>
 
     <!--Create QR code bookmark fragment-->
     <string name="fragment_create_qr_code_bookmark_title_hint">Título</string>
@@ -119,7 +119,7 @@
     <!--Create QR code location fragment-->
     <string name="fragment_create_qr_code_location_latitude_hint">Latitude</string>
     <string name="fragment_create_qr_code_location_longitude_hint">Longitude</string>
-    <string name="fragment_create_qr_code_location_altitude_hint">Altitude (opcional)</string>
+    <string name="fragment_create_qr_code_location_altitude_hint">Altitude (optional)</string>
 
     <!--Create QR code OTP fragment-->
     <string name="fragment_create_qr_code_otp_type_hint">Tipo</string>
@@ -139,7 +139,7 @@
     <string name="fragment_create_qr_code_otp_period_hint">Período</string>
     <string name="fragment_create_qr_code_otp_counter_hint">Contador</string>
     <string name="fragment_create_qr_code_otp_secret_hint">Segredo</string>
-    <string name="fragment_create_qr_code_otp_generate_random_secret">Segredo aleatório</string>
+    <string name="fragment_create_qr_code_otp_generate_random_secret">Segredo Aleatório</string>
 
     <!--Create QR code event-->
     <string name="fragment_create_qr_code_event_title_hint">Título</string>
@@ -162,14 +162,14 @@
     <string name="fragment_create_qr_code_contact_city_hint">Cidade</string>
     <string name="fragment_create_qr_code_contact_street_hint">Rua</string>
     <string name="fragment_create_qr_code_contact_website_hint">Site</string>
-    <string name="fragment_create_qr_code_contact_alternative">- Abra seus contatos\n- Abrir o contato existente ou criar um novo\n- Clique no \"Compartilhar\" do menu\n- Selecione este aplicativo</string>
+    <string name="fragment_create_qr_code_contact_alternative">- Abra seus contatos\n- Abrir o contato existente ou criar um novo\n- Clique \"Compartilhar\" do menu\n- Selecione este aplicativo</string>
 
     <!--Create barcode-->
     <string name="fragment_create_data_matrix_hint">Texto sem caracteres especiais</string>
     <string name="fragment_create_aztec_hint">Texto sem caracteres especiais</string>
     <string name="fragment_create_codabar_hint">Dígitos</string>
-    <string name="fragment_create_code_39_hint">Texto em MAIÚSCULAS sem caracteres especiais</string>
-    <string name="fragment_create_code_93_hint">Texto em MAIÚSCULAS sem caracteres especiais</string>
+    <string name="fragment_create_code_39_hint">Texto em Maiúsculas sem caracteres especiais</string>
+    <string name="fragment_create_code_93_hint">Texto em Maiúsculas sem caracteres especiais</string>
     <string name="fragment_create_code_128_hint">Texto sem caracteres especiais</string>
     <string name="fragment_create_ean_8_hint">7 dígitos</string>
     <string name="fragment_create_ean_13_hint">12 dígitos</string>
@@ -184,7 +184,7 @@
         <item>Favoritos</item>
     </string-array>
     <string name="fragment_barcode_history_menu_title_export">Exportar o histórico</string>
-    <string name="fragment_barcode_history_menu_title_delete_all">Excluir o histórico</string>
+    <string name="fragment_barcode_history_menu_title_delete_all">Limpar o histórico</string>
 
     <!--Export history activity-->
     <string name="activity_export_history_title">Exportar o histórico</string>
@@ -193,42 +193,44 @@
         <item>CSV</item>
         <item>JSON</item>
     </string-array>
-    <string name="activity_export_history_file_name_hint">Nome de arquivo</string>
+    <string name="activity_export_history_file_name_hint">Nome do arquivo</string>
     <string name="activity_export_history_export">Exportar</string>
-    <string name="activity_export_history_exported">Salvo em pasta de Downloads</string>
+    <string name="activity_export_history_exported">Salvado em pasta de Downloads</string>
 
     <!--Settings fragment-->
     <string name="fragment_settings_title">Configurações</string>
     <string name="fragment_settings_appearance_settings">Aparência</string>
     <string name="fragment_settings_theme">Tema</string>
     <string name="fragment_settings_inverse_barcode_colors_in_dark_theme">Inverter as cores do código em tema escuro</string>
-    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">Mostrar os códigos com conteúdo branco sobre fundo escuro</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">Mostrar códigos com conteúdo branco no fundo escuro</string>
     <string name="fragment_settings_scanner_settings">Leitor</string>
-    <string name="fragment_settings_open_content_automatically">Abrir automaticamente o conteúdo dos códigos digitalizados</string>
+    <string name="fragment_settings_open_content_automatically">Abrir automaticamente o conteúdo dos códigos escaneados</string>
     <string name="fragment_settings_open_content_automatically_hint">Pode abrir um conteúdo malicioso!</string>
     <string name="fragment_settings_copy_to_clipboard">Copiar para o Clipboard</string>
-    <string name="fragment_settings_copy_to_clipboard_hint">Copiar os códigos de barras digitalizados para o Clipboard</string>
+    <string name="fragment_settings_copy_to_clipboard_hint">Copiar os códigos de barras escaneados para o Clipboard</string>
     <string name="fragment_settings_simple_auto_focus">Modo de foco automático simples</string>
     <string name="fragment_settings_simple_auto_focus_hint">Ativar somente se você tiver problemas com foco</string>
     <string name="fragment_settings_flash">Flash</string>
     <string name="fragment_settings_flash_hint">Ativar o flash ao iniciar</string>
     <string name="fragment_settings_vibrate">Vibrar</string>
-    <string name="fragment_settings_vibrate_hint">Vibrar ao digitalizar</string>
-    <string name="fragment_settings_continuous_scanning">Digitalização contínua</string>
-    <string name="fragment_settings_continuous_scanning_hint">Salvar os arquivos digitalizados apenas para o histórico</string>
-    <string name="fragment_settings_confirm_scans_manually">Confirmar digitalização manualmente</string>
-    <string name="fragment_settings_confirm_scans_manually_hint">Evitar digitalização acidental</string>
+    <string name="fragment_settings_vibrate_hint">Vibrar ao escanear</string>
+    <string name="fragment_settings_continuous_scanning">Escaneamento contínuo</string>
+    <string name="fragment_settings_continuous_scanning_hint">Salvar os escaneamentos apenas para o histórico</string>
+    <string name="fragment_settings_confirm_scans_manually">Confirmar os escaneamentos manualmente</string>
+    <string name="fragment_settings_confirm_scans_manually_hint">Evite os escaneamentos acidentais</string>
     <string name="fragment_settings_camera">Câmara</string>
     <string name="fragment_settings_supported_formats">Os formatos suportados</string>
     <string name="fragment_settings_history_settings">Histórico</string>
-    <string name="fragment_settings_save_scanned_barcodes_to_history">Salvar os códigos de barras digitalizados para o histórico</string>
+    <string name="fragment_settings_save_scanned_barcodes_to_history">Salvar os códigos de barras escaneados para o histórico</string>
     <string name="fragment_settings_save_created_barcodes_to_history">Salvar os códigos de barras criados para o histórico</string>
-    <string name="fragment_settings_clear_history">Excluir o histórico</string>
+    <string name="fragment_settings_do_not_save_duplicates">Não salvar duplicados</string>
+    <string name="fragment_settings_do_not_save_duplicates_hint">Evitar registros duplicados no histórico</string>
+    <string name="fragment_settings_clear_history">Limpiar o histórico</string>
     <string name="fragment_settings_advanced_settings">Avançado</string>
-    <string name="fragment_settings_choose_search_engines">Sites de busca</string>
-    <string name="fragment_settings_choose_search_engines_hint">Escolha um site de busca para encontrar o conteúdo</string>
-    <string name="fragment_settings_error_reports">Relatórios de falhas</string>
-    <string name="fragment_settings_enable_error_reports">Ativar os relatórios de falhas</string>
+    <string name="fragment_settings_choose_search_engines">Sites de Busca</string>
+    <string name="fragment_settings_choose_search_engines_hint">Escolha um site de busca para encontrar conteúdo</string>
+    <string name="fragment_settings_error_reports">Relatórios de erros</string>
+    <string name="fragment_settings_enable_error_reports">Ativar os relatórios de erros</string>
     <string name="fragment_settings_enable_error_reports_hint">Ajude-nos a resolver as falhas</string>
     <string name="fragment_settings_about">Sobre</string>
     <string name="fragment_settings_check_updates">Verificar por atualizações</string>
@@ -240,7 +242,7 @@
     <string name="activity_choose_theme_title">Tema</string>
     <string name="activity_choose_theme_system">Adaptar do sistema</string>
     <string name="activity_choose_theme_light">Claro</string>
-    <string name="activity_choose_theme_dark">Escuro</string>
+    <string name="activity_choose_theme_dark">Oscuro</string>
 
     <!--Choose camera activity-->
     <string name="activity_choose_camera_title">Câmera</string>
@@ -251,9 +253,9 @@
     <string name="activity_supported_formats_title">Os formatos suportados</string>
 
     <!--Choose search engine activity-->
-    <string name="activity_choose_search_engine_title">Sites de busca</string>
+    <string name="activity_choose_search_engine_title">Sites de Busca</string>
     <string name="activity_choose_search_engine_none">Nenhum</string>
-    <string name="activity_choose_search_engine_ask_every_time">Perguntar todas as vezes</string>
+    <string name="activity_choose_search_engine_ask_every_time">Pergunte todas as vezes</string>
     <string name="activity_choose_search_engine_bing">Bing</string>
     <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
     <string name="activity_choose_search_engine_google">Google</string>
@@ -263,16 +265,23 @@
 
     <!--All permissions activity-->
     <string name="activity_all_permissions_title">Permissões</string>
+    <string name="activity_all_permissions_normal_permissions">Normal</string>
+    <string name="activity_all_permissions_vibrate_title">Vibrar</string>
+    <string name="activity_all_permissions_vibrate_hint">Usado para vibrar ao digitalizar</string>
+    <string name="activity_all_permissions_wifi_title">Wi-Fi</string>
+    <string name="activity_all_permissions_wifi_hint">Usado para conectar ao Wi-Fi por meio de leitura de um código QR</string>
+    <string name="activity_all_permissions_internet_title">Internet</string>
+    <string name="activity_all_permissions_internet_hint">Usado para enviar relatórios de erro. Isto pode ser desativado nas configurações.</string>
     <string name="activity_all_permissions_camera_title">Câmara</string>
-    <string name="activity_all_permissions_camera_hint">Necessário para digitalizar os códigos de barras e QR com câmera</string>
+    <string name="activity_all_permissions_camera_hint">Usado para escanear códigos de barras e QR com câmera</string>
     <string name="activity_all_permissions_read_contacts_title">Ler os contatos</string>
-    <string name="activity_all_permissions_read_contacts_hint">Necessário para criar um código QR, para um contato da sua lista de contatos</string>
+    <string name="activity_all_permissions_read_contacts_hint">Usado para criar um código QR, selecionando um contato da sua lista de contatos</string>
     <string name="activity_all_permissions_storage_title">Armazenamento</string>
-    <string name="activity_all_permissions_storage_hint">Necessário para acessar o armazenamento para salvar seus códigos de barras ou QR como texto ou imagem</string>
+    <string name="activity_all_permissions_storage_hint">Usado para acessar o armazenamento quando você precisa salvar seu código de barras ou QR como texto ou imagem</string>
 
     <!--Barcode activity-->
     <string name="activity_barcode_add_to_calendar">Adicionar ao calendário</string>
-    <string name="activity_barcode_add_to_contacts">Adicionar aos contatos</string>
+    <string name="activity_barcode_add_to_contacts">Adicionar ao contatos</string>
     <string name="activity_barcode_call_phone">Ligue %s</string>
     <string name="activity_barcode_send_sms">Enviar um SMS/MMS para %s</string>
     <string name="activity_barcode_send_email">Enviar um e-mail para %s</string>
@@ -281,6 +290,7 @@
     <string name="activity_barcode_open_wifi_settings">Abrir as configurações do Wi-Fi</string>
     <string name="activity_barcode_copy_network_name">Copiar o nome da rede</string>
     <string name="activity_barcode_copy_network_password">Copiar a senha da rede</string>
+    <string name="activity_barcode_open_app">Abrir aplicativo</string>
     <string name="activity_barcode_open_in_app_market">Abrir no Google Play</string>
     <string name="activity_barcode_open_in_youtube">Abrir no Youtube</string>
     <string name="activity_barcode_save_bookmark">Salvar nos favoritos</string>
@@ -322,7 +332,7 @@
         <item>JSON</item>
     </string-array>
     <string name="activity_save_barcode_as_text_file_name_save">Salvar</string>
-    <string name="activity_save_barcode_as_text_file_name_saved">Salvo em pasta de Downloads</string>
+    <string name="activity_save_barcode_as_text_file_name_saved">Salvado em pasta de Downloads</string>
 
     <!--Save barcode as image activity-->
     <string name="activity_save_barcode_as_image_title">Salvar</string>
@@ -332,7 +342,7 @@
         <item>SVG</item>
     </string-array>
     <string name="activity_save_barcode_as_image_file_name_save">Salvar</string>
-    <string name="activity_save_barcode_as_image_file_name_saved">Salvo em Galeria</string>
+    <string name="activity_save_barcode_as_image_file_name_saved">Salvado em Galeria</string>
 
     <!--Barcode schemas-->
     <string name="barcode_schema_bookmark">Favoritos</string>

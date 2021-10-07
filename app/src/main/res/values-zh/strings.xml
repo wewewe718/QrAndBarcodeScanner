@@ -8,7 +8,7 @@
     <string name="shortcut_history">历史</string>
 
     <!--Intent filters-->
-    <string name="intent_filter_create_qr_code_text">创建二维码</string>
+    <string name="intent_filter_create_qr_code_text">创建QR码</string>
     <string name="intent_filter_scan_image">扫描图像</string>
 
     <!--Error dialog-->
@@ -52,20 +52,20 @@
 
     <!--Create barcode fragment-->
     <string name="fragment_create_barcode_title">创建</string>
-    <string name="fragment_create_barcode_qr_code">二维码</string>
+    <string name="fragment_create_barcode_qr_code">QR码</string>
     <string name="fragment_create_barcode_qr_code_clipboard">剪切板的内容</string>
     <string name="fragment_create_barcode_qr_code_text">文本</string>
-    <string name="fragment_create_barcode_qr_code_show_all">更多二维码</string>
+    <string name="fragment_create_barcode_qr_code_show_all">更多QR码</string>
     <string name="fragment_create_barcode">条形码</string>
-    <string name="fragment_create_barcode_show_all">条形码或其他2D码</string>
+    <string name="fragment_create_barcode_show_all">条形码或其他二维码</string>
 
     <!--Create QR code list activity-->
-    <string name="fragment_create_qr_code_list_title">创建二维码</string>
+    <string name="fragment_create_qr_code_list_title">创建QR码</string>
 
     <!--Create barcode list activity-->
     <string name="fragment_create_barcode_list_title">创建条形码</string>
-    <string name="fragment_create_barcode_list_2d">2D 条形码</string>
-    <string name="fragment_create_barcode_list_1d">1D 条形码</string>
+    <string name="fragment_create_barcode_list_2d">二维条形码</string>
+    <string name="fragment_create_barcode_list_1d">一维条形码</string>
 
     <!--Create barcode activity-->
     <string name="activity_create_barcode_menu_item_title">创建</string>
@@ -75,7 +75,7 @@
     <string name="fragment_create_barcode_alternative">或者：</string>
 
     <!--Create QR code URL fragment-->
-    <string name="fragment_create_qr_code_url_alternative">- 打开浏览器\n- 进入一个网页\n- 按菜单中的分享按钮\n- 选择这个APP</string>
+    <string name="fragment_create_qr_code_url_alternative">- 打开浏览器\n- 进入一个网页\n- 按菜单中的分享按钮\n- 选择这个app</string>
 
     <!--Create QR code bookmark fragment-->
     <string name="fragment_create_qr_code_bookmark_title_hint">标题</string>
@@ -105,11 +105,11 @@
     <!--Create QR code cryptocurrency fragment-->
     <string name="fragment_create_qr_code_cryptocurrency_type_hint">加密货币</string>
     <string-array name="fragment_create_qr_code_cryptocurrencies">
-        <item>Bitcoin</item>
-        <item>Bitcoin Cash</item>
-        <item>Ethereum</item>
-        <item>Litecoin</item>
-        <item>Dash</item>
+        <item>比特币</item>
+        <item>比特币现金</item>
+        <item>以太坊</item>
+        <item>莱特币</item>
+        <item>达世币</item>
     </string-array>
     <string name="fragment_create_qr_code_cryptocurrency_address_hint">接收地址</string>
     <string name="fragment_create_qr_code_cryptocurrency_amount_hint">金额</string>
@@ -162,7 +162,7 @@
     <string name="fragment_create_qr_code_contact_city_hint">城市</string>
     <string name="fragment_create_qr_code_contact_street_hint">街道</string>
     <string name="fragment_create_qr_code_contact_website_hint">网站</string>
-    <string name="fragment_create_qr_code_contact_alternative">- 打开联系人应用\n- 打开或创建一个联系人\n- 点击菜单中的分享按钮\n- 选择这个APP</string>
+    <string name="fragment_create_qr_code_contact_alternative">- 打开联系人应用\n- 打开或创建一个联系人\n- 点击菜单中的分享按钮\n- 选择这个app</string>
 
     <!--Create barcode-->
     <string name="fragment_create_data_matrix_hint">不含特殊字符的文本</string>
@@ -212,8 +212,8 @@
     <string name="fragment_settings_simple_auto_focus_hint">仅当对焦有问题时打开</string>
     <string name="fragment_settings_flash">闪光灯</string>
     <string name="fragment_settings_flash_hint">启动时自动打开闪光灯</string>
-    <string name="fragment_settings_vibrate">震动</string>
-    <string name="fragment_settings_vibrate_hint">扫描到时震动</string>
+    <string name="fragment_settings_vibrate">振动</string>
+    <string name="fragment_settings_vibrate_hint">扫描到时振动</string>
     <string name="fragment_settings_continuous_scanning">连续扫描</string>
     <string name="fragment_settings_continuous_scanning_hint">扫描结果仅保存到历史</string>
     <string name="fragment_settings_confirm_scans_manually">手动确认扫描结果</string>
@@ -247,7 +247,7 @@
     <!--Choose camera activity-->
     <string name="activity_choose_camera_title">相机</string>
     <string name="activity_choose_camera_front">前置</string>
-    <string name="activity_choose_camera_back">返回</string>
+    <string name="activity_choose_camera_back">后置</string>
 
     <!--Select supported formats activity-->
     <string name="activity_supported_formats_title">支持的格式</string>
@@ -266,19 +266,19 @@
     <!--All permissions activity-->
     <string name="activity_all_permissions_title">权限</string>
     <string name="activity_all_permissions_normal_permissions">普通权限</string>
-    <string name="activity_all_permissions_vibrate_title">震动</string>
-    <string name="activity_all_permissions_vibrate_hint">用于扫描到时震动</string>
+    <string name="activity_all_permissions_vibrate_title">振动</string>
+    <string name="activity_all_permissions_vibrate_hint">用于扫描到时振动</string>
     <string name="activity_all_permissions_wifi_title">Wi-Fi</string>
-    <string name="activity_all_permissions_wifi_hint">用于通过扫描二维码连接到Wi-Fi</string>
+    <string name="activity_all_permissions_wifi_hint">用于通过扫描QR码连接到Wi-Fi</string>
     <string name="activity_all_permissions_internet_title">网络</string>
     <string name="activity_all_permissions_internet_hint">用于发送错误报告，可在设置中关闭</string>
     <string name="activity_all_permissions_runtime_permissions">运行时</string>
     <string name="activity_all_permissions_camera_title">相机</string>
-    <string name="activity_all_permissions_camera_hint">用于扫描二维码和条形码</string>
+    <string name="activity_all_permissions_camera_hint">用于用相机扫描QR码和条形码</string>
     <string name="activity_all_permissions_read_contacts_title">读取联系人</string>
-    <string name="activity_all_permissions_read_contacts_hint">用于从选择的联系人中创建二维码</string>
+    <string name="activity_all_permissions_read_contacts_hint">用于从联系人列表中选择联系人来创建QR码</string>
     <string name="activity_all_permissions_storage_title">存储</string>
-    <string name="activity_all_permissions_storage_hint">用于在您希望将二维码或条形码保存为文本或图像时访问存储</string>
+    <string name="activity_all_permissions_storage_hint">用于在您要将QR码或条形码保存为文本或图像时访问存储</string>
 
     <!--Barcode activity-->
     <string name="activity_barcode_add_to_calendar">添加到日历</string>
@@ -309,7 +309,7 @@
     <string name="activity_barcode_save_as_image">保存为图像</string>
     <string name="activity_barcode_print">打印</string>
     <string name="activity_barcode_delete">清除</string>
-    <string name="activity_barcode_connecting_to_wifi">正在连接…</string>
+    <string name="activity_barcode_connecting_to_wifi">正在连接……</string>
     <string name="activity_barcode_copied">复制到剪贴板</string>
     <string name="activity_barcode_no_app">没有找到能打开的应用</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">取消</string>
@@ -352,18 +352,18 @@
     <string name="barcode_schema_geo">位置</string>
     <string name="barcode_schema_google_maps">地址</string>
     <string name="barcode_schema_google_play">应用</string>
-    <string name="barcode_schema_mms">MMS</string>
-    <string name="barcode_schema_me_card">联系人(MeCard)</string>
+    <string name="barcode_schema_mms">多媒体短信</string>
+    <string name="barcode_schema_me_card">联系人（MeCard）</string>
     <string name="barcode_schema_phone">电话</string>
     <string name="barcode_schema_otp">OTP</string>
-    <string name="barcode_schema_sms">SMS</string>
+    <string name="barcode_schema_sms">短信</string>
     <string name="barcode_schema_url">URL</string>
     <string name="barcode_schema_v_event">事件</string>
-    <string name="barcode_schema_v_card">联系人(VCard)</string>
+    <string name="barcode_schema_v_card">联系人（VCard）</string>
     <string name="barcode_schema_wifi">Wi-Fi</string>
     <string name="barcode_schema_youtube">Youtube URL</string>
     <string name="barcode_schema_other">文本</string>
 
     <!--Barcode formats-->
-    <string name="barcode_format_qr_code">二维码</string>
+    <string name="barcode_format_qr_code">QR码</string>
 </resources>

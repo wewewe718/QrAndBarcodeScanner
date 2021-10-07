@@ -22,6 +22,16 @@
     <string name="dialog_delete_clear_history_message">刪除歷史記錄？</string>
     <string name="dialog_delete_barcode_message">刪除？</string>
 
+    <!--Confirm barcode dialog-->
+    <string name="dialog_confirm_barcode_title">確認</string>
+    <string name="dialog_confirm_barcode_positive_button">OK</string>
+    <string name="dialog_confirm_barcode_negative_button">取消</string>
+
+    <!--Edit barcode name dialog-->
+    <string name="dialog_edit_barcode_name_title">編輯名稱</string>
+    <string name="dialog_edit_barcode_name_positive_button">OK</string>
+    <string name="dialog_edit_barcode_name_negative_button">取消</string>
+
     <!--Bottom tabs activity-->
     <string name="activity_bottom_tabs_scan_tab">掃描</string>
     <string name="activity_bottom_tabs_create_tab">新增</string>
@@ -72,6 +82,11 @@
 
     <!--Create QR code Wi-fi fragment-->
     <string name="fragment_create_qr_code_wifi_encryption_hint">安全性</string>
+    <string-array name="fragment_create_qr_code_wifi_encryption_types">
+        <item>WPA/WPA2</item>
+        <item>WEP</item>
+        <item>無</item>
+    </string-array>
     <string name="fragment_create_qr_code_wifi_network_name_hint">網絡名稱</string>
     <string name="fragment_create_qr_code_wifi_password_hint">密碼</string>
     <string name="fragment_create_qr_code_wifi_is_hidden_hint">隱藏的網路</string>
@@ -89,6 +104,13 @@
 
     <!--Create QR code cryptocurrency fragment-->
     <string name="fragment_create_qr_code_cryptocurrency_type_hint">加密貨幣</string>
+    <string-array name="fragment_create_qr_code_cryptocurrencies">
+        <item>比特幣</item>
+        <item>比特幣現金</item>
+        <item>以太坊</item>
+        <item>萊特幣</item>
+        <item>達世幣</item>
+    </string-array>
     <string name="fragment_create_qr_code_cryptocurrency_address_hint">收件人地址</string>
     <string name="fragment_create_qr_code_cryptocurrency_amount_hint">數量</string>
     <string name="fragment_create_qr_code_cryptocurrency_label_hint">標籤</string>
@@ -101,7 +123,16 @@
 
     <!--Create QR code OTP fragment-->
     <string name="fragment_create_qr_code_otp_type_hint">類型</string>
+    <string-array name="fragment_create_qr_code_otp_types">
+        <item>HOTP</item>
+        <item>TOTP</item>
+    </string-array>
     <string name="fragment_create_qr_code_otp_algorithm_hint">演算法</string>
+    <string-array name="fragment_create_qr_code_otp_algorithms">
+        <item>SHA1</item>
+        <item>SHA256</item>
+        <item>SHA512</item>
+    </string-array>
     <string name="fragment_create_qr_code_otp_issuer_hint">發行人</string>
     <string name="fragment_create_qr_code_otp_account_hint">帳號</string>
     <string name="fragment_create_qr_code_otp_digits_hint">數字長度</string>
@@ -148,12 +179,20 @@
 
     <!--Barcode history fragment-->
     <string name="fragment_barcode_history_title">歷史</string>
+    <string-array name="fragment_barcode_history_tab_titles">
+        <item>所有</item>
+        <item>收藏</item>
+    </string-array>
     <string name="fragment_barcode_history_menu_title_export">匯出歷史紀錄</string>
     <string name="fragment_barcode_history_menu_title_delete_all">清除歷史記錄</string>
 
     <!--Export history activity-->
     <string name="activity_export_history_title">匯出歷史紀錄</string>
     <string name="activity_export_history_as_hint">匯出為</string>
+    <string-array name="activity_export_history_types">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
     <string name="activity_export_history_file_name_hint">檔案名稱</string>
     <string name="activity_export_history_export">匯出</string>
     <string name="activity_export_history_exported">已另存至下載資料夾</string>
@@ -184,6 +223,8 @@
     <string name="fragment_settings_history_settings">歷史</string>
     <string name="fragment_settings_save_scanned_barcodes_to_history">將掃描的條碼保存到歷史記錄</string>
     <string name="fragment_settings_save_created_barcodes_to_history">將已建立的條碼保存到歷史記錄</string>
+    <string name="fragment_settings_do_not_save_duplicates">勿重複保存</string>
+    <string name="fragment_settings_do_not_save_duplicates_hint">避免重複保存到歷史</string>
     <string name="fragment_settings_clear_history">清除歷史記錄</string>
     <string name="fragment_settings_advanced_settings">進階</string>
     <string name="fragment_settings_choose_search_engines">搜尋引擎</string>
@@ -224,6 +265,14 @@
 
     <!--All permissions activity-->
     <string name="activity_all_permissions_title">權限</string>
+    <string name="activity_all_permissions_normal_permissions">普通</string>
+    <string name="activity_all_permissions_vibrate_title">振動</string>
+    <string name="activity_all_permissions_vibrate_hint">用於掃描到時振動</string>
+    <string name="activity_all_permissions_wifi_title">Wi-Fi</string>
+    <string name="activity_all_permissions_wifi_hint">用於透過掃描QR碼連結Wi-Fi</string>
+    <string name="activity_all_permissions_internet_title">網際網路</string>
+    <string name="activity_all_permissions_internet_hint">用於發送錯誤報告。可在設定中關閉。</string>
+    <string name="activity_all_permissions_runtime_permissions">運行時</string>
     <string name="activity_all_permissions_camera_title">相機</string>
     <string name="activity_all_permissions_camera_hint">用於掃描 QR 碼和條碼</string>
     <string name="activity_all_permissions_read_contacts_title">聯絡人</string>
@@ -242,6 +291,7 @@
     <string name="activity_barcode_open_wifi_settings">開啟 Wi-Fi 設定</string>
     <string name="activity_barcode_copy_network_name">複製網絡名稱</string>
     <string name="activity_barcode_copy_network_password">複製網絡密碼</string>
+    <string name="activity_barcode_open_app">打開應用</string>
     <string name="activity_barcode_open_in_app_market">於 Google Play 中開啟</string>
     <string name="activity_barcode_open_in_youtube">在 YouTube 中開啟</string>
     <string name="activity_barcode_save_bookmark">保存到書籤</string>
@@ -278,12 +328,20 @@
     <!--Save barcode as text activity-->
     <string name="activity_save_barcode_as_text_title">儲存</string>
     <string name="activity_save_barcode_as_text_save_as_hint">另存為</string>
+    <string-array name="activity_save_barcode_as_text_formats">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
     <string name="activity_save_barcode_as_text_file_name_save">儲存</string>
     <string name="activity_save_barcode_as_text_file_name_saved">已另存至下載資料夾</string>
 
     <!--Save barcode as image activity-->
     <string name="activity_save_barcode_as_image_title">儲存</string>
     <string name="activity_save_barcode_as_image_save_as_hint">另存為</string>
+    <string-array name="activity_save_barcode_as_image_formats">
+        <item>PNG</item>
+        <item>SVG</item>
+    </string-array>
     <string name="activity_save_barcode_as_image_file_name_save">儲存</string>
     <string name="activity_save_barcode_as_image_file_name_saved">已另存至相簿</string>
 
