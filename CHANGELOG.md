@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.9
+* Add support for New Zealand Covid Tracer QR Codes
+* Update translations
+
 ## 1.8
 * Update translations
 
