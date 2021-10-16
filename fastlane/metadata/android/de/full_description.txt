@@ -1,0 +1,46 @@
+ALLE GÄNGIGEN FORMATE
+Scannen Sie alle gängigen Barcode-Formate: QR, Data Matrix, Aztec, UPC, EAN und mehr.
+
+TASCHENLAMPE UND ZOOM
+Aktivieren Sie die Taschenlampe, um im Dunkeln zu scannen. Verwenden Sie den Zoom, um Barcodes aus großer Entfernung zu lesen.
+
+RELEVANTE AKTIONEN
+Öffnen Sie Links, stellen Sie eine WiFi-Verbindung her, zeigen Sie Geostandorte an, fügen Sie Kalenderereignisse hinzu, finden Sie Produktinformationen, usw.
+
+SCANNEN VON BILDERN
+Scannen Sie Codes aus Bilddateien oder direkt mit der Kamera.
+
+QR-CODES UND BARCODES ERSTELLEN
+Erstellen Sie Ihre eigenen QR-Codes oder Barcodes mit dem integrierten Generator.
+
+VERLAUF
+Zeigen Sie gescannte und erstellte Codes in der Historie an.
+
+CSV- UND JSON-EXPORT
+Exportieren Sie Codes als CSV- oder JSON-Dateien.
+
+EINSTELLUNGEN
+Passen Sie Ihre App mit flexiblen Einstellungen an.
+
+Unterstützte QR-Codes:
+- Website-Links (URL)
+- WiFi-Hotspot-Zugangsinformationen
+- Geostandorte
+- Kontaktinformationen (MeCard, vCard)
+- Kalenderereignisse
+- Telefone
+- E-Mail
+- SMS
+
+Strichcodes und 2D-Codes:
+- Data Matrix
+- Azteke
+- PDF417
+- EAN-13, EAN-8
+- UPC-E, UPC-A
+- Code 39, Code 93 und Code 128
+- Codabar
+- ITF
+
+Quellcode:
+https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner
