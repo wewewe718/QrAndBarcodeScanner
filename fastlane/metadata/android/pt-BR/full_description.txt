@@ -43,4 +43,4 @@ Códigos de barras e códigos 2D:
 - ITF
 
 Código fonte:
-https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner
+https://github.com/wewewe718/QrAndBarcodeScanner
