@@ -1,0 +1,46 @@
+TODOS OS FORMATOS COMUNS
+Leia todos os formatos comuns de códigos de barras: QR, Data Matrix, Aztec, UPC, EAN e muitos mais.
+
+LANTERNA E ZOOM
+Ative a lanterna para ler no escuro. Use o zoom para ler códigos de barras distantes.
+
+AÇÕES RELEVANTES
+Abra ligações de internet, ligue ao WiFi, visualize geo-localizações, adicione contactos, adicione eventos de calendário, encontre informações sobre produtos, etc.
+
+LER A PARTIR DE IMAGENS
+Leia códigos a partir de ficheiros de imagem ou diretamente através da câmera.
+
+CRIAR CÓDIGOS QR E CÓDIGOS DE BARRAS
+Crie os seus próprios códigos QR ou códigos de barras através do mecanismo integrado.
+
+HISTÓRICO
+Visualize o histórico dos códigos lidos e criados.
+
+EXPORTAÇÃO EM CSV E JSON
+Exporte os códigos para ficheiros CSV ou JSON.
+
+DEFINIÇÕES
+Personalize a sua aplicação com configurações flexíveis.
+
+Códigos QR suportados:
+- Ligações de sites web (URL)
+- Informações de acesso a redes WiFi
+- Geo-localizações
+- Dados de contactos (MeCard, vCard)
+- Eventos de calendário
+- Telefones
+- E-mail
+- SMS
+
+Códigos de barras e códigos 2D:
+- Data Matrix
+- Aztec
+- PDF417
+- EAN-13, EAN-8
+- UPC-E, UPC-A
+- Código 39, Código 93 e Código 128
+- Codabar
+- ITF
+
+Código-fonte:
+https://github.com/wewewe718/QrAndBarcodeScanner
