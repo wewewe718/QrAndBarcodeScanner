@@ -20,6 +20,7 @@ fun BarcodeSchema.toImageId(): Int? {
         BarcodeSchema.VCARD -> R.drawable.ic_contact
         BarcodeSchema.WIFI -> R.drawable.ic_wifi
         BarcodeSchema.YOUTUBE -> R.drawable.ic_youtube
+        BarcodeSchema.BOARDINGPASS -> R.drawable.ic_boardingpass
         else -> null
     }
 }
@@ -41,6 +42,7 @@ fun BarcodeSchema.toStringId(): Int? {
         BarcodeSchema.VCARD -> R.string.barcode_schema_v_card
         BarcodeSchema.WIFI -> R.string.barcode_schema_wifi
         BarcodeSchema.YOUTUBE -> R.string.barcode_schema_youtube
+        BarcodeSchema.BOARDINGPASS -> R.string.barcode_schema_boardingpass
         BarcodeSchema.OTHER -> R.string.barcode_schema_other
         else -> null
     }
