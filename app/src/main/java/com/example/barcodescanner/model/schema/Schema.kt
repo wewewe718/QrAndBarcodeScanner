@@ -18,6 +18,7 @@ enum class BarcodeSchema {
     WIFI,
     YOUTUBE,
     NZCOVIDTRACER,
+    BOARDINGPASS,
     OTHER;
 }
 

@@ -23,7 +23,8 @@ object BarcodeParser {
 
     fun parseSchema(format: BarcodeFormat, text: String): Schema {
         if (format != BarcodeFormat.QR_CODE) {
-            return Other(text)
+            return BoardingPass.parse(text)
+                   ?:Other(text)
         }
 
         return App.parse(text)
@@ -43,6 +44,7 @@ object BarcodeParser {
             ?: VCard.parse(text)
             ?: OtpAuth.parse(text)
             ?: NZCovidTracer.parse(text)
+            ?: BoardingPass.parse(text)
             ?: Other(text)
     }
 }

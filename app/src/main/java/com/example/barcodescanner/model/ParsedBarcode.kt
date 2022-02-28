@@ -95,6 +95,7 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.CRYPTOCURRENCY -> parseBitcoin()
             BarcodeSchema.OTP_AUTH -> parseOtp()
             BarcodeSchema.NZCOVIDTRACER -> parseNZCovidTracer()
+            BarcodeSchema.BOARDINGPASS,
             BarcodeSchema.URL -> parseUrl()
         }
     }
