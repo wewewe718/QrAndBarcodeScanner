@@ -30,6 +30,7 @@ import com.example.barcodescanner.model.SearchEngine
 import com.example.barcodescanner.model.schema.BarcodeSchema
 import com.example.barcodescanner.model.schema.OtpAuth
 import com.example.barcodescanner.usecase.Logger
+import com.example.barcodescanner.usecase.BarcodePkpassSaver
 import com.example.barcodescanner.usecase.save
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -200,6 +201,8 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_open_otp.setOnClickListener { openOtpInOtherApp() }
         button_open_bitcoin_uri.setOnClickListener { openBitcoinUrl() }
         button_open_link.setOnClickListener { openLink() }
+        button_save_as_pkpass.setOnClickListener { savePkpass() }
+        button_share_as_pkpass.setOnClickListener { sharePkpass() }
         button_save_bookmark.setOnClickListener { saveBookmark() }
 
         button_call_phone_1.setOnClickListener { callPhone(barcode.phone) }
@@ -455,6 +458,41 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         startActivityIfExists(intent)
     }
 
+    private fun savePkpass() {
+        BarcodePkpassSaver.saveBarcodeAsPkpass(this, originalBarcode, null)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    Toast.makeText(this, R.string.activity_save_barcode_as_text_file_name_saved, Toast.LENGTH_LONG).show()
+                },
+                { error ->
+                    showError(error)
+                }
+            )
+            .addTo(disposable)
+    }
+
+    private fun sharePkpass() {
+        val uri = Array<Uri?>(1, init={i:Int -> null})
+        BarcodePkpassSaver.saveBarcodeAsPkpass(this, originalBarcode, uri)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    val intent = Intent(Intent.ACTION_VIEW).apply {
+                        setDataAndType(uri[0], "application/vnd.apple.pkpass")
+                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                     }
+                     startActivityIfExists(intent)
+                },
+                { error ->
+                    showError(error)
+                }
+            )
+            .addTo(disposable)
+    }
+
     private fun shareBarcodeAsText() {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
@@ -694,6 +732,8 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         button_open_bitcoin_uri.isVisible = barcode.bitcoinUri.isNullOrEmpty().not()
         button_open_link.isVisible = barcode.url.isNullOrEmpty().not()
         button_save_bookmark.isVisible = barcode.schema == BarcodeSchema.BOOKMARK
+        button_save_as_pkpass.isVisible = barcode.schema == BarcodeSchema.BOARDINGPASS
+        button_share_as_pkpass.isVisible = barcode.schema == BarcodeSchema.BOARDINGPASS
     }
 
     private fun showButtonText() {

@@ -315,6 +315,8 @@
     <string name="activity_barcode_copied">Copied to clipboard</string>
     <string name="activity_barcode_no_app">No app found for this action</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Cancel</string>
+    <string name="activity_barcode_save_as_pkpass">Save as pkpass</string>
+    <string name="activity_barcode_share_as_pkpass">Share as pkpass</string>
 
     <!--Barcode image activity-->
     <string name="activity_barcode_image_increase_brightness">Increase brightness</string>
