@@ -64,7 +64,7 @@ class ChooseSearchEngineActivity : BaseActivity() {
         button_duck_duck_go.setCheckedChangedListener(SearchEngine.DUCK_DUCK_GO)
         button_google.setCheckedChangedListener(SearchEngine.GOOGLE)
         button_qwant.setCheckedChangedListener(SearchEngine.QWANT)
-        utton_startpage.setCheckedChangedListener(SearchEngine.STARTPAGE)
+        button_startpage.setCheckedChangedListener(SearchEngine.STARTPAGE)
         button_yahoo.setCheckedChangedListener(SearchEngine.YAHOO)
         button_yandex.setCheckedChangedListener(SearchEngine.YANDEX)
     }
