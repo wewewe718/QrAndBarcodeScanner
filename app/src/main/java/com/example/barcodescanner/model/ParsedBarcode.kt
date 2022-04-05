@@ -97,6 +97,7 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.NZCOVIDTRACER -> parseNZCovidTracer()
             BarcodeSchema.BOARDINGPASS,
             BarcodeSchema.URL -> parseUrl()
+            else -> {}
         }
     }
 

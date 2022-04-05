@@ -1,0 +1,2 @@
+* Add support for Airline Boarding Pass barcodes
+* Update translations

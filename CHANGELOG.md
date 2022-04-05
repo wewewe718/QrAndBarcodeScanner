@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.10
+* Add support for Airline Boarding Pass barcodes
+* Update translations
+
 ## 1.9
 * Add support for New Zealand Covid Tracer QR Codes
 * Update translations
