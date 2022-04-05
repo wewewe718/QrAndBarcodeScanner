@@ -1,14 +1,19 @@
 plugins {
-    id 'io.sentry.android.gradle'
+    id("io.sentry.android.gradle") version "3.0.1"
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
 
+sentry {
+    includeProguardMapping = true
+    autoUploadProguardMapping = true
+}
+
 android {
     compileSdkVersion 31
-    buildToolsVersion "29.0.3"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.barcodescanner"
@@ -56,11 +61,6 @@ android {
             buildConfigField "boolean", "ERROR_REPORTS_ENABLED_BY_DEFAULT", "false"
         }
     }
-
-    sentry {
-        autoProguardConfig true
-        autoUpload true
-    }
 }
 
 dependencies {
@@ -77,7 +77,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
 
     // Room
-    final roomVersion = "2.2.5"
+    final roomVersion = "2.4.2"
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-runtime:$roomVersion"
     implementation "androidx.room:room-rxjava2:$roomVersion"
@@ -114,5 +114,5 @@ dependencies {
     implementation 'com.github.florent37:singledateandtimepicker:2.2.6'
 
     // Sentry
-    implementation 'io.sentry:sentry-android:2.3.1'
+    implementation 'io.sentry:sentry-android:5.7.1'
 }
