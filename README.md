@@ -14,7 +14,7 @@ QR & Barcode Scanner is an ad-free, open-source scanner app. It uses the [ZXing]
 
 ## Contributing
 
-You can contribute by adding a translation on [Transifex][transifex], reporting a bug or asking for a feature.
+You can contribute by adding a translation ~~on [Transifex][transifex]~~, reporting a bug or asking for a feature.
 
 ## Supported Barcode Formats
 
@@ -56,7 +56,7 @@ The app can create the following barcode formats:
 * [UPC-E][upc_e]
 
 [zxing]: https://github.com/zxing/zxing
-[transifex]: https://www.transifex.com/a-302/qr-barcode-scanner/
+~~[transifex]: https://www.transifex.com/a-302/qr-barcode-scanner/~~
 [aztec]: https://en.wikipedia.org/wiki/Aztec_Code
 [codabar]: https://en.wikipedia.org/wiki/Codabar
 [code_39]: https://en.wikipedia.org/wiki/Code_39
