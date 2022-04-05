@@ -43,4 +43,4 @@ Codis de barres i codis 2D:
 • ITF
 
 Codi font:
-https://github.com/dmitriy-ilchenko/QrAndBarcodeScanner
+https://github.com/wewewe718/QrAndBarcodeScanner

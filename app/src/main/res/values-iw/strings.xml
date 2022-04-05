@@ -1,0 +1,383 @@
+<resources>
+    <string name="app_name">QR וסורק ברקוד</string>
+
+    <!--Shortcuts-->
+    <string name="shortcut_scan_from_camera">סריקה</string>
+    <string name="shortcut_scan_from_file">סריקת תמונה</string>
+    <string name="shortcut_create_barcode">יצירת ברקוד</string>
+    <string name="shortcut_history">היסטוריה</string>
+
+    <!--Intent filters-->
+    <string name="intent_filter_create_qr_code_text">יצירת קוד QR</string>
+    <string name="intent_filter_scan_image">סריקת תמונה</string>
+
+    <!--Error dialog-->
+    <string name="error_dialog_title">שגיאה</string>
+    <string name="error_dialog_default_message">משהו התשבש</string>
+    <string name="error_dialog_positive_button_text">אישור</string>
+
+    <!--Delete dialog-->
+    <string name="dialog_delete_positive_button">מחיקה</string>
+    <string name="dialog_delete_negative_button">ביטול</string>
+    <string name="dialog_delete_clear_history_message">למחוק היסטוריה?</string>
+    <string name="dialog_delete_barcode_message">למחוק?</string>
+
+    <!--Confirm barcode dialog-->
+    <string name="dialog_confirm_barcode_title">אישור</string>
+    <string name="dialog_confirm_barcode_positive_button">אישור</string>
+    <string name="dialog_confirm_barcode_negative_button">ביטול</string>
+
+    <!--Edit barcode name dialog-->
+    <string name="dialog_edit_barcode_name_title">עריכת שם</string>
+    <string name="dialog_edit_barcode_name_positive_button">אישור</string>
+    <string name="dialog_edit_barcode_name_negative_button">ביטול</string>
+
+    <!--Bottom tabs activity-->
+    <string name="activity_bottom_tabs_scan_tab">סריקה</string>
+    <string name="activity_bottom_tabs_create_tab">יצירה</string>
+    <string name="activity_bottom_tabs_history_tab">היסטוריה</string>
+    <string name="activity_bottom_tabs_settings_tab">הגדרות</string>
+
+    <!--Scan barcode from camera fragment-->
+    <string name="fragment_scan_barcode_from_camera_scan_from_file">סריקת תמונה</string>
+    <string name="fragment_scan_barcode_from_camera_flash">מבזק</string>
+    <string name="fragment_scan_barcode_from_camera_barcode_saved">נשמר</string>
+
+    <!--Scan barcode from file activity-->
+    <string name="activity_scan_barcode_from_file_title">סריקה</string>
+    <string name="activity_scan_barcode_from_file_scan">אישור</string>
+    <string name="activity_scan_barcode_from_file_rotate_left">סובב שמאלה</string>
+    <string name="activity_scan_barcode_from_file_rotate_right">סובב ימינה</string>
+    <string name="activity_scan_barcode_from_file_change_image">בחירת תמונה אחרת</string>
+
+    <!--Create barcode fragment-->
+    <string name="fragment_create_barcode_title">יצירה</string>
+    <string name="fragment_create_barcode_qr_code">קוד QR</string>
+    <string name="fragment_create_barcode_qr_code_clipboard">תוכן מהלוח</string>
+    <string name="fragment_create_barcode_qr_code_text">טקסט</string>
+    <string name="fragment_create_barcode_qr_code_show_all">קודי QR נוספים</string>
+    <string name="fragment_create_barcode">ברקוד</string>
+    <string name="fragment_create_barcode_show_all">ברקודים וקודים דו מימדיים אחרים</string>
+
+    <!--Create QR code list activity-->
+    <string name="fragment_create_qr_code_list_title">יצירת קוד QR</string>
+
+    <!--Create barcode list activity-->
+    <string name="fragment_create_barcode_list_title">יצירת ברקוד</string>
+    <string name="fragment_create_barcode_list_2d">ברקודים דו מימדיים</string>
+    <string name="fragment_create_barcode_list_1d">ברקודים חד מימדיים</string>
+
+    <!--Create barcode activity-->
+    <string name="activity_create_barcode_menu_item_title">יצירה</string>
+    <string name="activity_create_barcode_contacts_menu_item_title">אנשי קשר</string>
+
+    <!--Base create barcode fragment -->
+    <string name="fragment_create_barcode_alternative">לחלופין:</string>
+
+    <!--Create QR code URL fragment-->
+    <string name="fragment_create_qr_code_url_alternative">- יש לפתוח את הדפדפן\n- לטעון את האתר\n- לחיצה על \"שיתוף\" מהתפריט\n- ולבחור ביישום הזה</string>
+
+    <!--Create QR code bookmark fragment-->
+    <string name="fragment_create_qr_code_bookmark_title_hint">כותרת</string>
+
+    <!--Create QR code Wi-fi fragment-->
+    <string name="fragment_create_qr_code_wifi_encryption_hint">הצפנה</string>
+    <string-array name="fragment_create_qr_code_wifi_encryption_types">
+        <item>WPA/WPA2</item>
+        <item>WEP</item>
+        <item>None</item>
+    </string-array>
+    <string name="fragment_create_qr_code_wifi_network_name_hint">שם רשת</string>
+    <string name="fragment_create_qr_code_wifi_password_hint">סיסמה</string>
+    <string name="fragment_create_qr_code_wifi_is_hidden_hint">הסתרה</string>
+
+    <!--Create QR code email fragment-->
+    <string name="fragment_create_qr_code_email_subject_hint">נושא</string>
+    <string name="fragment_create_qr_code_email_message_hint">הודעה</string>
+
+    <!--Create QR code SMS fragment-->
+    <string name="fragment_create_qr_code_sms_message_hint">הודעה</string>
+
+    <!--Create QR code MMS fragment-->
+    <string name="fragment_create_qr_code_mms_subject_hint">נושא</string>
+    <string name="fragment_create_qr_code_mms_message_hint">הודעה</string>
+
+    <!--Create QR code cryptocurrency fragment-->
+    <string name="fragment_create_qr_code_cryptocurrency_type_hint">מטבע קריפטו</string>
+    <string-array name="fragment_create_qr_code_cryptocurrencies">
+        <item>Bitcoin</item>
+        <item>Bitcoin Cash</item>
+        <item>Ethereum</item>
+        <item>Litecoin</item>
+        <item>Dash</item>
+    </string-array>
+    <string name="fragment_create_qr_code_cryptocurrency_address_hint">כתובת המקבל</string>
+    <string name="fragment_create_qr_code_cryptocurrency_amount_hint">סכום</string>
+    <string name="fragment_create_qr_code_cryptocurrency_label_hint">תווית</string>
+    <string name="fragment_create_qr_code_cryptocurrency_message_hint">הודעה</string>
+
+    <!--Create QR code location fragment-->
+    <string name="fragment_create_qr_code_location_latitude_hint">קו רוחב</string>
+    <string name="fragment_create_qr_code_location_longitude_hint">קו אורך</string>
+    <string name="fragment_create_qr_code_location_altitude_hint">גובה (אופצינאלי)</string>
+
+    <!--Create QR code OTP fragment-->
+    <string name="fragment_create_qr_code_otp_type_hint">סוג</string>
+    <string-array name="fragment_create_qr_code_otp_types">
+        <item>HOTP</item>
+        <item>TOTP</item>
+    </string-array>
+    <string name="fragment_create_qr_code_otp_algorithm_hint">אלגוריתם</string>
+    <string-array name="fragment_create_qr_code_otp_algorithms">
+        <item>SHA1</item>
+        <item>SHA256</item>
+        <item>SHA512</item>
+    </string-array>
+    <string name="fragment_create_qr_code_otp_issuer_hint">מנפיק</string>
+    <string name="fragment_create_qr_code_otp_account_hint">חשבון</string>
+    <string name="fragment_create_qr_code_otp_digits_hint">ספרות</string>
+    <string name="fragment_create_qr_code_otp_period_hint">תקופה</string>
+    <string name="fragment_create_qr_code_otp_counter_hint">מונה</string>
+    <string name="fragment_create_qr_code_otp_secret_hint">סוד</string>
+    <string name="fragment_create_qr_code_otp_generate_random_secret">סוד אקראי</string>
+
+    <!--Create QR code event-->
+    <string name="fragment_create_qr_code_event_title_hint">כותרת</string>
+    <string name="fragment_create_qr_code_event_organizer_hint">מארגן</string>
+    <string name="fragment_create_qr_code_event_summary_hint">תקציר</string>
+    <string name="fragment_create_qr_code_event_start_date_hint">תאריך התחלה</string>
+    <string name="fragment_create_qr_code_event_end_date_hint">תאריך סיום</string>
+
+    <!--Create QR code contact-->
+    <string name="fragment_create_qr_code_contact_first_name_hint">שם פרטי</string>
+    <string name="fragment_create_qr_code_contact_last_name_hint">שם משפחה</string>
+    <string name="fragment_create_qr_code_contact_organization_hint">ארגון</string>
+    <string name="fragment_create_qr_code_contact_job_hint">משרה</string>
+    <string name="fragment_create_qr_code_contact_email_hint">דואר אלקטרוני</string>
+    <string name="fragment_create_qr_code_contact_phone_hint">טלפון</string>
+    <string name="fragment_create_qr_code_contact_fax_hint">פקס</string>
+    <string name="fragment_create_qr_code_contact_country_hint">ארץ</string>
+    <string name="fragment_create_qr_code_contact_region_hint">אזור/מדינה</string>
+    <string name="fragment_create_qr_code_contact_postcode_hint">מיקוד</string>
+    <string name="fragment_create_qr_code_contact_city_hint">עיר</string>
+    <string name="fragment_create_qr_code_contact_street_hint">רחוב</string>
+    <string name="fragment_create_qr_code_contact_website_hint">אתר</string>
+    <string name="fragment_create_qr_code_contact_alternative">- יש לפתוח את יישום אנשי הקשר\n- לפתוח איש קשר קיים או ליצור חדש\n- ללחוץ \"שיתוף\" מהתפריט\n- ולבחור את היישום הזה</string>
+
+    <!--Create barcode-->
+    <string name="fragment_create_data_matrix_hint">טקסט ללא תווים מיוחדים</string>
+    <string name="fragment_create_aztec_hint">טקסט עם תווים מיוחדים</string>
+    <string name="fragment_create_codabar_hint">ספרות</string>
+    <string name="fragment_create_code_39_hint">טקסט באותיות ראשיות ללא תווים מיוחדים</string>
+    <string name="fragment_create_code_93_hint">טקסט באותיות ראשיות ללא תווים מיוחדים</string>
+    <string name="fragment_create_code_128_hint">טקסט ללא תווים מיוחדים</string>
+    <string name="fragment_create_ean_8_hint">7 ספרות</string>
+    <string name="fragment_create_ean_13_hint">12 ספרות</string>
+    <string name="fragment_create_itf_14_hint">מספר זוגי של ספרות</string>
+    <string name="fragment_create_upc_a_hint">11 ספרות</string>
+    <string name="fragment_create_upc_e_hint">7 ספרות</string>
+
+    <!--Barcode history fragment-->
+    <string name="fragment_barcode_history_title">היסטוריה</string>
+    <string-array name="fragment_barcode_history_tab_titles">
+        <item>הכל</item>
+        <item>מועדפים</item>
+    </string-array>
+    <string name="fragment_barcode_history_menu_title_export">ייצוא היסטוריה</string>
+    <string name="fragment_barcode_history_menu_title_delete_all">ניקוי היסטוריה</string>
+
+    <!--Export history activity-->
+    <string name="activity_export_history_title">ייצוא היסטוריה</string>
+    <string name="activity_export_history_as_hint">ייצוא כ</string>
+    <string-array name="activity_export_history_types">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_export_history_file_name_hint">שם הקובץ</string>
+    <string name="activity_export_history_file_name_default" translatable="false">db</string>
+    <string name="activity_export_history_export">ייצוא</string>
+    <string name="activity_export_history_exported">נשמר להורדות</string>
+
+    <!--Settings fragment-->
+    <string name="fragment_settings_title">הגדרות</string>
+    <string name="fragment_settings_appearance_settings">מראה</string>
+    <string name="fragment_settings_theme">ערכת עיצוב</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme">צבעי קוד הפוכים בעיצוב כהה</string>
+    <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">הצג קוד עם תוכן לבן על רקע כהה</string>
+    <string name="fragment_settings_scanner_settings">סורק</string>
+    <string name="fragment_settings_open_content_automatically">פתח תוכן של קודים סרוקים באופן אוטומטי</string>
+    <string name="fragment_settings_open_content_automatically_hint">עלול לפתוח תוכן מזיק</string>
+    <string name="fragment_settings_copy_to_clipboard">העתקה ללוח</string>
+    <string name="fragment_settings_copy_to_clipboard_hint">העתקת ברקודים סרוקים ללוח</string>
+    <string name="fragment_settings_simple_auto_focus">מצב מיקוד אוטומטי פשוט</string>
+    <string name="fragment_settings_simple_auto_focus_hint">הפעלה רק אם יש לך בעיות מיקוד</string>
+    <string name="fragment_settings_flash">מבזק</string>
+    <string name="fragment_settings_flash_hint">הפעלת מבזק בפתיחה</string>
+    <string name="fragment_settings_vibrate">רטט</string>
+    <string name="fragment_settings_vibrate_hint">רטט בעת סריקה</string>
+    <string name="fragment_settings_continuous_scanning">סריקה רציפה</string>
+    <string name="fragment_settings_continuous_scanning_hint">שמירת סריקות להיסטוריה בלבד</string>
+    <string name="fragment_settings_confirm_scans_manually">אישור סריקות ידני</string>
+    <string name="fragment_settings_confirm_scans_manually_hint">מנע סריקות בשוגג</string>
+    <string name="fragment_settings_camera">מצלמה</string>
+    <string name="fragment_settings_supported_formats">פורמטים נתמכים</string>
+    <string name="fragment_settings_history_settings">היסטוריה</string>
+    <string name="fragment_settings_save_scanned_barcodes_to_history">שמירת ברקודים שנסרקו להיסטוריה</string>
+    <string name="fragment_settings_save_created_barcodes_to_history">שמירת ברקודים שנוצרו להיסטוריה</string>
+    <string name="fragment_settings_do_not_save_duplicates">אל תשמור כפילויות</string>
+    <string name="fragment_settings_do_not_save_duplicates_hint">הימנע מכפלויות בהיסטוריה</string>
+    <string name="fragment_settings_clear_history">ניקוי היסטוריה</string>
+    <string name="fragment_settings_advanced_settings">מתקדם</string>
+    <string name="fragment_settings_choose_search_engines">מנוע חיפוש</string>
+    <string name="fragment_settings_choose_search_engines_hint">בחירת מנוע חיפוש לחיפושים במרשתת</string>
+    <string name="fragment_settings_error_reports">דוחות שגיאה</string>
+    <string name="fragment_settings_enable_error_reports">איפשור דוחות שגיאה</string>
+    <string name="fragment_settings_enable_error_reports_hint">זה יעזור לנו לתקן באגים</string>
+    <string name="fragment_settings_about">אודות</string>
+    <string name="fragment_settings_check_updates">חיפוש עדכונים</string>
+    <string name="fragment_settings_permissions">הרשאות</string>
+    <string name="fragment_settings_source_code">קוד מקור</string>
+    <string name="fragment_settings_app_version">גירסת יישום</string>
+
+    <!--Choose theme activity-->
+    <string name="activity_choose_theme_title">ערכת עיצוב</string>
+    <string name="activity_choose_theme_system">כמערכת</string>
+    <string name="activity_choose_theme_light">בהיר</string>
+    <string name="activity_choose_theme_dark">כהה</string>
+
+    <!--Choose camera activity-->
+    <string name="activity_choose_camera_title">מצלמה</string>
+    <string name="activity_choose_camera_front">קידמית</string>
+    <string name="activity_choose_camera_back">אחורית</string>
+
+    <!--Select supported formats activity-->
+    <string name="activity_supported_formats_title">פורמטים נתמכים</string>
+
+    <!--Choose search engine activity-->
+    <string name="activity_choose_search_engine_title">מנועי חיפוש</string>
+    <string name="activity_choose_search_engine_none">ללא</string>
+    <string name="activity_choose_search_engine_ask_every_time">שאל בכל פעם</string>
+    <string name="activity_choose_search_engine_bing">Bing</string>
+    <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
+    <string name="activity_choose_search_engine_google">Google</string>
+    <string name="activity_choose_search_engine_qwant">Qwant</string>
+    <string name="activity_choose_search_engine_yahoo">Yahoo</string>
+    <string name="activity_choose_search_engine_yandex">Yandex</string>
+
+    <!--All permissions activity-->
+    <string name="activity_all_permissions_title">הרשאות</string>
+    <string name="activity_all_permissions_normal_permissions">רגיל</string>
+    <string name="activity_all_permissions_vibrate_title">רטט</string>
+    <string name="activity_all_permissions_vibrate_hint">משמש לרטט בעת סריקה</string>
+    <string name="activity_all_permissions_wifi_title">Wi-Fi</string>
+    <string name="activity_all_permissions_wifi_hint">משמש לחיבור Wi-Fi בעת סריקת קוד QR</string>
+    <string name="activity_all_permissions_internet_title">אינטרנט</string>
+    <string name="activity_all_permissions_internet_hint">משמש למשלוח דוחות שגיאה, ניתן להשבית זאת בהגדרות.</string>
+    <string name="activity_all_permissions_runtime_permissions">זמן ריצה</string>
+    <string name="activity_all_permissions_camera_title">מצלמה</string>
+    <string name="activity_all_permissions_camera_hint">משמש לסריקת קודי QR וברקוד במצלמה</string>
+    <string name="activity_all_permissions_read_contacts_title">קריאת אנשי קשר</string>
+    <string name="activity_all_permissions_read_contacts_hint">משמש ליצירת קוד QR על ידי בחירת איש קשר מרשימת אנשי הקשר שלך</string>
+    <string name="activity_all_permissions_storage_title">אחסון</string>
+    <string name="activity_all_permissions_storage_hint">משמש לגישה לאחסון כאשר ברצונך לשמור את קוד QR או ברקוד כטקסט או תמונה</string>
+
+    <!--Barcode activity-->
+    <string name="activity_barcode_add_to_calendar">הוספה ליומן</string>
+    <string name="activity_barcode_add_to_contacts">הוספה לאנשי קשר</string>
+    <string name="activity_barcode_call_phone">התקשר %s</string>
+    <string name="activity_barcode_send_sms">שליחת SMS/MMS אל %s</string>
+    <string name="activity_barcode_send_email">דואר אלקטרוני אל %s</string>
+    <string name="activity_barcode_show_location">הצגת מיקום</string>
+    <string name="activity_barcode_connect_to_wifi">חיבור אל Wi-Fi</string>
+    <string name="activity_barcode_open_wifi_settings">פתיחת הגדות Wi-Fi</string>
+    <string name="activity_barcode_copy_network_name">העתקת שם הרשת</string>
+    <string name="activity_barcode_copy_network_password">העתקת סיסמת הרשת</string>
+    <string name="activity_barcode_open_app">פתיחת יישום</string>
+    <string name="activity_barcode_open_in_app_market">פתיחה בחנות</string>
+    <string name="activity_barcode_open_in_youtube">פתיחה ביוטיוב</string>
+    <string name="activity_barcode_save_bookmark">שמירה לסימניות</string>
+    <string name="activity_barcode_open_link">פתיחת קישור</string>
+    <string name="activity_barcode_open_bitcoin_url">פתיחה ביישום אחר</string>
+    <string name="activity_barcode_show_otp">הצגת סיסמה</string>
+    <string name="activity_barcode_open_otp">פתיחה ביישום אחר</string>
+    <string name="activity_barcode_share_as_text">שיתוף כטקסט</string>
+    <string name="activity_barcode_copy">העתקה ללוח</string>
+    <string name="activity_barcode_save_as_text">שמירה כטקסט</string>
+    <string name="activity_barcode_search">חיפוש במרשתת</string>
+    <string name="activity_barcode_add_to_favorites">הוספה למועדפים</string>
+    <string name="activity_barcode_show_barcode_image">הצגת קוד</string>
+    <string name="activity_barcode_share_as_image">שיתוף כתמונה</string>
+    <string name="activity_barcode_save_as_image">שמירה כתמונה</string>
+    <string name="activity_barcode_print">הדפסה</string>
+    <string name="activity_barcode_delete">מחיקה</string>
+    <string name="activity_barcode_connecting_to_wifi">מתחבר…</string>
+    <string name="activity_barcode_copied">הועתק ללוח</string>
+    <string name="activity_barcode_no_app">לא נמצא יישום לפעולה זו</string>
+    <string name="activity_barcode_choose_search_engine_dialog_negative_button">ביטול</string>
+
+    <!--Barcode image activity-->
+    <string name="activity_barcode_image_increase_brightness">הגברת בהירות</string>
+    <string name="activity_barcode_image_decrease_brightness">הקטנת בהירות</string>
+
+    <!--OTP barcode activity-->
+    <string name="activity_barcode_otp_title">OTP</string>
+    <string name="activity_barcode_otp_unable_to_generate_otp">לא ניתן ליצור סיסמה</string>
+    <string name="activity_barcode_otp_counter">מונה: %s</string>
+    <string name="activity_barcode_otp_timer">%s:%s נותרו</string>
+    <string name="activity_barcode_otp_refresh_otp">רענון</string>
+
+    <!--Save barcode as text activity-->
+    <string name="activity_save_barcode_as_text_title">שמירה</string>
+    <string name="activity_save_barcode_as_text_save_as_hint">שמירה כ</string>
+    <string-array name="activity_save_barcode_as_text_formats">
+        <item>CSV</item>
+        <item>JSON</item>
+    </string-array>
+    <string name="activity_save_barcode_as_text_file_name_save">שמירה</string>
+    <string name="activity_save_barcode_as_text_file_name_saved">נשמר להורדות</string>
+
+    <!--Save barcode as image activity-->
+    <string name="activity_save_barcode_as_image_title">שמירה</string>
+    <string name="activity_save_barcode_as_image_save_as_hint">שמירה כ</string>
+    <string-array name="activity_save_barcode_as_image_formats">
+        <item>PNG</item>
+        <item>SVG</item>
+    </string-array>
+    <string name="activity_save_barcode_as_image_file_name_save">שמירה</string>
+    <string name="activity_save_barcode_as_image_file_name_saved">שמירה לגלריה</string>
+    
+    <!--Barcode schemas-->
+    <string name="barcode_schema_bookmark">סימניה</string>
+    <string name="barcode_schema_cryptocurrency">ביטקוין</string>
+    <string name="barcode_schema_email">דואר אלקטרוני</string>
+    <string name="barcode_schema_geo">מיקום</string>
+    <string name="barcode_schema_google_maps">כתובת</string>
+    <string name="barcode_schema_google_play">יישום</string>
+    <string name="barcode_schema_mms">MMS</string>
+    <string name="barcode_schema_me_card">איש קשר (MeCard)</string>
+    <string name="barcode_schema_phone">טלפון</string>
+    <string name="barcode_schema_otp">OTP</string>
+    <string name="barcode_schema_sms">SMS</string>
+    <string name="barcode_schema_url">כתובת אתר</string>
+    <string name="barcode_schema_v_event">אירוע</string>
+    <string name="barcode_schema_v_card">איש קשר (VCard)</string>
+    <string name="barcode_schema_wifi">Wi-Fi</string>
+    <string name="barcode_schema_youtube">קישור יוטיוב</string>
+    <string name="barcode_schema_other">טקסט</string>
+
+    <!--Barcode formats-->
+    <string name="barcode_format_qr_code">קוד QR</string>
+    <string name="barcode_format_aztec" translatable="false">Aztec</string>
+    <string name="barcode_format_codabar" translatable="false">Codabar</string>
+    <string name="barcode_format_code_39" translatable="false">Code 39</string>
+    <string name="barcode_format_code_93" translatable="false">Code 93</string>
+    <string name="barcode_format_code_128" translatable="false">Code 128</string>
+    <string name="barcode_format_data_matrix" translatable="false">Data Matrix</string>
+    <string name="barcode_format_ean_8"  translatable="false">EAN-8</string>
+    <string name="barcode_format_ean_13" translatable="false">EAN-13</string>
+    <string name="barcode_format_itf_14" translatable="false">ITF</string>
+    <string name="barcode_format_pdf_417" translatable="false">PDF417</string>
+    <string name="barcode_format_upc_a" translatable="false">UPC-A</string>
+    <string name="barcode_format_upc_e" translatable="false">UPC-E</string>
+
+</resources>

@@ -261,6 +261,7 @@
     <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
     <string name="activity_choose_search_engine_google">Google</string>
     <string name="activity_choose_search_engine_qwant">Qwant</string>
+    <string name="activity_choose_search_engine_startpage">Startpage</string>
     <string name="activity_choose_search_engine_yahoo">Yahoo</string>
     <string name="activity_choose_search_engine_yandex">Yandex</string>
 
@@ -363,6 +364,7 @@
     <string name="barcode_schema_v_card">Contact (VCard)</string>
     <string name="barcode_schema_wifi">Wi-Fi</string>
     <string name="barcode_schema_youtube">Youtube URL</string>
+    <string name="barcode_schema_boardingpass">Boarding Pass</string>
     <string name="barcode_schema_other">Text</string>
 
     <!--Barcode formats-->
