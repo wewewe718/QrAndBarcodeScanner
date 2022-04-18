@@ -7,6 +7,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.extension.unsafeLazy
+import com.example.barcodescanner.model.DefaultView
 import com.example.barcodescanner.model.SearchEngine
 import com.google.zxing.BarcodeFormat
 
@@ -28,6 +29,7 @@ class Settings(private val context: Context) {
     private enum class Key {
         THEME,
         INVERSE_BARCODE_COLORS,
+        DEFAULT_VIEW,
         OPEN_LINKS_AUTOMATICALLY,
         COPY_TO_CLIPBOARD,
         SIMPLE_AUTO_FOCUS,
@@ -53,6 +55,10 @@ class Settings(private val context: Context) {
             set(Key.THEME, value)
             applyTheme(value)
         }
+
+    var defaultView: DefaultView
+        get() = get(Key.DEFAULT_VIEW, DefaultView.SCAN)
+        set(value) = set(Key.DEFAULT_VIEW, value)
 
     val isDarkTheme: Boolean
         get() = theme == THEME_DARK || (theme == THEME_SYSTEM && isSystemDarkModeEnabled())
@@ -160,6 +166,17 @@ class Settings(private val context: Context) {
         sharedPreferences.edit()
             .putBoolean(key.name, value)
             .apply()
+    }
+
+    private fun get(key: Key, default: DefaultView = DefaultView.SCAN) : DefaultView {
+        val rawValue = sharedPreferences.getString(key.name, null) ?: default.name
+        return DefaultView.valueOf(rawValue);
+    }
+
+    private fun set(key: Key, value: DefaultView) {
+        sharedPreferences.edit()
+                .putString(key.name, value.name)
+                .apply()
     }
 
     private fun get(key: Key, default: SearchEngine = SearchEngine.NONE): SearchEngine {

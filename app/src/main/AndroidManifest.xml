@@ -177,6 +177,12 @@
             android:exported="false"
             />
         <activity
+            android:name=".feature.tabs.settings.view.ChooseDefaultViewActivity"
+            android:screenOrientation="fullSensor"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            />
+        <activity
             android:name=".feature.tabs.settings.camera.ChooseCameraActivity"
             android:screenOrientation="fullSensor"
             android:configChanges="orientation|screenSize"
