@@ -201,6 +201,8 @@
     <!--Settings fragment-->
     <string name="fragment_settings_title">Settings</string>
     <string name="fragment_settings_appearance_settings">Appearance</string>
+    <string name="fragment_settings_choose_default_view">Default view</string>
+    <string name="fragment_settings_choose_default_view_hint">Choose the view which is opened at start</string>
     <string name="fragment_settings_theme">Theme</string>
     <string name="fragment_settings_inverse_barcode_colors_in_dark_theme">Inverse code colors in dark theme</string>
     <string name="fragment_settings_inverse_barcode_colors_in_dark_theme_hint">Show codes with white content on dark background</string>
@@ -244,6 +246,13 @@
     <string name="activity_choose_theme_system">Same as system</string>
     <string name="activity_choose_theme_light">Light</string>
     <string name="activity_choose_theme_dark">Dark</string>
+
+    <!--Choose default view activity-->
+    <string name="activity_choose_default_view_title">Default view</string>
+    <string name="activity_choose_default_view_scan">Scan</string>
+    <string name="activity_choose_default_view_create">Create</string>
+    <string name="activity_choose_default_view_history">History</string>
+    <string name="activity_choose_default_view_settings">Settings</string>
 
     <!--Choose camera activity-->
     <string name="activity_choose_camera_title">Camera</string>

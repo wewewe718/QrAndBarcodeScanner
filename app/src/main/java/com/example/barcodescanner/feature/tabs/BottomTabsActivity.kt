@@ -5,20 +5,24 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.example.barcodescanner.BuildConfig
 import com.example.barcodescanner.R
+import com.example.barcodescanner.di.settings
 import com.example.barcodescanner.extension.applySystemWindowInsets
 import com.example.barcodescanner.feature.BaseActivity
 import com.example.barcodescanner.feature.tabs.create.CreateBarcodeFragment
 import com.example.barcodescanner.feature.tabs.history.BarcodeHistoryFragment
 import com.example.barcodescanner.feature.tabs.scan.ScanBarcodeFromCameraFragment
 import com.example.barcodescanner.feature.tabs.settings.SettingsFragment
+import com.example.barcodescanner.model.DefaultView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_bottom_tabs.*
 
 class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     companion object {
+        private const val ACTION_SCAN = "${BuildConfig.APPLICATION_ID}.SCAN"
         private const val ACTION_CREATE_BARCODE = "${BuildConfig.APPLICATION_ID}.CREATE_BARCODE"
         private const val ACTION_HISTORY = "${BuildConfig.APPLICATION_ID}.HISTORY"
+        private const val ACTION_SETTINGS = "${BuildConfig.APPLICATION_ID}.SETTINGS"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,10 +46,10 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
     }
 
     override fun onBackPressed() {
-        if (bottom_navigation_view.selectedItemId == R.id.item_scan) {
+        if (bottom_navigation_view.selectedItemId == getDefaultViewID()) {
             super.onBackPressed()
         } else {
-            bottom_navigation_view.selectedItemId = R.id.item_scan
+            bottom_navigation_view.selectedItemId = getDefaultViewID()
         }
     }
 
@@ -57,13 +61,25 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
         bottom_navigation_view.apply {
             setOnNavigationItemSelectedListener(this@BottomTabsActivity)
         }
+        bottom_navigation_view.selectedItemId = getDefaultViewID()
     }
 
     private fun showInitialFragment() {
         when (intent?.action) {
+            ACTION_SCAN -> bottom_navigation_view.selectedItemId = R.id.item_scan
             ACTION_CREATE_BARCODE -> bottom_navigation_view.selectedItemId = R.id.item_create
             ACTION_HISTORY -> bottom_navigation_view.selectedItemId = R.id.item_history
-            else -> showFragment(R.id.item_scan)
+            ACTION_SETTINGS -> bottom_navigation_view.selectedItemId = R.id.item_settings
+            else -> showFragment(getDefaultViewID())
+        }
+    }
+
+    private fun getDefaultViewID() : Int {
+        return when (settings.defaultView) {
+            DefaultView.CREATE -> R.id.item_create
+            DefaultView.HISTORY -> R.id.item_history
+            DefaultView.SETTINGS -> R.id.item_settings
+            else -> R.id.item_scan
         }
     }
 

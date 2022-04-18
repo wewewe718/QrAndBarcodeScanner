@@ -52,6 +52,15 @@
                 app:text="@string/fragment_settings_inverse_barcode_colors_in_dark_theme"
                 app:hint="@string/fragment_settings_inverse_barcode_colors_in_dark_theme_hint"
                 />
+
+            <com.example.barcodescanner.feature.common.view.SettingsButton
+                android:id="@+id/button_choose_default_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/fragment_settings_choose_default_view"
+                app:hint="@string/fragment_settings_choose_default_view_hint"
+                app:isSwitchVisible="false"
+                />
             <View
                 android:id="@+id/delimiter_appearance"
                 style="@style/DelimiterStyle"

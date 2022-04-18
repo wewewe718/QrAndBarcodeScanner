@@ -20,6 +20,7 @@ import com.example.barcodescanner.feature.tabs.settings.formats.SupportedFormats
 import com.example.barcodescanner.feature.tabs.settings.permissions.AllPermissionsActivity
 import com.example.barcodescanner.feature.tabs.settings.search.ChooseSearchEngineActivity
 import com.example.barcodescanner.feature.tabs.settings.theme.ChooseThemeActivity
+import com.example.barcodescanner.feature.tabs.settings.view.ChooseDefaultViewActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -77,6 +78,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
 
     private fun handleButtonClicks() {
         button_choose_theme.setOnClickListener { ChooseThemeActivity.start(requireActivity()) }
+        button_choose_default_view.setOnClickListener{ChooseDefaultViewActivity.start(requireActivity()) }
         button_choose_camera.setOnClickListener { ChooseCameraActivity.start(requireActivity()) }
         button_select_supported_formats.setOnClickListener { SupportedFormatsActivity.start(requireActivity()) }
         button_clear_history.setOnClickListener { showDeleteHistoryConfirmationDialog() }
