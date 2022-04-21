@@ -1,0 +1,46 @@
+TUTTI I FORMATI COMUNI
+Scansiona tutti i formati di codici a barre comuni: QR, Data Matrix, Aztec, UPC, EAN e altri.
+
+TORCIA E ZOOM
+Abilita la torcia per scansionare al buio. Usa lo zoom per leggere i codici a barre da grandi distanze.
+
+AZIONI RILEVANTI
+Apri collegamenti, connettiti al Wi-Fi, visualizza geolocalizzazione, aggiungi eventi del calendario, trova informazioni sui prodotti, ecc.
+
+SCANSIONE DA IMMAGINI
+Scansione di codici da file di immagine o utilizzando direttamente la fotocamera.
+
+CREA CODICI QR E CODICI A BARRE
+Crea i tuoi codici QR o codici a barre con il generatore integrato.
+
+CRONOLOGIA
+Visualizza i codici scansionati e creati nella cronologia.
+
+ESPORTAZIONE CSV E JSON
+Esporta i codici come file CSV o JSON.
+
+IMPOSTAZIONI
+Personalizza la tua app con impostazioni flessibili.
+
+Codici QR supportati:
+• collegamenti a siti web (URL)
+• informazioni sull'accesso all'hotspot Wi-Fi
+• geolocalizzazione
+• informazioni di contatto (MeCard, vCard)
+• eventi del calendario
+• telefoni
+• email
+• SMS
+
+Codici a barre e codici 2D:
+• Data Matrix
+• Aztec
+• PDF417
+• EAN-13, EAN-8
+• UPC-E, UPC-A
+• Code 39, Code 93 e Code 128
+• Codabar
+• ITF
+
+Codice sorgente:
+https://github.com/wewewe718/QrAndBarcodeScanner

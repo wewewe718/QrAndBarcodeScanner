@@ -2,14 +2,14 @@
     <string name="app_name">QR &amp; Barcode Scanner</string>
 
     <!--Shortcuts-->
-    <string name="shortcut_scan_from_camera">Scansione</string>
-    <string name="shortcut_scan_from_file">Scansione file</string>
+    <string name="shortcut_scan_from_camera">Scansiona</string>
+    <string name="shortcut_scan_from_file">Scansiona file</string>
     <string name="shortcut_create_barcode">Crea codice a barre</string>
     <string name="shortcut_history">Cronologia</string>
 
     <!--Intent filters-->
     <string name="intent_filter_create_qr_code_text">Crea codice QR</string>
-    <string name="intent_filter_scan_image">Scansione immagine</string>
+    <string name="intent_filter_scan_image">Scansiona immagine</string>
 
     <!--Error dialog-->
     <string name="error_dialog_title">Errore</string>
@@ -33,7 +33,7 @@
     <string name="dialog_edit_barcode_name_negative_button">Annulla</string>
 
     <!--Bottom tabs activity-->
-    <string name="activity_bottom_tabs_scan_tab">Scansione</string>
+    <string name="activity_bottom_tabs_scan_tab">Scansiona</string>
     <string name="activity_bottom_tabs_create_tab">Crea</string>
     <string name="activity_bottom_tabs_history_tab">Cronologia</string>
     <string name="activity_bottom_tabs_settings_tab">Impostazioni</string>
@@ -212,7 +212,7 @@
     <string name="fragment_settings_simple_auto_focus_hint">Abilita solo se ci sono problemi durante la messa a fuoco</string>
     <string name="fragment_settings_flash">Flash</string>
     <string name="fragment_settings_flash_hint">Abilita flash all\'avvio</string>
-    <string name="fragment_settings_vibrate">Vibra</string>
+    <string name="fragment_settings_vibrate">Vibrazione</string>
     <string name="fragment_settings_vibrate_hint">Vibra alla scansione</string>
     <string name="fragment_settings_continuous_scanning">Scansione continua</string>
     <string name="fragment_settings_continuous_scanning_hint">Salva le scansioni nella cronologia</string>
@@ -254,13 +254,14 @@
 
     <!--Choose search engine activity-->
     <string name="activity_choose_search_engine_title">Motori di ricerca</string>
-    <string name="activity_choose_search_engine_none">Nessun</string>
+    <string name="activity_choose_search_engine_none">Nessuno</string>
     <string name="activity_choose_search_engine_ask_every_time">Chiedi ogni volta</string>
     <string name="activity_choose_search_engine_bing">Bing</string>
     <string name="activity_choose_search_engine_duck_duck_go">DuckDuckGo</string>
     <string name="activity_choose_search_engine_google">Google</string>
     <string name="activity_choose_search_engine_qwant">Qwant</string>
-    <string name="activity_choose_search_engine_yahoo">Yaho</string>
+    <string name="activity_choose_search_engine_startpage">Startpage</string>
+    <string name="activity_choose_search_engine_yahoo">Yahoo</string>
     <string name="activity_choose_search_engine_yandex">Yandex</string>
 
     <!--All permissions activity-->
