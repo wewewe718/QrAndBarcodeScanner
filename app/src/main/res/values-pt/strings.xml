@@ -358,7 +358,7 @@
     <string name="barcode_schema_sms">SMS</string>
     <string name="barcode_schema_url">URL</string>
     <string name="barcode_schema_v_event">Evento</string>
-    <string name="barcode_schema_v_card">Contacto (VCard)</string>
+    <string name="barcode_schema_v_card">Contacto (vCard)</string>
     <string name="barcode_schema_wifi">Wi-Fi</string>
     <string name="barcode_schema_youtube">URL do Youtube</string>
     <string name="barcode_schema_other">Texto</string>
