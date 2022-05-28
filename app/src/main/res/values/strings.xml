@@ -294,7 +294,7 @@
     <string name="activity_barcode_copy_network_password">Copy network password</string>
     <string name="activity_barcode_open_app">Open app</string>
     <string name="activity_barcode_open_in_app_market">Open in market</string>
-    <string name="activity_barcode_open_in_youtube">Open in Youtube</string>
+    <string name="activity_barcode_open_in_youtube">Open in YouTube</string>
     <string name="activity_barcode_save_bookmark">Save to bookmarks</string>
     <string name="activity_barcode_open_link">Open link</string>
     <string name="activity_barcode_open_bitcoin_url">Open in other app</string>
@@ -362,7 +362,7 @@
     <string name="barcode_schema_v_event">Event</string>
     <string name="barcode_schema_v_card">Contact (VCard)</string>
     <string name="barcode_schema_wifi">Wi-Fi</string>
-    <string name="barcode_schema_youtube">Youtube URL</string>
+    <string name="barcode_schema_youtube">YouTube URL</string>
     <string name="barcode_schema_other">Text</string>
 
     <!--Barcode formats-->

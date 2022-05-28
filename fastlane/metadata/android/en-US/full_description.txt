@@ -5,7 +5,7 @@ FLASHLIGHT AND ZOOM
 Enable the flashlight to scan in the dark. Use zoom to read barcodes from far distances.
 
 RELEVANT ACTIONS
-Open links, connect to WiFi, view geolocations, add calendar events, find product information, etc.
+Open links, connect to WiFi, view geolocations, add contacts, add calendar events, find product information, etc.
 
 SCAN FROM IMAGES
 Scan codes from image files or directly using the camera.
