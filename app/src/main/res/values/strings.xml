@@ -360,7 +360,7 @@
     <string name="barcode_schema_sms">SMS</string>
     <string name="barcode_schema_url">URL</string>
     <string name="barcode_schema_v_event">Event</string>
-    <string name="barcode_schema_v_card">Contact (VCard)</string>
+    <string name="barcode_schema_v_card">Contact (vCard)</string>
     <string name="barcode_schema_wifi">Wi-Fi</string>
     <string name="barcode_schema_youtube">YouTube URL</string>
     <string name="barcode_schema_other">Text</string>
