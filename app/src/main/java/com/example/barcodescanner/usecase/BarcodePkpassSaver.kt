@@ -210,6 +210,10 @@ object BarcodePkpassSaver {
 
         zipout.addManifest(manifest, "pass.json", main.toByteArray())
         zipout.addManifest(manifest, "icon.png", icon)
+        if (bp.selectee == "3") {
+            val footer = assets.open("img/tsapre.png").readBytes()
+            zipout.addManifest(manifest, "footer.png", footer)
+	}
         try {
             val thumbnail = assets.open("img/${bp.carrier}/thumbnail.png").readBytes()
             zipout.addManifest(manifest, "thumbnail.png", thumbnail)
