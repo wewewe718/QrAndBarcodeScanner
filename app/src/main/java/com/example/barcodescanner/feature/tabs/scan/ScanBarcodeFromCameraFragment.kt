@@ -3,6 +3,7 @@ package com.example.barcodescanner.feature.tabs.scan
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -237,6 +238,11 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
         vibrateIfNeeded()
 
+        if (isDcgAccountBaseOnboardingQRCode(result)) {
+            handleDcgAccountBaseOnboardingQRCode(result)
+            return
+        }
+
         val barcode = barcodeParser.parseResult(result)
 
         when {
@@ -244,6 +250,30 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
             settings.saveScannedBarcodesToHistory || settings.continuousScanning -> saveScannedBarcode(barcode)
             else -> navigateToBarcodeScreen(barcode)
         }
+    }
+
+    private fun isDcgAccountBaseOnboardingQRCode(result: Result): Boolean {
+        return result.toString().startsWith("https://dcg.microsoft.com") ||
+                result.toString().startsWith("https://dcg-df.microsoft.com") ||
+                result.toString().startsWith("https://dcg-beta.microsoft.com") ||
+                result.toString().startsWith("https://yourpc.page.link")
+    }
+
+    private fun handleDcgAccountBaseOnboardingQRCode(result: Result) {
+        val startUpIntent = Intent(Intent.ACTION_VIEW).apply {
+            putExtra("deepLink", result.toString())
+            putExtra("isInAppCameraScenario", true)
+            putExtra("ring", "prod")
+            flags =
+                if (Build.VERSION.SDK_INT == Build.VERSION_CODES.Q) {
+                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                } else {
+                    Intent.FLAG_ACTIVITY_CLEAR_TOP
+                }
+            data = Uri.parse("https://dl.dcg.microsoft.com")
+        }
+        startActivity(startUpIntent)
+
     }
 
     private fun handleConfirmedBarcode(barcode: Barcode) {
